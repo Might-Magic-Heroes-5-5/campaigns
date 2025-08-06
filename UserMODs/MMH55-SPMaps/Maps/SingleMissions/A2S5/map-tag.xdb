@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDescTag>
+	<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<NameFileRef href="name.txt"/>
+	<DescriptionFileRef href="description.txt"/>
+	<TileX>136</TileX>
+	<TileY>136</TileY>
+	<MapGoal href=""/>
+	<CustomMapGoal>false</CustomMapGoal>
+	<teams>
+		<Item>1</Item>
+		<Item>1</Item>
+		<Item>1</Item>
+	</teams>
+	<thumbnailImages>
+		<Item href="Trumb_sm5_1.xdb#xpointer(/Texture)"/>
+		<Item href="Trumb_sm5_2.xdb#xpointer(/Texture)"/>
+		<Item href="Trumb_sm5_3.xdb#xpointer(/Texture)"/>
+	</thumbnailImages>
+	<HasUnderground>false</HasUnderground>
+	<RandomMap>false</RandomMap>
+	<CustomGameMap>false</CustomGameMap>
+	<Version>3</Version>
+</AdvMapDescTag>

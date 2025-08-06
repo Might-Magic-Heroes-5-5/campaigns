@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero ObjectRecordID="1001839">
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name>Oddrema</Name>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno/Oddrema.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_7</PlayerID>
+	<Experience>29600</Experience>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_SUCCUBUS</Creature>
+			<Count>38</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
+			<Count>17</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_CERBERI</Creature>
+			<Count>44</Count>
+		</Item>
+	</armySlots>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>0</Offence>
+		<Defence>0</Defence>
+		<Spellpower>0</Spellpower>
+		<Knowledge>0</Knowledge>
+		<skills/>
+		<perkIDs/>
+		<spellIDs>
+			<Item>SPELL_FIREBALL</Item>
+		</spellIDs>
+		<Ballista>false</Ballista>
+		<FirstAidTent>false</FirstAidTent>
+		<AmmoCart>false</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>64</OverrideMask>
+	<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapHero>

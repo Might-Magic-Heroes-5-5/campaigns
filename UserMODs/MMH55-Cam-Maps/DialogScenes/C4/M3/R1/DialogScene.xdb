@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000084">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Seige-Battle/Dungeon.xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M3R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3R1b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-1.txt"/>
+			<sound href="C4M3_R1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3R1d2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>8</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3R1e3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Raelag-3.txt"/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3R1e2e2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Demon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Demon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Demon.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Stologmite03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite05.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite05.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom1x1_6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom1x1_6.1.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>80</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

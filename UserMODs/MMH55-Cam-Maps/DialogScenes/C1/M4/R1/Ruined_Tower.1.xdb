@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDwelling>
+	<Pos>
+		<x>43</x>
+		<y>42</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Necropolis/Ruined_Tower.xdb#xpointer(/AdvMapDwellingShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</CaptureTrigger>
+	<RandomCreatures>false</RandomCreatures>
+	<creaturesEnabled/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+	<LinkToTown/>
+</AdvMapDwelling>

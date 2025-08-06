@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000133">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/SmallSpecialArena_Grass.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dirt.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Win-Battle/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>55</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Isabell.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C1M2R3.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M2R3_n_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Isabell-1.txt"/>
+			<sound href="C1M2_R3.xdb#xpointer(/Sound)"/>
+			<heroLink href="Isabell.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M2R3_n_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>4</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Knight/happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Haystock_02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain8x8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain8x8.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain8x8.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain12x12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain8x8.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain8x8.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Tree_of_Knowledge.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Birch5x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sunflowers.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak6x5_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak6x5_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Haystock_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Haystock_01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sign.xdb#xpointer(/AdvMapSign)"/>
+		<Item href="Cross_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rush01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Archer.25.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.26.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.27.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.28.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.29.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.30.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Isabell.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Swordsman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Swordsman.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grass01.141.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.142.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.148.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.149.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.172.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.173.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Archer.36.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.37.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.38.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.39.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.40.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.41.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.42.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.43.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.44.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.45.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.46.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.47.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.48.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.49.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.50.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.51.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.52.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.53.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.54.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.55.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.56.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="ArchersTower.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Grass01.175.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>1</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

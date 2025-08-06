@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet>
+	<StartCamera href="/Dialogs/Cameras/C1M5D3swordsman.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>65</x>
+		<y>75</y>
+		<z>0</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>1.5708</StartCorrectionRot>
+	<FinishCamera href="/Dialogs/Cameras/C1M5D3swordsman.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>65</x>
+		<y>75</y>
+		<z>0</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>1.5708</FinishCorrectionRot>
+	<NameFileRef href="C1M5D34-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>1</IgnoreYawDiff>
+	<Direction>0</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

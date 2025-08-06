@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapTown ObjectRecordID="1003517">
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Necromancy.(AdvMapTownShared).xdb#xpointer(/AdvMapTownShared)"/>
+	<PlayerID>PLAYER_2</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName>theend</FunctionName>
+		</Action>
+	</CaptureTrigger>
+	<HeroDeployTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</HeroDeployTrigger>
+	<ShipTile>
+		<x>0</x>
+		<y>0</y>
+	</ShipTile>
+	<Specialization href="/GameMechanics/TownSpecialization/Necropolis/Script/Spes.xdb#xpointer(/TownSpecialization)"/>
+	<buildings>
+		<Item>
+			<Type>TB_TOWN_HALL</Type>
+			<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_FORT</Type>
+			<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+		</Item>
+	</buildings>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+	</Editable>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_DEMILICH</Creature>
+			<Count>40</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_WRAITH</Creature>
+			<Count>20</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_BONE_DRAGON</Creature>
+			<Count>10</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_VAMPIRE_LORD</Creature>
+			<Count>55</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_GHOST</Creature>
+			<Count>60</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_SKELETON_ARCHER</Creature>
+			<Count>80</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_ZOMBIE</Creature>
+			<Count>100</Count>
+		</Item>
+	</armySlots>
+	<spellIDs/>
+	<CaptionFileRef href=""/>
+	<GarrisonHero href="markal.xdb#xpointer(/AdvMapHero)"/>
+	<Script href="CombatScript_heam.xdb#xpointer(/Script)"/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_2</LinkToPlayer>
+	<LinkToTown/>
+	<CanCaptureOnlyNotVisit>false</CanCaptureOnlyNotVisit>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapTown>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero ObjectRecordID="-1">
+	<Pos>
+		<x>35</x>
+		<y>37</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0.791571</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/DialogScenes/Isabell.xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_1</PlayerID>
+	<Experience>0</Experience>
+	<armySlots/>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>0</Offence>
+		<Defence>0</Defence>
+		<Spellpower>0</Spellpower>
+		<Knowledge>0</Knowledge>
+		<skills/>
+		<perkIDs/>
+		<spellIDs/>
+		<Ballista>false</Ballista>
+		<FirstAidTent>false</FirstAidTent>
+		<AmmoCart>false</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>0</OverrideMask>
+	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapHero>

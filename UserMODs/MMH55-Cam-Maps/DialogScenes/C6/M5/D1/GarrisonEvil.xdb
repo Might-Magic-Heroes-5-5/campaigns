@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapGarrison>
+	<Pos>
+		<x>16</x>
+		<y>37</y>
+		<z>0</z>
+	</Pos>
+	<Rot>1.44647</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</CaptureTrigger>
+	<armySlots/>
+	<CollectableArmy>false</CollectableArmy>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapGarrison>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet ObjectRecordID="1001028">
+	<StartCamera href="/Dialogs/Cameras/C4M5D1_raelag_isa.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>73</x>
+		<y>71</y>
+		<z>0</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>2.0332</StartCorrectionRot>
+	<FinishCamera href="/Dialogs/Cameras/C4M5D1SVR22.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>0</FinishCorrectionRot>
+	<NameFileRef href="C4M5D1_11-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>0</IgnoreYawDiff>
+	<Direction>1</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDwelling>
+	<Pos>
+		<x>42</x>
+		<y>39</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0.247899</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Preserve/Fairie_Tree.xdb#xpointer(/AdvMapDwellingShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</CaptureTrigger>
+	<RandomCreatures>false</RandomCreatures>
+	<creaturesEnabled/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+	<LinkToTown/>
+</AdvMapDwelling>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000091">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Dwellings/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>30</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R4b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>-1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>109</x>
+						<y>23</y>
+						<z>17.8</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>-1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>109</x>
+						<y>19</y>
+						<z>17.8</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-0.txt"/>
+			<sound href="C4M4_R4 .xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M4R4.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R4d.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R4e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Column_7x7_03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="GarrisonEvil.xdb#xpointer(/AdvMapGarrison)"/>
+		<Item href="Garrison_evil_Wall.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Garrison_evil_Wall.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_2x2_4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_4x4_4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_4x4_4.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_3x3_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_3x3_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_D3DD1F31-E2D8-4D33-AD7F-3266E9682FC3">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>10</y>
+					<z>0</z>
+				</Pos>
+				<Rot>1.5708</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Lava/FireDots/FireDot02.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_5AF8956E-E49F-4A2B-914E-60CE954323D9">
+			<AdvMapStatic>
+				<Pos>
+					<x>49</x>
+					<y>8</y>
+					<z>0</z>
+				</Pos>
+				<Rot>5.49161</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Lava/FireDots/FireDot01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

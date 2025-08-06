@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000011">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/SmallSpecialArena_Grass.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/heaven.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Win-Campaign/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>50</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="Berein-1.txt"/>
+			<sound href="C3M1_R1 .xdb#xpointer(/Sound)"/>
+			<heroLink href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C3M1R1Pr1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>14</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="Isabell.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>10</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>11</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Isabell.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Archer.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archer.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cavalier.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cavalier.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cavalier.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Griffin.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Griffin.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Griffin.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grass01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.1.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>80</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

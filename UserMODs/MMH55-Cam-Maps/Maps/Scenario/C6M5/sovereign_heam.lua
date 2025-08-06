@@ -1,0 +1,73 @@
+print("sovereign vs heam");
+d = GetDifficulty() - 1;
+
+-- looking for dead catapult --
+
+function FindAttackerCatapult()
+            local machines = GetAttackerWarMachines()
+            for index,machine in machines do
+                        if GetWarMachineType(machine) == WAR_MACHINE_CATAPULT then
+                                   return machine
+                        end
+            end
+            return nil
+end
+
+catapult = FindAttackerCatapult()
+
+function AttackerWarMachineDeath(unitName)
+            if unitName == catapult then
+                        Finish(DEFENDER)
+            end
+end
+
+-- looking for dead shield --
+
+shield = GetDefenderBuilding(BUILDING_MAGIC_WALL)
+
+function DefenderBuildingDeath(buildingName)
+            if buildingName == shield then
+                        sleep(10);
+                        Finish(ATTACKER)
+            end
+end
+
+
+
+--monsters: summon 2 water elementals, cerberi and frightful nightmares and infernal succubus
+
+function Prepare()
+    EnableCinematicCamera(nil);
+    sleep(10);
+    SummonCreature(DEFENDER, 42, 7 + d * 5, 12, 3);
+    sleep(10);
+    SummonCreature(DEFENDER, 42, 7 + d * 5, 12, 12);
+    sleep(10);
+    SummonCreature(DEFENDER, 42, 7 + d * 5, 12, 8);
+    sleep(10);
+
+end
+
+function Start()
+    EnableAutoFinish(nil);
+    SummonCreature(DEFENDER, 22, 55 + d * 5, 13, 5);
+    sleep(2);
+    SummonCreature(DEFENDER, 23, 55 + d * 5, 13, 10);
+    sleep(5);
+
+    EnableCinematicCamera(not nil);
+end
+
+sovereign = 0
+function DefenderHeroMove(heroName)
+    UnitCastGlobalSpell(GetDefenderHero(), 239);
+    SummonCreature(DEFENDER, 23, 10 + d * 5, 13, 8);
+    return not nil
+end
+
+function AttackerCreatureDeath()
+    local attackers = GetAttackerCreatures();
+    if (table.length(attackers) == 0) then Finish(DEFENDER) end;
+end
+
+

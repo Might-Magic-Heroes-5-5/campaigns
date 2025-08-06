@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet>
+	<StartCamera href="/Dialogs/Cameras/C3M5R3new1.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>0</StartCorrectionRot>
+	<FinishCamera href="/Dialogs/Cameras/C3M5R3new2.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>0</FinishCorrectionRot>
+	<NameFileRef href="C3M5R3new-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>0</IgnoreYawDiff>
+	<Direction>0</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

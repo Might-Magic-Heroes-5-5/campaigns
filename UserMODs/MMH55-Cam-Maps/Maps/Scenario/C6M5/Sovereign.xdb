@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero ObjectRecordID="1003619">
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno/Sovereign.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_2</PlayerID>
+	<Experience>1500000</Experience>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_IMP</Creature>
+			<Count>100</Count>
+		</Item>
+	</armySlots>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>46</Offence>
+		<Defence>41</Defence>
+		<Spellpower>48</Spellpower>
+		<Knowledge>44</Knowledge>
+		<skills>
+			<Item>
+				<Mastery>MASTERY_EXPERT</Mastery>
+				<SkillID>HERO_SKILL_DARK_RITUAL</SkillID>
+			</Item>
+		</skills>
+		<perkIDs>
+			<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
+			<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+		</perkIDs>
+		<spellIDs>
+			<Item>SPELL_UNHOLY_WORD</Item>
+			<Item>SPELL_BOSS_FIREWALL</Item>
+		</spellIDs>
+		<Ballista>false</Ballista>
+		<FirstAidTent>false</FirstAidTent>
+		<AmmoCart>false</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>48</OverrideMask>
+	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>false</AllowQuickCombat>
+</AdvMapHero>

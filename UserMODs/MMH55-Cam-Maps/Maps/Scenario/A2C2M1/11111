@@ -1,0 +1,26 @@
+SummonCreature(side, type, number, x = -1, y = -1);
+
+diff = GetDifficulty()
+
+----- Monsters: Infernal Succubus and Imps -----
+
+function Prepare()
+    EnableCinematicCamera(nil);
+    sleep(10);
+    SummonCreature(DEFENDER, 16, 47 + diff * 5, 12, 3);
+    sleep(10);
+    SummonCreature(DEFENDER, 16, 47 + diff * 5, 12, 12);
+    sleep(10);
+    SummonCreature(DEFENDER, 16, 47 + diff * 5, 12, 8);
+    sleep(10);
+
+end;
+
+function Start()
+    EnableAutoFinish(nil);
+    SummonCreature(DEFENDER, 22, 15 + diff * 5, 13, 5);
+    sleep(2);
+    SummonCreature(DEFENDER, 23, 15 + diff * 5, 13, 10);
+    sleep(5);
+    EnableCinematicCamera(not nil);
+end;

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Campaign>
+	<InternalName>A2C0</InternalName>
+	<NameFileRef href="A2C0/CampaignName.txt"/>
+	<FullNameFileRef href="A2C0/CampaignFull.txt"/>
+	<NameCommentFileRef href="CampaignDescription.1.txt"/>
+	<DependentCampaigns/>
+	<Missions>
+		<Item>
+			<NameFileRef href="A2C0/A2C0M0/a2c0m0name.txt"/>
+			<NameCommentFileRef href="A2C0/A2C0M0/a2c0m0com.txt"/>
+			<MissionTag href="/Maps/Scenario/A2C0M0/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_NONE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>1000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_NONE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_ORC_WARMONGER</Creature>
+						<Count>15</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_NONE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>FOUR_LEAF_CLOVER</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>0</Count>
+				<Heroes/>
+			</HeroesPool>
+			<startMusics/>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Terrain/Taiga.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics/>
+			<additionalCombatMusics/>
+		</Item>
+	</Missions>
+	<AdventureMusic href="/Sounds/_(Music)/AdvMap-Campaign/a2-stronghold.xdb#xpointer(/Music)"/>
+	<WinMissionMusic href="/Sounds/_(Music)/Win-Battle/a2-Stronghold.xdb#xpointer(/Music)"/>
+	<LoseMissionMusic href="/Sounds/_(Music)/Lose-Battle/a2-Stronhold.xdb#xpointer(/Music)"/>
+	<DescriptionFileRef href=""/>
+	<Icon/>
+	<UserCampaign>false</UserCampaign>
+	<UseCustomHallOfFameResults>true</UseCustomHallOfFameResults>
+	<CustomHallOfFameResults>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item01.txt"/>
+			<PointCount>4500</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item02.txt"/>
+			<PointCount>4100</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item03.txt"/>
+			<PointCount>3700</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item04.txt"/>
+			<PointCount>3400</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item05.txt"/>
+			<PointCount>3100</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item06.txt"/>
+			<PointCount>2800</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item07.txt"/>
+			<PointCount>2500</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item08.txt"/>
+			<PointCount>2200</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item09.txt"/>
+			<PointCount>1900</PointCount>
+		</Item>
+		<Item>
+			<NameFileRef href="/UI/MainMenu2/HallOfFame/Params/CampaignDefaultResults/Item10.txt"/>
+			<PointCount>1600</PointCount>
+		</Item>
+	</CustomHallOfFameResults>
+</Campaign>

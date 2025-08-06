@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDescTag>
+	<Version>1</Version>
+	<CustomGameMap>false</CustomGameMap>
+	<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<NameFileRef href="sl3name.txt"/>
+	<DescriptionFileRef href="SL3desc.txt"/>
+	<TileX>176</TileX>
+	<TileY>176</TileY>
+	<Goal/>
+	<teams>
+		<Item>1</Item>
+		<Item>1</Item>
+	</teams>
+	<thumbnailImages>
+		<Item href="SL3_pic.xdb#xpointer(/Texture)"/>
+		<Item href="SL3_2_pic.xdb#xpointer(/Texture)"/>
+		<Item href="SL3_3_pic.xdb#xpointer(/Texture)"/>
+		<Item href="SL3_4_pic.xdb#xpointer(/Texture)"/>
+	</thumbnailImages>
+	<HasUnderground>true</HasUnderground>
+</AdvMapDescTag>

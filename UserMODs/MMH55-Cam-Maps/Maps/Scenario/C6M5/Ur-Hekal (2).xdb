@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapTown>
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno.(AdvMapTownShared).xdb#xpointer(/AdvMapTownShared)"/>
+	<PlayerID>PLAYER_2</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName>fight_zehir</FunctionName>
+		</Action>
+	</CaptureTrigger>
+	<HeroDeployTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</HeroDeployTrigger>
+	<ShipTile>
+		<x>0</x>
+		<y>0</y>
+	</ShipTile>
+	<Specialization/>
+	<buildings>
+		<Item>
+			<Type>TB_FORT</Type>
+			<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_TOWN_HALL</Type>
+			<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_MAGIC_GUILD</Type>
+			<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_BLACKSMITH</Type>
+			<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_DWELLING_1</Type>
+			<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+		</Item>
+		<Item>
+			<Type>TB_WONDER</Type>
+			<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+			<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+		</Item>
+	</buildings>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+	</Editable>
+	<armySlots/>
+	<spellIDs/>
+	<CaptionFileRef href=""/>
+	<GarrisonHero href="Biara.xdb#xpointer(/AdvMapHero)"/>
+	<Script href="biara_heam.xdb#xpointer(/Script)"/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_2</LinkToPlayer>
+	<LinkToTown/>
+	<CanCaptureOnlyNotVisit>false</CanCaptureOnlyNotVisit>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapTown>

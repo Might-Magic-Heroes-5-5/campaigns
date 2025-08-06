@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Campaign>
+	<InternalName>A1C2</InternalName>
+	<NameFileRef href="A1C2/CampaignName.txt"/>
+	<FullNameFileRef href="A1C2/CampaignFull.txt"/>
+	<NameCommentFileRef href="A1C2/CampaignDescription.txt"/>
+	<DependentCampaigns>
+		<Item href="A1C1.xdb#xpointer(/Campaign)"/>
+	</DependentCampaigns>
+	<Missions>
+		<Item>
+			<NameFileRef href="A1C2/A1C2M1/a1c2m1name.txt"/>
+			<NameCommentFileRef href="A1C2/A1C2M1/a1c2m1com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C2M1/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_DEFENDER</Creature>
+						<Count>15</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_BEAR_RIDER</Creature>
+						<Count>5</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_BERSERKER</Creature>
+						<Count>5</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Wulfstan</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>1</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/Towns/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C2/A1C2M2/a1c2m2name.txt"/>
+			<NameCommentFileRef href="A1C2/A1C2M2/a1c2m2com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C2M2/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_VALORIOUS_ARMOR</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_RESOURCE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>3000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_DISPEL</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_BLACKBEAR_RIDER</Creature>
+						<Count>6</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Wulfstan</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>2</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/Towns/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C2/A1C2M3/a1c2m3name.txt"/>
+			<NameCommentFileRef href="A1C2/A1C2M3/a1c2m3com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C2M3/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_AXE_THROWER</Creature>
+						<Count>20</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_OGRE_CLUB</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_SPELL</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_ICE_BOLT</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Wulfstan</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>3</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/Towns/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/Haven.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C2/A1C2M4/a1c2m4name.txt"/>
+			<NameCommentFileRef href="A1C2/A1C2M4/a1c2m4com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C2M4/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_BEAR_RIDER</Creature>
+						<Count>30</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_RUNE_MAGE</Creature>
+						<Count>12</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_THANE</Creature>
+						<Count>6</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>2</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Wulfstan</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>4</TargetMission>
+					</Item>
+					<Item>
+						<HeroScriptName>Duncan</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>4</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Duncan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/Towns/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C2/A1C2M5/a1c2m5name.txt"/>
+			<NameCommentFileRef href="A1C2/A1C2M5/a1c2m5com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C2M5/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_RESOURCE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>5000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_DWARVEN_SMITHY_HUMMER</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_SPELL</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_RESURRECT</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>0</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Wulfstan</HeroScriptName>
+						<TargetCampaign href="A1C3.xdb#xpointer(/Campaign)"/>
+						<TargetMission>4</TargetMission>
+					</Item>
+					<Item>
+						<HeroScriptName>Duncan</HeroScriptName>
+						<TargetCampaign href="A1C3.xdb#xpointer(/Campaign)"/>
+						<TargetMission>4</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Duncan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics>
+				<Item href="/Sounds/_(Music)/Towns/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalAdventureMusics>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+	</Missions>
+	<AdventureMusic href="/Sounds/_(Music)/AdvMap-Campaign/a1-Fortress.xdb#xpointer(/Music)"/>
+	<WinMissionMusic href="/Sounds/_(Music)/Win-Campaign/Haven.xdb#xpointer(/Music)"/>
+	<LoseMissionMusic href="/Sounds/_(Music)/Lose-Campaign/Haven.xdb#xpointer(/Music)"/>
+</Campaign>

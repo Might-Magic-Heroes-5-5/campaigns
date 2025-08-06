@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDescTag>
+	<AdvMapDesc href="C5M3.xdb#xpointer(/AdvMapDesc)"/>
+	<NameFileRef href="name.txt"/>
+	<DescriptionFileRef href="description.txt"/>
+	<TileX>136</TileX>
+	<TileY>136</TileY>
+	<Goal>OBJECTIVE_KIND_MANUAL</Goal>
+	<teams>
+		<Item>1</Item>
+		<Item>2</Item>
+	</teams>
+	<thumbnailImages/>
+	<HasUnderground>true</HasUnderground>
+</AdvMapDescTag>

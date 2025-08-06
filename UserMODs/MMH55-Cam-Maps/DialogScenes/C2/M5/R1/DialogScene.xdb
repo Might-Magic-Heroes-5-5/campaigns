@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000063">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Beach/SmallSpecialArena_Grass_Beach.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Water.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AI-Themes/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>30</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Arena/BoatArena.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.13.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M5R1tmp1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Agrael-2.txt"/>
+			<sound href="C2M5_R1.xdb#xpointer(/Sound)"/>
+			<heroLink href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.13.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M5R1tmp2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.13.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Unkempt_Junk.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Buoy.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Buoy.1.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Whirlpool.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Wrock4x3_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock4x3_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock5x3_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock6x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock6x4_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock6x4_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock9x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock9x6_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wrock9x6_1.5.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>
