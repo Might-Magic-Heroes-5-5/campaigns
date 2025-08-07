@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AdvMapDesc ObjectRecordID="1000112">
 	<CustomGameMap>true</CustomGameMap>
+	<Version>3</Version>
 	<TileX>136</TileX>
 	<TileY>136</TileY>
 	<HasUnderground>true</HasUnderground>
+	<HasSurface>true</HasSurface>
 	<InitialFloor>0</InitialFloor>
 	<objects>
 		<Item href="#n:inline(AdvMapTown)" id="id94899814-00f1-4751-baee-d18e96c960e6">
@@ -5018,20 +5020,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_LICH</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>12</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WIGHT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>6</Amount>
 						<Amount2>9</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="idd7f63c2d-f5a2-4097-a442-d17370cdd7fe">
@@ -5126,6 +5133,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="id4435da15-44e3-4ced-92c9-b34dcecc2dea">
@@ -5148,6 +5156,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="id1225e87b-61b9-4fe4-a88a-2be1d35dd735">
@@ -12422,6 +12431,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="id510dd4e0-0352-4f67-84a5-4b9e063ba3aa">
@@ -12444,6 +12454,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="id12503caa-3666-4863-8d6b-629a831b65f8">
@@ -12466,6 +12477,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="idc4fe5283-85a8-4d5a-913f-3e054f8cf7af">
@@ -12488,6 +12500,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="id2de95449-0e34-4ea2-a76e-ab95126e33dd">
@@ -12510,6 +12523,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="idb95cef97-a6b6-484b-b714-5c5505b9fdfe">
@@ -38321,6 +38335,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="id6adf4ddb-b9f0-4c5f-9c3c-82be0167a688">
@@ -40232,6 +40247,12 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
+				<AdditionalStacks/>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="id062c805a-f6b9-4ef6-8bfa-90e84d09ea9d">
@@ -40326,6 +40347,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="id02f52e51-0fec-45cf-a7d7-8563bc48c4d1">
@@ -40398,20 +40420,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>8</Amount>
 						<Amount2>11</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="idb02282d2-ce7b-4855-a072-388ec235195c">
@@ -40448,26 +40475,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_GHOST</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VAMPIRE_LORD</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>8</Amount>
 						<Amount2>12</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMILICH</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>5</Amount>
 						<Amount2>7</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="ide35f6f3c-b2c7-4a9f-893b-668d73eef290">
@@ -40504,20 +40536,25 @@
 				<Mood>MONSTER_MOOD_FRIENDLY</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>5</Amount>
 						<Amount2>7</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="id402137ad-0f5b-4569-8d09-69b605129a8f">
@@ -40554,14 +40591,19 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_STALKER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapArtifact)" id="idb079195a-84f6-4e58-b872-f63243623ee6">
@@ -40618,20 +40660,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FLAME_MAGE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>9</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FIRE_DRAGON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>4</Amount>
 						<Amount2>5</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="id4d473091-c79a-40a2-90d3-fcf6fec078d1">
@@ -40776,20 +40823,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>249</Amount>
 						<Amount2>256</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>168</Amount>
 						<Amount2>175</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="id518ef11d-3630-4c8f-bebe-af0347a8733c">
@@ -40826,20 +40878,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>16</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>12</Amount>
 						<Amount2>19</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapPrison)" id="id2e5e307b-efac-417d-8161-2255ca1558c6">
@@ -54729,20 +54786,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_ARCHER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>63</Amount>
 						<Amount2>71</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DISEASE_ZOMBIE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>45</Amount>
 						<Amount2>52</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_2A5DBA4A-AC90-4A75-8A71-4558D9754581">
@@ -54797,6 +54859,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_615A9688-8BDF-42E9-8C32-CB5671EA5812">
@@ -55557,20 +55620,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BLACK_RIDER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAOS_HYDRA</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>10</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_3090D2AB-F104-48D0-847B-E842C8F8B1A3">
@@ -55607,20 +55675,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SCOUT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>42</Amount>
 						<Amount2>48</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>20</Amount>
 						<Amount2>24</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="item_FB4CE4F2-B412-4A19-A82F-9029149F2121">
@@ -55665,6 +55738,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="item_1B06DB60-5618-47D6-A37B-42738EE5DF8C">
@@ -55709,6 +55783,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapShrine)" id="item_2F6F27EF-54D1-4A9C-8023-75E02A1CCD7D">
@@ -55829,6 +55904,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapAbanMine)" id="item_910529F4-A920-4B50-95E5-3D7DE9C690D1">
@@ -56078,26 +56154,31 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BLOOD_WITCH</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>12</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_CAPTAIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>8</Amount>
 						<Amount2>12</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ACIDIC_HYDRA</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>5</Amount>
 						<Amount2>8</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_8D16427A-69C2-439B-9C1C-5AD479268747">
@@ -56134,20 +56215,25 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MINOTAUR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLACK_RIDER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>12</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_2F3CFD31-FF6E-4C57-9ECC-3C7986EE21DF">
@@ -56184,20 +56270,25 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_RAVAGER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAOS_HYDRA</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>10</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_524431CC-9D68-4C40-8D56-E9676C48884D">
@@ -56252,26 +56343,31 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SCOUT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>17</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLOOD_WITCH_2</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_CAPTAIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_003F4452-55BC-46D6-96D4-65AD90B906A0">
@@ -56398,14 +56494,19 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SHADOW_MISTRESS</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>9</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_C6161407-570D-4B73-965C-6FD69C5B3D0D">
@@ -56640,14 +56741,19 @@
 				<Mood>MONSTER_MOOD_HOSTILE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MINOTAUR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapArtifact)" id="item_8602D3D5-4692-467F-ADAE-04372AD02A26">
@@ -56782,6 +56888,7 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots/>
+				<CreatureSwapBlockedForAI>false</CreatureSwapBlockedForAI>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_E1189025-E250-49B5-91ED-0A79A6CEE82F">
@@ -56818,20 +56925,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SPRITE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>27</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLADE_JUGGLER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>18</Amount>
 						<Amount2>25</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_42438E40-C913-466A-901E-F8DE77D08D65">
@@ -56958,26 +57070,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BLADE_SINGER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WOOD_ELF</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_UNICORN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>6</Amount>
 						<Amount2>9</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_302734F8-7EC4-4E25-A115-122B8924AA04">
@@ -57014,26 +57131,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WALKING_DEAD</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>30</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_POLTERGEIST</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>19</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VAMPIRE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>16</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_13117860-0BFD-4C8A-AB91-5C0B4B7F481A">
@@ -57308,26 +57430,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PRIEST</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>6</Amount>
 						<Amount2>10</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CAVALIER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>4</Amount>
 						<Amount2>7</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapTreasure)" id="item_0F36C9EC-178E-4607-AE1E-7F1207E58741">
@@ -57400,20 +57527,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>24</Amount>
 						<Amount2>30</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>18</Amount>
 						<Amount2>25</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_D668778C-50B7-499E-8505-43AF53A876EA">
@@ -57450,26 +57582,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>20</Amount>
 						<Amount2>26</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>17</Amount>
 						<Amount2>24</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_730C2AEB-46FF-40E0-8D18-952629680D7B">
@@ -57506,20 +57643,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>30</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_DE5DCC3C-6194-4A99-83A7-6C4DC2B64CCC">
@@ -57556,26 +57698,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>27</Amount>
 						<Amount2>36</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>12</Amount>
 						<Amount2>17</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_C9D589C2-4D74-4794-861F-A174B2062478">
@@ -57612,20 +57759,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>17</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_A8C2581A-FC8A-45DC-B972-9055E813A8B8">
@@ -57662,26 +57814,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>31</Amount>
 						<Amount2>40</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>17</Amount>
 						<Amount2>24</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_41BBC76B-160C-4A4C-A484-B2CF16CB009B">
@@ -57718,20 +57875,25 @@
 				<Mood>MONSTER_MOOD_WILD</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>19</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>13</Amount>
 						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_B29AE201-1FA4-4D9F-B7ED-7B8198C098E5">
@@ -57768,20 +57930,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>13</Amount>
 						<Amount2>19</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>11</Amount>
 						<Amount2>18</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_5298218A-328D-474B-94B5-35495DA7F7EB">
@@ -57818,20 +57985,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>20</Amount>
 						<Amount2>27</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_39DD7056-C41D-4453-959D-15B41838DA29">
@@ -58108,20 +58280,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>18</Amount>
 						<Amount2>27</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_034BEC44-E4DB-42D3-A9F4-D99A46951CC7">
@@ -58158,20 +58335,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>19</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>16</Amount>
 						<Amount2>23</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_D5A73670-8B67-4A91-9DDB-502A78F1BDF9">
@@ -58208,26 +58390,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>29</Amount>
 						<Amount2>38</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>15</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_A6EF72CC-26F6-4B04-A2E0-6DDCBF0F2756">
@@ -58264,26 +58451,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS_SEDUCER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>10</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_7438EAAB-82ED-4D3C-A3E5-4474251D9A8E">
@@ -58320,20 +58512,25 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>26</Amount>
 						<Amount2>34</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FOOTMAN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>19</Amount>
 						<Amount2>26</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_CE504296-28C8-49EE-A7EB-E2E3FBE2D48F">
@@ -58370,26 +58567,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BLADE_JUGGLER</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>13</Amount>
 						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WOOD_ELF</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DRUID</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_0A95928A-95B3-496C-B411-2470E6B5D866">
@@ -58426,26 +58628,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_ZOMBIE</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GHOST</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>9</Amount>
 						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VAMPIRE_LORD</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>7</Amount>
 						<Amount2>11</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_8333EAFA-F4BE-4B9B-9B2A-E09A7876CBC2">
@@ -58482,26 +58689,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>17</Amount>
 						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ORC_WARRIOR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>19</Amount>
 						<Amount2>26</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SHAMAN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_E54ED5F6-4B52-4E27-A74C-C298B9F42AF3">
@@ -58538,26 +58750,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MILITIAMAN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>27</Amount>
 						<Amount2>36</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>16</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FOOTMAN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>14</Amount>
 						<Amount2>21</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_682FD13B-E26B-4CB0-A346-7A1603265F78">
@@ -59830,26 +60047,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>20</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WALKING_DEAD</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>22</Amount>
 						<Amount2>30</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_POLTERGEIST</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>10</Amount>
 						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="item_D380858D-4712-4D26-AD68-EBCDA0BDAD76">
@@ -59908,26 +60130,31 @@
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
 				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_GOBLIN</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>57</Amount>
 						<Amount2>66</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CENTAUR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>26</Amount>
 						<Amount2>34</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ORC_WARRIOR</Creature>
+						<CustomAmount>true</CustomAmount>
 						<Amount>21</Amount>
 						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
 			</AdvMapMonster>
 		</Item>
 		<Item href="#n:inline(AdvMapArtifact)" id="item_1DDF5B8B-9ABC-45C5-A571-63E8552AA829">
@@ -60037,6 +60264,89 @@
 				<GroupID>0</GroupID>
 			</AdvMapBuilding>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_331E887C-AB9B-4564-B946-D5599B940255">
+			<AdvMapBuilding>
+				<Pos>
+					<x>130</x>
+					<y>113</y>
+					<z>0</z>
+				</Pos>
+				<Rot>3.93316</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+			</AdvMapBuilding>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_3708BFD5-2745-417E-9237-694AEBE30757">
+			<AdvMapMonster>
+				<Pos>
+					<x>129</x>
+					<y>114</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.71239</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Preserve/Alt_upgrade/High_Druid.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>true</Custom>
+				<Amount>8</Amount>
+				<Amount2>11</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
+				<AdditionalStacks>
+					<Item>
+						<Creature>CREATURE_WAR_DANCER</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>11</Amount>
+						<Amount2>15</Amount2>
+					</Item>
+					<Item>
+						<Creature>CREATURE_ANGER_TREANT</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>6</Amount>
+						<Amount2>10</Amount2>
+					</Item>
+					<Item>
+						<Creature>CREATURE_UNICORN</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>6</Amount>
+						<Amount2>9</Amount2>
+					</Item>
+				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
+			</AdvMapMonster>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
@@ -60059,7 +60369,7 @@
 	<tiles>
 		<Item href="/mapobjects/_(advmaptile)/dirt/weed.xdb#xpointer(/AdvMapTile)"/>
 		<Item href="/mapobjects/_(advmaptile)/dirt/ground.xdb#xpointer(/AdvMapTile)"/>
-		<Item href="/mapobjects/_(advmaptile)/water/lavaflow.xdb#xpointer(/AdvMapTile)"/>
+		<Item href="/MapObjects/_(AdvMapTile)/Water/LavaFlow.xdb#xpointer(/AdvMapTile)"/>
 		<Item href="/mapobjects/_(advmaptile)/dirt/root.xdb#xpointer(/AdvMapTile)"/>
 		<Item href="/mapobjects/_(advmaptile)/lava/dead_land_2.xdb#xpointer(/AdvMapTile)"/>
 		<Item href="/mapobjects/_(advmaptile)/lava/dead_land_4.xdb#xpointer(/AdvMapTile)"/>
@@ -60114,6 +60424,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60139,6 +60454,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60164,6 +60484,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60189,6 +60514,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60214,6 +60544,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60239,6 +60574,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60264,6 +60604,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60289,6 +60634,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60314,6 +60664,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -60339,6 +60694,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
@@ -60535,6 +60895,7 @@
 							<FirstAidTent>false</FirstAidTent>
 							<AmmoCart>false</AmmoCart>
 							<FavoriteEnemies/>
+							<TalismanLevel>0</TalismanLevel>
 						</Editable>
 						<OverrideMask>108</OverrideMask>
 						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
@@ -60544,6 +60905,15 @@
 							</Action>
 						</LossTrigger>
 						<AllowQuickCombat>true</AllowQuickCombat>
+						<Textures>
+							<Icon128x128/>
+							<Icon64x64/>
+							<RoundedFace/>
+							<LeftFace/>
+							<RightFace/>
+						</Textures>
+						<PresetPrice>0</PresetPrice>
+						<BannedRaces/>
 					</AdvMapHero>
 				</Item>
 			</ReserveHeroes>
@@ -60709,6 +61079,7 @@
 			<Parameters/>
 			<Timeout>-1</Timeout>
 			<Holdout>-1</Holdout>
+			<CheckDelay>-1</CheckDelay>
 			<Dependencies/>
 			<InstantVictory>false</InstantVictory>
 			<TargetGlance>
@@ -60767,6 +61138,9 @@
 					<FunctionName/>
 				</Action>
 			</StateChangeTrigger>
+			<SoundActivated/>
+			<SoundComplete/>
+			<SoundFailed/>
 		</Item>
 	</ScenarioInformation>
 	<Objectives>
@@ -60788,6 +61162,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -60846,6 +61221,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 						<Item>
 							<Name>prim2</Name>
@@ -60857,6 +61235,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -60915,6 +61294,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 						<Item>
 							<Name>prim3</Name>
@@ -60926,6 +61308,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -60984,6 +61367,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 						<Item>
 							<Name>prim4</Name>
@@ -60995,6 +61381,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -61053,6 +61440,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 						<Item>
 							<Name>prim5</Name>
@@ -61064,6 +61454,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -61122,6 +61513,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 						<Item>
 							<Name>prim6</Name>
@@ -61133,6 +61527,7 @@
 							<Parameters/>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
+							<CheckDelay>-1</CheckDelay>
 							<Dependencies/>
 							<InstantVictory>false</InstantVictory>
 							<TargetGlance>
@@ -61191,6 +61586,9 @@
 									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
+							<SoundActivated/>
+							<SoundComplete/>
+							<SoundFailed/>
 						</Item>
 					</Objectives>
 					<DieInWeekWithoutTowns>true</DieInWeekWithoutTowns>
@@ -61325,7 +61723,6 @@
 	</MoonCalendarModifications>
 	<thumbnailImages/>
 	<PWLPicture href="/Maps/Scenario/C1M1/PWL.(Texture).xdb#xpointer(/Texture)"/>
-	<weekIDs/>
 	<BanTransparency>false</BanTransparency>
 	<MoonCalendar/>
 	<StartScene/>
