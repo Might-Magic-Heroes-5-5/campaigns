@@ -1,113 +1,41 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+    sleep()
+end
+
+AI_CONTROLLED = {
+  player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+      state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+	   heroes = {},
+	  enemies = {},
+  },
+  player2 = { 		     -- Red Inferno AI player
+      state = 2,       -- AI player with specific purpose so control set to 2
+	   heroes = {},
+  	enemies = {
+	    { priority = 1.0, heroes = 0.6, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+    }
+  }
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C1M3");
 	LoadHeroAllSetArtifacts( "Isabell" , "C1M2" );
-end;
+end
 
-startThread(H55_InitSetArtifacts);
-
-H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
-
-__threads = {};
-function startThreadOnce( func, p1, p2, p3 )
-	if __threads[ func ] then
-		return
-	end;
-	newfunc = function()
-		%func( %p1, %p2, %p3);
-		__threads[ %func ] = nil;
-	end;
-	__threads[ func ] = newfunc;
-	startThread( newfunc );
-end;
-
-SetGameVar("temp.C1M3_Tradeville",0);
-hero_visiting = 0;
 OUR_HERO_NAME = "Isabell";
 ENEMY_HERO_NAME = "Calid";
+OUR_TOWN = "Bobruisk";
 townx, towny = 32, 28;
-n = 0;
-gold_region = 0;
-gold2_region = 0;
-stone_region = 0;
-cristall_region = 0;
-all_regions = 0;
-upg = 0;
-IsTutorial = 1;--IsTutorialEnabled();
-_t7 = 0;
-met = 0;
-dialog3 = 0;
 
-function vspomozhite()
-	SetPlayerResource(PLAYER_1,WOOD,10000);
-	SetPlayerResource(PLAYER_1,ORE,10000);
-	SetPlayerResource(PLAYER_1,GEM,10000);
-	SetPlayerResource(PLAYER_1,CRYSTAL,10000);
-	SetPlayerResource(PLAYER_1,MERCURY,10000);
-	SetPlayerResource(PLAYER_1,SULFUR,10000);
-	SetPlayerResource(PLAYER_1,GOLD,10000);
-end;
-
-function delete_inferno()
-	for i = 1, 11 do
-		RemoveObject( 'inferno'..i );
-	end;
-end;
-
-function len( x, y )
-local l = sqrt( x * x + y * y );
-	return l;
-end;
-
-function Objective1()
-local n;
-	while 1 do
-		n = 1;
-		sleep( 2 );
-		for i = 1, 11 do
-			if ( Exists( 'inferno'..i ) ) then
-				n = 0;
-				break;
-			end;
-		end;
-		if ( n == 1 ) then
-			break;
-		end;
-	end;
-	
-	StartDialogScene("/DialogScenes/C1/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
-	sleep( 3 );
-	SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
-	GiveExp( 'Isabell', 6000 );
-end;
-
-creature_costs = { 15, 25, 50, 80, 85, 130, 250, 370, 600, 850, 1300, 1700, 2800, 3500, -- haven
-	25, 45, 40, 60, 110, 160, 240, 350, 550, 780, 1400, 1666, 2666, 3666, -- inferno
-	19, 30, 40, 60, 100, 140, 250, 380, 620, 850, 1400, 1700, 1600, 1900, -- undead
-	35, 55, 70, 120, 120, 190, 320, 440, 630, 900, 1100, 1400, 2500, 3400, -- sylvan
-	22, 35, 45, 70, 100, 150, 250, 340, 460, 630, 1400, 1700, 2700, 3300, -- academy
-	60, 100, 125, 175, 140, 200, 300, 450, 550, 800, 1400, 1700, 3000, 3700, -- dungeon
-	400, 400, 400, 400, 1200, 1200, 10000, -- neutrals
-	24, 40, 45, 65, 130, 185, 160, 220, 470, 700, 1300, 1700, 2700, 3400, -- fortress
-	25, 80, 130, 370, 850, 1700, 3500, -- haven alts
-	150, 350, 1800, 900,-- a1 neutrals
-	10, 20, 50, 70, 80, 120, 260, 360, 350, 500, 1250, 1600, 2900, 3450, -- stronghold
-	45, 60, 160, 350, 780, 1666, 3666, -- inferno alts
-	100, 175, 200, 450, 800, 1700, 3700, -- dungeon alts
-	55, 120, 190, 440, 900, 1400, 3400, -- sylvan alts
-	30, 60, 140, 380, 850, 1700, 1900, -- necro alts
-	35, 70, 150, 340, 630, 1700, 3300, -- academy alts
-	40, 65, 185, 220, 700, 1700, 3400, -- fortress alts
-	20, 70, 120, 360, 500, 1600, 3450 }; -- stronghold alts
-
-function CalcHavenArmy( heroname )
-	total = 0;
-	for i = 1, CREATURES_COUNT-1 do
-		total = total + GetHeroCreatures( heroname, i ) * creature_costs[i];
-	end;
-	return total;
-end;
+startThread(H55_InitSetArtifacts);
+H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
+H55_CamFixTooManySkills(PLAYER_1,OUR_HERO_NAME);
 
 function SetInfernoArmy( heroname, strength )
 	local factor = {};
@@ -118,354 +46,328 @@ function SetInfernoArmy( heroname, strength )
 	factor[CREATURE_IMP] = 8.0;
 	local total = 0;
 	local coeff = 0;
-	local crap = __difficulty - 1;
+	local crap = __difficulty;
 	if crap < 0 then
 		crap = 0;
-	end;
-	local minfact = 8 + crap * 4;
+	end
+	local week = GetDate(ABSOLUTE_DAY) / 7;
+	local minfact = 8 + crap * week;
 	for i = 15, 28 do
 		total = total + creature_costs[i] * (factor[i] or 0);
-	end;
+	end
 	if total * minfact >= strength then
 		coeff = minfact;
 	else
 		coeff = strength / total;
-	end;
+	end
 	print('strength = ', strength, '; coeff = ', coeff);
 	for i = 15, 28 do
 		if factor[i] then
 			AddHeroCreatures( heroname, i, factor[i] * coeff );
-		end;
-	end;
-end;
+		end
+	end
+end
 
-strcoeff = { 0.25, 0.5, 1.0, 1.25 };
-function Objective3()
-	if GetObjectiveState("prim3") == OBJECTIVE_ACTIVE then
-		SetObjectPos(ENEMY_HERO_NAME, 118, 92, 0);
-		sleep( 1 );
-		player_army_strength = CalcHavenArmy( 'Isabell' );
-		print( "player str = ", player_army_strength );
-		player_army_strength = player_army_strength * strcoeff[__difficulty + 1];
-		SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength );
-		startThread( EngageHero, 'Isabell' );
-		startThread( MeetEnemyHero );
-	elseif GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-		StartDialogScene("/DialogScenes/C1/M3/D1/DialogScene.xdb#xpointer(/DialogScene)", "dialog3end");
-		--sleep(5);
-		--Win();
-	end;
-end;
+BATTLES = {
+  surprize = {
+    start = function(hero)
+      ShowFlyingSign("/Maps/Scenario/C1M3/ambush.txt",hero);
+      StartCombat(hero ,nil,4,CREATURE_SKELETON,40,CREATURE_SKELETON_ARCHER,25,CREATURE_ZOMBIE,15,CREATURE_WALKING_DEAD,22,nil,'BATTLES.surprize.finish');
+    end,
 
-function dialog3end()
-	dialog3 = 1;
-end;
+    finish = function(hero, result)
+      if result ~= nil then
+        GiveArtefact(hero , random(table.length(H55_MinorArtifacts))+1 );
+      end
+    end,
+  }
+}
 
-function treasure_captured()
-	TutorialMessageBox("c1_m3_t2");
-	if Exists("gold") then
-		Trigger(OBJECT_TOUCH_TRIGGER,"gold",nil);
-	end;
-	if Exists("gold2") then
-		Trigger(OBJECT_TOUCH_TRIGGER,"gold2",nil);
-	end;
-	if Exists("cristall") then
-		Trigger(OBJECT_TOUCH_TRIGGER,"cristall",nil);
-	end;
-end;
+CINEMATICS = {
+    intro = function()
+      StartDialogScene("/DialogScenes/C1/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
+    end,
 
-function treasure_found()
-	TutorialMessageBox("c1_m3_t1");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold",nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold2",nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"cristall",nil);
-end;
+    c1m3r2 = function()
+      StartDialogScene("/DialogScenes/C1/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
+    end,
 
-function HeroBuiltWarmashine()
-	while 1 do
-		sleep( 5 );
-		if ( HasHeroWarMachine(OUR_HERO_NAME, 1) or HasHeroWarMachine(OUR_HERO_NAME, 3) or HasHeroWarMachine(OUR_HERO_NAME, 4) ) then
-			print("Player has got war mashine");
-			if IsTutorial == 1 then
-				WaitForTutorialMessageBox();
-				TutorialMessageBox("c1_m3_t9_2");
-			end;
-			break;
-		end;
-	end;
-end;
+    outro = function()
+      StartDialogScene("/DialogScenes/C1/M3/D1/DialogScene.xdb#xpointer(/DialogScene)");
+    end,
+    
+    showEnemy = function()
+        sleep(10);
+        OpenCircleFog( 118, 92, 0, 7, PLAYER_1 );
+        sleep(2);
+	      MoveCamera( 119, 89, 0, 18, 0.925, 0.279 );
+    end,
+}
 
-function MeetEnemyHero()
-	while 1 do
-		sleep(2);
-		OUR_HERO_X,OUR_HERO_Y = GetObjectPos(OUR_HERO_NAME);
-		ENEMY_HERO_X,ENEMY_HERO_Y = GetObjectPos(ENEMY_HERO_NAME);
-		--	if IsObjectVisible( PLAYER_1 ,ENEMY_HERO_NAME ) == not nil then
-		if len(OUR_HERO_X - ENEMY_HERO_X,OUR_HERO_Y - ENEMY_HERO_Y) < 7 then
-			--print("Player prepares to wage enemy Hero!!!");
-			if ( IsTutorial == 1 ) then
-				WaitForTutorialMessageBox();
-				TutorialMessageBox("c1_m3_t10");
-			end;
-			--Trigger( REGION_ENTER_AND_STOP_TRIGGER, "enemy", nil );
-			--Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "enemy", nil );
-			--RemoveHeroCreatures(ENEMY_HERO_NAME,CREATURE_ARCHDEVIL,10000);
-			--RemoveHeroCreatures(ENEMY_HERO_NAME,CREATURE_SUCCUBUS,10000);
-			--RemoveHeroCreatures(ENEMY_HERO_NAME,CREATURE_HELL_HOUND,10000);
-			--AddHeroCreatures(ENEMY_HERO_NAME,CREATURE_SUCCUBUS,5);
-			--AddHeroCreatures(ENEMY_HERO_NAME,CREATURE_HELL_HOUND,18);
-			break;
-		end;
-	end;
-end;
+TUTORIALS = {
+    list = {
+    	{      "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER,     "gold",      "TUTORIALS.treasure_found", 0 },
+    	{      "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER,    "gold2",      "TUTORIALS.treasure_found", 0 },
+    	{      "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER, "cristall",      "TUTORIALS.treasure_found", 0 },
+    	{     "c1_m3_t11", REGION_ENTER_AND_STOP_TRIGGER,   "memory",        "TUTORIALS.memoryMentor", 0 },
+    	{      "c1_m3_t2",          OBJECT_TOUCH_TRIGGER,     "gold",   "TUTORIALS.treasure_captured", 0 },
+    	{      "c1_m3_t2",          OBJECT_TOUCH_TRIGGER,    "gold2",   "TUTORIALS.treasure_captured", 0 },
+    	{      "c1_m3_t2",          OBJECT_TOUCH_TRIGGER, "cristall",   "TUTORIALS.treasure_captured", 0 },
+    	{      "c1_m3_t6",                        THREAD,          0,    "TUTORIALS.buildingUpgraded", 0 },
+    	{    "c1_m3_t9_2",                        THREAD,          0, "TUTORIALS.heroBuiltWarmachine", 0 },
+      {     "c1_m3_t10",                        THREAD,          0,       "TUTORIALS.meetEnemyHero", 0 },
+    	{     "c1_m4_t11",                        THREAD,          0,     "TUTORIALS.checkHeroInTown", 0 },
+    	{     "hero_meet",                        WINDOW,          0,                               0, 0 },
+    	{ "c1_m3_levelup",                        WINDOW,          0,                               0, 0 },
+    	{      "c1_m2_t7",    PLAYER_REMOVE_HERO_TRIGGER,   PLAYER_1,            "TUTORIALS.lostHero", 0 },
+    },
 
-function EngageHero( heroname )
-	while IsHeroAlive( ENEMY_HERO_NAME ) do
-		while GetCurrentPlayer() ~= PLAYER_2 do
-			sleep( 1 );
-		end;
-		print('attack ', heroname);
-		EnableHeroAI( ENEMY_HERO_NAME, not nil );
-		local x,y,z = GetObjectPosition( heroname );
-		if CanMoveHero(heroname,x,y,z) then
-			MoveHero(ENEMY_HERO_NAME,x,y,z);
-		end;
-		while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep( 1 );
-		end;
-	end;
-end;
+    run = function()
+      SetGameVar(       "temp.tutorial", 1);
+      SetGameVar("temp.C1M3_Tradeville", 0);
+      manageTutorials(TUTORIALS.list);
+    end,
 
-function battle()
-	StartCombat(OUR_HERO_NAME,nil,4,CREATURE_SKELETON,40,CREATURE_SKELETON_ARCHER,25,CREATURE_ZOMBIE,15,CREATURE_WALKING_DEAD,22,nil,'artefact');
-end;
+    markComplete = function(name)
+      print(name);
+      for _, item3 in TUTORIALS.list do
+        if item3[4] == name then
+          item3[5] = 2;
+        end
+      end
+    end,
+    
+    lostHero = function( heroname )
+	    if heroname ~= OUR_HERO_NAME then
+		    TutorialMessageBox( 'c1_m2_t7' );
+		    TUTORIALS.markComplete("TUTORIALS.lostHero")
+	    end
+    end,
+    
+    memoryMentor = function()
+	    WaitForTutorialMessageBox();
+      TutorialMessageBox("c1_m3_t11");
+      TUTORIALS.markComplete("TUTORIALS.memoryMentor");
+    end,
+    
+    treasure_found = function()
+      WaitForTutorialMessageBox()
+	    TutorialMessageBox("c1_m3_t1");
+	    for _, obj in {"gold", "gold2", "cristall"} do
+          Trigger(REGION_ENTER_AND_STOP_TRIGGER, obj, nil)
+      end
+      TUTORIALS.markComplete("TUTORIALS.treasure_found");
+    end,
+    
+    treasure_captured = function()
+      TutorialMessageBox("c1_m3_t2");
+      for _, obj in {"gold", "gold2", "cristall"} do
+        if Exists(obj) then
+          Trigger(OBJECT_TOUCH_TRIGGER, obj, nil)
+        end
+      end
+      TUTORIALS.markComplete("TUTORIALS.treasure_captured");
+    end,
 
-function artefact()
-	GiveArtefact(OUR_HERO_NAME, ARTIFACT_RING_OF_CELERITY);
-end;
+    buildingUpgraded = function()
+      while true do
+		    sleep(10);
+		    if (GetTownBuildingLevel(OUR_TOWN, TOWN_BUILDING_DWELLING_1) > 1 or
+			    GetTownBuildingLevel(OUR_TOWN, TOWN_BUILDING_DWELLING_2) > 1 or
+			    GetTownBuildingLevel(OUR_TOWN, TOWN_BUILDING_DWELLING_3) > 1) then
+			      print("Player makes upgrade in his Town!!!");
+			      WaitForTutorialMessageBox();
+			      TutorialMessageBox("c1_m3_t6");
+			      TUTORIALS.markComplete("TUTORIALS.buildingUpgraded");
+			      break;
+		    end
+      end
+    end,
 
-function BuildingUpgraded()
-	while 1 do
-		sleep(10);
-		if (GetTownBuildingLevel("Bobruisk",TOWN_BUILDING_DWELLING_1) > 1 or
-			GetTownBuildingLevel("Bobruisk",TOWN_BUILDING_DWELLING_2) > 1 or
-			GetTownBuildingLevel("Bobruisk",TOWN_BUILDING_DWELLING_3) > 1) then
-			print("Player makes upgrade in his Town!!!");
-			WaitForTutorialMessageBox();
-			TutorialMessageBox("c1_m3_t6");
-			upg = 1;
-			break;
-		end;
-	end;
-end;
+    heroBuiltWarmachine = function()
+	    while true do
+		    sleep(5);
+	      if ( HasHeroWarMachine(OUR_HERO_NAME, 1) or HasHeroWarMachine(OUR_HERO_NAME, 3) or HasHeroWarMachine(OUR_HERO_NAME, 4) ) then
+			    print("Player has got war mashine");
+		      WaitForTutorialMessageBox();
+			    TutorialMessageBox("c1_m3_t9_2");
+			    TUTORIALS.markComplete("TUTORIALS.heroBuiltWarmachine");
+			    break;
+		    end
+	    end
+    end,
+    
+    meetEnemyHero = function()
+	    while true do
+  	  	sleep(10);
+  	  	if Exists(OUR_HERO_NAME) and Exists(ENEMY_HERO_NAME) then
+      	  if H55_GetDistance(OUR_HERO_NAME, ENEMY_HERO_NAME) < 30 and GetCurrentPlayer() == PLAYER_1 and GetObjectiveState("prim3") == OBJECTIVE_ACTIVE then
+	  		  	WaitForTutorialMessageBox();
+	  			  TutorialMessageBox("c1_m3_t10");
+  			    TUTORIALS.markComplete("TUTORIALS.meetEnemyHero");
+	  	  	  break;
+	  	    end
+        end
+      end
+    end,
 
-function LostHero( heroname )
-	if heroname == 'Isabell' then
-		SetObjectiveState( "prim4", OBJECTIVE_FAILED );
-	elseif ( IsTutorial == 1 ) then
-		TutorialMessageBox( 'c1_m2_t7' );
-	end;
-end;
+    checkHeroInTown = function()
+      heroes = {};
+      hero_visiting = 0;
+  	  while true do
+        sleep(2)
+		    heroes = GetPlayerHeroes( PLAYER_1 );
+		    for i, hero in heroes do
+			    if GetTownHero(OUR_TOWN) ~= hero then
+			     	x, y = GetObjectPos( hero );
+				    if ( x ~= townx ) or ( y ~= towny ) then
+				  	  if hero_visiting == 1 then
+						    SetGameVar( 'temp.hero_visiting', 0 );
+						    hero_visiting = 0;
+				  	  end
+			      else
+					    if hero_visiting == 0 then
+					 	    SetGameVar( 'temp.hero_visiting', 1 );
+						    hero_visiting = 1;
+						    break;
+					    end
+				    end
+				  end
+			  end
+		  end
+    end,
+}
 
-function Objective2Bonus()
-	if GetObjectiveState( 'prim2' ) == OBJECTIVE_COMPLETED then
-		GiveExp( 'Isabell', 6000 );
-	end;
-end;
+OBJECTIVES = {
+    state = {
+      clearScouts            = { "prim1", 1 },
+      upgradeTrainingGrounds = { "prim2", 1 },
+      defeatEnemyHero        = { "prim3", 1 },
+      isAlive                = { "prim4", 1 },
+    },
 
-function EnableTutorial()
-	SetGameVar( "temp.tutorial", 1 );
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold","treasure_found");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold2","treasure_found");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"cristall","treasure_found");
-	--Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "enemy", nil );
-	--Trigger( REGION_ENTER_AND_STOP_TRIGGER, "enemy", "MeetEnemyHero" );
-	if Exists("gold") == not nil then
-		Trigger(OBJECT_TOUCH_TRIGGER, "gold", "treasure_captured" );
-	end;
-	if Exists("gold2") == not nil then
-		Trigger(OBJECT_TOUCH_TRIGGER, "gold2", "treasure_captured" );
-	end;
-	if Exists("cristall") == not nil then
-		Trigger(OBJECT_TOUCH_TRIGGER, "cristall", "treasure_captured" );
-	end;
-end;
+    start = function()
+      OBJECTIVES.prepare();
+      startThread( TUTORIALS.run );
+      OBJECTIVES.run();
+    end,
 
-function DisableTutorial()
-	SetGameVar( "temp.tutorial", 0 );
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold", nil );
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gold2", nil );
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER,"cristall", nil );
-	--Trigger( REGION_ENTER_AND_STOP_TRIGGER, "enemy", nil );
-	--Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "enemy", "MeetEnemyHero" );
-	if Exists("gold") then
-		Trigger(OBJECT_TOUCH_TRIGGER, "gold", nil );
-	end;
-	if Exists("gold2") then
-		Trigger(OBJECT_TOUCH_TRIGGER, "gold2", nil );
-	end;
-	if Exists("cristall") then
-		Trigger(OBJECT_TOUCH_TRIGGER, "cristall", nil );
-	end;
-end;
+    prepare = function()
+      SetPlayerStartResource(PLAYER_1,    WOOD,    6);
+      SetPlayerStartResource(PLAYER_1,     ORE,   15);
+      SetPlayerStartResource(PLAYER_1,     GEM,    3);
+      SetPlayerStartResource(PLAYER_1, CRYSTAL,    3);
+      SetPlayerStartResource(PLAYER_1, MERCURY,    3);
+      SetPlayerStartResource(PLAYER_1,  SULFUR,   60);
+      SetPlayerStartResource(PLAYER_1,    GOLD, 5000);
+      Trigger( REGION_ENTER_AND_STOP_TRIGGER, "surprize", "BATTLES.surprize.start" );
+      
+      -- Game difficulty adjustment
+      strcoeff_table = { 0.5, 0.75, 1.0, 1.25 }
+      if ( __difficulty >= DIFFICULTY_NORMAL ) then
+    	  CreateMonster( "monster1",    CREATURE_ARCHER, 35, 58, 46, 0, 0, 0 );
+      	CreateMonster( "monster2",    CREATURE_ARCHER, 33, 77, 26, 0, 0, 0 );
+      	CreateMonster( "monster3", CREATURE_SWORDSMAN, 24, 29, 63, 0, 0, 0 );
+      	CreateMonster( "monster4",   CREATURE_FOOTMAN, 27, 73, 36, 0, 0, 0 );
+      	CreateMonster( "monster5",   CREATURE_GRIFFIN, 14, 74, 65, 0, 0, 0 );
+      	CreateMonster( "monster6",  CREATURE_CAVALIER,  7, 85, 70, 0, 0, 0 );
+      	CreateMonster( "monster7",   CREATURE_GRIFFIN, 15, 42, 82, 0, 0, 0 );
+      end
 
-COMBAT = 9999;
-THREAD = 9998;
+      EnableHeroAI( ENEMY_HERO_NAME, nil );
+      CINEMATICS.intro()
+      sleep(1);
+    end,
 
-TutorialTriggers = {
-	{ "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER, "gold", "treasure_found", 0 },
-	{ "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER, "gold2", "treasure_found", 0 },
-	{ "c1_m3_t1", REGION_ENTER_AND_STOP_TRIGGER, "cristall", "treasure_found", 0 },
-	{ "c1_m3_t2", OBJECT_TOUCH_TRIGGER, "gold", "treasure_captured", 0 },
-	{ "c1_m3_t2", OBJECT_TOUCH_TRIGGER, "gold2", "treasure_captured", 0 },
-	{ "c1_m3_t2", OBJECT_TOUCH_TRIGGER, "cristall", "treasure_captured", 0 },
-	
-	{ "c1_m3_t6", THREAD, 0, BuildingUpgraded, 0 },
-	{ "c1_m3_t9_2", THREAD, 0, HeroBuiltWarmashine, 0 },
-};
+    run = function()
+     	while true do
+     	  sleep(10);
+        for key, value in OBJECTIVES.state do
+          if value[2] > 0 and value[2] < 10 then
+            OBJECTIVES[key]();
+          end
+        end
 
-function CheckTutorialTriggers()
-	while 1 do
-		sleep( 5 );
-		for i, TutorialItem in TutorialTriggers do
-			if IsTutorialItemEnabled( TutorialItem[1]  ) then
-				if (TutorialItem[5] == 0) then
-					if TutorialItem[2] == COMBAT then
-						SetGameVar( "temp." .. TutorialItem[1], 1 );
-					elseif TutorialItem[2] == THREAD then
-						startThreadOnce( TutorialItem[4] );
-					else
-						if ( ( TutorialItem[2] == OBJECT_TOUCH_TRIGGER ) and Exists( TutorialItem[3]) ) or ( TutorialItem[2] ~= OBJECT_TOUCH_TRIGGER ) then
-							Trigger( TutorialItem[2], TutorialItem[3], TutorialItem[4] );
-						end;
-					end;
-					TutorialItem[5] = 1;
-				end;
-			else
-				if (TutorialItem[5] == 1) then
-					if TutorialItem[2] == COMBAT then
-						SetGameVar( "temp." .. TutorialItem[1], 0 );
-					elseif TutorialItem[2] ~= THREAD then
-						if ( ( TutorialItem[2] == OBJECT_TOUCH_TRIGGER ) and Exists( TutorialItem[3]) ) or ( TutorialItem[2] ~= OBJECT_TOUCH_TRIGGER ) then
-							Trigger( TutorialItem[2], TutorialItem[3], nil );
-						end;
-					end;
-					TutorialItem[5] = 0;
-				end;
-			end;
-		end;
-	end;
-end;
+        if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
+          CINEMATICS.outro();
+          sleep(10);
+          SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
+          SaveHeroAllSetArtifactsEquipped(OUR_HERO_NAME, "C1M2");
+          sleep(20);
+          Win();
+         return
+        end
+      end
+    end,
+    
+    clearScouts = function()
+      if GetObjectiveState("prim1") == OBJECTIVE_UNKNOWN then
+        SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
+      end
+      enemies_killed = 0;
+      for i = 1, 11 do
+     	  if not Exists( 'inferno'..i ) then
+          enemies_killed = enemies_killed + 1;
+       	else
+          break;
+        end
+     	end
+      if ( enemies_killed == 11 ) then
+        CINEMATICS.c1m3r2();
+	      sleep(2);
+	      SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
+	      GiveExp( OUR_HERO_NAME, 6000 );
+	      OBJECTIVES.state.clearScouts[2] = 10;
+      end
+    end,
 
-function CheckTutorial()
-	while 1 do
-		sleep( 5 );
-		if IsTutorialEnabled() then
-			if (IsTutorial == 0) then
-				EnableTutorial();
-				IsTutorial = 1;
-			end;
-		else
-			if (IsTutorial == 1) then
-				DisableTutorial();
-				IsTutorial = 0;
-			end;
-		end;
-	end;
-end;
+    upgradeTrainingGrounds = function()
+    -- start and completion of this task is handled by C1M3.xdb
+	    if GetObjectiveState( 'prim2' ) == OBJECTIVE_COMPLETED then
+	  	  GiveExp( OUR_HERO_NAME, 6000 );
+	  	  OBJECTIVES.state.upgradeTrainingGrounds[2] = 10;
+	    end
+    end,
+    
+    defeatEnemyHero = function()
+    -- start and completion of this task is handled by C1M3.xdb
+      if OBJECTIVES.state.clearScouts[2] == 10 and OBJECTIVES.state.upgradeTrainingGrounds[2] == 10 then
+        SetObjectPos(ENEMY_HERO_NAME, 118, 92, 0);
+        sleep(1);
+        player_army_strength = CalcArmy( OUR_HERO_NAME )
+        print( "player str = " .. player_army_strength );
+       	strcoeff = strcoeff_table[__difficulty + 1]
+        player_army_strength = player_army_strength * strcoeff;
+        print( "str with difficulty = ", player_army_strength );
+        SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength );
+        ADD_ASSAULT_HERO(ENEMY_HERO_NAME);
+        CINEMATICS.showEnemy();
+        OBJECTIVES.state.defeatEnemyHero[2] = 10;
+      end
+  	end,
 
-function ToWin()
-	while 1 do
-		sleep( 3 );
-		if ( GetObjectiveState( 'prim1' ) == OBJECTIVE_COMPLETED ) and ( GetObjectiveState( 'prim2' ) == OBJECTIVE_COMPLETED ) and 
-		( GetObjectiveState( 'prim3' ) == OBJECTIVE_COMPLETED ) and (dialog3 == 1) then
-			SaveHeroAllSetArtifactsEquipped("Isabell", "C1M3");
-			sleep( 3 );
-			Win();
-		end;
-	end;
-end;
+    isAlive = function()
+    -- start of this task is handled by C1M3.xdb
+      if not IsHeroAlive(OUR_HERO_NAME) then
+        SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
+        sleep(2);
+      end
+    end,
+}
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
+startThread( AI_main )
 
-function CheckHeroInTown()
-heroes = {};
-	while 1 do
-		sleep( 1 );
-		heroes = GetPlayerHeroes( PLAYER_1 );
-		for i, hero in heroes do
-			if GetTownHero( 'Bobruisk') ~= hero then
-				x, y = GetObjectPos( hero );
-				--print( i, hero );
-
-				if ( x ~= townx ) or ( y ~= towny ) then
-					if hero_visiting == 1 then
-						SetGameVar( 'temp.hero_visiting', 0 );
-						hero_visiting = 0;
-					end;
-				else
-					if hero_visiting == 0 then
-						SetGameVar( 'temp.hero_visiting', 1 );
-						hero_visiting = 1;
-						break;
-					end;
-				end;
-			end;
-		end;
-	end;
-end;
-
-function EasyMode()
-	if ( __difficulty ~= DIFFICULTY_EASY ) and ( __difficulty ~= DIFFICULTY_NORMAL ) then
-		return
-	end;
-	CreateMonster( "monster1", CREATURE_ARCHER, 35, 58, 46, 0, 0, 0 );
-	CreateMonster( "monster2", CREATURE_ARCHER, 33, 77, 26, 0, 0, 0 );
-	CreateMonster( "monster3", CREATURE_SWORDSMAN, 24, 29, 63, 0, 0, 0 );
-	CreateMonster( "monster4", CREATURE_FOOTMAN, 27, 73, 36, 0, 0, 0 );
-	
-	CreateMonster( "monster5", CREATURE_GRIFFIN, 14, 74, 65, 0, 0, 0 );
-	CreateMonster( "monster6", CREATURE_CAVALIER, 7, 85, 70, 0, 0, 0 );
-	CreateMonster( "monster7", CREATURE_GRIFFIN, 15, 42, 82, 0, 0, 0 );
-end;
-
-------------------------------
-SetPlayerStartResource(PLAYER_1,WOOD,6);
-SetPlayerStartResource(PLAYER_1,ORE, 15 );
-SetPlayerStartResource(PLAYER_1,GEM,3);
-SetPlayerStartResource(PLAYER_1,CRYSTAL,3);
-SetPlayerStartResource(PLAYER_1,MERCURY,3);
-SetPlayerStartResource(PLAYER_1,SULFUR,60);
-SetPlayerStartResource(PLAYER_1,GOLD,5000);
-EasyMode();
-
-EnableHeroAI( ENEMY_HERO_NAME, nil );
-StartDialogScene("/DialogScenes/C1/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
-sleep(1);
-SetObjectiveState( 'prim1', OBJECTIVE_ACTIVE );
-
-startThread(Objective1);
-startThread(ToWin);
-startThread( CheckHeroInTown );
-
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, 'LostHero' );
---Trigger( REGION_ENTER_AND_STOP_TRIGGER, "surprize", "battle" );
-Trigger( OBJECTIVE_STATE_CHANGE_TRIGGER, 'prim3', 'Objective3' );
---Trigger( OBJECTIVE_STATE_CHANGE_TRIGGER, 'prim1', 'Objective1' );
-Trigger( OBJECTIVE_STATE_CHANGE_TRIGGER, 'prim2', 'Objective2Bonus' );
-
--- tutorial related --
-TutorialActivateHint( "hero_meet" );
-TutorialActivateHint( "c1_m3_levelup" );
-startThread( CheckTutorialTriggers );
-SetGameVar( "temp.tutorial", 1 );
-
-if ( IsTutorial == 1 ) then
-	--EnableTutorial();
-	--startThreadOnce(BuildingUpgraded);
-	--startThreadOnce(HeroBuiltWarmashine);
-else
-	--Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "enemy", "MeetEnemyHero" );
-end;
-
-H55_CamFixTooManySkills(PLAYER_1,"Isabell");
-
---startThread( CheckTutorial );
+------------------ DEBUG ------------------------
+function debug_c1m3()
+  UpgradeTownBuilding(OUR_TOWN, TOWN_BUILDING_DWELLING_6, 1);
+  UpgradeTownBuilding(OUR_TOWN, TOWN_BUILDING_DWELLING_6, 2);
+  sleep(10)
+  sleep(1)
+	for i = 1, 11 do
+     if Exists('inferno'..i) then
+	     RemoveObject( 'inferno'..i );
+       sleep(1)
+     end
+	end
+end
