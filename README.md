@@ -24,3 +24,7 @@ Campaign compatibility changes for MMH55.
 - change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way.
 - new: added Memory Mentor
 - new: Added in a commented ambush battle vs necro units which was probably leftover by Nival developers. Winning grants a random minor artifact.
+
+## C1M4 - Haven: The Trap
+- fix: Tutorial is available and updated for 5.5
+- new: added Memory Mentor
