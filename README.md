@@ -28,3 +28,8 @@ Campaign compatibility changes for MMH55.
 ## C1M4 - Haven: The Trap
 - fix: Tutorial is available and updated for 5.5
 - new: added Memory Mentor
+
+## C1M5 - Haven: The Fall of the King
+- fix: Tutorial is available and updated for 5.5
+- fix: Siege enemy heroes wander around instead of attacking the castle
+- new: added Memory Mentor
