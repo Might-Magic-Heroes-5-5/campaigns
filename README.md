@@ -12,3 +12,7 @@ Campaign compatibility changes for MMH55.
 ## C1M1 - Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
+
+## C1M2 - Haven: Rebellion
+- fix: Vanilla tutorial is available and updated for 5.5
+- fix: Impossible difficulty was treated as Normal
