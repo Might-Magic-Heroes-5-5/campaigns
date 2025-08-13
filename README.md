@@ -6,27 +6,27 @@ Campaign compatibility changes for MMH55.
 ## Getting Started
 
 ### What’s in this repo
-- **Test map:** `DEV_C1M1.h5m` at the repository root (use it to verify the conversion pipeline). The test map file itself lives at the repo **root** under that exact name.
+- **Test map:** `DEV_C1M1.h5m` at the repository **root** (use it to verify the conversion pipeline).
 - **Campaign sources:** `UserMODs/MMH55-Cam-Maps/Maps/Scenario/<MissionFolder>/…`
-- **Script editor:** **HoMM5MapScriptsEditor 1.3.50** (recommended for inspecting/editing map scripts).  
-  - Original project page: <https://hmm5.sklabs.ru/>  
+- **Script editor:** **HoMM5MapScriptsEditor 1.3.50** (recommended for inspecting/editing map scripts)  
+  - Original page: <https://hmm5.sklabs.ru/>  
   - Source code: <https://github.com/HSerg/HoMM5MapScriptsEditor>  
-  - A copy is provided in this repository: [`HoMM5MapScriptsEditor.1.3.50.zip`](HoMM5MapScriptsEditor.1.3.50.zip)
-- **Utilities:** 7‑Zip/WinRAR for editing `.h5m` archives, and a text/XML editor (Notepad++/VS Code are recommended) for `*.xdb`.
+  - A copy is optionally stored here: `HoMM5MapScriptsEditor.1.3.50.zip`
+- **Utilities:** 7-Zip/WinRAR for editing `.h5m` archives, and a text/XML editor (Notepad++ / VS Code) for `*.xdb`.
 
 > **Path clarification**  
 > Use the **paths from this repository**. The correct mission path is  
 > `UserMODs/MMH55-Cam-Maps/Maps/Scenario/<MissionFolder>`  
-> Do **not** use a folder name with “.h5u”. That suffix appears in packaged mod files, not in this repo layout.  
-> If you want to grab files from an installed game, **don’t**—use the files from this repository instead. Mixing versions may lead to unpredictable bugs, behavior changes, and artifacts.
+> Do **not** use a folder name with `.h5u` when working inside this repo (that suffix appears in packaged mod files, not in this layout).
 
 ### Repository layout (reference)
 
-```
+~~~text
 .
 ├─ README.md
 ├─ DEV_C1M1.h5m
-├─ HoMM5MapScriptsEditor.1.3.50.zip
+├─ HoMM5MapScriptsEditor.1.3.50.zip              # optional convenience copy
+├─ git_docs/                                      # screenshots, thumbnails, local videos and docs
 └─ UserMODs/
    └─ MMH55-Cam-Maps/
       └─ Maps/
@@ -36,43 +36,59 @@ Campaign compatibility changes for MMH55.
             ├─ C1M3/
             ├─ C1M4/
             └─ C1M5/
-```
+~~~
 
 ---
 
-## Convert a campaign mission into a single-player map
+## How to convert a campaign into a single-player map
 
-1. **Duplicate the test map**  
-   Copy `DEV_C1M1.h5m` and rename the copy to your working map name, e.g. `DEV_MY_MAP.h5m`.
+This is needed if you need to test map and run it in Scenarios mode. 
+It is useful for making test runs.
 
-2. **Rename the internal folder**  
-   Open `DEV_MY_MAP.h5m` as a zip archive (7‑Zip/WinRAR).  
-   Go to `Maps/SingleMissions/` and rename the folder `DEV_C1M1` → `DEV_MY_MAP`.
+These steps reflect the current process used by contributors.
+1) **Ensure environment is correct**
+   The MMH5.5 Editor (64-bit) is typically at `[Game]\bin\MMH55_Editor_64.exe`. Open `DEV_C1M1.h5m` to confirm your toolchain works.
+   Open this editor, and open test map using: "File -> Open" feature
+   If everything correct you will see first mission of Isabell
+   ![Preview](./git_docs/test_map.png)
+2) **Copy the test map**  
+   Duplicate `DEV_C1M1.h5m` and rename the copy to `DEV_MY_MAP.h5m`.
+    
+3) **Rename the internal folder**  
+   Open `DEV_MY_MAP.h5m` as a zip archive (7-Zip/WinRAR).  
+   Change `Maps/SingleMissions/DEV_C1M1` → `Maps/SingleMissions/DEV_MY_MAP`.
 
-3. **Clear the working folder**  
-   Inside `Maps/SingleMissions/DEV_MY_MAP/` delete **all existing files**.
+4) **Clear the working folder**  
+   Inside `Maps/SingleMissions/DEV_MY_MAP/`, delete **all** files.
 
-4. **Populate with the target mission**  
-   From this repository, copy all files from  
-   `UserMODs/MMH55-Cam-Maps/Maps/Scenario/<MissionFolder>/`  
-   Paste them into the archive at  
+5) **Copy mission files from the repo**  
+   From this repo, copy everything from:  
+   `UserMODs/MMH55-Cam-Maps/Maps/Scenario/<mission_name>/`  
+   and paste **into the archive** at:  
    `DEV_MY_MAP.h5m/Maps/SingleMissions/DEV_MY_MAP/`.
 
-> These steps are required if you want to **test a campaign mission as a single‑player map**.
+6) **Rename the main map file and update the tag**  
+   - Rename the mission’s main map file from `C1M1.xdb` (or the mission’s original name) to **`map.xdb`**.  
+   - Open `map-tag.xdb` in the same folder and change the `AdvMapDesc` line to:
+
+   ~~~xml
+   <AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>
+   ~~~
+
+> **When committing changes back to the campaign sources in this repo:**  
+> - Rename **`map.xdb` back to the original file name** (e.g., `C1M1.xdb`).  
+> - Revert any temporary player changes you made to start the map as a skirmish (see the next section).
 
 ---
 
 ## Make the converted map start in single-player
 
-Campaign maps require at least two players for a skirmish start. Activate Player 2 in the map configuration.
+Campaign maps require at least two players to start as a skirmish. Activate Player 2 in the map configuration.
 
-1. In `DEV_MY_MAP.h5m`, open `Maps/SingleMissions/DEV_MY_MAP/Map.xdb`  
-   (campaigns sometimes use an internal id like `C1M2.xdb`).
+1) Open `DEV_MY_MAP.h5m/Maps/SingleMissions/DEV_MY_MAP/map.xdb` (or the internal mission id file if you haven’t renamed yet).  
+2) In the `<players>` section, ensure **Player 2** has `ActivePlayer=true`. A minimal known-good item:
 
-2. In the `<players>` section, ensure **Player 2** has `ActivePlayer=true`.  
-   A minimal, working item:
-
-```xml
+~~~xml
 <Item>
   <MainTown/>
   <MainHero/>
@@ -85,20 +101,16 @@ Campaign maps require at least two players for a skirmish start. Activate Player
   <StartHero/>
   <HeroInTown>false</HeroInTown>
   <ReserveHeroes/>
-  <AddHeroTrigger>
-    <Action><FunctionName/></Action>
-  </AddHeroTrigger>
-  <RemoveHeroTrigger>
-    <Action><FunctionName/></Action>
-  </RemoveHeroTrigger>
+  <AddHeroTrigger><Action><FunctionName/></Action></AddHeroTrigger>
+  <RemoveHeroTrigger><Action><FunctionName/></Action></RemoveHeroTrigger>
   <VictoryMessageRef href=""/>
   <DefeatMessageRef href=""/>
   <Race>TOWN_INFERNO</Race>
   <Colour>PCOLOR_RED</Colour>
 </Item>
-```
-
-**Design rule:** keep **Instant Travel** blocked in converted campaign missions (preserves the original level design and encounter intent).
+~~~
+## Design notes and inspirations tracked:
+**Design rule:** keep **Instant Travel** blocked in converted campaign missions (preserves the intended progression and encounter design).
 
 ---
 
@@ -108,75 +120,79 @@ Both **fork + PR** and **direct collaborator** flows are supported. When unsure,
 
 ### Fork & PR workflow (recommended)
 
-[Fork & PR workflow (YouTube)](https://www.youtube.com/watch?v=-9ftoxZ2X9g "Watch: Fork & PR workflow")
+[Fork & PR workflow](https://www.youtube.com/watch?v=-9ftoxZ2X9g "Watch: Fork & PR workflow")
 
-```powershell
+~~~powershell
 # 1) Fork https://github.com/Might-Magic-Heroes-5-5/campaigns on GitHub.
 
 # 2) Clone your fork
-git clone https://github.com/ACTUAL_DATA:GITHUB_USERNAME/campaigns.git
+git clone https://github.com/ACTUAL_DATA_GITHUB_USERNAME/campaigns.git
 cd campaigns
 
-# 3) Add upstream to sync later
+# 3) Add upstream (original repo) to sync later
 git remote add upstream https://github.com/Might-Magic-Heroes-5-5/campaigns.git
 
 # 4) Create a working branch
-git checkout -b ACTUAL_DATA:BRANCH_NAME
+git checkout -b ACTUAL_DATA_BRANCH_NAME
 
-# 5) Commit changes
+# 5) Commit atomic changes
 git add -A
 git commit -m "C1M3: fix enemy hero army formula; enable tutorial; add Memory Mentor"
 
 # 6) (Optional) Use a specific SSH key on Windows PowerShell
-$env:GIT_SSH_COMMAND = 'ssh -i ACTUAL_DATA:SSH_PRIVATE_KEY_PATH -o IdentitiesOnly=yes'
-git remote set-url origin git@github.com:ACTUAL_DATA:GITHUB_USERNAME/campaigns.git
+$env:GIT_SSH_COMMAND = 'ssh -i ACTUAL_DATA_SSH_PRIVATE_KEY_PATH -o IdentitiesOnly=yes'
+git remote set-url origin git@github.com:ACTUAL_DATA_GITHUB_USERNAME/campaigns.git
 
 # 7) Push your branch to your fork
-git push origin HEAD:refs/heads/ACTUAL_DATA:BRANCH_NAME
-```
+git push origin HEAD:refs/heads/ACTUAL_DATA_BRANCH_NAME
+~~~
 
-Then open a Pull Request from your fork/branch to `Might-Magic-Heroes-5-5/campaigns:main`.
+Open a Pull Request from your fork/branch to `Might-Magic-Heroes-5-5/campaigns:main`.
 
 **Before submitting a PR**
 - Launch the converted `DEV_*.h5m` in-game and verify it starts from the single-player menu.
-- Keep **Instant Travel** disabled where it is disabled in the original mission.
-- In the PR description, briefly note what was tested (e.g., “smoke-tested start; Player 2 active”).
+- Keep **Instant Travel** disabled where the original mission has it disabled.
+- In the PR description, note what was tested (e.g., “smoke-tested start; Player 2 active”).
 
 ### Direct collaborator workflow
 
-```powershell
-git checkout -b ACTUAL_DATA:BRANCH_NAME
+~~~powershell
+git checkout -b ACTUAL_DATA_BRANCH_NAME
 git add -A
 git commit -m "C1M1: tutorial updated for 5.5"
 git remote set-url origin git@github.com:Might-Magic-Heroes-5-5/campaigns.git
-$env:GIT_SSH_COMMAND = 'ssh -i ACTUAL_DATA:SSH_PRIVATE_KEY_PATH -o IdentitiesOnly=yes'
-git push origin HEAD:refs/heads/ACTUAL_DATA:BRANCH_NAME
-```
+$env:GIT_SSH_COMMAND = 'ssh -i ACTUAL_DATA_SSH_PRIVATE_KEY_PATH -o IdentitiesOnly=yes'
+git push origin HEAD:refs/heads/ACTUAL_DATA_BRANCH_NAME
+~~~
 
 **Troubleshooting push/permissions**
-- If a browser auth opens and you receive `403` when pushing, you likely pushed to the **upstream** repo. Ensure `origin` points to your **fork**, or use SSH with the correct key:  
-  `git remote -v` → `origin https://github.com/ACTUAL_DATA:GITHUB_USERNAME/campaigns.git`
-- ACTUAL_DATA here is your credentials, see git tutorials on how to use it
+- If a browser auth opens and you receive **403**, you likely pushed to the **upstream** repo. Ensure `origin` points to your **fork**, or use SSH with the correct key:  
+  `git remote -v` → `origin https://github.com/ACTUAL_DATA_GITHUB_USERNAME/campaigns.git`
 
 ---
 
-## Media (screenshots & clips)
+## How to add Media for documentation (screenshots & clips)
 
-Place media files under **`git_docs/`**. The links below assume that folder.
+Place media under **`git_docs/`** in this repo.
 
-### Local video (optional)
-If you commit an MP4 to the repo, this pattern shows a **thumbnail that links to the video**:
+- **Local MP4 with clickable thumbnail** (thumbnail must also be in `git_docs/`):  
+  `[![Convert demo](git_docs/ACTUAL_DATA-convert-thumb.png)](git_docs/ACTUAL_DATA-convert-demo.mp4 "Play MP4")`
 
-[![Convert mission demo (MP4)](git_docs/ACTUAL_DATA-convert-thumb.png)](git_docs/ACTUAL_DATA-convert-demo.mp4 "Play MP4 in browser")
+- **YouTube with custom thumbnail** (thumbnail in `git_docs/`):  
+  `[Fork & PR workflow](https://www.youtube.com/watch?v=-9ftoxZ2X9g "Watch on YouTube")`
 
-> GitHub renders thumbnails as images; clicking opens the video file or YouTube page.
+- **Screenshots from the discussion** (replace file names with actual ones you commit under `git_docs/`):  
+  `![Guide step 1](git_docs/ACTUAL_DATA-guide-1.png)`  
+  `![Guide step 2](git_docs/ACTUAL_DATA-guide-2.png)`  
+  `![Guide step 3](git_docs/ACTUAL_DATA-guide-3.png)`  
+  `![Guide step 4](git_docs/ACTUAL_DATA-guide-4.png)`
 
 ---
 
 ## Documentation
 
 General modding knowledge and editor walkthroughs are centralized at the **Heroes 5 Wiki**: <https://heroes5.fandom.com/wiki/Heroes_5_Wiki>.  
-Repo-specific guides may also live under `git_docs/` if added.
+Repo-specific guides may also live under `git_docs/` as well as files.
 
 ---
 
