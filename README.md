@@ -51,23 +51,23 @@ These steps reflect the current process used by contributors.
    Open this editor, and open test map using: "File -> Open" feature
    If everything correct you will see first mission of Isabell
    ![Preview](./git_docs/test_map.png)
-2) **Copy the test map**  
+2) **Copy the test map**
    Duplicate `DEV_C1M1.h5m` and rename the copy to `DEV_MY_MAP.h5m`.
     
-3) **Rename the internal folder**  
+3) **Rename the internal folder**
    Open `DEV_MY_MAP.h5m` as a zip archive (7-Zip/WinRAR).  
    Change `Maps/SingleMissions/DEV_C1M1` → `Maps/SingleMissions/DEV_MY_MAP`.
 
-4) **Clear the working folder**  
+4) **Clear the working folder**
    Inside `Maps/SingleMissions/DEV_MY_MAP/`, delete **all** files.
 
-5) **Copy mission files from the repo**  
+5) **Copy mission files from the repo**
    From this repo, copy everything from:  
    `UserMODs/MMH55-Cam-Maps/Maps/Scenario/<mission_name>/`  
    and paste **into the archive** at:  
    `DEV_MY_MAP.h5m/Maps/SingleMissions/DEV_MY_MAP/`.
 
-6) **Rename the main map file and update the tag**  
+6) **Rename the main map file and update the tag**
    - Rename the mission’s main map file from `C1M1.xdb` (or the mission’s original name) to **`map.xdb`**.  
    - Open `map-tag.xdb` in the same folder and change the `AdvMapDesc` line to:
 
@@ -199,32 +199,32 @@ Repo-specific guides may also live under `git_docs/` as well as files.
 ## Changes
 
 ### Legend
-- **change:** something not broken but behaves different  
-- **fix:** fix of ToE bug  
-- **fix(RCXX):** fixed regression from specific MMH55 version  
+- **change:** something not broken but behaves different
+- **fix:** fix of ToE bug
+- **fix(RCXX):** fixed regression from specific MMH55 version
 - **new:** new campaign feature
 
 ### C1M1 – Haven: The Queen
-- fix: Vanilla tutorial is available and updated for 5.5  
+- fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
 
 ### C1M2 – Haven: Rebellion
-- fix: Vanilla tutorial is available and updated for 5.5  
+- fix: Vanilla tutorial is available and updated for 5.5
 - fix: Impossible difficulty was treated as Normal
 
 ### C1M3 – Haven: The Siege
-- fix: Tutorial is available and updated for 5.5  
-- fix(RC19c): Enemy hero appeared with 1 imp instead of similar army  
-- change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start.  
-- change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way.  
-- new: added Memory Mentor  
+- fix: Tutorial is available and updated for 5.5
+- fix(RC19c): Enemy hero appeared with 1 imp instead of similar army
+- change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start.
+- change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way.
+- new: added Memory Mentor
 - new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact.
 
 ### C1M4 – Haven: The Trap
-- fix: Tutorial is available and updated for 5.5  
+- fix: Tutorial is available and updated for 5.5
 - new: added Memory Mentor
 
 ### C1M5 – Haven: The Fall of the King
-- fix: Tutorial is available and updated for 5.5  
-- fix: Siege enemy heroes wander around instead of attacking the castle  
+- fix: Tutorial is available and updated for 5.5
+- fix: Siege enemy heroes wander around instead of attacking the castle
 - new: added Memory Mentor
