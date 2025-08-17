@@ -108,7 +108,8 @@ def detect_singlemissions_folder(root_dir: Path) -> Path:
 def parse_orig_xdb_from_map_tag(map_tag_path: Path) -> Optional[str]:
     try:
         content = read_text(map_tag_path)
-    except Exception:
+    except Exception as e:
+        print(e)
         return None
     m = re.search(r'href="([^"]+)"', content)
     if not m:
@@ -154,7 +155,8 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
     try:
         tree = ET.parse(map_xdb_path)
         root = tree.getroot()
-    except Exception:
+    except Exception as e:
+        print(e)
         return (False, None)
 
     items = _get_players_items(root)
@@ -170,7 +172,8 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
         # Write back without XML declaration; XDB files are fine with this.
         tree.write(map_xdb_path, encoding="utf-8", xml_declaration=False)
         return (True, prev)
-    except Exception:
+    except Exception as e:
+        print(e)
         return (False, prev)
 
 # ---------- Core operations ----------
@@ -335,7 +338,8 @@ def unpack(repo_root: Path) -> None:
                 orig_xdb_name = meta.get("original_main_xdb")
                 p2_flip_applied = bool(meta.get("player2_flip_applied", False))
                 p2_active_original = meta.get("player2_active_original", None)
-            except Exception:
+            except Exception as e:
+                print(e)
                 pass
 
         if not mission_folder:
