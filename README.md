@@ -38,6 +38,21 @@ Campaign compatibility changes for MMH55.
             └─ C1M5/
 ~~~
 
+Additional code loaded dynamically can be found at
+./UserMODs\MMH55-Cam-Maps\scripts
+it is two files:
+campaign_ai.lua
+campaign_common.lua
+
+They are loaded on each map and script.lua header as:
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); <-- this is from main 5.5 repo
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+Types are located at this repository in /git_docs/types.xml
+They are extracted directly from MMH55-Frame.pak\types.xml
+
+
 ---
 
 ## How to convert a campaign into a single-player map
