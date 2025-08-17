@@ -162,7 +162,7 @@ def write_lua(rows: List[Dict[str, str]], out_lua: Path) -> None:
 
 def main(argv: List[str]) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("root", nargs="?", default=str(Path("../LOCAL_DIR")),
+    ap.add_argument("root", nargs="?", default=str(Path("../../LOCAL_DIR")),
                     help="Root directory to scan (default: ./LOCAL_DIR)")
     ap.add_argument("--csv", default=None, help="Write CSV to this path (default: <root>/spells_by_school.csv)")
     ap.add_argument("--md", default=None, help="Write Markdown table to this path (optional)")

@@ -189,6 +189,7 @@ git push origin HEAD:refs/heads/ACTUAL_DATA_BRANCH_NAME
 ## How to add Media for documentation (screenshots & clips)
 
 Place media under **`git_docs/`** in this repo.
+Examples how to write README:
 
 - **Local MP4 with clickable thumbnail** (thumbnail must also be in `git_docs/`):  
   `[![Convert demo](git_docs/ACTUAL_DATA-convert-thumb.png)](git_docs/ACTUAL_DATA-convert-demo.mp4 "Play MP4")`
