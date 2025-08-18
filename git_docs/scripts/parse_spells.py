@@ -1,213 +1,230 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Parse Heroes V .xdb (XML) spell files and output a table mapping
-Spell -> Magic School with code name and engine ID.
+Parse Heroes V .xdb (XML) spell files and output:
+  - CSV / Markdown (optional, for docs)
+  - Read-only Lua enums/tables (SPELL, SPELL_BY_ID, SPELLS_BY_SCHOOL)
 
-Usage:
-  python parse_spells.py [root_dir] [--csv out.csv] [--md out.md] [--stdout md|csv] [--lua out.lua] [--root-tag Spell]
+USAGE (Lua):
+  python parse_spells.py --root ./LOCAL_DIR --types ./types.xml --lua h55_enums_spells.lua
 
-- root_dir: directory to search recursively for *.xdb. Default: ./LOCAL_DIR
-- --csv: write CSV to the given path (default: spells_by_school.csv in root_dir)
-- --md:  write Markdown table to the given path (optional)
-- --stdout: print table to stdout in the chosen format (md or csv). Default: md
-- --lua: write a Lua table (by_school and by_spell) to the given path (optional)
-- --root-tag: only parse files whose root XML tag equals this value (default: Spell)
+REQUIREMENTS:
+  - A valid Heroes V `types.xml` (for SPELL_* -> numeric id)
+  - *.xdb files whose root tag is <Spell> under --root
 
-Notes:
-- Only files whose root XML tag is <Spell> are considered (unless --root-tag is changed).
-- "Code name" is derived from the file stem (e.g., Blind.xdb -> SPELL_BLIND).
-- "ID used" is the ObjectRecordID attribute found on the <Spell> root element.
-- The script is robust to minor XML issues and will ignore files it can't parse.
+The Lua file defines:
+  SPELL.BLIND = { name="SPELL_BLIND", id=8, school="MAGIC_SCHOOL_LIGHT", level=4 }
+  SPELL_BY_ID[8] = SPELL.BLIND
+  SPELLS_BY_SCHOOL.MAGIC_SCHOOL_LIGHT = { SPELL.BLIND, SPELL.WORD_OF_LIGHT, ... }
+
+All tables are deeply **read-only** at runtime.
 """
-
 from __future__ import annotations
-from pathlib import Path
-import sys
 import argparse
-import xml.etree.ElementTree as ET
 import csv
+import io
+import os
 import re
-from typing import Dict, List, Optional
+import sys
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
 
+def die(msg: str, code: int = 2):
+    sys.stderr.write(msg.strip() + "\n")
+    sys.exit(code)
 
-def normalize_code_name(file_stem: str) -> str:
-    """Build an enum-like code name: SPELL_<UPPER_SNAKE_CASE> from the file name.
-    Examples:
-      'Disrupting_Ray' -> 'SPELL_DISRUPTING_RAY'
-      'Animate Dead'   -> 'SPELL_ANIMATE_DEAD'
-    """
-    base = re.sub(r"[^0-9A-Za-z]+", "_", file_stem)
-    base = re.sub(r"_{2,}", "_", base).strip("_")
-    return f"SPELL_{base.upper()}" if base else "SPELL_UNKNOWN"
+def ad_err(missing: str, hint: str):
+    die(f"ACTUAL_DATA REQUIRED: {missing}\nHINT: {hint}")
 
+# --- types.xml enums -------------------------------------------------------- #
 
-def parse_spell_xdb(path: Path, root_tag_filter: str = "Spell") -> Optional[Dict[str, str]]:
-    """Parse the given .xdb file and extract Spell information.
-    Returns a dict with keys: file, relpath, school, level, record_id, code_name, name_ref
-    or None if the file is not a <Spell> (or the chosen --root-tag) or couldn't be parsed.
-    """
+_ENUM_PATTERNS = (
+    (r'name\s*=\s*"(?P<name>[A-Z0-9_]+)"[^>]*?\b(?:value|val|id)\s*=\s*"(?P<val>\d+)"', re.I),
+    (r'<name>\s*(?P<name>[A-Z0-9_]+)\s*</name>.*?<value>\s*(?P<val>\d+)\s*</value>', re.I | re.S),
+    (r'(?P<name>[A-Z0-9_]+)\s*=\s*(?P<val>\d+)', re.I),
+)
+
+def _extract_enum_map(text: str, prefix: str) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for pat, flags in _ENUM_PATTERNS:
+        for m in re.finditer(pat, text, flags):
+            name = m.group("name")
+            if not name.startswith(prefix):
+                continue
+            val = int(m.group("val"))
+            out.setdefault(name, val)
+    return out
+
+def load_spell_enums(types_xml: Path) -> Dict[str, int]:
+    if not types_xml.exists():
+        ad_err(f"types.xml not found at: {types_xml}",
+               "Export/copy your types.xml and pass it via --types PATH.")
+    text = types_xml.read_text(encoding="utf-8", errors="ignore")
+    spells = _extract_enum_map(text, "SPELL_")
+    if not spells:
+        ad_err("SPELL_* enums not found in types.xml.",
+               "Ensure types.xml includes all SPELL_* names with integer values.")
+    return spells
+
+# --- scanning & parsing ----------------------------------------------------- #
+
+def _root_tag(path: Path) -> Optional[str]:
     try:
-        tree = ET.parse(path)
-        root = tree.getroot()
+        head = path.read_text(encoding="utf-8", errors="ignore")[:2048]
+        m = re.search(r'<\s*([A-Za-z0-9_]+)\b', head)
+        return m.group(1) if m else None
     except Exception:
         return None
 
-    if root.tag != root_tag_filter:
+def parse_spell_xdb(xdb: Path) -> Optional[Dict[str, str]]:
+    """Returns dict with code_name, record_id, school, level; or None if invalid."""
+    txt = xdb.read_text(encoding="utf-8", errors="ignore")
+    # ObjectRecordID (attribute)
+    rid = re.search(r'ObjectRecordID\s*=\s*"(\d+)"', txt)
+    if not rid:
         return None
-
-    record_id = (root.attrib.get("ObjectRecordID") or "").strip()
     school = None
+    mschool = re.search(r'<\s*MagicSchool\s*>\s*([A-Z0-9_]+)\s*<\s*/\s*MagicSchool\s*>', txt, re.I)
+    if mschool:
+        school = mschool.group(1).strip()
     level = None
-    name_ref = None
-
-    for child in root:
-        tag = child.tag
-        if tag == "MagicSchool":
-            school = (child.text or "").strip()
-        elif tag == "Level":
-            level = (child.text or "").strip()
-        elif tag == "NameFileRef":
-            if "href" in child.attrib:
-                name_ref = child.attrib["href"]
-            else:
-                name_ref = (child.text or "").strip()
-
-    code_name = normalize_code_name(path.stem)
-
+    mlev = re.search(r'<\s*Level\s*>\s*(\d+)\s*<\s*/\s*Level\s*>', txt, re.I)
+    if mlev:
+        level = mlev.group(1).strip()
+    code_name = "SPELL_" + re.sub(r'[^A-Za-z0-9]+', '_', xdb.stem).upper()
     return {
-        "file": path.name,
-        "relpath": str(path),
-        "school": school or "",
-        "level": level or "",
-        "record_id": record_id,
         "code_name": code_name,
-        "name_ref": name_ref or "",
+        "record_id": rid.group(1),
+        "school": school or "MAGIC_SCHOOL_UNKNOWN",
+        "level": level or "0",
     }
 
+# --- Lua writer ------------------------------------------------------------- #
 
-def scan_xdb_files(root_dir: Path, root_tag_filter: str = "Spell") -> List[Dict[str, str]]:
-    results: List[Dict[str, str]] = []
-    for p in root_dir.rglob("*.xdb"):
-        entry = parse_spell_xdb(p, root_tag_filter)
-        if entry is not None:
-            results.append(entry)
+def lua_header() -> str:
+    return """-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT BY HAND.
+-- Source: parse_spells.py --lua
+-- Purpose: read-only spell enums (SPELL), plus SPELL_BY_ID and SPELLS_BY_SCHOOL
 
-    def sort_key(d: Dict[str, str]):
-        try:
-            lvl = int(d.get("level") or 0)
-        except ValueError:
-            lvl = 0
-        return (d.get("school") or "", lvl, d.get("code_name") or "", d.get("file") or "")
-    results.sort(key=sort_key)
-    return results
+local function _freeze(t)
+  local function freeze(tbl, path)
+    for k, v in pairs(tbl) do
+      if type(v) == "table" then freeze(v, (path and (path.."."..tostring(k)) or tostring(k))) end
+    end
+    local mt = {
+      __newindex = function(_, key, _)
+        error("Attempt to modify read-only table at key '"..tostring(key).."' ("..(path or "?")..")", 2)
+      end,
+      __metatable = "READONLY",
+    }
+    return setmetatable(tbl, mt)
+  end
+  return freeze(t, nil)
+end
 
+"""
 
-def write_csv(rows: List[Dict[str, str]], out_csv: Path) -> None:
-    out_csv.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["school", "level", "code_name", "record_id", "file", "relpath", "name_ref"]
-    with out_csv.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
-        for r in rows:
-            w.writerow({k: r.get(k, "") for k in fields})
-
-
-def format_markdown(rows: List[Dict[str, str]]) -> str:
-    headers = ["School", "Lvl", "Code name", "ID (ObjectRecordID)", "File"]
-    lines = ["| " + " | ".join(headers) + " |",
-             "| " + " | ".join("---" for _ in headers) + " |"]
-    for r in rows:
-        lines.append("| {School} | {Lvl} | `{Code}` | {ID} | {File} |".format(
-            School=r.get("school", ""),
-            Lvl=r.get("level", ""),
-            Code=r.get("code_name", ""),
-            ID=r.get("record_id", ""),
-            File=r.get("file", ""),
-        ))
-    return "\n".join(lines)
-
-
-def write_lua(rows: List[Dict[str, str]], out_lua: Path) -> None:
-    """Write a Lua table grouped by school and a by_spell lookup."""
-    out_lua.parent.mkdir(parents=True, exist_ok=True)
-
-    # Group by school
-    school_to_spells: Dict[str, List[Dict[str, str]]] = {}
-    for r in rows:
-        school = r.get("school") or "UNKNOWN"
-        school_to_spells.setdefault(school, []).append(r)
+def write_lua(spells: List[Dict[str, str]], spell_enums: Dict[str, int], out_path: Path) -> None:
+    # normalize + join with enums (id)
+    joined: List[Dict[str, str]] = []
+    missing = []
+    for s in spells:
+        name = s["code_name"]
+        sid = spell_enums.get(name)
+        if sid is None:
+            missing.append(name)
+            continue
+        joined.append({
+            "name": name,
+            "id": sid,
+            "school": s["school"],
+            "level": s["level"],
+        })
+    if missing:
+        ad_err(
+            "Spells missing from types.xml: " + ", ".join(missing[:12]) + (" ..." if len(missing) > 12 else ""),
+            "Update your types.xml so that all SPELL_* names exist and have numeric values."
+        )
 
     lines: List[str] = []
-    lines.append("return {")
-    # by_school
-    lines.append("  by_school = {")
-    for school, items in sorted(school_to_spells.items()):
-        lines.append(f"    ['{school}'] = {{")
-        items_sorted = sorted(items, key=lambda x: (int(x.get('level') or 0), x.get('code_name', '')))
-        for it in items_sorted:
-            lines.append(f"      '{it.get('code_name','')}',")
-        lines.append("    },")
-    lines.append("  },")
-    # by_spell
-    lines.append("  by_spell = {")
-    for r in rows:
-        level_str = r.get('level') if (r.get('level') and r.get('level').isdigit()) else 'nil'
-        obj_id_str = r.get('record_id') if (r.get('record_id') and r.get('record_id').isdigit()) else 'nil'
-        lines.append(
-            f"    ['{r.get('code_name','')}'] = {{ school = '{r.get('school','')}', level = {level_str}, object_id = {obj_id_str} }},")
-    lines.append("  },")
-    lines.append("}")
-    out_lua.write_text("\n".join(lines), encoding="utf-8")
+    lines.append(lua_header())
+    lines.append("SPELL = {}\nSPELL_BY_ID = {}\nSPELLS_BY_SCHOOL = {}\n\n")
 
+    # Emit SPELL and BY_ID
+    for s in sorted(joined, key=lambda x: x["name"]):
+        short = s["name"].replace("SPELL_", "")
+        lines.append(f"SPELL.{short} = _freeze({{ name = \"{s['name']}\", id = {s['id']}, school = \"{s['school']}\", level = {s['level']} }})\n")
+        lines.append(f"SPELL_BY_ID[{s['id']}] = SPELL.{short}\n")
 
-def main(argv: List[str]) -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("root", nargs="?", default=str(Path("../../LOCAL_DIR")),
-                    help="Root directory to scan (default: ./LOCAL_DIR)")
-    ap.add_argument("--csv", default=None, help="Write CSV to this path (default: <root>/spells_by_school.csv)")
-    ap.add_argument("--md", default=None, help="Write Markdown table to this path (optional)")
-    ap.add_argument("--stdout", choices=["md", "csv"], default="md",
-                    help="Print table to stdout in this format (default: md)")
-    ap.add_argument("--lua", default=None, help="Write a Lua table to this path (optional)")
-    ap.add_argument("--root-tag", default="Spell", help="Only parse files whose root XML tag matches this (default: Spell)")
+    # Group by school
+    school_map: Dict[str, List[str]] = {}
+    for s in joined:
+        school_map.setdefault(s["school"], []).append(s["name"].replace("SPELL_", ""))
+
+    lines.append("\n-- Group by school\n")
+    for school in sorted(school_map.keys()):
+        items = ", ".join([f"SPELL.{n}" for n in sorted(school_map[school])])
+        lines.append(f"SPELLS_BY_SCHOOL.{school} = _freeze({{{ {items} }}})\n")
+
+    lines.append("\nSPELL = _freeze(SPELL)\nSPELL_BY_ID = _freeze(SPELL_BY_ID)\nSPELLS_BY_SCHOOL = _freeze(SPELLS_BY_SCHOOL)\n")
+    lines.append("-- End of auto-generated file.\n")
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("".join(lines), encoding="utf-8")
+
+# --- CLI -------------------------------------------------------------------- #
+
+def main(argv: Optional[List[str]] = None) -> int:
+    ap = argparse.ArgumentParser(description="Parse H5 spells -> CSV/MD/Lua.")
+    ap.add_argument("--root", type=Path, default=Path("./LOCAL_DIR"), help="Root to scan recursively for *.xdb")
+    ap.add_argument("--types", type=Path, required=True, help="Path to types.xml with SPELL_* enums")
+    ap.add_argument("--csv", type=Path, default=None, help="Optional CSV output path")
+    ap.add_argument("--md", type=Path, default=None, help="Optional Markdown output path")
+    ap.add_argument("--lua", type=Path, default=Path("h55_enums_spells.lua"), help="Lua output path")
+    ap.add_argument("--stdout", choices=["md", "csv", "none"], default="none", help="Print to stdout")
     args = ap.parse_args(argv)
 
-    root_dir = Path(args.root).resolve()
-    if not root_dir.exists():
-        print(f"[!] Root directory does not exist: {root_dir}", file=sys.stderr)
-        return 2
+    spell_enums = load_spell_enums(args.types)
 
-    rows = scan_xdb_files(root_dir, args.root_tag)
-    if not rows:
-        print("[i] No matching .xdb files found under", root_dir, file=sys.stderr)
+    xdbs = [p for p in args.root.rglob("*.xdb") if (_root_tag(p) == "Spell")]
+    if not xdbs:
+        ad_err("No <Spell> .xdb files found under --root.",
+               "Point --root to the folder with your spell .xdb files.")
 
-    # Outputs
+    rows: List[Dict[str, str]] = []
+    for p in xdbs:
+        item = parse_spell_xdb(p)
+        if item:
+            rows.append(item)
+
     if args.csv:
-        write_csv(rows, Path(args.csv))
-    else:
-        write_csv(rows, root_dir / "spells_by_school.csv")  # default
+        fields = ["school", "level", "code_name", "record_id"]
+        with args.csv.open("w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            for r in rows:
+                w.writerow({k: r.get(k, "") for k in fields})
 
     if args.md:
-        Path(args.md).write_text(format_markdown(rows), encoding="utf-8")
+        import io
+        buf = io.StringIO()
+        cols = ["School", "Level", "Code", "RecordID"]
+        buf.write("| " + " | ".join(cols) + " |\n")
+        buf.write("|" + "|".join(["---"] * len(cols)) + "|\n")
+        for r in rows:
+            buf.write(f"| {r['school']} | {r['level']} | {r['code_name']} | {r['record_id']} |\n")
+        args.md.write_text(buf.getvalue(), encoding="utf-8")
 
     if args.lua:
-        write_lua(rows, Path(args.lua))
+        write_lua(rows, spell_enums, args.lua)
 
-    # stdout
     if args.stdout == "md":
-        print(format_markdown(rows))
-    else:
-        import io
-        fields = ["school", "level", "code_name", "record_id", "file", "relpath", "name_ref"]
-        buf = io.StringIO()
-        w = csv.DictWriter(buf, fieldnames=fields)
-        w.writeheader()
-        for r in rows:
-            w.writerow({k: r.get(k, "") for k in fields})
-        print(buf.getvalue())
+        print(Path(args.md or "spells.md").read_text() if args.md else "(stdout md requested but --md not provided)")
+    elif args.stdout == "csv":
+        print(Path(args.csv or "spells.csv").read_text() if args.csv else "(stdout csv requested but --csv not provided)")
 
+    print(f"[OK] Spells parsed: {len(rows)}; Lua → {args.lua}")
     return 0
 
-
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1:]))
+    raise SystemExit(main())

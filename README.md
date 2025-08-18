@@ -210,6 +210,18 @@ Examples how to write README:
 General modding knowledge and editor walkthroughs are centralized at the **Heroes 5 Wiki**: <https://heroes5.fandom.com/wiki/Heroes_5_Wiki>.  
 Repo-specific guides may also live under `git_docs/` as well as files.
 
+# 1) Creatures lua parsing
+python scripts/parse_creatures_to_lua.py \
+  --root "C:/Program Files (x86)/GOG Galaxy/Games/campaigns" \
+  --types "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/types.xml" \
+  --out "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/h55_enums_creatures.lua"
+
+# 2) Spells (updated to Lua)
+python scripts/parse_spells.py \
+  --root "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/LOCAL_DIR" \
+  --types "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/types.xml" \
+  --lua  "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/h55_enums_spells.lua"
+
 ---
 
 ## Changes

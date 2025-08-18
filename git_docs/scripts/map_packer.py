@@ -3,18 +3,17 @@
 """
 h55_map_packer.py
 
-Pack:   Scenario/<Mission>  -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m
+Pack:   Scenario/<Mission> -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m (asks before overwrite)
 Unpack: LOCAL_DIR/COMPILED_MAPS/*.h5m -> restore into sources at
-        UserMODs/MMH55-Cam-Maps/Maps/Scenario/<Mission>/ (with backup),
+        UserMODs/MMH55-Cam-Maps/Maps/Scenario/<Mission>/ (asks before overwrite; does backup),
         reverting map.xdb name, map-tag.xdb, and Player-2 flip.
 
 README requirements reflected:
 - Use DEV_C1M1.h5m as the template; internal folder under Maps/SingleMissions
-  renamed to DEV_<Mission>; copy mission files into it; rename main XDB to
-  map.xdb; set map-tag.xdb to:
+  renamed to DEV_<Mission>; copy mission files into it; rename main XDB to map.xdb;
+  set map-tag.xdb to:
     <AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>
-- Optional single-player start: activate Player 2 in map.xdb (flip).  :contentReference[oaicite:3]{index=3}
-- During "opposing action" (unpack), restore original XDB name and the flip.
+- Optional single-player start: activate Player 2 in map.xdb (flip) on request.
 
 All artifacts, extractions and backups go to LOCAL_DIR/COMPILED_MAPS.
 """
@@ -35,7 +34,7 @@ import xml.etree.ElementTree as ET
 
 # ---------- Constants ----------
 META_FILENAME = ".campaigns_pack_meta.json"  # embedded to help lossless unpack
-MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'  # :contentReference[oaicite:4]{index=4}
+MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'  # exact per README
 SINGLE_MISSIONS_REL = Path("Maps") / "SingleMissions"
 
 # ---------- Helpers ----------
@@ -108,8 +107,7 @@ def detect_singlemissions_folder(root_dir: Path) -> Path:
 def parse_orig_xdb_from_map_tag(map_tag_path: Path) -> Optional[str]:
     try:
         content = read_text(map_tag_path)
-    except Exception as e:
-        print(e)
+    except Exception:
         return None
     m = re.search(r'href="([^"]+)"', content)
     if not m:
@@ -120,7 +118,7 @@ def parse_orig_xdb_from_map_tag(map_tag_path: Path) -> Optional[str]:
 
 def write_map_tag_for_target(map_tag_path: Path, xdb_name: str) -> None:
     if xdb_name == "map.xdb":
-        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact string per README. :contentReference[oaicite:5]{index=5}
+        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact string per README
     else:
         xml = f'<AdvMapDesc href="{xdb_name}#xpointer(/AdvMapDesc)"/>'
     write_text(map_tag_path, xml)
@@ -134,11 +132,9 @@ def safe_rename(src: Path, dst: Path) -> None:
 
 # ---------- XML helpers for the Player‑2 flip ----------
 def _get_players_items(root: ET.Element) -> list[ET.Element]:
-    # players element may be nested under AdvMapDesc
     players = root.find(".//players")
     if players is None:
         return []
-    # children are usually <Item> entries
     return [c for c in list(players) if c.tag.endswith("Item") or c.tag == "Item"]
 
 def _get_or_create_child(parent: ET.Element, tag: str) -> ET.Element:
@@ -155,8 +151,7 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
     try:
         tree = ET.parse(map_xdb_path)
         root = tree.getroot()
-    except Exception as e:
-        print(e)
+    except Exception:
         return (False, None)
 
     items = _get_players_items(root)
@@ -169,11 +164,9 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
         prev = ap.text.strip().lower() == "true"
     ap.text = "true" if make_active else "false"
     try:
-        # Write back without XML declaration; XDB files are fine with this.
         tree.write(map_xdb_path, encoding="utf-8", xml_declaration=False)
         return (True, prev)
-    except Exception as e:
-        print(e)
+    except Exception:
         return (False, prev)
 
 # ---------- Core operations ----------
@@ -188,7 +181,7 @@ def pack(repo_root: Path) -> None:
     if not template_h5m.exists():
         raise SystemExit(
             f"Template map not found at {template_h5m}. "
-            "The README expects it at repository root.  :contentReference[oaicite:6]{index=6}"
+            "The README expects it at repository root."
         )
 
     mission_dirs = list_directories(missions_root)
@@ -222,7 +215,7 @@ def pack(repo_root: Path) -> None:
                 shutil.rmtree(new_singles_folder)
             singles_folder.rename(new_singles_folder)
 
-        # 3) Clear the working folder
+        # 3) Clear the working folder (temp)
         for child in new_singles_folder.iterdir():
             if child.is_dir():
                 shutil.rmtree(child)
@@ -260,7 +253,7 @@ def pack(repo_root: Path) -> None:
         safe_rename(src_main_xdb, dst_main_xdb)
 
         map_tag_dst = new_singles_folder / "map-tag.xdb"
-        write_map_tag_for_target(map_tag_dst, "map.xdb")  # exact string per README. :contentReference[oaicite:7]{index=7}
+        write_map_tag_for_target(map_tag_dst, "map.xdb")  # exact per README
 
         # 6) Ask about the single-player flip (activate Player 2)
         flip_applied = False
@@ -287,11 +280,14 @@ def pack(repo_root: Path) -> None:
         # 8) Zip temp dir into COMPILED_MAPS/DEV_<Mission>.h5m
         out_h5m = compiled_dir / f"{internal_dev_id}.h5m"
         if out_h5m.exists():
+            if not yes_no(f"Target file already exists:\n  {out_h5m}\nOverwrite?", default=False):
+                print("Aborted by user. Nothing written.")
+                return
             out_h5m.unlink()
         zip_dir_to_file(tmpdir, out_h5m)
 
     print(f"\n✅ Packed: {out_h5m}")
-    print("Reminder: Per README, keep Instant Travel blocked if it was blocked in the mission.  :contentReference[oaicite:8]{index=8}")
+    print("Reminder: keep Instant Travel blocked if it was blocked in the mission.")
 
 def _timestamp() -> str:
     return _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -338,8 +334,7 @@ def unpack(repo_root: Path) -> None:
                 orig_xdb_name = meta.get("original_main_xdb")
                 p2_flip_applied = bool(meta.get("player2_flip_applied", False))
                 p2_active_original = meta.get("player2_active_original", None)
-            except Exception as e:
-                print(e)
+            except Exception:
                 pass
 
         if not mission_folder:
@@ -347,10 +342,16 @@ def unpack(repo_root: Path) -> None:
         if not orig_xdb_name:
             orig_xdb_name = f"{mission_folder}.xdb"
 
-        # Extract to a reference folder (inspectable)
-        extracted_root = compiled_dir / "extracted" / dev_folder_name
-        if extracted_root.exists():
-            shutil.rmtree(extracted_root)
+        # Choose extraction target (ask if existing)
+        base_extracted = compiled_dir / "extracted" / dev_folder_name
+        extracted_root = base_extracted
+        if base_extracted.exists():
+            if yes_no(f"Extraction folder exists:\n  {base_extracted}\nOverwrite its contents?", default=False):
+                shutil.rmtree(base_extracted)
+            else:
+                extracted_root = compiled_dir / "extracted" / f"{dev_folder_name}-{_timestamp()}"
+                print(f" - Using new extraction folder: {extracted_root}")
+
         shutil.copytree(singles_folder, extracted_root)
 
         # Revert map.xdb -> <orig_xdb_name>, and fix map-tag.xdb
@@ -361,29 +362,32 @@ def unpack(repo_root: Path) -> None:
         if map_tag.exists():
             write_map_tag_for_target(map_tag, orig_xdb_name)
 
-        # Roll back the Player‑2 flip to the original value if we know it,
-        # otherwise default to false (campaign default).
+        # Roll back the Player‑2 flip to the original value if known, else to false
         if p2_flip_applied:
             target_value = bool(p2_active_original) if p2_active_original is not None else False
             set_player2_active(extracted_root / orig_xdb_name, target_value)
 
         # Remove metadata from the restored copy
-        try:
-            (extracted_root / META_FILENAME).unlink(missing_ok=True)
-        except TypeError:
-            f = extracted_root / META_FILENAME
-            if f.exists():
-                f.unlink()
+        meta_to_remove = extracted_root / META_FILENAME
+        if meta_to_remove.exists():
+            meta_to_remove.unlink()
 
         print(f" - Files prepared in: {extracted_root}")
 
-        # Copy back into the repo sources with backup and replacement
+        # Copy back into the repo sources with optional overwrite and backup
         missions_root = repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
         dest_folder = missions_root / mission_folder
         ensure_dir(missions_root)
 
-        # Backup existing content if present
         if dest_folder.exists():
+            if not yes_no(
+                f"Destination sources folder exists:\n  {dest_folder}\n"
+                "Replace its contents? (A timestamped backup will be created first.)",
+                default=False
+            ):
+                print("Aborted by user. Sources were not modified.")
+                return
+
             backups_dir = compiled_dir / "backups"
             ensure_dir(backups_dir)
             bk_zip = backups_dir / f"{mission_folder}-{_timestamp()}.zip"
@@ -395,8 +399,8 @@ def unpack(repo_root: Path) -> None:
         shutil.copytree(extracted_root, dest_folder)
 
     print(f"\n✅ Unpacked and restored into sources: {dest_folder}")
-    print(f"   A reference extraction remains at: {compiled_dir / 'extracted' / dev_folder_name}")
-    print(f"   A backup (if any) lives at: {compiled_dir / 'backups'}")
+    print(f"   Extraction at: {extracted_root}")
+    print(f"   Backups (if any) are in: {compiled_dir / 'backups'}")
 
 # ---------- Entrypoint ----------
 def main(argv: list[str]) -> None:
