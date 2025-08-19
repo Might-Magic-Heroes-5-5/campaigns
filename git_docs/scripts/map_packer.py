@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-h55_map_packer.py
+h55_map_packer.py  — MMH5.5 Campaigns helper (CLI)
 
-Pack:   Scenario/<Mission> -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m (asks before overwrite)
-Unpack: LOCAL_DIR/COMPILED_MAPS/*.h5m -> restore into sources at
-        UserMODs/MMH55-Cam-Maps/Maps/Scenario/<Mission>/ (asks before overwrite; does backup),
-        reverting map.xdb name, map-tag.xdb, and Player-2 flip.
+Actions (interactive menu if none given):
+  1) Pack: Scenario/<Mission> -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m
+  2) Unpack: LOCAL_DIR/COMPILED_MAPS/*.h5m -> restore into sources (with backup)
+  3) Verify environment (template & paths)
+  4) Quit
 
-README requirements reflected:
-- Use DEV_C1M1.h5m as the template; internal folder under Maps/SingleMissions
-  renamed to DEV_<Mission>; copy mission files into it; rename main XDB to map.xdb;
-  set map-tag.xdb to:
-    <AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>
-- Optional single-player start: activate Player 2 in map.xdb (flip) on request.
-
-All artifacts, extractions and backups go to LOCAL_DIR/COMPILED_MAPS.
+Key rules from repo:
+- Template 'DEV_C1M1.h5m' must be at repo root.  :contentReference[oaicite:4]{index=4}
+- Mission sources: UserMODs/MMH55-Cam-Maps/Maps/Scenario/<MissionFolder>/  :contentReference[oaicite:5]{index=5}
+- map-tag.xdb inside the packed map must be exactly:
+    <AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>  :contentReference[oaicite:6]{index=6}
+- Optional: set Player 2 ActivePlayer=true to enable single-player start; and revert on unpack.  :contentReference[oaicite:7]{index=7}
 """
 
 from __future__ import annotations
@@ -28,39 +27,40 @@ import zipfile
 import tempfile
 import datetime as _dt
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 
 import xml.etree.ElementTree as ET
 
 # ---------- Constants ----------
-META_FILENAME = ".campaigns_pack_meta.json"  # embedded to help lossless unpack
-MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'  # exact per README
+META_FILENAME = ".campaigns_pack_meta.json"
+MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'
 SINGLE_MISSIONS_REL = Path("Maps") / "SingleMissions"
 
-# ---------- Helpers ----------
-def find_repo_root(start: Path) -> Path:
-    """Ascend directories until we find a path that looks like the repo root."""
-    cur = start
-    for parent in [cur] + list(cur.parents):
-        if (parent / "README.md").exists() and (parent / "UserMODs").exists():
-            return parent
-    return start.parent.parent  # reasonable fallback
+# ---------- Paths helper ----------
+class Paths:
+    def __init__(self, script_path: Path):
+        self.repo_root = self._find_repo_root(script_path)
+        self.template_h5m = self.repo_root / "DEV_C1M1.h5m"
+        self.missions_root = self.repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
+        self.local_dir = self.repo_root / "LOCAL_DIR"
+        self.compiled_dir = self.local_dir / "COMPILED_MAPS"
+        self.extracted_dir = self.compiled_dir / "extracted"
+        self.backups_dir = self.compiled_dir / "backups"
+
+    @staticmethod
+    def _find_repo_root(start: Path) -> Path:
+        cur = start
+        for parent in [cur] + list(cur.parents):
+            if (parent / "README.md").exists() and (parent / "UserMODs").exists():
+                return parent
+        # Fallback to scripts/../../ if not found
+        return start.parent.parent
 
 def ensure_dir(p: Path) -> None:
     p.mkdir(parents=True, exist_ok=True)
 
-def list_directories(p: Path) -> list[Path]:
-    if not p.exists():
-        return []
-    return sorted([d for d in p.iterdir() if d.is_dir()])
-
-def read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
-
-def write_text(path: Path, text: str) -> None:
-    path.write_text(text, encoding="utf-8", newline="\n")
-
-def prompt_choice(options: list[str], title: str) -> int:
+# ---------- Console helpers ----------
+def prompt_choice(options: List[str], title: str) -> int:
     if not options:
         raise SystemExit(f"No options available for: {title}")
     print(f"\n{title}")
@@ -81,6 +81,20 @@ def yes_no(question: str, default: bool = False) -> bool:
         return True
     return ans in ("y", "yes")
 
+# ---------- File I/O helpers ----------
+def read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+def write_text(path: Path, text: str) -> None:
+    path.write_text(text, encoding="utf-8", newline="\n")
+
+def safe_rename(src: Path, dst: Path) -> None:
+    if src.resolve() == dst.resolve():
+        return
+    if dst.exists():
+        dst.unlink()
+    src.rename(dst)
+
 def zip_dir_to_file(src_dir: Path, out_file: Path) -> None:
     with zipfile.ZipFile(out_file, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for root, _, files in os.walk(src_dir):
@@ -90,58 +104,87 @@ def zip_dir_to_file(src_dir: Path, out_file: Path) -> None:
                 arc = abs_f.relative_to(src_dir)
                 zf.write(abs_f, arcname=str(arc))
 
-def unzip_to_dir(zip_file: Path, dst_dir: Path) -> None:
-    with zipfile.ZipFile(zip_file, "r") as zf:
-        zf.extractall(dst_dir)
-
-def detect_singlemissions_folder(root_dir: Path) -> Path:
-    sm_dir = root_dir / SINGLE_MISSIONS_REL
-    if not sm_dir.exists():
-        raise RuntimeError(f"Missing {SINGLE_MISSIONS_REL} in unpacked structure.")
-    subdirs = [d for d in sm_dir.iterdir() if d.is_dir()]
-    if not subdirs:
-        raise RuntimeError(f"No folders found inside {SINGLE_MISSIONS_REL}.")
-    subdirs.sort(key=lambda p: p.name)
-    return subdirs[0]
-
-def parse_orig_xdb_from_map_tag(map_tag_path: Path) -> Optional[str]:
+def _is_within(base: Path, target: Path) -> bool:
     try:
-        content = read_text(map_tag_path)
+        target.resolve().relative_to(base.resolve())
+        return True
+    except Exception:
+        return False
+
+def safe_unzip_to_dir(zip_file: Path, dst_dir: Path) -> None:
+    """Prevent Zip Slip by validating members before extraction."""
+    with zipfile.ZipFile(zip_file, "r") as zf:
+        for info in zf.infolist():
+            member = Path(info.filename)
+            if member.is_absolute() or ".." in member.parts:
+                raise SystemExit(f"Unsafe path in archive: {info.filename}")
+            target = dst_dir / member
+            if not _is_within(dst_dir, target):
+                raise SystemExit(f"Refusing to extract outside target: {info.filename}")
+            ensure_dir(target.parent)
+            if info.is_dir():
+                ensure_dir(target)
+                continue
+            with zf.open(info) as src, open(target, "wb") as dst:
+                shutil.copyfileobj(src, dst)
+
+# ---------- Map/XDB helpers ----------
+def _find_first_by_suffix(root: ET.Element, name_suffix: str) -> Optional[ET.Element]:
+    for e in root.iter():
+        if isinstance(e.tag, str) and e.tag.endswith(name_suffix):
+            return e
+    return None
+
+def _iter_children_by_suffix(parent: ET.Element, name_suffix: str):
+    for c in list(parent):
+        if isinstance(c.tag, str) and c.tag.endswith(name_suffix):
+            yield c
+
+def parse_map_tag_href_xml(map_tag_path: Path) -> Optional[str]:
+    """Return 'href' basename from map-tag.xdb using real XML parsing."""
+    try:
+        root = ET.fromstring(read_text(map_tag_path))
     except Exception:
         return None
-    m = re.search(r'href="([^"]+)"', content)
-    if not m:
+    href = root.attrib.get("href")
+    if not href:
         return None
-    href = m.group(1)
-    href_base = href.split("#", 1)[0]
-    return Path(href_base).name or None
+    return Path(href.split("#", 1)[0]).name
+
+def detect_main_xdb(folder: Path, orig_guess: str) -> Path:
+    # 1) exact guess
+    guess = folder / orig_guess
+    if guess.exists():
+        return guess
+    # 2) via map-tag.xdb
+    mt = folder / "map-tag.xdb"
+    via_tag = parse_map_tag_href_xml(mt)
+    if via_tag and (folder / via_tag).exists():
+        return folder / via_tag
+    # 3) pick an .xdb whose root tag endswith 'AdvMapDesc'
+    candidates = []
+    for f in folder.glob("*.xdb"):
+        try:
+            rt = ET.parse(f).getroot()
+        except Exception:
+            continue
+        if isinstance(rt.tag, str) and rt.tag.endswith("AdvMapDesc"):
+            candidates.append((f.stat().st_size, f))
+    if candidates:
+        candidates.sort()
+        return candidates[-1][1]
+    # 4) fallback largest .xdb
+    xdbs = list(folder.glob("*.xdb"))
+    if not xdbs:
+        raise SystemExit("No .xdb files found to select as main map.")
+    return max(xdbs, key=lambda p: p.stat().st_size)
 
 def write_map_tag_for_target(map_tag_path: Path, xdb_name: str) -> None:
     if xdb_name == "map.xdb":
-        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact string per README
+        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact per README  :contentReference[oaicite:8]{index=8}
     else:
         xml = f'<AdvMapDesc href="{xdb_name}#xpointer(/AdvMapDesc)"/>'
     write_text(map_tag_path, xml)
-
-def safe_rename(src: Path, dst: Path) -> None:
-    if src.resolve() == dst.resolve():
-        return
-    if dst.exists():
-        dst.unlink()
-    src.rename(dst)
-
-# ---------- XML helpers for the Player‑2 flip ----------
-def _get_players_items(root: ET.Element) -> list[ET.Element]:
-    players = root.find(".//players")
-    if players is None:
-        return []
-    return [c for c in list(players) if c.tag.endswith("Item") or c.tag == "Item"]
-
-def _get_or_create_child(parent: ET.Element, tag: str) -> ET.Element:
-    node = parent.find(tag)
-    if node is None:
-        node = ET.SubElement(parent, tag)
-    return node
 
 def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Optional[bool]]:
     """
@@ -153,12 +196,16 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
         root = tree.getroot()
     except Exception:
         return (False, None)
-
-    items = _get_players_items(root)
+    players = _find_first_by_suffix(root, "players")
+    if players is None:
+        return (False, None)
+    items = list(_iter_children_by_suffix(players, "Item"))
     if len(items) < 2:
         return (False, None)
     p2 = items[1]
-    ap = _get_or_create_child(p2, "ActivePlayer")
+    ap = p2.find("./ActivePlayer")
+    if ap is None:
+        ap = ET.SubElement(p2, "ActivePlayer")
     prev = None
     if ap.text is not None:
         prev = ap.text.strip().lower() == "true"
@@ -169,24 +216,53 @@ def set_player2_active(map_xdb_path: Path, make_active: bool) -> Tuple[bool, Opt
     except Exception:
         return (False, prev)
 
-# ---------- Core operations ----------
-def pack(repo_root: Path) -> None:
-    missions_root = repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
-    template_h5m = repo_root / "DEV_C1M1.h5m"
-    local_dir = repo_root / "LOCAL_DIR"
-    compiled_dir = local_dir / "COMPILED_MAPS"
+# ---------- Discovery helpers ----------
+def detect_singlemissions_folder(root_dir: Path) -> Path:
+    """ robust: single folder -> use; multiple -> prefer DEV_*; else ask user """
+    sm_dir = root_dir / SINGLE_MISSIONS_REL
+    if not sm_dir.exists():
+        raise RuntimeError(f"Missing {SINGLE_MISSIONS_REL} in unpacked structure.")
+    subdirs = sorted([d for d in sm_dir.iterdir() if d.is_dir()], key=lambda p: p.name)
+    if not subdirs:
+        raise RuntimeError(f"No folders found inside {SINGLE_MISSIONS_REL}.")
+    if len(subdirs) == 1:
+        return subdirs[0]
+    devs = [d for d in subdirs if d.name.startswith("DEV_")]
+    if len(devs) == 1:
+        return devs[0]
+    # ask user
+    idx = prompt_choice([d.name for d in subdirs], f"Multiple folders in {SINGLE_MISSIONS_REL}. Pick one:")
+    return subdirs[idx]
 
-    ensure_dir(compiled_dir)
+def list_mission_dirs(missions_root: Path) -> List[Path]:
+    if not missions_root.exists():
+        return []
+    return sorted([d for d in missions_root.iterdir() if d.is_dir()])
 
-    if not template_h5m.exists():
-        raise SystemExit(
-            f"Template map not found at {template_h5m}. "
-            "The README expects it at repository root."
-        )
+# ---------- Core actions ----------
+def verify_environment(P: Paths) -> None:
+    missing = []
+    if not P.template_h5m.exists():
+        missing.append(str(P.template_h5m))
+    if not P.missions_root.exists():
+        missing.append(str(P.missions_root))
+    ensure_dir(P.compiled_dir)
+    if missing:
+        print("❌ Environment problems:")
+        for m in missing:
+            print(" - Missing:", m)
+        sys.exit(1)
+    print("✅ Environment OK")
+    print(" - Template:", P.template_h5m)
+    print(" - Missions:", P.missions_root)
+    print(" - Compiled output:", P.compiled_dir)
 
-    mission_dirs = list_directories(missions_root)
+def pack(P: Paths) -> None:
+    verify_environment(P)  # also ensures compiled dir exists
+
+    mission_dirs = list_mission_dirs(P.missions_root)
     if not mission_dirs:
-        raise SystemExit(f"No missions found in {missions_root}")
+        raise SystemExit(f"No missions found in {P.missions_root}")
 
     names = [d.name for d in mission_dirs]
     idx = prompt_choice(names, "Select a mission to PACK into a single-player .h5m:")
@@ -195,7 +271,7 @@ def pack(repo_root: Path) -> None:
     internal_dev_id = f"DEV_{mission_name}"
 
     map_tag_src = mission_src / "map-tag.xdb"
-    orig_xdb_guess = parse_orig_xdb_from_map_tag(map_tag_src) or f"{mission_name}.xdb"
+    orig_xdb_guess = parse_map_tag_href_xml(map_tag_src) or f"{mission_name}.xdb"
 
     print(f"\nPacking mission: {mission_name}")
     print(f"- Original main XDB (from sources): {orig_xdb_guess}")
@@ -204,8 +280,8 @@ def pack(repo_root: Path) -> None:
     with tempfile.TemporaryDirectory(prefix="h55_pack_") as tmpdir:
         tmpdir = Path(tmpdir)
 
-        # 1) Unzip template to temp
-        unzip_to_dir(template_h5m, tmpdir)
+        # 1) Unzip template
+        safe_unzip_to_dir(P.template_h5m, tmpdir)
 
         # 2) Rename internal folder to DEV_<Mission>
         singles_folder = detect_singlemissions_folder(tmpdir)
@@ -215,14 +291,14 @@ def pack(repo_root: Path) -> None:
                 shutil.rmtree(new_singles_folder)
             singles_folder.rename(new_singles_folder)
 
-        # 3) Clear the working folder (temp)
+        # 3) Clear the working folder
         for child in new_singles_folder.iterdir():
             if child.is_dir():
                 shutil.rmtree(child)
             else:
                 child.unlink()
 
-        # 4) Copy mission files
+        # 4) Copy mission files from sources
         for item in mission_src.iterdir():
             dst = new_singles_folder / item.name
             if item.is_dir():
@@ -230,44 +306,21 @@ def pack(repo_root: Path) -> None:
             else:
                 shutil.copy2(item, dst)
 
-        # 5) Rename main XDB to map.xdb and rewrite map-tag.xdb
-        src_main_xdb = new_singles_folder / orig_xdb_guess
-        if not src_main_xdb.exists():
-            # try case-insensitive search
-            lower = orig_xdb_guess.lower()
-            alt = None
-            for f in new_singles_folder.glob("*.xdb"):
-                if f.name.lower() == lower:
-                    alt = f
-                    break
-            if alt:
-                src_main_xdb = alt
-            else:
-                xdbs = list(new_singles_folder.glob("*.xdb"))
-                if xdbs:
-                    src_main_xdb = max(xdbs, key=lambda p: p.stat().st_size)
-        if not src_main_xdb.exists():
-            raise SystemExit("Could not locate the mission's main .xdb to rename to map.xdb.")
-
+        # 5) Rename main XDB -> map.xdb; set map-tag.xdb exactly
+        src_main_xdb = detect_main_xdb(new_singles_folder, orig_xdb_guess)
         dst_main_xdb = new_singles_folder / "map.xdb"
         safe_rename(src_main_xdb, dst_main_xdb)
+        write_map_tag_for_target(new_singles_folder / "map-tag.xdb", "map.xdb")  # exact per README  :contentReference[oaicite:9]{index=9}
 
-        map_tag_dst = new_singles_folder / "map-tag.xdb"
-        write_map_tag_for_target(map_tag_dst, "map.xdb")  # exact per README
-
-        # 6) Ask about the single-player flip (activate Player 2)
+        # 6) Optional single-player flip
         flip_applied = False
         player2_prev = None
         if yes_no("Activate Player 2 in map.xdb for single-player start?", default=True):
             ok, prev = set_player2_active(dst_main_xdb, True)
-            flip_applied = ok
-            player2_prev = prev
-            if ok:
-                print(" - Player 2 set to ActivePlayer=true.")
-            else:
-                print(" - Could not edit map.xdb automatically; continuing without flip.")
+            flip_applied, player2_prev = ok, prev
+            print(" - Player 2 set to ActivePlayer=true." if ok else " - Could not edit map.xdb automatically; continuing without flip.")
 
-        # 7) Embed metadata for perfect round-trip on unpack
+        # 7) Embed metadata for round-trip
         meta = {
             "mission_folder": mission_name,
             "original_main_xdb": orig_xdb_guess,
@@ -277,17 +330,18 @@ def pack(repo_root: Path) -> None:
         }
         write_text(new_singles_folder / META_FILENAME, json.dumps(meta, indent=2))
 
-        # 8) Zip temp dir into COMPILED_MAPS/DEV_<Mission>.h5m
-        out_h5m = compiled_dir / f"{internal_dev_id}.h5m"
+        # 8) Produce .h5m
+        out_h5m = P.compiled_dir / f"{internal_dev_id}.h5m"
         if out_h5m.exists():
             if not yes_no(f"Target file already exists:\n  {out_h5m}\nOverwrite?", default=False):
                 print("Aborted by user. Nothing written.")
                 return
             out_h5m.unlink()
+        # zip the WHOLE unpacked tree (template structure included)
         zip_dir_to_file(tmpdir, out_h5m)
 
     print(f"\n✅ Packed: {out_h5m}")
-    print("Reminder: keep Instant Travel blocked if it was blocked in the mission.")
+    print("Reminder: keep Instant Travel blocked if it was blocked in the mission.")  # :contentReference[oaicite:10]{index=10}
 
 def _timestamp() -> str:
     return _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -295,19 +349,17 @@ def _timestamp() -> str:
 def _zip_folder(folder: Path, out_zip: Path) -> None:
     with zipfile.ZipFile(out_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for root, _, files in os.walk(folder):
-            root_p = Path(root)
+            rp = Path(root)
             for f in files:
-                p = root_p / f
+                p = rp / f
                 zf.write(p, arcname=str(p.relative_to(folder)))
 
-def unpack(repo_root: Path) -> None:
-    local_dir = repo_root / "LOCAL_DIR"
-    compiled_dir = local_dir / "COMPILED_MAPS"
-    ensure_dir(compiled_dir)
+def unpack(P: Paths) -> None:
+    verify_environment(P)  # ensures compiled dir exists
 
-    h5ms = sorted([p for p in compiled_dir.glob("*.h5m") if p.is_file()])
+    h5ms = sorted([p for p in P.compiled_dir.glob("*.h5m") if p.is_file()])
     if not h5ms:
-        raise SystemExit(f"No .h5m files found in {compiled_dir}")
+        raise SystemExit(f"No .h5m files found in {P.compiled_dir}")
 
     names = [p.name for p in h5ms]
     idx = prompt_choice(names, "Select a .h5m to UNPACK and restore into sources:")
@@ -316,12 +368,12 @@ def unpack(repo_root: Path) -> None:
     print(f"\nUnpacking: {chosen}")
     with tempfile.TemporaryDirectory(prefix="h55_unpack_") as tmpdir:
         tmpdir = Path(tmpdir)
-        unzip_to_dir(chosen, tmpdir)
+        safe_unzip_to_dir(chosen, tmpdir)
 
         singles_folder = detect_singlemissions_folder(tmpdir)
         dev_folder_name = singles_folder.name
 
-        # Read metadata if present
+        # Read metadata
         meta_path = singles_folder / META_FILENAME
         mission_folder = None
         orig_xdb_name = None
@@ -342,55 +394,46 @@ def unpack(repo_root: Path) -> None:
         if not orig_xdb_name:
             orig_xdb_name = f"{mission_folder}.xdb"
 
-        # Choose extraction target (ask if existing)
-        base_extracted = compiled_dir / "extracted" / dev_folder_name
+        # Extraction target
+        base_extracted = P.extracted_dir / dev_folder_name
         extracted_root = base_extracted
         if base_extracted.exists():
             if yes_no(f"Extraction folder exists:\n  {base_extracted}\nOverwrite its contents?", default=False):
                 shutil.rmtree(base_extracted)
             else:
-                extracted_root = compiled_dir / "extracted" / f"{dev_folder_name}-{_timestamp()}"
+                extracted_root = P.extracted_dir / f"{dev_folder_name}-{_timestamp()}"
                 print(f" - Using new extraction folder: {extracted_root}")
-
         shutil.copytree(singles_folder, extracted_root)
 
-        # Revert map.xdb -> <orig_xdb_name>, and fix map-tag.xdb
+        # Revert map.xdb -> <orig_xdb_name>; fix map-tag.xdb
         map_xdb = extracted_root / "map.xdb"
         if map_xdb.exists():
             safe_rename(map_xdb, extracted_root / orig_xdb_name)
-        map_tag = extracted_root / "map-tag.xdb"
-        if map_tag.exists():
-            write_map_tag_for_target(map_tag, orig_xdb_name)
+        write_map_tag_for_target(extracted_root / "map-tag.xdb", orig_xdb_name)
 
-        # Roll back the Player‑2 flip to the original value if known, else to false
+        # Roll back Player‑2 flip
         if p2_flip_applied:
             target_value = bool(p2_active_original) if p2_active_original is not None else False
             set_player2_active(extracted_root / orig_xdb_name, target_value)
 
         # Remove metadata from the restored copy
-        meta_to_remove = extracted_root / META_FILENAME
-        if meta_to_remove.exists():
-            meta_to_remove.unlink()
+        (extracted_root / META_FILENAME).unlink(missing_ok=True) if hasattr(Path, "unlink") else None
 
         print(f" - Files prepared in: {extracted_root}")
 
-        # Copy back into the repo sources with optional overwrite and backup
-        missions_root = repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
+        # Replace sources with prompt and backup
+        missions_root = P.missions_root
         dest_folder = missions_root / mission_folder
         ensure_dir(missions_root)
 
         if dest_folder.exists():
             if not yes_no(
                 f"Destination sources folder exists:\n  {dest_folder}\n"
-                "Replace its contents? (A timestamped backup will be created first.)",
-                default=False
-            ):
+                "Replace its contents? (A timestamped backup will be created first.)", default=False):
                 print("Aborted by user. Sources were not modified.")
                 return
-
-            backups_dir = compiled_dir / "backups"
-            ensure_dir(backups_dir)
-            bk_zip = backups_dir / f"{mission_folder}-{_timestamp()}.zip"
+            ensure_dir(P.backups_dir)
+            bk_zip = P.backups_dir / f"{mission_folder}-{_timestamp()}.zip"
             print(f" - Backing up existing sources to: {bk_zip}")
             _zip_folder(dest_folder, bk_zip)
             shutil.rmtree(dest_folder)
@@ -400,27 +443,42 @@ def unpack(repo_root: Path) -> None:
 
     print(f"\n✅ Unpacked and restored into sources: {dest_folder}")
     print(f"   Extraction at: {extracted_root}")
-    print(f"   Backups (if any) are in: {compiled_dir / 'backups'}")
+    print(f"   Backups (if any) are in: {P.backups_dir}")
 
-# ---------- Entrypoint ----------
-def main(argv: list[str]) -> None:
+# ---------- Menu / entrypoint ----------
+def main(argv: List[str]) -> None:
     script_path = Path(__file__).resolve()
-    repo_root = find_repo_root(script_path)
+    P = Paths(script_path)
 
-    if len(argv) < 2 or argv[1] in {"-h", "--help", "help"}:
-        print(__doc__)
-        print("\nUsage:\n  python git_docs/scripts/h55_map_packer.py pack\n"
-              "  python git_docs/scripts/h55_map_packer.py unpack\n")
+    # If user gave an explicit action, run it
+    if len(argv) > 1:
+        cmd = argv[1].lower()
+        if cmd in {"-h", "--help", "help"}:
+            print(__doc__)
+            return
+        if cmd == "pack":
+            pack(P); return
+        if cmd == "unpack":
+            unpack(P); return
+        if cmd == "verify":
+            verify_environment(P); return
+        print(f"Unknown command: {cmd}\nUse: pack | unpack | verify")
         return
 
-    cmd = argv[1].lower()
-    if cmd == "pack":
-        pack(repo_root)
-    elif cmd == "unpack":
-        unpack(repo_root)
+    # Otherwise, show a numeric action selector
+    choice = prompt_choice(
+        ["Pack a mission to .h5m",
+         "Unpack a .h5m and restore into sources",
+         "Verify environment",
+         "Quit"], "Select action:")
+    if choice == 0:
+        pack(P)
+    elif choice == 1:
+        unpack(P)
+    elif choice == 2:
+        verify_environment(P)
     else:
-        print(f"Unknown command: {cmd}")
-        print("Use: pack | unpack")
+        print("Bye.")
 
 if __name__ == "__main__":
     main(sys.argv)
