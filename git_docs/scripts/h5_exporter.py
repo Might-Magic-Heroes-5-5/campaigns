@@ -5,10 +5,19 @@ HOMM5 Build Helper — single interactive CLI to export:
   • CREATURES .xdb -> h55_enums_creatures.lua (with CREATURE.<TOWN>.<NAME> readonly objects)
   • SPELLS    .xdb -> h55_enums_spells.lua
 
+CHANGES (Lua 4.0 + Heroes V constraints)
+----------------------------------------
+• No local functions in generated Lua. All pseudo-locals use __h55__local_56424_* prefix.
+• Shared helpers moved to ./scripts/h55_enum_runtime.lua and included with:
+      doFile("./scripts/h55_enum_runtime.lua")
+      while not __h55__local_56424_freeze do end
+• Lua 4.0 compatible: no rawget, no setmetatable, no pairs/ipairs, no io.write, no booleans.
+• The CLI writes the runtime file once into OUT_DIR/scripts/.
+
 CONVENTIONS
 -----------
 • All I/O happens inside your repo tree, NOT the installed game.
-• Repo root is inferred from the location of THIS file:
+• Repo root is inferred from this file’s location:
     <repo_root>/git_docs/scripts/h5_exporter.py
     <repo_root>/git_docs/types.xml
     <repo_root>/LOCAL_DIR/Creatures/...   (town subfolders)
@@ -90,6 +99,8 @@ def ensure_dir(p: Path) -> None:
 
 def list_files_recursive(root: Path, suffixes: Tuple[str, ...]) -> List[Path]:
     out: List[Path] = []
+    if not root.exists():
+        return out
     for base, _, files in os.walk(root):
         for fn in files:
             if fn.lower().endswith(suffixes):
@@ -119,8 +130,6 @@ def try_load_ids_from_framework(repo_root: Path) -> Tuple[Dict[str, int], Dict[s
     Parse h55_enum_framework*.lua to get IDs:
       - creature_ids['CREATURE_ANGEL'] = 13
       - ability_ids['ABILITY_NO_MELEE_PENALTY'] = <num>
-
-    This file is part of the repo and is a stable, authoritative enumeration.
     """
     creature_ids: Dict[str, int] = {}
     ability_ids: Dict[str, int] = {}
@@ -128,7 +137,6 @@ def try_load_ids_from_framework(repo_root: Path) -> Tuple[Dict[str, int], Dict[s
     pattern_cre = re.compile(r'\bCREATURE_([A-Z0-9_]+)\s*=\s*(\d+)\b')
     pattern_abi = re.compile(r'\bABILITY_([A-Z0-9_]+)\s*=\s*(\d+)\b')
 
-    # Heuristic: any file like h55_enum_framework*.lua under repo_root (git_docs/scripts or anywhere)
     candidates = list(repo_root.rglob("h55_enum_framework*.lua"))
     for f in candidates:
         try:
@@ -151,12 +159,10 @@ def try_load_ids_from_pdf(repo_root: Path) -> Dict[str, int]:
     try:
         import PyPDF2  # type: ignore
     except Exception:
-        # optional dependency
         return out
 
     pdfs = list(repo_root.rglob("HOMM5*_IDs_for_Scripts*.pdf")) + list(repo_root.rglob("HOMM5*_ID*s_for_Scripts*.pdf"))
     if not pdfs:
-        # also accept file named exactly:
         p = repo_root / "git_docs" / "HOMM5_IDs_for_Scripts.pdf"
         if p.exists():
             pdfs = [p]
@@ -188,10 +194,8 @@ def types_xml_sanity(types_xml: Path) -> Tuple[str, int, int, int]:
         raise SystemExit(f"FATAL: cannot parse types.xml at {types_xml}: {e}")
 
     root_tag = root.tag or "<?>"
-    # relaxed counting; don't rely on exact schema
     n_item = len(root.findall(".//Item"))
     n_type = len(root.findall(".//Type"))
-    # total nodes count (rough)
     total_nodes = sum(1 for _ in root.iter())
     return root_tag, n_item, n_type, total_nodes
 
@@ -199,17 +203,12 @@ def types_xml_sanity(types_xml: Path) -> Tuple[str, int, int, int]:
 # Creature parsing
 # -----------------------------
 def slug_to_enum_tail(name: str) -> str:
-    # "Axe_Thrower" -> "AXE_THROWER"
-    # "Hell mare"   -> "HELL_MARE"
     tail = re.sub(r'[^A-Za-z0-9]+', '_', name).strip('_').upper()
     return tail
 
 def parse_creature_xdb(xdb_path: Path) -> Tuple[str, List[str], int]:
     """
     Extract (enum_tail, ability_consts, base_growth)
-      • enum_tail: "ANGEL" for "Angel.xdb", "AXE_THROWER" for "Axe_Thrower.xdb"
-      • ability_consts: ["ABILITY_...", ...]
-      • base_growth: int (0 if missing)
     """
     enum_tail = slug_to_enum_tail(xdb_path.stem)
     tree = read_xml(xdb_path)
@@ -226,9 +225,8 @@ def parse_creature_xdb(xdb_path: Path) -> Tuple[str, List[str], int]:
             if val and val.startswith("ABILITY_"):
                 abilities.append(val)
 
-    # 2) WeeklyGrowth (try several likely tags)
+    # 2) WeeklyGrowth
     growth = 0
-    # common tags someone may have used: WeeklyGrowth, Growth, BaseGrowth
     for tag in ("WeeklyGrowth", "Growth", "BaseGrowth"):
         node = root.find(f".//{tag}")
         if node is not None:
@@ -244,17 +242,11 @@ def parse_creature_xdb(xdb_path: Path) -> Tuple[str, List[str], int]:
 # Spell parsing
 # -----------------------------
 def parse_spell_xdb(xdb_path: Path) -> Tuple[str, str]:
-    """
-    Very light spell parsing for export:
-      returns (enum_tail, spell_id_const)
-    If the .xdb includes <ID> or similar we try to read it; otherwise we use the file name as enum tail.
-    """
     enum_tail = slug_to_enum_tail(xdb_path.stem)
     tree = read_xml(xdb_path)
     if tree is None:
         return enum_tail, f"SPELL_{enum_tail}"
 
-    # Find any obvious identifier; fallback to SPELL_<TAIL>
     for tag in ("ID", "SpellID", "Spell", "Name", "Const", "Identifier"):
         node = tree.getroot().find(f".//{tag}")
         val = text_of(node)
@@ -264,41 +256,24 @@ def parse_spell_xdb(xdb_path: Path) -> Tuple[str, str]:
     return enum_tail, f"SPELL_{enum_tail}"
 
 # -----------------------------
-# Lua emit helpers (read-only)
+# Lua emit helpers (Lua 4.0–safe)
 # -----------------------------
 def lua_quote(s: str) -> str:
     return "'" + s.replace("\\", "\\\\").replace("'", "\\'") + "'"
 
-def lua_table_array_str(values: Iterable[str]) -> str:
-    # values are already quoted or numeric
-    return "{ " + ", ".join(values) + " }"
-
-def lua_readonly_prelude() -> str:
+def lua_include_runtime_prelude() -> str:
+    # No local functions. Await runtime helpers synchronously (busy-wait).
     return r"""
 -- AUTOGENERATED by h5_exporter.py — DO NOT EDIT BY HAND.
--- If you need to refresh: run the exporter again.
-
--- Minimal read-only helpers
-local function _freeze(tbl)
-  return setmetatable(tbl, {
-    __newindex = function() error('read-only table', 2) end,
-    __metatable = false,
-  })
-end
-
-local function _freeze_shallow(tbl)
-  for k,v in pairs(tbl) do
-    if type(v) == 'table' then tbl[k] = _freeze(v) end
-  end
-  return _freeze(tbl)
-end
+-- Heroes V / Lua 4.0–safe runtime include.
+if not __h55__local_56424_freeze then doFile('./scripts/h55_enum_runtime.lua') end
+while not __h55__local_56424_freeze do end
 """
 
 def build_lua_abilities_creatures(ability_ids: Dict[str, int]) -> str:
     lines = []
     lines.append("ABILITIES = ABILITIES or {}")
-    lines.append("ABILITIES.CREATURES = _freeze_shallow({")
-    # Sort by tail
+    lines.append("ABILITIES.CREATURES = __h55__local_56424_freeze_shallow({")
     for const, aid in sorted(ability_ids.items(), key=lambda kv: kv[0]):
         tail = const.replace("ABILITY_", "")
         lines.append(f"  {tail} = {{ id = {aid}, name = {lua_quote(tail)}, const = {lua_quote(const)} }},")
@@ -308,52 +283,100 @@ def build_lua_abilities_creatures(ability_ids: Dict[str, int]) -> str:
 def build_lua_creatures_dot(creatures_by_town: Dict[str, Dict[str, Dict]]) -> str:
     """
     Emit CREATURE.<TOWN>.<NAME> = { name='CREATURE_NAME', id=..., BASE_GROWTH=..., ABILITIES={'A','B',...} }
-    All tables are frozen (read-only).
     """
     out = []
-    out.append("CREATURE = _freeze({})")
+    out.append("CREATURE = __h55__local_56424_freeze({})")
     for town in sorted(creatures_by_town.keys()):
-        out.append(f"CREATURE.{town} = _freeze({{}})")
+        out.append(f"CREATURE.{town} = __h55__local_56424_freeze({{}})")
         for name in sorted(creatures_by_town[town].keys()):
             o = creatures_by_town[town][name]
-            const = o['const']       # "CREATURE_ANGEL"
-            cid   = o['id']          # numeric
-            baseg = o['BASE_GROWTH'] # int
-            # abilities as list of quoted tails (NO_MELEE_PENALTY, etc.)
+            const = o['const']
+            cid   = o['id']
+            baseg = o['BASE_GROWTH']
             abi_list = ", ".join(lua_quote(a.replace("ABILITY_", "")) for a in o['ABILITIES'])
             out.append(
-                f"CREATURE.{town}.{name} = _freeze({{ "
+                f"CREATURE.{town}.{name} = __h55__local_56424_freeze({{ "
                 f"name = {lua_quote(const)}, id = {cid}, BASE_GROWTH = {baseg}, "
-                f"ABILITIES = _freeze({{ {abi_list} }}) "
+                f"ABILITIES = __h55__local_56424_freeze({{ {abi_list} }}) "
                 f"}})"
             )
         out.append("")  # spacer
-    # Hardcoded UNKNOWN once, id 0
-    out.append("CREATURE.UNKNOWN = _freeze({ name = 'CREATURE_UNKNOWN', id = 0, BASE_GROWTH = 0, ABILITIES = _freeze({}) })")
+
+    out.append("CREATURE.UNKNOWN = __h55__local_56424_freeze({ name = 'CREATURE_UNKNOWN', id = 0, BASE_GROWTH = 0, ABILITIES = __h55__local_56424_freeze({}) })")
     out.append("")
-    out.append("-- Optional self-test: set H55_ENUMS_SELFTEST = true before dofile() to print samples.")
-    out.append("if rawget(_G, 'H55_ENUMS_SELFTEST') == true then")
-    out.append("  local function _dump(obj)")
-    out.append("    local function arr(t) local s='{' for i,v in ipairs(t) do s=s..(i>1 and ', ' or '')..tostring(v) end return s..'}' end")
-    out.append("    print('{ name='..obj.name..', id='..obj.id..', BASE_GROWTH='..obj.BASE_GROWTH..', ABILITIES='..arr(obj.ABILITIES)..' }')")
-    out.append("  end")
-    out.append("  if CREATURE.HAVEN and CREATURE.HAVEN.ANGEL then io.write('CREATURE.HAVEN.ANGEL -> '); _dump(CREATURE.HAVEN.ANGEL) end")
-    out.append("  if CREATURE.ACADEMY and CREATURE.ACADEMY.DJINN_VIZIER then io.write('CREATURE.ACADEMY.DJINN_VIZIER -> '); _dump(CREATURE.ACADEMY.DJINN_VIZIER) end")
-    out.append("  if CREATURE.NECROPOLIS and CREATURE.NECROPOLIS.SKELETON then io.write('CREATURE.NECROPOLIS.SKELETON -> '); _dump(CREATURE.NECROPOLIS.SKELETON) end")
+    out.append("-- Optional self-test: set H55_ENUMS_SELFTEST = 1 before doFile() to print samples.")
+    out.append("if H55_ENUMS_SELFTEST then")
+    out.append("  function __h55__local_56424__arr(t) local s='{' local i=1 while t[i]~=nil do if i>1 then s=s..', ' end s=s..tostring(t[i]) i=i+1 end return s..'}' end")
+    out.append("  function __h55__local_56424__dump(obj) write('{ name='..obj.name..', id='..obj.id..', BASE_GROWTH='..obj.BASE_GROWTH..', ABILITIES='..__h55__local_56424__arr(obj.ABILITIES)..' }\\n') end")
+    out.append("  if CREATURE.HAVEN and CREATURE.HAVEN.ANGEL then write('CREATURE.HAVEN.ANGEL -> '); __h55__local_56424__dump(CREATURE.HAVEN.ANGEL) end")
+    out.append("  if CREATURE.ACADEMY and CREATURE.ACADEMY.DJINN_VIZIER then write('CREATURE.ACADEMY.DJINN_VIZIER -> '); __h55__local_56424__dump(CREATURE.ACADEMY.DJINN_VIZIER) end")
+    out.append("  if CREATURE.NECROPOLIS and CREATURE.NECROPOLIS.SKELETON then write('CREATURE.NECROPOLIS.SKELETON -> '); __h55__local_56424__dump(CREATURE.NECROPOLIS.SKELETON) end")
     out.append("end")
     return "\n".join(out)
 
 def build_lua_spells(spells: Dict[str, str]) -> str:
-    """
-    ABILITIES.CREATURES is separate; here we emit SPELL table similar to creatures (flat).
-    """
     out = []
-    out.append("-- Spells enumeration (flat), read-only")
-    out.append("SPELL = _freeze_shallow({")
+    out.append("-- Spells enumeration (flat), read-only (best effort in Lua 4.0)")
+    out.append("SPELL = __h55__local_56424_freeze_shallow({")
     for tail, const in sorted(spells.items(), key=lambda kv: kv[0]):
         out.append(f"  {tail} = {{ name = {lua_quote(const)}, const = {lua_quote(const)} }},")
     out.append("})")
     return "\n".join(out)
+
+# -----------------------------
+# Runtime file emission
+# -----------------------------
+def runtime_lua_text_lua40() -> str:
+    return r"""-- h55_enum_runtime.lua
+-- Lua 4.0–compatible “readonly” helpers for Heroes V scripts.
+if __h55__local_56424_freeze then
+  __h55__local_56424_READY = 1
+  return
+end
+if newtag then
+  __h55__local_56424_RO_TAG = newtag()
+  settagmethod(__h55__local_56424_RO_TAG, "settable", function(t, k, v)
+    error("read-only table", 2)
+  end)
+  function __h55__local_56424_freeze(tbl)
+    if type(tbl) == "table" then
+      settag(tbl, __h55__local_56424_RO_TAG)
+    end
+    return tbl
+  end
+  function __h55__local_56424_freeze_shallow(tbl)
+    if type(tbl) == "table" then
+      foreach(tbl, function(k, v)
+        if type(v) == "table" then __h55__local_56424_freeze(v) end
+      end)
+      settag(tbl, __h55__local_56424_RO_TAG)
+    end
+    return tbl
+  end
+else
+  function __h55__local_56424_freeze(tbl)
+    return tbl
+  end
+  function __h55__local_56424_freeze_shallow(tbl)
+    if type(tbl) == "table" then
+      foreach(tbl, function(k, v)
+        if type(v) == "table" then __h55__local_56424_freeze(v) end
+      end)
+    end
+    return tbl
+  end
+end
+__h55__local_56424_READY = 1
+"""
+
+def ensure_runtime_lua(out_dir: Path) -> Path:
+    scripts_dir = out_dir / "scripts"
+    ensure_dir(scripts_dir)
+    out_path = scripts_dir / "h55_enum_runtime.lua"
+    # Always write/refresh to ensure consistency
+    out_path.write_text(runtime_lua_text_lua40(), encoding="utf-8")
+    info(f"Wrote runtime helpers: {out_path}")
+    return out_path
 
 # -----------------------------
 # Exporters
@@ -365,46 +388,31 @@ def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
     creatures_root = local_dir / "Creatures"
     xdbs = [p for p in list_files_recursive(creatures_root, (".xdb",)) if p.name.lower() != "none.xdb"]
 
-    # Mining abilities and growths from sources
-    creatures_tmp: List[Tuple[str, str, List[str], int]] = []  # (town, enum_tail, abilities, growth)
+    creatures_tmp: List[Tuple[str, str, List[str], int]] = []
     n = len(xdbs)
     for i, p in enumerate(xdbs, 1):
         if i % 50 == 0 or i == n:
             info(f"  parsed {i}/{n}...")
         rel = p.relative_to(creatures_root)
-        # top-level dir is town
         parts = rel.parts
         if len(parts) < 2:
-            # skip odd files at root
             continue
-        town = slug_to_enum_tail(parts[0])  # folder name defines town
+        town = slug_to_enum_tail(parts[0])
         enum_tail, abilities, growth = parse_creature_xdb(p)
-        # Skip UNKNOWN hardcoded
         if enum_tail == "UNKNOWN":
             continue
         creatures_tmp.append((town, enum_tail, abilities, growth))
 
-    # Build creature id map from preferred sources
-    # 1) framework fallback (always available)
     framework_cre_ids, framework_abi_ids = try_load_ids_from_framework(repo_root)
-    # 2) optional pdf
     pdf_ids = try_load_ids_from_pdf(repo_root)
-    # 3) types.xml sanity only; id mining from types.xml is project-specific and not always stable,
-    #    so we rely on (1)/(2) as authoritative enumerations.
-    #    We still print counts for confidence.
-    # (IDs in framework file show canonical mapping e.g. CREATURE_ANGEL=13; ABILITY_* map too)
-    # refs: h55_enum_framework_v7.lua :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
 
-    # Assemble by town
     creatures_by_town: Dict[str, Dict[str, Dict]] = {}
     for town, enum_tail, abilities, growth in creatures_tmp:
         const = f"CREATURE_{enum_tail}"
-        # resolve id:
         cid = framework_cre_ids.get(const)
         if cid is None:
             cid = pdf_ids.get(const)
         if cid is None:
-            # final fallback for strict mode
             if strict:
                 err(f"Missing creature id for {const}; cannot continue in --strict.")
                 raise SystemExit(2)
@@ -412,9 +420,7 @@ def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
                 warn(f"Missing creature id for {const}; using 0.")
                 cid = 0
 
-        # normalize abilities (unique, sorted)
         abilities = sorted(set(abilities))
-
         creatures_by_town.setdefault(town, {})
         creatures_by_town[town][enum_tail] = dict(
             const=const,
@@ -423,23 +429,20 @@ def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
             ABILITIES=abilities,
         )
 
-    # Build global ABILITIES.CREATURES: prefer framework map; otherwise collect from scanned creatures only
-    if framework_abi_ids:
-        ability_ids = framework_abi_ids
-    else:
-        # Fallback: derive only abilities seen in xdbs with made-up ids = 0 (not ideal)
-        ability_ids = {a: 0 for _, _, A, _ in creatures_tmp for a in A}
+    ability_ids = framework_abi_ids or {a: 0 for _, _, A, _ in creatures_tmp for a in A}
 
     # Prepare Lua
     lua_chunks = []
-    lua_chunks.append(lua_readonly_prelude())
+    lua_chunks.append(lua_include_runtime_prelude())
     lua_chunks.append(build_lua_abilities_creatures(ability_ids))
-    lua_chunks.append("")  # spacer
+    lua_chunks.append("")
     lua_chunks.append(build_lua_creatures_dot(creatures_by_town))
     lua_text = "\n".join(lua_chunks).strip() + "\n"
 
-    # Output
     ensure_dir(out_dir)
+    # also ensure runtime helpers exist
+    if not dry_run:
+        ensure_runtime_lua(out_dir)
     out_path = out_dir / "h55_enums_creatures.lua"
     info(f"Planned output: {out_path}")
     if not dry_run:
@@ -448,13 +451,12 @@ def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
     else:
         info("Dry-run; not writing Lua.")
 
-    # Print sample Lua object previews (text-form)
+    # Textual preview (Python side)
     info("Lua preview (3 samples):")
     for (town, name) in [("HAVEN", "ANGEL"), ("ACADEMY", "DJINN_VIZIER"), ("NECROPOLIS", "SKELETON")]:
         obj = creatures_by_town.get(town, {}).get(name)
         if not obj:
             continue
-        # mirror the Lua object textual form
         abilities_tail = [a.replace("ABILITY_", "") for a in obj["ABILITIES"]]
         print(f"  CREATURE.{town}.{name} -> "
               f"{{ name='{obj['const']}', id={obj['id']}, BASE_GROWTH={obj['BASE_GROWTH']}, ABILITIES={abilities_tail} }}")
@@ -472,11 +474,14 @@ def export_spells(repo_root: Path, local_dir: Path, out_dir: Path, dry_run: bool
         spells[tail] = const
 
     lua_chunks = []
-    lua_chunks.append(lua_readonly_prelude())
+    lua_chunks.append(lua_include_runtime_prelude())
     lua_chunks.append(build_lua_spells(spells))
     lua_text = "\n".join(lua_chunks).strip() + "\n"
 
     ensure_dir(out_dir)
+    # also ensure runtime helpers exist
+    if not dry_run:
+        ensure_runtime_lua(out_dir)
     out_path = out_dir / "h55_enums_spells.lua"
     info(f"Planned output: {out_path}")
     if not dry_run:
