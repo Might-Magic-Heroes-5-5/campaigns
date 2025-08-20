@@ -256,3 +256,8 @@ python scripts/parse_spells.py \
 - fix: Tutorial is available and updated for 5.5
 - fix: Siege enemy heroes wander around instead of attacking the castle
 - new: added Memory Mentor
+
+### C4M3 – Dungeon: The Cultists
+- fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
+- fix: Red AI player (Inferno) heroes could freeze till end of game
+- fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met

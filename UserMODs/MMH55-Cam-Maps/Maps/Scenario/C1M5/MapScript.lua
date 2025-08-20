@@ -317,6 +317,7 @@ OBJECTIVES = {
       end
       
       if GetObjectiveState( "prim5") == OBJECTIVE_COMPLETED then
+	    Save("scene3" );
         CINEMATICS.outro();
 	  	  Win();
 	  	  return

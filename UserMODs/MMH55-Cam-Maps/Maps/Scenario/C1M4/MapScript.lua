@@ -255,6 +255,7 @@ OBJECTIVES = {
         end
         
         if GetObjectiveState( "prim1") == OBJECTIVE_COMPLETED then
+		  Save("scene2" );
           sleep(5);
           Win();
           return
