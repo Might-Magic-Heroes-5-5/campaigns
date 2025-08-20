@@ -5,9 +5,11 @@ h55_map_packer.py  — MMH5.5 Campaigns helper (CLI)
 
 Actions (interactive menu if none given):
   1) Pack: Scenario/<Mission> -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m
+     - During Pack, you may optionally include selected or ALL campaign scripts from:
+       ./UserMODs/MMH55-Cam-Maps/scripts/*
+       (numeric UI; shows Created/Modified date per file; bulk confirm; conflict policy)
   2) Unpack: LOCAL_DIR/COMPILED_MAPS/*.h5m -> restore into sources (with backup)
-  3) Verify environment (template & paths)
-  4) Quit
+  3) Quit
 
 Key rules from repo:
 - Template 'DEV_C1M1.h5m' must be at repo root.  :contentReference[oaicite:4]{index=4}
@@ -20,7 +22,6 @@ Key rules from repo:
 from __future__ import annotations
 import sys
 import os
-import re
 import json
 import shutil
 import zipfile
@@ -42,6 +43,7 @@ class Paths:
         self.repo_root = self._find_repo_root(script_path)
         self.template_h5m = self.repo_root / "DEV_C1M1.h5m"
         self.missions_root = self.repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
+        self.campaign_scripts_dir = self.repo_root / "UserMODs" / "MMH55-Cam-Maps" / "scripts"
         self.local_dir = self.repo_root / "LOCAL_DIR"
         self.compiled_dir = self.local_dir / "COMPILED_MAPS"
         self.extracted_dir = self.compiled_dir / "extracted"
@@ -181,7 +183,7 @@ def detect_main_xdb(folder: Path, orig_guess: str) -> Path:
 
 def write_map_tag_for_target(map_tag_path: Path, xdb_name: str) -> None:
     if xdb_name == "map.xdb":
-        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact per README  :contentReference[oaicite:8]{index=8}
+        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact per README
     else:
         xml = f'<AdvMapDesc href="{xdb_name}#xpointer(/AdvMapDesc)"/>'
     write_text(map_tag_path, xml)
@@ -239,6 +241,140 @@ def list_mission_dirs(missions_root: Path) -> List[Path]:
         return []
     return sorted([d for d in missions_root.iterdir() if d.is_dir()])
 
+# ---------- Cross‑platform time formatting ----------
+def format_file_time(p: Path) -> Tuple[str, str]:
+    """
+    Returns (label, formatted_time).
+    - On Windows: ("Created", localtime of st_ctime)
+    - On platforms with birth time (e.g., macOS/BSD): ("Created", st_birthtime)
+    - Otherwise (e.g., most Linux): ("Modified", st_mtime)
+    """
+    st = p.stat()
+    if os.name == "nt":
+        ts = st.st_ctime
+        label = "Created"
+    else:
+        birth = getattr(st, "st_birthtime", None)
+        if birth is not None:
+            ts = birth
+            label = "Created"
+        else:
+            ts = st.st_mtime
+            label = "Modified"
+    return label, _dt.datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
+
+# ---------- Interactive inclusion of campaign scripts ----------
+def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
+    """
+    Offer to include scripts from P.campaign_scripts_dir into map_folder/scripts/.
+    Numeric UI; two modes: per-file or ALL.
+    Safe conflict handling (global policy or per-file).
+    """
+    src_dir = P.campaign_scripts_dir
+    if not src_dir.exists():
+        return
+
+    files = sorted([p for p in src_dir.iterdir() if p.is_file()])
+    if not files:
+        return
+
+    choice = prompt_choice(
+        ["Yes, include campaign scripts (choose individually)",
+         "Yes, include ALL campaign scripts",
+         "No, skip"],
+        f"Would you like to include campaign scripts from:\n  {src_dir}"
+    )
+    if choice == 2:
+        return
+
+    # Overview list with dates before any inclusion
+    print("\nAvailable campaign scripts:")
+    for i, f in enumerate(files, 1):
+        label, tstr = format_file_time(f)
+        print(f"  {i}. {f.name} — {label}: {tstr}")
+
+    dest_dir = map_folder / "scripts"
+    ensure_dir(dest_dir)
+
+    if choice == 1:
+        # -------- Include ALL --------
+        confirm = prompt_choice(
+            ["Yes, include ALL listed scripts", "No, cancel"],
+            "Include ALL listed scripts?"
+        )
+        if confirm == 1:
+            print("Cancelled including ALL scripts.")
+            return
+
+        # Detect conflicts
+        conflicts = [f for f in files if (dest_dir / f.name).exists()]
+        policy = "ask"
+        if conflicts:
+            pol_idx = prompt_choice(
+                ["Overwrite ALL conflicting files",
+                 "Skip ALL conflicting files",
+                 "Ask per conflicting file"],
+                f"There are {len(conflicts)} conflicting destination files.\nChoose conflict resolution policy:"
+            )
+            policy = ["overwrite_all", "skip_all", "ask"][pol_idx]
+
+        included = 0
+        for f in files:
+            dst = dest_dir / f.name
+            if dst.exists():
+                if policy == "skip_all":
+                    continue
+                if policy == "ask":
+                    how = prompt_choice(
+                        ["Overwrite this file", "Skip this file", "Abort the scripts inclusion step"],
+                        f"Conflict: destination file already exists:\n  {dst}\nSelect resolution:"
+                    )
+                    if how == 1:  # Skip
+                        continue
+                    if how == 2:  # Abort
+                        print("Aborted campaign scripts inclusion by user request.")
+                        break
+                    # how == 0 -> overwrite
+                # overwrite_all -> proceed
+            shutil.copy2(f, dst)
+            included += 1
+            print(f" - Included: {dst}")
+        print(f"\nCampaign scripts inclusion complete. Files included: {included}")
+        return
+
+    # -------- Per-file interactive inclusion --------
+    included = 0
+    for f in files:
+        label, tstr = format_file_time(f)
+        act = prompt_choice(
+            ["Include this file", "Skip this file", "Quit (stop including scripts)"],
+            f"\nScript: {f.name}\n{label}: {tstr}\nInclude?"
+        )
+        if act == 1:
+            continue
+        if act == 2:
+            break
+
+        dst = dest_dir / f.name
+        if dst.exists():
+            how = prompt_choice(
+                ["Overwrite existing destination file",
+                 "Skip this file",
+                 "Abort the scripts inclusion step"],
+                f"Conflict: destination file already exists:\n  {dst}\nSelect resolution:"
+            )
+            if how == 1:
+                continue
+            if how == 2:
+                print("Aborted campaign scripts inclusion by user request.")
+                break
+            # how == 0 -> overwrite
+        shutil.copy2(f, dst)
+        included += 1
+        print(f" - Included: {dst}")
+
+    print(f"\nCampaign scripts inclusion complete. Files included: {included}")
+
 # ---------- Core actions ----------
 def verify_environment(P: Paths) -> None:
     missing = []
@@ -247,18 +383,43 @@ def verify_environment(P: Paths) -> None:
     if not P.missions_root.exists():
         missing.append(str(P.missions_root))
     ensure_dir(P.compiled_dir)
+
+    print("🔎 Verifying environment ...")
     if missing:
         print("❌ Environment problems:")
         for m in missing:
             print(" - Missing:", m)
+        # Also show scripts directory status even if missing critical paths
+        if P.campaign_scripts_dir.exists():
+            _print_scripts_inventory(P.campaign_scripts_dir)
+        else:
+            print(" - Optional campaign scripts: (none found)")
         sys.exit(1)
+
     print("✅ Environment OK")
-    print(" - Template:", P.template_h5m)
-    print(" - Missions:", P.missions_root)
-    print(" - Compiled output:", P.compiled_dir)
+    print(f" - Template: {P.template_h5m}")
+    print(f" - Missions: {P.missions_root}")
+    print(f" - Compiled output: {P.compiled_dir}")
+    if P.campaign_scripts_dir.exists():
+        _print_scripts_inventory(P.campaign_scripts_dir)
+    else:
+        print(" - Optional campaign scripts: (none found)")
+
+def _print_scripts_inventory(scripts_dir: Path) -> None:
+    files = sorted([p for p in scripts_dir.iterdir() if p.is_file()])
+    print(f" - Optional campaign scripts: {scripts_dir}")
+    if not files:
+        print("   (directory exists but contains no files)")
+        return
+    print(f"   {len(files)} file(s):")
+    for f in files:
+        label, tstr = format_file_time(f)
+        size = f.stat().st_size
+        print(f"   - {f.name} — {label}: {tstr} — {size} B")
 
 def pack(P: Paths) -> None:
-    verify_environment(P)  # also ensures compiled dir exists
+    # Environment already verified at startup; ensure output dir still exists
+    ensure_dir(P.compiled_dir)
 
     mission_dirs = list_mission_dirs(P.missions_root)
     if not mission_dirs:
@@ -306,11 +467,14 @@ def pack(P: Paths) -> None:
             else:
                 shutil.copy2(item, dst)
 
+        # 4b) Offer to include campaign scripts into DEV_<Mission>/scripts
+        include_campaign_scripts_interactive(P, new_singles_folder)
+
         # 5) Rename main XDB -> map.xdb; set map-tag.xdb exactly
         src_main_xdb = detect_main_xdb(new_singles_folder, orig_xdb_guess)
         dst_main_xdb = new_singles_folder / "map.xdb"
         safe_rename(src_main_xdb, dst_main_xdb)
-        write_map_tag_for_target(new_singles_folder / "map-tag.xdb", "map.xdb")  # exact per README  :contentReference[oaicite:9]{index=9}
+        write_map_tag_for_target(new_singles_folder / "map-tag.xdb", "map.xdb")  # exact per README
 
         # 6) Optional single-player flip
         flip_applied = False
@@ -341,7 +505,7 @@ def pack(P: Paths) -> None:
         zip_dir_to_file(tmpdir, out_h5m)
 
     print(f"\n✅ Packed: {out_h5m}")
-    print("Reminder: keep Instant Travel blocked if it was blocked in the mission.")  # :contentReference[oaicite:10]{index=10}
+    print("Reminder: keep Instant Travel blocked if it was blocked in the mission.")
 
 def _timestamp() -> str:
     return _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -355,7 +519,8 @@ def _zip_folder(folder: Path, out_zip: Path) -> None:
                 zf.write(p, arcname=str(p.relative_to(folder)))
 
 def unpack(P: Paths) -> None:
-    verify_environment(P)  # ensures compiled dir exists
+    # Environment already verified at startup; ensure output dir still exists
+    ensure_dir(P.compiled_dir)
 
     h5ms = sorted([p for p in P.compiled_dir.glob("*.h5m") if p.is_file()])
     if not h5ms:
@@ -450,7 +615,10 @@ def main(argv: List[str]) -> None:
     script_path = Path(__file__).resolve()
     P = Paths(script_path)
 
-    # If user gave an explicit action, run it
+    # ALWAYS verify environment on startup (not a user option)
+    verify_environment(P)
+
+    # If user gave an explicit action, run it (no 'verify' command anymore)
     if len(argv) > 1:
         cmd = argv[1].lower()
         if cmd in {"-h", "--help", "help"}:
@@ -460,23 +628,18 @@ def main(argv: List[str]) -> None:
             pack(P); return
         if cmd == "unpack":
             unpack(P); return
-        if cmd == "verify":
-            verify_environment(P); return
-        print(f"Unknown command: {cmd}\nUse: pack | unpack | verify")
+        print(f"Unknown command: {cmd}\nUse: pack | unpack")
         return
 
-    # Otherwise, show a numeric action selector
+    # Otherwise, show a numeric action selector (no 'Verify environment' entry)
     choice = prompt_choice(
         ["Pack a mission to .h5m",
          "Unpack a .h5m and restore into sources",
-         "Verify environment",
          "Quit"], "Select action:")
     if choice == 0:
         pack(P)
     elif choice == 1:
         unpack(P)
-    elif choice == 2:
-        verify_environment(P)
     else:
         print("Bye.")
 
