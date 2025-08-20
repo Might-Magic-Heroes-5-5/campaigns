@@ -4,12 +4,20 @@
 h55_map_packer.py  — MMH5.5 Campaigns helper (CLI)
 
 Actions (interactive menu if none given):
-  1) Pack: Scenario/<Mission> -> LOCAL_DIR/COMPILED_MAPS/DEV_<Mission>.h5m
-     - During Pack, you may optionally include selected or ALL campaign scripts from:
+  1) Pack a mission to single-player .h5m (DEV_<Mission>)
+     - Optional inclusion of selected or ALL campaign scripts from:
        ./UserMODs/MMH55-Cam-Maps/scripts/*
-       (numeric UI; shows Created/Modified date per file; bulk confirm; conflict policy)
-  2) Unpack: LOCAL_DIR/COMPILED_MAPS/*.h5m -> restore into sources (with backup)
-  3) Quit
+  2) Build campaign .h5u patch (single mission, UserMODs override)
+     - Payload options:
+       a) Minimal: <Mission>.xdb + map-tag.xdb (tag points to <Mission>.xdb)
+       b) Full: copy ALL files from mission folder (recursively), ensuring tag points to <Mission>.xdb
+     - Optional include of campaign scripts into that mission folder
+  3) Build WHOLE campaign .h5u patch (multi-mission, dynamic A?C# detection)   <-- NEW
+     - Groups missions by A?C# prefix (A1C1, A2C3, C4, etc) and packs all M# into one .h5u
+     - Same payload choice (Minimal / Full)
+     - Optional include of ALL campaign scripts into EVERY mission
+  4) Unpack a .h5m and restore into sources (with backup)
+  5) Quit
 
 Key rules from repo:
 - Template 'DEV_C1M1.h5m' must be at repo root.  :contentReference[oaicite:4]{index=4}
@@ -22,13 +30,14 @@ Key rules from repo:
 from __future__ import annotations
 import sys
 import os
+import re  # NEW
 import json
 import shutil
 import zipfile
 import tempfile
 import datetime as _dt
 from pathlib import Path
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple, List, Dict
 
 import xml.etree.ElementTree as ET
 
@@ -37,6 +46,9 @@ META_FILENAME = ".campaigns_pack_meta.json"
 MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'
 SINGLE_MISSIONS_REL = Path("Maps") / "SingleMissions"
 
+# Mission name pattern: A1C1M1, A2C0M0, C4M2, etc.  NEW
+MISSION_RE = re.compile(r'^(?:A(?P<A>\d+))?C(?P<C>\d+)M(?P<M>\d+)$')
+
 # ---------- Paths helper ----------
 class Paths:
     def __init__(self, script_path: Path):
@@ -44,6 +56,7 @@ class Paths:
         self.template_h5m = self.repo_root / "DEV_C1M1.h5m"
         self.missions_root = self.repo_root / "UserMODs" / "MMH55-Cam-Maps" / "Maps" / "Scenario"
         self.campaign_scripts_dir = self.repo_root / "UserMODs" / "MMH55-Cam-Maps" / "scripts"
+        self.user_mods_root = self.repo_root / "UserMODs"  # where .h5u is loaded by the game
         self.local_dir = self.repo_root / "LOCAL_DIR"
         self.compiled_dir = self.local_dir / "COMPILED_MAPS"
         self.extracted_dir = self.compiled_dir / "extracted"
@@ -183,7 +196,7 @@ def detect_main_xdb(folder: Path, orig_guess: str) -> Path:
 
 def write_map_tag_for_target(map_tag_path: Path, xdb_name: str) -> None:
     if xdb_name == "map.xdb":
-        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact per README
+        xml = MAP_TAG_XML_FOR_MAP_XDB  # exact per README (for .h5m template packaging)
     else:
         xml = f'<AdvMapDesc href="{xdb_name}#xpointer(/AdvMapDesc)"/>'
     write_text(map_tag_path, xml)
@@ -263,7 +276,7 @@ def format_file_time(p: Path) -> Tuple[str, str]:
             label = "Modified"
     return label, _dt.datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
 
-# ---------- Interactive inclusion of campaign scripts ----------
+# ---------- Interactive inclusion of campaign scripts for .h5m ----------
 def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
     """
     Offer to include scripts from P.campaign_scripts_dir into map_folder/scripts/.
@@ -280,8 +293,8 @@ def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
 
     choice = prompt_choice(
         ["Yes, include campaign scripts (choose individually)",
-         "Yes, include ALL campaign scripts",
-         "No, skip"],
+            "Yes, include ALL campaign scripts",
+            "No, skip"],
         f"Would you like to include campaign scripts from:\n  {src_dir}"
     )
     if choice == 2:
@@ -312,8 +325,8 @@ def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
         if conflicts:
             pol_idx = prompt_choice(
                 ["Overwrite ALL conflicting files",
-                 "Skip ALL conflicting files",
-                 "Ask per conflicting file"],
+                    "Skip ALL conflicting files",
+                    "Ask per conflicting file"],
                 f"There are {len(conflicts)} conflicting destination files.\nChoose conflict resolution policy:"
             )
             policy = ["overwrite_all", "skip_all", "ask"][pol_idx]
@@ -359,8 +372,8 @@ def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
         if dst.exists():
             how = prompt_choice(
                 ["Overwrite existing destination file",
-                 "Skip this file",
-                 "Abort the scripts inclusion step"],
+                    "Skip this file",
+                    "Abort the scripts inclusion step"],
                 f"Conflict: destination file already exists:\n  {dst}\nSelect resolution:"
             )
             if how == 1:
@@ -375,7 +388,296 @@ def include_campaign_scripts_interactive(P: Paths, map_folder: Path) -> None:
 
     print(f"\nCampaign scripts inclusion complete. Files included: {included}")
 
-# ---------- Core actions ----------
+# ---------- NEW: shared mission staging for .h5u (single or multi) ----------
+def _stage_mission_for_h5u(stage_root: Path, mission_src: Path, mission_name: str, mode: str) -> Path:
+    """
+    Stage one mission under stage_root/Maps/Scenario/<Mission>/...
+    mode: "minimal" or "full"
+    Ensures map-tag.xdb points to <Mission>.xdb; renames map.xdb -> <Mission>.xdb in the stage if needed.
+    Returns the path to stage_root/Maps/Scenario/<Mission>.
+    """
+    tag_src = mission_src / "map-tag.xdb"
+    orig_xdb_name = parse_map_tag_href_xml(tag_src) or f"{mission_name}.xdb"
+    src_main_xdb = detect_main_xdb(mission_src, orig_xdb_name)
+
+    stage_mission_dir = stage_root / "Maps" / "Scenario" / mission_name
+    ensure_dir(stage_mission_dir)
+
+    if mode == "minimal":
+        shutil.copy2(src_main_xdb, stage_mission_dir / orig_xdb_name)
+        write_map_tag_for_target(stage_mission_dir / "map-tag.xdb", orig_xdb_name)
+    else:
+        for root, _, files in os.walk(mission_src):
+            rel = Path(root).relative_to(mission_src)
+            dst_root = stage_mission_dir / rel
+            ensure_dir(dst_root)
+            for f in files:
+                srcp = Path(root) / f
+                dstp = dst_root / f
+                ensure_dir(dstp.parent)
+                shutil.copy2(srcp, dstp)
+        # normalize naming and tag
+        stage_map = stage_mission_dir / "map.xdb"
+        stage_orig = stage_mission_dir / orig_xdb_name
+        if stage_map.exists() and not stage_orig.exists():
+            safe_rename(stage_map, stage_orig)
+        write_map_tag_for_target(stage_mission_dir / "map-tag.xdb", orig_xdb_name)
+
+    return stage_mission_dir
+
+# ---------- NEW: build campaign .h5u patch (single mission) REFACTORED ----------
+def build_campaign_h5u(P: Paths) -> None:
+    """
+    Build a UserMODs override archive (.h5u) with Maps/Scenario/<Mission>/...
+    Modes:
+      - Minimal:   <Mission>.xdb + map-tag.xdb (tag -> <Mission>.xdb)
+      - Full:      ALL files from mission folder, ensuring tag -> <Mission>.xdb.
+    Also offers to include campaign scripts into that mission.
+    """
+    ensure_dir(P.compiled_dir)
+
+    mission_dirs = list_mission_dirs(P.missions_root)
+    if not mission_dirs:
+        raise SystemExit(f"No missions found in {P.missions_root}")
+
+    names = [d.name for d in mission_dirs]
+    idx = prompt_choice(names, "Select a mission to package as a campaign .h5u patch:")
+    mission_name = names[idx]
+    mission_src = mission_dirs[idx]
+
+    mode_idx = prompt_choice(
+        ["Minimal payload (only map-tag.xdb and <Mission>.xdb)",
+         "Full payload (ALL files from the mission folder)"],
+        "Select .h5u payload mode:"
+    )
+    mode = "minimal" if mode_idx == 0 else "full"
+
+    print(f"\nBuilding campaign patch (.h5u) for mission: {mission_name}")
+    print(f"- Payload mode: {mode}")
+
+    with tempfile.TemporaryDirectory(prefix="h55_h5u_") as tmpdir:
+        tmp = Path(tmpdir)
+        stage_mission_dir = _stage_mission_for_h5u(tmp, mission_src, mission_name, mode)
+
+        # Offer scripts inclusion into this one mission
+        include_campaign_scripts_interactive(P, stage_mission_dir)
+
+        out_h5u = P.compiled_dir / f"my_changes_for_{mission_name}.h5u"
+        if out_h5u.exists():
+            if not yes_no(f"Target file already exists:\n  {out_h5u}\nOverwrite?", default=False):
+                print("Aborted by user. Nothing written.")
+                return
+            out_h5u.unlink()
+        zip_dir_to_file(tmp, out_h5u)
+
+    print(f"\n✅ Campaign patch built: {out_h5u}")
+    # copy to UserMODs for testing
+    if P.user_mods_root.exists():
+        if yes_no(f"Copy this .h5u into UserMODs for testing?\n  {P.user_mods_root}", default=True):
+            dst = P.user_mods_root / out_h5u.name
+            if dst.exists():
+                act = prompt_choice(
+                    ["Overwrite existing file in UserMODs", "Skip copy"],
+                    f"File already exists in UserMODs:\n  {dst}\nChoose:"
+                )
+                if act == 1:
+                    print("Skipped copying to UserMODs.")
+                    return
+                dst.unlink()
+            shutil.copy2(out_h5u, dst)
+            print(f" - Copied to: {dst}")
+    else:
+        print(f"(Note) UserMODs folder not found at: {P.user_mods_root} — skipping copy.")
+
+# ---------- NEW: discover dynamic campaign groups (A?C#) ----------
+def _discover_campaign_groups(missions_root: Path) -> Dict[Tuple[Optional[int], int], List[Tuple[str, Path, int]]]:
+    """
+    Returns a dict:
+      key = (addon_or_None, C_number)
+      value = list of tuples (mission_name, mission_path, M_number)
+    Only folders matching the naming regex are included.
+    """
+    groups: Dict[Tuple[Optional[int], int], List[Tuple[str, Path, int]]] = {}
+    if not missions_root.exists():
+        return groups
+    for d in missions_root.iterdir():
+        if not d.is_dir():
+            continue
+        m = MISSION_RE.match(d.name)
+        if not m:
+            continue
+        addon = int(m.group('A')) if m.group('A') is not None else None
+        camp = int(m.group('C'))
+        ms = int(m.group('M'))
+        key = (addon, camp)
+        groups.setdefault(key, []).append((d.name, d, ms))
+    # sort mission lists by M ascending
+    for k in list(groups.keys()):
+        groups[k].sort(key=lambda t: t[2])
+    return groups
+
+def _format_campaign_key(key: Tuple[Optional[int], int]) -> str:
+    a, c = key
+    return f"A{a}C{c}" if a is not None else f"C{c}"
+
+# ---------- NEW: include ALL campaign scripts into EVERY mission (bulk) ----------
+def _include_scripts_bulk(P: Paths, stage_mission_dirs: List[Path]) -> None:
+    src_dir = P.campaign_scripts_dir
+    if not src_dir.exists():
+        return
+    files = sorted([p for p in src_dir.iterdir() if p.is_file()])
+    if not files:
+        return
+
+    choice = prompt_choice(
+        ["Include ALL campaign scripts into EVERY mission",
+         "No, skip"],
+        f"Campaign scripts directory:\n  {src_dir}\nDo you want to include these into every mission?")
+    if choice == 1:
+        return
+
+    print("\nAvailable campaign scripts:")
+    for i, f in enumerate(files, 1):
+        label, tstr = format_file_time(f)
+        print(f"  {i}. {f.name} — {label}: {tstr}")
+
+    confirm = prompt_choice(
+        ["Yes, include ALL listed scripts into EVERY mission", "No, cancel"],
+        "Confirm bulk scripts inclusion:")
+    if confirm == 1:
+        print("Cancelled bulk scripts inclusion.")
+        return
+
+    # Conflict policy once for the whole operation
+    total_conflicts = 0
+    for d in stage_mission_dirs:
+        dest_dir = d / "scripts"
+        ensure_dir(dest_dir)
+        total_conflicts += sum(1 for f in files if (dest_dir / f.name).exists())
+
+    policy = "ask"
+    if total_conflicts:
+        pol_idx = prompt_choice(
+            ["Overwrite ALL conflicting files",
+             "Skip ALL conflicting files",
+             "Ask per conflicting file"],
+            f"There are {total_conflicts} total conflicting destination files across missions.\nChoose conflict resolution policy:"
+        )
+        policy = ["overwrite_all", "skip_all", "ask"][pol_idx]
+
+    total_included = 0
+    for d in stage_mission_dirs:
+        dest_dir = d / "scripts"
+        ensure_dir(dest_dir)
+        for f in files:
+            dst = dest_dir / f.name
+            if dst.exists():
+                if policy == "skip_all":
+                    continue
+                if policy == "ask":
+                    how = prompt_choice(
+                        ["Overwrite this file", "Skip this file", "Abort bulk scripts inclusion"],
+                        f"Conflict in:\n  {dst}\nSelect resolution:"
+                    )
+                    if how == 1:
+                        continue
+                    if how == 2:
+                        print("Aborted bulk scripts inclusion by user request.")
+                        print(f"Total files included before abort: {total_included}")
+                        return
+                    # how == 0 -> overwrite
+                # overwrite_all -> proceed
+            shutil.copy2(f, dst)
+            total_included += 1
+            print(f" - Included: {dst}")
+
+    print(f"\nBulk campaign scripts inclusion complete. Files included: {total_included}")
+
+# ---------- NEW: build WHOLE campaign .h5u patch (multi-mission) ----------
+def build_campaign_set_h5u(P: Paths) -> None:
+    """
+    Build one .h5u containing ALL missions that share the same dynamic campaign key (A?C#).
+    Examples of keys:
+      - A1C1  (Addon 1, Campaign 1) → includes A1C1M1..A1C1M5
+      - C4    (Classic Campaign 4)  → includes C4M1..C4M5
+    Modes:
+      - Minimal:   for each mission, include <Mission>.xdb + map-tag.xdb
+      - Full:      copy ALL files from each mission folder
+    Also offers to include ALL campaign scripts into EVERY mission.
+    """
+    ensure_dir(P.compiled_dir)
+
+    groups = _discover_campaign_groups(P.missions_root)
+    if not groups:
+        raise SystemExit(f"No missions matching A?C#M# pattern found in {P.missions_root}")
+
+    # Build menu entries
+    entries = []
+    keys_sorted = sorted(groups.keys(), key=lambda k: (_format_campaign_key(k)))
+    for k in keys_sorted:
+        label = _format_campaign_key(k)
+        missions = [name for (name, _path, _mnum) in groups[k]]
+        entries.append(f"{label} — {len(missions)} mission(s): {', '.join(missions)}")
+
+    pick = prompt_choice(entries, "Select a WHOLE campaign to package as a .h5u patch:")
+    sel_key = keys_sorted[pick]
+    sel_label = _format_campaign_key(sel_key)
+    sel_missions = groups[sel_key]  # list of (name, path, M)
+
+    mode_idx = prompt_choice(
+        ["Minimal payload (only map-tag.xdb and <Mission>.xdb for each mission)",
+         "Full payload (ALL files from each mission folder)"],
+        f"Select .h5u payload mode for campaign {sel_label}:"
+    )
+    mode = "minimal" if mode_idx == 0 else "full"
+
+    print(f"\nBuilding campaign patch (.h5u) for {sel_label}")
+    print(f"- Missions: {[name for (name, _p, _m) in sel_missions]}")
+    print(f"- Payload mode: {mode}")
+
+    with tempfile.TemporaryDirectory(prefix="h55_h5u_set_") as tmpdir:
+        tmp = Path(tmpdir)
+        staged_dirs: List[Path] = []
+
+        # Stage each mission
+        for (name, path, _mnum) in sel_missions:
+            d = _stage_mission_for_h5u(tmp, path, name, mode)
+            staged_dirs.append(d)
+
+        # Offer bulk scripts inclusion into EVERY mission in the set
+        _include_scripts_bulk(P, staged_dirs)
+
+        out_h5u = P.compiled_dir / f"my_changes_for_{sel_label}.h5u"
+        if out_h5u.exists():
+            if not yes_no(f"Target file already exists:\n  {out_h5u}\nOverwrite?", default=False):
+                print("Aborted by user. Nothing written.")
+                return
+            out_h5u.unlink()
+
+        # Zip the staged structure as .h5u
+        zip_dir_to_file(tmp, out_h5u)
+
+    print(f"\n✅ Campaign set patch built: {out_h5u}")
+
+    # Offer to copy to UserMODs root for testing
+    if P.user_mods_root.exists():
+        if yes_no(f"Copy this .h5u into UserMODs for testing?\n  {P.user_mods_root}", default=True):
+            dst = P.user_mods_root / out_h5u.name
+            if dst.exists():
+                act = prompt_choice(
+                    ["Overwrite existing file in UserMODs", "Skip copy"],
+                    f"File already exists in UserMODs:\n  {dst}\nChoose:"
+                )
+                if act == 1:
+                    print("Skipped copying to UserMODs.")
+                    return
+                dst.unlink()
+            shutil.copy2(out_h5u, dst)
+            print(f" - Copied to: {dst}")
+    else:
+        print(f"(Note) UserMODs folder not found at: {P.user_mods_root} — skipping copy.")
+
+# ---------- Core actions already present (verify, pack .h5m, unpack .h5m) ----------
 def verify_environment(P: Paths) -> None:
     missing = []
     if not P.template_h5m.exists():
@@ -389,7 +691,6 @@ def verify_environment(P: Paths) -> None:
         print("❌ Environment problems:")
         for m in missing:
             print(" - Missing:", m)
-        # Also show scripts directory status even if missing critical paths
         if P.campaign_scripts_dir.exists():
             _print_scripts_inventory(P.campaign_scripts_dir)
         else:
@@ -400,6 +701,7 @@ def verify_environment(P: Paths) -> None:
     print(f" - Template: {P.template_h5m}")
     print(f" - Missions: {P.missions_root}")
     print(f" - Compiled output: {P.compiled_dir}")
+    print(f" - UserMODs root: {P.user_mods_root} ({'exists' if P.user_mods_root.exists() else 'missing'})")
     if P.campaign_scripts_dir.exists():
         _print_scripts_inventory(P.campaign_scripts_dir)
     else:
@@ -418,7 +720,6 @@ def _print_scripts_inventory(scripts_dir: Path) -> None:
         print(f"   - {f.name} — {label}: {tstr} — {size} B")
 
 def pack(P: Paths) -> None:
-    # Environment already verified at startup; ensure output dir still exists
     ensure_dir(P.compiled_dir)
 
     mission_dirs = list_mission_dirs(P.missions_root)
@@ -519,7 +820,6 @@ def _zip_folder(folder: Path, out_zip: Path) -> None:
                 zf.write(p, arcname=str(p.relative_to(folder)))
 
 def unpack(P: Paths) -> None:
-    # Environment already verified at startup; ensure output dir still exists
     ensure_dir(P.compiled_dir)
 
     h5ms = sorted([p for p in P.compiled_dir.glob("*.h5m") if p.is_file()])
@@ -618,7 +918,7 @@ def main(argv: List[str]) -> None:
     # ALWAYS verify environment on startup (not a user option)
     verify_environment(P)
 
-    # If user gave an explicit action, run it (no 'verify' command anymore)
+    # If user gave an explicit action, run it
     if len(argv) > 1:
         cmd = argv[1].lower()
         if cmd in {"-h", "--help", "help"}:
@@ -626,19 +926,29 @@ def main(argv: List[str]) -> None:
             return
         if cmd == "pack":
             pack(P); return
+        if cmd in {"h5u", "patch", "build_h5u"}:
+            build_campaign_h5u(P); return
+        if cmd in {"campaign", "campaign_h5u", "h5u_campaign", "campaign_set"}:  # NEW
+            build_campaign_set_h5u(P); return
         if cmd == "unpack":
             unpack(P); return
-        print(f"Unknown command: {cmd}\nUse: pack | unpack")
+        print(f"Unknown command: {cmd}\nUse: pack | h5u | campaign | unpack")
         return
 
-    # Otherwise, show a numeric action selector (no 'Verify environment' entry)
+    # Otherwise, show a numeric action selector
     choice = prompt_choice(
         ["Pack a mission to .h5m",
+         "Build campaign .h5u patch (single mission)",
+         "Build WHOLE campaign .h5u patch (multi-mission)",   # NEW
          "Unpack a .h5m and restore into sources",
          "Quit"], "Select action:")
     if choice == 0:
         pack(P)
     elif choice == 1:
+        build_campaign_h5u(P)
+    elif choice == 2:
+        build_campaign_set_h5u(P)
+    elif choice == 3:
         unpack(P)
     else:
         print("Bye.")
