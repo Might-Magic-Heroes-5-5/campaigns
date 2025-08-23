@@ -37,14 +37,19 @@ Actions (interactive menu if none given):
   4) Compile full MMH55-Cam-Maps.h5u (pack entire UserMODs/MMH55-Cam-Maps)
      - Optional overlay of campaign scripts into ROOT /scripts
        (full destination path shown; conflicts listed with hashes and timestamps)
+     - For A2* missions that look like single-player .h5m drops (map.xdb present, map-tag.xdb missing),
+       auto-create map-tag.xdb pointing to map.xdb in-place (do NOT relocate anything).
      - Sanity check performed before writing the .h5u
      - Copy/zip progress with [i/N] counters
 
   5) Apply back to sources (.h5m or .h5u)
      - Prints a per-file hash list with [i/N] progress and totals
      - Per-file numeric confirmation (Include / Skip / All remaining / None / Abort)
-     - .h5m: round-trip restore (rename back, fix tag, revert Player‑2 if flipped),
-             then copy only changed/new files to sources (by hash)
+     - .h5m: round‑trip restore (rename back, fix tag, revert Player‑2 if flipped).
+             Only the internal folder **Maps/SingleMissions/DEV_*/** is scanned and compared
+             against repo sources at UserMODs/MMH55‑Cam‑Maps/Maps/Scenario/<Mission>/.
+             Copy only changed/new files (by hash), **preserving subfolders**. No repo‑level
+            folders like ./git_docs or ./UserMODs/... are unpacked or overwritten directly.
      - .h5u: copy only changed/new files (by hash) to UserMODs/MMH55‑Cam‑Maps
      - New files present only in the archive are always copied (no hash check required)
      - If h55_meta.xml is missing, fallback is: DEV_<Mission> → <Mission>
@@ -78,7 +83,7 @@ MAP_TAG_XML_FOR_MAP_XDB = '<AdvMapDesc href="map.xdb#xpointer(/AdvMapDesc)"/>'
 SINGLE_MISSIONS_REL = Path("Maps") / "SingleMissions"
 MISSION_RE = re.compile(r'^(?:A(?P<A>\d+))?C(?P<C>\d+)M(?P<M>\d+)$')
 
-# Strict-tolerant tag-reader fallback regex (accepts href="...xdb" with optional fragment)
+# Tolerant href finder (accepts href="...xdb" with optional fragment)
 _TAG_RE = re.compile(r'href\s*=\s*"([^"]+?\.xdb)(?:#[^"]*)?"', re.IGNORECASE)
 
 # ---------- Paths helper ----------
@@ -116,7 +121,11 @@ def prompt_choice(options: List[str], title: str) -> int:
     for i, opt in enumerate(options, 1):
         print(f"  {i}. {opt}")
     while True:
-        raw = input("Enter number: ").strip()
+        try:
+            raw = input("Enter number: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nAborted by user.")
+            raise SystemExit(1)
         if raw.isdigit():
             idx = int(raw)
             if 1 <= idx <= len(options):
@@ -125,7 +134,11 @@ def prompt_choice(options: List[str], title: str) -> int:
 
 def yes_no(question: str, default: bool = False) -> bool:
     suffix = " [Y/n]: " if default else " [y/N]: "
-    ans = input(question + suffix).strip().lower()
+    try:
+        ans = input(question + suffix).strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        print("\nAborted by user.")
+        raise SystemExit(1)
     if ans == "" and default:
         return True
     return ans in ("y", "yes")
@@ -234,35 +247,52 @@ def _iter_children_by_suffix(parent: ET.Element, name_suffix: str):
         if isinstance(c.tag, str) and c.tag.endswith(name_suffix):
             yield c
 
+def _preview(text: str, limit: int = 400) -> str:
+    t = text.replace("\r", " ").replace("\n", " ")
+    t = re.sub(r"\s+", " ", t)
+    return t.strip()[:limit]
+
 def parse_map_tag_href(map_tag_path: Path) -> Tuple[Optional[str], Optional[str]]:
     """
     Returns (href_basename, error_message).
-    - href_basename is like 'C1M3.xdb' or 'map.xdb'.
-    - error_message is None on success; otherwise a precise reason.
+    Accepts both forms:
+      • <AdvMapDesc href="C6M3.xdb#xpointer(/AdvMapDesc)"/>
+      • <AdvMapDescTag> ... <AdvMapDesc href="C6M3.xdb#xpointer(/AdvMapDesc)"/> ... </AdvMapDescTag>
+    On failure returns (None, descriptive_error_message_with_path_and_preview)
     """
     try:
         raw = read_text(map_tag_path)
     except Exception as e:
-        return (None, f"cannot read file: {e}")
+        return (None, f"{map_tag_path}: cannot read file: {e}")
 
-    # Try strict XML first
+    # Try XML parse
     try:
         root = ET.fromstring(raw)
-        href = root.attrib.get("href")
+        href = None
+        # 1) direct self element
+        if isinstance(root.tag, str) and root.tag.endswith("AdvMapDesc") and "href" in root.attrib:
+            href = root.attrib.get("href")
+        else:
+            # 2) nested under any parent, seek first element with tag ...AdvMapDesc and @href
+            for e in root.iter():
+                if isinstance(e.tag, str) and e.tag.endswith("AdvMapDesc") and "href" in e.attrib:
+                    href = e.attrib.get("href"); break
         if href:
             return (Path(href.split("#", 1)[0]).name, None)
+        # fallback: tolerant regex
+        m = _TAG_RE.search(raw)
+        if m:
+            return (Path(m.group(1)).name, None)
         return (None,
-                "parsed XML but AdvMapDesc/@href is empty or missing; expected e.g. "
-                '"<AdvMapDesc href=\\"C1M3.xdb#xpointer(/AdvMapDesc)\\"/>"')
+                f"{map_tag_path}: parsed XML (root=<{root.tag}>), but could not locate AdvMapDesc/@href. "
+                f"Preview: { _preview(raw) }")
     except Exception as xml_err:
         # Tolerant regex fallback (handles junk before/after element)
         m = _TAG_RE.search(raw)
         if m:
             return (Path(m.group(1)).name, None)
         return (None,
-                f"XML parse error: {xml_err}. Could not recover an href from text. "
-                "Please ensure map-tag.xdb contains a single AdvMapDesc with an href, "
-                'e.g. "<AdvMapDesc href=\\"C1M3.xdb#xpointer(/AdvMapDesc)\\"/>".')
+                f"{map_tag_path}: XML parse error: {xml_err}. Preview: { _preview(raw) }")
 
 def detect_main_xdb(folder: Path, orig_guess: str) -> Path:
     # 1) exact guess
@@ -271,7 +301,7 @@ def detect_main_xdb(folder: Path, orig_guess: str) -> Path:
         return guess
     # 2) via map-tag.xdb
     mt = folder / "map-tag.xdb"
-    href, err = parse_map_tag_href(mt) if mt.exists() else (None, None)
+    href, _ = parse_map_tag_href(mt) if mt.exists() else (None, None)
     if href and (folder / href).exists():
         return folder / href
     # 3) pick an .xdb whose root tag endswith 'AdvMapDesc'
@@ -385,50 +415,50 @@ def _file_time_str(p: Path) -> str:
     except Exception:
         return "n/a"
 
-def _print_script_conflicts(src_files: List[Path], dest_dir: Path) -> None:
-    rows = []
+def _conflict_stats(src_files: List[Path], dest_dir: Path) -> Tuple[List[Dict], List[Dict]]:
+    """Return (identical, different) conflict entries for files that already exist at dest."""
+    identical: List[Dict] = []
+    different: List[Dict] = []
     for f in src_files:
         dst = dest_dir / f.name
         if not dst.exists():
             continue
         try:
             s_sha, d_sha = file_sha1(f), file_sha1(dst)
+            s_size, d_size = f.stat().st_size, dst.stat().st_size
+            s_time, d_time = _file_time_str(f), _file_time_str(dst)
         except Exception:
             s_sha = d_sha = "n/a"
-        rows.append({
+            s_size = d_size = -1
+            s_time = d_time = "n/a"
+        entry = {
             "name": f.name,
-            "src": str(f),
-            "dst": str(dst),
-            "s_sha": s_sha,
-            "d_sha": d_sha,
-            "s_time": _file_time_str(f),
-            "d_time": _file_time_str(dst),
-            "s_size": f.stat().st_size,
-            "d_size": dst.stat().st_size,
-        })
-    if not rows:
+            "src": str(f), "dst": str(dst),
+            "s_sha": s_sha, "d_sha": d_sha,
+            "s_time": s_time, "d_time": d_time,
+            "s_size": s_size, "d_size": d_size,
+        }
+        if s_sha != "n/a" and s_sha == d_sha:
+            identical.append(entry)
+        else:
+            different.append(entry)
+    return identical, different
+
+def _print_conflicts(identical: List[Dict], different: List[Dict], dest_dir: Path) -> None:
+    if not (identical or different):
         return
     print(f"\nConflicting files in destination:\n  {dest_dir.resolve()}")
-    for i, r in enumerate(rows, 1):
-        print(f"  {i}. {r['name']}")
+    idx = 1
+    for r in different:
+        print(f"  {idx}. {r['name']}  [DIFFERENT]")
         print(f"     src: {r['src']} ({r['s_size']} B, {r['s_time']}) sha1={r['s_sha']}")
         print(f"     dst: {r['dst']} ({r['d_size']} B, {r['d_time']}) sha1={r['d_sha']}")
-
-def _print_conflicts_verbose(src_files: List[Path], dest_dir: Path) -> None:
-    print(f"\nConflicting files in destination:\n  {dest_dir.resolve()}")
-    for f in src_files:
-        dst = dest_dir / f.name
-        if not dst.exists():
-            continue
-        try:
-            d_sha = file_sha1(dst)
-        except Exception:
-            d_sha = "n/a"
-        label, when = format_file_time(dst)
-        s_sha = file_sha1(f)
-        print(f" - {dst.name}")
-        print(f"     dest: {dst}  ({label}: {when})  sha1={d_sha}")
-        print(f"     src : {f}  sha1={s_sha}")
+        idx += 1
+    for r in identical:
+        print(f"  {idx}. {r['name']}  [IDENTICAL]")
+        print(f"     src: {r['src']} ({r['s_size']} B, {r['s_time']}) sha1={r['s_sha']}")
+        print(f"     dst: {r['dst']} ({r['d_size']} B, {r['d_time']}) sha1={r['d_sha']}")
+        idx += 1
 
 # ---------- Scripts inclusion for .h5m (INTO MAP FOLDER, no subfolder) ----------
 def include_scripts_into_map_folder_interactive(P: Paths, map_folder: Path) -> List[str]:
@@ -466,28 +496,45 @@ def include_scripts_into_map_folder_interactive(P: Paths, map_folder: Path) -> L
             print("Cancelled including ALL scripts.")
             return included_files
 
-        conflicts = [f for f in files if (dest_dir / f.name).exists()]
-        if conflicts:
-            _print_script_conflicts(conflicts, dest_dir)
+        # Conflict classification
+        identical, different = _conflict_stats(files, dest_dir)
+        if identical or different:
+            _print_conflicts(identical, different, dest_dir)
+        if different:
             pol_idx = prompt_choice(
-                ["Overwrite ALL conflicting files",
-                 "Skip ALL conflicting files",
-                 "Ask per conflicting file"],
-                f"There are {len(conflicts)} conflicting destination files.\nChoose conflict resolution policy:"
+                ["Overwrite ALL different files (identical will be skipped)",
+                 "Skip ALL existing files",
+                 "Ask per DIFFERENT file",
+                 "Force overwrite EVERYTHING (including identical)"],
+                f"There are {len(different)} different and {len(identical)} identical file(s) at destination.\nChoose conflict resolution policy:"
             )
-            policy = ["overwrite_all", "skip_all", "ask"][pol_idx]
+            policy = ["overwrite_diff", "skip_all", "ask_diff", "overwrite_all"][pol_idx]
         else:
-            policy = "ask"
+            # only identical or none -> skip them silently
+            policy = "skip_all"
 
         for f in files:
             dst = dest_dir / f.name
-            if dst.exists():
+            exists = dst.exists()
+            if exists:
+                # identical?
+                same = False
+                try:
+                    same = file_sha1(f) == file_sha1(dst)
+                except Exception:
+                    same = False
                 if policy == "skip_all":
                     continue
-                if policy == "ask":
+                if policy == "overwrite_diff" and same:
+                    # identical -> skip
+                    continue
+                if policy == "ask_diff" and same:
+                    # identical -> skip asking
+                    continue
+                if policy == "ask_diff" and not same:
                     how = prompt_choice(
-                        ["Overwrite this file", "Skip this file", "Abort the scripts inclusion step"],
-                        f"Conflict: destination file already exists:\n  {dst}\nSelect resolution:"
+                        ["Overwrite this DIFFERENT file", "Skip this file", "Abort the scripts inclusion step"],
+                        f"Conflict (DIFFERENT): destination file already exists:\n  {dst}\nSelect resolution:"
                     )
                     if how == 1:
                         continue
@@ -513,7 +560,13 @@ def include_scripts_into_map_folder_interactive(P: Paths, map_folder: Path) -> L
             break
         dst = dest_dir / f.name
         if dst.exists():
-            _print_script_conflicts([f], dest_dir)
+            # classify single
+            ident, diff = _conflict_stats([f], dest_dir)
+            _print_conflicts(ident, diff, dest_dir)
+            if ident and not diff:
+                # identical -> skip silently
+                print(" - Skipping (identical at destination).")
+                continue
             how = prompt_choice(
                 ["Overwrite existing destination file",
                  "Skip this file",
@@ -566,28 +619,42 @@ def include_scripts_at_root_interactive(P: Paths, stage_root: Path) -> List[str]
         print("Cancelled ROOT /scripts inclusion.")
         return included_files
 
-    conflicts = [f for f in files if (dest_dir / f.name).exists()]
-    if conflicts:
-        _print_script_conflicts(conflicts, dest_dir)
+    # Conflict classification
+    identical, different = _conflict_stats(files, dest_dir)
+    if identical or different:
+        _print_conflicts(identical, different, dest_dir)
+
+    if different:
         pol_idx = prompt_choice(
-            ["Overwrite ALL conflicting files",
-             "Skip ALL conflicting files",
-             "Ask per conflicting file"],
-            f"There are {len(conflicts)} conflicting destination files in ROOT /scripts.\nChoose conflict resolution policy:"
+            ["Overwrite ALL different files (identical will be skipped)",
+             "Skip ALL existing files",
+             "Ask per DIFFERENT file",
+             "Force overwrite EVERYTHING (including identical)"],
+            f"There are {len(different)} different and {len(identical)} identical file(s) in ROOT /scripts.\nChoose conflict resolution policy:"
         )
-        policy = ["overwrite_all", "skip_all", "ask"][pol_idx]
+        policy = ["overwrite_diff", "skip_all", "ask_diff", "overwrite_all"][pol_idx]
     else:
-        policy = "ask"
+        policy = "skip_all"  # only identical (or none)
 
     for f in files:
         dst = dest_dir / f.name
-        if dst.exists():
+        exists = dst.exists()
+        if exists:
+            same = False
+            try:
+                same = file_sha1(f) == file_sha1(dst)
+            except Exception:
+                same = False
             if policy == "skip_all":
                 continue
-            if policy == "ask":
+            if policy == "overwrite_diff" and same:
+                continue
+            if policy == "ask_diff" and same:
+                continue
+            if policy == "ask_diff" and not same:
                 how = prompt_choice(
-                    ["Overwrite this file", "Skip this file", "Abort inclusion"],
-                    f"Conflict: destination file already exists:\n  {dst}\nSelect resolution:"
+                    ["Overwrite this DIFFERENT file", "Skip this file", "Abort inclusion"],
+                    f"Conflict (DIFFERENT): destination file already exists:\n  {dst}\nSelect resolution:"
                 )
                 if how == 1:
                     continue
@@ -678,6 +745,47 @@ def read_meta_h5m(root_dir: Path) -> Dict[str, object]:
             pass
     return {}
 
+# ---------- A2 auto-fix: create map-tag.xdb if mission looks like dropped .h5m ----------
+def _ensure_map_tag_if_h5m_style(mission_dir: Path, mission_name: str) -> Optional[str]:
+    """
+    If mission_dir contains map.xdb but no map-tag.xdb, create map-tag.xdb pointing to map.xdb.
+    Returns the ref_xdb it ended up pointing to (or None if no change).
+    """
+    tag = mission_dir / "map-tag.xdb"
+    mapxdb = mission_dir / "map.xdb"
+    if tag.exists():
+        # verify usable href
+        href, _err = parse_map_tag_href(tag)
+        if href:
+            return href
+    if mapxdb.exists() and not tag.exists():
+        write_map_tag_for_target(tag, "map.xdb")
+        print(f" - Auto-created map-tag.xdb for {mission_name} -> map.xdb")
+        return "map.xdb"
+    return None
+
+def autofix_missing_map_tags(stage_root: Path, only_prefix: Optional[str] = "A2") -> List[Tuple[str, str]]:
+    """
+    Walk Maps/Scenario under stage_root and auto-create map-tag.xdb for missions that:
+      - match prefix (e.g. 'A2')
+      - contain map.xdb but no map-tag.xdb
+    Returns list of (mission_name, ref_xdb) that were created/fixed.
+    """
+    base = stage_root / "Maps" / "Scenario"
+    out: List[Tuple[str, str]] = []
+    if not base.exists():
+        return out
+    for d in sorted([p for p in base.iterdir() if p.is_dir()], key=lambda p: p.name):
+        name = d.name
+        if only_prefix is not None and not name.startswith(only_prefix):
+            continue
+        ref = _ensure_map_tag_if_h5m_style(d, name)
+        if ref:
+            out.append((name, ref))
+    if out:
+        print(f"Auto-fix: created {len(out)} map-tag.xdb file(s) for prefix '{only_prefix}'.")
+    return out
+
 # ---------- Sanity checks with self-explaining errors ----------
 def sanity_check_h5m_stage(root_dir: Path, internal_dev_id: str) -> None:
     """Verify .h5m staging is correct before zipping."""
@@ -738,26 +846,45 @@ def sanity_check_h5u_stage(root_dir: Path) -> List[Tuple[str, str]]:
 # ---------- Shared mission staging for .h5u (NO tag/player modifications) ----------
 def _stage_mission_for_h5u(stage_root: Path, mission_src: Path, mission_name: str, mode: str) -> Tuple[Path, str]:
     tag_src = mission_src / "map-tag.xdb"
-    if not tag_src.exists():
-        raise SystemExit(f"Missing map-tag.xdb in sources: {tag_src}\n"
-                         "Every mission folder must contain it, pointing to the main .xdb (e.g. 'C1M3.xdb').")
-    ref_xdb, err = parse_map_tag_href(tag_src)
-    if err:
-        raise SystemExit(f"{tag_src}: {err}")
-    assert ref_xdb is not None  # if err is None, href exists
-    src_map = mission_src / ref_xdb
-    if not src_map.exists():
-        raise SystemExit(f"{tag_src}: href points to '{ref_xdb}', but that file does not exist in:\n  {mission_src}")
+    src_map = None
+    ref_xdb = None
+
+    if tag_src.exists():
+        ref_xdb, err = parse_map_tag_href(tag_src)
+        if err:
+            raise SystemExit(f"{tag_src}: {err}")
+        assert ref_xdb is not None
+        src_map = mission_src / ref_xdb
+        if not src_map.exists():
+            raise SystemExit(f"{tag_src}: href points to '{ref_xdb}', but that file does not exist in:\n  {mission_src}")
+    else:
+        # No tag in sources: if this looks like an .h5m-style drop (map.xdb present), assume map.xdb
+        if (mission_src / "map.xdb").exists():
+            ref_xdb = "map.xdb"
+            src_map = mission_src / "map.xdb"
+            print(f"[NOTE] {mission_name}: no map-tag.xdb in sources; assuming .h5m-style and using map.xdb")
+        else:
+            raise SystemExit(f"Missing map-tag.xdb in sources: {tag_src}\n"
+                             "Every mission folder must contain it, pointing to the main .xdb (e.g. 'C1M3.xdb').")
 
     stage_mission_dir = stage_root / "Maps" / "Scenario" / mission_name
     ensure_dir(stage_mission_dir)
 
     if mode == "minimal":
-        shutil.copy2(tag_src, stage_mission_dir / "map-tag.xdb")
+        if tag_src.exists():
+            shutil.copy2(tag_src, stage_mission_dir / "map-tag.xdb")
+        else:
+            # synthesize one now
+            write_map_tag_for_target(stage_mission_dir / "map-tag.xdb", ref_xdb)
+            print(f"[SYNTH] Wrote map-tag.xdb for {mission_name} -> {ref_xdb}")
         shutil.copy2(src_map, stage_mission_dir / ref_xdb)
         print(f"Minimal stage for {mission_name}: 2 files copied.")
     else:
         copied = copy_tree_with_progress(mission_src, stage_mission_dir, label=f"Stage mission '{mission_name}'")
+        # ensure tag exists in stage
+        if not (stage_mission_dir / "map-tag.xdb").exists():
+            write_map_tag_for_target(stage_mission_dir / "map-tag.xdb", ref_xdb)
+            print(f"[SYNTH] Wrote map-tag.xdb for {mission_name} -> {ref_xdb}")
         if copied == 0 or not (stage_mission_dir / ref_xdb).exists():
             raise SystemExit(f"Verification failed in staged copy for '{mission_name}': tag points to '{ref_xdb}' "
                              f"but it was not found in:\n  {stage_mission_dir}\n"
@@ -799,6 +926,9 @@ def build_campaign_h5u(P: Paths) -> None:
         write_meta_h5u_mission(stage_mission_dir, mission_name, ref_xdb, mode)
         # Root meta
         write_meta_h5u_root(tmp, "single", [{"name": mission_name, "ref_xdb": ref_xdb, "payload": mode}], root_scripts)
+
+        # A2 autofix (if any)
+        autofix_missing_map_tags(tmp, only_prefix="A2")
 
         # Sanity check
         sanity_check_h5u_stage(tmp)
@@ -894,6 +1024,9 @@ def build_campaign_set_h5u(P: Paths) -> None:
         root_scripts = include_scripts_at_root_interactive(P, tmp)
         write_meta_h5u_root(tmp, "campaign", missions_meta, root_scripts)
 
+        # Auto-fix for A2 set (if present)
+        autofix_missing_map_tags(tmp, only_prefix="A2")
+
         # Sanity check for the whole staged tree
         sanity_check_h5u_stage(tmp)
 
@@ -947,6 +1080,9 @@ def compile_full_cammaps_h5u(P: Paths) -> None:
 
         root_scripts = include_scripts_at_root_interactive(P, tmp)
         write_meta_h5u_root(tmp, "full", [], root_scripts)
+
+        # Auto-fix A2 missions that look like dropped .h5m (map.xdb without tag)
+        autofix_missing_map_tags(tmp, only_prefix="A2")
 
         # sanity
         sanity_check_h5u_stage(tmp)
@@ -1241,7 +1377,7 @@ def _apply_h5m_back(P: Paths, h5m_path: Path) -> None:
 
         # Revert map.xdb -> <orig_xdb_name>; fix map-tag.xdb if needed
         map_xdb = singles_folder / "map.xdb"
-        if map_xdb.exists() and (singles_folder / orig_xdb_name).name != "map.xdb":
+        if map_xdb.exists() and orig_xdb_name != "map.xdb":
             safe_rename(map_xdb, singles_folder / orig_xdb_name)
         tag_p = singles_folder / "map-tag.xdb"
         if tag_p.exists():
@@ -1274,17 +1410,21 @@ def _apply_h5m_back(P: Paths, h5m_path: Path) -> None:
             if guess is not None:
                 print(f"Guessed mission folder by XDB name: {guess}")
                 dest_folder = guess
-
+        print("\nScope:")
+        print(f" - Archive scanned: {h5m_path.name} → {singles_folder.relative_to(tmpdir)}")
+        print(f" - Applying to sources under: {dest_folder}")
+        print(" - Policy: identical hashes are skipped; NEW/CHANGED files are shown for confirmation; subfolders preserved.")
         # Hash scan + diff against sources
         print("\nScanning files (hashes) in the extracted .h5m (post-revert)...")
         scanned = _scan_files_with_hash(singles_folder)
+
         cam_root = dest_folder
         changes: List[Tuple[Path, Path, str, Optional[str]]] = []
         for src_abs, rel, src_h in scanned:
-            # files of the mission live directly under the mission folder in sources
-            target = cam_root / rel.name
+            # Preserve the mission’s internal relative layout when applying back.
             if rel.name in {META_XML, META_JSON}:
                 continue
+            target = cam_root / rel
             if target.exists():
                 try:
                     dst_h = file_sha1(target)
@@ -1342,6 +1482,10 @@ def _apply_h5u_back(P: Paths, h5u_path: Path) -> None:
                 print("Aborted."); return
 
         print("\nScanning files (hashes) in the extracted .h5u ...")
+        print("Scope:")
+        print(f" - Archive scanned: {h5u_path.name} (entire tree)")
+        print(f" - Applying to sources under: {cam_root}")
+        print(" - Policy: identical hashes are skipped; NEW/CHANGED files are shown for confirmation; subfolders preserved.")
         scanned = _scan_files_with_hash(tmpdir)
 
         changes: List[Tuple[Path, Path, str, Optional[str]]] = []
