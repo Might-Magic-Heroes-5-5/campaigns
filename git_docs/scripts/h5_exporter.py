@@ -8,11 +8,20 @@ HOMM5 Build Helper — single interactive CLI to export:
 CHANGES (Lua 4.0 + Heroes V constraints)
 ----------------------------------------
 • No local functions in generated Lua. All pseudo-locals use __h55__local_56424_* prefix.
-• Shared helpers moved to ./scripts/h55_enum_runtime.lua and included with:
-      doFile("./scripts/h55_enum_runtime.lua")
-      while not __h55__local_56424_freeze do end
+• Shared helpers moved to ./scripts/h55_enum_runtime.lua and included with a
+  safe, NO-BUSY-WAIT prelude which:
+    – tries multiple paths with pcall/_h55_pcall;
+    – never spins/sleeps; and
+    – prints to console and shows flying text near the main hero on failure.
 • Lua 4.0 compatible: no rawget, no setmetatable, no pairs/ipairs, no io.write, no booleans.
 • The CLI writes the runtime file once into OUT_DIR/scripts/.
+• To support both H5M and H5U packaging, thin loader stubs are emitted at:
+    OUT_DIR/scripts/h55_enums_creatures.lua
+    OUT_DIR/scripts/h55_enums_spells.lua
+  These stubs allow game scripts to always call:
+      doFile("./scripts/h55_enums_creatures.lua")
+      doFile("./scripts/h55_enums_spells.lua")
+  and they will fallback to root-level files (./h55_enums_*.lua) if needed.
 
 CONVENTIONS
 -----------
@@ -256,19 +265,181 @@ def parse_spell_xdb(xdb_path: Path) -> Tuple[str, str]:
     return enum_tail, f"SPELL_{enum_tail}"
 
 # -----------------------------
+# Lua doc headers (inserted verbatim at top of generated files)
+# -----------------------------
+def lua_doc_header_creatures() -> str:
+    return r"""-- ============================================================================
+-- H55 ENUMS · CREATURES & ABILITIES (READ‑ONLY, LUA 4.0–SAFE)
+-- ----------------------------------------------------------------------------
+-- Purpose
+--   Provides a stable, read‑only enumeration API for creature metadata and
+--   creature abilities for Heroes V scripts. Data are frozen at load time.
+--
+-- Loading & Safety
+--   - This file requires './scripts/h55_enum_runtime.lua' which defines
+--     freeze() and freeze_shallow() used here to enforce immutability.
+--   - All exported tables MUST be treated as read‑only. Writes are blocked
+--     by metatables installed by the runtime and must raise an error.
+--   - It is safe to load/include this file multiple times.
+--   - For H5M/H5U compatibility, you can load via a stub:
+--         doFile('./scripts/h55_enums_creatures.lua')
+--     which falls back to './h55_enums_creatures.lua' when needed.
+--
+-- Public API (read‑only)
+--   ABILITIES (table)                        -- Namespace root for abilities.
+--     .CREATURES : table<string, Ability>    -- Flat map keyed by ABILITY symbol
+--                                             -- (e.g., 'ACID_BLOOD').
+--       Ability (record):
+--         id    : integer  -- Reserved numeric id. May be 0 if not defined by
+--                           -- the engine. Do NOT rely on 0/ non‑0 semantics.
+--         name  : string   -- Generator symbol for the ability
+--                           -- (e.g., 'ACID_BLOOD' as seen in this file).
+--         const : string   -- Engine token to interoperate with game code
+--                           -- (e.g., 'ABILITY_ACID_BLOOD'). Use this when an
+--                           -- engine API requires an ABILITY_* constant.
+--
+--   CREATURE (table)                         -- Namespace root for creatures.
+--     .<FACTION> (table)                     -- Faction namespaces:
+--       ACADEMY, DUNGEON, DWARF, FORTRESS, HAVEN, INFERNO,
+--       NECROPOLIS, NEUTRALS, ORCS, PRESERVE, UNKNOWN.
+--     .<FACTION>.<UNIT> : Creature           -- Leaf records (one per unit).
+--       Creature (record):
+--         name        : string   -- Generator symbol for the creature
+--                                 -- (e.g., 'CREATURE_ARCH_MAGI').
+--         id          : integer  -- Reserved numeric id. May be 0.
+--         BASE_GROWTH : integer  -- Weekly base growth in town dwellings.
+--         ABILITIES   : string[] -- Array of ability KEYS, each of which MUST
+--                                 -- exist in ABILITIES.CREATURES. Elements are
+--                                 -- ability symbols like 'NO_RANGE_PENALTY'.
+--
+-- Contract & Invariants
+--   - Keys are ASCII, UPPERCASE, underscore‑separated, and case‑sensitive.
+--   - ABILITIES arrays contain ability KEYS (strings), not the Ability records.
+--     To interoperate with the engine, map a key K as:
+--       ABILITIES.CREATURES[K].const  -- engine token 'ABILITY_*'
+--   - Missing lookups return nil; no guards are added by this file.
+--   - Names/tokens that are non‑canonical in spelling (if any) are preserved
+--     exactly to match engine tokens.
+--
+-- Regeneration & Compatibility
+--   - This file is auto‑generated. Keys (ability and creature symbols) form the
+--     stable API surface; new entries may be added in future exports.
+--   - Designed for Lua 4.0. Data are plain tables and strings and remain
+--     forward‑compatible with Lua versions that preserve base table semantics.
+--
+-- Optional Self‑Test
+--   - If the global H55_ENUMS_SELFTEST is set to a truthy value BEFORE loading,
+--     the file prints a few sample records via 'write'. No state is mutated.
+--
+-- References (specifications)
+--   - Lua 4.0 Reference Manual — Ierusalimschy, de Figueiredo, Celes.
+--     (authoritative semantics for tables, strings, and metatables).
+--   - Heroes V engine enumeration tokens (ABILITY_*, CREATURE_*) as defined by
+--     the game engine / SDK.
+-- ============================================================================
+"""
+
+def lua_doc_header_spells() -> str:
+    return r"""-- ============================================================================
+-- H55 ENUMS · SPELLS (READ‑ONLY, LUA 4.0–SAFE)
+-- ----------------------------------------------------------------------------
+-- Purpose
+--   Provides a stable, read‑only, flat enumeration API for spell tokens used
+--   by Heroes V scripts. Data are frozen at load time.
+--
+-- Loading & Safety
+--   - This file requires './scripts/h55_enum_runtime.lua' which defines
+--     freeze_shallow() used here to enforce immutability of the top‑level map.
+--   - All exported tables MUST be treated as read‑only. Writes are blocked
+--     by the runtime and must raise an error.
+--   - It is safe to load/include this file multiple times.
+--   - For H5M/H5U compatibility, you can load via a stub:
+--         doFile('./scripts/h55_enums_spells.lua')
+--     which falls back to './h55_enums_spells.lua' when needed.
+--
+-- Public API (read‑only)
+--   SPELL : table<string, Spell>   -- Flat map keyed by SPELL symbol
+--                                   -- (e.g., 'ARMAGEDDON', 'DISPEL').
+--     Spell (record):
+--       name  : string  -- Generator symbol for the spell
+--                        -- (e.g., 'SPELL_ARMAGEDDON').
+--       const : string  -- Engine token to interoperate with game code
+--                        -- (e.g., 'SPELL_ARMAGEDDON'). Use this when an
+--                        -- engine API requires a SPELL_* constant.
+--
+-- Contract & Invariants
+--   - Keys are ASCII, UPPERCASE, underscore‑separated, and case‑sensitive.
+--   - The map is flat (no faction or school sub‑namespaces in this file).
+--   - Names/tokens that are non‑canonical in spelling (if any) are preserved
+--     exactly to match engine tokens.
+--   - Missing lookups return nil; no guards are added by this file.
+--
+-- Regeneration & Compatibility
+--   - This file is auto‑generated. Keys (spell symbols) form the stable API
+--     surface; new entries may be added in future exports.
+--   - Designed for Lua 4.0. Data are plain tables and strings and remain
+--     forward‑compatible with Lua versions that preserve base table semantics.
+--
+-- References (specifications)
+--   - Lua 4.0 Reference Manual — Ierusalimschy, de Figueiredo, Celes.
+--     (authoritative semantics for tables, strings, and metatables).
+--   - Heroes V engine enumeration tokens (SPELL_*) as defined by the
+--     game engine / SDK.
+-- ============================================================================
+"""
+
+# -----------------------------
+# Lua include prelude (NO busy-wait; with fallbacks & diagnostics)
+# -----------------------------
+def lua_include_runtime_prelude_safe() -> str:
+    # Single-chunk, Lua 4.0–safe, no locals, no booleans, no busy-wait.
+    # Uses _h55_pcall if present, else falls back to pcall.
+    return r"""
+-- AUTOGENERATED by h5_exporter.py — DO NOT EDIT BY HAND.
+-- Heroes V / Lua 4.0–safe runtime include with path fallbacks (no busy-wait).
+if not __h55__local_56424_freeze then
+  __h55__local_56424_PCALL = _h55_pcall
+  if not __h55__local_56424_PCALL then __h55__local_56424_PCALL = pcall end
+
+  if __h55__local_56424_PCALL(function() doFile('./scripts/h55_enum_runtime.lua') end) then
+  elseif __h55__local_56424_PCALL(function() doFile('./h55_enum_runtime.lua') end) then
+  elseif __h55__local_56424_PCALL(function() doFile('scripts/h55_enum_runtime.lua') end) then
+  else
+    __h55__local_56424_PCALL(function() doFile('h55_enum_runtime.lua') end)
+  end
+
+  if not __h55__local_56424_freeze then
+    if write then write('[H55 ENUMS] WARN: missing runtime (h55_enum_runtime.lua). Enums will not be read-only.\n') end
+    if ShowFlyingSign and GetCurrentPlayer and GetPlayerMainHero then
+      __h55__local_56424_msg = 'H55 ENUMS: runtime missing; enums not read-only'
+      __h55__local_56424_hero = GetPlayerMainHero(GetCurrentPlayer())
+      if __h55__local_56424_hero then
+        if startThread then startThread(ShowFlyingSign, __h55__local_56424_msg, __h55__local_56424_hero, 4)
+        else ShowFlyingSign(__h55__local_56424_msg, __h55__local_56424_hero, 4) end
+      end
+      __h55__local_56424_msg = nil
+      __h55__local_56424_hero = nil
+    end
+    -- Degrade gracefully: identity freeze helpers so the file keeps working.
+    function __h55__local_56424_freeze(tbl) return tbl end
+    function __h55__local_56424_freeze_shallow(tbl)
+      if type(tbl) == "table" then
+        foreach(tbl, function(k, v)
+          if type(v) == "table" then __h55__local_56424_freeze(v) end
+        end)
+      end
+      return tbl
+    end
+  end
+  __h55__local_56424_PCALL = nil
+end
+"""
+
+# -----------------------------
 # Lua emit helpers (Lua 4.0–safe)
 # -----------------------------
 def lua_quote(s: str) -> str:
     return "'" + s.replace("\\", "\\\\").replace("'", "\\'") + "'"
-
-def lua_include_runtime_prelude() -> str:
-    # No local functions. Await runtime helpers synchronously (busy-wait).
-    return r"""
--- AUTOGENERATED by h5_exporter.py — DO NOT EDIT BY HAND.
--- Heroes V / Lua 4.0–safe runtime include.
-if not __h55__local_56424_freeze then doFile('./scripts/h55_enum_runtime.lua') end
-while not __h55__local_56424_freeze do end
-"""
 
 def build_lua_abilities_creatures(ability_ids: Dict[str, int]) -> str:
     lines = []
@@ -284,7 +455,7 @@ def build_lua_creatures_dot(creatures_by_town: Dict[str, Dict[str, Dict]]) -> st
     """
     Emit CREATURE.<TOWN>.<NAME> = { name='CREATURE_NAME', id=..., BASE_GROWTH=..., ABILITIES={'A','B',...} }
     """
-    out = []
+    out: List[str] = []
     out.append("CREATURE = __h55__local_56424_freeze({})")
     for town in sorted(creatures_by_town.keys()):
         out.append(f"CREATURE.{town} = __h55__local_56424_freeze({{}})")
@@ -315,7 +486,7 @@ def build_lua_creatures_dot(creatures_by_town: Dict[str, Dict[str, Dict]]) -> st
     return "\n".join(out)
 
 def build_lua_spells(spells: Dict[str, str]) -> str:
-    out = []
+    out: List[str] = []
     out.append("-- Spells enumeration (flat), read-only (best effort in Lua 4.0)")
     out.append("SPELL = __h55__local_56424_freeze_shallow({")
     for tail, const in sorted(spells.items(), key=lambda kv: kv[0]):
@@ -379,6 +550,50 @@ def ensure_runtime_lua(out_dir: Path) -> Path:
     return out_path
 
 # -----------------------------
+# Loader stub emission (for H5M/H5U compatibility)
+# -----------------------------
+def loader_stub_text(basename: str) -> str:
+    """
+    Emit a tiny loader at ./scripts/<basename> that tries to load the root-level
+    <basename> with safe pcall/_h55_pcall. On failure, prints to console and
+    shows flying text near the main hero (best effort).
+    """
+    return f"""-- AUTOGENERATED stub loader — DO NOT EDIT BY HAND.
+-- Ensures doFile('./scripts/{basename}') works in both H5M and H5U layouts.
+__h55__local_56424_PCALL = _h55_pcall
+if not __h55__local_56424_PCALL then __h55__local_56424_PCALL = pcall end
+__h55__local_56424_OK = nil
+if __h55__local_56424_PCALL(function() doFile('./{basename}') end) then
+  __h55__local_56424_OK = 1
+elseif __h55__local_56424_PCALL(function() doFile('{basename}') end) then
+  __h55__local_56424_OK = 1
+end
+if not __h55__local_56424_OK then
+  if write then write('[H55 ENUMS] ERR: cannot load {basename} via scripts/ loader.\\n') end
+  if ShowFlyingSign and GetCurrentPlayer and GetPlayerMainHero then
+    __h55__local_56424_msg = 'H55 ENUMS: load error {basename}'
+    __h55__local_56424_hero = GetPlayerMainHero(GetCurrentPlayer())
+    if __h55__local_56424_hero then
+      if startThread then startThread(ShowFlyingSign, __h55__local_56424_msg, __h55__local_56424_hero, 4)
+      else ShowFlyingSign(__h55__local_56424_msg, __h55__local_56424_hero, 4) end
+    end
+    __h55__local_56424_msg = nil
+    __h55__local_56424_hero = nil
+  end
+end
+__h55__local_56424_PCALL = nil
+__h55__local_56424_OK = nil
+"""
+
+def ensure_loader_stub(out_dir: Path, basename: str) -> Path:
+    scripts_dir = out_dir / "scripts"
+    ensure_dir(scripts_dir)
+    p = scripts_dir / basename
+    p.write_text(loader_stub_text(basename), encoding="utf-8")
+    info(f"Wrote loader stub: {p}")
+    return p
+
+# -----------------------------
 # Exporters
 # -----------------------------
 def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
@@ -432,17 +647,20 @@ def export_creatures(repo_root: Path, local_dir: Path, types_xml: Path,
     ability_ids = framework_abi_ids or {a: 0 for _, _, A, _ in creatures_tmp for a in A}
 
     # Prepare Lua
-    lua_chunks = []
-    lua_chunks.append(lua_include_runtime_prelude())
+    lua_chunks: List[str] = []
+    lua_chunks.append(lua_doc_header_creatures().rstrip("\n"))
+    lua_chunks.append(lua_include_runtime_prelude_safe().strip("\n"))
+    lua_chunks.append("")
     lua_chunks.append(build_lua_abilities_creatures(ability_ids))
     lua_chunks.append("")
     lua_chunks.append(build_lua_creatures_dot(creatures_by_town))
     lua_text = "\n".join(lua_chunks).strip() + "\n"
 
     ensure_dir(out_dir)
-    # also ensure runtime helpers exist
+    # ensure runtime helpers and loader stubs exist
     if not dry_run:
         ensure_runtime_lua(out_dir)
+        ensure_loader_stub(out_dir, "h55_enums_creatures.lua")
     out_path = out_dir / "h55_enums_creatures.lua"
     info(f"Planned output: {out_path}")
     if not dry_run:
@@ -473,15 +691,18 @@ def export_spells(repo_root: Path, local_dir: Path, out_dir: Path, dry_run: bool
         tail, const = parse_spell_xdb(p)
         spells[tail] = const
 
-    lua_chunks = []
-    lua_chunks.append(lua_include_runtime_prelude())
+    lua_chunks: List[str] = []
+    lua_chunks.append(lua_doc_header_spells().rstrip("\n"))
+    lua_chunks.append(lua_include_runtime_prelude_safe().strip("\n"))
+    lua_chunks.append("")
     lua_chunks.append(build_lua_spells(spells))
     lua_text = "\n".join(lua_chunks).strip() + "\n"
 
     ensure_dir(out_dir)
-    # also ensure runtime helpers exist
+    # ensure runtime helpers and loader stubs exist
     if not dry_run:
         ensure_runtime_lua(out_dir)
+        ensure_loader_stub(out_dir, "h55_enums_spells.lua")
     out_path = out_dir / "h55_enums_spells.lua"
     info(f"Planned output: {out_path}")
     if not dry_run:
@@ -571,7 +792,7 @@ def main() -> int:
     while True:
         sel = interactive_menu()
         if sel == 5:
-            info("Bye.")
+            info("Okay. Quitting.")
             break
         elif sel == 4:
             rescan_status(types_xml, local_dir / "Creatures", local_dir / "MAGIC")

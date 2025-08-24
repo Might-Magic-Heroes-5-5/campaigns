@@ -30,7 +30,6 @@
 -- Freeze helpers (await until ready). We accept either name you use for the freeze file.
 if not __h55__local_56424_freeze then
   -- Your runtime file name (you mentioned both; we try both safely)
-  pcall(function() doFile('./scripts/h55_freeze_func.lua') end)
   pcall(function() doFile('./scripts/h55_enum_runtime.lua') end)
 end
 while not __h55__local_56424_freeze do end
