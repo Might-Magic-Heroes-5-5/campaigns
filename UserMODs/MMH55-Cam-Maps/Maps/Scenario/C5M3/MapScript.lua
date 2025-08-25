@@ -12,7 +12,7 @@ ARTIFACT_DWARVEN_MITHRAL_SHIELD
 };
 
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
-
+doFile("/scripts/scripts/h55_enum_runtime")
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M3");
     LoadHeroAllSetArtifacts("Heam", "C5M2" );
