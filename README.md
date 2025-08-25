@@ -38,6 +38,31 @@ Campaign compatibility changes for MMH55.
             └─ C1M5/
 ~~~
 
+Additional code loaded dynamically can be found at
+./UserMODs\MMH55-Cam-Maps\scripts
+it is two files:
+campaign_ai.lua
+campaign_common.lua
+
+They are loaded on each map and script.lua header as:
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); <-- this is from main 5.5 repo
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+Arcane Knowledge: How doFile() Paths Work
+The doFile() function loads Lua scripts from a root path defined by the game engine.
+
+For a packaged mod (.h5u file), the root is the archive's root.
+
+For a single map (.h5m file), the root is also the archive's root.
+
+This is why shared campaign scripts, which are placed in the /scripts/ folder at the root of the packaged .h5u mod, are called with a leading slash (e.g., doFile("/scripts/campaign_common.lua")). This indicates an absolute path starting from the root of the archive.
+
+Types are located at this repository in /git_docs/types.xml, it is a copy and in future must be linked from MMH5 core repository. For now it is updated manually by maintainers
+
+They are extracted directly from MMH55-Frame.pak\types.xml
+
+
 ---
 
 ## How to convert a campaign into a single-player map
@@ -174,6 +199,7 @@ git push origin HEAD:refs/heads/ACTUAL_DATA_BRANCH_NAME
 ## How to add Media for documentation (screenshots & clips)
 
 Place media under **`git_docs/`** in this repo.
+Examples how to write README:
 
 - **Local MP4 with clickable thumbnail** (thumbnail must also be in `git_docs/`):  
   `[![Convert demo](git_docs/ACTUAL_DATA-convert-thumb.png)](git_docs/ACTUAL_DATA-convert-demo.mp4 "Play MP4")`
@@ -193,6 +219,41 @@ Place media under **`git_docs/`** in this repo.
 
 General modding knowledge and editor walkthroughs are centralized at the **Heroes 5 Wiki**: <https://heroes5.fandom.com/wiki/Heroes_5_Wiki>.  
 Repo-specific guides may also live under `git_docs/` as well as files.
+
+# 1) Creatures lua parsing
+python scripts/parse_creatures_to_lua.py \
+  --root "C:/Program Files (x86)/GOG Galaxy/Games/campaigns" \
+  --types "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/types.xml" \
+  --out "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/h55_enums_creatures.lua"
+
+# 2) Spells (updated to Lua)
+python scripts/parse_spells.py \
+  --root "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/LOCAL_DIR" \
+  --types "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/types.xml" \
+  --lua  "C:/Program Files (x86)/GOG Galaxy/Games/campaigns/h55_enums_spells.lua"
+
+# 3) General packing information
+## How to package a map for the campaign
+
+After modifying a mission and testing it as a single-player map, you need to package it back into the campaign format to be used in the game's campaign mode.
+
+1.  **Revert Test-Only Changes**: Before packaging, undo any modifications made solely for single-player testing. This typically includes deactivating Player 2 if you enabled them to launch the map as a skirmish.
+2.  **Prepare the Folder Structure**: Create a directory structure that mirrors the game's requirements. For example, for mission C1M4, the structure would be `Maps/Scenario/C1M4/`.
+3.  **Place Map Files**: Copy your final map files (e.g., `C1M4.xdb`, `map-tag.xdb`) into the mission folder you created (e.g., `C1M4/`). Ensure the `map-tag.xdb` correctly points to the main map file.
+4.  **Create the Archive**:
+    * Archive the root `Maps` folder into a `.zip` file.
+    * Rename the file extension from `.zip` to `.h5u` (e.g., `my_changes_for_C1M4.h5u`).
+5.  **Install the Mod**: Place the final `.h5u` file into your game's `UserMods` folder to apply the changes.
+
+## Other Modding Questions (FAQ)
+
+### Can neutral heroes be added in the editor?
+
+No, it is not currently possible to add a neutral hero to a creature stack in the Map Editor, similar to the feature available in QAI for generated maps. This is considered extremely difficult to implement due to the complexity of the feature and a lack of knowledge on the Map Editor's internal workings.
+
+### Where are game object IDs (spells, units, etc.) located?
+
+The name-to-ID mappings for all in-game objects can be found in the `types.xml` file, which is extracted from the `MMH55-Frame.pak` file. This includes IDs for spells, units, towns, adventure map objects, and more.
 
 ---
 

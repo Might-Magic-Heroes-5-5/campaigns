@@ -1,0 +1,11 @@
+# mise.toml — per-directory env for OSS work (Windows)
+[env]
+GIT_ENV           = "open_source"
+
+# Use your OSS SSH key for transport
+# Note: forward slashes avoid Windows escaping issues; Git for Windows accepts them.
+GIT_SSH_COMMAND   = "ssh -i C:/SSH/github -o IdentitiesOnly=yes"
+
+# Point Git's *global* config to a per-project file (only in this directory)
+# Single quotes because TOML treats backslashes literally inside single-quoted strings.
+GIT_CONFIG_GLOBAL = 'C:\Users\DNS\.gitconfig-opensource'
