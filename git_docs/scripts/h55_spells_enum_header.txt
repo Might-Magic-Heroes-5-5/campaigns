@@ -1,0 +1,16 @@
+-- ============================================================================
+-- H55 ENUMS · SPELLS (READ‑ONLY, LUA 4.0–SAFE)
+-- ----------------------------------------------------------------------------
+-- Purpose
+--   Provides a stable, read‑only, flat enumeration API for spell tokens used by
+--   Heroes V scripts. Data are frozen at load time.
+--
+-- Loading
+--   This file first attempts to load 'h55_enum_runtime.lua' from common locations
+--   (./scripts/, ./, scripts/, ../scripts/, ../). No endless waits.
+--   If the helper is still missing, it prints an error and installs minimal
+--   no‑op freeze stubs so loading can proceed.
+--
+-- Public API (read‑only)
+--   SPELL : table<string, {name:string, const:string}>
+-- ============================================================================
