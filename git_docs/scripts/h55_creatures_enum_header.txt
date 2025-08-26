@@ -1,0 +1,17 @@
+-- ============================================================================
+-- H55 ENUMS · CREATURES & ABILITIES (READ‑ONLY, LUA 4.0–SAFE)
+-- ----------------------------------------------------------------------------
+-- Purpose
+--   Provides a stable, read‑only enumeration API for creature metadata and creature
+--   abilities for Heroes V scripts. Data are frozen at load time.
+--
+-- Loading
+--   This file first attempts to load 'h55_enum_runtime.lua' from common locations
+--   (./scripts/, ./, scripts/, ../scripts/, ../). No endless waits.
+--   If the helper is still missing, it prints an error and installs minimal
+--   no‑op freeze stubs so loading can proceed.
+--
+-- Public API (read‑only)
+--   ABILITIES.CREATURES : table<string, {id:int, name:string, const:string}>
+--   CREATURE.<FACTION>.<UNIT> : { name:string, id:int, BASE_GROWTH:int, ABILITIES:string[] }
+-- ============================================================================
