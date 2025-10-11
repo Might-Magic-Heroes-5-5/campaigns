@@ -1,10 +1,12 @@
 H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 
+H55_AICheatMode = 0;
+
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M1");
-	ChangeHeroStat("Zehir",STAT_SPELL_POWER,2);
+	--ChangeHeroStat("Zehir",STAT_SPELL_POWER,2);
 end;
 
 startThread(H55_InitSetArtifacts);

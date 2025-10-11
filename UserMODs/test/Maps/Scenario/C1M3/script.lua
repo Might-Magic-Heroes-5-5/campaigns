@@ -103,7 +103,7 @@ creature_costs = { 15, 25, 50, 80, 85, 130, 250, 370, 600, 850, 1300, 1700, 2800
 
 function CalcHavenArmy( heroname )
 	total = 0;
-	for i = 1, 179 do
+	for i = 1, CREATURES_COUNT-1 do
 		total = total + GetHeroCreatures( heroname, i ) * creature_costs[i];
 	end;
 	return total;
