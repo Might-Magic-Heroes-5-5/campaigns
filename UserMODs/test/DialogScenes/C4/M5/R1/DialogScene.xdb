@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000092">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt1/SmallSpecialArena_Dirt1.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Lava.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Terrain/Swamp.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_Haven01 (2) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M5R1b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-0.txt"/>
+			<sound href="C4M5_R1.1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M5R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M5R1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="DirtTree5x6_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="DirtTree5x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="DirtTree5x6_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="DirtTree5x6_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Dirtbush2x2_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="DirtTree1x1_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="DBushLeaf05.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="SwampHaze2x3.8.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>70</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet>
+	<StartCamera href="/Dialogs/Cameras/C4M1R2_1.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>117</x>
+		<y>95</y>
+		<z>0</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>2.35002</StartCorrectionRot>
+	<FinishCamera href="/Dialogs/Cameras/C4M1R2_2.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>117</x>
+		<y>95</y>
+		<z>1</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>2.35002</FinishCorrectionRot>
+	<NameFileRef href="C4M1R2_1-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>0</IgnoreYawDiff>
+	<Direction>0</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

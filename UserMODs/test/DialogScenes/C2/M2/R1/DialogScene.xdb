@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000044">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Sand/SmallSpecialArena_Sand.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Sand.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Battle-Themes/Sylvan.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C2M2R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M2R1b1new.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Agrael-1.txt"/>
+			<sound href="C2M2_R1.1.xdb#xpointer(/Sound)"/>
+			<heroLink href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M2R1d2new.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>4</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4</Delay>
+					<sound/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M2R1e1temp.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>4</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>10</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>-2</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Warlock/happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Infernal_Succubus.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Demon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Nightmare.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Frightful_Nightmare.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Balor.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Balor.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.11.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.9.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.12.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.15.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.19.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Skeleton.1.xdb#xpointer(/AdvMapBuilding)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

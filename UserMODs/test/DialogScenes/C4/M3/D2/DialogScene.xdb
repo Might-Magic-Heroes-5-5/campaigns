@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000086">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Campaign/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M3D2.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>8</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/MeteorShower.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>3</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/MeteorShower.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>97</x>
+						<y>89</y>
+						<z>16</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Hydra.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Matriarch.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Matriarch.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Minotaur_King.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Rider.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Witch.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2SV23.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2SV3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-1.txt"/>
+			<sound href="C4M3_D2_L1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Assassin-2.txt"/>
+			<sound href="C4M3_D2_L2.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Assassin-name-2-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-3.txt"/>
+			<sound href="C4M3_D2_L3.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2dnew.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>-0.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Assassin-4.txt"/>
+			<sound href="C4M3_D2_L4.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Assassin-name-4-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2dtmp3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-5.txt"/>
+			<sound href="C4M3_D2_L5.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d5.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>1.5</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Warlock/happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Assassin-6.txt"/>
+			<sound href="C4M3_D2_L6.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Assassin-name-6-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d7.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>0.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-7.txt"/>
+			<sound href="C4M3_D2_L7.1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d9.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2SV3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Assassin-8.txt"/>
+			<sound href="C4M3_D2_L8.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Assassin-name-8-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2dnew3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-9.txt"/>
+			<sound href="C4M3_D2_L9.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d12.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d14.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>10</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Kelodin-11.txt"/>
+			<sound href="C4M3_D2_L10.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d15.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-12.txt"/>
+			<sound href="C4M3_D2_L11.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d16.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d17.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>2.3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TeleportStart.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>2.3</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>121</x>
+						<y>18</y>
+						<z>17</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d18.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TeleportStart.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Teleport_End.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>68</x>
+						<y>78.5</y>
+						<z>24</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d20.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TeleportEnd.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>-0.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Teleport_End.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>69</x>
+						<y>77</y>
+						<z>24</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Kha-Beleth-16.txt"/>
+			<sound href="C4M3_D2_L12.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d21.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d22.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Oddrema-18.txt"/>
+			<sound href="C4M3_D2_L13.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d23.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Kha-Beleth-19.txt"/>
+			<sound href="C4M3_D2_L14.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d24.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d25.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2) (3).xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TeleportStart.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>4</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>68</x>
+						<y>78.5</y>
+						<z>24</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2d32.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TeleportEnd.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Teleport_End.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>121</x>
+						<y>18</y>
+						<z>17</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M3D2SV56.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Almegir.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Assassin.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Almegir.2.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Almegir.3.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Monolith_One_Way_Exit.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="FireDot01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="InfernoMilitaryPost.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="InfernoMilitaryPost.1.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="InfernoMilitaryPost.2.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="InfernoMilitaryPost.3.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Kennels.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Kennels.1.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Kennels.2.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Kennels.3.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Kennels.4.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Cross_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cross_01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="StickOfDeath_02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="ImpCrucible.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.1.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.2.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.3.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.4.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.5.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="ImpCrucible.6.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="FireDot01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Minotaur_King.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Matriarch.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Matriarch.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Rider.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Hydra.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Witch.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_D3C74700-3AAC-483D-97D0-459B455BB49C">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>50</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Columns/Column_7x7_03.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>70</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

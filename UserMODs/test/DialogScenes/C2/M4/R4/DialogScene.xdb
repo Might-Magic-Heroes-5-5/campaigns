@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000056">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Terrain/Lava.xdb#xpointer(/Music)"/>
+	<MusicVolume>20</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="Shadow_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M4R4bbbb.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>-1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="Shadow_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C2M4R4.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M4R4b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>7</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>-4</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>45</x>
+						<y>69</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>43</x>
+						<y>69</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>45</x>
+						<y>67</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.12.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.13.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.14.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.15.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.16.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.17.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.18.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.10.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.6</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.11.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.4</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.5.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.6.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.7.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.8.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wood_Elf.9.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-0.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Agrael-1.txt"/>
+			<sound href="C2M4_R4.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M4R4d.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M4R4e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Shadow_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.8.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.9.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.10.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.11.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="GarrisonEvil.xdb#xpointer(/AdvMapGarrison)"/>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Column_7x7_03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Garrison_evil_Wall.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Garrison_evil_Wall.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Wood_Elf.12.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.13.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.14.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.15.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.16.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.17.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Elf.18.xdb#xpointer(/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>60</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

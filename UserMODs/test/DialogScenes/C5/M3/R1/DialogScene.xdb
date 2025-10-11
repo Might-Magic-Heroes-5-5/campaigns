@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000109">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Beach/SmallSpecialArena_Grass_Beach.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Water.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Lose-Battle/Sylvan.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href="Heam-0.txt"/>
+			<sound href="C5M3_R1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3R1_set1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Diraya.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Ship_Galley.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Sprite.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sprite.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Dancer.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Dancer.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grand_Elf.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="FireDot01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.36.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.37.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.38.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.39.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.40.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.41.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.42.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.43.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.44.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.45.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.46.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.47.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.48.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.49.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.50.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.51.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.52.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.53.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.54.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.55.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.56.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.57.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.58.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.59.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.60.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.61.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.62.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.63.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.64.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.65.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.66.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.67.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.68.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.69.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.70.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.71.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.72.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.73.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.74.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.75.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.76.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.77.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.78.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.79.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.80.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.81.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.82.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.83.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.84.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.85.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.86.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.87.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.88.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.89.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.90.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.91.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.92.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.93.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.94.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.95.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.96.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.97.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.98.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.99.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.100.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.101.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.102.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.103.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.104.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.105.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.106.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

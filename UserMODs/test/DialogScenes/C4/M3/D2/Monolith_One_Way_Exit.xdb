@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapBuilding>
+	<Pos>
+		<x>61</x>
+		<y>8</y>
+		<z>0</z>
+	</Pos>
+	<Rot>1.5708</Rot>
+	<Floor>1</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Monolith_One_Way_Exit.(AdvMapBuildingShared).xdb#xpointer(/AdvMapBuildingShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</CaptureTrigger>
+	<GroupID>0</GroupID>
+</AdvMapBuilding>

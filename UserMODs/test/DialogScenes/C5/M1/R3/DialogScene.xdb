@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000102">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/SmallSpecialArena_Grass.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Grass.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Campaign/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_3FE5970D-9574-4C9F-A1AB-13B47065ECB4">
+				<AdvMapMonster>
+					<Pos>
+						<x>36.6759</x>
+						<y>40.539</y>
+						<z>0</z>
+					</Pos>
+					<Rot>0</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M1R3_beg.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>8</ActorAnimationIndex>
+			<AnimName>stir00</AnimName>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Findan-1.txt"/>
+			<sound/>
+			<heroLink href="Diraya.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M1R3_set.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-0.txt"/>
+			<sound href="C5M1_R3.1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M1R3.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M1R3SVF2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Diraya.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Treant.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Treant.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Unicorn.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Fairie_Tree.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Birch_aut5x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x4_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x4_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x6_1.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oak5x4.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rock1x1_9.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Log1x1_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Log1x1_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mystical_Garden.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Mystical_Garden.1.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Grass02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.36.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.37.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.38.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.39.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.40.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.41.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.42.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.43.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.44.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.45.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.46.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.47.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.48.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.49.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.50.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.51.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.52.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.53.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.54.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.55.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.56.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.57.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.58.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.59.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.60.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.61.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.62.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.63.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.64.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.65.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.66.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.67.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.68.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.69.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.70.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.71.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.72.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.73.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.74.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.75.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.76.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.77.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.78.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.79.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.80.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.81.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.82.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.83.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.84.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.85.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.86.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.87.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.88.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.89.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.90.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.91.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.92.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.93.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.94.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.95.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.96.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.97.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.98.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.99.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.100.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.101.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.102.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.103.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.104.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.105.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.106.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.107.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.108.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.109.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.110.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.111.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.112.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.113.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.114.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.115.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.116.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.117.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.118.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.119.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.120.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.121.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.122.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.123.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.124.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.125.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.126.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.127.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.128.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.129.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.130.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.131.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.132.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.133.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.134.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.135.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.136.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.137.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.138.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.139.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.140.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.141.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.142.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.143.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass03.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.36.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.37.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.38.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.39.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.40.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.41.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.42.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.43.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.44.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.45.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.46.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.47.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.48.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.49.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.50.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.51.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.52.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.53.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.54.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.55.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.56.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.57.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.58.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.59.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.60.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.61.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.62.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.63.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.64.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.65.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.66.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.67.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.68.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.69.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.70.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.71.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.72.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.73.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.74.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.75.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.76.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.77.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.78.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.79.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.80.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.81.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.82.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.83.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.84.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.85.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.86.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.87.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.88.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.89.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.90.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.91.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.92.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.93.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.94.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.95.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.96.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.97.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.98.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.99.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.100.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.101.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.102.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.103.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.104.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.105.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.106.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.107.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.108.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.109.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.110.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.111.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.112.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.113.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.114.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.115.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.116.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.117.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.118.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.119.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.120.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.121.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.122.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.123.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.124.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.125.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.126.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.127.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.128.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.129.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.130.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.131.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.132.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.133.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.134.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.135.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.136.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.137.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.138.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.139.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.140.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.141.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.142.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.143.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.144.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.145.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.146.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.147.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.148.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.149.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.150.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.151.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.152.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.153.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.154.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Haystock_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bridge_1end.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bridge_1end.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.155.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.156.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.157.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.158.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.159.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.160.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.161.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.162.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.163.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.164.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.165.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.166.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.167.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.168.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.169.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.170.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.171.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.172.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.173.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.174.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.175.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.176.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.177.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.178.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.179.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.180.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.181.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.182.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.183.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.184.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.185.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.186.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.187.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.188.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.189.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.190.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.191.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.192.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.193.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.194.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.195.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.196.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.197.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.198.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.199.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.200.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.201.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.202.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="#n:inline(AdvMapMonster)" id="item_63FA50C2-8DE8-4580-8F7B-61308DD5B355">
+			<AdvMapMonster>
+				<Pos>
+					<x>37</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Inferno/Infernal_Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_FE8C764F-3CBB-4B41-A6EF-0414D90438D4">
+			<AdvMapMonster>
+				<Pos>
+					<x>37.2254</x>
+					<y>40.1278</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0.468604</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Inferno/Horned_Demon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_02F7317B-B49E-4BD1-8E8F-8E97B21BBDD6">
+			<AdvMapMonster>
+				<Pos>
+					<x>36</x>
+					<y>41</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0.791571</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Inferno/Horned_Demon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_BC8FE22E-B371-4AB1-8C95-977D073F75A8">
+			<AdvMapMonster>
+				<Pos>
+					<x>38</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Inferno/Balor.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#xpointer(id(item_3FE5970D-9574-4C9F-A1AB-13B47065ECB4)/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

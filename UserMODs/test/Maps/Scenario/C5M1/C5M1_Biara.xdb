@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero ObjectRecordID="1003594">
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name>Biara</Name>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno/Biara.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<Experience>30000</Experience>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_IMP</Creature>
+			<Count>59</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_HORNED_DEMON</Creature>
+			<Count>48</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_SUCCUBUS</Creature>
+			<Count>32</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
+			<Count>20</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_BALOR</Creature>
+			<Count>8</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_ARCHDEVIL</Creature>
+			<Count>4</Count>
+		</Item>
+	</armySlots>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>7</Offence>
+		<Defence>8</Defence>
+		<Spellpower>4</Spellpower>
+		<Knowledge>9</Knowledge>
+		<skills/>
+		<perkIDs/>
+		<spellIDs/>
+		<Ballista>true</Ballista>
+		<FirstAidTent>true</FirstAidTent>
+		<AmmoCart>true</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>0</OverrideMask>
+	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapHero>

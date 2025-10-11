@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapTown>
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno.(AdvMapTownShared).xdb#xpointer(/AdvMapTownShared)"/>
+	<PlayerID>PLAYER_2</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName>fight_raelag_sovereign_noshield</FunctionName>
+		</Action>
+	</CaptureTrigger>
+	<HeroDeployTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</HeroDeployTrigger>
+	<ShipTile>
+		<x>0</x>
+		<y>0</y>
+	</ShipTile>
+	<Specialization/>
+	<buildings/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+	</Editable>
+	<armySlots/>
+	<spellIDs/>
+	<CaptionFileRef href=""/>
+	<GarrisonHero href="Sovereign.xdb#xpointer(/AdvMapHero)"/>
+	<Script href="sovereign_zehir_noshield.xdb#xpointer(/Script)"/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_2</LinkToPlayer>
+	<LinkToTown/>
+	<CanCaptureOnlyNotVisit>false</CanCaptureOnlyNotVisit>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapTown>

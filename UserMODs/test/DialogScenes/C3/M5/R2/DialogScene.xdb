@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000066">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt/SmallSpecialArena_Dirt.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet/>
+	<Music href="/Sounds/_(Music)/Towns/Haven.(Music).xdb#xpointer(/Music)"/>
+	<MusicVolume>50</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_Haven01 (2) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="Berein-1.txt"/>
+			<sound href="C3M5_R2 .xdb#xpointer(/Sound)"/>
+			<heroLink href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C3M5R2newcs.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight href="/Lights/_(AmbientLight)/AdvMap/C3M5.xdb#xpointer(/AmbientLight)"/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>strike</AnimName>
+			<AnimationDelay>3</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>12</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Bless.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>77</x>
+						<y>75</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Archangel.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>14</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="angel.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="angel.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archangel.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>60</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000129">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass/SmallSpecialArena_Grass.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/heaven.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>45</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="Militiaman.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C1M1D2.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1N1D2Na1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Militiamen-1.txt"/>
+			<sound href="C1M1_D2_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Militiaman.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="Peasant leader.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2M.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2LP.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Isabell-3.txt"/>
+			<sound href="C1M1_D2_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2I.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Militiamen-5.txt"/>
+			<sound href="C1M1_D2_L3.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Militiaman.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Militiamen-name-4-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2M.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>7</ActorAnimationIndex>
+			<AnimName>stir00</AnimName>
+			<AnimationDelay>3</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Isabell-7.txt"/>
+			<sound href="C1M1_D2_L4.xdb#xpointer(/Sound)"/>
+			<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2I.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Militiamen-9.txt"/>
+			<sound href="C1M1_D2_L5.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Militiaman.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Militiamen-name-6-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2M.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>9</ActorAnimationIndex>
+			<AnimName>attack00</AnimName>
+			<AnimationDelay>4</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Haven/Militiamen/attack00.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Isabell-11.txt"/>
+			<sound href="C1M1_D2_L6.xdb#xpointer(/Sound)"/>
+			<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2Ib.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>3</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Knight/victory.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="Peasant.7.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2Fin.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="Peasant.7.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C1M1D2fPr.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Haven/Peasant/attack02.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>1</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Haven/Peasant/attack.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>8</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.6.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>8</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>8</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Peasant.5.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>50</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Peasant.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Peasant.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Militiaman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Oakaut04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch_aut5x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch5x6_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x10.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x10.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x10.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Footman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Grass01.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.2.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>1</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

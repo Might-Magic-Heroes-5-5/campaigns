@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000075">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Border/SmallSpecialArena_Grass_Border.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Grass.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AI-Themes/Dungeon.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_3244BA32-54C7-45A8-B6F6-B88E0895BE4D">
+				<AdvMapHero>
+					<Pos>
+						<x>52.1633</x>
+						<y>38.8483</y>
+						<z>0</z>
+					</Pos>
+					<Rot>2.15816</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Dungeon/Raelag.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_5</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M2R1temp1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-0.txt"/>
+			<sound href="C4M2_R1.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_3244BA32-54C7-45A8-B6F6-B88E0895BE4D)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M2R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M2R1temp2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_3244BA32-54C7-45A8-B6F6-B88E0895BE4D)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M2R1temp3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Column_5x5_06.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_05.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_05.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite05.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite05.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite05.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite06.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite09.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Dungeon_Military_Post.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="#xpointer(id(item_3244BA32-54C7-45A8-B6F6-B88E0895BE4D)/AdvMapHero)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000033">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt/SmallSpecialArena_Dirt.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dirt.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Win-Campaign/Necropolis.xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Arena/RampartArena.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="Berein-0.txt"/>
+			<sound href="C3M5_R1 .xdb#xpointer(/Sound)"/>
+			<heroLink href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt/Aberrar.10.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C3M5R1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C3M5R1_1new.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
+			<AnimationDelay>10</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>14</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/DisruptingRay.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Towns/Necropolis/DragonGraveyard.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>69</y>
+						<z>0</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>11</Delay>
+					<Effect href="/Effects/_(Effect)/Towns/Necropolis/NecromancyAmplifier.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>69</y>
+						<z>0</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#n:inline(AdvMapHero)" id="item_8BA06375-F214-4EEC-9125-8A20DF699651">
+						<AdvMapHero>
+							<Pos>
+								<x>35</x>
+								<y>34</y>
+								<z>0</z>
+							</Pos>
+							<Rot>2.81612</Rot>
+							<Floor>0</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/DialogScenes/Freyda.xdb#xpointer(/AdvMapHeroShared)"/>
+							<PlayerID>PLAYER_1</PlayerID>
+							<Experience>0</Experience>
+							<armySlots/>
+							<artifactIDs/>
+							<isUntransferable/>
+							<Editable>
+								<NameFileRef href=""/>
+								<BiographyFileRef href=""/>
+								<Offence>0</Offence>
+								<Defence>0</Defence>
+								<Spellpower>0</Spellpower>
+								<Knowledge>0</Knowledge>
+								<skills/>
+								<perkIDs/>
+								<spellIDs/>
+								<Ballista>false</Ballista>
+								<FirstAidTent>false</FirstAidTent>
+								<AmmoCart>false</AmmoCart>
+								<FavoriteEnemies/>
+							</Editable>
+							<OverrideMask>0</OverrideMask>
+							<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+							<LossTrigger>
+								<Action>
+									<FunctionName/>
+								</Action>
+							</LossTrigger>
+							<AllowQuickCombat>true</AllowQuickCombat>
+							<Textures>
+								<Icon128x128/>
+								<Icon64x64/>
+								<RoundedFace/>
+								<LeftFace/>
+								<RightFace/>
+							</Textures>
+							<PresetPrice>0</PresetPrice>
+						</AdvMapHero>
+					</heroLink>
+					<monsterLink/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>14</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt/Aberrar.10.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Wraith.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wraith.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_8BA06375-F214-4EEC-9125-8A20DF699651)/AdvMapHero)"/>
+		<Item href="#n:inline(AdvMapPrison)" id="item_F05A12BF-7B4E-4D7B-A39B-E9C6BDAB413E">
+			<AdvMapPrison>
+				<Pos>
+					<x>33</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Prison.(AdvMapPrisonShared).xdb#xpointer(/AdvMapPrisonShared)"/>
+				<PrisonedHero/>
+				<RandomHero>false</RandomHero>
+			</AdvMapPrison>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>50</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

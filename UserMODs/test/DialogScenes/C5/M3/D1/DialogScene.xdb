@@ -1,0 +1,2332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000110">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Preserve/SmallSpecialArena_Grass_Preserve.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Sylvan.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Heroes/Nicolai.xdb#xpointer(/Music)"/>
+	<MusicVolume>30</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1newf1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>19</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Dancer.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Dancer.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>3.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Zombie.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>6</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>3</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Dancer.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>3</AnimationIndex>
+					<AnimationDelay>6</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>11</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>4</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>9</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>10</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>14</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>3</AnimationIndex>
+					<AnimationDelay>12</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Dancer.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>18</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVB23.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>110</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1newf2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>5</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>8</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/Phantom-In.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>71</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>71</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>71</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>6</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>79</x>
+						<y>77</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>6</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireWall.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>79</x>
+						<y>77</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wraith.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Dancer.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="War_Unicorn.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Grand_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Sprite.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>8</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>120</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1newf3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>130</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVB9.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>7</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Sylvan/GreenDragon/Move.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>1</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/Phantom-In.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>1.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>3.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>5.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>6.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1newf4.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVB9.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVB9D2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1new1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>7</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>4</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>6</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.5.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.6.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Gold_Dragon.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Walking_Dead.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Walking_Dead.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Walking_Dead.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Walking_Dead.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Wraith.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Lich.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Lich.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVFinNaA.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>4</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_In.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>4</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/CelestialShield.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>75</x>
+						<y>73</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>2</AnimationIndex>
+					<AnimationDelay>3.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVB9.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TownTeleportStart.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/TownTeleportStart.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>-1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Phantom_Out.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>113</x>
+						<y>39</y>
+						<z>1</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>4</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-0.txt"/>
+			<sound href="C5M3_D1_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-3-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-1.txt"/>
+			<sound href="C5M3_D1_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-2.txt"/>
+			<sound href="C5M3_D1_L3.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-5-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-3.txt"/>
+			<sound href="C5M3_D1_L4.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase6.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-4.txt"/>
+			<sound href="C5M3_D1_L5.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-7-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_zoom.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-5.txt"/>
+			<sound href="C5M3_D1_L6.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase6.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-6.txt"/>
+			<sound href="C5M3_D1_L7.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-9-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-7.txt"/>
+			<sound href="C5M3_D1_L8.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase6.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-8.txt"/>
+			<sound href="C5M3_D1_L9.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-11-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Druid_Elder.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Heam-9.txt"/>
+			<sound href="C5M3_D1_L10.xdb#xpointer(/Sound)"/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1_phrase2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>buff</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>25</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Diraya-10.txt"/>
+			<sound href="C5M3_D1_L11.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Druid Elders-name-13-0.txt"/>
+			<cameraSet href="/DialogCameraSet/C5M3D1.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>40</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVDR3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/Resurrect.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/StoneSkin.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>113</x>
+						<y>39</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>60</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVCr1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>15</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>-3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/Resurrect.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>-1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/StoneSkin.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>119</x>
+						<y>109</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations/>
+			<MusicVolumePercent>80</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Diraya.4.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C5M3D1SVCr2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>11</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>5</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/bless.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Bless.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>119</x>
+						<y>109</y>
+						<z>2</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="Diraya.4.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Diraya.2.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Druid_Elder.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grass01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rays_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Rays_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Gold_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wood_Guard_Quarters.xdb#xpointer(/AdvMapDwelling)"/>
+		<Item href="Witch_Hut.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Birch01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Birch01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Fireflies_01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.36.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.37.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.38.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.39.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.40.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.41.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.42.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.43.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.44.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.45.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.46.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.47.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.48.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.49.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.50.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.51.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.52.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.53.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.54.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.55.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.56.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.57.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.58.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.59.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.60.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.61.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.62.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.63.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.64.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.65.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.66.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.67.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.68.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.69.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.70.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.71.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.72.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.73.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.74.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.75.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.76.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.77.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.78.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.79.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.80.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.81.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.82.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.83.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.84.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.85.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.86.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.87.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.88.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.89.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.90.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.91.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.92.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.93.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.94.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.95.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.96.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.97.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.98.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.99.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.100.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.101.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.102.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.103.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.104.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.105.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.106.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.107.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.108.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.109.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.110.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.111.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.112.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grand_Elf.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grand_Elf.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Dancer.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Dancer.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Unicorn.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="War_Unicorn.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Zombie.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Vampire_Lord.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Vampire.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Wraith.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Grass02.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Diraya.3.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Sprite.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sprite.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Lich.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Walking_Dead.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Walking_Dead.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Walking_Dead.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Walking_Dead.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Lich.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sprite.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Druid_Elder.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.8.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.9.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Bush_08.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.113.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.114.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.115.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.116.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.117.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass02.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.118.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.119.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.120.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.121.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.122.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.123.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.124.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.125.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.126.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.23.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.24.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.25.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.26.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.27.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.28.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.29.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.30.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.31.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.32.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.33.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.34.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.35.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.36.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.37.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.38.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.39.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.40.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.41.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.42.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.43.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.44.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.45.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.46.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.47.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.48.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.49.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.127.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.128.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.129.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.130.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.131.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.132.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.133.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.134.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.135.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.136.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.137.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.138.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.139.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.140.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.141.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.142.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.143.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.144.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.145.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.146.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.147.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.148.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.149.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.150.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.151.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.152.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.153.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.154.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.155.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.156.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.157.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.158.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.159.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.160.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.161.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.162.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.163.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.164.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.165.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.166.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.167.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.168.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.169.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.170.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.171.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.172.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.173.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.13.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.14.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.174.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.175.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.176.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.177.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut03.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.15.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.16.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bigtree.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.50.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.51.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.52.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.53.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.54.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.55.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.56.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.17.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.18.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.19.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.20.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stone_2.21.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Diraya.4.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Gold_Dragon.10.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.11.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Gold_Dragon.12.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Oakaut6x5_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5_1.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut5x4.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut6x5.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.178.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.179.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.180.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.181.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.182.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.183.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.184.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.185.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.186.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.187.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.188.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.189.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.190.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.191.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.192.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.193.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.194.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.195.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.196.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.197.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Oakaut02.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.198.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.199.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.200.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.201.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Grass01.202.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.57.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.58.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.59.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.60.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.61.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_08.22.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_09.12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.62.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.63.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.64.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Bush_10.65.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_4C76E76F-A203-46D9-B04E-1D21D9950E7A">
+			<AdvMapStatic>
+				<Pos>
+					<x>62</x>
+					<y>14</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_E20ACCD8-8497-4F7B-8F24-12EA12DCDF4C">
+			<AdvMapStatic>
+				<Pos>
+					<x>61</x>
+					<y>21</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_6F896FF5-484F-4F61-BF92-00D3BF9D1676">
+			<AdvMapStatic>
+				<Pos>
+					<x>54</x>
+					<y>11</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_759901DA-FBF1-4813-8B55-82A34A3A99CF">
+			<AdvMapStatic>
+				<Pos>
+					<x>52</x>
+					<y>17</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_B2FC01AF-98F2-4B16-9C6E-2B584088AD61">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>10</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_01871302-702A-4291-8421-3A2D257DD734">
+			<AdvMapStatic>
+				<Pos>
+					<x>55</x>
+					<y>55</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_B6E3025B-5EB0-4E78-BAD8-9BC7EA11D7C7">
+			<AdvMapStatic>
+				<Pos>
+					<x>64</x>
+					<y>57</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_F9D723CB-35D0-4D84-BEBC-E9DC9A7E7ECC">
+			<AdvMapStatic>
+				<Pos>
+					<x>63</x>
+					<y>63</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_18A015C6-4E4E-41CA-962B-459B8F5033B5">
+			<AdvMapStatic>
+				<Pos>
+					<x>55</x>
+					<y>62</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_51C8B479-7E74-48E3-8CFC-C82A1966833D">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>65</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Bigtree.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_F6B13A9F-B8A0-4A89-B6B4-CF575ADEBE30">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>54</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Oak/Oak01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_8DD677F8-4E87-4C05-B990-849D62214023">
+			<AdvMapStatic>
+				<Pos>
+					<x>60</x>
+					<y>58</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_9AC2D296-EF67-4526-8855-2D3569B39E61">
+			<AdvMapStatic>
+				<Pos>
+					<x>61</x>
+					<y>56</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_4E5F11DC-2757-47E6-859E-55406F79E0E2">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>56</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_DD6F82A2-23C3-4E7F-B868-44F111ED8A61">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>55</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_281E82DE-E4FA-4332-AA4C-9AD4D4FCDE36">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>54</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0340735D-7C32-4E42-A1D4-1FCE9B067816">
+			<AdvMapStatic>
+				<Pos>
+					<x>62</x>
+					<y>54</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0D9B56C6-7080-4455-9150-05A3C1DF2C8B">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>58</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Fireflies_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_B587D251-D56E-4525-BD99-A09835313EF0">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>21</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_64175CDE-820B-4A29-AC0B-8E2E4138FEB0">
+			<AdvMapStatic>
+				<Pos>
+					<x>60</x>
+					<y>20</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_912FE915-078D-4414-B9E2-57C2A004185D">
+			<AdvMapStatic>
+				<Pos>
+					<x>60</x>
+					<y>14</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_815E2446-69C7-4358-A21C-E96EA405E81F">
+			<AdvMapStatic>
+				<Pos>
+					<x>61</x>
+					<y>15</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_5A82ED4A-F9EA-442E-A550-8A92B94E0D65">
+			<AdvMapStatic>
+				<Pos>
+					<x>60</x>
+					<y>15</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_BFD34F13-7BE4-4E18-8DA1-DA496B8C25E0">
+			<AdvMapStatic>
+				<Pos>
+					<x>62</x>
+					<y>16</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_EC030E11-92D5-46AC-BBC4-8C28A6CCF0DC">
+			<AdvMapStatic>
+				<Pos>
+					<x>61</x>
+					<y>13</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_54013615-213C-42AA-86EB-7A244F6A44CA">
+			<AdvMapStatic>
+				<Pos>
+					<x>59</x>
+					<y>65</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_B662F237-B90D-4852-810E-55830EA6A7B2">
+			<AdvMapStatic>
+				<Pos>
+					<x>63</x>
+					<y>58</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_57987A30-DCA2-4583-83B9-E95A0F228F10">
+			<AdvMapStatic>
+				<Pos>
+					<x>62</x>
+					<y>57</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_60D7D2AF-17CA-4CFE-8974-554B7F846ACF">
+			<AdvMapStatic>
+				<Pos>
+					<x>56</x>
+					<y>57</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_06DA68CC-F959-4624-AB5F-79D8DC16C3DE">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>55</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Bush_10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0D4CB47E-DDA6-40F8-97BD-D4B6399236EB">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>27</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Oak/Oak03.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_C0CA07F8-3C40-45CB-BE84-5595D5A6214E">
+			<AdvMapStatic>
+				<Pos>
+					<x>55</x>
+					<y>29</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Oak/Oak03.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_38C9885C-50E6-4A32-B207-2C3E81A0747E">
+			<AdvMapStatic>
+				<Pos>
+					<x>57</x>
+					<y>25</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Tree/Oak/Oak03.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>65</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

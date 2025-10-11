@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000024">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Sand/SmallSpecialArena_Sand.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Sand.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Towns/Necropolis.(Music).xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href="DialogScene-Markal-0.txt"/>
+			<sound/>
+			<heroLink href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C3M3R4.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C3M3R3_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Berein-1.txt"/>
+			<sound href="C3M3_R4 .xdb#xpointer(/Sound)"/>
+			<heroLink href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C3M3R3_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>12</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>3</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Sceleton.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.8.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.9.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.10.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.11.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.12.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.13.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.14.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.15.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.16.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.17.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.18.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.19.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.20.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.21.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.22.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.23.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.24.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.25.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.26.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.27.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.28.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.29.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.30.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.31.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.32.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.33.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.34.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.35.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.36.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.37.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.38.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.39.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.40.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.41.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.42.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.43.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.44.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.45.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.46.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.47.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.48.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.49.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.50.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.51.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.52.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.53.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.54.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.55.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.56.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.57.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.58.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.59.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.60.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.61.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.62.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.63.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.64.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.65.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.66.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.67.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.68.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.69.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.70.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.71.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.72.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.73.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.74.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.75.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.76.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.77.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.78.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.79.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.80.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.81.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.82.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.83.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.84.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.85.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.86.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.87.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.88.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.89.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.90.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.91.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.92.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.93.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.94.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.95.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.96.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.97.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.98.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.99.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.100.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.101.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.102.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.103.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.104.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.105.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.106.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.107.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.108.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.109.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.110.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.111.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.112.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.113.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.114.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.115.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.116.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.117.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.118.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.119.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.120.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.121.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.122.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.123.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.124.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.125.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.126.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.127.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.128.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.129.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.130.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.131.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.132.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.133.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.134.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.135.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.136.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.137.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.138.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.139.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.140.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.141.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.142.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.143.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.144.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.145.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.146.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.147.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.148.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sceleton.149.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Aberrar.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Cactus_04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cactus_04.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cactus_02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cactus_08.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Cactus_05.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount5x5_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount5x5_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="sandmount8x6_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount8x8_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount5x5_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount5x5_2.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount5x5_2.3.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>70</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

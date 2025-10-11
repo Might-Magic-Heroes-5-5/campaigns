@@ -1,4 +1,4 @@
-$directory = Join-Path -Path $PSScriptRoot -ChildPath "UserMODs"
+$directory = Join-Path -Path $PSScriptRoot -ChildPath "UserMODs\test"
 Write-Output "Processing directory..."
 
 # - UTF-8 is used by this repository so github can show diff during PRs

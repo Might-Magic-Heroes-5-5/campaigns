@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000038">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Lava_Custom/SmallSpecialArena_Lava_Custom.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet/>
+	<Music href="/Sounds/_(Music)/Seige-Battle/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>30</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Tests/InfernoArena.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C2M1R2.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M1R2b1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>10</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Agrael-1.txt"/>
+			<sound href="C2M1_R2 .1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M1R2R1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M1R2E5.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C2M1R2E7.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>10</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Horned_Demon.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="HellHound.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cerberi.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Imp.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Familiar.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Familiar.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Demon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Demon.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Agrael.1.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Subterranean_Gate_In.1.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Mountain10x7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x7.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountains_8x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountains_8x4_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountains_8x4_4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountains_8x4_4.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountains_8x4_4.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x5_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x5_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack5x3_3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack5x3_3.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack5x3_4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x5_1.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_3.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_3.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_3.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_2x2_5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_2x2_5.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_4x4_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_4x4_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_8x8_3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Hellpikes_8x8_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Crater_12x10.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.5.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.7.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.8.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot04.9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack3x2_4.6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack5x3_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x2_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x2_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="FireDot02.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x5_1.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x5_1.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x4_1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Lavacrack7x4_1.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="LavaStone_6.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="LavaStone_6.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="LavaStone_9.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="LavaStone_9.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="LavaStone_9.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x7.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mountain10x7.3.xdb#xpointer(/AdvMapStatic)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>100</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

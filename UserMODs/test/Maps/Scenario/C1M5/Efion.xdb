@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero ObjectRecordID="1003256">
+	<Pos>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Pos>
+	<Rot>0</Rot>
+	<Floor>0</Floor>
+	<Name>Efion</Name>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno/Efion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_2</PlayerID>
+	<Experience>0</Experience>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_IMP</Creature>
+			<Count>9</Count>
+		</Item>
+	</armySlots>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>1</Offence>
+		<Defence>1</Defence>
+		<Spellpower>1</Spellpower>
+		<Knowledge>1</Knowledge>
+		<skills>
+			<Item>
+				<Mastery>MASTERY_EXPERT</Mastery>
+				<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+			</Item>
+			<Item>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_LOGISTICS</SkillID>
+			</Item>
+		</skills>
+		<perkIDs>
+			<Item>HERO_SKILL_SUN_FIRE</Item>
+			<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+			<Item>HERO_SKILL_DEMONIC_FLAME</Item>
+		</perkIDs>
+		<spellIDs>
+			<Item>SPELL_MAGIC_ARROW</Item>
+			<Item>SPELL_FIREBALL</Item>
+		</spellIDs>
+		<Ballista>false</Ballista>
+		<FirstAidTent>false</FirstAidTent>
+		<AmmoCart>true</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>64</OverrideMask>
+	<PrimarySkillMastery>MASTERY_ADVANCED</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapHero>

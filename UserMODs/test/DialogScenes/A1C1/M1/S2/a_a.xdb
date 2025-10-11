@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet>
+	<StartCamera href="c1m1s2_al.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>63</x>
+		<y>77</y>
+		<z>0.15</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>1.5708</StartCorrectionRot>
+	<FinishCamera href="c1m1s2_al.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>63</x>
+		<y>77</y>
+		<z>0.15</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>1.5708</FinishCorrectionRot>
+	<NameFileRef href="a_a-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>1</IgnoreYawDiff>
+	<Direction>0</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Campaign>
+	<InternalName>A1C3</InternalName>
+	<NameFileRef href="A1C3/CampaignName.txt"/>
+	<FullNameFileRef href="A1C3/CampaignFull.txt"/>
+	<NameCommentFileRef href="A1C3/CampaignDescription.txt"/>
+	<DependentCampaigns>
+		<Item href="A1C2.xdb#xpointer(/Campaign)"/>
+	</DependentCampaigns>
+	<Missions>
+		<Item>
+			<NameFileRef href="A1C3/A1C3M1/a1c3m1name.txt"/>
+			<NameCommentFileRef href="A1C3/A1C3M1/a1c3m1com.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C3M1/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_MATRON</Creature>
+						<Count>2</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_WITCH</Creature>
+						<Count>18</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>7</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>BOOTS_OF_SPEED</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Shadwyn</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>1</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics/>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C3/A1C3M2/a1c3m2name.txt"/>
+			<NameCommentFileRef href="A1C3/A1C3M2/a1c3m2desc.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C3M2/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_ASSASSIN</Creature>
+						<Count>8</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_WITCH</Creature>
+						<Count>5</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>1000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_TAROT_DECK</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Shadwyn</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>2</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics/>
+			<additionalWaitMusics/>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C3/A1C3M3/a1c3m3name.txt"/>
+			<NameCommentFileRef href="A1C3/A1C3M3/a1c3m3desc.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C3M3/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_ASSASSIN</Creature>
+						<Count>14</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_RESOURCE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>8</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>FOUR_LEAF_CLOVER</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Shadwyn</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>3</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics/>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AI-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C3/A1C3M4/a1c3m4name.txt"/>
+			<NameCommentFileRef href="A1C3/A1C3M4/a1c3m4desc.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C3M4/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_RESOURCE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>4000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_RAVAGER</Creature>
+						<Count>6</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ENDLESS_BAG_OF_GOLD</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>2</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Shadwyn</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>4</TargetMission>
+					</Item>
+					<Item>
+						<HeroScriptName>Isabell_A1</HeroScriptName>
+						<TargetCampaign/>
+						<TargetMission>4</TargetMission>
+					</Item>
+				</Heroes>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/Raelag.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics/>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/Dungeon.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Dungeon.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+		<Item>
+			<NameFileRef href="A1C3/A1C3M5/a1c3m5name.txt"/>
+			<NameCommentFileRef href="A1C3/A1C3M5/a1c3m5desc.txt"/>
+			<MissionTag href="/Maps/Scenario/A1C3M5/map-tag.xdb#xpointer(/AdvMapDescTag)"/>
+			<Bonuses>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_CREATURE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_BLACK_DRAGON</Creature>
+						<Count>2</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>GOLDEN_HORSESHOE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_RESOURCE</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>5000</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+			</Bonuses>
+			<HeroesPool>
+				<Count>0</Count>
+				<Heroes/>
+			</HeroesPool>
+			<startMusics>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/Raelag.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/Isabel.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Duncan.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Freyda.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Wulfstan.xdb#xpointer(/Music)"/>
+			</startMusics>
+			<additionalAdventureMusics/>
+			<additionalWaitMusics>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/AI-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalWaitMusics>
+			<additionalCombatMusics>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Dungeon.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Fortress.xdb#xpointer(/Music)"/>
+				<Item href="/Sounds/_(Music)/Battle-Themes/a1-Renegade.xdb#xpointer(/Music)"/>
+			</additionalCombatMusics>
+		</Item>
+	</Missions>
+	<AdventureMusic href="/Sounds/_(Music)/AdvMap-Campaign/a1-Dungeon.xdb#xpointer(/Music)"/>
+	<WinMissionMusic href="/Sounds/_(Music)/Win-Campaign/Dungeon.xdb#xpointer(/Music)"/>
+	<LoseMissionMusic href="/Sounds/_(Music)/Lose-Campaign/Dungeon.xdb#xpointer(/Music)"/>
+</Campaign>

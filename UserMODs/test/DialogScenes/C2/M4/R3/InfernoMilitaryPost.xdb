@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapDwelling>
+	<Pos>
+		<x>36</x>
+		<y>37</y>
+		<z>0</z>
+	</Pos>
+	<Rot>6.20429</Rot>
+	<Floor>1</Floor>
+	<Name/>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Inferno/InfernoMilitaryPost.(AdvMapDwellingShared).xdb#xpointer(/AdvMapDwellingShared)"/>
+	<PlayerID>PLAYER_NONE</PlayerID>
+	<CaptureTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</CaptureTrigger>
+	<RandomCreatures>false</RandomCreatures>
+	<creaturesEnabled/>
+	<RndSource>RND_NONE</RndSource>
+	<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+	<LinkToTown/>
+</AdvMapDwelling>

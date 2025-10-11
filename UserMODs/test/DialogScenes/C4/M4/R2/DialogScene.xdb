@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene ObjectRecordID="1000089">
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Battle-Themes/Haven2.xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R2b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="Raelag-0.txt"/>
+			<sound href="C4M4_R2.xdb#xpointer(/Sound)"/>
+			<heroLink href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet href="/DialogCameraSet/C4M4R2.xdb#xpointer(/DialogSceneCameraSet)"/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R2d.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>9</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/C4M4R2e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>-1</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Warlock/happy.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/DemonLord/Capture.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Almegir.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Balor.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Horned_Demon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Infernal_Succubus.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Stologmite04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologmite04.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite04.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_7x7_03.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_5x5_06.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Mushroom2x2_2.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Stologtite11.4.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_3x3_04.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_3x3_01.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Column_3x3_01.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="archdevil.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="archdevil.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Monolith_Two_Way.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Monolith_Two_Way.1.xdb#xpointer(/AdvMapBuilding)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>80</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>
