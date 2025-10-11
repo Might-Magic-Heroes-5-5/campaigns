@@ -1,5 +1,5 @@
 print("sovereign vs heam - no shield");
-d = GetDifficulty() + 1;
+d = GetDifficulty();
 
 --monsters: infernal succubus, cerberi, vampires
 

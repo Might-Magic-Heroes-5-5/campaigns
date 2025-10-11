@@ -1,5 +1,5 @@
 print("sovereign vs godric - no shield");
-d = GetDifficulty() + 1;
+d = GetDifficulty();
 
 --monsters: alot of frightful nightmares, imps and demons
 

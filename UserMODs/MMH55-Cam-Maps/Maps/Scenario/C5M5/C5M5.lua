@@ -262,7 +262,7 @@ end;
 H55_CamFixTooManySkills(PLAYER_1,"Heam");
 StartDialogScene('/DialogScenes/C5/M5/R1/DialogScene.xdb#xpointer(/DialogScene)');
 DeployReserveHero('Nikolay',84,86,GROUND);
-ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 400000);
+ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000);
 startThread(dragon_messeges);
 blocking();
 H55_NewDayTrigger = 1;
@@ -309,7 +309,7 @@ end;
 if GetDifficulty() == DIFFICULTY_HEROIC then
 	print ("Impossible");
 	dif = 2;
-	exp = GetHeroStat("Heam", STAT_EXPERIENCE)*2;
+	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 	for i,h in dang_array do
 		ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
 		AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 45);

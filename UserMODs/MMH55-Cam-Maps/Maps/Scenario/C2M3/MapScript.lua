@@ -25,7 +25,7 @@ C2M3_C5 = 0;
 C2M3_C6 = 0;
 C2M3_C7 = 0;
 C2M3_C8 = 0;
-increment = 0;
+increment = 1;
 number=0;
 AIenabled = 0;
 FirstTime = 0;
@@ -138,15 +138,15 @@ function CreaturesSpawn()
 			--GenerateMonsters(monsterTypeID, countGroupsMin, countGroupsMax, countInGroupMin, countInGroupMax)
 			if GetDifficulty() == DIFFICULTY_HEROIC then 
 				increment = increment+1;
-				GenerateMonsters(CREATURE_SPRITE, 10, 15, 50*increment, 80*increment);
-				GenerateMonsters(CREATURE_WAR_DANCER, 5, 10, 30*increment, 50*increment);
-				GenerateMonsters(CREATURE_GRAND_ELF, 4, 8, 16*increment, 25*increment);
+				GenerateMonsters(CREATURE_SPRITE, 10, 15, 25*increment, 40*increment);
+				GenerateMonsters(CREATURE_WAR_DANCER, 5, 10, 15*increment, 25*increment);
+				GenerateMonsters(CREATURE_GRAND_ELF, 4, 8, 8*increment, 12*increment);
 				print("Druids have spawned monsters. Difficulty is HEROIC");
 				else if GetDifficulty() == DIFFICULTY_HARD then 
 					increment = increment+1;
-					GenerateMonsters(CREATURE_SPRITE, 8, 12, 40*increment, 60*increment);
-					GenerateMonsters(CREATURE_WAR_DANCER, 4, 8, 25*increment, 40*increment);
-					GenerateMonsters(CREATURE_WOOD_ELF, 3, 6, 14*increment, 22*increment);
+					GenerateMonsters(CREATURE_SPRITE, 8, 12, 20*increment, 30*increment);
+					GenerateMonsters(CREATURE_WAR_DANCER, 4, 8, 12*increment, 20*increment);
+					GenerateMonsters(CREATURE_WOOD_ELF, 3, 6, 7*increment, 11*increment);
 					print("Druids have spawned monsters. Difficulty is HARD");
 					else if GetDifficulty() == DIFFICULTY_NORMAL then 
 						GenerateMonsters(CREATURE_PIXIE, 8, 10, 30, 40);

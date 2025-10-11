@@ -1,5 +1,5 @@
 print("biara vs godric")
-d = GetDifficulty();
+d = GetDifficulty()-1;
 
 function Prepare()
 	EnableAutoFinish(nil)
