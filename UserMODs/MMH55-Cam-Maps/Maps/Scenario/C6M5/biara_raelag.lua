@@ -1,5 +1,5 @@
 print("biara vs raelag")
-d = GetDifficulty();
+d = GetDifficulty()-1;
 
 function Prepare()
 	EnableCinematicCamera(nil);

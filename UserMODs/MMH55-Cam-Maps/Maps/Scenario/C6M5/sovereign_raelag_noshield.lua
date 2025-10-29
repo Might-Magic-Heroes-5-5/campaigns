@@ -1,5 +1,5 @@
 print("sovereign vs raelag - no shield");
-d = GetDifficulty() + 1;
+d = GetDifficulty();
 
 --monsters: demiliches, imps and cerberi
  

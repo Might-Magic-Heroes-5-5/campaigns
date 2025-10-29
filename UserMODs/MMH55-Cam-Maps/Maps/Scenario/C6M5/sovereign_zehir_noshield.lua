@@ -1,5 +1,5 @@
 print("sovereign vs zehir - no shield")
-d = GetDifficulty() + 1;
+d = GetDifficulty();
 
 --monsters: alot of cerberi, pit fiends and frightful nightmares
 

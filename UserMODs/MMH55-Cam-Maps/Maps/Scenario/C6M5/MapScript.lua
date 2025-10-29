@@ -100,14 +100,21 @@ function teleporting()
 --	Trigger(NEW_DAY_TRIGGER, "fight_godric_sovereign");
 end
 
+--no catapult version
+
+-- function Question()
+	-- QuestionBox('/Maps/Scenario/C6M5/message-8.txt', "CrossBattleDialogue");
+-- end
+
+--catapult version (wall files must be unbugged)
+
 function Question()
-	QuestionBox('/Maps/Scenario/C6M5/message-8.txt', "CrossBattleDialogue"); --"Info");
+	QuestionBox('/Maps/Scenario/C6M5/message-8.txt', "Info");
 end
 
---function Info()
-	--CrossBattleDialogue();
-	--MessageBox('/Maps/Scenario/C6M5/message-9.txt',"fight_godric_sovereign");
---end
+function Info()
+	MessageBox('/Maps/Scenario/C6M5/message-9.txt',"fight_godric_sovereign");
+end
 
 -- sovereign combat sequence --
 -- godric heam zehir raelag --
