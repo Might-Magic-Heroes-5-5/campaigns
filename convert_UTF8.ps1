@@ -1,19 +1,32 @@
 $directory = Join-Path -Path $PSScriptRoot -ChildPath "UserMODs"
 Write-Output "Processing directory..."
 
-# - UTF-8 is used by this repository so github can show diff during PRs
-$encoding = [System.Text.Encoding]::UTF8
+# - UTF-8 BOM is used by this repository so github can show diff during PRs
+$targetEncoding = New-Object System.Text.UTF8Encoding($true) # UTF-8 with BOM
 
 Get-ChildItem -Path $directory -Recurse -Filter "*.bak" | Remove-Item -Force
 
-Get-ChildItem -Path $directory -Filter "*.txt" -Recurse | ForEach-Object {
-    $inputFile = $_.FullName
-    Write-Output "Converting: $inputFile"
+Get-ChildItem -Path $directory -Recurse -File | Where-Object {
+    $_.Extension -in '.txt'
+  } | ForEach-Object {
+    $fi = Get-Item -LiteralPath $_.FullName
+    $origRO  = $fi.IsReadOnly
+    $origCT  = $fi.CreationTime
+    $origLAT = $fi.LastAccessTime
+    $origLWT = $fi.LastWriteTime
 
-    if ($_.IsReadOnly) { $_.IsReadOnly = $false }
+    if ($origRO) { $fi.IsReadOnly = $false }
 
-    ## Read the file and write it back in UTF-8
-    $content = Get-Content -Raw -Path $inputFile
-    [System.IO.File]::WriteAllText($inputFile, $content, $encoding)
-}
+    $reader  = [System.IO.StreamReader]::new($fi.FullName, $true) # detect BOM/encoding
+    $content = $reader.ReadToEnd()
+    $reader.Close()
+
+    [System.IO.File]::WriteAllText($fi.FullName, $content, $targetEncoding)
+
+    $fi = Get-Item -LiteralPath $fi.FullName
+    $fi.CreationTime   = $origCT
+    $fi.LastAccessTime = $origLAT
+    $fi.LastWriteTime  = $origLWT
+    if ($origRO) { $fi.IsReadOnly = $true }
+  }
 Write-Output "Conversion complete!"
