@@ -290,6 +290,22 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Siege enemy heroes wander around instead of attacking the castle
 - new: added Memory Mentor
 
+### C3M1 – Necropolis: The Temptation
+- fix: Enemy hero Tan did not patrol the map as inteneded
+
+### C3M2 – Necropolis: The Attack
+- fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one.
+
+### C3M3 – Necropolis: The Invasion
+- fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
+- change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description.
+
+### C3M5 – Necropolis: Lord of Heresh
+- fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
+- fix: Renegade upgrade type units does not Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle.
+- change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location.
+- change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost.
+
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
 - fix: Red AI player (Inferno) heroes could freeze till end of game

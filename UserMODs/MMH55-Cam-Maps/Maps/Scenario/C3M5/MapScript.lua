@@ -1,51 +1,107 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+    sleep()
+end
+
+AI_CONTROLLED = {
+  player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+      state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+	   heroes = {},
+	  enemies = {},
+  },
+  player2 = { 		   -- Blue Haven AI player with only one hero (Godric).
+      state = 1,       -- Managed by scripts, Godric do nothing so control set to 1.
+	   heroes = {},
+	  enemies = {},
+  },
+  player3 = { 		   -- Orange Academy Inferno AI player
+      state = 2,       -- AI player with specific purpose so control set to 2.
+	   heroes = {},
+  	enemies = {
+	    { priority = 1.0, heroes = 0.1, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+    }
+  }
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M5");
     LoadHeroAllSetArtifacts("Berein", "C3M4" );
 	GiveArtefact("Berein",ARTIFACT_RING_OF_DEATH);
-end;
+end
 
 startThread(H55_InitSetArtifacts);
-
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_STAFF_OF_VEXINGS,ARTIFACT_RING_OF_DEATH,ARTIFACT_CLOAK_OF_MOURNING,ARTIFACT_NECROMANCER_PENDANT};
 
-START_TIME_PRESSING_MONTH = 2;
-factor = 3;
-EnableHeroAI('Godric', nil );
-SetObjectEnabled("prison",nil);
---Initialisation of Game variables:
-for i = 1,14 do
-	SetGameVar("C3M5_creatures"..i,0);
-end;
+CreatureList = {
+		 CREATURE_PEASANT,	  CREATURE_MILITIAMAN,       CREATURE_LANDLORD,
+		 CREATURE_FOOTMAN,     CREATURE_SWORDSMAN,     CREATURE_VINDICATOR,
+		  CREATURE_ARCHER,      CREATURE_MARKSMAN,     CREATURE_LONGBOWMAN,
+		 CREATURE_GRIFFIN, CREATURE_ROYAL_GRIFFIN, CREATURE_BATTLE_GRIFFIN,
+		  CREATURE_PRIEST,        CREATURE_CLERIC,         CREATURE_ZEALOT,
+		CREATURE_CAVALIER,       CREATURE_PALADIN,       CREATURE_CHAMPION,
+		   CREATURE_ANGEL,	   CREATURE_ARCHANGEL,	       CREATURE_SERAPH
+};
+CreatureList.n = 21;
 
-CreaturesNameForMessage = {"Peasants","Militiaman",
-						   "Footman","Swordsman",
-							"Archers","Marksman",
-							"Griffins","Royal griffins",
-							"Clerics","Priests",
-							"Paladins","Paladins",
-							"Angels","Archangels"};	
-
-
-----------------------------------
-Save("GodricsChoice");
-StartDialogScene("/DialogScenes/C3/M5/D1/DialogScene.xdb#xpointer(/DialogScene)");
-MoveHeroRealTime("Godric", 47,30,GROUND);
-
-function WaitDay()
-	local Xday;
-	Xday = GetDate(DAY) + 1;
-	while Xday ~= GetDate(DAY) do
-		sleep();
-	end;
-end;
-
------- DETERMINES DIFFICULTY LEVEL TO SET INITIAL CONDITIONS FOR COMBAT SCRIPT FOR BATTLE VS GODRIC------
-function DifficultyLevel()
-	if GetDifficulty() == DIFFICULTY_EASY then
+CreaturesNameForMessage = {
+ "Peasants",     "Militiaman",        "Landlord",
+  "Footman",      "Swordsman",      "Vindicator",
+  "Archers",       "Marksman",      "Arbaletist",
+ "Griffins", "Royal griffins", "Battle Griffins",
+  "Clerics",        "Priests",         "Zealots",
+"Cavaliers",       "Paladins",       "Champions",
+   "Angels",     "Archangels",         "Seraphs"
+ };
+		   
+CreatureNameFromTextFiles = { "Peasants", "Footman",  "Archers", "Griffins", "Clerics", "Paladins", "Angels" };
+		 
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/C3/M5/D1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	armyDeserters = function()
+		StartDialogScene("/DialogScenes/C3/M5/R4/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	captureDaughter = function()
+		StartDialogScene("/DialogScenes/C3/M5/R1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	ambushByAngels = function()
+		StartDialogScene("/DialogScenes/C3/M5/R2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	getAngelWings = function()
+		StartDialogScene("/DialogScenes/C3/M5/R3/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/C3/M5/D3/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	showCapturedfMine = function(mine)
+		x, y, z = GetObjectPosition(mine);
+		MoveCamera( x, y, z, 40, 0.925, 0.279 );
+		MessageBox("/Maps/Scenario/C3M5/CaptureCavernMessage.txt");
+    end,
+}
+    
+DIFFICULTY = {
+	[0] = function()
 		SetGameVar("C3M5_Difficulty","normal");
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,30);
 		AddHeroCreatures("Berein",CREATURE_MANES,8);
@@ -57,129 +113,253 @@ function DifficultyLevel()
 		SetPlayerStartResource(1,GEM,5);
 		SetPlayerStartResource(1,GOLD,30000);
 		print("Difficulty level is easy");
-	else
-	if GetDifficulty() == DIFFICULTY_NORMAL then
-			SetPlayerStartResource(1,WOOD,16);
-			SetPlayerStartResource(1,ORE,15);
-			SetPlayerStartResource(1,SULFUR,3);
-			SetPlayerStartResource(1,MERCURY,3);
-			SetPlayerStartResource(1,CRYSTAL,3);
-			SetPlayerStartResource(1,GEM,3);
-			SetPlayerStartResource(1,GOLD,25000);
-			SetGameVar("C3M5_Difficulty","normal");
-			AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,15);
-			AddHeroCreatures("Berein",CREATURE_MANES,5);
-			print("Difficulty level is normal");
-			else
-			if GetDifficulty() == DIFFICULTY_HARD then
-				SetPlayerStartResource(1,WOOD,12);
-				SetPlayerStartResource(1,ORE,10);
-				SetPlayerStartResource(1,SULFUR,1);
-				SetPlayerStartResource(1,MERCURY,1);
-				SetPlayerStartResource(1,CRYSTAL,1);
-				SetPlayerStartResource(1,GEM,1);
-				SetPlayerStartResource(1,GOLD,20000);
-				SetGameVar("C3M5_Difficulty","hard");
-				print("Difficulty level is hard");
-				else
-				if GetDifficulty() == DIFFICULTY_HEROIC then
-					SetPlayerStartResource(1,WOOD,10);
-					SetPlayerStartResource(1,ORE,8);
-					SetPlayerStartResource(1,SULFUR,1);
-					SetPlayerStartResource(1,MERCURY,1);
-					SetPlayerStartResource(1,CRYSTAL,1);
-					SetPlayerStartResource(1,GEM,1);
-					SetPlayerStartResource(1,GOLD,15000);
-					SetGameVar("C3M5_Difficulty","heroic");
-					print("Difficulty level is heroic");
-					START_TIME_PRESSING_MONTH = 4;
-				end;
-			end;
-		end;
-	end;
-end;
+	end,
+	
+	[1] = function()
+		SetPlayerStartResource(1,WOOD,16);
+		SetPlayerStartResource(1,ORE,15);
+		SetPlayerStartResource(1,SULFUR,3);
+		SetPlayerStartResource(1,MERCURY,3);
+		SetPlayerStartResource(1,CRYSTAL,3);
+		SetPlayerStartResource(1,GEM,3);
+		SetPlayerStartResource(1,GOLD,25000);
+		SetGameVar("C3M5_Difficulty","normal");
+		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,15);
+		AddHeroCreatures("Berein",CREATURE_MANES,5);
+		print("Difficulty level is normal");
+	end,
+	
+	[2] = function()
+		SetPlayerStartResource(1,WOOD,12);
+		SetPlayerStartResource(1,ORE,10);
+		SetPlayerStartResource(1,SULFUR,1);
+		SetPlayerStartResource(1,MERCURY,1);
+		SetPlayerStartResource(1,CRYSTAL,1);
+		SetPlayerStartResource(1,GEM,1);
+		SetPlayerStartResource(1,GOLD,20000);
+		SetGameVar("C3M5_Difficulty","hard");
+		print("Difficulty level is hard");
+	end,
+	
+	[3] = function()
+		SetPlayerStartResource(1,WOOD,10);
+		SetPlayerStartResource(1,ORE,8);
+		SetPlayerStartResource(1,SULFUR,1);
+		SetPlayerStartResource(1,MERCURY,1);
+		SetPlayerStartResource(1,CRYSTAL,1);
+		SetPlayerStartResource(1,GEM,1);
+		SetPlayerStartResource(1,GOLD,15000);
+		SetGameVar("C3M5_Difficulty","heroic");
+		print("Difficulty level is heroic");
+		START_TIME_PRESSING_MONTH = 4;
+	end,
+}
 
-------- HEROES MUST SURVIVE ----------------------------------------
-function IsabellAndBerein_Survive()
-	print("Thread IsabellAndBerein_Survive has been started...");
-	while 1 do
-		sleep(10);
+OBJECTIVES = {
+	state = {
+		defeatGodric        = { "prim1", 1 }, -- Defeat Godric
+		captureDaughter     = { "prim2", 1 }, -- Markal to capture Godric's daughter Freyda
+		getFreydaToTown     = { "prim3", 0 }, -- Markal to bring Freyda to Lorekeep
+		captureHikm         = { "prim4", 0 }, -- Capture Hikm town
+		isAlive             = { "prim5", 1 }, -- Markal and Isabell must survive
+		timePressure        = {  "TimePressing", 1 }, -- Complete the mission in one month.
+		deployAcademyHeroes = {  "deployAcademyHeroes", 1 }, -- Complete the mission in one month.
+	},
+
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		START_TIME_PRESSING_MONTH = 2;
+		factor = 3;
+		EnableHeroAI('Godric', nil );
+		SetObjectEnabled("prison",nil);
+		Trigger(OBJECT_TOUCH_TRIGGER, "teleport", "TeleportUse");
+		for i = 1,21 do
+			SetGameVar("C3M5_creatures"..i,0);
+		end
+		Save("GodricsChoice");
+		CINEMATICS.intro();
+		MoveHeroRealTime("Godric", 47,30,GROUND);
+		H55_CamFixTooManySkills(PLAYER_1,"Berein");
+		H55_CamFixTooManySkills(PLAYER_1,"Isabell");
+		H55_CamFixTooManySkills(PLAYER_2,"Godric");
+		startThread(DIFFICULTY[GetDifficulty()]);
+		startThread(IsabellLostArmy);
+		startThread(desentir);
+		startThread(CaptureCavern);		
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+
+			if GetObjectiveState("prim5") == OBJECTIVE_FAILED or GetObjectiveState("TimePressing") == OBJECTIVE_FAILED then
+				Loose();
+			end
+			
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep(10);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	defeatGodric = function()
+	-- start of this task is handled by C3M5.xdb
+		if IsHeroAlive("Godric") == nil then
+			SetObjectiveState("prim1",OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.defeatGodric[2] = 10;
+		end
+	end,
+	
+	captureDaughter = function()
+		if OBJECTIVES.state.captureDaughter[2] == 1 then
+			Trigger(OBJECT_TOUCH_TRIGGER, "prison", "PlayerTouchPrison");
+			SetObjectiveState('prim2',OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.captureDaughter[2] = 2;
+		elseif OBJECTIVES.state.captureDaughter[2] == 2 then
+			-- Wait	for Markal to touch Freyda's prison
+		elseif OBJECTIVES.state.captureDaughter[2] == 3 then
+			CINEMATICS.captureDaughter();
+			SetObjectiveState("prim2", OBJECTIVE_COMPLETED);
+			GiveArtefact("Berein",72,1); -- Artifact Freida
+			OBJECTIVES.state.getFreydaToTown[2] = 1;
+			OBJECTIVES.state.captureDaughter[2] = 10;
+		end
+	end,
+	
+	getFreydaToTown = function()
+		if OBJECTIVES.state.getFreydaToTown[2] == 1 then
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Angels", "BeforeBattleVS_Angels");
+			SetObjectiveState("prim3", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.getFreydaToTown[2] = 2;
+		elseif OBJECTIVES.state.getFreydaToTown[2] == 2 then
+			-- Wait	for Markal to enter the trap
+		elseif OBJECTIVES.state.getFreydaToTown[2] == 3 then
+			CINEMATICS.ambushByAngels();
+			OBJECTIVES.state.getFreydaToTown[2] = 4;
+			BATTLES.ambushByAngels.start();
+		elseif OBJECTIVES.state.getFreydaToTown[2] == 4 then
+			-- Wait	for the ambush to finish
+		elseif OBJECTIVES.state.getFreydaToTown[2] == 5 then
+			CINEMATICS.getAngelWings();
+			SetObjectiveState('prim3',OBJECTIVE_COMPLETED);
+			GiveArtefact('Berein', ARTIFACT_ANGEL_WINGS, 1);
+			sleep(10);
+			RemoveArtefact("Berein",72); --Artifact Freida
+			OBJECTIVES.state.captureHikm[2] = 1;
+			OBJECTIVES.state.getFreydaToTown[2] = 10;
+		end
+	end,
+	
+	captureHikm = function()
+		if OBJECTIVES.state.captureHikm[2] == 1 then
+			SetObjectiveState('prim4', OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.captureHikm[2] = 2;
+		elseif OBJECTIVES.state.captureHikm[2] == 2 and GetObjectOwner("Hikm") == PLAYER_1 then
+			SetObjectiveState('prim4', OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.captureHikm[2] = 10;
+		end
+	end,
+	
+	isAlive = function()
+	-- start of this task is handled by C3M5.xdb
 		if (IsHeroAlive("Isabell") == nil or IsHeroAlive("Berein") == nil) then
-			print("Our glorious hero has been fallen...");
-			SetObjectiveState("prim5",OBJECTIVE_FAILED);
-			sleep(40);
-			Loose(0);
-			break;
-		end;
-	end;
-end;
+			SetObjectiveState("prim5", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+		if OBJECTIVES.state.defeatGodric[2] == 10 and OBJECTIVES.state.captureHikm[2] == 10 then
+			SetObjectiveState("prim5", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.isAlive[2] = 10;
+		end
+	end,
+	
+	timePressure_current = nil,
+	timePressure_week_message = 4,
+	timePressure_day_message = 6,
+	timePressure = function()
+		if OBJECTIVES.state.timePressure[2] == 1 and GetDate(MONTH) >= START_TIME_PRESSING_MONTH then
+			SetObjectiveState("TimePressing", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.timePressure[2] = 2;
+		elseif OBJECTIVES.state.timePressure[2] == 2 and OBJECTIVES.timePressure_current ~= GetDate(WEEK) then
+			if OBJECTIVES.timePressure_week_message == 4 then
+				MessageBox("/Maps/Scenario/C3M5/4WeekBeforeLoose.txt");
+			else
+				MessageBox("/Maps/Scenario/C3M5/"..OBJECTIVES.timePressure_week_message.."WeeksBeforeLoose.txt");
+			end
+			if OBJECTIVES.timePressure_week_message ~= 2 then 
+				OBJECTIVES.timePressure_week_message = OBJECTIVES.timePressure_week_message - 1;
+			else
+				OBJECTIVES.state.timePressure[2] = 3;
+			end
+			OBJECTIVES.timePressure_current = GetDate(WEEK);
+		elseif OBJECTIVES.state.timePressure[2] == 3 and OBJECTIVES.timePressure_current ~= GetDate(WEEK) then
+			MessageBox("/Maps/Scenario/C3M5/7DaysBeforeLoose.txt");
+			OBJECTIVES.timePressure_current = GetDate(DAY_OF_WEEK);
+			OBJECTIVES.state.timePressure[2] = 4;
+		elseif OBJECTIVES.state.timePressure[2] == 4 and OBJECTIVES.timePressure_current ~= GetDate(DAY_OF_WEEK) then
+			if OBJECTIVES.timePressure_day_message ~= 0 then 
+				MessageBox("Maps/Scenario/C3M5/"..OBJECTIVES.timePressure_day_message.."DaysBeforeLoose.txt");
+				OBJECTIVES.timePressure_day_message = OBJECTIVES.timePressure_day_message - 1;
+			else
+				SetObjectiveState("TimePressing", OBJECTIVE_FAILED);
+				OBJECTIVES.state.timePressure[2] = 11;
+			end
+			OBJECTIVES.timePressure_current = GetDate(DAY_OF_WEEK);
+		elseif OBJECTIVES.state.defeatGodric[2] == 10 and OBJECTIVES.state.captureHikm[2] == 10 then
+			SetObjectiveState("TimePressing", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.timePressure[2] = 10;
+		end
+	end,
+	
+	deployAcademyHeroes = function()
+		if OBJECTIVES.state.deployAcademyHeroes[2] == 1 and GetDate(WEEK) == 2 then
+			DeployReserveHero("Razzak",24,90,0);
+			sleep(2);
+			SetAIPlayerAttractor("Newpost",PLAYER_3,2);
+			ADD_ASSAULT_HERO('Razzak');
+			startThread(RazzakIsDead);
+			OBJECTIVES.state.deployAcademyHeroes[2] = 2;
+		elseif OBJECTIVES.state.deployAcademyHeroes[2] == 2 and OBJECTIVES.state.captureDaughter[2] == 10 then
+			DeployReserveHero("Maahir",88,20,0);
+			sleep(2);
+			SetAIPlayerAttractor("Necorrum",PLAYER_3,2); -- Necorrum is Lorekeep
+			ADD_ASSAULT_HERO('Maahir');
+			OBJECTIVES.state.deployAcademyHeroes[2] = 10;
+		end
+	end
+}
 
-function PrimaryObjective2()
-	print("Thread PrimaryObjective2 has been started...");
-	SetObjectiveState('prim2',OBJECTIVE_ACTIVE);
-	hidenobjective2=nil;
-	sleep (10);
-end;
-
-
-function StartTrigger_AngelsBefore(heroname)
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER,"BeforeAngels", nil);
-	if heroname == "Berein" then
-		print("Markal has entered in area before battle versus angels");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Angels","BeforeBattleVS_Angels");
-	else
-		print(heroname, " has entered in area. It is not Markal.");
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER,"BeforeAngels","StartTrigger_AngelsBefore");
-	end;
-end;
-
-function BeforeBattleVS_Angels (heroname)
-	print("Thread BeforeBattleVS_Angels has been started...");
+function BeforeBattleVS_Angels(heroname)
 	if heroname == 'Berein' then
-		print("Berein has come to battle versus angels");
-		StartDialogScene("/DialogScenes/C3/M5/R2/DialogScene.xdb#xpointer(/DialogScene)");
-		StartCombat("Berein",nil,4,CREATURE_ARCHANGEL,4,CREATURE_ANGEL,5,CREATURE_ANGEL,5,CREATURE_ARCHANGEL,4,nil,"AfterCombat");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Angels",nil);
-	else
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Angels","BeforeBattleVS_Angels");
-	end;
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Angels", nil);
+		OBJECTIVES.state.getFreydaToTown[2] = 3;
+	end
 end
 
-function AfterCombat(name,res)
-	if res ~= nil then
-		print("Berein won!");
-	StartDialogScene("/DialogScenes/C3/M5/R3/DialogScene.xdb#xpointer(/DialogScene)");
-	SetObjectiveState('prim3',OBJECTIVE_COMPLETED);
-	--AddHeroCreatures('Berein', CREATURE_GHOST, 1);
-	GiveArtefact ('Berein', ARTIFACT_ANGEL_WINGS,1);
-	sleep(10);
-	SetObjectiveState('prim4',OBJECTIVE_ACTIVE);
-	startThread(PlayerWin);
-	RemoveArtefact("Berein",72); --Artifact Freida
-	else
-		print("Berein has been defeated");
-	end;
-end
+BATTLES = {
+  ambushByAngels = {
+    start = function(hero)
+      StartCombat("Berein",nil,4,CREATURE_ARCHANGEL,4,CREATURE_ANGEL,5,CREATURE_ANGEL,5,CREATURE_ARCHANGEL,4,nil,"BATTLES.ambushByAngels.finish");
+    end,
 
------DEPLOY RESERVED ACADEMY HERO ------------------
-function DeployAcademyHeroes()
-	print("Thread DeployAcademyHeroes has been started...");
-	repeat
-		sleep(10);
-	until GetDate(WEEK) == 2;
-	DeployReserveHero("Razzak",24,90,0);
-	print("Hero Razzak has been deployed");
-	sleep(2);
-	SetAIPlayerAttractor("Newpost",PLAYER_3,2);
-	startThread(RazzakIsDead);
-	repeat
-		sleep(15);
-	until GetObjectiveState("prim2") == OBJECTIVE_COMPLETED;
-	DeployReserveHero("Maahir",88,20,0);
-	print("Hero Maahir has been deployed");
-	sleep(2);
-	SetAIPlayerAttractor("Necorrum",PLAYER_3,2); -- Necorrum is Lorekeep
-end;
+    finish = function(hero, result)
+      	if result ~= nil then
+			OBJECTIVES.state.getFreydaToTown[2] = 5;
+		end
+    end,
+  }
+}
 
 function RazzakIsDead()
 	print("Thread RazzakIsDead has been started...");
@@ -196,161 +376,135 @@ function RazzakIsDead()
 	print("factor = 1");
 end;
 
-function PlayerWin()
-	print("Thread PlayerWin has been started...");
-	while 1 do
-		sleep(20);
-		if GetObjectOwner("Hikm") == PLAYER_1 and IsHeroAlive("Godric") == nil then
-			StartDialogScene("/DialogScenes/C3/M5/D3/DialogScene.xdb#xpointer(/DialogScene)");
-			print("You won!");
-			sleep(10);
-			SetObjectiveState("prim1",OBJECTIVE_COMPLETED);
-			sleep(1);
-			SetObjectiveState("prim5",OBJECTIVE_COMPLETED);
-			sleep(10);
-			SetObjectiveState("TimePressing",OBJECTIVE_COMPLETED);
-			Win(0);
-			break;
-		end;
-	end;
-end;
-
-
 function IsabellLostArmy()
 	while 1 do
 		sleep(5);
 		if GetDate(DAY) == 2 and GetDate(WEEK) == 1 then
 			print("Isabell has lost angels");
-			StartDialogScene("/DialogScenes/C3/M5/R4/DialogScene.xdb#xpointer(/DialogScene)");
-			if GetHeroCreatures("Isabell",CREATURE_ANGEL) > 0 then
+			CINEMATICS.armyDeserters();
+			if GetHeroCreatures("Isabell", CREATURE_ANGEL) > 0 then
 				SetGameVar("C3M5_creatures13", GetHeroCreatures("Isabell",CREATURE_ANGEL));
 				print("Isabell has angels");
 				sleep(2);
-				RemoveHeroCreatures("Isabell",CREATURE_ANGEL,10000);
+				RemoveHeroCreatures("Isabell",CREATURE_ANGEL, 10000);
 				MessageBox("/Maps/Scenario/C3M5/AngelsLeftIsabell.txt");
-			else
-				print("Isasbell does not have any angels");
-			end;
-			H55_NewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER,"desentir");
+			end
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
-
---this function removes some heaven creatures from Isabell's army every day:
-function H55_TriggerDaily()
-local	CreatureList = {CREATURE_PEASANT,
-						CREATURE_MILITIAMAN,
-						CREATURE_FOOTMAN,
-						CREATURE_SWORDSMAN,
-						CREATURE_ARCHER,
-						CREATURE_MARKSMAN,
-						CREATURE_GRIFFIN,
-						CREATURE_ROYAL_GRIFFIN,
-						CREATURE_PRIEST,
-						CREATURE_CLERIC,
-						CREATURE_CAVALIER,
-						CREATURE_PALADIN,
-						CREATURE_ANGEL,
-						CREATURE_ARCHANGEL};
-						CreatureList.n = 14;
-local   CreaturesNameForMessage = {  "Peasants","Militiaman",
-								   "Footman","Swordsman",
-								   "Archers","Marksman",
-								   "Griffins","Royal griffins",
-								   "Clerics","Priests",
-								   "Paladins","Paladins",
-								   "Angels","Archangels"};							
-	if IsHeroAlive("Godric") ~= nil or IsHeroAlive("Isabell") ~= nil then
-		allCreaturesQuantity = 0;							
-		for i=1,14 do
-			if GetHeroCreatures("Isabell",CreatureList[i]) > 0 then
-				allCreaturesQuantity = allCreaturesQuantity + 1;
-			end;
-		end;
-		if allCreaturesQuantity > 1 then
-			print("Thread desentir has been started...");
-			rnd = 1 + random(13);
-			quantity = GetHeroCreatures("Isabell",CreatureList[rnd]);
-			if  mod(GetDate(DAY),factor) == 0 then
-				if quantity > 1 then
-					RemoveHeroCreatures("Isabell",CreatureList[rnd],quantity);
-					VarName = "C3M5_creatures"..rnd;
-					SetGameVar(VarName, GetGameVar(VarName) + quantity);
-					print("Creature is ",CreaturesNameForMessage[rnd], ". rnd = ",rnd);
-					print("Now Godric has ",GetGameVar(VarName)," ", CreaturesNameForMessage[rnd]);
-					MessageBox("Maps/Scenario/C3M5/"..CreaturesNameForMessage[rnd - 1 + (mod(rnd,2))].."LeftIsabell.txt");
-					print("Isabell lost ",quantity," ", CreaturesNameForMessage[rnd]);
+function desentir()
+	desentir_day = GetDate(ABSOLUTE_DAY);
+	while 1 do
+		sleep(25);
+		if GetDate(ABSOLUTE_DAY) > 2 and desentir_day ~= GetDate(ABSOLUTE_DAY) then						
+			if IsHeroAlive("Godric") == nil or IsHeroAlive("Isabell") == nil then
+				break;
+			end
+			allCreaturesQuantity = 0;							
+			for i=1,21 do
+				if GetHeroCreatures("Isabell", CreatureList[i]) > 0 then
+					allCreaturesQuantity = allCreaturesQuantity + 1;
+				end
+			end
+			if allCreaturesQuantity > 1 then
+				rnd = 1 + random(20);
+				quantity = GetHeroCreatures("Isabell", CreatureList[rnd]);
+				if mod(GetDate(DAY), factor) == 0 then
+					if quantity > 1 then
+						RemoveHeroCreatures("Isabell",CreatureList[rnd], quantity);
+						print("Isabell lost ",quantity," ", CreaturesNameForMessage[rnd]);
+						if(rnd == 3 or rnd == 6 or rnd == 9 or rnd == 12 or rnd == 15 or rnd == 18 or rnd == 21) then -- change Renegade for True upgrade units
+							rnd = rnd - 1;
+						end
+						VarName = "C3M5_creatures"..rnd;
+						SetGameVar(VarName, GetGameVar(VarName) + quantity);
+						print("Godric has ",GetGameVar(VarName)," ", CreaturesNameForMessage[rnd]);
+						MessageBox("Maps/Scenario/C3M5/"..CreatureNameFromTextFiles[math.floor((rnd+2)/3)].."LeftIsabell.txt");
+					else
+						print("Quantity of "..CreaturesNameForMessage[rnd].."("..rnd..") = ",GetHeroCreatures("Isabell",CreatureList[rnd]),". Less than 2.");
+					end
 				else
-					print("Quantity of "..CreaturesNameForMessage[rnd].." = ",GetHeroCreatures("Isabell",CreatureList[rnd]),". Less than 2.");
-				end;
+					print("Not for deserting day. mod(GetDate(DAY),",factor,") = ",mod(GetDate(DAY),factor));
+				end
 			else
-				print("Not for deserting day. mod(GetDate(DAY),",factor,") = ",mod(GetDate(DAY),factor));
-			end;
-		else
-			print("Isabell has only 1 brave creature.");	
-		end;
-	else
-		print("NEW_DAY_TRIGGER has been terminated...");
-		H55_NewDayTrigger = 0;
-		--Trigger(NEW_DAY_TRIGGER,"desentir",nil);
-	end;
-end;
-
-
+				print("Isabell has only 1 brave creature.");
+			end
+			desentir_day = GetDate(ABSOLUTE_DAY);
+		end
+	end
+end
 
 function CaptureCavern()
-	print("Thread CaptureCavern has been started...");
+	local Caverns = {"ore","wood","sulfur","cristall","gems","mercury"};
+	local CavernArmyList = {  CREATURE_PEASANT, 200,
+						   CREATURE_MILITIAMAN, 150,
+							  CREATURE_FOOTMAN,  60,
+							CREATURE_SWORDSMAN,  45,
+							   CREATURE_ARCHER,  70,
+							 CREATURE_MARKSMAN,  55,
+							  CREATURE_GRIFFIN,  32,
+						CREATURE_ROYAL_GRIFFIN,  26,
+							   CREATURE_PRIEST,  12,
+							   CREATURE_CLERIC,  10,
+							 CREATURE_CAVALIER,   8,
+							  CREATURE_PALADIN,   7,
+								CREATURE_ANGEL,   5,
+							CREATURE_ARCHANGEL,   4};
+	local canvern_day = GetDate(DAY);
 	while 1 do
-		sleep(10);
-	if mod(GetDate(DAY),5) == 0 then
-		Caverns = {"ore","wood","sulfur","cristall","gems","mercury"};
-		Caverns.n = 6;
-		CreatureList = {CREATURE_PEASANT,200,
-						CREATURE_MILITIAMAN,150,
-						CREATURE_FOOTMAN,60,
-						CREATURE_SWORDSMAN,45,
-						CREATURE_ARCHER,70,
-						CREATURE_MARKSMAN,55,
-						CREATURE_GRIFFIN,32,
-						CREATURE_ROYAL_GRIFFIN,26,
-						CREATURE_PRIEST,12,
-						CREATURE_CLERIC,10,
-						CREATURE_CAVALIER,8,
-						CREATURE_PALADIN,7,
-						CREATURE_ANGEL,5,
-						CREATURE_ARCHANGEL,4};
-		CreatureList.n = 28;
-		IsCreatureExist = 0;
-		CavName = Caverns[1+random(6)];
-		print("Cavern name is ",CavName," and its owner is ",GetObjectOwner(CavName));
-		for i=1,CREATURES_COUNT-1 do
-			if GetObjectCreatures(CavName,i) ~= 0 then
-				print("Building is guarded!");
-				IsCreatureExist = 1;
-				break;
-			end;
-		end;
-		if GetObjectOwner(CavName) ~= PLAYER_2 and IsCreatureExist == 0 then
-			print("Cavern has been captured by Godric's forces");
-			n = 1 + random(14);
-			AddObjectCreatures(CavName,CreatureList[2*n-1],CreatureList[2*n]);
-			SetObjectOwner(CavName,PLAYER_2);
-			MessageBox("/Maps/Scenario/C3M5/CaptureCavernMessage.txt");
+		sleep(25);
+		if canvern_day ~= GetDate(DAY) and mod(GetDate(DAY),5) == 0 then
+			IsCreatureExist = 0;
+			CavName = Caverns[1+random(6)];
+			print("Cavern name is ",CavName," and its owner is ",GetObjectOwner(CavName));
+			for i=1,179 do
+				if GetObjectCreatures(CavName,i) ~= 0 then
+					print("Building is guarded!");
+					IsCreatureExist = 1;
+					break
+				end
+			end
+			if GetObjectOwner(CavName) ~= PLAYER_2 and IsCreatureExist == 0 then
+				print("Cavern has been captured by Godric's forces");
+				n = 1 + random(14);
+				AddObjectCreatures(CavName,CavernArmyList[2*n-1],CavernArmyList[2*n]);
+				SetObjectOwner(CavName,PLAYER_2);
+				CINEMATICS.showCapturedfMine(CavName);
 			else
-			print("Object is already Godric's or guarded.");
-		end;
-		WaitDay();
-	end;
-	end;
-end;
+				print("Object is already Godric's or guarded.");
+			end
+			canvern_day = GetDate(DAY);
+		end
+	end
+end
 
 function TeleportUse()
 	print("Player try to use teleport");
 	MessageBox("/Maps/Scenario/C3M5/TeleportUnusable_MsgBox.txt");
-end;
+end
+
+function PlayerTouchPrison(heroname)
+	print("Player hero ",heroname," has entered prison");
+	if heroname == "Berein" then
+		Trigger(OBJECT_TOUCH_TRIGGER, "prison",nil)
+		OBJECTIVES.state.captureDaughter[2] = 3;
+	else
+		MessageBox("/Maps/Scenario/C3M5/MsgBox_EnterPrison.txt");
+	end
+end
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
+startThread( AI_main );
+
+------------------ DEBUG ------------------------
+function PrintGodricsReinforcements()
+	for i = 1, 21 do
+		print("Godric has ",GetGameVar("C3M5_creatures"..i)," ",CreaturesNameForMessage[i]);
+	end
+end
 
 function GiveMeMines()
 	SetObjectOwner("ore",1);
@@ -359,108 +513,12 @@ function GiveMeMines()
 	SetObjectOwner("mercury",1);
 	SetObjectOwner("cristall",1);
 	SetObjectOwner("gems",1);
-end;
-
-
-function PlayerTouchPrison(heroname)
-	print("Player hero ",heroname," has entered prison");
-	if heroname == "Berein" then
-		Trigger(OBJECT_TOUCH_TRIGGER, "prison",nil);
-		StartDialogScene("/DialogScenes/C3/M5/R1/DialogScene.xdb#xpointer(/DialogScene)");
-		SetObjectiveState("prim2",OBJECTIVE_COMPLETED);
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER,"BeforeAngels","StartTrigger_AngelsBefore");
-		SetObjectiveState("prim3",OBJECTIVE_ACTIVE);
-		GiveArtefact(heroname,72,1); -- Artifact Freida
-	else
-		MessageBox("/Maps/Scenario/C3M5/MsgBox_EnterPrison.txt");	
-		Trigger(OBJECT_TOUCH_TRIGGER, "prison","PlayerTouchPrison");
-		print("Hero is not Berein. Trigger TOUCH_PRISON started again.");
-	end;
-end;
-
-function StartTimePressing()
-	print("Thread StartTimePressing has been started...");
-	while GetDate(MONTH) ~= START_TIME_PRESSING_MONTH do
-		sleep(20);
-	end;
-	SetObjectiveState("TimePressing",OBJECTIVE_ACTIVE);
-	print("Time pressing started!");
-	MessageBox("/Maps/Scenario/C3M5/4WeekBeforeLoose.txt");
-	for i=3,2,-1 do
-		SkipTimeInterval(WEEK);
-		MessageBox("Maps/Scenario/C3M5/"..i.."WeeksBeforeLoose.txt");
-	end;
-		SkipTimeInterval(WEEK);
-	MessageBox("/Maps/Scenario/C3M5/7DaysBeforeLoose.txt");
-	for i=6,1,-1 do
-		SkipTimeInterval(DAY_OF_WEEK);
-		MessageBox("Maps/Scenario/C3M5/"..i.."DaysBeforeLoose.txt");
-	end;
-	SkipTimeInterval(DAY_OF_WEEK);
-	Loose(PLAYER_1);
-end;
-
-function SkipTimeInterval(Interval)
-	repeat
-		CurrentDate = GetDate(Interval);
-		sleep(10);
-	until CurrentDate ~= GetDate(Interval);
-end;
-
------ FUNCTIONS TO SET HERO BONUS EXPIRIENCE FOR COMPLETED OBJECTIVES-------------
-function ObjectiveExp(HeroName)
-	local ToLevel = GetExpToLevel(GetHeroLevel(HeroName)+1);
-	local delta = (ToLevel - GetHeroStat(HeroName, STAT_EXPERIENCE)) / 2;
-	ChangeHeroStat(HeroName, STAT_EXPERIENCE,delta);
-	print("Now ",HeroName, " has ", GetHeroStat(HeroName, STAT_EXPERIENCE)," exp");
-end;
-
-function GetExpToLevel( j )
-	local a = 1;
-	if j >= 30 then a = 30 else a = j end;
-	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
-	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
-	ExpArrayLess12.n = 12;
-					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
-	ExpArrayMore12 = {24320,28784,34141,40569,48283,57539,68647,81977,97972,117166,140200,167839};
-	ExpArrayMore12.n = 12;
-					--LEVEL 25     26     27     28     29     30     31      32      33      34
-	ExpArrayMore25 = {201007,244126,304491,395040,539917,786208,1229533,2071000,3756484,7294215};
-	ExpArrayMore25.n = 10;
-	if a <= 12 then
-		sum = ExpArrayLess12[a];
-	else
-		if a < 25 then
-			sum = ExpArrayMore12[a-12];
-		else
-			if a < 35 then
-				sum = ExpArrayMore25[a-24];
-			else
-				print("Das ist fantastisch!!!");
-				sum = 0;
-			end;
-		end;
-	end;
-	print("Hero need ", sum, " experience to gain level ",a);
-	return sum;
-end;
-
------DEBUG FUNCTION---------------------------------
-function PrintGodricsReinforcements()
-	for i = 1, 14 do
-		print("Godric has ",GetGameVar("C3M5_creatures"..i)," ",CreaturesNameForMessage[i]);
-	end;
-end;
-
-H55_CamFixTooManySkills(PLAYER_1,"Berein");
-H55_CamFixTooManySkills(PLAYER_1,"Isabell");
-H55_CamFixTooManySkills(PLAYER_2,"Godric");
-startThread(IsabellAndBerein_Survive);
-startThread(PrimaryObjective2);
-startThread(IsabellLostArmy);
-startThread(CaptureCavern);
-startThread(DeployAcademyHeroes);
-startThread(DifficultyLevel);
-startThread(StartTimePressing);
-Trigger(OBJECT_TOUCH_TRIGGER, "teleport","TeleportUse");
-Trigger(OBJECT_TOUCH_TRIGGER, "prison","PlayerTouchPrison");
+	for i = 1,180 do
+		RemoveObjectCreatures("ore",i,10000);
+		RemoveObjectCreatures("wood",i,10000);
+		RemoveObjectCreatures("sulfur",i,10000);
+		RemoveObjectCreatures("mercury",i,10000);
+		RemoveObjectCreatures("cristall",i,10000);
+		RemoveObjectCreatures("gems",i,10000);
+	end
+end
