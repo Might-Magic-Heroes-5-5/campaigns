@@ -197,25 +197,15 @@ function Patrol2()
 	sleep();
 while stop ~= 1 do	
 	for i=1, coords2.n do
-		local Player_x,Player_y = GetObjectPos(OUR_HERO);
-		local cx,cy,cl = GetObjectPos(WIZARD_1_NAME);
-		if stop == 1 then
+		if stop == 1 or IsHeroAlive(WIZARD_1_NAME) == nil then
 			print("Thread patrol has been terminated...");
 			return
-		end;
+		end
 		MoveHeroRealTime(WIZARD_1_NAME,coords2[i][1],coords2[i][2],GROUND);
-		while len( cx-coords2[i][1],cy-coords2[i][2] ) > 4 do
-			if IsHeroAlive(WIZARD_1_NAME) == not nil then
-				cx,cy,cl = GetObjectPos(WIZARD_1_NAME);
-				sleep(10);
-			else
-				print(WIZARD_1_NAME," is dead. Thread Patrol2 has been terminated...");
-				return
-			end;
-		end;
+		print("Hero is moving to ",coords2[i][1],":",coords2[i][2] );
 		print("Wait day");
 		WaitDay();
-	end;
+	end
 	for j=coords2.n, 1,-1 do
 		local Player_x,Player_y = GetObjectPos(OUR_HERO);
 		local cx,cy,cl = GetObjectPos(WIZARD_1_NAME);

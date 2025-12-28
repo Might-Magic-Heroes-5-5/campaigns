@@ -104,9 +104,9 @@ creature_costs =
 function CalcArmy( heroname )
 	total = 0;
 	for i = 1, CREATURES_COUNT-1 do
-    if creature_costs[i] ~= nil then
-		  total = total + GetHeroCreatures( heroname, i ) * creature_costs[i];
-    end
+		if creature_costs[i] ~= nil then
+			total = total + GetHeroCreatures( heroname, i ) * creature_costs[i];
+		end
 	end
 	return total;
 end
@@ -123,3 +123,64 @@ function IsAnyHeroPlayerHasCreature( playerID, creatureID )
 	end
 	return nil;
 end
+
+function ObjectiveExp(HeroName)
+	local ToLevel = GetExpToLevel(GetHeroLevel(HeroName)+1);
+	local delta = (ToLevel - GetHeroStat(HeroName, STAT_EXPERIENCE)) / 2;
+	print("delta = ", delta);
+	if delta >= 0 then
+		ChangeHeroStat(HeroName, STAT_EXPERIENCE,delta);
+	else
+		print("Warning! Delta is negative. Hero gain 100 exp");
+		ChangeHeroStat(HeroName, STAT_EXPERIENCE,100);
+	end
+	print("Now ",HeroName, " has ", GetHeroStat(HeroName, STAT_EXPERIENCE)," exp");
+end
+
+function GetExpToLevel( j )
+	local a = 1;
+	if j >= 30 then a = 30 else a = j end;
+	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
+	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
+	ExpArrayLess12.n = 12;
+					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
+	ExpArrayMore12 = {24320,28784,34141,40569,48283,57539,68647,81977,97972,117166,140200,167839};
+	ExpArrayMore12.n = 12;
+					--LEVEL 25     26     27     28     29     30     31      32      33      34
+	ExpArrayMore25 = {201007,244126,304491,395040,539917,786208,1229533,2071000,3756484,7294215};
+	ExpArrayMore25.n = 10;
+	if a <= 12 then
+		sum = ExpArrayLess12[a];
+	else
+		if a < 25 then
+			sum = ExpArrayMore12[a-12];
+		else
+			if a < 35 then
+				sum = ExpArrayMore25[a-24];
+			else
+				print("Das ist fantastisch!!!");
+				sum = 0;
+			end
+		end
+	end
+	print("Hero need ", sum, " experience to gain level ",a);
+	return sum;
+end
+
+-- ### LUA Multiclicker guard
+H55c_LUA = {
+	busy = nil,
+	cooldown = 20,
+  
+	guard = function()
+	    if H55c_LUA.busy ~= nil then return not nil end;
+		H55c_LUA.busy = not nil;
+		startThread(H55c_LUA.timeout);
+		return nil;
+	end,
+
+	timeout = function()
+		sleep(H55c_LUA.cooldown);
+		H55c_LUA.busy = nil;
+	end
+}
