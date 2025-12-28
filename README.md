@@ -302,7 +302,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
-- fix: Renegade upgrade type units does not Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle.
+- fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle.
 - change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location.
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost.
 
