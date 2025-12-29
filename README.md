@@ -306,6 +306,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location.
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost.
 
+### C4M2 – Dungeon: The Expansion
+- fixed: undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
+
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
 - fix: Red AI player (Inferno) heroes could freeze till end of game

@@ -63782,62 +63782,6 @@
 				</AdditionalStacks>
 			</AdvMapMonster>
 		</Item>
-		<Item href="#n:inline(AdvMapMonster)" id="id2eb68120-e281-43bf-b7f9-a70cf1e21fea">
-			<AdvMapMonster ObjectRecordID="1008761">
-				<Pos>
-					<x>118</x>
-					<y>52</y>
-					<z>0</z>
-				</Pos>
-				<Rot>0</Rot>
-				<Floor>1</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Necropolis/Vampire_Lord.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
-				<Custom>true</Custom>
-				<Amount>6</Amount>
-				<Amount2>10</Amount2>
-				<AttackType>ATTACK_ANY</AttackType>
-				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>false</DoesNotGrow>
-				<MessageFileRef href=""/>
-				<Script/>
-				<Resources>
-					<Wood>0</Wood>
-					<Ore>0</Ore>
-					<Mercury>0</Mercury>
-					<Crystal>0</Crystal>
-					<Sulfur>0</Sulfur>
-					<Gem>0</Gem>
-					<Gold>0</Gold>
-				</Resources>
-				<ArtifactID>ARTIFACT_NONE</ArtifactID>
-				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
-				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
-				<AllowQuickCombat>true</AllowQuickCombat>
-				<AdditionalStacks>
-					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>20</Amount>
-						<Amount2>29</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ZOMBIE</Creature>
-						<Amount>13</Amount>
-						<Amount2>20</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_POLTERGEIST</Creature>
-						<Amount>9</Amount>
-						<Amount2>14</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-				</AdditionalStacks>
-			</AdvMapMonster>
-		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="id566f9479-6e7e-449b-a4ac-4a118dededd6">
 			<AdvMapMonster ObjectRecordID="1008804">
 				<Pos>
