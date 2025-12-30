@@ -307,9 +307,15 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost.
 
 ### C4M2 – Dungeon: The Expansion
-- fixed: undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
+- fix: undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
 
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
 - fix: Red AI player (Inferno) heroes could freeze till end of game
 - fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met
+
+### C4M4 – Dungeon: The March
+- fix: Storyline enemy is Grawl but the actual in-game hero was Alastor 
+
+### C4M5 – Dungeon: Raelag's Offer
+- fix: undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures.
