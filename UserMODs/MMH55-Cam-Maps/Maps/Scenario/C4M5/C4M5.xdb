@@ -54590,56 +54590,6 @@
 				<IsRemovable>false</IsRemovable>
 			</AdvMapStatic>
 		</Item>
-		<Item href="#n:inline(AdvMapMonster)" id="item_EBDAE6D6-B788-4A98-B19F-18BEA936DDE1">
-			<AdvMapMonster ObjectRecordID="-1">
-				<Pos>
-					<x>133</x>
-					<y>25</y>
-					<z>0</z>
-				</Pos>
-				<Rot>3.14159</Rot>
-				<Floor>1</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
-				<Custom>true</Custom>
-				<Amount>163</Amount>
-				<Amount2>168</Amount2>
-				<AttackType>ATTACK_ANY</AttackType>
-				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>false</DoesNotGrow>
-				<MessageFileRef href=""/>
-				<Script/>
-				<Resources>
-					<Wood>0</Wood>
-					<Ore>0</Ore>
-					<Mercury>0</Mercury>
-					<Crystal>0</Crystal>
-					<Sulfur>0</Sulfur>
-					<Gem>0</Gem>
-					<Gold>0</Gold>
-				</Resources>
-				<ArtifactID>ARTIFACT_NONE</ArtifactID>
-				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
-				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
-				<AllowQuickCombat>true</AllowQuickCombat>
-				<AdditionalStacks>
-					<Item>
-						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
-						<Amount>445</Amount>
-						<Amount2>453</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
-						<Amount>399</Amount>
-						<Amount2>407</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-				</AdditionalStacks>
-			</AdvMapMonster>
-		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_93BFC259-926E-46E9-A037-33EADD8E5277">
 			<AdvMapMonster ObjectRecordID="-1">
 				<Pos>
