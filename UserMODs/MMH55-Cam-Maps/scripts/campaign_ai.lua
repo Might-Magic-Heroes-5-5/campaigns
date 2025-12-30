@@ -3,7 +3,7 @@
 -- 1: prints target
 -- 2: prints message for each computed func so error debug is easier
 _AI_debug = 0;
-
+_AI_error = "None";
 -- ##### How to use #####
 --Add this to map script.
 --
@@ -46,6 +46,7 @@ _AI_debug = 0;
 _ai_lists = {
   towns = GetObjectNamesByType("TOWN"),
   heroes = GetObjectNamesByType("HERO"),
+  others = {},
 }
 
 function _AI_print(mode, message)
@@ -55,6 +56,8 @@ function _AI_print(mode, message)
 end
 
 function _AI_MostImportantTarget(hero, ignore_threshold)
+	_AI_error = "_AI_MostImportantTarget";
+	errorHook(_AI_crash);
     local minIndex, minValue = 0, math.huge;
     for i, value in hero.weights do
       if value > ignore_threshold and value <= minValue then
@@ -67,6 +70,8 @@ function _AI_MostImportantTarget(hero, ignore_threshold)
 end
 
 function _AI_roamHero(name)
+	_AI_error = "_AI_roamHero";
+	errorHook(_AI_crash);
     -- two lines are required to unbind AI hero target before release it in roaming mode
     if IsHeroAlive(name) == nil then
       return
@@ -78,6 +83,8 @@ function _AI_roamHero(name)
 end
 
 function _AI_SetHeroTarget(name, hero, idx)
+	_AI_error = "_AI_SetHeroTarget";
+	errorHook(_AI_crash);
    target = hero.targets[idx];
    if target == nil then
       return 0
@@ -100,7 +107,9 @@ function _AI_SetHeroTarget(name, hero, idx)
 end
 
 function _AI_FindHeroTarget(name, hero, tries_left, threshold)
-  _AI_print(2, "try: ".. tries_left)
+	_AI_error = "_AI_FindHeroTarget";
+	errorHook(_AI_crash);
+	_AI_print(2, "try: ".. tries_left)
 
   if table.length(hero.targets) == 0 or tries_left == 0 then
     _AI_roamHero(name);
@@ -115,7 +124,13 @@ function _AI_FindHeroTarget(name, hero, tries_left, threshold)
   return choice
 end
 
+function _AI_crash()
+	print("AI error: " .. _AI_error)
+end
+
 function _AI_AddHeroTargets(name, hero, player, list, ttype, ai)
+	_AI_error = "_AI_AddHeroTargets";
+	errorHook(_AI_crash);
     _AI_print(1, "Adding targets " .. ttype .. " for hero " .. name)
     for num, item in list do
       if IsHeroAlive(name) == nil then
@@ -148,32 +163,37 @@ function _AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 end
 
 function _AI_UpdateTargetWeight(player)
-  if AI_CONTROLLED["player" .. player].state ~= 2 then return end
-  _AI_print(1, "updating weight for player " .. player)
-  local ai = AI_CONTROLLED["player" .. player];
+	_AI_error = "_AI_UpdateTargetWeight";
+	errorHook(_AI_crash);
+	if AI_CONTROLLED["player" .. player].state ~= 2 then return end
+	_AI_print(1, "updating weight for player " .. player)
+	local ai = AI_CONTROLLED["player" .. player];
 
-  -- update hero list with the currently available roster
-  _ai_lists.heroes = GetObjectNamesByType("HERO");
+	-- update hero list with the currently available roster
+	_ai_lists.heroes = GetObjectNamesByType("HERO");
 
-  for name, hero in ai.heroes do
-    if IsHeroAlive(name) == nil then
-      ai.heroes[name] = nil;
-      _AI_print(2, "Hero is DEAD: " .. name)
-    else
-      _AI_print(2, "Hero is ALIVE: " .. name)
-      hero.weights = {};
-      hero.targets = {};
-      hero.types   = {};
+	for name, hero in ai.heroes do
+		if IsHeroAlive(name) == nil then
+			ai.heroes[name] = nil;
+			_AI_print(2, "Hero is DEAD: " .. name)
+		else
+			_AI_print(2, "Hero is ALIVE: " .. name)
+			hero.weights = {};
+			hero.targets = {};
+			hero.types   = {};
 
-      -- make a list of hero targets and choose one
-      _AI_AddHeroTargets(name, hero, player, _ai_lists.heroes, "heroes", ai )
-      _AI_AddHeroTargets(name, hero, player, _ai_lists.towns ,  "towns", ai )
-      hero.current_target = _AI_FindHeroTarget(name, hero, 10, 0);
-    end
-  end
+			-- make a list of hero targets and choose one
+			_AI_AddHeroTargets(name, hero, player, _ai_lists.heroes, "heroes", ai )
+			_AI_AddHeroTargets(name, hero, player, _ai_lists.towns ,  "towns", ai )
+			--_AI_AddHeroTargets(name, hero, player, _ai_lists.others, "others", ai )
+			hero.current_target = _AI_FindHeroTarget(name, hero, 10, 0);
+		end
+	end
 end
 
 function AI_main()
+	_AI_error = "AI_main";
+  errorHook(_AI_crash);
   _AI_print(2, "============ START AI MAIN ============")
   last_updated_player = 0;
   while true do
@@ -212,6 +232,7 @@ function ADD_ASSAULT_HERO(name)
       types   = {},
       current_target = "Roam"
   }
+  --_ai_lists.others = others
   EnableHeroAI(  name, 1);
   DenyAIHeroFlee(name, 1);
 end
