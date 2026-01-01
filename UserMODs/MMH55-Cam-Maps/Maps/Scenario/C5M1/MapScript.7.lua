@@ -114,7 +114,7 @@ end
 
 function attackBorder(hero, pos)
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(4-dif));
+	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(3-dif));
 	DeployReserveHero(hero, RegionToPoint('EnemyHere'));
 	
 	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + GetDate(WEEK)*10 + dif*5);
@@ -140,17 +140,17 @@ DIFFICULTY = {
 	end,
 
 	[1] = function()
-		dif = 1;
+		dif = 0;
 		demon_invasion_day = 39;
 	end,
 
 	[2] = function()
-		dif = 2;
+		dif = 1;
 		demon_invasion_day = 34;
 	end,
 
 	[3] = function()
-		dif = 3;
+		dif = 2;
 		demon_invasion_day = 30;
 	end,
 }
@@ -286,7 +286,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.demonArmy[2] == 1 and GetDate(DAY) == demon_invasion_day then
 			DeployReserveHero("Biara" , RegionToPoint('EnemyHere'));
 			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(4-dif));
+			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(3-dif));
 			AddHeroCreatures("Biara",		 		  CREATURE_IMP, (5 + dif)*10);
 			AddHeroCreatures("Biara",	   	 CREATURE_HORNED_DEMON,  (5 + dif)*5);
 			AddHeroCreatures("Biara", 			  CREATURE_CERBERI,  (5 + dif)*2);
