@@ -323,4 +323,3 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
-- changed: Hard, Heroic and Impossible difficulty levels are now harder
