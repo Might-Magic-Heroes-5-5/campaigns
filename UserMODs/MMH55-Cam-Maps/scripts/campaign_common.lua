@@ -167,6 +167,22 @@ function GetExpToLevel( j )
 	return sum;
 end
 
+function remove_element(element_name,array_name)
+	local j=1 --индекс временного массива
+	local a={}
+	for i, h in array_name do
+		if array_name[i] ~= element_name
+			then
+				a[j]=array_name[i];
+				j=j+1;
+			else
+		end
+	end
+	array_name={}
+	array_name=a
+	return array_name
+end
+
 -- ### LUA Multiclicker guard
 H55c_LUA = {
 	busy = nil,

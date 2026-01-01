@@ -277,9 +277,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Tutorial is available and updated for 5.5
 - fix(RC19c): Enemy hero appeared with 1 imp instead of similar army
 - change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start.
-- change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way.
+- change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way
 - new: added Memory Mentor
-- new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact.
+- new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact
 
 ### C1M4 – Haven: The Trap
 - fix: Tutorial is available and updated for 5.5
@@ -294,17 +294,17 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Enemy hero Tan did not patrol the map as inteneded
 
 ### C3M2 – Necropolis: The Attack
-- fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one.
+- fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one
 
 ### C3M3 – Necropolis: The Invasion
 - fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
-- change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description.
+- change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
-- fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle.
-- change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location.
-- change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost.
+- fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle
+- change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location
+- change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost
 
 ### C4M2 – Dungeon: The Expansion
 - fix: undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
@@ -315,7 +315,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met
 
 ### C4M4 – Dungeon: The March
-- fix: Storyline enemy is Grawl but the actual in-game hero was Alastor 
+- fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
 
 ### C4M5 – Dungeon: Raelag's Offer
-- fix: undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures.
+- fix: undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
+
+### C5M1 - Sylvan: The Refugees
+- fix: Orson onslaught hero could not spawn and attack because he was already present on map
+- fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
+- changed: Hard, Heroic and Impossible difficulty levels are now harder
