@@ -233,8 +233,8 @@ function ADD_ASSAULT_HERO(name)
       current_target = "Roam"
   }
   --_ai_lists.others = others
-  EnableHeroAI(  name, 1);
-  DenyAIHeroFlee(name, 1);
+  EnableHeroAI(  name, not nil);
+  DenyAIHeroFlee(name, not nil);
 end
       
 function _AI_update(player)

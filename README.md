@@ -323,3 +323,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
+
+### C5M3 - Sylvan: The Defense
+- fix: "Prepare the garrison" quest not always count some base/upgrade type of Druids, Unicorns, Dragons
+- fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan
+- fix: Necropolis onslaught heroes sometimes did not appear and attack Syris Thalla
