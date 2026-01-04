@@ -331,5 +331,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog did not trigger on start of month 2. The issue origins is based on Nival code, the dialog has only narrative meaning and did not break the gameplay.
-- fix: lag problems due to excessive LUA script loops
+- fix: lag problems due to excessive LUA script loops could cause game deadlock
 - fix: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
+
+### C6M2 - Academy: The Liberation
+- fix: lag problems due to excessive LUA script loops could cause game deadlock
+- fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
+- fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
