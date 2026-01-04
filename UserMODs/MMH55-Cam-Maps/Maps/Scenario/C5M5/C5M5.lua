@@ -1,76 +1,34 @@
-H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_UNICORN_HORN_BOW,
-ARTIFACT_PLATE_MAIL_OF_STABILITY,
-ARTIFACT_PEDANT_OF_MASTERY,
-ARTIFACT_RING_OF_LIFE,
-ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
-ARTIFACT_DWARVEN_MITHRAL_GREAVES,
-ARTIFACT_DWARVEN_MITHRAL_HELMET,
-ARTIFACT_DWARVEN_MITHRAL_SHIELD
-
-};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_UNICORN_HORN_BOW,
+	ARTIFACT_PLATE_MAIL_OF_STABILITY,
+	ARTIFACT_PEDANT_OF_MASTERY,
+	ARTIFACT_RING_OF_LIFE,
+	ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
+	ARTIFACT_DWARVEN_MITHRAL_GREAVES,
+	ARTIFACT_DWARVEN_MITHRAL_HELMET,
+	ARTIFACT_DWARVEN_MITHRAL_SHIELD
+};
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M5");
     LoadHeroAllSetArtifacts("Heam", "C5M4" );
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
----GLOBALS---
-first_day=1
-power=0
-power1=1
-great_night_progress=0
-diff=1
-first_time=1
-light=0
-m = 1
-
 dang_array = {"Nemor","Pelt","Straker","Tamika","Effig"};
-
---SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c4m4_wastes.xdb#xpointer(/AmbientLight)");
-
----ARRAYS---
 shadow_dragons = {"SD1", "SD2", "SD3", "SD4", "SD5", "SD6"};
 regions={'sdregion1','sdregion2','sdregion3','sdregion4','sdregion5','sdregion6',"AI_block_1","AI_block_2","AI_block_3","AI_block_4","AI_blok","AI_block_5","AI_block_6","AI_blok","AI_blok1","AI_blok2","AI_blok3","AI_block_7","AI_block_8"}
---'portalregion'
 towns={'town1','town2','town3','town4','town5','town6'}
 respawns_x={37,84,41,160,95,26}
 respawns_y={39,86,152,31,92,21}
 respawns_z={GROUND,GROUND,GROUND,GROUND,UNDERGROUND,UNDERGROUND}
-town_cratures_normal={70,50,25,20,12,10,3}
-town_cratures_hard={100,80,40,30,20,15,5}
-town_cratures_heroic={130,100,50,40,30,20,9}
 kolyan_army_normal={30,25,20,15}
 kolyan_army_hard={50,40,30,25}
 kolyan_army_heroic={70,55,40,35}
-dwellings={	TOWN_BUILDING_DWELLING_1,
-			TOWN_BUILDING_DWELLING_2,
-			TOWN_BUILDING_DWELLING_3,
-			TOWN_BUILDING_DWELLING_4,
-			TOWN_BUILDING_DWELLING_5,
-			TOWN_BUILDING_DWELLING_6,
-			TOWN_BUILDING_DWELLING_7}
-creatures_types={	CREATURE_SKELETON_ARCHER,
-					CREATURE_ZOMBIE,
-					CREATURE_GHOST,
-					CREATURE_VAMPIRE_LORD,
-					CREATURE_DEMILICH,
-					CREATURE_WRAITH,
-					CREATURE_SHADOW_DRAGON}
----FUNCTIONS---
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "LostHero" );
-function LostHero( HeroName )
-	if ( HeroName == "Heam" ) then
-		SetObjectiveState("Prim4", OBJECTIVE_FAILED);
-		sleep (15);
-		Loose();
-	end;
-end;
+creatures_types={CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_GHOST, CREATURE_VAMPIRE_LORD, CREATURE_DEMILICH, CREATURE_WRAITH, CREATURE_SHADOW_DRAGON}
 
 function blocking()  --блокает проходимость тайлов вокруг шадоу драконов для PLAYER_2, чтоб он сам их не поубивал как дурак
 	for i,h in regions do
@@ -79,98 +37,51 @@ function blocking()  --блокает проходимость тайлов вокруг шадоу драконов для PLA
 	end
 end
 
-function dragon_messeges() --чекает в отдельном треде наличие шадоу драгонов на карте.
-	local m=0;r7=0;r6=0
-	while 1 do
-		m=dragons_count()  
-		if m==0 then
-				StartDialogScene('/DialogScenes/C5/M5/R8/DialogScene.xdb#xpointer(/DialogScene)') --все драконы убиты
-				--SetAmbientLight(GROUND,"/Lights/_(AmbientLight)/AdvMap/C5M5/Day.xdb#xpointer(/AmbientLight)",not nil , 5) --меняет освещение на карте на дневное
-				SetAmbientLight(GROUND, 'c5m5_day',not nil , 5) --меняет освещение на карте на дневное
-				SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/Day.xdb#xpointer(/AmbientLight)");
-				light=1
-				return --драконы убиты, можно из цикла выйти
-		else
-			if m==3 and r7==0 then
-				StartDialogScene('/DialogScenes/C5/M5/R7/DialogScene.xdb#xpointer(/DialogScene)') --3 группы драконов убиты
-				r7=1 --диалог С5М5R7 был показан игроку
-				SetAmbientLight(GROUND, 'c5m5_twilight2',not nil , 5) --меняет освещение на карте на чуть более светлые сумерки
-				--SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c4m4_wastes (2).xdb#xpointer(/AmbientLight)");
-			else
-				if m==5 and r6==0 then
-					StartDialogScene('/DialogScenes/C5/M5/R6/DialogScene.xdb#xpointer(/DialogScene)') --1 группа драконов убита
-					r6=1 --диалог С5М5R6 был показан игроку
-				end;
-			end;
-		end
-		sleep(5)
+function set_light(type)
+	if type == 0 then
+		SetAmbientLight(0, "c5m5_dawn", not nil, 5)
+	elseif type == 1 then
+		SetAmbientLight(0, "c5m5_dusk1", not nil, 5)
+	elseif type == 2 then
+		SetAmbientLight(0, "c5m5_dusk2", not nil, 5)
+	elseif type == 3 then
+		SetAmbientLight(0, "c5m5_dusk3", not nil, 5)
+	elseif type == 4 then
+		SetAmbientLight(0, "c5m5_dusk4", not nil, 5)
+	elseif type == 5 then
+		SetAmbientLight(0, "c5m5_dusk5", not nil, 5)
+	elseif type == 6 then
+		SetAmbientLight(0, "c5m5_night", not nil, 5)
 	end
 end
 
 function dragons_count() --возвращает количество оставшихся на карте шадоу драгонов
 	local m=0
 	for i,h in shadow_dragons do
-		if not IsObjectExists(shadow_dragons[i])==nil then --"жив" ли данный стек шадоу драгонов?
-			m=m+1
+		if IsObjectExists(shadow_dragons[i])==nil then
+			SetRegionBlocked(regions[i], nil, PLAYER_2);	--разблочиваем проходимость региона для PLAYER_2 потому как дракона уже нет
 		else
-			SetRegionBlocked(regions[i], nil,PLAYER_2) --разблочиваем проходимость региона для PLAYER_2 потому как дракона уже нет
+			m=m+1;									 		--"жив" ли данный стек шадоу драгонов?
 		end
 	end
 	return m
 end
 
-function H55_TriggerDaily() --тригерная функция, чкает состояние дел в начале каждого дня
-	great_night_progress=great_night_progress+dragons_count()*diff --сколько "зла" нагенерили драконы
-	print ("zlo = ", great_night_progress);
-	power=great_night_progress/1008 --насколько драконы закончили свою работу
-	print('power= ',power)
-	if power>1 then
-		ownage()
-		return
-	end;
-	if GetDate(MONTH) == 2 and GetDate(DAY) == 1 and GetDate(WEEK) == 1 then
-		StartDialogScene('/DialogScenes/C5/M5/D1/DialogScene.xdb#xpointer(/DialogScene)');
-	end;
-end
-
-function ownage() --вызывается когда параметр power становится больше 1, типа "Великая Ночь" достигла своего апогея и андедов уже не остановить
-	for i,h in regions do
-		SetRegionBlocked(regions[i], nil, PLAYER_2)
-		print (regions[i], "unblock");
-	end
-	sleep ( 5 );
-	EnableHeroAI('Nikolay' , not nil);
-	AddHeroCreatures('Nikolay', CREATURE_SHADOW_DRAGON , 666);
-	ChangeHeroStat('Nikolay', STAT_MOVE_POINTS, 6500000);
-	MoveHero('Nikolay', GetObjectPosition("Heam"));
-end
-
-function ressurect(heroname,winner) --триггерная функция, запускается после смерти героя PLAYER_2, респавнит Коляна...или не респавнит
-	if heroname=='Nikolay' then --убитого героя зовут Колян?
-		if not winner==nil then --его убили или сам слажал?
-			if GetHeroCreatures(winner, CREATURE_PHOENIX)>0 or light==1 then --были ли у убийцы фениксы в армии на конец битвы, или Коляна убили при солнечном свете?
-				SaveHeroAllSetArtifactsEquipped("Heam", "C5M5");
-				SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED); --вот и пришел злостному рецедевисту Коляну конец
-				Save("autosave");
-				sleep ( 1 );
-				StartDialogScene('/DialogScenes/C5/M5/D2/DialogScene.xdb#xpointer(/DialogScene)');
-				sleep(10);
-				Win();
-				return
+function ressurect(loser, winner) --триггерная функция, запускается после смерти героя PLAYER_2, респавнит Коляна...или не респавнит
+	if loser=='Nikolay' then --убитого героя зовут Колян?
+		if winner~=nil then --его убили или сам слажал?
+			if GetHeroCreatures(winner, CREATURE_PHOENIX) > 0 or OBJECTIVES.state.killDragons[2] == 10 then --были ли у убийцы фениксы в армии на конец битвы, или Коляна убили при солнечном свете?
+				OBJECTIVES.state.defeatNikolay[2] = 9;
 			else --облом с фениксами или светом вышел?
 				if first_time==1 then --который уже раз Коляна валим?
 					first_time=0
-					StartDialogScene('/DialogScenes/C5/M5/R2/DialogScene.xdb#xpointer(/DialogScene)');
+					CINEMATICS.resurectNikolay();
 				end
-				DeployReserveHero('Nikolay',check_place()) --респавн Коляна
-				sleep() --без этой паузы следующая функция не стаботает!!!!
-				army() --добавление Коляну свежей армии
 			end
-		else
-			DeployReserveHero('Nikolay',check_place()) --респавн Коляна
-			sleep() --без этой паузы следующая функция не стаботает!!!!
-			army() --добавление Коляну свежей армии
 		end
+		DeployReserveHero('Nikolay',check_place()) --респавн Коляна
+		sleep(10) --без этой паузы следующая функция не стаботает!!!!
+		army() --добавление Коляну свежей армии
 	end
 end
 
@@ -182,15 +93,15 @@ function army() --добавление армии Коляну после респавноа
 			give_creatures(kolyan_army_hard)
 		else
 			give_creatures(kolyan_army_heroic)
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function give_creatures(diff_mod) --подфункция для army()
 	for i,h in diff_mod do
 		AddHeroCreatures('Nikolay', creatures_types[i+3] , 1+diff_mod[i])
 		print("Kolyan gain ",1+diff_mod[i], creatures_types[i+3])
-	end;
+	end
 end
 
 function check_place() --выбирает место куда отреспавнить Коляна, респавнит рядом с одним из своих замков, если таких нет, то у любого из андедских
@@ -207,113 +118,281 @@ function check_place() --выбирает место куда отреспавнить Коляна, респавнит рядо
 	return respawns_x[b],respawns_y[b],respawns_z[b]
 end
 
-function get_difficulty() --чекает уровень сложности и изменяет параметр diff_mod
-	if GetDifficulty()==DIFFICULTY_HEROIC then
-		diff=1,5
-	end
-end;
-
-Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest");
-
 function quest(hero_n)
 	if hero_n == "Heam" then
 		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
-		SetObjectiveState( 'sec1', OBJECTIVE_ACTIVE);
-		sleep (15);
-		StartDialogScene('/DialogScenes/C5/M5/R3/DialogScene.xdb#xpointer(/DialogScene)');
-		startThread(quest_progress);
+		OBJECTIVES.state.dwarvenSet[2] = 3;
 	else
 		ShowFlyingSign("/Maps/Scenario/C5M5/C5M5.txt", "hut", -1, 3.0);
-	end;
-end;
-
-function quest_progress()
-	while 1 do
-		sleep (15);
-		if HasArtefact("Heam", 48) == not nil and HasArtefact("Heam", 49) == not nil and HasArtefact("Heam", 50) == not nil and HasArtefact("Heam", 51) == not nil then
-			StartDialogScene('/DialogScenes/C5/M5/R4/DialogScene.xdb#xpointer(/DialogScene)');
-			sleep ( 5 );
-			SetObjectiveState( 'sec1', OBJECTIVE_COMPLETED);
-			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE);
-			Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest_final");
-			break;
-		end;
-	end;
-end;
+	end
+end
 
 function quest_final(hero_n)
 	if hero_n == "Heam" then
 		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
-		StartDialogScene('/DialogScenes/C5/M5/R5/DialogScene.xdb#xpointer(/DialogScene)');
-		AddHeroCreatures("Heam",CREATURE_PHOENIX,5);
-		sleep ( 5 );
-		SetObjectiveState( 'sec2', OBJECTIVE_COMPLETED);
-		SetObjectFlashlight("Heam" , "phoenix");
-		RemoveArtefact("Heam", 48);
-		RemoveArtefact("Heam", 49);
-		RemoveArtefact("Heam", 50);
-		RemoveArtefact("Heam", 51);
-		ResetObjectFlashlight("hut");
-	end;
-end;
+		OBJECTIVES.state.setToSeer[2] = 3;
+	end
+end
 
+CINEMATICS = {
+	intro = function()
+		StartDialogScene('/DialogScenes/C5/M5/R1/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+    end,
 	
----script start---
-H55_CamFixTooManySkills(PLAYER_1,"Heam");
-StartDialogScene('/DialogScenes/C5/M5/R1/DialogScene.xdb#xpointer(/DialogScene)');
-DeployReserveHero('Nikolay',84,86,GROUND);
-ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000);
-startThread(dragon_messeges);
-blocking();
-H55_NewDayTrigger = 1;
---Trigger(NEW_DAY_TRIGGER,'day_check');
-Trigger(PLAYER_REMOVE_HERO_TRIGGER,PLAYER_2,'ressurect');
-SetObjectEnabled('hut', nil);
+	resurectNikolay = function()
+		StartDialogScene('/DialogScenes/C5/M5/R2/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+    end,
+	
+	dwarvenSetStart = function()
+		StartDialogScene('/DialogScenes/C5/M5/R3/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+    end,
+	
+	dwarvenSetFinish = function()
+		StartDialogScene('/DialogScenes/C5/M5/R4/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+    end,
+	
+	setToSeer = function()
+		StartDialogScene('/DialogScenes/C5/M5/R5/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+	end,
+	
+	notifyMages = function()
+		StartDialogScene('/DialogScenes/C5/M5/D1/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+	end,
+	
+	dragonsLeft0 = function()
+		StartDialogScene('/DialogScenes/C5/M5/R8/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+	end,
+	
+	dragonsLeft3 = function()
+		StartDialogScene('/DialogScenes/C5/M5/R7/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+	end,
+	
+	dragonsLeft5 = function()
+		StartDialogScene('/DialogScenes/C5/M5/R6/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+	end,
+	
+	outro = function()
+		StartDialogScene('/DialogScenes/C5/M5/D2/DialogScene.xdb#xpointer(/DialogScene)');
+		sleep( 2 );
+    end,
+}
 
-if GetDifficulty() == DIFFICULTY_EASY then
-	print ("easy");
-	dif = 0;
-	exp = GetHeroStat("Heam", STAT_EXPERIENCE)/4;
-	for i,h in dang_array do
-		ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-	end;
-	for a = 0,6 do
-		SetPlayerResource(PLAYER_2, a, 0);
-	end;
-	AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
-end;
+DIFFICULTY = {
+	[0] = function()
+		print ("easy");
+		dif = 0;
+		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/4;
+		for i,h in dang_array do
+			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
+		end
+		for a = 0,6 do
+			SetPlayerResource(PLAYER_2, a, 0);
+		end
+		AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
+	end,
+	
+	[1] = function()
+		print ("normal");
+		dif = 0;
+		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/2;
+		for i,h in dang_array do
+			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
+		end;
+		for a = 0,6 do
+			SetPlayerResource(PLAYER_2, a, 0);
+		end
+	end,
+	
+	[2] = function()
+		print ("Hard");
+		dif = 1;
+		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
+		for i,h in dang_array do
+			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
+			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 30);
+			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 20);
+		end
+	end,
+	
+	[3] = function()
+		print ("Impossible");
+		dif = 2;
+		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
+		for i,h in dang_array do
+			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE, exp);
+			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER, 45);
+			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE, 30);
+			AddObjectCreatures(dang_array[i], CREATURE_GHOST, 37);
+		end
+	end,
+}
 
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	print ("normal");
-	dif = 0;
-	exp = GetHeroStat("Heam", STAT_EXPERIENCE)/2;
-	for i,h in dang_array do
-		ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-	end;
-	for a = 0,6 do
-		SetPlayerResource(PLAYER_2, a, 0);
-	end;
-end;
+OBJECTIVES = {
+	state = {
+		defeatNikolay	= { "prim1", 1 }, 	-- Defeat Nikolay
+		isAlive			= { "Prim4", 1 }, 	-- Is Findan alive?
+		dwarvenSet		= {  "sec1", 1 }, 	-- Collect the Dwarven Set
+		setToSeer		= {  "sec2", 0 }, 	-- Bring the Dwarven Set to Sear
+		notifyMages		= {  "none", 1 }, 	-- Cinematic trigger
+		killDragons     = {  "none", 1 },   --
+	},
 
-if GetDifficulty() == DIFFICULTY_HARD then
-	print ("Hard");
-	dif = 1;
-	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-	for i,h in dang_array do
-		ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-		AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 30);
-		AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 20);
-	end;
-end;
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		first_time=1
+		H55_CamFixTooManySkills(PLAYER_1,"Heam");
+		CINEMATICS.intro();
+		DeployReserveHero('Nikolay',84,86,GROUND);
+		ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000);
+		blocking();
+		Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'ressurect');
+		startThread(DIFFICULTY[GetDifficulty()]);
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
 
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	print ("Impossible");
-	dif = 2;
-	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-	for i,h in dang_array do
-		ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-		AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 45);
-		AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 30);
-		AddObjectCreatures(dang_array[i], CREATURE_GHOST , 37);
-	end;
-end;
+			if GetObjectiveState("Prim4") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
+				sleep(10);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	progress_day = 0,
+	great_night_progress = 0,
+	defeatNikolay = function()
+		-- Objective is started by C5M5.xdb
+		if OBJECTIVES.state.defeatNikolay[2] == 1 and OBJECTIVES.progress_day < GetDate() then
+			OBJECTIVES.great_night_progress=OBJECTIVES.great_night_progress+dragons_count();
+			print ("zlo = ", OBJECTIVES.great_night_progress);
+			local power=OBJECTIVES.great_night_progress/1008 --насколько драконы закончили свою работу
+			local sky_progress = 1 + math.floor(power * 5);
+			print('power= ',power,' | progress= ', sky_progress);
+			if power>1 then  --вызывается когда параметр power становится больше 1, типа "Великая Ночь" достигла своего апогея и андедов уже не остановить
+				sky_progress = 6;
+				for i,h in regions do
+					SetRegionBlocked(regions[i], nil, PLAYER_2)
+					print (regions[i], "unblock");
+				end
+				sleep(5);
+				EnableHeroAI('Nikolay' , not nil);
+				AddHeroCreatures('Nikolay', CREATURE_SHADOW_DRAGON , 666);
+				OBJECTIVES.state.defeatNikolay[2] = 2;
+			end
+			if OBJECTIVES.state.killDragons[2] < 10 then
+				set_light(sky_progress);
+			end
+			OBJECTIVES.progress_day = GetDate();
+		elseif OBJECTIVES.state.defeatNikolay[2] == 2 then
+			ChangeHeroStat('Nikolay', STAT_MOVE_POINTS, 6500000);
+			MoveHero('Nikolay', GetObjectPosition("Heam"));
+		elseif OBJECTIVES.state.defeatNikolay[2] == 9 then
+			SaveHeroAllSetArtifactsEquipped("Heam", "C5M5");
+			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
+			Save("autosave");
+			sleep(10);
+			CINEMATICS.outro();
+			OBJECTIVES.state.defeatNikolay[2] = 10;
+		end
+	end,	
+	
+	isAlive = function()
+		-- Objective is started by C5M5.xdb
+		if IsHeroAlive("Heam") == nil then
+			SetObjectiveState("Prim4", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	dwarvenSet = function()
+		if OBJECTIVES.state.dwarvenSet[2] == 1 then
+			SetObjectEnabled('hut', nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest");
+			OBJECTIVES.state.dwarvenSet[2] = 2;
+		elseif OBJECTIVES.state.dwarvenSet[2] == 3 then
+			SetObjectiveState('sec1', OBJECTIVE_ACTIVE);
+			sleep(15);
+			CINEMATICS.dwarvenSetStart();
+			OBJECTIVES.state.dwarvenSet[2] = 4;
+		elseif OBJECTIVES.state.dwarvenSet[2] == 4 then
+			if HasArtefact("Heam", 48) == not nil and HasArtefact("Heam", 49) == not nil and HasArtefact("Heam", 50) == not nil and HasArtefact("Heam", 51) == not nil then
+				CINEMATICS.dwarvenSetFinish();
+				SetObjectiveState('sec1', OBJECTIVE_COMPLETED);
+				OBJECTIVES.state.setToSeer[2] = 1;
+				OBJECTIVES.state.dwarvenSet[2] = 10;
+			end
+		end
+	end,
+	
+	setToSeer = function()
+		if OBJECTIVES.state.setToSeer[2] == 1 then
+			SetObjectiveState('sec2', OBJECTIVE_ACTIVE);
+			Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest_final");
+			OBJECTIVES.state.setToSeer[2] = 2;
+		elseif OBJECTIVES.state.setToSeer[2] == 3 then
+			CINEMATICS.setToSeer();
+			AddHeroCreatures("Heam",CREATURE_PHOENIX,5);
+			sleep(5);
+			SetObjectiveState('sec2', OBJECTIVE_COMPLETED);
+			SetObjectFlashlight("Heam", "phoenix");
+			RemoveArtefact("Heam", 48);
+			RemoveArtefact("Heam", 49);
+			RemoveArtefact("Heam", 50);
+			RemoveArtefact("Heam", 51);
+			ResetObjectFlashlight("hut");
+			OBJECTIVES.state.setToSeer[2] = 10;
+		end
+	end,
+	
+	notifyMages = function()
+		if GetDate(MONTH) == 2 then
+			CINEMATICS.notifyMages();
+			OBJECTIVES.state.notifyMages[2] = 10;
+		end
+	end,
+	
+	killDragons = function()
+		local m=dragons_count();
+		if OBJECTIVES.state.killDragons[2] == 1 and m == 5 then
+			CINEMATICS.dragonsLeft5();
+			OBJECTIVES.state.killDragons[2] = 2;
+		elseif OBJECTIVES.state.killDragons[2] == 2 and m == 3 then
+			CINEMATICS.dragonsLeft3();
+			OBJECTIVES.state.killDragons[2] = 3;
+		elseif OBJECTIVES.state.killDragons[2] == 3 and m == 0 then
+			CINEMATICS.dragonsLeft0(); --все драконы убиты
+			set_light(0);
+			SetCombatLight("c5m5_dawn");
+			OBJECTIVES.state.killDragons[2] = 10;
+		end
+	end
+}
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)

@@ -108924,7 +108924,13 @@
 	<AmbientLight/>
 	<UndergroundAmbientLight/>
 	<GroundAmbientLights>
-		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/Day.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dawn.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk1.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk2.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk3.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk4.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk5.xdb#xpointer(/AmbientLight)"/>
+		<Item href="/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_night.xdb#xpointer(/AmbientLight)"/>
 	</GroundAmbientLights>
 	<UndergroundAmbientLights>
 		<Item href="/Lights/_(AmbientLight)/Tests/underground.xdb#xpointer(/AmbientLight)"/>

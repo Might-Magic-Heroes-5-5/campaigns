@@ -328,3 +328,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: "Prepare the garrison" quest not always count some base/upgrade type of Druids, Unicorns, Dragons
 - fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan
 - fix: Necropolis onslaught heroes sometimes did not appear and attack Syris Thalla
+
+### C5M5 - Sylvan: The Vampire Lord
+- fix: mission dialog did not trigger on start of month 2. The issue origins is based on Nival code, the dialog has only narrative meaning and did not break the gameplay.
+- fix: lag problems due to excessive LUA script loops
+- fix: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
