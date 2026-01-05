@@ -5,349 +5,328 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M3");
     LoadHeroAllSetArtifacts("Zehir", "C6M2" );
-end;
+end
 
 startThread(H55_InitSetArtifacts);
-
-function MeetingHeam()
-	while 1 do
-		if IsObjectVisible(PLAYER_1, "Heam")==not nil then
-		sleep(5);
-		StartDialogScene("/DialogScenes/C6/M3/D3/DialogScene.xdb#xpointer(/DialogScene)");
-		SetObjectiveState("obj4",OBJECTIVE_ACTIVE);
-		SetObjectiveVisible("obj4", not nil);
-		SetObjectiveVisible("obj6", not nil);
-		SetObjectiveState("obj1",OBJECTIVE_COMPLETED);
-		SetObjectOwner("Heam",PLAYER_1);
-		ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1473);
-		print("Heam should join us");
-		return 1;
-		end
-	sleep();
-	end
-end	
-
-function MeetingGodric()
-		sleep(1);
-		StartDialogScene("/DialogScenes/C6/M3/D2/DialogScene.xdb#xpointer(/DialogScene)");
-		Trigger(OBJECT_TOUCH_TRIGGER, "prison", nil);
-		SetObjectiveVisible("obj3", not nil);
-		SetObjectiveVisible("obj7", not nil);
-		SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
-		SetObjectOwner("Godric",PLAYER_1);
-		print("Godric should join us");
-		DeployReserveHero("Heam", 84, 41, 0);
-		sleep(10);
-		MoveHero("Heam", 86, 42, 0);
-		EnableHeroAI("Heam", nil);
-		startThread( MeetingHeam );
-		startThread( objective6 );
-		startThread( objective7 );
-		startThread(AreHeroesAlive);
-		ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian","GodricMeetsAllies");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town","GodricFight");
-		Trigger(OBJECT_TOUCH_TRIGGER, "prison", nil);
-		SetObjectEnabled("prison", nil);
-end	
 
 town_array = {"town1","town2","town3","town4"};
 town_array.n = 4;
 
-function TownCounter ()
-	print( "Town_count() = ",Town_count() );
-	if Town_count() == 4 then
-		SetObjectiveState("obj3",OBJECTIVE_COMPLETED);
-		ChangeHeroStat("Zehir", STAT_EXPERIENCE, 2162);
-		SetObjectEnabled("markalgate", not nil);
-		Trigger(OBJECT_TOUCH_TRIGGER, "markalgate", nil);
-	end;
-end;
-		
+function theend()
+	OBJECTIVES.state.defeatMarkal[2] = 6;
+end
+
 function Town_count()
 	local count = 0;
-
 	for i=1, town_array.n do
 		if ( GetObjectOwner(town_array[i]) == PLAYER_1 ) then
 			count = count + 1;
-		end;
-	end;
+		end
+	end
 	return count;
-end;
+end
 
---- godric meets allies ---
+function MeetingGodric()
+	Trigger(OBJECT_TOUCH_TRIGGER, "prison", nil);
+	SetObjectEnabled("prison", nil);
+	OBJECTIVES.state.meetGodric[2] = 2;
+end	
 
 function GodricMeetsAllies()
-	if GetObjectOwner("firstborder",PLAYER_1) == not nil then 
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian",nil)
-			else
-				SetObjectOwner("firstborder",PLAYER_1)
-				sleep(1);
-				StartDialogScene("/DialogScenes/C6/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
-				Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian",nil)
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "guardian", nil)
+	if GetObjectOwner("firstborder") ~= PLAYER_1 then 
+		SetObjectOwner("firstborder", PLAYER_1)
+		sleep(5);
+		CINEMATICS.firstBorder();
 	end
 end
 
-
---- godric says he have to fight --
 function GodricFight(hero)
 	if GetObjectOwner(hero) == PLAYER_1 then
-			StartDialogScene("/DialogScenes/C6/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town",nil);
+		CINEMATICS.firstTown();
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town",nil);
 	end
 end
-
----Is Zehir Alive---
-function objective5()
-        if GetObjectiveState("obj5") == OBJECTIVE_UNKNOWN then
-                SetObjectiveState('obj5',OBJECTIVE_ACTIVE);
-        else
-                print("Warning!!! obj5 is not UNKNOWN");
-        end;
-while 1 do
-        if IsHeroAlive("Zehir")==nil then
-                print("Zehir is dead!!!");
-                if GetObjectiveState("obj5") == OBJECTIVE_ACTIVE or GetObjectiveState("obj5") == OBJECTIVE_COMPLETED then
-                        SetObjectiveState("obj5",OBJECTIVE_FAILED);
-                else
-                        print("Warning!!! obj5 is not ACTIVE or COMPLETED");
-                end;
-                return 1;
-        end;
-        if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
-                if GetObjectiveState("obj5") == OBJECTIVE_ACTIVE  then
-                        SetObjectiveState('obj5',OBJECTIVE_COMPLETED);
-                else
-                        print("Warning!!! obj5 is not ACTIVE");
-                end;
-                return 1;
-        end;
-sleep();
-end;
-end;
-
----Is Heam Alive---
-function objective6()
-while 1 do
-        if IsHeroAlive("Heam") == nil then
-                print("Heam is dead!!!");
-                if GetObjectiveState("obj6") == OBJECTIVE_ACTIVE or GetObjectiveState("obj6") == OBJECTIVE_COMPLETED then
-                        SetObjectiveState("obj6",OBJECTIVE_FAILED);
-                else
-                        print("Warning!!! obj6 is not ACTIVE or COMPLETED");
-                end;
-                return 1;
-        end;
-        if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
-                if GetObjectiveState("obj6") == OBJECTIVE_ACTIVE  then
-                        SetObjectiveState('obj6',OBJECTIVE_COMPLETED);
-                else
-                        print("Warning!!! obj6 is not ACTIVE");
-                end;
-                return 1;
-        end;
-sleep();
-end;
-end;
-
----Is Godric Alive---
-function objective7()
-while 1 do
-        if IsHeroAlive("Godric")==nil then
-                print("Godric is dead!!!");
-                if GetObjectiveState("obj7") == OBJECTIVE_ACTIVE or GetObjectiveState("obj7") == OBJECTIVE_COMPLETED then
-                        SetObjectiveState("obj7",OBJECTIVE_FAILED);
-                else
-                        print("Warning!!! obj7 is not ACTIVE or COMPLETED");
-                end;
-                return 1;
-        end;
-        if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and
-        	GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
-                if GetObjectiveState("obj7") == OBJECTIVE_ACTIVE  then
-                        SetObjectiveState('obj7',OBJECTIVE_COMPLETED);
-                else
-                        print("Warning!!! obj7 is not ACTIVE");
-                end;
-                return 1;
-        end;
-sleep();
-end;
-end;
-
-function WinLoose()
-	while 1 do
-		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and
-			GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and
-			GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and
-			GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
-			--SaveHeroAllSetArtifactsEquipped("Zehir", "C6M3");
-			sleep(20);
-			Win();
-			return
-		end;
-		if GetObjectiveState("obj1") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj2") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj3") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj4") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj5") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj6") == OBJECTIVE_FAILED or
-			GetObjectiveState("obj7") == OBJECTIVE_FAILED then
-			sleep(40);
-			Loose();
-			return
-		end;
-		sleep(10);
-	end;
-end;
-
----gathering heroes to fight markal---
 
 d = GetDifficulty() - 1;
-a = 0; b = 0; c = 0
 
--- zehir godric findan --
-
-function fight_zehir()
-			print("starting combat");
-			StartCombat("Zehir", "Berein", 6,
-			CREATURE_WRAITH, 15 + d * 5,
-			CREATURE_SKELETON_ARCHER, 60 + d * 5,
-			CREATURE_ZOMBIE, 50 + d * 5,
-			CREATURE_GHOST, 50 + d * 5,		
-			CREATURE_VAMPIRE_LORD, 55 + d * 5,
-			CREATURE_DEMILICH, 30 + d * 5,
-			'/Maps/Scenario/C6M3/CombatScript_zehir.xdb#xpointer(/Script)',
-			"fight_godric",
-			'/Scenes/CombatArenas/Boss_c6m3_Dirt.xdb#xpointer(/AdventureFlybyScene)');
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gathering",nil)
-			Trigger(OBJECT_TOUCH_TRIGGER, "spes", nil);
-			Trigger(OBJECT_TOUCH_TRIGGER, "post", nil);
-end	
-
-function fight_godric()
-		StartCombat("Godric", "Berein", 4,
-		CREATURE_DEMILICH, 30 + d * 5,
-		CREATURE_SKELETON_ARCHER, 70 + d * 5,
-		CREATURE_MANES, 70 + d * 5,		
-		CREATURE_VAMPIRE, 65 + d * 5,
-		'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
-		"SpesFight",
-		'/Scenes/CombatArenas/Boss_c6m3_Dirt2.xdb#xpointer(/AdventureFlybyScene)')		
-end	
-
-function SpesFight()
-if IsHeroAlive("Godric")==not nil then SiegeTown("Heam", "/Maps/Scenario/C6M3/Spes.xdb#xpointer(/AdvMapTown)",
-'/Scenes/CombatArenas/Boss_c6m3_Siege.xdb#xpointer(/AdventureFlybyScene)')
-else Loose()
-end
-end
-
-
-function theend()
-	if IsHeroAlive("Zehir")==nil or IsHeroAlive("Heam")==nil or IsHeroAlive("Godric")==nil then
-			sleep();
-			Loose();
-		else
-			FinalSave();
-	end
-end
-
-function FinalSave()
-	SaveHeroAllSetArtifactsEquipped("Zehir", "C6M3");
-	Save("Scene_18");
-	sleep(10);
-	FinalCutscene();
-end
-
-function FinalCutscene()
-	--cutscene c6m3 markal's death --
-	print("executing cutscene")
-	StartCutScene("/Maps/Cutscenes/C6M3/_.(AnimScene).xdb#xpointer(/AnimScene)");
-	sleep(20);
-	SetObjectiveState("obj4",OBJECTIVE_COMPLETED);
-end
-
-function AreHeroesAlive()
-	while 1 do
-		if IsHeroAlive("Zehir")==nil or IsHeroAlive("Heam")==nil or IsHeroAlive("Godric")==nil then
-				sleep();
-				Loose();
-		end
-	sleep();
-	end
-end
-
--- Entering Markal's realm SelectionBox --
-
-
+-- Messages
 function AreYouReady()
-	QuestionBox('/Maps/Scenario/C6M3/message-8.txt', "fight_zehir");
+	QuestionBox('/Maps/Scenario/C6M3/message-8.txt', "WeAreReady" );
+end
+
+function WeAreReady()
+	BATTLES.zehir.start();
 end
 
 function YouAreNotReady()
 	MessageBox('/Maps/Scenario/C6M3/message-9.txt');
 end
 
-
----markal's gate are locked ---
-
 function MarkalGateMessage()
 	MessageBox('/Maps/Scenario/C6M3/message-7.txt');
 end
 
--- Zehir is too fast --
+BATTLES = {
+    zehir = {
+      start = function(nameHero)
+        StartCombat("Zehir", "Berein", 6,
+		CREATURE_WRAITH, 15 + d * 5,
+		CREATURE_SKELETON_ARCHER, 60 + d * 5,
+		CREATURE_ZOMBIE, 50 + d * 5,
+		CREATURE_GHOST, 50 + d * 5,		
+		CREATURE_VAMPIRE_LORD, 55 + d * 5,
+		CREATURE_DEMILICH, 30 + d * 5,
+		'/Maps/Scenario/C6M3/CombatScript_zehir.xdb#xpointer(/Script)',
+		"BATTLES.zehir.finish",
+		'/Scenes/CombatArenas/Boss_c6m3_Dirt.xdb#xpointer(/AdventureFlybyScene)');
+		OBJECTIVES.state.defeatMarkal[2] = 4;
+      end,
 
-function FastZehirCheck()
-	while 1 do
-		if IsHeroAlive("Heam")==not nil and IsHeroAlive("Godric")==not nil then
+      finish = function()
+		if IsHeroAlive("Zehir") then
+			BATTLES.godric.start();
+		end
+      end
+    },
+	
+	godric = {
+		start = function()
+			StartCombat("Godric", "Berein", 4,
+			CREATURE_DEMILICH, 30 + d * 5,
+			CREATURE_SKELETON_ARCHER, 70 + d * 5,
+			CREATURE_MANES, 70 + d * 5,		
+			CREATURE_VAMPIRE, 65 + d * 5,
+			'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
+			"BATTLES.godric.finish",
+			'/Scenes/CombatArenas/Boss_c6m3_Dirt2.xdb#xpointer(/AdventureFlybyScene)')
+		end,
+		
+		finish = function()
+			if IsHeroAlive("Godric") then
+				BATTLES.findan.start();
+			end
+		end
+	},
+	
+	findan = {
+		start = function()
+			SiegeTown("Heam", "/Maps/Scenario/C6M3/Spes.xdb#xpointer(/AdvMapTown)", '/Scenes/CombatArenas/Boss_c6m3_Siege.xdb#xpointer(/AdventureFlybyScene)');
+		end
+	}
+}
+
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/C6/M3/D1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	meetGodric = function()
+		StartDialogScene("/DialogScenes/C6/M3/D2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	firstBorder = function()
+		StartDialogScene("/DialogScenes/C6/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	firstTown = function()
+		StartDialogScene("/DialogScenes/C6/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	meetFindan = function()
+		StartDialogScene("/DialogScenes/C6/M3/D3/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+
+	outro = function()
+		StartCutScene("/Maps/Cutscenes/C6M3/_.(AnimScene).xdb#xpointer(/AnimScene)");
+		sleep( 2 );
+	end,
+}
+
+OBJECTIVES = {
+	state = {
+		meetFindan	 	= { "obj1", 1 }, 		-- Find Findan
+		meetGodric		= { "obj2", 1 },		-- Find Godric
+		captureTowns	= { "obj3", 1 },		-- Capture Griffin empire towns
+		defeatMarkal	= { "obj4", 0 },		-- Defeat Markal
+		isZehirAlive	= { "obj5", 1 },		-- Zehir must stay alive
+		isFindanAlive	= { "obj6", 0 },		-- Findan must stay alive
+		isGodricAlive	= { "obj7", 0 },		-- Godric must stay alive
+	},
+
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
+		CINEMATICS.intro();
+		H55_CamFixTooManySkills(PLAYER_1,"Zehir");
+		GiveExp( "Nathaniel", 80000 );
+		GiveExp( "Brem", 80000 );
+		Trigger(OBJECT_TOUCH_TRIGGER, "spes", "YouAreNotReady");
+		Trigger(OBJECT_TOUCH_TRIGGER, "post", "YouAreNotReady");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "gathering", "YouAreNotReady");
+		SetObjectEnabled("markalgate", nil);
+		Trigger(OBJECT_TOUCH_TRIGGER, "markalgate", "MarkalGateMessage");
+		SetObjectEnabled("spes", nil);
+		SetObjectEnabled("post", nil);
+		EnableHeroAI("Godric", nil);
+		SetRegionBlocked("heam", not nil, PLAYER_2);
+		SetRegionBlocked("block", not nil, PLAYER_2);	
+		Trigger(OBJECT_TOUCH_TRIGGER, "prison", "MeetingGodric");
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+			
+			if GetObjectiveState("obj5") == OBJECTIVE_FAILED or GetObjectiveState("obj6") == OBJECTIVE_FAILED or GetObjectiveState("obj7") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Zehir", "C6M3");
+				Save("Scene_18");
+				sleep(10);
+				CINEMATICS.outro();
+				sleep(20);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	meetFindan = function()
+		if OBJECTIVES.state.meetFindan[2] == 2 then
+			DeployReserveHero("Heam", 84, 41, 0);
+			sleep(10);
+			MoveHero("Heam", 86, 42, 0);
+			EnableHeroAI("Heam", nil);
+			OBJECTIVES.state.isFindanAlive[2] = 1;
+			OBJECTIVES.state.meetFindan[2] = 3;
+		elseif OBJECTIVES.state.meetFindan[2] == 3 and IsObjectVisible(PLAYER_1, "Heam")==not nil then
+			CINEMATICS.meetFindan();
+			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
+			SetObjectOwner("Heam", PLAYER_1);
+			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1473);
+			OBJECTIVES.state.defeatMarkal[2] = 1;
+			OBJECTIVES.state.meetFindan[2] = 10;
+		end
+	end,
+	
+	meetGodric = function()
+		if OBJECTIVES.state.meetGodric[2] == 2 then
+			CINEMATICS.meetGodric();
+			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
+			SetObjectOwner("Godric", PLAYER_1);
+			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian", "GodricMeetsAllies");
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town", "GodricFight");
+			OBJECTIVES.state.captureTowns[2] = 2;
+			OBJECTIVES.state.meetFindan[2] = 2;
+			OBJECTIVES.state.isGodricAlive[2] = 1;
+			OBJECTIVES.state.meetGodric[2] = 10;
+		end
+	end,
+	
+	captureTowns = function()
+		local owned_towns = Town_count();
+		if OBJECTIVES.state.captureTowns[2] == 2 then
+			SetObjectiveVisible("obj3", not nil);
+			OBJECTIVES.state.captureTowns[2] = 3;
+		elseif OBJECTIVES.state.captureTowns[2] == 3 and owned_towns == 4 then
+			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 2162);
+			SetObjectEnabled("markalgate", not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, "markalgate", nil);
+			SetObjectiveState("obj3", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.captureTowns[2] = 10;
+		end
+	end,
+	
+	defeatMarkal = function()
+		if OBJECTIVES.state.defeatMarkal[2] == 1 then
+			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.defeatMarkal[2] = 2;
+		elseif OBJECTIVES.state.defeatMarkal[2] == 2 and IsHeroAlive("Heam") == not nil and IsHeroAlive("Godric") == not nil then
 			Trigger(OBJECT_TOUCH_TRIGGER, "spes", "AreYouReady");
 			Trigger(OBJECT_TOUCH_TRIGGER, "post", "AreYouReady");
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gathering","AreYouReady");
-			print("checking full party");
-			break;
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "gathering", "AreYouReady");
+			OBJECTIVES.state.defeatMarkal[2] = 3;
+		elseif OBJECTIVES.state.defeatMarkal[2] == 4 then
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "gathering", nil)
+			Trigger(OBJECT_TOUCH_TRIGGER, "spes", nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, "post", nil);
+			OBJECTIVES.state.defeatMarkal[2] = 5;
+		elseif OBJECTIVES.state.defeatMarkal[2] == 6 then
+			SetObjectOwner("spes", PLAYER_1);
+			sleep(5);
+			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.defeatMarkal[2] = 10;
 		end
-	sleep();
+	end,
+	
+	isZehirAlive = function()
+		if OBJECTIVES.state.isZehirAlive[2] == 1 and IsHeroAlive("Zehir") == nil then
+			SetObjectiveState("obj5", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isZehirAlive[2] = 11;
+		end
+	end,
+	
+	isFindanAlive = function()
+		if OBJECTIVES.state.isFindanAlive[2] == 1 then
+			SetObjectiveVisible("obj6", not nil);
+			OBJECTIVES.state.isFindanAlive[2] = 2;
+		elseif OBJECTIVES.state.isFindanAlive[2] == 2 and IsHeroAlive("Heam") == nil then
+			SetObjectiveState("obj6", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isFindanAlive[2] = 11;
+		end
+	end,
+	
+	isGodricAlive = function()
+		if OBJECTIVES.state.isGodricAlive[2] == 1 then
+			SetObjectiveVisible("obj7", not nil);
+			OBJECTIVES.state.isGodricAlive[2] = 2;
+		elseif OBJECTIVES.state.isGodricAlive[2] == 2 and IsHeroAlive("Godric") == nil then
+			SetObjectiveState("obj7", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isGodricAlive[2] = 11;
+		end
+	end,
+}
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
+
+------------------- DEBUG ------------------------
+function C6M3_debug(eax, player)
+	if eax == 0 then
+		H55_Speedrun(1);
+	elseif eax == 1 then
+		MakeHeroInteractWithObject("Zehir", "prison")
+	elseif eax == 2 then
+		SetObjectPosition("Zehir", 29, 145, 0);
+	elseif eax == 3 then
+		SetObjectPosition("Zehir", 30, 110, 0);
+	elseif eax == 4 then
+		SetObjectPosition("Zehir", 84, 49, 0);
+	elseif eax == 5 then
+		for i=1, town_array.n do
+			SetObjectOwner(town_array[i], player);
+			sleep(5);
+		end
+	elseif eax == 6 then
+		SetObjectPosition("Zehir", 38, 15, 0);
 	end
 end
-
----perform---
-
-SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
-StartDialogScene("/DialogScenes/C6/M3/D1/DialogScene.xdb#xpointer(/DialogScene)");
-H55_CamFixTooManySkills(PLAYER_1,"Zehir");
-GiveExp( "Nathaniel", 80000 );
-GiveExp( "Brem", 80000 );
-
-Trigger(OBJECT_TOUCH_TRIGGER, "spes", "YouAreNotReady");
-Trigger(OBJECT_TOUCH_TRIGGER, "post", "YouAreNotReady");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER,"gathering","YouAreNotReady");
-startThread( FastZehirCheck );
-
-SetObjectEnabled("markalgate", nil);
-Trigger(OBJECT_TOUCH_TRIGGER, "markalgate", "MarkalGateMessage");
-SetObjectEnabled("spes", nil);
-SetObjectEnabled("post", nil);
-EnableHeroAI("Godric", nil);
-SetRegionBlocked("heam", not nil, PLAYER_2);
-SetRegionBlocked("block", not nil, PLAYER_2);
-SetObjectiveVisible("obj3", nil);
-SetObjectiveVisible("obj4", nil);
-SetObjectiveVisible("obj6", nil);
-SetObjectiveVisible("obj7", nil);	
-Trigger(OBJECT_CAPTURE_TRIGGER, "town1", "TownCounter");
-Trigger(OBJECT_CAPTURE_TRIGGER, "town2", "TownCounter");
-Trigger(OBJECT_CAPTURE_TRIGGER, "town3", "TownCounter");
-Trigger(OBJECT_CAPTURE_TRIGGER, "town4", "TownCounter");
-Trigger(OBJECT_TOUCH_TRIGGER, "prison", "MeetingGodric");
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, "gathering", "GatheringMessage");
-startThread( objective5 );
-startThread( WinLoose );

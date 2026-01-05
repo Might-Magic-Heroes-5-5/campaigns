@@ -330,6 +330,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Necropolis onslaught heroes sometimes did not appear and attack Syris Thalla
 
 ### C5M5 - Sylvan: The Vampire Lord
-- fix: mission dialog did not trigger on start of month 2. The issue origins is based on Nival code, the dialog has only narrative meaning and did not break the gameplay.
-- fix: lag problems due to excessive LUA script loops
+- fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
+- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
 - fix: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
+
+### C6M2 - Academy: The Liberation
+- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
+- fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
+- fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
+
+### C6M3 - Academy: The Triumvirate
+- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything

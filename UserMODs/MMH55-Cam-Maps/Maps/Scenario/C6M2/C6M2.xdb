@@ -61529,7 +61529,7 @@
 							<NeedComplete>true</NeedComplete>
 							<StateChangeTrigger>
 								<Action>
-									<FunctionName>SpellsLearned</FunctionName>
+									<FunctionName/>
 								</Action>
 							</StateChangeTrigger>
 						</Item>
@@ -61594,7 +61594,7 @@
 								</SkillWithMastery>
 							</Award>
 							<TakeContribution>false</TakeContribution>
-							<CanUncomplete>false</CanUncomplete>
+							<CanUncomplete>true</CanUncomplete>
 							<IsInitialyActive>true</IsInitialyActive>
 							<IsInitialyVisible>false</IsInitialyVisible>
 							<IsHidden>false</IsHidden>
