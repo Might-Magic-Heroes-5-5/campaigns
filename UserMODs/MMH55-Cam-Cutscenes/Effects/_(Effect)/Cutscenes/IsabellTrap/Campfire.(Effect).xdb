@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000668">
+	<Instances>
+		<Item href="Campfire.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="Fire.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights>
+		<Item href="/Effects/_(Effect)/Cutscenes/IsabelTrap/CampFire.(LightInstance).xdb#xpointer(/LightInstance)"/>
+		<Item href="/Effects/_(Effect)/Cutscenes/IsabelTrap/DemonFireLight.(LightInstance).xdb#xpointer(/LightInstance)"/>
+		<Item href="/Effects/_(Effect)/Cutscenes/IsabelTrap/DemonFireLight.(LightInstance) (2).xdb#xpointer(/LightInstance)"/>
+	</Lights>
+	<Models>
+		<Item href="/Effects/_(Effect)/Cutscenes/IsabelTrap/Campfire.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>

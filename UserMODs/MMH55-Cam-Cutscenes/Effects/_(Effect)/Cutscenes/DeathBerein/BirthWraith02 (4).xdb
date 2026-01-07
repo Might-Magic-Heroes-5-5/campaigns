@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParticleInstance ObjectRecordID="1001074">
+	<SrcName/>
+	<Light>L_NORMAL</Light>
+	<Particle href="BirhtWraith02.xdb#xpointer(/Particle)"/>
+	<Position>
+		<x>0.911</x>
+		<y>1.375</y>
+		<z>0</z>
+	</Position>
+	<Rotation>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+		<w>1</w>
+	</Rotation>
+	<Scale>0.7</Scale>
+	<Speed>1</Speed>
+	<Offset>39</Offset>
+	<EndCycle>1</EndCycle>
+	<CycleCount>5</CycleCount>
+	<Pivot>
+		<x>0</x>
+		<y>0</y>
+	</Pivot>
+	<Textures>
+		<Item/>
+		<Item href="/Textures/Effects/FireSequence/NoADD/Colorless/Fire06.xdb#xpointer(/Texture)"/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+		<Item/>
+	</Textures>
+	<IsCrown>false</IsCrown>
+	<Static>P_STATIC</Static>
+	<DoesCastShadow>false</DoesCastShadow>
+	<GlueToBone>0</GlueToBone>
+	<GlueToNamedBone/>
+	<LeaveParticlesWhereStarted>false</LeaveParticlesWhereStarted>
+	<Priority>0</Priority>
+</ParticleInstance>

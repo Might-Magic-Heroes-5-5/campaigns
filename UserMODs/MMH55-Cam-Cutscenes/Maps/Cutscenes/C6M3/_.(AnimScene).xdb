@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimScene ObjectRecordID="-1">
+	<Scenery href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<roles>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Berein_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Berein_CS_sword.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Berein_CS_sword.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Berein/Berein_CS.mb"/>
+									<uid>04BE3744-DE40-4CF6-98CA-6C0E9F700C2C</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Berein_CS_sword.Berein.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/CS5_C6M3_DeathBerein/ZephirHeamBrilliantGlow.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Corpses.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Corpses.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Corpses.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Body_parts_dead.mb"/>
+									<uid>EAEBBCF0-90CD-436E-8C0B-09D7171F8B89</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Corpses.BodyParts.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>BEAEC2D2-15B1-47AF-80B3-DAE19B8829B0</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Footman.Footman01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/DeathBerein/BereinExtermenation.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>546C3C39-B57F-4C5C-89EB-673791E12435</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Footman.Footman02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/DeathBerein/BirthWraith.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman03.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman03.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>5C814053-B8C7-49A8-B3B4-C28CC69DD775</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Footman.Footman03.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/DeathBerein/GodricAttack01.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman04.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman04.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>FED4CC64-3402-462C-A942-5524D7C472EA</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Footman.Footman04.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Godric_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Godric.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Godric.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Godric/Godric_CS.mb"/>
+									<uid>55A469BC-CB75-476A-8F21-A579F4E97564</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Godric.Godric.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Heam_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Heam_CS_sword.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Heam_CS_sword.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Heam/Heam_CS.mb"/>
+									<uid>6ECDF647-615D-485F-835A-E1539A29FB0E</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Heam_CS_sword.Heam.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Humans_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Humans_Parts01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Humans_Parts01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Humans_parts.mb"/>
+									<uid>94465B05-FA43-45CD-8F74-72BDBF5D729B</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Humans_Parts.HumansParts01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Humans_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Humans_Parts02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Humans_Parts02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Humans_parts.mb"/>
+									<uid>418A6A85-16C9-4F92-97C5-272F4E0BF8E9</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Humans_Parts.HumansParts02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Skeleton_warrior.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="SkeletonWarrior01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="SkeletonWarrior01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/SkeletonWarior_death.mb"/>
+									<uid>211FBA80-8B91-401B-BF58-5DC59C36AC86</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/SkeletonWarrior.SkeletonWarrior01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Skeleton_warrior.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="SkeletonWarrior02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="SkeletonWarrior02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/SkeletonWarior_death.mb"/>
+									<uid>19DBA815-7A39-46D6-A58C-76644A7C1F28</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/SkeletonWarrior.SkeletonWarrior02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Skeleton_warrior.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="SkeletonWarrior03.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="SkeletonWarrior03.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/SkeletonWarior_death.mb"/>
+									<uid>DCDEBF45-15F8-4AD6-A5F9-3FE36B882BC9</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/SkeletonWarrior.SkeletonWarrior03.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>2AF8B095-CF3B-4BE7-BF00-72BCA0CE8664</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>6C139D56-5A9B-4CEF-B2BF-F05722479D74</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith03.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith03.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>EDA6C7D9-E121-445E-8063-4CA69FC91361</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith03.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith04.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith04.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>99D71151-7456-479E-BDF2-84FF14E3AFE5</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith04.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith05.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith05.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>FDAF576B-41A9-41F5-AA80-087F2FF46556</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith05.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Wraith.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Wraith06.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Wraith06.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Wraith_CS.mb"/>
+									<uid>9435589D-A2E7-453C-A2AF-B804238948C0</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Wraith.Wraith06.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Zephir.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Zephir.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Zephir.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Zehir/Zehir_CS.mb"/>
+									<uid>50E3C7CF-B441-4923-8971-B4E25FB798BC</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Zephir.Zephir.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Zombie.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Zombie01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Zombie01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Zombie.mb"/>
+									<uid>772D6DD5-8164-4D05-96BE-BC352FBCE6BA</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Zombie.Zombie01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Zombie.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Zombie02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Zombie02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Zombie.mb"/>
+									<uid>BAE6699E-2021-4ACC-842D-A8DA932629E1</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/Zombie.Zombie02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/_(Model)/Effects/Cutscenes/BlendScenes/Fade.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="fade.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="fade.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/Effects/Cutscenes/BlendScenes/Fade.mb"/>
+									<uid>8C0AE2EB-BE05-407A-8BA9-A17C152A20E2</uid>
+									<ExpSrcClip href="/Effects/Cutscenes/BlendScenes/fade.c6m3.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+	</roles>
+	<cameraRole>
+		<Model href="/_(Model)/Cutscenes/CameraUpAim.(Model).xdb#xpointer(/Model)"/>
+		<AnimSet href="#n:inline(AnimSet)" id="camera.(AnimSet)">
+			<AnimSet ObjectRecordID="-1">
+				<animations>
+					<Item>
+						<Kind>idle00</Kind>
+						<Anim href="#n:inline(BasicSkelAnim)" id="camera.(BasicSkelAnim)">
+							<BasicSkelAnim ObjectRecordID="-1">
+								<SrcName href="/Cameras/Camera_Up_Aim.mb"/>
+								<uid>9021E2BB-FA05-4D6A-9244-6CFD0BB6BE57</uid>
+								<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS5_C6M3_DeathBerein/Clip/camera_char.idle00.ma"/>
+								<ExpRootTransform>Camera_Global</ExpRootTransform>
+								<ExpFrameFirst>0</ExpFrameFirst>
+								<ExpFrameLast>0</ExpFrameLast>
+								<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+								<MovementSpeed>0</MovementSpeed>
+								<SpeedFactor>1</SpeedFactor>
+								<Sound/>
+								<Effect/>
+								<SpeedLineFallTime>250</SpeedLineFallTime>
+								<SpeedLineMaterial/>
+							</BasicSkelAnim>
+						</Anim>
+					</Item>
+				</animations>
+				<ExpSrcScene href=""/>
+				<ExpSrcClipFolder href=""/>
+				<ExpRootTransform/>
+			</AnimSet>
+		</AnimSet>
+		<Player>PLAYER_NONE</Player>
+	</cameraRole>
+	<skyRole>
+		<Model/>
+		<AnimSet/>
+		<Player>PLAYER_NONE</Player>
+	</skyRole>
+	<MountPoint>
+		<Pos>
+			<x>48</x>
+			<y>43</y>
+		</Pos>
+		<Rot>0</Rot>
+	</MountPoint>
+	<Subtitles>
+		<Timeline href="#xpointer(id(camera.(BasicSkelAnim))/BasicSkelAnim)"/>
+		<FormatFileRef href="/Text/Cutscenes/format.txt"/>
+		<linesFileRef>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep01.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep02.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep03.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep04.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep05.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep06.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep07.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep08.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep09.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep10.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep11.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/Rep12.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M3/blank.txt"/>
+		</linesFileRef>
+	</Subtitles>
+	<Music href="/Sounds/_(Music)/CS/US-Death-Berein.xdb#xpointer(/Music)"/>
+	<AltMusic/>
+</AnimScene>

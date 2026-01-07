@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimScene ObjectRecordID="-1">
+	<Scenery href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<roles>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Biara_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Biara_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Biara_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Biara/Biara_CS.mb"/>
+									<uid>3C0D6EC2-A902-4CED-8264-5D7D9DFC3C62</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Biara_CS.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/BiaraFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Calodian_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Calodain_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Calodain_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Calodain/Calodain_CS.mb"/>
+									<uid>4E3E4947-A192-4EE7-B419-C5F503029478</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Calodain_CS.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/DemonFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/Demon_Sovereign.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon_Sovereign.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon_Sovereign.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/DemonSovereign/Demon_Sovereign.mb"/>
+									<uid>AD331423-60A8-40AA-BB70-C5AB359114D6</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Demon_Sovereign.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/FX_BrilliantGlow.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Godric_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Godric.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Godric.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Godric/Godric_CS.mb"/>
+									<uid>7883BB21-676C-4DEC-BCF2-721175C788C7</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Godric.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/IsabelBodyFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Heam_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Heam_CS_sword.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Heam_CS_sword.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Heam/Heam_CS.mb"/>
+									<uid>A454B5A9-7A9D-4CA9-A54E-B347B213D9CC</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Heam_CS_sword.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/ShadiaFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Isabel_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Isabel_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Isabel_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Isabel/Isabel_CS.mb"/>
+									<uid>454024B7-8F38-4676-BB32-A3107B8CA678</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Isabel_CS.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part1/Zehir.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Raelag.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Raelag_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Raelag_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Raelag/Raelag_CS.mb"/>
+									<uid>1A172161-448D-44B6-A2FE-0C30F5E13931</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Raelag_CS.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part2/FX_BrilliantGlow.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Ritual_hall.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Ritual_hall.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Ritual_hall.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/RitHall/ritual_hall.mb"/>
+									<uid>A428FD80-D934-4CA5-B50A-2312C19D7B5E</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Ritual_hall.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/RitualIsabel_part2/RitualIsabel_part2.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Zephir.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Zephir.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Zephir.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Zehir/Zehir_CS.mb"/>
+									<uid>B45DBEC6-F8B1-4580-8BC6-DFA98A81A5C2</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/Zephir.idle00.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/_(Model)/Effects/Cutscenes/BlendScenes/Fade.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="fade.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="fade.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/Effects/Cutscenes/BlendScenes/Fade.mb"/>
+									<uid>B4F2786A-91CC-4A50-9124-3988A5A83835</uid>
+									<ExpSrcClip href="/Effects/Cutscenes/BlendScenes/fade.c6m4.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+	</roles>
+	<cameraRole>
+		<Model href="/_(Model)/Cutscenes/CameraUpAim.(Model).xdb#xpointer(/Model)"/>
+		<AnimSet href="#n:inline(AnimSet)" id="camera.(AnimSet)">
+			<AnimSet ObjectRecordID="-1">
+				<animations>
+					<Item>
+						<Kind>idle00</Kind>
+						<Anim href="#n:inline(BasicSkelAnim)" id="camera.(BasicSkelAnim)">
+							<BasicSkelAnim ObjectRecordID="-1">
+								<SrcName href="/Cameras/Camera_Up_Aim.mb"/>
+								<uid>E0CB34FC-2290-450E-8103-83F736B37AD5</uid>
+								<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS6_C6M4_RitualIsabel/clip/camera_char.idle00.ma"/>
+								<ExpRootTransform>Camera_Global</ExpRootTransform>
+								<ExpFrameFirst>0</ExpFrameFirst>
+								<ExpFrameLast>0</ExpFrameLast>
+								<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+								<MovementSpeed>0</MovementSpeed>
+								<SpeedFactor>1</SpeedFactor>
+								<Sound/>
+								<Effect/>
+								<SpeedLineFallTime>250</SpeedLineFallTime>
+								<SpeedLineMaterial/>
+							</BasicSkelAnim>
+						</Anim>
+					</Item>
+				</animations>
+				<ExpSrcScene href=""/>
+				<ExpSrcClipFolder href=""/>
+				<ExpRootTransform/>
+			</AnimSet>
+		</AnimSet>
+		<Player>PLAYER_NONE</Player>
+	</cameraRole>
+	<skyRole>
+		<Model/>
+		<AnimSet/>
+		<Player>PLAYER_NONE</Player>
+	</skyRole>
+	<MountPoint>
+		<Pos>
+			<x>48.5</x>
+			<y>48.5</y>
+		</Pos>
+		<Rot>0</Rot>
+	</MountPoint>
+	<Subtitles>
+		<Timeline href="#xpointer(id(camera.(BasicSkelAnim))/BasicSkelAnim)"/>
+		<FormatFileRef href="/Text/Cutscenes/format.txt"/>
+		<linesFileRef>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep01.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep02.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep03.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep04.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep05.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep06.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep07.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep08.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep09.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep10.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep11.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC6M4/Rep12.txt"/>
+		</linesFileRef>
+	</Subtitles>
+	<Music href="/Sounds/_(Music)/CS/US-Ritual-Isabel.xdb#xpointer(/Music)"/>
+	<AltMusic/>
+</AnimScene>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParticleInstance ObjectRecordID="1001003">
+	<SrcName/>
+	<Light>L_NORMAL</Light>
+	<Particle href="Candle.(Particle).xdb#xpointer(/Particle)"/>
+	<Position>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</Position>
+	<Rotation>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+		<w>1</w>
+	</Rotation>
+	<Scale>1</Scale>
+	<Speed>1</Speed>
+	<Offset>0</Offset>
+	<EndCycle>119.2</EndCycle>
+	<CycleCount>1</CycleCount>
+	<Pivot>
+		<x>0</x>
+		<y>0</y>
+	</Pivot>
+	<Textures>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire00.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire01.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire02.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire03.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire04.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire05.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire06.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire07.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire08.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire09.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire10.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire11.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire12.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire13.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire14.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire15.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire16.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire17.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire18.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire19.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire20.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire21.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire22.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire23.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire24.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire25.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire26.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire27.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire28.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire29.xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire30.(Texture).xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire31.(Texture).xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire32.(Texture).xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire33.(Texture).xdb#xpointer(/Texture)"/>
+		<Item href="/Textures/Effects/FireSequence/Candle/Fire34.(Texture).xdb#xpointer(/Texture)"/>
+	</Textures>
+	<IsCrown>false</IsCrown>
+	<Static>P_STATIC</Static>
+	<DoesCastShadow>false</DoesCastShadow>
+	<GlueToBone>0</GlueToBone>
+	<GlueToNamedBone/>
+	<LeaveParticlesWhereStarted>false</LeaveParticlesWhereStarted>
+	<Priority>0</Priority>
+</ParticleInstance>

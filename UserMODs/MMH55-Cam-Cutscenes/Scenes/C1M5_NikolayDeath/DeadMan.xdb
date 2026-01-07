@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model ObjectRecordID="1000927">
+	<Materials>
+		<Item href="#n:inline(Material)" id="item_e2790b85-7740-459e-8e06-d8cb70191ea2">
+			<Material ObjectRecordID="1002120">
+				<Texture href="/Textures/Creatures/Haven/Footman_LOD/Footman_weapon.tga.xdb#xpointer(/Texture)"/>
+				<Bump/>
+				<SpecFactor>0</SpecFactor>
+				<SpecColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</SpecColor>
+				<Gloss/>
+				<MetalMirror>0</MetalMirror>
+				<DielMirror>0</DielMirror>
+				<Mirror/>
+				<CastShadow>true</CastShadow>
+				<ReceiveShadow>true</ReceiveShadow>
+				<Priority>0</Priority>
+				<TranslucentColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</TranslucentColor>
+				<FloatParam>0</FloatParam>
+				<DetailTexture/>
+				<DetailScale>5</DetailScale>
+				<ProjectOnTerrain>false</ProjectOnTerrain>
+				<LightingMode>L_NORMAL</LightingMode>
+				<DynamicMode>DM_DONT_CARE</DynamicMode>
+				<Is2Sided>false</Is2Sided>
+				<Effect>M_GENERIC</Effect>
+				<AlphaMode>AM_OPAQUE</AlphaMode>
+				<AffectedByFog>true</AffectedByFog>
+				<AddPlaced>false</AddPlaced>
+				<IgnoreZBuffer>false</IgnoreZBuffer>
+				<BackFaceCastShadow>false</BackFaceCastShadow>
+			</Material>
+		</Item>
+		<Item href="#n:inline(Material)" id="item_75211680-3656-4387-b4b2-36c53abbb9bc">
+			<Material ObjectRecordID="1002117">
+				<Texture href="/Textures/Creatures/Haven/Footman/Footman.tga.xdb#xpointer(/Texture)"/>
+				<Bump/>
+				<SpecFactor>0</SpecFactor>
+				<SpecColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</SpecColor>
+				<Gloss/>
+				<MetalMirror>0</MetalMirror>
+				<DielMirror>0</DielMirror>
+				<Mirror/>
+				<CastShadow>true</CastShadow>
+				<ReceiveShadow>true</ReceiveShadow>
+				<Priority>0</Priority>
+				<TranslucentColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</TranslucentColor>
+				<FloatParam>0</FloatParam>
+				<DetailTexture/>
+				<DetailScale>5</DetailScale>
+				<ProjectOnTerrain>false</ProjectOnTerrain>
+				<LightingMode>L_NORMAL</LightingMode>
+				<DynamicMode>DM_DONT_CARE</DynamicMode>
+				<Is2Sided>false</Is2Sided>
+				<Effect>M_GENERIC</Effect>
+				<AlphaMode>AM_OPAQUE</AlphaMode>
+				<AffectedByFog>true</AffectedByFog>
+				<AddPlaced>false</AddPlaced>
+				<IgnoreZBuffer>false</IgnoreZBuffer>
+				<BackFaceCastShadow>false</BackFaceCastShadow>
+			</Material>
+		</Item>
+	</Materials>
+	<Skeleton href="#n:inline(Skeleton)" id="item_5bc63a25-76e1-47d9-9652-be5c0c35f1af">
+		<Skeleton ObjectRecordID="1000217">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Footman.mb"/>
+			<RootJoint>Global</RootJoint>
+			<MSRFormat>true</MSRFormat>
+			<Animations/>
+			<uid>96372154-57BB-43BC-A185-0B3593A9746A</uid>
+		</Skeleton>
+	</Skeleton>
+	<Geometry href="#n:inline(Geometry)" id="item_5d9c07fc-2997-4794-8f23-89c401d85016">
+		<Geometry ObjectRecordID="1000710">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Footman.mb"/>
+			<uid>91BD9A57-D34A-4600-905E-EA01B169817C</uid>
+			<RootMesh/>
+			<RootJoint>Global</RootJoint>
+			<Size>
+				<x>2.07853</x>
+				<y>1.88616</y>
+				<z>1.72413</z>
+			</Size>
+			<Center>
+				<x>-0.0305844</x>
+				<y>-0.238232</y>
+				<z>0.814627</z>
+			</Center>
+			<BestFitPoint>
+				<x>0.0433135</x>
+				<y>-0.0159205</y>
+				<z>1.51195</z>
+			</BestFitPoint>
+			<Dir>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
+				<w>0</w>
+			</Dir>
+			<AIGeometry href="#n:inline(AIGeometry)" id="item_1c2ecf6d-37dd-4262-9547-893d7423f405">
+				<AIGeometry ObjectRecordID="1000482">
+					<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Footman.mb"/>
+					<RootMesh>AI</RootMesh>
+					<RootJoint/>
+					<Volume>0</Volume>
+					<SolidPart>0</SolidPart>
+					<AABBCenter>
+						<x>0</x>
+						<y>-0.0795</y>
+						<z>1.02382</z>
+					</AABBCenter>
+					<AABBHalfSize>
+						<x>0.535053</x>
+						<y>0.374672</y>
+						<z>1.02382</z>
+					</AABBHalfSize>
+					<uid>CFDF04C1-42BD-4B03-8755-4953182C325E</uid>
+				</AIGeometry>
+			</AIGeometry>
+			<NumMeshes>2</NumMeshes>
+			<MaterialQuantities>
+				<Item>1</Item>
+				<Item>1</Item>
+			</MaterialQuantities>
+			<MeshNames>
+				<Item>WeaponShape</Item>
+				<Item>BodyShape</Item>
+			</MeshNames>
+			<MeshAnimated/>
+			<MeshWindAffected/>
+		</Geometry>
+	</Geometry>
+	<Animations/>
+	<WindPower>1</WindPower>
+</Model>

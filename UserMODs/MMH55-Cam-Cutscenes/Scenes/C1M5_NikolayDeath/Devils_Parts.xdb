@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model ObjectRecordID="1000929">
+	<Materials>
+		<Item href="Devils_Parts-devil_material.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-devil_material.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-devil_axe_material.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-Pitfiend_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-Sword_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-Pitfiend_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-Sword_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="#n:inline(Material)" id="item_889cd387-2430-45ac-a03f-6f70cd0706b4">
+			<Material ObjectRecordID="1001526">
+				<Texture href="/Textures/Creatures/Inferno/Balor/balor_swordglow.tga.xdb#xpointer(/Texture)"/>
+				<Bump/>
+				<SpecFactor>0</SpecFactor>
+				<SpecColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</SpecColor>
+				<Gloss/>
+				<MetalMirror>0</MetalMirror>
+				<DielMirror>0</DielMirror>
+				<Mirror/>
+				<CastShadow>true</CastShadow>
+				<ReceiveShadow>true</ReceiveShadow>
+				<Priority>0</Priority>
+				<TranslucentColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</TranslucentColor>
+				<FloatParam>0</FloatParam>
+				<DetailTexture/>
+				<DetailScale>5</DetailScale>
+				<ProjectOnTerrain>false</ProjectOnTerrain>
+				<LightingMode>L_NORMAL</LightingMode>
+				<DynamicMode>DM_DONT_CARE</DynamicMode>
+				<Is2Sided>false</Is2Sided>
+				<Effect>M_GENERIC</Effect>
+				<AlphaMode>AM_ALPHA_TEST</AlphaMode>
+				<AffectedByFog>true</AffectedByFog>
+				<AddPlaced>false</AddPlaced>
+				<IgnoreZBuffer>false</IgnoreZBuffer>
+				<BackFaceCastShadow>false</BackFaceCastShadow>
+			</Material>
+		</Item>
+		<Item href="Devils_Parts-Sword_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-devil_material.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Devils_Parts-devil_axe_material.(Material).xdb#xpointer(/Material)"/>
+	</Materials>
+	<Skeleton href="#n:inline(Skeleton)" id="item_fb2ff255-97cf-4bd0-a763-078074148e04">
+		<Skeleton ObjectRecordID="1000219">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Devils_parts.mb"/>
+			<RootJoint>Global</RootJoint>
+			<MSRFormat>true</MSRFormat>
+			<Animations/>
+			<uid>3C21CEDA-BAB6-48F8-9CF9-57733BC19AA8</uid>
+		</Skeleton>
+	</Skeleton>
+	<Geometry href="#n:inline(Geometry)" id="item_32b7b2bb-20b6-4a2c-8803-e28bac539217">
+		<Geometry ObjectRecordID="1000712">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Devils_parts.mb"/>
+			<uid>4917BBD4-64DF-453D-AD4B-7AE561CF80EA</uid>
+			<RootMesh>Global</RootMesh>
+			<RootJoint>Global</RootJoint>
+			<Size>
+				<x>5.1662</x>
+				<y>1.98565</y>
+				<z>1.2725</z>
+			</Size>
+			<Center>
+				<x>-0.0266124</x>
+				<y>-0.246238</y>
+				<z>0.621122</z>
+			</Center>
+			<BestFitPoint>
+				<x>0.919079</x>
+				<y>0.0659262</y>
+				<z>1.0115</z>
+			</BestFitPoint>
+			<Dir>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
+				<w>0</w>
+			</Dir>
+			<AIGeometry/>
+			<NumMeshes>7</NumMeshes>
+			<MaterialQuantities>
+				<Item>1</Item>
+				<Item>2</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>2</Item>
+				<Item>2</Item>
+				<Item>2</Item>
+			</MaterialQuantities>
+			<MeshNames>
+				<Item>Devils_decoShape</Item>
+				<Item>Devils_on_ShouldShape</Item>
+				<Item>PitFiend_parts_Shape1</Item>
+				<Item>PitFiend_parts_Shape2</Item>
+				<Item>PitFiend_parts_Shape3</Item>
+				<Item>Devils_Short_swordShape</Item>
+				<Item>Devils_on_ShouldShape1</Item>
+			</MeshNames>
+			<MeshAnimated/>
+			<MeshWindAffected/>
+		</Geometry>
+	</Geometry>
+	<Animations/>
+	<WindPower>1</WindPower>
+</Model>

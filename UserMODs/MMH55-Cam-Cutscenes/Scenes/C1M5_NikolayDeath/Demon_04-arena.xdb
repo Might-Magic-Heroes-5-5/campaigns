@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimSet ObjectRecordID="1000055">
+	<animations>
+		<Item>
+			<Kind>idle00</Kind>
+			<Anim href="Demon_04-arena-idle00.xdb#xpointer(/BasicSkelAnim)"/>
+		</Item>
+	</animations>
+	<ExpSrcScene href="/models/Cutscenes/C1_M5_NikolayDeath/Devil_Globals.mb"/>
+	<ExpSrcClipFolder href="/Animations/Cutscenes/PA2wip/C1_M5_NikolayDeath/Demon04_clip/"/>
+	<ExpRootTransform>Global</ExpRootTransform>
+</AnimSet>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model ObjectRecordID="1000926">
+	<Materials>
+		<Item href="Agrail-lambert2.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Agrail-lambert3.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Agrail-lambert3.(Material).xdb#xpointer(/Material)"/>
+		<Item href="#n:inline(Material)" id="item_7f889107-51d9-4de0-a585-45770d5f49fa">
+			<Material ObjectRecordID="1002202">
+				<Texture href="/Characters/Heroes/Warlock-Hero_Flag.(Texture).xdb#xpointer(/Texture)"/>
+				<Bump/>
+				<SpecFactor>0</SpecFactor>
+				<SpecColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</SpecColor>
+				<Gloss/>
+				<MetalMirror>0</MetalMirror>
+				<DielMirror>0</DielMirror>
+				<Mirror/>
+				<CastShadow>true</CastShadow>
+				<ReceiveShadow>true</ReceiveShadow>
+				<Priority>0</Priority>
+				<TranslucentColor>
+					<x>0</x>
+					<y>0</y>
+					<z>0</z>
+				</TranslucentColor>
+				<FloatParam>0</FloatParam>
+				<DetailTexture/>
+				<DetailScale>5</DetailScale>
+				<ProjectOnTerrain>false</ProjectOnTerrain>
+				<LightingMode>L_NORMAL</LightingMode>
+				<DynamicMode>DM_DONT_CARE</DynamicMode>
+				<Is2Sided>false</Is2Sided>
+				<Effect>M_GENERIC</Effect>
+				<AlphaMode>AM_ALPHA_TEST</AlphaMode>
+				<AffectedByFog>true</AffectedByFog>
+				<AddPlaced>false</AddPlaced>
+				<IgnoreZBuffer>false</IgnoreZBuffer>
+				<BackFaceCastShadow>false</BackFaceCastShadow>
+			</Material>
+		</Item>
+		<Item href="Agrail-lambert2.(Material).xdb#xpointer(/Material)"/>
+	</Materials>
+	<Skeleton href="#n:inline(Skeleton)" id="item_1f8c6f19-23b6-408d-8497-8b17869b1da5">
+		<Skeleton ObjectRecordID="1000216">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Agrail.mb"/>
+			<RootJoint>Global</RootJoint>
+			<MSRFormat>true</MSRFormat>
+			<Animations/>
+			<uid>7D623CB6-7118-4B8B-A0CB-A39234C5A3CB</uid>
+		</Skeleton>
+	</Skeleton>
+	<Geometry href="#n:inline(Geometry)" id="item_06bd09e9-0aa3-48ff-bcd6-4704ab27b007">
+		<Geometry ObjectRecordID="1000709">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Agrail.mb"/>
+			<uid>807CFAE7-3E46-4D6A-B52E-8B191F9A24C1</uid>
+			<RootMesh/>
+			<RootJoint>Global</RootJoint>
+			<Size>
+				<x>2.93926</x>
+				<y>10.3341</y>
+				<z>7.54505</z>
+			</Size>
+			<Center>
+				<x>-0.218054</x>
+				<y>1.22208</y>
+				<z>3.7726</z>
+			</Center>
+			<BestFitPoint>
+				<x>-0.0136643</x>
+				<y>0.287999</y>
+				<z>7.53093</z>
+			</BestFitPoint>
+			<Dir>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
+				<w>0</w>
+			</Dir>
+			<AIGeometry href="#n:inline(AIGeometry)" id="item_bf070744-a778-42a3-a157-500dff967b43">
+				<AIGeometry ObjectRecordID="1000483">
+					<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Agrail.mb"/>
+					<RootMesh>AI</RootMesh>
+					<RootJoint/>
+					<Volume>0</Volume>
+					<SolidPart>0</SolidPart>
+					<AABBCenter>
+						<x>0</x>
+						<y>-1.32975</y>
+						<z>2.53867</z>
+					</AABBCenter>
+					<AABBHalfSize>
+						<x>0.904031</x>
+						<y>2.36602</y>
+						<z>2.53867</z>
+					</AABBHalfSize>
+					<uid>8267262A-91D6-482B-853A-F978902AA1DE</uid>
+				</AIGeometry>
+			</AIGeometry>
+			<NumMeshes>4</NumMeshes>
+			<MaterialQuantities>
+				<Item>2</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+			</MaterialQuantities>
+			<MeshNames>
+				<Item>Hero_stuffShape</Item>
+				<Item>LizardShape</Item>
+				<Item>Flag_DungeonShape</Item>
+				<Item>HeroShape</Item>
+			</MeshNames>
+			<MeshAnimated/>
+			<MeshWindAffected/>
+		</Geometry>
+	</Geometry>
+	<Animations/>
+	<WindPower>1</WindPower>
+</Model>
