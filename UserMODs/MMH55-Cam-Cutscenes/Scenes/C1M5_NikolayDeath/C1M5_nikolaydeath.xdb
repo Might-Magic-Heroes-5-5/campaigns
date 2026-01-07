@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimScene ObjectRecordID="1000001">
+	<Scenery/>
+	<roles>
+		<Item>
+			<Model href="Nikolay.xdb#xpointer(/Model)"/>
+			<AnimSet href="Nikolay-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Demon.xdb#xpointer(/Model)"/>
+			<AnimSet href="Demon_01-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Demon.xdb#xpointer(/Model)"/>
+			<AnimSet href="Demon_02-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Demon.xdb#xpointer(/Model)"/>
+			<AnimSet href="Demon_03-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Demon.xdb#xpointer(/Model)"/>
+			<AnimSet href="Demon_04-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Demon.xdb#xpointer(/Model)"/>
+			<AnimSet href="Demon_05-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Humans_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="Humans_Parts-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Devils_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="Devils_Parts_01-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Devils_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="Devils_Parts_02-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="DeadMan.xdb#xpointer(/Model)"/>
+			<AnimSet href="Deadman_01-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="DeadMan.xdb#xpointer(/Model)"/>
+			<AnimSet href="Deadman_02-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="DeadMan.xdb#xpointer(/Model)"/>
+			<AnimSet href="Deadman_03-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="Agrail.xdb#xpointer(/Model)"/>
+			<AnimSet href="Agrail-arena.xdb#xpointer(/AnimSet)"/>
+			<Player>PLAYER_1</Player>
+		</Item>
+	</roles>
+	<cameraRole>
+		<Model href="/_(Model)/Cutscenes/camera.(Model).xdb#xpointer(/Model)"/>
+		<AnimSet href="C1M5_Camera.xdb#xpointer(/AnimSet)"/>
+		<Player>PLAYER_NONE</Player>
+	</cameraRole>
+	<skyRole>
+		<Model/>
+		<AnimSet/>
+		<Player>PLAYER_NONE</Player>
+	</skyRole>
+	<MountPoint>
+		<Pos>
+			<x>36</x>
+			<y>36</y>
+		</Pos>
+		<Rot>0</Rot>
+	</MountPoint>
+	<Subtitles>
+		<Timeline/>
+		<FormatFileRef href=""/>
+		<linesFileRef/>
+	</Subtitles>
+	<Music/>
+	<AltMusic/>
+</AnimScene>

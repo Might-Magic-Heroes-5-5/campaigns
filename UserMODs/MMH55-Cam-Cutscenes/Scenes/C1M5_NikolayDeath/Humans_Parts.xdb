@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model ObjectRecordID="1000928">
+	<Materials>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-Archer_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-footman.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+		<Item href="Humans_Parts-weapon_lambert.(Material).xdb#xpointer(/Material)"/>
+	</Materials>
+	<Skeleton href="#n:inline(Skeleton)" id="item_449047f6-b56b-4ac0-91d4-f46ec9869d63">
+		<Skeleton ObjectRecordID="1000218">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Humans_parts.mb"/>
+			<RootJoint>Global</RootJoint>
+			<MSRFormat>true</MSRFormat>
+			<Animations/>
+			<uid>07FA651B-0A36-46E4-A95D-035172301FDA</uid>
+		</Skeleton>
+	</Skeleton>
+	<Geometry href="#n:inline(Geometry)" id="item_e6582703-ff5b-431c-b5d5-abab9df8f794">
+		<Geometry ObjectRecordID="1000711">
+			<SrcName href="/models/Cutscenes/C1_M5_NikolayDeath/Humans_parts.mb"/>
+			<uid>8EC50FA9-B644-45B7-B095-08B07C80CB1D</uid>
+			<RootMesh>Global</RootMesh>
+			<RootJoint>Global</RootJoint>
+			<Size>
+				<x>7.68122</x>
+				<y>3.39438</y>
+				<z>0.714161</z>
+			</Size>
+			<Center>
+				<x>0.538185</x>
+				<y>-0.10731</y>
+				<z>0.245055</z>
+			</Center>
+			<BestFitPoint>
+				<x>-0.621182</x>
+				<y>-0.0576774</y>
+				<z>0.202162</z>
+			</BestFitPoint>
+			<Dir>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
+				<w>0</w>
+			</Dir>
+			<AIGeometry/>
+			<NumMeshes>28</NumMeshes>
+			<MaterialQuantities>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+				<Item>1</Item>
+			</MaterialQuantities>
+			<MeshNames>
+				<Item>Humans_Swords_Shape4</Item>
+				<Item>Human_on_should_deco_Shape2</Item>
+				<Item>Humans_legShape</Item>
+				<Item>Human_stuffShape</Item>
+				<Item>Humans_Swords_Shape3</Item>
+				<Item>Humans_Swords_Shape0</Item>
+				<Item>Humans_Swords_Shape1</Item>
+				<Item>Humans_on_knee_decoShape</Item>
+				<Item>Humans_Swords_Shape2</Item>
+				<Item>Humans_hand_Shape0</Item>
+				<Item>Humans_hand_Shape1</Item>
+				<Item>Humans_Halmet_0Shape</Item>
+				<Item>Humans_BowShape</Item>
+				<Item>ArrowShape</Item>
+				<Item>Humans_KnifsShape</Item>
+				<Item>Human_Broked_arrowShape</Item>
+				<Item>Human_on_should_deco_Shape1</Item>
+				<Item>Human_arrowBoxShape</Item>
+				<Item>Humans_Halmet_2Shape</Item>
+				<Item>Humans_Swords_brokedShape</Item>
+				<Item>Humans_hand_Shape2</Item>
+				<Item>Humans_Shilds_Shape0</Item>
+				<Item>Humans_Swords_Shape5</Item>
+				<Item>Human_on_should_deco_Shape0</Item>
+				<Item>Humans_Halmet_Shape1</Item>
+				<Item>Humans_Shilds_Shape1</Item>
+				<Item>Humans_Shilds_Shape2</Item>
+				<Item>Humans_Shilds_Shape3</Item>
+			</MeshNames>
+			<MeshAnimated/>
+			<MeshWindAffected/>
+		</Geometry>
+	</Geometry>
+	<Animations/>
+	<WindPower>1</WindPower>
+</Model>

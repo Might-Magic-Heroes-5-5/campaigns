@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimScene ObjectRecordID="-1">
+	<Scenery href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<roles>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Berein_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Berein_CS_sword.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Berein_CS_sword.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Berein/Berein_CS.mb"/>
+									<uid>D9C9B8EB-151A-4031-AE38-21693D457203</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/Berein_CS_sword.nikolayvampire.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/NicolaiResurrection/Scull.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Isabel_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Isabel_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Isabel_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Isabel/Isabel_CS.mb"/>
+									<uid>E2E0AAEC-74BB-4882-94A2-026AB57B92E1</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/Isabel_CS.nikolayvampire.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/NicolaiResurrection/candle.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Mausoleum_evil.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Mausoleum_evil.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Mausoleum_evil.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Mausoleum/mausoleum_evil.mb"/>
+									<uid>792B7C56-B62E-46E1-B424-33F538094A18</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/Mausoleum_evil.nikolayvampire.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/NicolaiResurrection/Fire.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Nikolay_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Nikolay_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Nikolay_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Nikolay/Nikolai_CS.mb"/>
+									<uid>6CCED8D0-BA7E-42D7-B852-1B161C60F994</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/Nikolay_CS.nikolayvampire.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Nicolay_vampire_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Nikolay_vampire_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Nikolay_vampire_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/NikolayVampire/NicolayVampire_CS.mb"/>
+									<uid>CB55CB62-39D7-4064-94DD-B6C336963F0F</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/Nikolay_vampire_CS.nikolayvampire.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/_(Model)/Effects/Cutscenes/BlendScenes/Fade.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="fade.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="fade.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/Effects/Cutscenes/BlendScenes/Fade.mb"/>
+									<uid>43C7EC0A-769E-4648-B6C5-876DDCC2540C</uid>
+									<ExpSrcClip href="/Effects/Cutscenes/BlendScenes/fade.c4m5.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+	</roles>
+	<cameraRole>
+		<Model href="/_(Model)/Cutscenes/CameraUpAim.(Model).xdb#xpointer(/Model)"/>
+		<AnimSet href="#n:inline(AnimSet)" id="camera.(AnimSet)">
+			<AnimSet ObjectRecordID="-1">
+				<animations>
+					<Item>
+						<Kind>idle00</Kind>
+						<Anim href="#n:inline(BasicSkelAnim)" id="camera.(BasicSkelAnim)">
+							<BasicSkelAnim ObjectRecordID="-1">
+								<SrcName href="/Cameras/Camera_Up_Aim.mb"/>
+								<uid>21B95DA3-0874-4C96-8EEB-173A3880B54F</uid>
+								<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS4_C4M5_NicolaiVampire/Clip/camera_char.nikolayvampire.ma"/>
+								<ExpRootTransform>Camera_Global</ExpRootTransform>
+								<ExpFrameFirst>0</ExpFrameFirst>
+								<ExpFrameLast>0</ExpFrameLast>
+								<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+								<MovementSpeed>0</MovementSpeed>
+								<SpeedFactor>1</SpeedFactor>
+								<Sound/>
+								<Effect/>
+								<SpeedLineFallTime>250</SpeedLineFallTime>
+								<SpeedLineMaterial/>
+							</BasicSkelAnim>
+						</Anim>
+					</Item>
+				</animations>
+				<ExpSrcScene href=""/>
+				<ExpSrcClipFolder href=""/>
+				<ExpRootTransform/>
+			</AnimSet>
+		</AnimSet>
+		<Player>PLAYER_NONE</Player>
+	</cameraRole>
+	<skyRole>
+		<Model/>
+		<AnimSet/>
+		<Player>PLAYER_NONE</Player>
+	</skyRole>
+	<MountPoint>
+		<Pos>
+			<x>48</x>
+			<y>48</y>
+		</Pos>
+		<Rot>0</Rot>
+	</MountPoint>
+	<Subtitles>
+		<Timeline href="#xpointer(id(camera.(BasicSkelAnim))/BasicSkelAnim)"/>
+		<FormatFileRef href="/Text/Cutscenes/format.txt"/>
+		<linesFileRef>
+			<Item href=""/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep01.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep02.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep03.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep04.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep05.txt"/>
+			<Item href=""/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep06.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep07.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep08.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep09.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep10.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep11.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep12.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep13.txt"/>
+			<Item href=""/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep14.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep15.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep16.txt"/>
+			<Item href="/Text/Cutscenes/FinalC4M5/Rep17.txt"/>
+			<Item href=""/>
+		</linesFileRef>
+	</Subtitles>
+	<Music href="/Sounds/_(Music)/CS/US-Nico-Vampire.xdb#xpointer(/Music)"/>
+	<AltMusic/>
+</AnimScene>

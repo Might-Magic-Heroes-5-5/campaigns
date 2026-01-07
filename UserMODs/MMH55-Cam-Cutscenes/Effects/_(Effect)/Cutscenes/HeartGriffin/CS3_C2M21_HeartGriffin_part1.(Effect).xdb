@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000675">
+	<Instances>
+		<Item href="CS3_C2M21_HeartGriffin_part1.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="CS3_C2M21_HeartGriffin_part1_1.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="Amulet_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="DemonBlackMana_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="Tieru_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights/>
+	<Models>
+		<Item href="DemonAttackTrails.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+		<Item href="FlashGlobal.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+		<Item href="DemonDeathBlur.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000666">
+	<Instances>
+		<Item href="NikolaiDeath_Part4.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="NikolayDeath_Part4sparks.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights/>
+	<Models>
+		<Item href="NikolayDeathTrails.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>

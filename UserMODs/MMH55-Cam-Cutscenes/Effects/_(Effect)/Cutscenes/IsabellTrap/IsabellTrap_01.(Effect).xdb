@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000658">
+	<Instances>
+		<Item href="IsabellTrapp_01.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="Blood01.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="IsabellHandFX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights/>
+	<Models>
+		<Item href="/Effects/_(Effect)/Cutscenes/NikolaiDeath/IsabellHandFX.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>

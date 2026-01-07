@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimScene ObjectRecordID="-1">
+	<Scenery href="map.xdb#xpointer(/AdvMapDesc)"/>
+	<roles>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Agrael_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Agrael.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Agrael.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Agrael/Agrael_CS.mb"/>
+									<uid>3F597193-5C68-48A1-82EE-EF5FCE5E82C2</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Agrael.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/IsabellTrap/BiaraFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Beatris_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Beatris_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Beatris_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Beatris/Beatris_CS.mb"/>
+									<uid>852E7B63-1CD4-48C5-89C3-BCD066534564</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Beatris_CS.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/IsabellTrap/BiaraFX.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Biara_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Biara_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Biara_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Biara/Biara_CS.mb"/>
+									<uid>48E0D0EC-6D9B-4447-B83D-9174A6FED79C</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Biara_CS.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/IsabellTrap/Campfire.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/DemonWtorch_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_torch_CS.mb"/>
+									<uid>C3FB81E3-0B94-4529-A2A7-112D8AE69F26</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect href="/Effects/_(Effect)/Cutscenes/IsabellTrap/IsabellTrap_01.(Effect).xdb#xpointer(/Effect)"/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/DemonWtorch_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_torch_CS.mb"/>
+									<uid>9716B404-2E0C-4D5B-B0ED-B7AD43D71B27</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/DemonWtorch_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon03.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon03.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_torch_CS.mb"/>
+									<uid>CCD91C4F-8C6B-4A69-8B65-51DE849E27C7</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap03.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Demon_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon04.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon04.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_CS.mb"/>
+									<uid>35BBA91C-43A7-4887-913C-0B2AE2EE5EEE</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap04.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Demon_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon05.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon05.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_CS.mb"/>
+									<uid>14D0B704-4559-4E06-9A03-0DC47357518E</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap05.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Demon_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon06.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon06.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_CS.mb"/>
+									<uid>ED59BF8A-1B21-4EE9-9DB7-BE4248C32751</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap06.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/DemonWtorch_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Demon07.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Demon07.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Demon_torch_CS.mb"/>
+									<uid>2036F273-F507-4644-92F7-40E03AD91E98</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Demon.IsabellTrap07.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman01.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman01.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>38475894-A2B1-428B-AE0B-81FEBB665518</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Footman.IsabellTrap01.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman02.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman02.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>843A1609-604F-4634-A875-9167013170CE</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Footman.IsabellTrap02.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman03.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman03.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>C9A423D1-B446-483A-B50A-60F0E987479B</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Footman.IsabellTrap03.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Footman_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Footman04.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Footman04.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Footman_CS.mb"/>
+									<uid>9A35B963-BA66-4304-B758-C1864354B82A</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Footman.IsabellTrap04.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Humans_Parts.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Humans_Parts.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Humans_Parts.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Humans_parts.mb"/>
+									<uid>A6E317E7-034B-498A-BE64-A7FC0B4BDFEC</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Humans_Parts.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Isabel_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Isabel_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Isabel_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Heroes/Isabel/Isabel_CS.mb"/>
+									<uid>049BCE4E-C862-4A86-89E6-F4F01F7BD7F6</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Isabel_CS.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/Characters/Heroes/CS/Stump_CS.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="Stump_CS.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="Stump_CS.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/models/Cutscenes/Crowd/Stump_for_Izabel.mb"/>
+									<uid>BC473FFA-864A-4E42-B764-028D3E1B37CA</uid>
+									<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/Stump_CS.IsabellTrap.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+		<Item>
+			<Model href="/_(Model)/Effects/Cutscenes/BlendScenes/Fade.xdb#xpointer(/Model)"/>
+			<AnimSet href="#n:inline(AnimSet)" id="fade.(AnimSet)">
+				<AnimSet ObjectRecordID="-1">
+					<animations>
+						<Item>
+							<Kind>idle00</Kind>
+							<Anim href="#n:inline(BasicSkelAnim)" id="fade.(BasicSkelAnim)">
+								<BasicSkelAnim ObjectRecordID="-1">
+									<SrcName href="/Effects/Cutscenes/BlendScenes/Fade.mb"/>
+									<uid>45F89842-0AA7-46B4-AFF0-F1F9732C0353</uid>
+									<ExpSrcClip href="/Effects/Cutscenes/BlendScenes/fade.c1m4.ma"/>
+									<ExpRootTransform>Global</ExpRootTransform>
+									<ExpFrameFirst>0</ExpFrameFirst>
+									<ExpFrameLast>0</ExpFrameLast>
+									<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+									<MovementSpeed>0</MovementSpeed>
+									<SpeedFactor>1</SpeedFactor>
+									<Sound/>
+									<Effect/>
+									<SpeedLineFallTime>250</SpeedLineFallTime>
+									<SpeedLineMaterial/>
+								</BasicSkelAnim>
+							</Anim>
+						</Item>
+					</animations>
+					<ExpSrcScene href=""/>
+					<ExpSrcClipFolder href=""/>
+					<ExpRootTransform/>
+				</AnimSet>
+			</AnimSet>
+			<Player>PLAYER_NONE</Player>
+		</Item>
+	</roles>
+	<cameraRole>
+		<Model href="/_(Model)/Cutscenes/CameraUpAim.(Model).xdb#xpointer(/Model)"/>
+		<AnimSet href="#n:inline(AnimSet)" id="camera.(AnimSet)">
+			<AnimSet ObjectRecordID="-1">
+				<animations>
+					<Item>
+						<Kind>idle00</Kind>
+						<Anim href="#n:inline(BasicSkelAnim)" id="camera.(BasicSkelAnim)">
+							<BasicSkelAnim ObjectRecordID="-1">
+								<SrcName href="/Cameras/Camera_Up_Aim.mb"/>
+								<uid>6589E4AB-CF87-445E-89AA-189EF8A154F7</uid>
+								<ExpSrcClip href="/Animations/Cutscenes/CutScenes/CS1_C1M4_Isabelltrap/Clip/camera_char.IsabellTrap.ma"/>
+								<ExpRootTransform>Camera_Global</ExpRootTransform>
+								<ExpFrameFirst>0</ExpFrameFirst>
+								<ExpFrameLast>0</ExpFrameLast>
+								<ExpSettingsFile href="/H:/Tools/MayaExportSettings/settings_cutscene_camera_anim.ges"/>
+								<MovementSpeed>0</MovementSpeed>
+								<SpeedFactor>1</SpeedFactor>
+								<Sound/>
+								<Effect/>
+								<SpeedLineFallTime>250</SpeedLineFallTime>
+								<SpeedLineMaterial/>
+							</BasicSkelAnim>
+						</Anim>
+					</Item>
+				</animations>
+				<ExpSrcScene href=""/>
+				<ExpSrcClipFolder href=""/>
+				<ExpRootTransform/>
+			</AnimSet>
+		</AnimSet>
+		<Player>PLAYER_NONE</Player>
+	</cameraRole>
+	<skyRole>
+		<Model/>
+		<AnimSet/>
+		<Player>PLAYER_NONE</Player>
+	</skyRole>
+	<MountPoint>
+		<Pos>
+			<x>44</x>
+			<y>43</y>
+		</Pos>
+		<Rot>0</Rot>
+	</MountPoint>
+	<Subtitles>
+		<Timeline href="#xpointer(id(camera.(BasicSkelAnim))/BasicSkelAnim)"/>
+		<FormatFileRef href="/Text/Cutscenes/format.txt"/>
+		<linesFileRef>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep01.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep02.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep03.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep04.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep05.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep06.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep06a.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep07.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep08.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep09.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep10.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep11.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep12.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep13.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep14.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep15.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep16.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep17.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep18.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep19.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep20.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep21.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep22.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep23.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep24.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep25.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep26.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep27.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep28.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/Rep29.txt"/>
+			<Item href="/Text/Cutscenes/FinalC1M4/blank.txt"/>
+		</linesFileRef>
+	</Subtitles>
+	<Music href="/Sounds/_(Music)/CS/US-Isabel-Trap.xdb#xpointer(/Music)"/>
+	<AltMusic/>
+</AnimScene>

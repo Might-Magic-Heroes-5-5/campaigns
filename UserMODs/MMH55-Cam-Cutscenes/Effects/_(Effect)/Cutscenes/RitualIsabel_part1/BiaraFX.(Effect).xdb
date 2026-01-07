@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000664">
+	<Instances>
+		<Item href="BiaraFX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="BallFX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="BiaraGlowFX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights>
+		<Item href="Ball.(LightInstance).xdb#xpointer(/LightInstance)"/>
+	</Lights>
+	<Models>
+		<Item href="Ball.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>

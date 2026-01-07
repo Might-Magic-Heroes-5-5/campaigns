@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Effect ObjectRecordID="1000663">
+	<Instances>
+		<Item href="File3/Agrail_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="File3/Nikolay_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="File2/Demon_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+		<Item href="File2/Nikolai_FX.(ParticleInstance).xdb#xpointer(/ParticleInstance)"/>
+	</Instances>
+	<Lights/>
+	<Models>
+		<Item href="Light.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+		<Item href="FlashGlobal.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+		<Item href="ShokwaveGlobal.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+		<Item href="FlashGlobalFake.(ModelInstance).xdb#xpointer(/ModelInstance)"/>
+	</Models>
+	<WindAffected>false</WindAffected>
+	<WindPower>1</WindPower>
+	<Duration>2.5</Duration>
+</Effect>
