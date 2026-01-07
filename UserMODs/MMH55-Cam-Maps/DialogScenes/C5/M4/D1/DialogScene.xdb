@@ -4,7 +4,6 @@
 	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Grass.xdb#xpointer(/AmbientSoundSet)"/>
 	<Music href="/Sounds/_(Music)/AdvMap-Heroes/Godric.xdb#xpointer(/Music)"/>
 	<MusicVolume>40</MusicVolume>
-	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/RampartArena (4).xdb#xpointer(/AmbientLight)"/>
 	<sentences>
 		<Item>
 			<text href=""/>
@@ -227,7 +226,7 @@
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>3</ActorAnimationIndex>
-			<AnimName>idle00</AnimName>
+			<AnimName>death</AnimName>
 			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds>
 				<Item>
@@ -260,9 +259,9 @@
 			<duration>1</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
-			<ActorAnimationIndex>0</ActorAnimationIndex>
-			<AnimName>idle00</AnimName>
-			<AnimationDelay>0</AnimationDelay>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>death</AnimName>
+			<AnimationDelay>25</AnimationDelay>
 			<CustomSounds/>
 			<CustomEffects/>
 			<CustomAnimations/>
@@ -285,7 +284,7 @@
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>0</ActorAnimationIndex>
 			<AnimName>death</AnimName>
-			<AnimationDelay>0</AnimationDelay>
+			<AnimationDelay>-3</AnimationDelay>
 			<CustomSounds>
 				<Item>
 					<Delay>1.5</Delay>
