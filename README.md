@@ -367,3 +367,20 @@ All changes related to Dialog scenes
 ### C1M5 – Haven: The Fall of the King
 - fix: (intro) Missing Freyda cheer animation when she agrees with Godric. (by Rommy)
 - fix: (Isabell going to Nicolai) Isabel sword cast animation. (by Rommy)
+
+### C2M2 – Inferno: The Promise
+- fix: (clash with Haven army) Griffin flying animation
+
+### C2M3 – Inferno: The Conquest
+- new: (intro) Added Observatory doodad and Agrael happy animation. (by Rommy)
+- new: (capture Sylvan city) Added a Tree of Knowledge doodad. (by Rommy)
+- new: (at first week of Sylvan growth) Added a Tree of Knowledge doodad. (by Rommy)
+- fix: (attack druids) Missing stone circle doodads. (by Rommy)
+- fix: (deafeated druids) Added stone circle doodads. (by Rommy)
+
+### C2M4 – Inferno: The Ship
+- fix: (intro) Missing Observatory doodad. (by Rommy)
+- fix: (meet dragons) Dragon entrance animation timing. (by Rommy)
+- fix: (meet dragons) Missing attack animation at dragon entrance. (by Rommy)
+- new: (deserting units) Added mountain and misc doodads in the background. (by Rommy)
+- fix: (capture Nebyrciaz) Missing Agrael cast animation. (by Rommy)
