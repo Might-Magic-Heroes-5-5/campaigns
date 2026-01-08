@@ -4,29 +4,29 @@
 	<Name>c5m5_night</Name>
 	<NameFileRef href=""/>
 	<LightColor>
-		<x>0.282353</x>
-		<y>0.313726</y>
-		<z>0.356863</z>
+		<x>0.01</x>
+		<y>0.01</y>
+		<z>0.01</z>
 	</LightColor>
 	<AmbientColor>
-		<x>0.203922</x>
-		<y>0.247059</y>
-		<z>0.360784</z>
+		<x>0.1</x>
+		<y>0.1</y>
+		<z>0.1</z>
 	</AmbientColor>
 	<ShadeColor>
-		<x>0.270588</x>
-		<y>0.305882</y>
-		<z>0.337255</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</ShadeColor>
 	<IncidentShadowColor>
-		<x>0.172549</x>
-		<y>0.207843</y>
-		<z>0.305882</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</IncidentShadowColor>
 	<ParticlesColor>
-		<x>0.25</x>
-		<y>0.25</y>
-		<z>0.25</z>
+		<x>0.1</x>
+		<y>0.2</y>
+		<z>0.3</z>
 	</ParticlesColor>
 	<Whitening>true</Whitening>
 	<Pitch>0</Pitch>
@@ -40,12 +40,12 @@
 		<z>1</z>
 	</GlossColor>
 	<FogColor>
-		<x>0.552941</x>
-		<y>0.843137</y>
-		<z>0.996078</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</FogColor>
-	<FogStartDistance>500</FogStartDistance>
-	<FogDistance>150</FogDistance>
+	<FogStartDistance>0</FogStartDistance>
+	<FogDistance>2000</FogDistance>
 	<VapourHeight>0</VapourHeight>
 	<VapourDensity>0</VapourDensity>
 	<VapourNoiseParam>0</VapourNoiseParam>
@@ -75,7 +75,7 @@
 		<y>0</y>
 		<z>0</z>
 	</GroundAmbientColor>
-	<MaxShadowHeight>170</MaxShadowHeight>
+	<MaxShadowHeight>20</MaxShadowHeight>
 	<SunFlares href="/_(SunFlares)/Test.(SunFlares).xdb#xpointer(/SunFlares)"/>
 	<Haze/>
 	<CloudTex/>

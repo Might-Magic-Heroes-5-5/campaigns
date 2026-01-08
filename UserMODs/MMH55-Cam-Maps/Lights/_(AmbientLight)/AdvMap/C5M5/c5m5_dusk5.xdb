@@ -4,9 +4,9 @@
 	<Name>c5m5_dusk5</Name>
 	<NameFileRef href=""/>
 	<LightColor>
-		<x>0.371765</x>
-		<y>0.357255</y>
-		<z>0.338039</z>
+		<x>0.25</x>
+		<y>0.23</y>
+		<z>0.2</z>
 	</LightColor>
 	<AmbientColor>
 		<x>0.199216</x>
@@ -24,9 +24,9 @@
 		<z>0.290588</z>
 	</IncidentShadowColor>
 	<ParticlesColor>
-		<x>0.25</x>
-		<y>0.25</y>
-		<z>0.25</z>
+		<x>0.2</x>
+		<y>0.3</y>
+		<z>0.4</z>
 	</ParticlesColor>
 	<Whitening>true</Whitening>
 	<Pitch>10.5</Pitch>
@@ -75,7 +75,7 @@
 		<y>0</y>
 		<z>0</z>
 	</GroundAmbientColor>
-	<MaxShadowHeight>125</MaxShadowHeight>
+	<MaxShadowHeight>20</MaxShadowHeight>
 	<SunFlares href="/_(SunFlares)/Test.(SunFlares).xdb#xpointer(/SunFlares)"/>
 	<Haze/>
 	<CloudTex/>

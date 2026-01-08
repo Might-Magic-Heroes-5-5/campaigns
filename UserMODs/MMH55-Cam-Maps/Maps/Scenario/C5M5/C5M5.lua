@@ -180,6 +180,19 @@ CINEMATICS = {
 		sleep( 2 );
 	end,
 	
+	showDragons = function()
+		BlockGame();
+		for i,h in shadow_dragons do
+			if IsObjectExists(shadow_dragons[i])~=nil and IsObjectVisible(PLAYER_1, shadow_dragons[i]) then
+				local x,y,z = GetObjectPosition(shadow_dragons[i]);
+				MoveCamera(x, y, z, 50, 0.925, 0.279, 0, 1);
+				sleep(100);
+			end
+		end
+		sleep(5);
+		UnblockGame();
+	end,
+	
 	outro = function()
 		StartDialogScene('/DialogScenes/C5/M5/D2/DialogScene.xdb#xpointer(/DialogScene)');
 		sleep( 2 );
@@ -190,6 +203,7 @@ DIFFICULTY = {
 	[0] = function()
 		print ("easy");
 		dif = 0;
+		night_diff = 1;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/4;
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
@@ -203,6 +217,7 @@ DIFFICULTY = {
 	[1] = function()
 		print ("normal");
 		dif = 0;
+		night_diff = 1.25;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/2;
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
@@ -215,6 +230,7 @@ DIFFICULTY = {
 	[2] = function()
 		print ("Hard");
 		dif = 1;
+		night_diff = 1.5;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
@@ -226,6 +242,7 @@ DIFFICULTY = {
 	[3] = function()
 		print ("Impossible");
 		dif = 2;
+		night_diff = 1.75;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE, exp);
@@ -284,29 +301,37 @@ OBJECTIVES = {
 		end
 	end,
 	
+	progress_sky = 0,
 	progress_day = 0,
 	great_night_progress = 0,
 	defeatNikolay = function()
 		-- Objective is started by C5M5.xdb
 		if OBJECTIVES.state.defeatNikolay[2] == 1 and OBJECTIVES.progress_day < GetDate() then
-			OBJECTIVES.great_night_progress=OBJECTIVES.great_night_progress+dragons_count();
+			OBJECTIVES.great_night_progress=OBJECTIVES.great_night_progress+dragons_count()*night_diff;
 			print ("zlo = ", OBJECTIVES.great_night_progress);
 			local power=OBJECTIVES.great_night_progress/1008 --насколько драконы закончили свою работу
-			local sky_progress = 1 + math.floor(power * 5);
-			print('power= ',power,' | progress= ', sky_progress);
+			local new_progress = 1 + math.floor(power * 5);
+			print('power= ',power,' | progress= ', new_progress);
 			if power>1 then  --вызывается когда параметр power становится больше 1, типа "Великая Ночь" достигла своего апогея и андедов уже не остановить
-				sky_progress = 6;
+				new_progress = 6;
 				for i,h in regions do
 					SetRegionBlocked(regions[i], nil, PLAYER_2)
 					print (regions[i], "unblock");
 				end
 				sleep(5);
-				EnableHeroAI('Nikolay' , not nil);
-				AddHeroCreatures('Nikolay', CREATURE_SHADOW_DRAGON , 666);
+				EnableHeroAI('Nikolay', not nil);
+				AddHeroCreatures('Nikolay', CREATURE_SHADOW_DRAGON, 666);
 				OBJECTIVES.state.defeatNikolay[2] = 2;
 			end
-			if OBJECTIVES.state.killDragons[2] < 10 then
-				set_light(sky_progress);
+			if OBJECTIVES.state.killDragons[2] < 10 and OBJECTIVES.progress_sky ~= new_progress then
+				set_light(new_progress);
+				if new_progress == 4 then 
+					pcall(MessageBox("/Maps/Scenario/C5M5/night1.txt"));
+					CINEMATICS.showDragons();
+				end
+				if new_progress == 5 then pcall(MessageBox("/Maps/Scenario/C5M5/night2.txt")); end
+				if new_progress == 6 then pcall(MessageBox("/Maps/Scenario/C5M5/night3.txt")); end
+				OBJECTIVES.progress_sky = new_progress;
 			end
 			OBJECTIVES.progress_day = GetDate();
 		elseif OBJECTIVES.state.defeatNikolay[2] == 2 then

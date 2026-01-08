@@ -4,9 +4,9 @@
 	<Name>c5m5_dusk4</Name>
 	<NameFileRef href=""/>
 	<LightColor>
-		<x>0.446275</x>
-		<y>0.393529</y>
-		<z>0.322745</z>
+		<x>0.4</x>
+		<y>0.34</y>
+		<z>0.25</z>
 	</LightColor>
 	<AmbientColor>
 		<x>0.195294</x>
@@ -75,7 +75,7 @@
 		<y>0</y>
 		<z>0</z>
 	</GroundAmbientColor>
-	<MaxShadowHeight>87.5</MaxShadowHeight>
+	<MaxShadowHeight>20</MaxShadowHeight>
 	<SunFlares href="/_(SunFlares)/Test.(SunFlares).xdb#xpointer(/SunFlares)"/>
 	<Haze/>
 	<CloudTex href="/Textures/Effects/Clouds/CloudTex01.xdb#xpointer(/Texture)"/>

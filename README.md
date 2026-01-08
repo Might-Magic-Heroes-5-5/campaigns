@@ -291,7 +291,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: added Memory Mentor
 
 ### C3M1 – Necropolis: The Temptation
-- fix: Enemy hero Tan did not patrol the map as inteneded
+- fix: Enemy hero Amin did not patrol the map as inteneded
 
 ### C3M2 – Necropolis: The Attack
 - fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one
@@ -307,7 +307,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost
 
 ### C4M2 – Dungeon: The Expansion
-- fix: undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
+- fix: an undeground Vampire lords stack is now removed as it could not be attacked nor it guarded any treasures.
 
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
@@ -318,7 +318,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
 
 ### C4M5 – Dungeon: Raelag's Offer
-- fix: undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
+- fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
@@ -332,7 +332,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
-- fix: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
+- new: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
+- new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
+- new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
+- changed: Night counter increases 25% faster at Hard, 50% faster at Heroic and 75% faster at Impossible difficulty
 
 ### C6M2 - Academy: The Liberation
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
