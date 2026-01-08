@@ -355,11 +355,15 @@ All changes related to Dialog scenes
 - fix: (intro) Footman die from Succubus shot instead of being damaged. Then they are seen alive in the next camera shot. (by Rommy)
 
 ### C1M2 – Haven: Rebellion
-- fix: (intro) overly green fog ambience (by Rommy)
-- fix: (apture Ashwood) overly green fog ambience (by Rommy)
+- fix: (intro) Overly green fog ambience. (by Rommy)
+- fix: (capture Ashwood) Overly green fog ambience. (by Rommy)
 
 ### C1M3 – Haven: The Siege
 - fix: (clear scouts) Footman cheer animation not in sync with Isabel's one. (by Rommy)
 
 ### C1M4 – Haven: The Trap
-- fix: (boots of Levitation) missing Isabel's sword animation effect. (by Rommy)
+- fix: (boots of Levitation) Missing Isabel's sword animation effect. (by Rommy)
+
+### C1M5 – Haven: The Fall of the King
+- fix: (intro) Missing Freyda cheer animation when she agrees with Godric. (by Rommy)
+- fix: (Isabell going to Nicolai) Isabel sword cast animation. (by Rommy)
