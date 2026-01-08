@@ -43,12 +43,12 @@
 			<duration>0</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
-			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
 			<AnimName>happy</AnimName>
-			<AnimationDelay>14</AnimationDelay>
+			<AnimationDelay>13.2</AnimationDelay>
 			<CustomSounds>
 				<Item>
-					<Delay>14</Delay>
+					<Delay>13</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Warlock/happy.xdb#xpointer(/Sound)"/>
 				</Item>
 			</CustomSounds>
@@ -71,8 +71,8 @@
 			<duration>5</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
-			<ActorAnimationIndex>3</ActorAnimationIndex>
-			<AnimName/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
 			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds/>
 			<CustomEffects/>
@@ -87,6 +87,7 @@
 		<Item href="Oak6x5.xdb#xpointer(/AdvMapStatic)"/>
 		<Item href="Oak6x5.1.xdb#xpointer(/AdvMapStatic)"/>
 		<Item href="Mountain12x12.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Tree_of_Knowledge.xdb#xpointer(/AdvMapBuilding)"/>
 	</objects>
 	<ModelsLOD/>
 	<CameraShiftZ>0.25</CameraShiftZ>
