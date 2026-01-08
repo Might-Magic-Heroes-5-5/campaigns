@@ -3,7 +3,7 @@ doFile("/scripts/campaign_common.lua");
 doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -327,14 +327,14 @@ OBJECTIVES = {
 			DeployReserveHero("Razzak",24,90,0);
 			sleep(2);
 			SetAIPlayerAttractor("Newpost",PLAYER_3,2);
-			ADD_ASSAULT_HERO('Razzak');
+			H55c_AIAddHero('Razzak');
 			startThread(RazzakIsDead);
 			OBJECTIVES.state.deployAcademyHeroes[2] = 2;
 		elseif OBJECTIVES.state.deployAcademyHeroes[2] == 2 and OBJECTIVES.state.captureDaughter[2] == 10 then
 			DeployReserveHero("Maahir",88,20,0);
 			sleep(2);
 			SetAIPlayerAttractor("Necorrum",PLAYER_3,2); -- Necorrum is Lorekeep
-			ADD_ASSAULT_HERO('Maahir');
+			H55c_AIAddHero('Maahir');
 			OBJECTIVES.state.deployAcademyHeroes[2] = 10;
 		end
 	end
@@ -497,7 +497,7 @@ end
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
-startThread( AI_main );
+startThread( H55c_AI_main );
 
 ------------------ DEBUG ------------------------
 function PrintGodricsReinforcements()

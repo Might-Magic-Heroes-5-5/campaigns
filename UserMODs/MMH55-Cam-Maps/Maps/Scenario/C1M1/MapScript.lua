@@ -186,7 +186,8 @@ CINEMATICS = {
       MessageBox( '/Maps/Scenario/C1M1/notready.txt');
     end,
     
-    showGarrision = function()
+    showGarrison = function()
+	  x, y, fl = GetObjectPosition( 'zastava' );
       sleep(30);
       MoveCamera(x, y, fl, 30, 0.9, 0.3, 1, 1, 1);
       sleep(2);
@@ -275,10 +276,9 @@ OBJECTIVES = {
 
     getGarrison = function()
       if GetObjectiveState( 'prim3' ) == OBJECTIVE_UNKNOWN and OBJECTIVES.state.getPeasants[2] == 10 and OBJECTIVES.state.getFootmen[2] == 10 then
-        x, y, fl = GetObjectPosition( 'zastava' );
         SetObjectEnabled( 'zastava', 1 );
         Trigger( OBJECT_TOUCH_TRIGGER, "zastava", nil );
-        CINEMATICS.showGarrision();
+        CINEMATICS.showGarrison();
         SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
       end
       if GetObjectOwner("zastava") == PLAYER_1 then
