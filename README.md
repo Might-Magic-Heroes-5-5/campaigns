@@ -352,45 +352,61 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 All changes related to Dialog scenes
 
 ### C1M1 – Haven: The Queen
-- fix: (intro) Footman die from Succubus shot instead of being damaged. Then they are seen alive in the next camera shot. (by Rommy)
+- scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged. (by Rommy)
 
 ### C1M2 – Haven: Rebellion
-- fix: (intro) Overly green fog ambience. (by Rommy)
-- fix: (capture Ashwood) Overly green fog ambience. (by Rommy)
+- scene(intro): Removed overly green fog ambience. (by Rommy)
+- scene(capture Ashwood): Removed overly green fog ambience. (by Rommy)
 
 ### C1M3 – Haven: The Siege
-- fix: (clear scouts) Footman cheer animation not in sync with Isabel's one. (by Rommy)
+- scene(clear scouts): Footman cheer animation is now in sync with Isabel's one. (by Rommy)
 
 ### C1M4 – Haven: The Trap
-- fix: (boots of Levitation) Missing Isabel's sword animation effect. (by Rommy)
+- scene(boots of Levitation): Added missing Isabel's sword animation effect. (by Rommy)
 
 ### C1M5 – Haven: The Fall of the King
-- fix: (intro) Missing Freyda cheer animation when she agrees with Godric. (by Rommy)
-- fix: (Isabell going to Nicolai) Isabel sword cast animation. (by Rommy)
+- scene(intro): Added missing Freyda cheer animation when she agrees with Godric. (by Rommy)
+- scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast. (by Rommy)
 
 ### C2M2 – Inferno: The Promise
-- fix: (clash with Haven army) Griffin flying animation
+- scene(clash with Haven army): Added missing Griffin flying animation at the end of scene. (by Rommy)
 
 ### C2M3 – Inferno: The Conquest
-- new: (intro) Added Observatory doodad and Agrael happy animation. (by Rommy)
-- new: (capture Sylvan city) Added a Tree of Knowledge doodad. (by Rommy)
-- new: (at first week of Sylvan growth) Added a Tree of Knowledge doodad. (by Rommy)
-- fix: (attack druids) Missing stone circle doodads. (by Rommy)
-- fix: (deafeated druids) Added stone circle doodads. (by Rommy)
+- scene(intro): Added Observatory doodad and Agrael happy animation. (by Rommy)
+- scene(capture Sylvan city): Added a Tree of Knowledge doodad. (by Rommy)
+- scene(at first week of Sylvan growth): Added a Tree of Knowledge doodad. (by Rommy)
+- scene(attack druids): Added missing stone circle doodads. (by Rommy)
+- scene(deafeated druids): Added missing stone circle doodads. (by Rommy)
 
 ### C2M4 – Inferno: The Ship
-- fix: (intro) Missing Observatory doodad. (by Rommy)
-- fix: (meet dragons) Dragon entrance animation timing. (by Rommy)
-- fix: (meet dragons) Missing attack animation at dragon entrance. (by Rommy)
-- new: (deserting units) Added mountain and misc doodads in the background. (by Rommy)
-- fix: (capture Nebyrciaz) Missing Agrael cast animation. (by Rommy)
+- scene(intro): Added missing Observatory doodad. (by Rommy)
+- scene(meet dragons): Improved Dragon entrance animation timing. (by Rommy)
+- scene(meet dragons): Added missing attack animation at dragon entrance. (by Rommy)
+- scene(deserting units): Added mountain and misc doodads in the background. (by Rommy)
+- scene(capture Nebyrciaz): Added missing Agrael cast animation. (by Rommy)
 
 ### C3M1 – Necropolis: The Temptation
-- fix: (intro) Ambient light too foggy. (by Rommy)
-- fix: (Markal death) Missing spell effect. (by Rommy)
+- scene(intro): Removed overly foggy ambience. (by Rommy)
+- scene(Markal death): Added missing Markal spell effect during cast. (by Rommy)
 
 ### C3M3 – Necropolis: The Invasion
-- fix: (gather skeletons) slight camera-at-Markal duration increase to sync with army cheer. (by Rommy)
+- scene(gather skeletons): Slightly adjusted camera set movement to sync with army cheer. (by Rommy)
 
-### C3M5 – Necropolis: The Invasion
-- fix: (gather skeletons) missing Freyda reaction after Markal cast (by Rommy)
+### C3M5 – Necropolis: Lord of Heresh
+- scene(at prison): Added missing Freyda reaction after Markal cast. (by Rommy)
+
+### C4M1 – Dungeon: The Clanlord
+- scene(intro): Added grass and mountain doodads. (by Rommy)
+
+### C4M2 – Dungeon: The Expansion
+- scene(intro): Improved Raelag and Matron idle animation pace. (by Rommy)
+- scene(meet Shadya): Improved Raelag idle animation pace. (by Rommy)
+- scene(messengers escape): Adjusted camera angle to show Raelag talking instead of pointing at the empty sky. (by Rommy)
+- scene(grail in town): Added missing Raeleg spell effect during cast. (by Rommy)
+
+### C4M3 – Dungeon: The Cultists
+- scene(Inferno arrival): Added missing spell effect during Raeleg cheer. (by Rommy)
+- scene(Inferno defeated): Added missing spell effect during Raeleg cheer. (by Rommy)
+
+### C4M5 – Dungeon: Raelag's Offer
+- scene(outro): Fixed endless hoof movement sound. (by Rommy)
