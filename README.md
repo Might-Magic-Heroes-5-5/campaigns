@@ -257,7 +257,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ---
 
-## Changes
+## Gameplay Changes
 
 ### Legend
 - **change:** something not broken but behaves different
@@ -268,17 +268,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
-- fix: (scene - intro) Footman dying from Succubus shot instead of being damaged and after that being shown as alive in the next camera shot (by Rommy)
 
 ### C1M2 – Haven: Rebellion
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: Impossible difficulty was treated as Normal
-- fix: (scene - intro) overly green fog ambience (by Rommy)
-- fix: (scene - capture Ashwood) overly green fog ambience (by Rommy)
 
 ### C1M3 – Haven: The Siege
 - fix: Tutorial is available and updated for 5.5
-- fix(RC19c): Enemy hero appeared with 1 imp instead of similar army
 - change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start.
 - change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way
 - new: added Memory Mentor
@@ -351,3 +347,16 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
+
+## Dialog Changes
+All changes related to Dialog scenes
+
+### C1M1 – Haven: The Queen
+- fix: (intro) Footman dying from Succubus shot instead of being damaged and after that being shown as alive in the next camera shot (by Rommy)
+
+### C1M2 – Haven: Rebellion
+- fix: (intro) overly green fog ambience (by Rommy)
+- fix: (apture Ashwood) overly green fog ambience (by Rommy)
+
+### C1M3 – Haven: The Siege
+- fix: (clear scouts) Footman cheer animation was not in sync with Isabel's one (by Rommy)
