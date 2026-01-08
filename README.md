@@ -268,6 +268,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
+- fix: (scene - intro) Footman's animation in the combat against Inferno army is now in sync (by Rommy)
+- fix: (scene - intro) Rush(prayer) spell effect is properly presented. (by Rommy)
 
 ### C1M2 – Haven: Rebellion
 - fix: Vanilla tutorial is available and updated for 5.5
