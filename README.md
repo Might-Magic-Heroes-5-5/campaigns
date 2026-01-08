@@ -329,6 +329,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan
 - fix: Necropolis onslaught heroes sometimes did not appear and attack Syris Thalla
 
+### C5M4 - Sylvan: The Archipelago
+- fix: (scene - Tieru Death)  Biara's Meteor Shower that kills Tieru is presented properly. (by Rommy)
+- fix: (scene - outro) Biara escape spell effect was not properly shown. (by Rommy)
+
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
