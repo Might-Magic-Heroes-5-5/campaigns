@@ -352,11 +352,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 All changes related to Dialog scenes
 
 ### C1M1 – Haven: The Queen
-- fix: (intro) Footman dying from Succubus shot instead of being damaged and after that being shown as alive in the next camera shot (by Rommy)
+- fix: (intro) Footman die from Succubus shot instead of being damaged. Then they are seen alive in the next camera shot. (by Rommy)
 
 ### C1M2 – Haven: Rebellion
 - fix: (intro) overly green fog ambience (by Rommy)
 - fix: (apture Ashwood) overly green fog ambience (by Rommy)
 
 ### C1M3 – Haven: The Siege
-- fix: (clear scouts) Footman cheer animation was not in sync with Isabel's one (by Rommy)
+- fix: (clear scouts) Footman cheer animation not in sync with Isabel's one. (by Rommy)
+
+### C1M4 – Haven: The Trap
+- fix: (boots of Levitation) missing Isabel's sword animation effect. (by Rommy)
