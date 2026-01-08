@@ -52,19 +52,12 @@
 					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Knight/victory.xdb#xpointer(/Sound)"/>
 				</Item>
 				<Item>
-					<Delay>13</Delay>
+					<Delay>14</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/buff.xdb#xpointer(/Sound)"/>
 				</Item>
 			</CustomSounds>
 			<CustomEffects/>
 			<CustomAnimations>
-				<Item>
-					<heroLink href="Isabell.1.xdb#xpointer(/AdvMapHero)"/>
-					<monsterLink/>
-					<AnimationIndex>1</AnimationIndex>
-					<AnimationDelay>13</AnimationDelay>
-					<AnimName/>
-				</Item>
 			</CustomAnimations>
 			<MusicVolumePercent>100</MusicVolumePercent>
 			<MusicFadeOutDuration>500</MusicFadeOutDuration>
@@ -83,8 +76,8 @@
 			<duration>3</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
-			<ActorAnimationIndex>3</ActorAnimationIndex>
-			<AnimName>idle00</AnimName>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
 			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds>
 				<Item>
