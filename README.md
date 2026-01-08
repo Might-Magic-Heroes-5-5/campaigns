@@ -384,3 +384,13 @@ All changes related to Dialog scenes
 - fix: (meet dragons) Missing attack animation at dragon entrance. (by Rommy)
 - new: (deserting units) Added mountain and misc doodads in the background. (by Rommy)
 - fix: (capture Nebyrciaz) Missing Agrael cast animation. (by Rommy)
+
+### C3M1 – Necropolis: The Temptation
+- fix: (intro) Ambient light too foggy. (by Rommy)
+- fix: (Markal death) Missing spell effect. (by Rommy)
+
+### C3M3 – Necropolis: The Invasion
+- fix: (gather skeletons) slight camera-at-Markal duration increase to sync with army cheer. (by Rommy)
+
+### C3M5 – Necropolis: The Invasion
+- fix: (gather skeletons) missing Freyda reaction after Markal cast (by Rommy)
