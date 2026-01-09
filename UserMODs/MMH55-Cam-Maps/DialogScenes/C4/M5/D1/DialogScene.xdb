@@ -772,10 +772,12 @@
 				<Item>
 					<Delay>2</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Necromancer/Move.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 				<Item>
 					<Delay>4.2</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/advmap_move_end.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 			</CustomSounds>
 			<CustomEffects/>
@@ -1103,10 +1105,12 @@
 				<Item>
 					<Delay>0</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Necromancer/Move.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 				<Item>
 					<Delay>0.5</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/move.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 			</CustomSounds>
 			<CustomEffects/>
