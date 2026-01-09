@@ -68,7 +68,7 @@
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>4</ActorAnimationIndex>
 			<AnimName>rangeattack</AnimName>
-			<AnimationDelay>-1</AnimationDelay>
+			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds/>
 			<CustomEffects/>
 			<CustomAnimations/>
@@ -183,7 +183,7 @@
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>2</ActorAnimationIndex>
 			<AnimName/>
-			<AnimationDelay>0</AnimationDelay>
+			<AnimationDelay>20</AnimationDelay>
 			<CustomSounds/>
 			<CustomEffects/>
 			<CustomAnimations/>
@@ -296,5 +296,4 @@
 	<ModelsLOD/>
 	<CameraShiftZ>0.1</CameraShiftZ>
 	<Anim3DSoundVolume>80</Anim3DSoundVolume>
-	<Name href="DialogName.txt"/>
 </DialogScene>
