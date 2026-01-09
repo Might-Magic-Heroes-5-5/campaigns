@@ -410,3 +410,10 @@ All changes related to Dialog scenes
 
 ### C4M5 – Dungeon: Raelag's Offer
 - scene(outro): Fixed endless hoof movement sound. (by Rommy)
+
+### C5M2 – Sylvan: The Emerald Ones
+- scene(dragons assembled): Adjusted camera height to keep Findan inside frame. (by Rommy)
+
+### C5M5 – Sylvan: The Vampire Lord
+- scene(intro): Lowered sound volume. (by Rommy)
+- scene(outro): Added missing spell effect for Findan at the end. (by Rommy)
