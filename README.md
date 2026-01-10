@@ -262,7 +262,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### Legend
 - **change:** something not broken but behaves different
 - **fix:** fix of ToE bug
-- **fix(RCXX):** fixed regression from specific MMH55 version
+- **scene(xxx)** changes for campaign scenes/cutscenes. xxx inside brackets denote when the cutscene occurs. Intro/Outro means start/end of mission scene.
 - **new:** new campaign feature
 
 ### C1M1 – Haven: The Queen
