@@ -3,7 +3,7 @@ doFile("/scripts/campaign_common.lua");
 doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -94,7 +94,7 @@ function DeployAssaultHero( heroNumber )
 	local name = assault_hero_names[modulus + 1];
 	DeployReserveHero( name, portals[pos][1], portals[pos][2], GROUND );
 	sleep(3);
-	ADD_ASSAULT_HERO(name);
+	H55c_AIAddHero(name);
   sleep(3);
 	if modulus == 0 then
 		numcreatures = (100 + heroNumber * 15 + random( 5 )) * easyfactor;
@@ -383,7 +383,7 @@ OBJECTIVES = {
     if OBJECTIVES.state.protectDunmor[2] == 2 and OBJECTIVES.state.rescueIsabell[2] == 10 then
       DeployReserveHero( 'Agrael', 120, 55, 0 );
       sleep( 2 );
-      ADD_ASSAULT_HERO('Agrael');
+      H55c_AIAddHero('Agrael');
   	  GiveArtefact( 'Agrael', ARTIFACT_SHACKLES_OF_WAR );
       SetHeroLootable( 'Agrael', nil );
   	  sleep( 1 );
@@ -547,7 +547,7 @@ OBJECTIVES = {
 }
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
-startThread( AI_main );
+startThread( H55c_AI_main );
 
 ------------------ DEBUG ------------------------
 function debug_c1m5(state)

@@ -324,9 +324,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
 
 ### C5M3 - Sylvan: The Defense
-- fix: "Prepare the garrison" quest not always count some base/upgrade type of Druids, Unicorns, Dragons
-- fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan
-- fix: Necropolis onslaught heroes sometimes did not appear and attack Syris Thalla
+- change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
+- change: Disabled Purple player from hiring heroes in  Syris Thalla.
+- change: Purple player oslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
+- fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla.
+- fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
+- fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan.
 
 ### C5M4 - Sylvan: The Archipelago
 - fix: (scene - Tieru Death)  Biara's Meteor Shower that kills Tieru is presented properly. (by Rommy)

@@ -7,7 +7,7 @@ doFile("/Maps/Scenario/C4M3/difficulty.lua");
 doFile("/Maps/Scenario/C4M3/RedPlayerTroops.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -163,7 +163,7 @@ OBJECTIVES = {
     sleep(2);
     print("## Launch wave " .. wave .. ": " .. army.hero);
     CINEMATICS.showHero()
-    ADD_ASSAULT_HERO(army.hero)
+    H55c_AIAddHero(army.hero)
   end,
   
   Envasion = function()
@@ -204,7 +204,7 @@ OBJECTIVES = {
 }
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
-startThread( AI_main );
+startThread( H55c_AI_main );
 
 ------------------ DEBUG ------------------------
 -- changes ownership of num amount of towns to the human player

@@ -200,3 +200,12 @@ H55c_LUA = {
 		H55c_LUA.busy = nil;
 	end
 }
+
+function H55c_debug()
+	if OBJECTIVES.date == GetDate(ABSOLUTE_DAY) then
+		print("Campaign script is running");
+	else
+		local delta = GetDate(ABSOLUTE_DAY) - OBJECTIVES.date
+		print("Campaign not running. Last run was on ",OBJECTIVES.date," which was ",delta," days ago");
+	end
+end

@@ -3,7 +3,7 @@ doFile("/scripts/campaign_common.lua");
 doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -50,7 +50,7 @@ C5M3_ENEMY_ARMY = {
 		AddObjectCreatures("Nemor", CREATURE_SKELETON, (23 + dif)*week);
 		AddObjectCreatures("Nemor",	  CREATURE_ZOMBIE, (16 + dif)*week);
 		AddObjectCreatures("Nemor",    CREATURE_MANES, (12 + dif)*week);
-		AddObjectCreatures("Nemor",  CREATURE_VAMPIRE, 7*week  + dif);
+		AddObjectCreatures("Nemor",  CREATURE_VAMPIRE, 7*week + dif);
 		AddObjectCreatures("Nemor",     CREATURE_LICH, 5*week + dif);
 	end,
 	
@@ -63,7 +63,7 @@ C5M3_ENEMY_ARMY = {
 	end
 }
 
-AI_CONTROLLED = {
+H55c_AI_CONTROLLED = {
 	player1 = {
 		state = 0,       -- 0 human
 		heroes = {},
@@ -98,13 +98,10 @@ function attack(town)
 			ChangeHeroStat(hero, STAT_EXPERIENCE , exp + (1000*week));
 			print (exp);
 		end
-		C5M3_ENEMY_ARMY[hero](week)
+		C5M3_ENEMY_ARMY[hero](week);
 		SetAIHeroAttractor(town,hero,2);
-		SetAIPlayerAttractor(town, GetObjectOwner(hero),2);
-		ADD_ASSAULT_HERO(hero);
-		-- if CanMoveHero(hero,80,125,0) == not nil then
-			-- startThread(H55_AttackTown,hero,town);
-		-- end
+		SetAIPlayerAttractor(town, GetObjectOwner(hero), 2);
+		H55c_AIAddHero(hero);
 	end
 end
 
@@ -179,9 +176,10 @@ CINEMATICS = {
 }
 
 OBJECTIVES = {
+	date = 0,
 	state = {
 		captureSiris	= { "CaptureImarium", 1 },	-- recapture Siris town
-		defendSiris		= {  "DefendImarium", 1 },	-- defend Siris town from enemy attacks
+		defendSiris		= {  "DefendImarium", 0 },	-- defend Siris town from enemy attacks
 		isAlive			= { "HeamSurvive",    1 },	-- Findan must survive
 		prepareGarison	= { "harrison",       1 },	-- Reinforce the garison with druids, unicorns and dragons
 		getHeroes		= { "twoheros",       1 }, 	-- Free the two commanders
@@ -193,6 +191,7 @@ OBJECTIVES = {
     end,
 
 	prepare = function()
+		EnableAIHeroHiring(PLAYER_3, OUR_TOWN, nil);
 		SetRegionBlocked("prison2", 1, 2);
 		SetRegionBlocked("prison1", 1, 2);
 		SetRegionBlocked("block",   1, 1);
@@ -205,6 +204,7 @@ OBJECTIVES = {
 	run = function()
 		while true do
 			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
 					OBJECTIVES[key]();
@@ -246,20 +246,24 @@ OBJECTIVES = {
 			Reso = GetPlayerResource(PLAYER_1, GOLD) + 5000;
 			SetPlayerResource(PLAYER_1, GOLD, Reso);
 			SetObjectiveState("CaptureImarium", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.defendSiris[2] = 1;
 			OBJECTIVES.state.captureSiris[2] = 10;
 		end
 	end,
 	
 	defendSiris_start = 10000,
 	defendSiris_next = 0,
-	defendSiris_attack_type = 0,
+	defendSiris_continuous_attack = 0,
 	defendSiris = function()
 		if OBJECTIVES.state.defendSiris[2] == 1 and GetObjectOwner(OUR_TOWN) == 1 then
 			SetObjectiveState("DefendImarium", OBJECTIVE_ACTIVE );
 			startThread(attack, OUR_TOWN);
-			OBJECTIVES.defendSiris_start = GetDate(DAY)+3;
 			OBJECTIVES.state.defendSiris[2] = 2;
-		elseif OBJECTIVES.state.defendSiris[2] == 2 and GetDate(DAY) >= (OBJECTIVES.defendSiris_start + OBJECTIVES.defendSiris_next) then
+		elseif OBJECTIVES.state.defendSiris[2] == 2 and IsHeroAlive("Nemor") == nil then
+			startThread(attack, OUR_TOWN);
+			OBJECTIVES.defendSiris_start = GetDate(DAY)+3;
+			OBJECTIVES.state.defendSiris[2] = 3;
+		elseif OBJECTIVES.state.defendSiris[2] == 3 and GetDate(DAY) >= (OBJECTIVES.defendSiris_start + OBJECTIVES.defendSiris_next) and IsHeroAlive("Nemor") == nil and IsHeroAlive("Gles") == nil then
 			startThread(attack, OUR_TOWN);
 			OBJECTIVES.defendSiris_next = OBJECTIVES.defendSiris_next + random(8) + 8 - dif;
 			print ("next attack on day ", OBJECTIVES.defendSiris_start + OBJECTIVES.defendSiris_next);
@@ -367,16 +371,16 @@ function C5M3_GetGarisonArmy(town, hero)
 	local townu = GetObjectCreatures(town, CREATURE_UNICORN) + GetObjectCreatures(town, CREATURE_WAR_UNICORN) + GetObjectCreatures(town, CREATURE_WHITE_UNICORN);
 	local towndr = GetObjectCreatures(town, CREATURE_GREEN_DRAGON) + GetObjectCreatures(town, CREATURE_GOLD_DRAGON) + GetObjectCreatures(town, CREATURE_RAINBOW_DRAGON);
 	if hero ~= nil then
-		herod = GetHeroCreatures(hero, CREATURE_DRUID) + GetHeroCreatures(hero, CREATURE_DRUID_ELDER) + GetHeroCreatures(hero, CREATURE_HIGH_DRUID);
-		herou = GetHeroCreatures(hero, CREATURE_UNICORN) + GetHeroCreatures(hero, CREATURE_WAR_UNICORN) + GetHeroCreatures(hero, CREATURE_WHITE_UNICORN);
-		herodr =GetHeroCreatures(hero, CREATURE_GREEN_DRAGON) + GetHeroCreatures(hero, CREATURE_GOLD_DRAGON) + GetHeroCreatures(hero, CREATURE_RAINBOW_DRAGON);
+		herod  = GetHeroCreatures(hero, CREATURE_DRUID) + GetHeroCreatures(hero, CREATURE_DRUID_ELDER) + GetHeroCreatures(hero, CREATURE_HIGH_DRUID);
+		herou  = GetHeroCreatures(hero, CREATURE_UNICORN) + GetHeroCreatures(hero, CREATURE_WAR_UNICORN) + GetHeroCreatures(hero, CREATURE_WHITE_UNICORN);
+		herodr = GetHeroCreatures(hero, CREATURE_GREEN_DRAGON) + GetHeroCreatures(hero, CREATURE_GOLD_DRAGON) + GetHeroCreatures(hero, CREATURE_RAINBOW_DRAGON);
 	end
 	return townd+herod, townu+herou, towndr+herodr;
 end
 
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
-startThread( AI_main );
+startThread( H55c_AI_main );
 
 ------------------ DEBUG ------------------------
 function C5M3_garison()

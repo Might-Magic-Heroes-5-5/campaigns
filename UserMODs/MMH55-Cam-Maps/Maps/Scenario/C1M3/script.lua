@@ -3,7 +3,7 @@ doFile("/scripts/campaign_common.lua");
 doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts or not _AI_UpdateTargetWeight do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -88,7 +88,7 @@ CINEMATICS = {
       StartDialogScene("/DialogScenes/C1/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
     end,
 
-    c1m3r2 = function()
+    clearScouts = function()
       StartDialogScene("/DialogScenes/C1/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
     end,
 
@@ -313,7 +313,7 @@ OBJECTIVES = {
         end
      	end
       if ( enemies_killed == 11 ) then
-        CINEMATICS.c1m3r2();
+        CINEMATICS.clearScouts();
 	      sleep(2);
 	      SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
 	      GiveExp( OUR_HERO_NAME, 6000 );
@@ -340,7 +340,7 @@ OBJECTIVES = {
         player_army_strength = player_army_strength * strcoeff;
         print( "str with difficulty = ", player_army_strength );
         SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength );
-        ADD_ASSAULT_HERO(ENEMY_HERO_NAME);
+        H55c_AIAddHero(ENEMY_HERO_NAME);
         CINEMATICS.showEnemy();
         OBJECTIVES.state.defeatEnemyHero[2] = 10;
       end
@@ -356,7 +356,7 @@ OBJECTIVES = {
 }
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
-startThread( AI_main )
+startThread( H55c_AI_main )
 
 ------------------ DEBUG ------------------------
 function debug_c1m3()
