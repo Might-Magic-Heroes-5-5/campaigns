@@ -7,7 +7,7 @@ while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
-AI_CONTROLLED = {
+H55c_AI_CONTROLLED = {
   player1 = {
       state = 0,       -- 0 human
 	   heroes = {},
