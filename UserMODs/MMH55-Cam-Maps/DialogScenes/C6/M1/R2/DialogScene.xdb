@@ -4,7 +4,7 @@
 	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dirt.xdb#xpointer(/AmbientSoundSet)"/>
 	<Music href="/Sounds/_(Music)/Win-Battle/Academy.xdb#xpointer(/Music)"/>
 	<MusicVolume>40</MusicVolume>
-	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest).xdb#xpointer(/AmbientLight)"/>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest) (2).xdb#xpointer(/AmbientLight)"/>
 	<sentences>
 		<Item>
 			<text href=""/>
@@ -68,7 +68,7 @@
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>3</ActorAnimationIndex>
 			<AnimName>idle00</AnimName>
-			<AnimationDelay>0</AnimationDelay>
+			<AnimationDelay>10</AnimationDelay>
 			<CustomSounds>
 				<Item>
 					<Delay>2</Delay>

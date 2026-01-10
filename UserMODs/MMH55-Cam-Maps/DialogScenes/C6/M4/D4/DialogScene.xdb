@@ -96,14 +96,17 @@
 				<Item>
 					<Delay>5</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/move.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 				<Item>
 					<Delay>6</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/advmap_move_end.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 				<Item>
 					<Delay>4</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Wizard/move.xdb#xpointer(/Sound)"/>
+					<Duration>3</Duration>
 				</Item>
 			</CustomSounds>
 			<CustomEffects/>
