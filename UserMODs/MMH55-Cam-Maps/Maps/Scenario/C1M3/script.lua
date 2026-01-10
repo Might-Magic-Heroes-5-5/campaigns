@@ -77,7 +77,7 @@ BATTLES = {
 
     finish = function(hero, result)
       if result ~= nil then
-		local rndartifact = table.length(H55_MinorArtifacts)random()+1;
+		local rndartifact = random(table.length(H55_MinorArtifacts))+1;
 		GiveArtefact(hero, H55_MinorArtifacts[rndartifact], 0);
       end
     end,
