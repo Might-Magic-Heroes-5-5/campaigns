@@ -199,27 +199,28 @@ OBJECTIVES = {
 	startThread( _subPassage );
   end,
 
-  run = function()
-   	while true do
-      for key, value in OBJECTIVES.state do
-        if value[2] > 0 and value[2] < 10 then
-          OBJECTIVES[key]();
-        end
-      end
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
       
-	  if GetObjectiveState( "prim1") == OBJECTIVE_FAILED or GetObjectiveState( 'prim2') == OBJECTIVE_FAILED then
-        Loose();
-        return
-      end
+			if GetObjectiveState( "prim1") == OBJECTIVE_FAILED or GetObjectiveState( 'prim2') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
 	
-      if GetObjectiveState( "prim1") == OBJECTIVE_COMPLETED then
-		CINEMATICS.outro();
-		Win();
-		return
-      end
-      sleep(10);
-    end
-  end,
+			if GetObjectiveState( "prim1") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				Win();
+				return
+			end
+		end
+	end,
   
   routeToSheogath = function()
      -- start of this task is handled by C2M1.xdb

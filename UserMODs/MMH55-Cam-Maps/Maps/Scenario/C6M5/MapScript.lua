@@ -4,9 +4,6 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M5");
-	--LoadHeroAllSetArtifacts("Godric", "C1M5");
-	--LoadHeroAllSetArtifacts("Raelag", "C4M5");
-	--LoadHeroAllSetArtifacts("Heam", "C5M5");
 	LoadHeroAllSetArtifacts("Godric", "C6M4");
 	LoadHeroAllSetArtifacts("Raelag", "C6M4");
 	LoadHeroAllSetArtifacts("Heam", "C6M4");

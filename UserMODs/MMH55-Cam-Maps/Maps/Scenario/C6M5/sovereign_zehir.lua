@@ -1,5 +1,5 @@
 print("sovereign vs zehir");
-d = GetDifficulty() - 1;
+d = GetDifficulty();
 
 -- looking for dead catapult --
 

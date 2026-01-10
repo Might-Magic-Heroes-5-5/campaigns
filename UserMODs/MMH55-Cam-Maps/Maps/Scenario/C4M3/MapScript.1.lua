@@ -102,30 +102,31 @@ OBJECTIVES = {
     CINEMATICS.intro();
   end,
 
-  run = function()
-     while true do
-      for key, value in OBJECTIVES.state do
-        if value[2] > 0 and value[2] < 10 then
-          OBJECTIVES[key]();
-        end
-      end
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
       
-      if GetObjectiveState( 'Survival') == OBJECTIVE_FAILED then
-        Loose();
-        return
-      end
+			if GetObjectiveState( 'Survival') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
     
-      if GetObjectiveState( 'prim1') == OBJECTIVE_COMPLETED then
-        SaveHeroAllSetArtifactsEquipped("Raelag", "C4M3");
-        Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
-        Save("quicksave");
-        CINEMATICS.outro();
-        Win();
-        return
-      end
-      sleep(10);
-    end
-  end,
+			if GetObjectiveState( 'prim1') == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Raelag", "C4M3");
+				Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
+				Save("quicksave");
+				CINEMATICS.outro();
+				Win();
+				return
+			end
+		end
+	end,
   
   _CountOwnedTowns = function (towns, player)
     local cnt = 0;

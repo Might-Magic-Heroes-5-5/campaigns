@@ -49,7 +49,9 @@ H55c_AI_run_during_player_turn = "Not yet run";
 function H55c_AI_crash()
 	H55c_AI_crash_counter = H55c_AI_crash_counter + 1;
 	H55c_AI_error_stamp = H55c_AI_error;
-	print("AI error: " .. H55c_AI_error)
+	print("AI error: " .. H55c_AI_error);
+	sleep(1000);
+	startThread(H55c_AI_main);
 end
 
 function H55c_AI_print(mode, message)
@@ -141,27 +143,33 @@ function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 		if IsHeroAlive(name) == nil then
 			return
 		end
-		H55c_AI_print(2, name .. " item: " .. num .. " - " .. item)
-		local owner_status = pcall(GetObjectOwner, item);
-		local place_status = pcall(GetObjectPosition, item);
-		if owner_status ~= nil and place_status ~= nil then
-			local owner = owner_status[1];
-			if owner ~= player and ai.enemies[owner].is_enemy == 1 then
-				local x, y, z = place_status[1], place_status[2], place_status[3];
-				local cost = 0;
-				local p_cost = pcall(CalcHeroMoveCost,name,x,y,z);
-				if p_cost == nil or p_cost[1] < 0 then
-					cost = H55_GetDistance(name, item)*100
+		if ttype == "heroes" and IsHeroAlive(item) == nil then
+			H55c_AI_print(2, "Skipping, hero is dead: " .. item);
+		else
+			H55c_AI_print(2, name .. " item: " .. num .. " - " .. item)
+			local owner_status = pcall(GetObjectOwner, item);
+			local place_status = pcall(GetObjectPosition, item);
+			if owner_status ~= nil and place_status ~= nil then
+				local owner = owner_status[1];
+				if owner ~= player and ai.enemies[owner] and ai.enemies[owner].is_enemy == 1 then
+					local x, y, z = place_status[1], place_status[2], place_status[3];
+					local cost = 0;
+					local p_cost = pcall(CalcHeroMoveCost,name,x,y,z);
+					if p_cost == nil or p_cost[1] < 0 then
+						cost = H55_GetDistance(name, item)*100
+					else
+						cost = p_cost[1];
+					end
+					local priority  = ai.enemies[owner].priority;
+					local attractor = ai.enemies[owner][ttype];
+					local result    = cost/(attractor*attractor);       -- adjust cost based on importance of the target type
+					result          = result/priority;                  -- adjust cost based on priority to defeat the owner of the target
+					H55_Insert(hero.weights, result);
+					H55_Insert(hero.targets,   item);
+					H55_Insert(  hero.types,  ttype);
 				else
-					cost = p_cost[1];
+					H55c_AI_print(2, "Skipping: " .. item);
 				end
-				local priority  = ai.enemies[owner].priority;
-				local attractor = ai.enemies[owner][ttype];
-				local result    = cost/(attractor*attractor);       -- adjust cost based on importance of the target type
-				result          = result/priority;                  -- adjust cost based on priority to defeat the owner of the target
-				H55_Insert(hero.weights, result);
-				H55_Insert(hero.targets,   item);
-				H55_Insert(  hero.types,  ttype);
 			end
 		end
 	end
@@ -220,10 +228,13 @@ end
 
 function H55c_AIReport(player)
 	for name, hero in H55c_AI_CONTROLLED["player" .. player].heroes do
-		print("=== ".. name .. " ===");
+		--print("=== ".. name .. " ===");
+		local message = name..": ";
 		for w, _ in hero.targets do
-			print(w..": ".. hero.targets[w] .. " = " .. hero.weights[w])
+			message = message .. hero.targets[w] .. "(".. hero.weights[w] .. ") | "
+			--print(w..": ".. hero.targets[w] .. " = " .. hero.weights[w])
 		end
+		print(message);
 		if hero.current_target == "Roam" then
 			print("Hero Roaming")
 		else
@@ -247,10 +258,8 @@ function H55c_AIAddHero(name)
 end
       
 function H55c_AIStats()
-	print("crash count: ", H55c_AI_crash_counter);
-	print("crash type: ", H55c_AI_error_stamp);
-	print("last run day: ", H55c_AI_last_run_day);
-	print("at player turn: ", H55c_AI_run_during_player_turn);
+	print( "last updated on day ", H55c_AI_last_run_day, " during player ",H55c_AI_run_during_player_turn," turn." );
+	print( H55c_AI_crash_counter," AI crashes so far. Last crash type at ", H55c_AI_error_stamp );
 end
 --
 -- ###### Deprecated functions ########

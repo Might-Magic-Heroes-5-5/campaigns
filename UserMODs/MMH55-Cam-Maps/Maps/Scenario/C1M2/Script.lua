@@ -69,172 +69,172 @@ CINEMATICS = {
 
 TUTORIALS = {
     list = {
-    	{              m03,     REGION_ENTER_AND_STOP_TRIGGER,      "r03",               "TUTORIALS.luck", 0 },
-    	{              m04,     REGION_ENTER_AND_STOP_TRIGGER,      "r04",             "TUTORIALS.morale", 0 },
-    	{              m05,     REGION_ENTER_AND_STOP_TRIGGER,      "r05",        "TUTORIALS.attack_town", 0 },
-    	{              m10,     REGION_ENTER_AND_STOP_TRIGGER,      "r12",            "TUTORIALS.defence", 0 },
-    	{              m11,     REGION_ENTER_AND_STOP_TRIGGER,      "r11",             "TUTORIALS.attack", 0 },
-    	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine1",   "TUTORIALS.mineCapturedHint", 0 },
+    	{              m03,     REGION_ENTER_AND_STOP_TRIGGER,      "r03",               "TUTORIALS.luck", 0 }, -- Luck artifact
+    	{              m04,     REGION_ENTER_AND_STOP_TRIGGER,      "r04",             "TUTORIALS.morale", 0 }, -- Morale artifact
+    	--{              m05,     REGION_ENTER_AND_STOP_TRIGGER,      "r05",        "TUTORIALS.attack_town", 0 },
+    	{              m10,     REGION_ENTER_AND_STOP_TRIGGER,      "r12",            "TUTORIALS.defence", 0 }, -- Defense artifact
+    	{              m11,     REGION_ENTER_AND_STOP_TRIGGER,      "r11",             "TUTORIALS.attack", 0 }, -- Attack artifact
+    	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine1",   "TUTORIALS.mineCapturedHint", 0 }, -- capture mine
     	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine2",   "TUTORIALS.mineCapturedHint", 0 },
     	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine3",   "TUTORIALS.mineCapturedHint", 0 },
-    	{    "c1_m2_build",            OBJECT_CAPTURE_TRIGGER,     "Hant",        "TUTORIALS.buildPerDay", 0 },
-    	{ "c1_m2_heroperk",                            THREAD,          0,     "TUTORIALS.checkHeroPerks", 0 },
-    	{              m01,                            THREAD,          0,          "TUTORIALS.seizeTown", 0 },
-    	{              m08,            OBJECT_CAPTURE_TRIGGER,     "Hant",   "TUTORIALS.weeklyPopulation", 0 },
-    	{ "c1_m2_savegame",                            THREAD,          0,           "TUTORIALS.saveGame", 0 },
-    	{              m09,                            THREAD,          0,          "TUTORIALS.moonWeeks", 0 },
-    	{    "hero_screen",                            WINDOW,          0,                              0, 0 },
-    	{       "c1_m2_t2", REGION_ENTER_WITHOUT_STOP_TRIGGER,   "castle",  "TUTORIALS.DisableHeroScript", 0 },
+    	{  			   m06,            				   THREAD,     "Hant",        "TUTORIALS.buildPerDay", 0 }, -- town captured. Explanation of what you can do (build) in city
+    	{ "c1_m2_heroperk",                            THREAD,          0,     "TUTORIALS.checkHeroPerks", 0 }, -- hero has asctivatable perks. Enable tutorial in combat
+    	{              m01,                            THREAD,          0,          "TUTORIALS.seizeTown", 0 }, -- Hint to find a town ASAP
+    	{              m08,           				   THREAD,    		0,   "TUTORIALS.weeklyPopulation", 0 }, -- start of week hiring advice
+    	{ "c1_m2_savegame",                            THREAD,          0,           "TUTORIALS.saveGame", 0 }, -- How to save a game
+    	{              m09,                            THREAD,          0,          "TUTORIALS.moonWeeks", 0 }, -- Explanation of moon weeks
+    	{    "hero_screen",                            WINDOW,          0,                              0, 0 }, -- explanation of hero skill and wheel
     },
 
     run = function()
-      SetGameVar(             "temp.tutorial", 1);
+      SetGameVar( 		 'temp.creaturehired', 0);
       SetGameVar(       "temp.C1M2_perk_hint", 0);
       SetGameVar(    "temp.C1M2_archers_hint", 0);
-      SetGameVar("temp.C1M2_CountVisitToTown", 0); -- t6_1 t6_2 t6_3 t6_4
+      SetGameVar("temp.C1M2_CountVisitToTown", 0);
       manageTutorials(TUTORIALS.list);
     end,
 
     markComplete = function(name)
-      print(name);
-      for _, item in TUTORIALS.list do
-        if item[4] == name then
-          item[5] = 2;
-        end
-      end
-    end,
+		print(name);
+		for _, item in TUTORIALS.list do
+			if item[4] == name then
+				item[5] = 2;
+			end
+		end
+	end,
 
-    buildPerDay = function()
-      while true do
-        local thisday = GetDate(ABSOLUTE_DAY);
-        sleep(30);
-        if (thisday == strongbowCaptureDay+1) then
-          WaitForTutorialMessageBox();
-          TutorialMessageBox(m08);
-          TUTORIALS.markComplete("TUTORIALS.buildPerDay");
-          return
-        end
-      end
+	buildPerDay = function()
+		while true do
+			local thisday = GetDate(DAY_OF_WEEK);
+			sleep(30);
+			if thisday ~= 1 and GetObjectOwner("Hant") == PLAYER_1 then
+				sleep(50)
+				TUTORIALS.markComplete("TUTORIALS.buildPerDay");
+				TutorialMessageBox(m06);
+				return
+			end
+		end
     end,
     
     seizeTown = function()
-      while true do
-        local thisday = GetDate(ABSOLUTE_DAY);
-        sleep(10);
-        if thisday == 2 then
-	        WaitForTutorialMessageBox();
-	        TutorialMessageBox(m01);
-	        TUTORIALS.markComplete("TUTORIALS.seizeTown");
-          return
-        end
-      end
-    end,
+		while true do
+			TUTORIALS.markComplete("TUTORIALS.seizeTown");
+			WaitForTutorialMessageBox();
+			TutorialMessageBox(m01);
+			return
+		end
+	end,
 
-    weeklyPopulation = function()
-      while true do
-        sleep(30);
-        local thisday = GetDate(ABSOLUTE_DAY);
-        if (thisday == 8) then
-          WaitForTutorialMessageBox();
-          TutorialMessageBox(m08);
-          TUTORIALS.markComplete("TUTORIALS.weeklyPopulation");
-          return
-        end
-      end
+	weeklyPopulation = function()
+		while true do
+			sleep(50);
+			local thisday = GetDate(DAY_OF_WEEK);
+			if thisday == 1 and GetObjectOwner("Hant") == PLAYER_1 then
+				TUTORIALS.markComplete("TUTORIALS.weeklyPopulation");
+				WaitForTutorialMessageBox();
+				TutorialMessageBox(m08);
+				return
+			end
+		end
     end,
     
-    saveGame = function()
-      while true do
-        local thisday = GetDate(ABSOLUTE_DAY);
-        sleep(20);
-        if thisday == 12 then
-          WaitForTutorialMessageBox();
-          TutorialMessageBox("c1_m2_savegame");
-          TUTORIALS.markComplete("TUTORIALS.saveGame");
-          return
-        end
-      end
-    end,
+	saveGame = function()
+		while true do
+			local thisday = GetDate(ABSOLUTE_DAY);
+			sleep(30);
+			if thisday == 12 then
+				TUTORIALS.markComplete("TUTORIALS.saveGame");
+				WaitForTutorialMessageBox();
+				TutorialMessageBox("c1_m2_savegame");
+				return
+			end
+		end
+	end,
         
-    moonWeeks = function()
-      while true do
-        local thisday = GetDate(ABSOLUTE_DAY);
-        sleep(30);
-        if thisday == 15 then
-          WaitForTutorialMessageBox();
-          TutorialMessageBox(m09);
-          TUTORIALS.markComplete("TUTORIALS.moonWeeks");
-          return
-        end
-      end
-    end,
+	moonWeeks = function()
+		while true do
+			local thisday = GetDate(ABSOLUTE_DAY);
+			sleep(30);
+			if thisday == 15 then
+				TUTORIALS.markComplete("TUTORIALS.moonWeeks");
+				WaitForTutorialMessageBox();
+				TutorialMessageBox(m09);
+				return
+			end
+		end
+	end,
 
     checkHeroPerks = function()  -- hint about perks, see Isabell's combat script
-      while true do
-        sleep(20);
-  		  if HasHeroSkill(HERO_NAME, PERK_HOLY_CHARGE) or HasHeroSkill(HERO_NAME, PERK_DEMONIC_STRIKE) or HasHeroSkill(HERO_NAME, HERO_SKILL_POWERFULL_BLOW) or HasHeroSkill(HERO_NAME, PERK_PRAYER) then
-  	 		  SetGameVar("temp.C1M2_perk_hint", 1);
-	        TUTORIALS.markComplete("TUTORIALS.checkHeroPerks");
-  			  return
-  		  end
-  	  end
+		while true do
+			sleep(30);
+			if HasHeroSkill(HERO_NAME, PERK_HOLY_CHARGE) or HasHeroSkill(HERO_NAME, PERK_DEMONIC_STRIKE) or HasHeroSkill(HERO_NAME, HERO_SKILL_POWERFULL_BLOW) or HasHeroSkill(HERO_NAME, PERK_PRAYER) then
+				SetGameVar("temp.C1M2_perk_hint", 1);
+				TUTORIALS.markComplete("TUTORIALS.checkHeroPerks");
+				return
+			end
+		end
     end,
     
-    luck = function() --tutorial 03
-      TUTORIALS.markComplete("TUTORIALS.luck");
-      TutorialMessageBox(m03);
-      Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r03', nil);
+	luck = function() --tutorial 03
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r03', nil);
+		TUTORIALS.markComplete("TUTORIALS.luck");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox(m03);
     end,
 
     morale = function() --tutorial 04
-      TUTORIALS.markComplete("TUTORIALS.morale");
-      TutorialMessageBox(m04);
-      Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r04', nil)
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r04', nil)
+		TUTORIALS.markComplete("TUTORIALS.morale");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox(m04);
     end,
 
     attack_town = function() --tutorial 05
-      TUTORIALS.markComplete("TUTORIALS.attack_town");
-      TutorialMessageBox(m05);
       Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r05', nil)
+      TUTORIALS.markComplete("TUTORIALS.attack_town");
+	  WaitForTutorialMessageBox();
+      TutorialMessageBox(m05);
     end,
     
     defence = function() --tutorial 10
+      Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r12', nil)
       TUTORIALS.markComplete("TUTORIALS.defence");
+	  WaitForTutorialMessageBox();
       TutorialMessageBox(m10);
-      Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r12',nil)
     end,
 
-    attack = function() --tutorial 11
-      TUTORIALS.markComplete("TUTORIALS.attack");
-      TutorialMessageBox(m11);
-      Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r11',nil)
+	attack = function() --tutorial 11
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r11', nil)
+		TUTORIALS.markComplete("TUTORIALS.attack");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox(m11);
     end,
     
     mineCapturedHint = function()
-      TUTORIALS.markComplete("TUTORIALS.mineCapturedHint");
-      TutorialMessageBox( 'c1_m2_mines' );
-      for i = 1, 3 do
-        Trigger( OBJECT_CAPTURE_TRIGGER, 'mine'..i, nil );
-      end
-    end,
+		for i = 1, 3 do
+			Trigger( OBJECT_CAPTURE_TRIGGER, 'mine'..i, nil );
+		end
+		TUTORIALS.markComplete("TUTORIALS.mineCapturedHint");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox( 'c1_m2_mines' );
+	end,
     
     DisableHeroScript = function()
-	    ResetHeroCombatScript(HERO_NAME);
-      Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER ,'castle', nil);
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER ,'castle', nil);
+		ResetHeroCombatScript(HERO_NAME);
     end
 }
 
 OBJECTIVES = {
     state =  {  -- 0 quest is not active, 1-9 quest is active/custom states, 10 success, 11 fail
       captureStrongbow = { "prim1", 1 }, -- 1 quest active, 10 strongbow captured
-      assembleArchers  = { "prim2", 1 }, -- 1 waiting to trigger quest, 2 gather archers, 10 success
-      captureAshwood   = { "prim3", 1 }, -- 1 waiting to trigger cinmatic, 10 end of checks
+      assembleArchers  = { "prim2", 0 }, -- 0 waiting to trigger quest, 2 gather archers, 10 success
+      captureAshwood   = { "prim3", 0 }, -- 0 waiting to trigger cinmatic, 10 end of checks
       isAlive          = { "prim4", 1 },
     },
 
     start = function()
       OBJECTIVES.prepare();
-      startThread( TUTORIALS.run );
       OBJECTIVES.run();
     end,
     
@@ -264,76 +264,77 @@ OBJECTIVES = {
 
     run = function()
      	while true do
-        for key, value in OBJECTIVES.state do
-          if value[2] > 0 and value[2] < 10 then
-            OBJECTIVES[key]();
-          end
-        end
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
         
-        if GetObjectiveState( 'prim4') == OBJECTIVE_FAILED then
-          Loose();
-          return
-        end
+			if GetObjectiveState( 'prim4') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
       
-        if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-          CINEMATICS.outro();
-          sleep(1);
-          SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
-          SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M2");
-          sleep(5);
-          Win();
-         return
-        end
-        sleep(10);
-      end
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep(1);
+				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
+				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M2");
+				sleep(5);
+				Win();
+				return
+			end
+		end
     end,
 
-    captureStrongbow = function()
-    -- completion of this task is handled by C1M2.xdb
+	captureStrongbow = function()
+	-- completion of this task is handled by C1M2.xdb
     -- prize: 1000 gold
-      if GetObjectiveState("prim1") == OBJECTIVE_UNKNOWN then
-        SetObjectiveState('prim1',OBJECTIVE_ACTIVE);
-      end
-      if GetObjectOwner("Hant") == PLAYER_1 then
-        strongbowCaptureDay = GetDate(ABSOLUTE_DAY);
-        print("Strongbow captured on day " .. strongbowCaptureDay);
-        OBJECTIVES.state.captureStrongbow[2] = 10;
-      end
-    end,
+		if OBJECTIVES.state.captureStrongbow[2] == 1 then
+			SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.captureStrongbow[2] = 2; 
+		elseif OBJECTIVES.state.captureStrongbow[2] == 2 and GetObjectOwner("Hant") == PLAYER_1 then
+			strongbowCaptureDay = GetDate(ABSOLUTE_DAY);
+			print("Strongbow captured on day " .. strongbowCaptureDay);
+			OBJECTIVES.state.assembleArchers[2] = 1;
+			OBJECTIVES.state.captureAshwood[2] = 1;
+			OBJECTIVES.state.captureStrongbow[2] = 10;
+		end
+	end,
     
     assembleArchers = function()
-      if OBJECTIVES.state.assembleArchers[2] == 1 and OBJECTIVES.state.captureStrongbow[2] == 10 then
-        SetObjectiveState('prim2',OBJECTIVE_ACTIVE);
-        OBJECTIVES.state.assembleArchers[2] = 2;
-      end
-      if OBJECTIVES.state.assembleArchers[2] == 2 then
-        if ( GetHeroCreatures( HERO_NAME, CREATURE_ARCHER ) + GetHeroCreatures( HERO_NAME, CREATURE_MARKSMAN ) + GetHeroCreatures( HERO_NAME, CREATURE_LONGBOWMAN ) ) >= 100 then
-          SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-          GiveExp( HERO_NAME, 3000 );
-          OBJECTIVES.state.assembleArchers[2] = 10;
-		    end
-		  end
+	  -- start of this task is handled by C1M2.xdb
+		if OBJECTIVES.state.assembleArchers[2] == 1 then
+			if ( GetHeroCreatures( HERO_NAME, CREATURE_ARCHER ) + GetHeroCreatures( HERO_NAME, CREATURE_MARKSMAN ) + GetHeroCreatures( HERO_NAME, CREATURE_LONGBOWMAN ) ) >= 100 then
+				SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
+				GiveExp( HERO_NAME, 3000 );
+				OBJECTIVES.state.assembleArchers[2] = 10;
+			end
+		end
     end,
     
     captureAshwood = function()
     -- completion of this task is handled by C1M2.xdb
     -- prize: None
-      if OBJECTIVES.state.captureStrongbow[2] == 10 then
-        if GetDate(ABSOLUTE_DAY) >= (strongbowCaptureDay + 3) then
-          CINEMATICS.captureAshwood();
-          SetObjectiveState('prim3', OBJECTIVE_ACTIVE)
-          OBJECTIVES.state.captureAshwood[2] = 10;
-        end
-      end
-    end,
+		if OBJECTIVES.state.captureAshwood[2] == 1 then
+			if (GetDate(ABSOLUTE_DAY) >= (strongbowCaptureDay + 3)) then
+				CINEMATICS.captureAshwood();
+				SetObjectiveState('prim3', OBJECTIVE_ACTIVE)
+				OBJECTIVES.state.captureAshwood[2] = 10;
+			end
+		end
+	end,
       
-    isAlive = function()
+	isAlive = function()
     -- start of this task is handled by C1M2.xdb
-      if not IsHeroAlive(HERO_NAME) then
-        SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
-        sleep(2);
-      end
-    end,
+		if IsHeroAlive(HERO_NAME) == nil then
+			SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
+			sleep(2);
+		end
+	end,
 }
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
+startThread( TUTORIALS.run );

@@ -12,56 +12,71 @@ WINDOW = 9997;
 --consoleCmd("setvar Options.Tutorial.Blink.end_of_turn_blink = 0")
 
 function manageTutorials(list)
+	
 	while true do
-    sleep(5);
-    if IsTutorialEnabled() then
-     	SetGameVar( "temp.tutorial", 1 );
-    else
-     	SetGameVar( "temp.tutorial", 0 );
-    end
-    
-		for _, item in list do
-      local id          = item[1];
-      local triggerType = item[2];
-      local object      = item[3];
-      local action      = item[4];
-      local state       = item[5];
-
-			if IsTutorialItemEnabled( id ) then
-				if (state == 0) then
-					if triggerType == COMBAT then
-						SetGameVar( "temp." .. id, 1 );
-					elseif triggerType == THREAD then
-						startThreadOnce( loadstring(action .. "()"));
-          elseif triggerType == WINDOW then
-            pcall(TutorialActivateHint, id )
-          elseif triggerType == PLAYER_REMOVE_HERO_TRIGGER then
-            pcall(Trigger, triggerType, object, action);
-          elseif triggerType == REGION_ENTER_AND_STOP_TRIGGER then
-            pcall(Trigger, triggerType, object, action );
-          else
-            if Exists(object) then
-              pcall(Trigger, triggerType, object, "startThreadOnce(" ..action .. ")" );
-            end
-          end
-          item[5] = 1;
+		if IsTutorialEnabled() == nil then
+			SetGameVar( "temp.tutorial", 0 );
+		else
+			SetGameVar( "temp.tutorial", 1 );
+			local has_changed = nil;
+			local loop = 1;
+			local idx = 1;
+			local temp_array = {};
+			local debug_count = 0;
+			for _, item in list do
+				debug_count = debug_count + 1;
+			end
+			--print(debug_count);	
+			for _, item in list do
+				local id          = item[1];
+				local triggerType = item[2];
+				local object      = item[3];
+				local action      = item[4];
+				local state       = item[5];
+				
+				
+				if IsTutorialItemEnabled(id) == nil or state == 2 then
+					item[5] = 2;
+					--print("Removed: ",list[loop][1]);
+					has_changed = not nil;
+				else
+					temp_array[idx] = item;
+					idx = idx + 1;
+					if state == 0 then
+						if triggerType == COMBAT then
+							SetGameVar( "temp." .. id, 1 );
+						elseif triggerType == THREAD then
+							startThreadOnce( loadstring(action .. "()"));
+						elseif triggerType == WINDOW then
+							pcall(TutorialActivateHint, id )
+						elseif triggerType == PLAYER_REMOVE_HERO_TRIGGER then
+							pcall(Trigger, triggerType, object, action);
+						elseif triggerType == REGION_ENTER_AND_STOP_TRIGGER then
+							pcall(Trigger, triggerType, object, action );
+						elseif Exists(object) then
+							pcall(Trigger, triggerType, object, "startThreadOnce(" ..action .. ")" );
+						end
+						item[5] = 1;
+					elseif state == 1 then
+						if triggerType == COMBAT then
+							SetGameVar( "temp." .. id, 0 );
+						elseif triggerType == THREAD or triggerType == WINDOW then
+							-- do nothing
+						elseif Exists(object) then
+							pcall(Trigger, triggerType, object, nil);
+						end
+						item[5] = 0;
+					end
 				end
-			else
-				if (state == 1) then
-					if triggerType == COMBAT then
-						SetGameVar( "temp." .. id, 0 );
-          elseif triggerType == THREAD or triggerType == WINDOW then
-             -- do nothing
-					else
-            if Exists(object) then
-              pcall(Trigger, triggerType, object, nil);
-            end
-          end
-          item[5] = 0;
-        end
-      end
-    end
-  end
+				loop = loop + 1;
+			end
+			
+			if has_changed == not nil then
+				list = temp_array;
+			end
+		end
+		sleep(30);
+	end
 end
 
 __threads = {};
@@ -77,8 +92,10 @@ function startThreadOnce( func, p1, p2, p3 )
 	startThread( newfunc );
 end
 
-function _fog()
+function H55c_fog()
     OpenCircleFog(0, 0, 0, 9999, PLAYER_1);
+	sleep(10);
+    OpenCircleFog(0, 0, 1, 9999, PLAYER_1);
 end
 
 creature_costs =
@@ -183,6 +200,19 @@ function remove_element(element_name,array_name)
 	return array_name
 end
 
+function IsAnyHeroPlayerHasArtifact( playerID, artifID )
+	local heroes = {};
+	local m = 0;
+	local h = 0;
+	heroes = GetPlayerHeroes( playerID );
+	for m, h in heroes do
+		if HasArtefact( h, artifID ) then
+			return not nil;
+	    end
+	end
+	return nil
+end
+
 -- ### LUA Multiclicker guard
 H55c_LUA = {
 	busy = nil,
@@ -206,6 +236,10 @@ function H55c_debug()
 		print("Campaign script is running");
 	else
 		local delta = GetDate(ABSOLUTE_DAY) - OBJECTIVES.date
-		print("Campaign not running. Last run was on ",OBJECTIVES.date," which was ",delta," days ago");
+		print("Campaign not been running for ",delta," days. Last run was on day ",OBJECTIVES.date);
+	end
+	
+	for k, v in OBJECTIVES.state do
+		print(k,"[",v[1],"] = ",v[2]);
 	end
 end

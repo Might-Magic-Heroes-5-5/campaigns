@@ -1,5 +1,5 @@
 print("sovereign vs godric");
-d = GetDifficulty() - 1;
+d = GetDifficulty();
 
 -- looking for dead catapult --
 
