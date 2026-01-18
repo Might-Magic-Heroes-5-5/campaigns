@@ -303,6 +303,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - scene(clash with Haven army): Added missing Griffin flying animation at the end of scene (by Rommy)
 
 ### C2M3 – Inferno: The Conquest
+- fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
+- fix: Player 2 heroes no longer flee battles
+- change: Elder Druids circle week increased
+- scene(defeat Gilraen): Remove overly fog ambience
 - scene(intro): Added Observatory doodad and Agrael happy animation (by Rommy)
 - scene(capture Sylvan city): Added a Tree of Knowledge doodad (by Rommy)
 - scene(at first week of Sylvan growth): Added a Tree of Knowledge doodad (by Rommy)
