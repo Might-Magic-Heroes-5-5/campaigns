@@ -116,6 +116,7 @@ DIFFICULTY = {
 	end,
 	
 	[1] = function()
+		SetGameVar("C3M5_Difficulty","hard");
 		SetPlayerStartResource(1,WOOD,16);
 		SetPlayerStartResource(1,ORE,15);
 		SetPlayerStartResource(1,SULFUR,3);
@@ -123,13 +124,13 @@ DIFFICULTY = {
 		SetPlayerStartResource(1,CRYSTAL,3);
 		SetPlayerStartResource(1,GEM,3);
 		SetPlayerStartResource(1,GOLD,25000);
-		SetGameVar("C3M5_Difficulty","normal");
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,15);
 		AddHeroCreatures("Berein",CREATURE_MANES,5);
 		print("Difficulty level is normal");
 	end,
 	
 	[2] = function()
+		SetGameVar("C3M5_Difficulty","heroic");
 		SetPlayerStartResource(1,WOOD,12);
 		SetPlayerStartResource(1,ORE,10);
 		SetPlayerStartResource(1,SULFUR,1);
@@ -137,11 +138,11 @@ DIFFICULTY = {
 		SetPlayerStartResource(1,CRYSTAL,1);
 		SetPlayerStartResource(1,GEM,1);
 		SetPlayerStartResource(1,GOLD,20000);
-		SetGameVar("C3M5_Difficulty","hard");
 		print("Difficulty level is hard");
 	end,
 	
 	[3] = function()
+		SetGameVar("C3M5_Difficulty","impossible");
 		SetPlayerStartResource(1,WOOD,10);
 		SetPlayerStartResource(1,ORE,8);
 		SetPlayerStartResource(1,SULFUR,1);
@@ -149,7 +150,6 @@ DIFFICULTY = {
 		SetPlayerStartResource(1,CRYSTAL,1);
 		SetPlayerStartResource(1,GEM,1);
 		SetPlayerStartResource(1,GOLD,15000);
-		SetGameVar("C3M5_Difficulty","heroic");
 		print("Difficulty level is heroic");
 		START_TIME_PRESSING_MONTH = 4;
 	end,
@@ -317,8 +317,12 @@ OBJECTIVES = {
 				OBJECTIVES.state.timePressure[2] = 11;
 			end
 			OBJECTIVES.timePressure_current = GetDate(DAY_OF_WEEK);
-		elseif OBJECTIVES.state.defeatGodric[2] == 10 and OBJECTIVES.state.captureHikm[2] == 10 then
-			SetObjectiveState("TimePressing", OBJECTIVE_COMPLETED);
+		end
+		
+		if OBJECTIVES.state.defeatGodric[2] == 10 and OBJECTIVES.state.captureHikm[2] == 10 then
+			if GetObjectiveState("TimePressing") == OBJECTIVE_ACTIVE then
+				SetObjectiveState("TimePressing", OBJECTIVE_COMPLETED);
+			end
 			OBJECTIVES.state.timePressure[2] = 10;
 		end
 	end,
@@ -431,6 +435,21 @@ function desentir()
 				end
 			else
 				print("Isabell has only 1 brave creature.");
+			end
+			if GetDifficulty() == 2 then
+				print("TROOOPING");
+				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
+				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 1); -- Paladins
+				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 2); -- Priests
+				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")   + 10); -- Footman
+				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")    + 7); -- Archers
+			elseif GetDifficulty() == 3 then
+				print("TROOOPING2");
+				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
+				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 2); -- Paladins
+				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 3); -- Priests
+				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")   + 11); -- Footman
+				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")    + 8); -- Archers
 			end
 			desentir_day = GetDate(ABSOLUTE_DAY);
 		end

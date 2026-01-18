@@ -15,12 +15,11 @@ startThread(H55_InitSetArtifacts);
 
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_STAFF_OF_VEXINGS,ARTIFACT_RING_OF_DEATH,ARTIFACT_CLOAK_OF_MOURNING,ARTIFACT_NECROMANCER_PENDANT};
 
-IsConditionTrue = {0,0,0};
-Patrol_NurCoords = {{55,45},{39,47},{22,46},{11,59},{5,81}};
-Patrol_FaizCoords = {{60,60},{79,69},{89,54},{117,59}};
-Patrol_SufiCoords = {{66,43},{94,35},{116,30},{129,40}};
-PatrolTerminated = 0;
-DETECT_RADIUS = 18;
+C3M2_PATROLS = {
+	Nur  = { state = 0, coords = {{55,45}, {39,47},  {22,46},  {11,59}, {5,81}} },
+	Faiz = { state = 0, coords = {{60,60}, {79,69},  {89,54}, {117,59}        } },
+	Sufi = { state = 0, coords = {{66,43}, {94,35}, {116,30}, {129,40}        } },
+}
 
 DIFFICULTY = {
 	[0] = function()
@@ -176,7 +175,6 @@ OBJECTIVES = {
 		EnableHeroAI("Faiz",nil);
 		EnableHeroAI("Nur",nil);
 		EnableHeroAI("Sufi",nil);
-
 		SetRegionBlocked("block1",1,PLAYER_2);
 		SetRegionBlocked("block2",1,PLAYER_2);
 		SetRegionBlocked("block3",1,PLAYER_2);
@@ -186,16 +184,16 @@ OBJECTIVES = {
 
 		EnableAIHeroHiring(PLAYER_2,"Hikm",nil);
 		SetObjectEnabled("Titans",nil);
-		
 		startThread(DIFFICULTY[GetDifficulty()]);
+		PatrolTerminated = 0;
+		DETECT_RADIUS = 18;
+		startThread(Patrol2, "Nur");
+		startThread(Patrol2, "Faiz");
+		startThread(Patrol2, "Sufi");
+		startThread(Intercept, "Nur");
+		startThread(Intercept, "Faiz");
+		startThread(Intercept, "Sufi");
 
-		startThread(Patrol2,"Nur",Patrol_NurCoords,1);
-		startThread(Patrol2,"Faiz",Patrol_FaizCoords,2);
-		startThread(Patrol2,"Sufi",Patrol_SufiCoords,3);
-		startThread(Intercept,"Nur",1);
-		startThread(Intercept,"Faiz",2);
-		startThread(Intercept,"Sufi",3);
-		
 		Trigger(OBJECT_TOUCH_TRIGGER, "Titans","FightVsTitansQuestion");
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "titans","CINEMATICS.titansMessage");
 		CINEMATICS.intro()
@@ -215,7 +213,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(20);
+				sleep(50);
 				Win();
 				return
 			end
@@ -227,13 +225,8 @@ OBJECTIVES = {
 	    if OBJECTIVES.state.findLorekeep[2] == 1 then
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "necropolis","OBJECTIVES._reachLorekeep",nil);
 			OBJECTIVES.state.findLorekeep[2] = 2;
-		end
-		
-		if OBJECTIVES.state.findLorekeep[2] == 3 then
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "necropolis",nil);
+		elseif OBJECTIVES.state.findLorekeep[2] == 3 then
 			PatrolTerminated = 1;	
-			CINEMATICS.nearLorekeep();
-
 			SetRegionBlocked("block1",nil,PLAYER_2);
 			SetRegionBlocked("block2",nil,PLAYER_2);
 			SetRegionBlocked("block3",nil,PLAYER_2);
@@ -250,8 +243,6 @@ OBJECTIVES = {
 					end
 				end
 				print("AI for all heroes has been enabled");
-			else
-				print("AI does not have any heroes");
 			end
 			OBJECTIVES.state.findLorekeep[2] = 4;
 		end
@@ -268,6 +259,8 @@ OBJECTIVES = {
 	end,
 	
 	_reachLorekeep = function()
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "necropolis", nil);
+		CINEMATICS.nearLorekeep();
 		OBJECTIVES.state.findLorekeep[2] = 3;
 	end,
 
@@ -315,6 +308,11 @@ OBJECTIVES = {
     end,
 }
 
+function FightVsTitansQuestion(heroname)
+	if (H55c_LUA.guard() ~= nil) then return end
+	QuestionBox("/Maps/Scenario/C3M2/MsgBox_BeforeFightVSTitans.txt", "BATTLES.titans.start('"..heroname.."')");
+end
+
 function GetPlayerHeroNearPatrol(PatrolName, Radius)
 	if IsHeroAlive(PatrolName) == not nil then
 		local PlayerHeroes = GetPlayerHeroes(PLAYER_1);
@@ -323,25 +321,24 @@ function GetPlayerHeroNearPatrol(PatrolName, Radius)
 				return PlayerHeroes[i];
 			end
 		end
-	else
-		print("Hero ",PatrolName," is dead. Function GetPlayerHeroNearPatrol return nil.");
-		return nil;
 	end
 end
 
-function Intercept(PatrolName,n)
+function Intercept(PatrolName)
 	print("Thread Intercept for hero ",PatrolName," has been started...");
 	while PatrolTerminated == 0 do
 		sleep(20);
 		if IsHeroAlive(PatrolName) == not nil then
 			if GetPlayerHeroNearPatrol(PatrolName,DETECT_RADIUS) ~= nil then
 				PlayerHeroName = GetPlayerHeroNearPatrol(PatrolName,DETECT_RADIUS);
-				if IsObjectVisible(PLAYER_2, PlayerHeroName) == not nil then
-					IsConditionTrue[n] = 1;
-					MoveHeroRealTime(PatrolName,GetObjectPosition(PlayerHeroName));
+				local x, y, z = GetObjectPosition(PlayerHeroName);
+				if IsObjectVisible(PLAYER_2, PlayerHeroName) == not nil and CalcHeroMoveCost(PatrolName, x, y, z) > 0 then
+					C3M2_PATROLS[PatrolName].state = 1;
+					MoveHeroRealTime(PatrolName, x, y, z);
+					sleep(20);
 				end
 			else
-				IsConditionTrue[n] = 0;
+				 C3M2_PATROLS[PatrolName].state = 0;
 			end
 		else
 			print("Hero ",PatrolName," is dead. Thread Intercept for this hero has been terminated...");
@@ -351,82 +348,25 @@ function Intercept(PatrolName,n)
 	print("Player reach Lorekeep. Thread Intercept for ",PatrolName," terminated.");
 end
 
-function Patrol2(heroname,CoordsArray,n)
+function Patrol2(heroname)
 	print("Thread Patrol for hero", heroname," has been started...");
-	local ArrayLength = table.length(CoordsArray);
+	local patrol = C3M2_PATROLS[heroname];
+	local ArrayLength = table.length(patrol.coords);
 	print("ArrayLength.n = ", ArrayLength);
-	while IsHeroAlive(heroname) == not nil do	
+	while PatrolTerminated == 0 do	
 		for i=1,ArrayLength do	
-			if PatrolTerminated == 0 then
-				if IsHeroAlive(heroname) == not nil then
-					MoveHeroRealTime(heroname, CoordsArray[i][1],CoordsArray[i][2]);
-					local CurrentDay = GetDate(DAY);
-					while CurrentDay == GetDate(DAY) or IsConditionTrue[n] == 1 do
-						sleep(10);
-					end
-				else
-					print("Unfortunately ",heroname, " is dead :(. Thread Patrol for hero ",heroname," has been terminated");
-					return
+			if IsHeroAlive(heroname) == not nil then
+				pcall(MoveHeroRealTime, heroname, patrol.coords[i][1], patrol.coords[i][2]);
+				local CurrentDay = GetDate(DAY);
+				while CurrentDay == GetDate(DAY) or patrol.state == 1 do
+					sleep(30);
 				end
 			else
-				print("Thread Patrol for hero ",heroname," has been terminated...");
-				return
-			end
-		end
-		for i=ArrayLength,1,-1 do
-			print("Back Patrol...");
-			if PatrolTerminated == 0 then
-				if IsHeroAlive(heroname) == not nil then
-					MoveHeroRealTime(heroname, CoordsArray[i][1],CoordsArray[i][2]);
-					local CurrentDay = GetDate(DAY);
-					while CurrentDay == GetDate(DAY) or IsConditionTrue[n] == 1 do
-						sleep(10);
-					end
-				else
-					print("Unfortunately ",heroname, " is dead :(. Thread Patrol for hero ",heroname," has been terminated");
-					return
-				end
-			else
-				print("Necropolice captured. Thread Patrol for hero ",heroname," has been terminated...");
+				print("Thread Patrol for hero ",heroname," has been terminated");
 				return
 			end
 		end
 	end
-end
-
-function FightVsTitansQuestion(heroname)
-	if (H55c_LUA.guard() ~= nil) then return	end
-	QuestionBox("/Maps/Scenario/C3M2/MsgBox_BeforeFightVSTitans.txt", "BATTLES.titans.start('"..heroname.."')");
-end
-
-function GetExpToLevel( j )
-	local a = 1;
-	if j >= 30 then a = 30 else a = j end
-	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
-	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
-	ExpArrayLess12.n = 12;
-					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
-	ExpArrayMore12 = {24320,28784,34141,40569,48283,57539,68647,81977,97972,117166,140200,167839};
-	ExpArrayMore12.n = 12;
-					--LEVEL 25     26     27     28     29     30     31      32      33      34
-	ExpArrayMore25 = {201007,244126,304491,395040,539917,786208,1229533,2071000,3756484,7294215};
-	ExpArrayMore25.n = 10;
-	if a <= 12 then
-		sum = ExpArrayLess12[a];
-	else
-		if a < 25 then
-			sum = ExpArrayMore12[a-12];
-		else
-			if a < 35 then
-				sum = ExpArrayMore25[a-24];
-			else
-				print("Das ist fantastisch!!!");
-				sum = 0;
-			end
-		end
-	end
-	print("Hero need ", sum, " experience to gain level ",a);
-	return sum;
 end
 
 ------------------- MAIN ------------------------

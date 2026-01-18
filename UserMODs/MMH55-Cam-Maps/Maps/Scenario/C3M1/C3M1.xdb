@@ -35194,8 +35194,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Arch_Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>7</Amount>
-				<Amount2>10</Amount2>
+				<Amount>4</Amount>
+				<Amount2>8</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38559,8 +38559,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Arch_Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>7</Amount>
-				<Amount2>10</Amount2>
+				<Amount>5</Amount>
+				<Amount2>8</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38756,8 +38756,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>11</Amount>
-				<Amount2>16</Amount2>
+				<Amount>5</Amount>
+				<Amount2>8</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38790,15 +38790,21 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_STONE_GARGOYLE</Creature>
-						<Amount>25</Amount>
-						<Amount2>33</Amount2>
+						<Amount>22</Amount>
+						<Amount2>30</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STEEL_GOLEM</Creature>
-						<Amount>10</Amount>
-						<Amount2>14</Amount2>
+						<Amount>5</Amount>
+						<Amount2>10</Amount2>
 						<CustomAmount>true</CustomAmount>
+					</Item>
+					<Item>
+						<Creature>CREATURE_OBSIDIAN_GOLEM</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>5</Amount>
+						<Amount2>10</Amount2>
 					</Item>
 				</AdditionalStacks>
 			</AdvMapMonster>

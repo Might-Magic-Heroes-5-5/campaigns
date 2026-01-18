@@ -299,23 +299,23 @@ function CreaturesSpawn(num)
 	--GenerateMonsters(monsterTypeID, countGroupsMin, countGroupsMax, countInGroupMin, countInGroupMax)
 	local num = OBJECTIVES.destroySource_power;
 	if GetDifficulty() == DIFFICULTY_HEROIC then 
-		GenerateMonsters(		CREATURE_SPRITE, 10, 15, 25*num, 40*num);
-		GenerateMonsters(	CREATURE_WAR_DANCER,  5, 10, 15*num, 25*num);
-		GenerateMonsters(	 CREATURE_GRAND_ELF,  4,  8,  8*num, 12*num);
+		GenerateMonsters(		CREATURE_SPRITE,  6, 10, 15*num, 30*num);
+		GenerateMonsters(	CREATURE_WAR_DANCER,  4,  8,  9*num, 15*num);
+		GenerateMonsters(	 CREATURE_GRAND_ELF,  2,  4,  5*num, 8*num);
 		print("Druids have spawned monsters. Difficulty is HEROIC");
 	elseif GetDifficulty() == DIFFICULTY_HARD then 
-		GenerateMonsters(		CREATURE_SPRITE,  8, 12, 20*num, 30*num);
-		GenerateMonsters(	CREATURE_WAR_DANCER,  4,  8, 12*num, 20*num);
-		GenerateMonsters(	  CREATURE_WOOD_ELF,  3,  6,  7*num, 11*num);
+		GenerateMonsters(		CREATURE_SPRITE,  6,  9, 10*num, 20*num);
+		GenerateMonsters(	CREATURE_WAR_DANCER,  4,  7,  9*num, 15*num);
+		GenerateMonsters(	  CREATURE_WOOD_ELF,  2,  3,  5*num, 8*num);
 		print("Druids have spawned monsters. Difficulty is HARD");
 	elseif GetDifficulty() == DIFFICULTY_NORMAL then 
-		GenerateMonsters(		 CREATURE_PIXIE,  8, 10, 30, 40);
-		GenerateMonsters(CREATURE_BLADE_JUGGLER,  3,  6, 15, 20);
-		GenerateMonsters(	  CREATURE_WOOD_ELF,  1,  2,  8, 10);
+		GenerateMonsters(		 CREATURE_PIXIE,  5,  8, 22, 30);
+		GenerateMonsters(CREATURE_BLADE_JUGGLER,  2,  6, 12, 20);
+		GenerateMonsters(	  CREATURE_WOOD_ELF,  1,  2,  5, 8);
 		print("Druids have spawned monsters. Difficulty is NORMAL");
 	elseif GetDifficulty() == DIFFICULTY_EASY then 
-		GenerateMonsters(		 CREATURE_PIXIE,  4,  8, 15, 25);
-		GenerateMonsters(CREATURE_BLADE_JUGGLER,  2,  4, 10, 14);
+		GenerateMonsters(		 CREATURE_PIXIE,  4,  7, 12, 18);
+		GenerateMonsters(CREATURE_BLADE_JUGGLER,  2,  3,  8, 10);
 		print("Druids have spawned monsters. Difficulty is EASY");
 	end
 end

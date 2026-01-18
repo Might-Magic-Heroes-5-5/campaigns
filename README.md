@@ -268,13 +268,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
-- scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged. (by Rommy)
 
 ### C1M2 – Haven: Rebellion
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: Impossible difficulty was treated as Normal
-- scene(intro): Removed overly green fog ambience (by Rommy)
-- scene(capture Ashwood): Removed overly green fog ambience (by Rommy)
 
 ### C1M3 – Haven: The Siege
 - fix: Tutorial is available and updated for 5.5
@@ -282,12 +279,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way
 - new: added Memory Mentor
 - new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact
-- scene(clear scouts): Footman cheer animation is now in sync with Isabel's one (by Rommy)
 
 ### C1M4 – Haven: The Trap
 - fix: Tutorial is available and updated for 5.5
 - new: added Memory Mentor
-- scene(boots of Levitation): Added missing Isabel's sword animation effect (by Rommy)
 
 ### C1M5 – Haven: The Fall of the King
 - fix: Tutorial is available and updated for 5.5
@@ -296,80 +291,53 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: increased grail spawn locations from 3 to 11
 - change: "Protect Dunmor" quest - enemy onslaught attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
 - change: "Protect Dunmor" quest - onslaught attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
-- scene(intro): Added missing Freyda cheer animation when she agrees with Godric (by Rommy)
-- scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast (by Rommy)
-
-### C2M2 – Inferno: The Promise
-- scene(clash with Haven army): Added missing Griffin flying animation at the end of scene (by Rommy)
 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
 - fix: Player 2 heroes no longer flee battles
-- change: Elder Druids circle week increased
-- scene(defeat Gilraen): Remove overly fog ambience
-- scene(intro): Added Observatory doodad and Agrael happy animation (by Rommy)
-- scene(capture Sylvan city): Added a Tree of Knowledge doodad (by Rommy)
-- scene(at first week of Sylvan growth): Added a Tree of Knowledge doodad (by Rommy)
-- scene(attack druids): Added missing stone circle doodads (by Rommy)
-- scene(deafeated druids): Added missing stone circle doodads (by Rommy)
+- change: Reduced amount and power of weekly elven spawns per week due to Elven source magic.
+- change: Elder Druids circle power increased
 
 ### C2M4 – Inferno: The Ship
-- scene(intro): Added missing Observatory doodad. (by Rommy)
-- scene(meet dragons): Improved Dragon entrance animation timing. (by Rommy)
-- scene(meet dragons): Added missing attack animation at dragon entrance (by Rommy)
-- scene(deserting units): Added mountain and misc doodads in the background (by Rommy)
-- scene(capture Nebyrciaz): Added missing Agrael cast animation (by Rommy)
+- fix: Erewell stopped being reinforced after week 4.
 
 ### C3M1 – Necropolis: The Temptation
+- changed: Starting bonus choice
+- changed: Academy heroes tracking is available on all difficulties but their detection range is being reduced.
 - fix: Enemy hero Amin did not patrol the map as inteneded
-- scene(intro): Removed overly foggy ambience (by Rommy)
-- scene(Markal death): Added missing Markal spell effect during cast (by Rommy)
 
 ### C3M2 – Necropolis: The Attack
+- fix: Certain player movement could make patrols halt and stop at place indefinitely
 - fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one
 
 ### C3M3 – Necropolis: The Invasion
 - fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
 - change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description
-- scene(gather skeletons): Slightly adjusted camera set movement to sync with army cheer (by Rommy)
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
 - fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle
+- change: Godric reinforcement mechanic is now aligned with game difficulty level.
 - change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost
-- scene(at prison): Added missing Freyda reaction after Markal cast (by Rommy)
-
-### C4M1 – Dungeon: The Clanlord
-- scene(intro): Added grass and mountain doodads (by Rommy)
 
 ### C4M2 – Dungeon: The Expansion
 - fix: Removed an undeground Vampire lords stack  as it could not be attacked nor it guarded any treasures.
-- scene(intro): Improved Raelag and Matron idle animation pace. (by Rommy)
-- scene(meet Shadya): Improved Raelag idle animation pace. (by Rommy)
-- scene(messengers escape): Adjusted camera angle to show Raelag talking instead of pointing at the empty sky. (by Rommy)
-- scene(grail in town): Added missing Raeleg spell effect during cast. (by Rommy)
 
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
 - fix: Red AI player (Inferno) heroes could freeze till end of game
 - fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met
-- scene(Inferno arrival): Added missing spell effect during Raeleg cheer (by Rommy)
-- scene(Inferno defeated): Added missing spell effect during Raeleg cheer (by Rommy)
 
 ### C4M4 – Dungeon: The March
 - fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
 
 ### C4M5 – Dungeon: Raelag's Offer
 - fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
-- scene(outro): Fixed endless hoof movement sound (by Rommy)
 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
-
-### C5M2 – Sylvan: The Emerald Ones
-- scene(dragons assembled): Adjusted camera height to keep Findan inside frame (by Rommy)
 
 ### C5M3 - Sylvan: The Defense
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
@@ -379,11 +347,6 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
 - fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan.
 
-### C5M4 - Sylvan: The Archipelago
-- scene(defend Tieru): Camera angle adjacent to show Findan instead of the sky above him (by Rommy)
-- scene(Tieru death):  Biara's Meteor Shower that kills Tieru is presented properly (by Rommy)
-- scene(outro): Biara escape spell effect was not properly shown (by Rommy)
-
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
@@ -391,8 +354,6 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
 - new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
 - changed: Night counter increases 25% faster at Hard, 50% faster at Heroic and 75% faster at Impossible difficulty
-- scene(intro): Sound volume was too high (by Rommy)
-- scene(outro): Added missing spell effect for Findan at the end (by Rommy)
 
 ### C6M2 - Academy: The Liberation
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
@@ -401,7 +362,86 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
+
+## Dialogue changes
+
+Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and Mооnst@r from the [Remastered Campaigns project](https://forum.heroesworld.ru/showthread.php?t=18706).
+
+### C1M1 – Haven: The Queen
+- scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged.
+
+### C1M2 – Haven: Rebellion
+- scene(intro): Removed overly green fog ambience
+- scene(capture Ashwood): Removed overly green fog ambience
+
+### C1M3 – Haven: The Siege
+- scene(clear scouts): Footman cheer animation is now in sync with Isabel's one
+
+### C1M4 – Haven: The Trap
+- scene(boots of Levitation): Added missing Isabel's sword animation effect
+
+### C1M5 – Haven: The Fall of the King
+- scene(intro): Added missing Freyda cheer animation when she agrees with Godric
+- scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast
+
+### C2M2 – Inferno: The Promise
+- scene(clash with Haven army): Added missing Griffin flying animation at the end of scene
+
+### C2M3 – Inferno: The Conquest
+- scene(defeat Gilraen): Remove overly fog ambience
+- scene(intro): Added Observatory doodad and Agrael happy animation
+- scene(capture Sylvan city): Added a Tree of Knowledge doodad
+- scene(at first week of Sylvan growth): Added a Tree of Knowledge doodad
+- scene(attack druids): Added missing stone circle doodads
+- scene(deafeated druids): Added missing stone circle doodads
+
+### C2M4 – Inferno: The Ship
+- scene(intro): Added missing Observatory doodad.
+- scene(meet dragons): Improved Dragon entrance animation timing.
+- scene(meet dragons): Added missing attack animation at dragon entrance
+- scene(deserting units): Added mountain and misc doodads in the background
+- scene(capture Nebyrciaz): Added missing Agrael cast animation
+
+### C3M1 – Necropolis: The Temptation
+- scene(intro): Removed overly foggy ambience
+- scene(Markal death): Added missing Markal spell effect during cast
+
+### C3M3 – Necropolis: The Invasion
+- scene(gather skeletons): Slightly adjusted camera set movement to sync with army cheer
+
+### C3M5 – Necropolis: Lord of Heresh
+- scene(at prison): Added missing Freyda reaction after Markal cast
+
+### C4M1 – Dungeon: The Clanlord
+- scene(intro): Added grass and mountain doodads
+
+### C4M2 – Dungeon: The Expansion
+- scene(intro): Improved Raelag and Matron idle animation pace.
+- scene(meet Shadya): Improved Raelag idle animation pace.
+- scene(messengers escape): Adjusted camera angle to show Raelag talking instead of pointing at the empty sky.
+- scene(grail in town): Added missing Raeleg spell effect during cast.
+
+### C4M3 – Dungeon: The Cultists
+- scene(Inferno arrival): Added missing spell effect during Raeleg cheer
+- scene(Inferno defeated): Added missing spell effect during Raeleg cheer
+
+### C4M5 – Dungeon: Raelag's Offer
+- scene(outro): Fixed endless hoof movement sound
+
+### C5M2 – Sylvan: The Emerald Ones
+- scene(dragons assembled): Adjusted camera height to keep Findan inside frame
+
+### C5M4 - Sylvan: The Archipelago
+- scene(defend Tieru): Camera angle adjacent to show Findan instead of the sky above him
+- scene(Tieru death):  Biara's Meteor Shower that kills Tieru is presented properly
+- scene(outro): Biara escape spell effect was not properly shown
+
+### C5M5 - Sylvan: The Vampire Lord
+- scene(intro): Sound volume was too high
+- scene(outro): Added missing spell effect for Findan at the end
+
+### C6M3 - Academy: The Triumvirate
 - scene(intro): Added missing idle animation which caused Narxes to T-pose
 
 ### C6M4 – Academy: The Alliance
-- scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them (by Mооnst@r)
+- scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them

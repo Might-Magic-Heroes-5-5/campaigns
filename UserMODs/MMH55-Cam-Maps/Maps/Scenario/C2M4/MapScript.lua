@@ -1,13 +1,45 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
+    sleep()
+end
+
+H55c_AI_CONTROLLED = {
+  player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+      state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+	   heroes = {},
+	  enemies = {},
+  },
+  player2 = {		   -- Green Sylvan AI player
+      state = 2,	   -- AI player with specific purpose so control set to 2
+	   heroes = {},
+  	enemies = {
+	    { priority = 1.0, heroes = 0.8, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+    }
+  },
+  player3 = { 		   -- Orange Inferno AI player
+      state = 2,       -- AI player with specific purpose so control set to 2
+	   heroes = {},
+  	enemies = {
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+    }
+  }
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M4");
     LoadHeroAllSetArtifacts("Agrael", "C2M3" );
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
-DragonsDefeated = 0;
 Priority = 0;
 
 EnableHeroAI("Elleshar",nil);
@@ -54,65 +86,112 @@ SetPlayerResource(PLAYER_2,MERCURY,2);
 SetPlayerResource(PLAYER_2,GEM,2);
 SetPlayerResource(PLAYER_2,GOLD,10000);
 
-StartDialogScene("/DialogScenes/C2/M4/R1/DialogScene.xdb#xpointer(/DialogScene)");
+CreatureList = {CREATURE_PIXIE,
+				CREATURE_SPRITE,
+				CREATURE_DRYAD,
+				CREATURE_BLADE_JUGGLER,
+				CREATURE_WAR_DANCER,
+				CREATURE_BLADE_SINGER,
+				CREATURE_WOOD_ELF,
+				CREATURE_GRAND_ELF,
+				CREATURE_SHARP_SHOOTER,
+				CREATURE_DRUID,
+				CREATURE_DRUID_ELDER,
+				CREATURE_HIGH_DRUID,
+				CREATURE_UNICORN,
+				CREATURE_WAR_UNICORN,
+				CREATURE_WHITE_UNICORN,
+				CREATURE_TREANT,
+				CREATURE_TREANT_GUARDIAN,
+				CREATURE_ANGER_TREANT,
+				CREATURE_GREEN_DRAGON,
+				CREATURE_GOLD_DRAGON,
+				CREATURE_RAINBOW_DRAGON,
+				};
+CreatureList.n = 21;
+	
 
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/C2/M4/R1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	captureInfernoTownStart = function()
+		StartDialogScene("/DialogScenes/C2/M4/R2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	captureInfernoTownFinish = function()
+		StartDialogScene("/DialogScenes/C2/M4/R3/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+    end,
+	
+	dragonsStarted = function()
+		StartDialogScene("/DialogScenes/C2/M4/D1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	dragonsFight = function()
+		StartDialogScene("/DialogScenes/C2/M4/R5/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	dragonsNoElves = function()
+		StartDialogScene("/DialogScenes/C2/M4/R6/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	dragonsFinish500 = function()
+		StartDialogScene("/DialogScenes/C2/M4/R7/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	dragonsFinish100 = function()
+		StartDialogScene("/DialogScenes/C2/M4/R4/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/C2/M4/R8/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+}
 
 function ErewelReinforcements()
-	print("Thread ErewelReinforcements has been started");
-	TimeFactor = GetDate(WEEK);
-	while GetObjectOwner("imarium") == PLAYER_2 do
-		sleep(10);
-		if TimeFactor < GetDate(WEEK) then
-			TimeFactor = GetDate(WEEK);
-			if GetDifficulty() == DIFFICULTY_EASY then
-				print("Difficulty level is NORMAL. Reinforcements did not add");
-				AddObjectCreatures("imarium",CREATURE_PIXIE, 7);
-				AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 5);
-				AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
-				AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 5);
-				AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 1);
-			else
-				if GetDifficulty() == DIFFICULTY_NORMAL then
-					print("Difficulty level is NORMAL. Reinforcements did not add");
-					AddObjectCreatures("imarium",CREATURE_PIXIE, 10);
-					AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 8);
-					AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
-					AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 7);	
-					AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 3);
-					AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 1);
-				else
-					if GetDifficulty() == DIFFICULTY_HARD then
-						print("Difficulty level is HARD. Reinforcements added...");
-						AddObjectCreatures("imarium",CREATURE_PIXIE, 15);
-						AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 12);
-						AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 6);
-						AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 10);	
-						AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 4);
-						AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 2);
-					else
-						if GetDifficulty() == DIFFICULTY_HEROIC then
-							print("Difficulty level is HEROIC. Reinforcements added...");
-							AddObjectCreatures("imarium",CREATURE_PIXIE, 20);
-							AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 16);
-							AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 8);
-							AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 14);	
-							AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 6);
-							AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 3);
-						end;
-					end;
-				end;
-			end;
-		end;
-	end;
-end;
-
-function WaitDay()
-	local Xday;
-	Xday = GetDate(DAY) + 1;
-	while Xday ~= GetDate(DAY) do
-		sleep();
-	end;
-end;
+	if GetDifficulty() == DIFFICULTY_EASY then
+		print("Difficulty level is NORMAL. Reinforcements did not add");
+		AddObjectCreatures("imarium",CREATURE_PIXIE, 7);
+		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 5);
+		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
+		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 5);
+		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 1);
+	elseif GetDifficulty() == DIFFICULTY_NORMAL then
+		print("Difficulty level is NORMAL. Reinforcements did not add");
+		AddObjectCreatures("imarium",CREATURE_PIXIE, 10);
+		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 8);
+		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
+		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 7);	
+		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 3);
+		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 1);
+	elseif GetDifficulty() == DIFFICULTY_HARD then
+		print("Difficulty level is HARD. Reinforcements added...");
+		AddObjectCreatures("imarium",CREATURE_PIXIE, 15);
+		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 12);
+		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 6);
+		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 10);	
+		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 4);
+		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 2);
+	elseif GetDifficulty() == DIFFICULTY_HEROIC then
+		print("Difficulty level is HEROIC. Reinforcements added...");
+		AddObjectCreatures("imarium",CREATURE_PIXIE, 20);
+		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 16);
+		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 8);
+		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 14);	
+		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 6);
+		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 3);
+	end
+end
 
 function EnemyGate()
 	print("Thread Enemy Gate has been started...");
@@ -125,301 +204,188 @@ function EnemyGate()
 			SetRegionBlocked("border4",0,2);
 			print("Now is a third week. Gate to the enemy has been opened.");
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
-function AgraelSurvive()
-	print("Thread AgraelSurvive has been started...");
-	while 1 do
-		sleep(10);
-		if (IsHeroAlive("Agrael") == nil) then
-			print("Our glorious hero is dead, but he'll live in our hearts forever...");
-			SetObjectiveState("prim2",OBJECTIVE_FAILED);
-			sleep(15);
-			Loose(0);
-			break;
-		end;
-	end;
-end;
+OBJECTIVES = {
+	state = {
+		captureImarium   	= { "prim1",            1 }, -- Capture town of Imarium
+		isAlive				= { "prim2",            1 }, -- Agrael must survive
+		captureInfernoTown 	= { "sec_capture_town", 1 }, -- Capture Inferno town of 
+		dragons				= { "sec_dragons",	    0 }, -- Bring archers to Dragons
+		desentir			= { "_",			    1 }, -- Elven Desentir trigger
+	},
 
-function ImariumCaptured()
-	print("Thread ImariumCaptured has been started...");
-	while 1 do
-		sleep(10);
-		if (GetObjectOwner("imarium") == 1) then
-			print("Imarium captured!!!");
-			print("You won!!!");
-			SaveHeroAllSetArtifactsEquipped("Agrael", "C2M4");
-			StartDialogScene("/DialogScenes/C2/M4/R8/DialogScene.xdb#xpointer(/DialogScene)");
-			SetObjectiveState("prim1",OBJECTIVE_COMPLETED);
-			sleep(5);
-			SetObjectiveState("prim2",OBJECTIVE_COMPLETED);
-			sleep(15);
-			Win(0);
-			break;
-		end;
-	end;
-end;
-
-function PlayerWin()
-	print("Thread PlayerWin has been started...");
-	while 1 do
-		sleep(10);
-		local heroes = GetObjectsInRegion("ship",OBJECT_HERO);
-		if heroes[0] == "Agrael" then
-			print("You won!!!");
-			SaveHeroAllSetArtifactsEquipped("Agrael", "C2M4");
-			StartDialogScene("/DialogScenes/C2/M4/R8/DialogScene.xdb#xpointer(/DialogScene)");
-			SetObjectiveState("prim1",OBJECTIVE_COMPLETED);
-			sleep(5);
-			SetObjectiveState("prim2",OBJECTIVE_COMPLETED);
-			sleep(15);
-			Win(0);
-			break;
-		end;
-	end;
-end;
-
-function Day2()
-	print("Thread Day2 has been started...");
-	while 1 do
-		sleep(10);
-		if (GetDate(DAY) == 2) then
-			print("Objective CaptureNebercias has been given...");
-			StartDialogScene("/DialogScenes/C2/M4/R2/DialogScene.xdb#xpointer(/DialogScene)");
-			SetObjectiveState("sec_capture_town",OBJECTIVE_ACTIVE);
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		H55_CamFixTooManySkills(PLAYER_1,"Agrael");
+		startThread(EnemyGate);
+		Trigger(OBJECT_TOUCH_TRIGGER, "dragons", "DialogBeforeCombatVSdragons", nil);
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons", "OBJECTIVES._dragons_active");
+		startThread(AIPressingTownHolin,"Diraya");
+		CINEMATICS.intro();
+	end,
+	
+	run = function()
+		while true do
 			sleep(10);
-			startThread(NeberciasCaptured);
-			break;
-		end;
-	end;
-end;
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
 
-
-function NeberciasCaptured()
-	print("Thread NeberciasCaptured has been started...");
-	while 1 do
-		sleep(10);
-		if (GetObjectOwner("nebircias") == 1) then
-			print("Nebercias has been captured");
-			StartDialogScene("/DialogScenes/C2/M4/R3/DialogScene.xdb#xpointer(/DialogScene)");
-			sleep(10);
+			if GetObjectiveState("prim2") == OBJECTIVE_FAILED then
+				Loose();
+			end
+			
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Agrael", "C2M4");
+				sleep(5);
+				CINEMATICS.outro();
+				sleep(10);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	captureImarium_reinforce_week = 1,
+	captureImarium = function()
+		if OBJECTIVES.state.captureImarium[2] == 1 then
+			if GetObjectOwner("imarium") == PLAYER_1 then
+				SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
+				OBJECTIVES.state.captureImarium[2] = 10;
+			elseif OBJECTIVES.captureImarium_reinforce_week < OBJECTIVES.date / 7 then
+				ErewelReinforcements();
+				OBJECTIVES.captureImarium_reinforce_week = OBJECTIVES.captureImarium_reinforce_week + 1;
+			end
+		end
+	end,
+	
+	isAlive = function()
+		if IsHeroAlive("Agrael") == nil then
+			SetObjectiveState( "prim2", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	captureInfernoTown = function()
+		if OBJECTIVES.state.captureInfernoTown[2] == 1 and OBJECTIVES.date == 2 then
+			CINEMATICS.captureInfernoTownStart();
+			SetObjectiveState("sec_capture_town", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.desentir[2] = 1;
+			OBJECTIVES.state.captureInfernoTown[2] = 2;
+		elseif OBJECTIVES.state.captureInfernoTown[2] == 2 and GetObjectOwner("nebircias") == PLAYER_1 then
+			CINEMATICS.captureInfernoTownFinish();
 			SetObjectiveState("sec_capture_town",OBJECTIVE_COMPLETED);
-			--ObjectiveExp("Agrael");
-			sleep(10);
 			SetRegionBlocked("gate1",nil,2);
 			SetRegionBlocked("gate3",nil,2);
 			SetRegionBlocked("gate_u1",nil,3);
 			SetRegionBlocked("gate_u3",nil,3);
 			SetRegionBlocked("gate_u4",nil,3);
 			SetRegionBlocked("gate_u5",nil,3);
-			break;
-		end;
-	end;
-end;
-
-function DragonsObjective()
-	print("Thread DragonsObjective has been started...");
-	StartDialogScene("/DialogScenes/C2/M4/D1/DialogScene.xdb#xpointer(/DialogScene)");
-	sleep(10);
-	SetObjectiveState("sec_dragons",OBJECTIVE_ACTIVE);
-	local WoodElf = GetHeroCreatures ("Agrael",CREATURE_WOOD_ELF);
-	local GrandElf = GetHeroCreatures ("Agrael",CREATURE_GRAND_ELF);
-	local SharpShooter = GetHeroCreatures ("Agrael",CREATURE_SHARP_SHOOTER);
-	sleep(4);
-	if (WoodElf+GrandElf+SharpShooter > 99) then
-		print("Count of Elves more than 99");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons",nil);
-		if (WoodElf+GrandElf+SharpShooter >= 500) then
-			print("Agrael bring to Dragons more than 500 elves");
-			GiveArtefact("Agrael",ARTIFACT_DRAGON_FLAME_TONGUE);
-			StartDialogScene("/DialogScenes/C2/M4/R7/DialogScene.xdb#xpointer(/DialogScene)");
-		else
-			print("Agrael bring to Dragons more then 100 wood elves!");
-			StartDialogScene("/DialogScenes/C2/M4/R4/DialogScene.xdb#xpointer(/DialogScene)");
-		end;
-		SetObjectiveState("sec_dragons",OBJECTIVE_COMPLETED);
-		ObjectiveExp("Agrael");
-		RemoveHeroCreatures("Agrael",CREATURE_WOOD_ELF,10000);
-		RemoveHeroCreatures("Agrael",CREATURE_GRAND_ELF,10000);
-		RemoveHeroCreatures("Agrael",CREATURE_SHARP_SHOOTER,10000);
-		RemoveObject("dragons");
-	else
-		print("Now Agrael does not have enough elves.");
-		startThread(AgraelLeaveDragons);
-	end;
-end;
-
-function AgraelLeaveDragons()
-	print("Thread AgraelLeaveDragons has been started...");
-	while 1 do
-		sleep(10);
-		if (IsObjectInRegion("Agrael","Dragons") == nil) and (DragonsDefeated == 0) then
-			print("Agrael has returned to dragons");
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons","DragonsObjectiveCompleted");
-			break;
-		end;
-	end;
-end;
-
-
-function DragonsObjectiveCompleted()
-	print("Thread DragonsObjectiveCompleted has been started...");
-	local WoodElf = GetHeroCreatures ("Agrael",CREATURE_WOOD_ELF);
-	local GrandElf = GetHeroCreatures ("Agrael",CREATURE_GRAND_ELF);
-	local SharpShooter = GetHeroCreatures ("Agrael",CREATURE_SHARP_SHOOTER);
-	print("Number of Elves = ",GrandElf+WoodElf+SharpShooter);
-	if (WoodElf+GrandElf+SharpShooter > 99) then
-		print("Count of Elves more than 99");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons",nil);
-		if (WoodElf+GrandElf+SharpShooter >= 500) then
-			print("Agrael bring to Dragons more than 500 elves");
-			GiveArtefact("Agrael",ARTIFACT_DRAGON_FLAME_TONGUE);
-			StartDialogScene("/DialogScenes/C2/M4/R7/DialogScene.xdb#xpointer(/DialogScene)");
-		else
-			print("Agrael bring to Dragons more then 100 wood elves!");
-			StartDialogScene("/DialogScenes/C2/M4/R4/DialogScene.xdb#xpointer(/DialogScene)");
-		end;
-		SetObjectiveState("sec_dragons",OBJECTIVE_COMPLETED);
-		ObjectiveExp("Agrael");
-		RemoveHeroCreatures("Agrael",CREATURE_WOOD_ELF,10000);
-		RemoveHeroCreatures("Agrael",CREATURE_GRAND_ELF,10000);
-		RemoveHeroCreatures("Agrael",CREATURE_SHARP_SHOOTER,10000);
-		RemoveObject("dragons");
-	else
-		print("Agrael bring to Dragons not enough elves. Need 100");
-		StartDialogScene("/DialogScenes/C2/M4/R6/DialogScene.xdb#xpointer(/DialogScene)");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons","DragonsObjectiveCompleted");
-	end;
-end;
-
-
---this function deletes some preserve creatures from Agrael's army every day:
-function H55_TriggerDaily()
-	print("Thread desentir has been started...");
-	CreatureList = {CREATURE_PIXIE,
-					CREATURE_SPRITE,
-					CREATURE_DRYAD,
-					CREATURE_BLADE_JUGGLER,
-					CREATURE_WAR_DANCER,
-					CREATURE_BLADE_SINGER,
-					CREATURE_WOOD_ELF,
-					CREATURE_GRAND_ELF,
-					CREATURE_SHARP_SHOOTER,
-					CREATURE_DRUID,
-					CREATURE_DRUID_ELDER,
-					CREATURE_HIGH_DRUID,
-					CREATURE_UNICORN,
-					CREATURE_WAR_UNICORN,
-					CREATURE_WHITE_UNICORN,
-					CREATURE_TREANT,
-					CREATURE_TREANT_GUARDIAN,
-					CREATURE_ANGER_TREANT,
-					CREATURE_GREEN_DRAGON,
-					CREATURE_GOLD_DRAGON,
-					CREATURE_RAINBOW_DRAGON,
-					};
-	CreatureList.n = 21;
-	for i=1,21 do
-		if GetHeroCreatures("Agrael",CreatureList[i]) > 5 then
-			if i <= 6 then
-				quantity = 1+random(6);
-			end;
-			if i > 6 and i <=15 then
-				quantity = 1+random(2);
-			end;
-			if i > 15 then
-				quantity = 1;
-			end;
-			RemoveHeroCreatures("Agrael",CreatureList[i],quantity);
-			--print("Agrael lost ",quantity," creatures. Creature ID = ",CreatureList[i]);
-		else
-			--print("Hero has less then 5 creatures this type. Creature ID = ",CreatureList[i]);
-		end;
-	end;
-	sleep(10);
-	--Trigger(NEW_DAY_TRIGGER,"desentir");
-end;
-
+			OBJECTIVES.state.captureInfernoTown[2] = 10;
+		end
+	end,
+	
+	_dragons_active = function(hero)
+		if hero == "Agrael" then
+			OBJECTIVES.state.dragons[2] = OBJECTIVES.state.dragons[2] + 1;
+		end
+	end,
+	
+	_dragons_countElves = function()
+		return (GetHeroCreatures("Agrael",CREATURE_WOOD_ELF) + GetHeroCreatures("Agrael",CREATURE_GRAND_ELF) + GetHeroCreatures("Agrael", CREATURE_SHARP_SHOOTER))
+	end,
+	
+	dragons = function()
+		if OBJECTIVES.state.dragons[2] == 1 then
+			CINEMATICS.dragonsStarted();
+			SetObjectiveState( "sec_dragons", OBJECTIVE_ACTIVE );
+			if OBJECTIVES._dragons_countElves() > 99 then
+				OBJECTIVES.state.dragons[2] = 3;
+			else
+				OBJECTIVES.state.dragons[2] = 2;
+			end
+		elseif OBJECTIVES.state.dragons[2] == 3 then
+			if OBJECTIVES._dragons_countElves() > 99 then
+				Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons", nil);
+				if (OBJECTIVES._dragons_countElves() >= 500) then
+					GiveArtefact("Agrael", ARTIFACT_DRAGON_FLAME_TONGUE);
+					CINEMATICS.dragonsFinish500();
+				else
+					CINEMATICS.dragonsFinish100();
+				end
+				SetObjectiveState("sec_dragons", OBJECTIVE_COMPLETED);
+				ObjectiveExp("Agrael");
+				RemoveHeroCreatures("Agrael", CREATURE_WOOD_ELF, 10000);
+				RemoveHeroCreatures("Agrael", CREATURE_GRAND_ELF, 10000);
+				RemoveHeroCreatures("Agrael", CREATURE_SHARP_SHOOTER, 10000);
+				RemoveObject("dragons");
+				SetRegionBlocked("Dragons",nil,2);
+				SetRegionBlocked("Dragons",nil,3);
+				OBJECTIVES.state.dragons[2] = 10;
+			else
+				CINEMATICS.dragonsNoElves();
+				OBJECTIVES.state.dragons[2] = 2;
+			end
+		elseif OBJECTIVES.state.dragons[2] == 4 then
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons", nil);
+			RemoveObject("dragons");
+			SetRegionBlocked("Dragons",nil,2);
+			SetRegionBlocked("Dragons",nil,3);
+			SetObjectiveState("sec_dragons", OBJECTIVE_FAILED);
+			OBJECTIVES.state.dragons[2] = 11;
+		end
+	end,
+	
+	_desentir_day = 999,
+	desentir = function()
+		if OBJECTIVES.state.desentir[2] == 1 then
+			OBJECTIVES._desentir_day = OBJECTIVES.date + 1;
+			OBJECTIVES.state.desentir[2] = 2;
+		elseif OBJECTIVES.state.desentir[2] == 2 and OBJECTIVES._desentir_day <= OBJECTIVES.date then
+			for i=1,21 do
+				if GetHeroCreatures("Agrael", CreatureList[i]) > 5 then
+					if i <= 6 			then quantity = 1+random(6); end
+					if i > 6 and i <=15 then quantity = 1+random(2); end
+					if i > 15 			then quantity = 1; 			 end
+					RemoveHeroCreatures("Agrael", CreatureList[i], quantity);
+					--print("Agrael lost ",quantity," creatures. Creature ID = ",CreatureList[i]);
+				else
+					--print("Hero has less then 5 creatures this type. Creature ID = ",CreatureList[i]);
+				end
+			end
+			OBJECTIVES._desentir_day = OBJECTIVES.date + 1;
+		end
+	end,
+}
 
 function DialogBeforeCombatVSdragons(heroname)
 	HeroName = heroname;
 	print("Dialog 1 check has been started...");
 	QuestionBox("/Maps/Scenario/C2M4/BeforeCombatVSDragons.txt", "combatVSdragons");
-end;
+end
 
 function combatVSdragons(heroname)
 	print("Thread combatVSdragons has been started...");
-	StartDialogScene("/DialogScenes/C2/M4/R5/DialogScene.xdb#xpointer(/DialogScene)");
+	CINEMATICS.dragonsFight();
 	StartCombat(HeroName, nil,3,CREATURE_SHADOW_DRAGON,11,CREATURE_SHADOW_DRAGON,11,CREATURE_SHADOW_DRAGON,11,nil,"FinishCombat");
-end;
+end
 
 function FinishCombat(heroname,result)
 	print("Thread FinishCombat has been started");
 	if result == not nil then
-		print("Our glorious ",heroname," has killed the dragons!!!");
-		RemoveObject("dragons");
-		SetRegionBlocked("Dragons",nil,2);
-		SetRegionBlocked("Dragons",nil,3);
-		DragonsDefeated = 1;
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons",nil);
-		SetObjectiveState("sec_dragons",OBJECTIVE_FAILED);
-	else
-		print(heroname, " has been killed by dragons! :(");
-	end;
-end;
-
-
-function ObjectiveExp(HeroName)
-	local ToLevel = GetExpToLevel(GetHeroLevel(HeroName)+1);
-	local delta = (ToLevel - GetHeroStat(HeroName, STAT_EXPERIENCE)) / 2;
-	ChangeHeroStat(HeroName, STAT_EXPERIENCE,delta);
-	print("Now ",HeroName, " has ", GetHeroStat(HeroName, STAT_EXPERIENCE)," exp");
-end;
-
-function GetExpToLevel( j )
-	local a = 1;
-	if j >= 30 then a = 30 else a = j end;
-	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
-	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
-	ExpArrayLess12.n = 12;
-					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
-	ExpArrayMore12 = {24320,28784,34141,40569,48283,57539,68647,81977,97972,117166,140200,167839};
-	ExpArrayMore12.n = 12;
-					--LEVEL 25     26     27     28     29     30     31      32      33      34
-	ExpArrayMore25 = {201007,244126,304491,395040,539917,786208,1229533,2071000,3756484,7294215};
-	ExpArrayMore25.n = 10;
-	if a <= 12 then
-		sum = ExpArrayLess12[a];
-	else
-		if a < 25 then
-			sum = ExpArrayMore12[a-12];
-		else
-			if a < 35 then
-				sum = ExpArrayMore25[a-24];
-			else
-				print("Das ist fantastisch!!!");
-				sum = 0;
-			end;
-		end;
-	end;
-	print("Hero need ", sum, " experience to gain level ",a);
-	return sum;
-end;
-
-function DisableHeroAI()
-	InfernoHeroes = GetPlayerHeroes(PLAYER_3);
-	PreserveHeroes = GetPlayerHeroes(PLAYER_2);
-	for i=0,table.length(InfernoHeroes)-1 do
-		EnableHeroAI(InfernoHeroes[i],nil);
-		print("AI has been disabled for inferno hero ",InfernoHeroes[i]);
-	end;
-	for i=0,table.length(PreserveHeroes)-1 do
-		EnableHeroAI(PreserveHeroes[i],nil);
-		print("AI has been disabled for preserve hero ",PreserveHeroes[i]);
-	end;
-end;
+		OBJECTIVES.state.dragons[2] = 4;
+	end
+end
 
 function AIPressingTownHolin(heroname)
 	print("Thread AIPressingTownHolin has been started...")
@@ -427,40 +393,11 @@ function AIPressingTownHolin(heroname)
 		sleep(20);
 	until GetObjectOwner("holin") == PLAYER_1;
 	print("Town Holin has been captured by Player");
-	local x,y = GetObjectPosition("holin");
-	while 1 do
-		sleep(20);
-		if IsHeroAlive(heroname) == not nil then
-			HeroMovePointsToHolin = CalcHeroMoveCost(heroname,x,y);
-			AgraelMovePointsToHolin = CalcHeroMoveCost("Agrael",x,y);
-			x1,y1,Floor = GetObjectPosition("Agrael");
-			if IsObjectVisible(PLAYER_2, "Agrael") == nil or Floor ~= 0 then
-				Priority = 2;
-				SetAIHeroAttractor("holin", heroname, Priority);
-			else
-				if HeroMovePointsToHolin <= AgraelMovePointsToHolin then
-					Priority = 2;
-					SetAIHeroAttractor("holin", heroname, Priority);
-				else
-					Priority = -1;
-					SetAIHeroAttractor("holin", heroname, Priority);
-				end;
-			end;
-		else
-			print("Hero ",heroname," is dead.");
-			break;
-		end;
-	end;
-end;
+	if IsHeroAlive(heroname) == not nil then
+		H55c_AIAddHero(heroname);
+	end
+end
 
-H55_CamFixTooManySkills(PLAYER_1,"Agrael");
-startThread(Day2);
-startThread(AgraelSurvive);
-startThread(ImariumCaptured);
-startThread(EnemyGate);
-Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons","DragonsObjective");
-H55_NewDayTrigger = 1;
---Trigger(NEW_DAY_TRIGGER,"desentir");
-Trigger(OBJECT_TOUCH_TRIGGER, "dragons","DialogBeforeCombatVSdragons",nil);
-startThread(AIPressingTownHolin,"Diraya");
-startThread(ErewelReinforcements);
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
+startThread( H55c_AI_main )
