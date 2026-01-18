@@ -278,7 +278,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C1M3 – Haven: The Siege
 - fix: Tutorial is available and updated for 5.5
-- change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start.
+- change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start and increase faster based on diffiuclty.
 - change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way
 - new: added Memory Mentor
 - new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact
@@ -293,6 +293,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Tutorial is available and updated for 5.5
 - fix: Siege enemy heroes wander around instead of attacking the castle
 - new: added Memory Mentor
+- new: increased grail spawn locations from 3 to 11
+- change: "Protect Dunmor" quest - enemy onslaught attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
+- change: "Protect Dunmor" quest - onslaught attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
 - scene(intro): Added missing Freyda cheer animation when she agrees with Godric (by Rommy)
 - scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast (by Rommy)
 

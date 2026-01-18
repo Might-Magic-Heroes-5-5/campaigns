@@ -48,6 +48,7 @@ OBJECTIVES = {
 	run = function()
 		while true do
 			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
 					OBJECTIVES[key]();

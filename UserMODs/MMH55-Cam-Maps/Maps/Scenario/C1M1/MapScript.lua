@@ -12,13 +12,13 @@ HERO_NAME = "Isabell";
 
 TUTORIALS = {
     list = {
-    	{          "c1_m1_mill", REGION_ENTER_AND_STOP_TRIGGER, "windmill",      "TUTORIALS.explainMillOffer", 0 },
-    	{            "c1_m1_t4", REGION_ENTER_AND_STOP_TRIGGER, "attack04",           "TUTORIALS.howToAttack", 0 },
-    	{          "c1_m1_t3_1", REGION_ENTER_AND_STOP_TRIGGER,    "stop5",       "TUTORIALS.howToMoveCamera", 0 },
-    	{          "c1_m1_t3_1", REGION_ENTER_AND_STOP_TRIGGER,    "stop6",       "TUTORIALS.howToMoveCamera", 0 },
-    	{          "c1_m1_t3_1", REGION_ENTER_AND_STOP_TRIGGER,    "stop7",       "TUTORIALS.howToMoveCamera", 0 },
-    	{          "c1_m1_t3_1", REGION_ENTER_AND_STOP_TRIGGER,    "stop8",       "TUTORIALS.howToMoveCamera", 0 },
-    	{          "c1_m1_t3_1", REGION_ENTER_AND_STOP_TRIGGER,     "cam1",       "TUTORIALS.howToMoveCamera", 0 },
+    --{          "c1_m1_mill", REGION_ENTER_AND_STOP_TRIGGER, "windmill",      "TUTORIALS.explainMillOffer", 0 },
+    --{            "c1_m1_t4", REGION_ENTER_AND_STOP_TRIGGER, "attack04",           "TUTORIALS.howToAttack", 0 },
+    	{      "howToUseCamera", REGION_ENTER_AND_STOP_TRIGGER,    "stop5",       "TUTORIALS.howToUseCamera", 0 },
+    	{      "howToUseCamera", REGION_ENTER_AND_STOP_TRIGGER,    "stop6",       "TUTORIALS.howToUseCamera", 0 },
+    	{      "howToUseCamera", REGION_ENTER_AND_STOP_TRIGGER,    "stop7",       "TUTORIALS.howToUseCamera", 0 },
+    	{      "howToUseCamera", REGION_ENTER_AND_STOP_TRIGGER,    "stop8",       "TUTORIALS.howToUseCamera", 0 },
+    	{      "howToUseCamera", REGION_ENTER_AND_STOP_TRIGGER,     "cam1",       "TUTORIALS.howToUseCamera", 0 },
     	{            "c1_m1_t7", REGION_ENTER_AND_STOP_TRIGGER,       "t7",      "TUTORIALS.explainResources", 0 },
     	{            "c1_m1_t8", REGION_ENTER_AND_STOP_TRIGGER,       "t8", "TUTORIALS.explainBoostBuildings", 0 },
     	{           "c1_m1_t10",          HERO_LEVELUP_TRIGGER,  HERO_NAME,      "TUTORIALS.howToInspectHero", 0 },
@@ -26,19 +26,18 @@ TUTORIALS = {
     	{      "c1_m1_t11_hero",                        COMBAT,          0,                                 0, 0 },
     	{       "c1_m1_t11_new",                        COMBAT,          0,                                 0, 0 },
     	{          "c1_m1_t6_1",                        THREAD,          0,               "TUTORIALS.endTurn", 0 },
-    	{            "c1_m1_t2",                        THREAD,          0,         "TUTORIALS.howToMoveHero", 0 },
+    	{			 "c1_m1_t1",                        THREAD,          0,       "TUTORIALS.explainTaskPane", 0 },
+    	--{            "c1_m1_t2",                        THREAD,          0,         "TUTORIALS.howToMoveHero", 0 },
     	{       "level_up_hint",                        WINDOW,          0,                                 0, 0 },
-    	{ "creatures_join_hint",                        WINDOW,          0,                                 0, 0 },
-    	{ "creatures_flee_hint",                        WINDOW,          0,                                 0, 0 },
+    	--{ "creatures_join_hint",                        WINDOW,          0,                                 0, 0 },
+    	--{ "creatures_flee_hint",                        WINDOW,          0,                                 0, 0 },
     	{         "hero_screen",                        WINDOW,          0,                                 0, 0 },
     	{       "barracks_hint",                        WINDOW,          0,                                 0, 0 }
     },
 
     run = function()
-      SetGameVar( "temp.tutorial", 1 );
       SetGameVar( "temp.C1M1.num_combat", 0 );
-      TUTORIALS.explainTaskPane();
-      manageTutorials(TUTORIALS.list);
+	  manageTutorials(TUTORIALS.list);
     end,
 
     markComplete = function(name)
@@ -54,10 +53,9 @@ TUTORIALS = {
       while GetHeroStat(HERO_NAME, STAT_MOVE_POINTS) > 150 do
         sleep(5)
       end
-      TutorialMessageBox("c1_m1_t6_1")
-      WaitForTutorialMessageBox()
       TutorialSetBlink("end_of_turn_blink", 1)
-      TutorialMessageBox("c1_m1_t6_2")
+      WaitForTutorialMessageBox()
+      TutorialMessageBox("c1_m1_t6_1")
       while GetHeroStat(HERO_NAME, STAT_MOVE_POINTS) <= 150 do
         sleep(5)
       end
@@ -67,10 +65,9 @@ TUTORIALS = {
 
     explainTaskPane = function()
       WaitForTutorialMessageBox();
-      TutorialMessageBox( "c1_m1_t1" );
       TutorialSetBlink( "scenario_info_blink", 1 );
-      WaitForTutorialMessageBox();
-      sleep(20);
+      TutorialMessageBox( "c1_m1_t1" );
+      sleep(40);
       TutorialSetBlink( "scenario_info_blink", 0 );
     end,
 
@@ -80,69 +77,67 @@ TUTORIALS = {
         pos_x, pos_y = GetObjectPosition( HERO_NAME );
         sleep(5);
       until not (( pos_x == start_x ) and ( pos_y == start_y ))
+	    TutorialSetBlink( "move_hero_blink", 1 );
  	  	WaitForTutorialMessageBox();
 	    TutorialMessageBox( "c1_m1_t2" );
-	    TutorialSetBlink( "move_hero_blink", 1 );
-	    WaitForTutorialMessageBox();
 	    sleep(25);
 	    TutorialSetBlink( "move_hero_blink", 0 );
 	    TUTORIALS.markComplete("TUTORIALS.howToMoveHero");
     end,
 
-    howToMoveCamera = function()
+    howToUseCamera = function()
+	  WaitForTutorialMessageBox();
       TutorialMessageBox( "howToUseCamera" );
       Trigger(REGION_ENTER_AND_STOP_TRIGGER, "stop5", nil)
       Trigger(REGION_ENTER_AND_STOP_TRIGGER, "stop6", nil)
       Trigger(REGION_ENTER_AND_STOP_TRIGGER, "stop7", nil)
       Trigger(REGION_ENTER_AND_STOP_TRIGGER, "stop8", nil)
       Trigger(REGION_ENTER_AND_STOP_TRIGGER , "cam1", nil)
-      TUTORIALS.markComplete("TUTORIALS.howToMoveCamera");
+      TUTORIALS.markComplete("TUTORIALS.howToUseCamera");
     end,
 
     howToAttack = function()
-      WaitForTutorialMessageBox();
-      TutorialMessageBox( "c1_m1_t4" );
-      Trigger(REGION_ENTER_AND_STOP_TRIGGER, "attack04", nil)
-      TUTORIALS.markComplete("TUTORIALS.howToAttack");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox( "c1_m1_t4" );
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "attack04", nil)
+		TUTORIALS.markComplete("TUTORIALS.howToAttack");
     end,
 
     explainResources = function()
-      WaitForTutorialMessageBox();
-		  TutorialMessageBox( "c1_m1_t7" );
- 	    Trigger(REGION_ENTER_AND_STOP_TRIGGER, "t7", nil);
- 	    TUTORIALS.markComplete("TUTORIALS.explainResources");
+		WaitForTutorialMessageBox();
+		TutorialMessageBox( "c1_m1_t7" );
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "t7", nil);
+		TUTORIALS.markComplete("TUTORIALS.explainResources");
     end,
 
     explainBoostBuildings = function()
- 	    TUTORIALS.markComplete("TUTORIALS.explainBoostBuildings");
-      WaitForTutorialMessageBox();
-  		TutorialMessageBox( "c1_m1_t8" );
   		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "t8", nil)
+		WaitForTutorialMessageBox();
+  		TutorialMessageBox( "c1_m1_t8" );
+ 	    TUTORIALS.markComplete("TUTORIALS.explainBoostBuildings");
     end,
 
     explainDwelligs = function()
-      WaitForTutorialMessageBox();
- 	    TutorialMessageBox( "c1_m1_t9_1" );
  	    Trigger(REGION_ENTER_AND_STOP_TRIGGER, "t9_1", nil)
+		WaitForTutorialMessageBox();
+ 	    TutorialMessageBox( "c1_m1_t9_1" );
  	    TUTORIALS.markComplete("TUTORIALS.explainDwelligs");
     end,
 
     howToInspectHero = function()
-      WaitForTutorialMessageBox();
- 	    sleep(5);
- 	    TutorialMessageBox( "c1_m1_t10" );
- 	    TutorialSetBlink( "hero_blink", 1 );
-      WaitForTutorialMessageBox();
- 	    sleep(5);
- 	    TutorialSetBlink( "hero_blink", 0 );
  	    Trigger(REGION_ENTER_AND_STOP_TRIGGER, "t10", nil);
+		TutorialSetBlink( "hero_blink", 1 );
+		WaitForTutorialMessageBox();
+		TutorialMessageBox( "c1_m1_t10" );
+ 	    sleep(20);
+ 	    TutorialSetBlink( "hero_blink", 0 );
  	    TUTORIALS.markComplete("TUTORIALS.howToInspectHero");
     end,
 
     explainMillOffer = function()
-      WaitForTutorialMessageBox();
-      TutorialMessageBox( "c1_m1_mill" );
 	    Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER , "windmill", nil );
+		WaitForTutorialMessageBox();
+		TutorialMessageBox( "c1_m1_mill" );
 	    TUTORIALS.markComplete("TUTORIALS.explainMillOffer");
    end
 }
@@ -206,7 +201,6 @@ OBJECTIVES = {
 
     start = function()
       OBJECTIVES.prepare();
-      startThread( TUTORIALS.run );
       OBJECTIVES.run();
     end,
     
@@ -229,25 +223,26 @@ OBJECTIVES = {
       CINEMATICS.intro();
     end,
 
-    run = function()
-      while true do
-        for key, value in OBJECTIVES.state do
-          if value[2] >= 1 and value[2] < 10 then
-            OBJECTIVES[key]();
-          end
-        end
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] >= 1 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
 
-        if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-          SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-          sleep(10);
-          CINEMATICS.outro();
-          SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M1");
-          sleep(5)
-          Win();
-          return
-        end
-        sleep(10);
-      end
+			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
+				SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
+				sleep(10);
+				CINEMATICS.outro();
+				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M1");
+				sleep(5)
+				Win();
+				return
+			end
+		end
     end,
 
     getPeasants = function()
@@ -289,3 +284,4 @@ OBJECTIVES = {
 }
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
+startThread( TUTORIALS.run );

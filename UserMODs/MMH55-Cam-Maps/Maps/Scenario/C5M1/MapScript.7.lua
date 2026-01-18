@@ -116,14 +116,14 @@ function attackBorder(hero, pos)
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(3-dif));
 	DeployReserveHero(hero, RegionToPoint('EnemyHere'));
-	
-	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + GetDate(WEEK)*10 + dif*5);
-	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 15 + GetDate(WEEK)*7  + dif*3);
-	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  9 + GetDate(WEEK)*4  + dif*2);
-	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  5 + GetDate(WEEK)*2  + dif);
-	AddHeroCreatures(hero,	   	  CREATURE_DEMILICH,      GetDate(WEEK)    + dif);
-	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  2 + GetDate(WEEK)*dif/2);
-	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + GetDate(WEEK)*dif/4);
+	local num = GetDate(MONTH)*4 - 4 + GetDate(WEEK);
+	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*5);
+	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 15 + num*7  + dif*3);
+	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  9 + num*4  + dif*2);
+	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  5 + num*2  + dif);
+	AddHeroCreatures(hero,	   	  CREATURE_DEMILICH,      num    + dif);
+	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  2 + num*dif/2);
+	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + num*dif/4);
 	EnableHeroAI(hero, not nil);
 	sleep(5);
 	MoveHero(hero, pos[1], pos[2], pos[3]);
@@ -214,6 +214,7 @@ OBJECTIVES = {
 	run = function()
 		while true do
 			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
 					OBJECTIVES[key]();
@@ -222,6 +223,7 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim1") == OBJECTIVE_FAILED or GetObjectiveState("prim2") == OBJECTIVE_FAILED then
 				Loose();
+				return
 			end
 
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
@@ -239,18 +241,16 @@ OBJECTIVES = {
 		if OBJECTIVES.state.holdBorders[2] == 1 then
 			SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.holdBorders[2] = 2;
-		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(WEEK) > OBJECTIVES.holdBorders_attack_day then
-			if GetDate(DAY_OF_WEEK) > random(6) then
-				OBJECTIVES.holdBorders_attack_day = OBJECTIVES.holdBorders_attack_day + 1;
-				hero_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
-				position_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
-				local hero = heroes[hero_idx];
-				local post = points[position_idx];
-				attackBorder(hero, SylvanPosts[post]);
-				OBJECTIVES.holdBorders_attack_count = OBJECTIVES.holdBorders_attack_count - 1;
-				heroes=remove_element(hero, heroes);
-				points=remove_element(post, points);
-			end
+		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(DAY_OF_WEEK) > OBJECTIVES.holdBorders_attack_day and GetDate(DAY_OF_WEEK) > random(6) then
+			OBJECTIVES.holdBorders_attack_day = OBJECTIVES.holdBorders_attack_day + 1;
+			hero_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
+			position_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
+			local hero = heroes[hero_idx];
+			local post = points[position_idx];
+			attackBorder(hero, SylvanPosts[post]);
+			OBJECTIVES.holdBorders_attack_count = OBJECTIVES.holdBorders_attack_count - 1;
+			heroes=remove_element(hero, heroes);
+			points=remove_element(post, points);
 		end
 		if OBJECTIVES.state.holdBorders[2] > 1 and OBJECTIVES.state.demonArmy[2] == 3 then
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
