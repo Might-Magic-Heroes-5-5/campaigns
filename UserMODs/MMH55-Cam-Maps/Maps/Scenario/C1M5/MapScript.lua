@@ -184,6 +184,7 @@ OBJECTIVES = {
 		sendGodric    = { "prim4", 1 },   -- 1 missions active, 2,10 mission success
 		joinNikolai   = { "prim5", 0 },
 		isAlive       = { "prim6", 1 },
+		garrisonReinforcements = { "_", 0 },
 	},
 
 	start = function()
@@ -226,7 +227,7 @@ OBJECTIVES = {
 		GiveExp( 'Nymus', 50000 + crap * 35000 );
 
 		SetRegionBlocked( 'AIblock', 1, PLAYER_2 );
-		for i = 1, 11 do
+		for i = 1, 3 do
 			SetRegionBlocked( 'grail_block'..i, 1, PLAYER_2 );
 		end
 
@@ -299,7 +300,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.protectDunmor[2] == 1 and GetObjectOwner("Dummar") == PLAYER_1 then
 			SetObjectiveState('prim2', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.protectDunmor[2] = 2;
-		elseif OBJECTIVES.state.protectDunmor[2] == 2 and IsHeroAlive("Isabell") then
+		elseif OBJECTIVES.state.protectDunmor[2] == 2 and IsHeroAlive("Isabell") ~= nil then
 			DeployReserveHero( 'Agrael', 120, 55, 0 );
 			sleep(2);
 			H55c_AIAddHero('Agrael');
@@ -313,6 +314,7 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.protectDunmor[2] == 3 and IsHeroAlive("Agrael") == nil then
 			CINEMATICS.defeatAgrael();
 			OBJECTIVES.assaultDay = GetDate(ABSOLUTE_DAY) + ASSAULT_DELAY;
+			OBJECTIVES.state.garrisonReinforcements[2] = 1;
 			OBJECTIVES.state.protectDunmor[2] = 4;
 		elseif OBJECTIVES.state.protectDunmor[2] == 4 then
 			if GetDate(ABSOLUTE_DAY) == OBJECTIVES.assaultDay then
@@ -430,8 +432,10 @@ OBJECTIVES = {
 			if IsObjectExists('Agrael') then
 				EnableHeroAI( 'Agrael', not nil );
 				sleep(5);
-				local x, y, z = GetObjectPosition("Nicolai");
-				MoveHeroRealTime("Agrael", x, y, z );
+				if IsHeroAlive("Nicolai") ~= nil then
+					local x, y, z = GetObjectPosition("Nicolai");
+					MoveHeroRealTime("Agrael", x, y, z );
+				end
 			end
 			sleep( 10 );
 			if IsHeroAlive("Nicolai") == nil or GetDate(ABSOLUTE_DAY) > OBJECTIVES.moveNikolay + 3 then
@@ -442,6 +446,18 @@ OBJECTIVES = {
 			end
 		end
 	end,
+	
+	garrisonReinforcements_day = 0,
+	garrisonReinforcements = function()
+		if OBJECTIVES.state.garrisonReinforcements[2] == 1 and OBJECTIVES.garrisonReinforcements_day <= OBJECTIVES.date then
+			AddObjectCreatures("Garnison", CREATURE_ARCHDEVIL , 5);
+			AddObjectCreatures("Garnison", CREATURE_BALOR , 10);
+			AddObjectCreatures("Garnison", CREATURE_FRIGHTFUL_NIGHTMARE , 15);
+			AddObjectCreatures("Garnison", CREATURE_INFERNAL_SUCCUBUS , 20);
+			print("Garnison reinforced!");
+			OBJECTIVES.garrisonReinforcements_day = OBJECTIVES.date + 1;
+		end
+	end
 }
 
 ------------------- MAIN ------------------------
@@ -468,9 +484,9 @@ function c1m5_debug(state)
 	
 	if state == 4 then
 		MakeHeroInteractWithObject("Godric", "t3_1");
-		sleep(100);
+		sleep(20);
 		MakeHeroInteractWithObject("Godric", "t3_2");
-		sleep(100);
+		sleep(20);
 		MakeHeroInteractWithObject("Godric", "t3_4");
 	end
 end

@@ -142,6 +142,7 @@ function IsAnyHeroPlayerHasCreature( playerID, creatureID )
 end
 
 function ObjectiveExp(HeroName)
+	sleep(50);
 	local ToLevel = GetExpToLevel(GetHeroLevel(HeroName)+1);
 	local delta = (ToLevel - GetHeroStat(HeroName, STAT_EXPERIENCE)) / 2;
 	print("delta = ", delta);

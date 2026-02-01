@@ -6,6 +6,7 @@ function H55_InitSetArtifacts()
 end;
 
 startThread(H55_InitSetArtifacts);
+ENEMY_HERO = "Calid";
 
 ---FUNCTIONS---
 for a = 0,6 do
@@ -37,7 +38,7 @@ end;
 
 Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "LostHero2" );
 function LostHero2( HeroName3 )
-	if (HeroName3 == "Efion") then
+	if (HeroName3 == ENEMY_HERO) then
 		StartDialogScene('/DialogScenes/C4/M4/R3/DialogScene.xdb#xpointer(/DialogScene)');
 		SetObjectiveState("prim2", OBJECTIVE_COMPLETED);
 		sleep ( 2 );
@@ -90,11 +91,11 @@ function teleport(HeroName2)
 	RemoveObject("del6");
 	SetObjectiveState('prim2', OBJECTIVE_ACTIVE);
 	sleep(2);
-	MoveHeroRealTime('Efion', 81, 51);
+	MoveHeroRealTime(ENEMY_HERO, 81, 51);
 	sleep(20);
-	SetObjectPosition('Efion', 64, 78, 0);
+	SetObjectPosition(ENEMY_HERO, 64, 78, 0);
 	UnblockGame();
---	EnableHeroAI('Efion', not nil);
+--	EnableHeroAI(ENEMY_HERO, not nil);
 end;
 
 function H55_TriggerDaily()
@@ -105,14 +106,14 @@ function H55_TriggerDaily()
 		MessageBox ("/Maps/Scenario/C4M4/C4M4_1.txt");
 	end;
 	if GetDate(MONTH) == 1 and GetDate(WEEK) == 2 and GetDate(DAY_OF_WEEK) == 3 then
-		EnableHeroAI('Efion', not nil);
+		EnableHeroAI(ENEMY_HERO, not nil);
 	end;
 end;
 
 
 ---SCRIPT MAIN PART---
 StartDialogScene('/DialogScenes/C4/M4/R1/DialogScene.xdb#xpointer(/DialogScene)');
-EnableHeroAI('Efion', nil);
+EnableHeroAI(ENEMY_HERO, nil);
 SetObjectEnabled('tent', nil);
 SetObjectEnabled('teleport1', nil);
 SetObjectEnabled('Gate', nil);
@@ -140,13 +141,13 @@ end;
 H55_CamFixTooManySkills(PLAYER_1,"Raelag");
 H55_CamFixTooManySkills(PLAYER_1,"Kelodin");
 exp = GetHeroStat("Raelag", STAT_EXPERIENCE);
-ChangeHeroStat('Efion', STAT_EXPERIENCE , exp/(3-dif));
-AddHeroCreatures('Efion',CREATURE_IMP , 50 + dif*40);
-AddHeroCreatures('Efion',CREATURE_HORNED_DEMON ,35 + dif*25);
-AddHeroCreatures('Efion',CREATURE_CERBERI , 25 + dif*15);
-AddHeroCreatures('Efion',CREATURE_INFERNAL_SUCCUBUS , 8 + dif*13);
-AddHeroCreatures('Efion',CREATURE_BALOR , 2 + dif*5);
-AddHeroCreatures('Efion',CREATURE_ARCHDEVIL , 1 + dif);
+ChangeHeroStat(ENEMY_HERO, STAT_EXPERIENCE , exp/(3-dif));
+AddHeroCreatures(ENEMY_HERO,CREATURE_IMP , 50 + dif*40);
+AddHeroCreatures(ENEMY_HERO,CREATURE_HORNED_DEMON ,35 + dif*25);
+AddHeroCreatures(ENEMY_HERO,CREATURE_CERBERI , 25 + dif*15);
+AddHeroCreatures(ENEMY_HERO,CREATURE_INFERNAL_SUCCUBUS , 8 + dif*13);
+AddHeroCreatures(ENEMY_HERO,CREATURE_BALOR , 2 + dif*5);
+AddHeroCreatures(ENEMY_HERO,CREATURE_ARCHDEVIL , 1 + dif);
 
 SetRegionBlocked("blok1", 1, PLAYER_2);
 SetRegionBlocked("blok2", 1, PLAYER_2);
