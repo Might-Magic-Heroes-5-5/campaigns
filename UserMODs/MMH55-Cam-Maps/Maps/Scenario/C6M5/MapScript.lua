@@ -228,6 +228,8 @@ function WinLoose()
 	while 1 do
 		if GetObjectiveState("save_isabell") == OBJECTIVE_COMPLETED and
 			GetObjectiveState("capture_biara") == OBJECTIVE_COMPLETED then
+			sleep(50);
+			consoleCmd("video_outro");
 			sleep(20);
 			Win(); 
 			return
