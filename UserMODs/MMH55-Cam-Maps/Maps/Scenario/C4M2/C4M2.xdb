@@ -84610,6 +84610,29 @@
 				<Shared href="/MapObjects/Keymaster_Tent_1.(AdvMapTentShared).xdb#xpointer(/AdvMapTentShared)"/>
 			</AdvMapTent>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_BA81FF92-6E51-426D-BB41-E8FCABB7D4AE">
+			<AdvMapBuilding>
+				<Pos>
+					<x>20</x>
+					<y>99</y>
+					<z>0</z>
+				</Pos>
+				<Rot>3.19425</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>

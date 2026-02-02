@@ -60794,6 +60794,29 @@
 				<showCameras/>
 			</AdvMapBuilding>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_52A19C78-A6AC-4B52-BE4B-F2FB8ADC418A">
+			<AdvMapBuilding>
+				<Pos>
+					<x>110</x>
+					<y>107</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
