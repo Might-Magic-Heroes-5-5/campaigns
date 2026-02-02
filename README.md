@@ -297,6 +297,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Player 2 heroes no longer flee battles
 - change: Reduced amount and power of weekly elven spawns per week due to Elven source magic.
 - change: Elder Druids circle power increased
+- new: Added Memory Mentor
 
 ### C2M4 – Inferno: The Ship
 - fix: Erewell stopped being reinforced after week 4.
@@ -313,6 +314,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C3M3 – Necropolis: The Invasion
 - fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
 - change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description
+- new: Added Memory Mentor
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
@@ -320,6 +322,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Godric reinforcement mechanic is now aligned with game difficulty level.
 - change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location
 - change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost
+- new: Added Memory Mentor
 
 ### C4M2 – Dungeon: The Expansion
 - fix: Removed an undeground Vampire lords stack  as it could not be attacked nor it guarded any treasures.
@@ -328,6 +331,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
 - fix: Red AI player (Inferno) heroes could freeze till end of game
 - fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met
+- new: Added Memory Mentor
 
 ### C4M4 – Dungeon: The March
 - fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
@@ -343,9 +347,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
 - change: Disabled Purple player from hiring heroes in  Syris Thalla.
 - change: Purple player oslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
+- change: Diraya skills due to her class being changed from Avenger to Druid
 - fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla.
 - fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
 - fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan.
+- new: Added Memory Mentor
+
+### C5M4 - Sylvan: The Archipelago
+- new: Added Memory Mentor
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
@@ -359,9 +368,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
 - fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
 - fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
+- new: Added Memory Mentor
 
 ### C6M3 - Academy: The Triumvirate
 - fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
+
+### C6M4 - Academy: The Alliance
+- new: Added Memory Mentor
 
 ## Dialogue changes
 
