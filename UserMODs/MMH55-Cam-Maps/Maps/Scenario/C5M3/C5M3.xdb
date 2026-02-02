@@ -51375,6 +51375,10 @@
 									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>
 							</skills>
 							<perkIDs>				
 								<Item>HERO_SKILL_DARK_RITUAL</Item>
@@ -53385,6 +53389,29 @@
 					</Item>
 				</AdditionalStacks>
 			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_E5C985D3-8231-4483-9AF5-9EF07DB74326">
+			<AdvMapBuilding>
+				<Pos>
+					<x>84</x>
+					<y>8</y>
+					<z>0</z>
+				</Pos>
+				<Rot>3.22049</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
 		</Item>
 	</objects>
 	<Resources>

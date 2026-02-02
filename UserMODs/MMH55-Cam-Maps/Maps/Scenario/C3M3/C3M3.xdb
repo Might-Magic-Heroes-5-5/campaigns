@@ -50291,6 +50291,29 @@
 				<untransferable>false</untransferable>
 			</AdvMapArtifact>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_F3621A8C-131B-44EF-815D-23076A221C9E">
+			<AdvMapBuilding>
+				<Pos>
+					<x>51</x>
+					<y>158</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>

@@ -71777,6 +71777,29 @@
 				<IsRemovable>false</IsRemovable>
 			</AdvMapStatic>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_D3BD3AEC-B866-43FF-A0DE-E775A4BFD71E">
+			<AdvMapBuilding>
+				<Pos>
+					<x>27</x>
+					<y>110</y>
+					<z>0</z>
+				</Pos>
+				<Rot>3.68262</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
