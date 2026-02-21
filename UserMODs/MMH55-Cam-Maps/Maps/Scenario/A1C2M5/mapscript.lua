@@ -5,6 +5,7 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M5");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M4" );
+	LoadHeroAllSetArtifacts( "Duncan" , "A1C2M4" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -201,7 +202,7 @@ function objective4()
 			Loose();
 			break;
 		end;
-	sleep( 2 );
+	sleep( 20 );
 	end;	
 end;
 
@@ -211,6 +212,8 @@ function win_check()
 	while 1 do
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M5");
+			sleep(5);
+			SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M5");
 			sleep(1);
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			sleep(5);
@@ -223,20 +226,18 @@ end;
 
 ------Laszlo Activation------
 
-Trigger (OBJECT_TOUCH_TRIGGER, "treasury", "laszlo_ai_enabled");
 Trigger (OBJECT_TOUCH_TRIGGER, "library", "laszlo_ai_enabled");
 Trigger (OBJECT_TOUCH_TRIGGER, "garrison", "laszlo_ai_enabled");
+Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
 
 function laszlo_ai_enabled(hero)
-	if hero == PlayerHero1 or hero == PlayerHero2 then
-		RemoveObject("dummy");
-		sleep( 3 );
-		EnableHeroAI(EnemyHero, not nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "treasury", nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
-	end;
-end;	
+	print("######### enable Laszlo");
+	RemoveObject("dummy");
+	sleep( 3 );
+	EnableHeroAI(EnemyHero, not nil);
+	Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
+	Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
+end
 
 H55_NewDayTrigger = 1;
 --Trigger (NEW_DAY_TRIGGER, "activation_by_date");
@@ -246,7 +247,6 @@ function H55_TriggerDaily()
 		RemoveObject("dummy");
 		sleep( 3 );
 		EnableHeroAI(EnemyHero, not nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "treasury", nil);
 		Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
 		Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
 		H55_NewDayTrigger = 0;
@@ -257,7 +257,6 @@ end;
 H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
 H55_CamFixTooManySkills(PLAYER_1,"Duncan");
 diffcheck();
-startThread (objective1);
 startThread (objective4);
 startThread (win_check);
 Trigger (OBJECT_TOUCH_TRIGGER, "portal", "portal");

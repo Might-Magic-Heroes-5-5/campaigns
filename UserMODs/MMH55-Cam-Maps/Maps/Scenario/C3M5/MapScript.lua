@@ -207,8 +207,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M5");
+				sleep(20);
 				CINEMATICS.outro();
-				sleep(10);
+				sleep(50);
 				Win();
 				return
 			end
@@ -218,7 +220,7 @@ OBJECTIVES = {
 	defeatGodric = function()
 	-- start of this task is handled by C3M5.xdb
 		if IsHeroAlive("Godric") == nil then
-			SetObjectiveState("prim1",OBJECTIVE_COMPLETED);
+			SetObjectiveState("prim1", OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.defeatGodric[2] = 10;
 		end
 	end,
@@ -437,14 +439,12 @@ function desentir()
 				print("Isabell has only 1 brave creature.");
 			end
 			if GetDifficulty() == 2 then
-				print("TROOOPING");
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
 				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 1); -- Paladins
 				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 2); -- Priests
 				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")   + 10); -- Footman
 				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")    + 7); -- Archers
 			elseif GetDifficulty() == 3 then
-				print("TROOOPING2");
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
 				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 2); -- Paladins
 				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 3); -- Priests

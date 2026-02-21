@@ -54,9 +54,8 @@ print("AI has ",RH_TownsTotal," towns for respawn");
 function RH_Respawn()
 	print( "Function RH_respawn has started...");
 	while 1 do
-		sleep(5);
 		while GetCurrentPlayer() ~= AI_PLAYER do
-			sleep(10);
+			sleep(50);
 		end;
 		print("RH_Respawn: AI player's turn");
 		RH_dead_heroes = 0;
@@ -89,7 +88,7 @@ function RH_Respawn()
 			if RH_dead_heroes == 0 then print("All AI heroes are alive."); end;
 		end;
 		while GetCurrentPlayer() == AI_PLAYER do
-			sleep(10);
+			sleep(50);
 		end;
 		print("RH_Respawn: AI player's turn has ended");
 	end;
@@ -192,7 +191,7 @@ SetObjectiveState("obj2", OBJECTIVE_ACTIVE);
 
 function lostDragon() ---- Проверка потери дракона
 	while 1 do
-		sleep ( 10 );
+		sleep ( 20 );
 		if GetHeroCreatures(PlayerHero, 84) == 0 then
 			SetObjectiveState("obj2", OBJECTIVE_FAILED);
 			sleep ( 10 );
@@ -262,7 +261,7 @@ function H55_TriggerDaily() ---- Кричи хавена скриптом заменяются на Красный апг
 	end;
 	heroes = GetPlayerHeroes(PLAYER_5);
 	for i, hero in heroes do
-	sleep ( 1 );
+	sleep ( 5 );
 		if GetHeroCreatures(hero, 2) > 0 then
 			milit = GetHeroCreatures(hero, 2)
 			RemoveHeroCreatures(hero, 2, milit);
@@ -315,7 +314,7 @@ end;
 
 function quest_progress()
 	while 1 do
-		sleep (10);
+		sleep (30);
 		b = 0;
 		sleep (1);
 		for a = 36,43 do
@@ -344,275 +343,29 @@ function quest_final(hero_n)
 	end;
 end;
 
----------------------------------------------------------------------
------------------------ АНИМАЦИИ и ЭФФЕКТЫ --------------------------
----------------------------------------------------------------------
-
-function Films() --- Бой кричей Первого тиера
-	if random ( 2 ) == 0 then
-		mover1 = training_array[1];
-		mover2 = training_array[2];
-	else
-		mover1 = training_array[2];
-		mover2 = training_array[1];
-	end;
-	PlayObjectAnimation(mover1 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover1) == nil then
-		RemoveObject(mover2);
-	end;
-	if IsObjectExists(mover2) == nil then
-		RemoveObject(mover1);
-	end;
-	if IsObjectExists(mover2) ~= nil then
-		PlayObjectAnimation(mover2 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover1) == nil then
-		RemoveObject(mover2);
-	end;
-	if IsObjectExists(mover2) == nil then
-		RemoveObject(mover1);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover1) ~= nil and IsObjectExists(mover2) ~= nil then
-		startThread(Films);
-	else
-		if IsObjectExists(mover1) ~= nil then
-			RemoveObject(mover1);
+function play_animation(unit1, unit2)
+	while 1 do
+		sleep(25);
+		local mover1 = nil;
+		local mover2 = nil;
+		if random(2) == 0 then
+			mover1, mover2 = unit1, unit2;
 		else
-			RemoveObject(mover2);
-		end;
-	end;
-end;
-
-function Films1() --- Бой кричей Второго тиера
-	if random ( 2 ) == 0 then
-		mover3 = training_array[3];
-		mover4 = training_array[4];
-	else
-		mover3 = training_array[4];
-		mover4 = training_array[3];
-	end;
-	PlayObjectAnimation(mover3 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover3) == nil then
-		RemoveObject(mover4);
-	end;
-	if IsObjectExists(mover4) == nil then
-		RemoveObject(mover3);
-	end;
-	if IsObjectExists(mover4) ~= nil then
-		PlayObjectAnimation(mover4 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover3) == nil then
-		RemoveObject(mover4);
-	end;
-	if IsObjectExists(mover4) == nil then
-		RemoveObject(mover3);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover3) ~= nil and IsObjectExists(mover4) ~= nil then
-		startThread(Films1);
-	else
-		if IsObjectExists(mover3) ~= nil then
-			RemoveObject(mover3);
-		else
-			RemoveObject(mover4);
-		end;
-	end;
-end;
-
-function Films2() --- Бой кричей Третьего тиера
-	if random ( 2 ) == 0 then
-		mover5 = training_array[5];
-		mover6 = training_array[6];
-	else
-		mover5 = training_array[6];
-		mover6 = training_array[5];
-	end;
-	PlayObjectAnimation(mover5 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover5) == nil then
-		RemoveObject(mover6);
-	end;
-	if IsObjectExists(mover6) == nil then
-		RemoveObject(mover5);
-	end;
-	if IsObjectExists(mover6) ~= nil then
-		PlayObjectAnimation(mover6 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover5) == nil then
-		RemoveObject(mover6);
-	end;
-	if IsObjectExists(mover6) == nil then
-		RemoveObject(mover5);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover5) ~= nil and IsObjectExists(mover6) ~= nil then
-		startThread(Films2);
-	else
-		if IsObjectExists(mover5) ~= nil then
-			RemoveObject(mover5);
-		else
-			RemoveObject(mover6);
-		end;
-	end;
-end;
-
-function Films3() --- Бой кричей Четвертого тиера
-	if random ( 2 ) == 0 then
-		mover7 = training_array[7];
-		mover8 = training_array[8];
-	else
-		mover7 = training_array[8];
-		mover8 = training_array[7];
-	end;
-	PlayObjectAnimation(mover7 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover7) == nil then
-		RemoveObject(mover8);
-	end;
-	if IsObjectExists(mover8) == nil then
-		RemoveObject(mover7);
-	end;
-	if IsObjectExists(mover8) ~= nil then
-		PlayObjectAnimation(mover8 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover7) == nil then
-		RemoveObject(mover8);
-	end;
-	if IsObjectExists(mover8) == nil then
-		RemoveObject(mover7);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover7) ~= nil and IsObjectExists(mover8) ~= nil then
-		startThread(Films3);
-	else
-		if IsObjectExists(mover7) ~= nil then
-			RemoveObject(mover7);
-		else
-			RemoveObject(mover8);
-		end;
-	end;
-end;
-
-function Films4() --- Бой кричей Пятого тиера
-	if random ( 2 ) == 0 then
-		mover9 = training_array[9];
-		mover10 = training_array[10];
-	else
-		mover9 = training_array[10];
-		mover10 = training_array[9];
-	end;
-	PlayObjectAnimation(mover9 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover9) == nil then
-		RemoveObject(mover10);
-	end;
-	if IsObjectExists(mover10) == nil then
-		RemoveObject(mover9);
-	end;
-	if IsObjectExists(mover10) ~= nil then
-		PlayObjectAnimation(mover10 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover9) == nil then
-		RemoveObject(mover10);
-	end;
-	if IsObjectExists(mover10) == nil then
-		RemoveObject(mover9);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover9) ~= nil and IsObjectExists(mover10) ~= nil then
-		startThread(Films4);
-	else
-		if IsObjectExists(mover9) ~= nil then
-			RemoveObject(mover9);
-		else
-			RemoveObject(mover10);
-		end;
-	end;
-end;
-
-function Films5() --- Бой кричей Шестого тиера
-	if random ( 2 ) == 0 then
-		mover11 = training_array[11];
-		mover12 = training_array[12];
-	else
-		mover11 = training_array[12];
-		mover12 = training_array[11];
-	end;
-	PlayObjectAnimation(mover11 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover11) == nil then
-		RemoveObject(mover12);
-	end;
-	if IsObjectExists(mover12) == nil then
-		RemoveObject(mover11);
-	end;
-	if IsObjectExists(mover12) ~= nil then
-		PlayObjectAnimation(mover12 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover11) == nil then
-		RemoveObject(mover12);
-	end;
-	if IsObjectExists(mover12) == nil then
-		RemoveObject(mover11);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover11) ~= nil and IsObjectExists(mover12) ~= nil then
-		startThread(Films5);
-	else
-		if IsObjectExists(mover11) ~= nil then
-			RemoveObject(mover11);
-		else
-			RemoveObject(mover12);
-		end;
-	end;
-end;
-
-function Films6() --- Бой Драконов
-	if random ( 2 ) == 0 then
-		mover13 = training_array[13];
-		mover14 = training_array[14];
-	else
-		mover13 = training_array[14];
-		mover14 = training_array[13];
-	end;
-	PlayObjectAnimation(mover13 , "attack00", ONESHOT);
-	sleep  ( 1 );
-	if IsObjectExists(mover13) == nil then
-		RemoveObject(mover14);
-	end;
-	if IsObjectExists(mover14) == nil then
-		RemoveObject(mover13);
-	end;
-	if IsObjectExists(mover14) ~= nil then
-		PlayObjectAnimation(mover14 , "hit", ONESHOT);
-	end;
-	sleep  ( 4 );
-	if IsObjectExists(mover13) == nil then
-		RemoveObject(mover14);
-	end;
-	if IsObjectExists(mover14) == nil then
-		RemoveObject(mover13);
-	end;
-	sleep  ( 3 );
-	if IsObjectExists(mover13) ~= nil and IsObjectExists(mover14) ~= nil then
-		startThread(Films6);
-	else
-		if IsObjectExists(mover13) ~= nil then
-			RemoveObject(mover13);
-		else
-			RemoveObject(mover14);
-		end;
-	end;
-end;
+			mover1, mover2 = unit2, unit1;
+		end
+		
+		if IsObjectExists(mover1) == nil or IsObjectExists(mover2) == nil then
+			if IsObjectExists(mover1) ~= nil then RemoveObject(mover1); end;
+			if IsObjectExists(mover2) ~= nil then RemoveObject(mover2); end;
+			return
+		end
+		
+		PlayObjectAnimation(mover1, "attack00", ONESHOT);
+		sleep(10);
+		PlayObjectAnimation(mover2, "hit", ONESHOT);
+		sleep(random(120));
+	end
+end
 
 ---------------------------------------------------------------------
 -------------------- Стартовые команды ------------------------------
@@ -624,10 +377,10 @@ H55_NewDayTrigger = 1;
 --Trigger( NEW_DAY_TRIGGER, "RedHavenUpgrade" );
 SetObjectEnabled('hut', nil);
 startThread(lostDragon);
-startThread(Films);
-startThread(Films1);
-startThread(Films2);
-startThread(Films3);
-startThread(Films4);
-startThread(Films5);
-startThread(Films6);
+startThread(play_animation, training_array[1], training_array[2]);
+startThread(play_animation, training_array[3], training_array[4]);
+startThread(play_animation, training_array[5], training_array[6]);
+startThread(play_animation, training_array[7], training_array[8]);
+startThread(play_animation, training_array[9], training_array[10]);
+startThread(play_animation, training_array[11], training_array[12]);
+startThread(play_animation, training_array[13], training_array[14]);

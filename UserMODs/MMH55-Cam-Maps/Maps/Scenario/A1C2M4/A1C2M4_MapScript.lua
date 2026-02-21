@@ -3,6 +3,7 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M4");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M3" );
+	LoadHeroAllSetArtifacts( "Duncan" , "A1C1M5" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -251,6 +252,10 @@ end;
 
 
 function GnomigRequest( heroName, objectName )
+	if GetObjectOwner(heroName) ~= PLAYER_1 then
+		RemoveObject(objectName);
+		return
+	end
 	if firstMeeting == 0 then 
 		firstMeeting = 1;
 		SetObjectiveState("ReinforceDwarves", OBJECTIVE_ACTIVE);
@@ -365,6 +370,8 @@ function CaptureTorHallr(OldOwner,NewOwner,HeroName)
 	if NewOwner == PLAYER_1 then 
 		Trigger(OBJECT_CAPTURE_TRIGGER, ENEMY_TOWN_TOR_HALLR, nil);
 		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M4");
+		sleep(10);
+		SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M4");
 		SetObjectiveState("capture_tor_hallr",OBJECTIVE_COMPLETED);
 		sleep(10);
 		SetObjectiveState("wulfstan_must_survive",OBJECTIVE_COMPLETED);

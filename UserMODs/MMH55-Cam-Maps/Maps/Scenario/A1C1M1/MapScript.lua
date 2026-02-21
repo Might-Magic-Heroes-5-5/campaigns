@@ -508,14 +508,14 @@ function dezert() --- Функция рассчета дезертиров
 		if GetHeroCreatures(hero, 12) > 0 then
 			RemoveHeroCreatures(hero, 12, 1);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[14], hero, -1, 3.0 );
 			return
 		end;
 		if GetHeroCreatures(hero, 11) > 0 then
 			RemoveHeroCreatures(hero, 11, 1);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[13], hero, -1, 3.0 );
 			return
 		end;
@@ -524,14 +524,14 @@ function dezert() --- Функция рассчета дезертиров
 		if GetHeroCreatures(hero, 10) > 1 then
 			RemoveHeroCreatures(hero, 10, 2);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[12], hero, -1, 3.0 );
 			return
 		end;
 		if GetHeroCreatures(hero, 9) > 1 then
 			RemoveHeroCreatures(hero, 9, 2);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[11], hero, -1, 3.0 );
 			return
 		end;
@@ -540,14 +540,14 @@ function dezert() --- Функция рассчета дезертиров
 		if GetHeroCreatures(hero, 8) > 2 then
 			RemoveHeroCreatures(hero, 8, 3);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[10], hero, -1, 3.0 );
 			return
 		end;
 		if GetHeroCreatures(hero, 7) > 2 then
 			RemoveHeroCreatures(hero, 7, 3);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[9], hero, -1, 3.0 );
 			return
 		end;
@@ -556,14 +556,14 @@ function dezert() --- Функция рассчета дезертиров
 		if GetHeroCreatures(hero, 6) > 4 then
 			RemoveHeroCreatures(hero, 6, 5);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[8], hero, -1, 3.0 );
 			return
 		end;
 		if GetHeroCreatures(hero, 5) > 4 then
 			RemoveHeroCreatures(hero, 5, 5);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[7], hero, -1, 3.0 );
 			return
 		end;
@@ -572,14 +572,14 @@ function dezert() --- Функция рассчета дезертиров
 		if GetHeroCreatures(hero, 4) > 9 then
 			RemoveHeroCreatures(hero, 4, 10);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[6], hero, -1, 3.0 );
 			return
 		end;
 		if GetHeroCreatures(hero, 3) > 9 then
 			RemoveHeroCreatures(hero, 3, 10);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[5], hero, -1, 3.0 );
 			return
 		end;
@@ -587,14 +587,14 @@ function dezert() --- Функция рассчета дезертиров
 	if GetHeroCreatures(hero, 2) > 19 then
 		RemoveHeroCreatures(hero, 2, 20);
 		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-		sleep ( 4 );
+		sleep ( 20 );
 		ShowFlyingSign (t_tier_array[4], hero, -1, 3.0 );
 		return
 	end;
 	if GetHeroCreatures(hero, 1) > 19 then
 		RemoveHeroCreatures(hero, 1, 20);
 		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
-		sleep ( 4 );
+		sleep ( 20 );
 		ShowFlyingSign (t_tier_array[3], hero, -1, 3.0 );
 		return
 	end;
@@ -605,7 +605,7 @@ function ambush( HeroName ) --- Функция рассчета потерь при попадании в засаду
 		if GetHeroCreatures(HeroName, h_tier_array[a]) > l_tier_array[a] then
 			RemoveHeroCreatures(HeroName, h_tier_array[a], l_tier_array[a]);
 			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox12.txt", HeroName, -1, 3.0);
-			sleep ( 4 );
+			sleep ( 20 );
 			ShowFlyingSign (t_tier_array[a], HeroName, -1, 3.0 );
 			return
 		end;

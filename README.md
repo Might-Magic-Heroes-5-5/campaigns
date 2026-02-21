@@ -358,23 +358,56 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
-- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
-- new: map ambient light was not changed proplerly. Now the dusk will gradually become darker as the dragons power grows. If the player manages to break the dragons causing the night, daylight will come.
+- new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
+- new: Combat arena light and Skydome reflects the one on the adventure map.
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
 - new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
 - changed: Night counter increases 25% faster at Hard, 50% faster at Heroic and 75% faster at Impossible difficulty
 
 ### C6M2 - Academy: The Liberation
-- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
 - fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
 - fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
 - new: Added Memory Mentor
 
-### C6M3 - Academy: The Triumvirate
-- fix: excessive LUA script loops causing lag and sometimes even deadlock where player is unable to do anything
-
 ### C6M4 - Academy: The Alliance
 - new: Added Memory Mentor
+
+### A1C1M1 - Freyda: Rebels
+- fix: Overlapping messages during troop desertion made them unreadable
+
+### A1C2M1 - Wulfstan: The Borderzone
+- change: Raise level cap from 14 to 20
+
+### A1C2M2 - Wulfstan: The Ambush
+- change: Enemy hero leading the final attack is now more challenging.
+- change: Lich stack with hidden army at Dungeon entry is now more challenging.
+- change: Raise level cap from 22 to 25.
+
+### A1C2M3 - Wulfstan: The Guerrillas
+- fix: Caravan for "Intercept gold caravan" quest occasionally did not appear which made the mission unable to complete.
+
+### A1C2M4 - Wulfstan: Two Brothers
+- fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight.
+- fix: Duncan artifacts from mission A1C1M5 were not loaded
+- change: Torhall siege combat is now more challenging.
+
+### A1C2M5 - Wulfstan: Laszlo
+- fix: Duncan artifacts from mission A1C2M4 were not loaded
+- fix: Dwarven Treasury could not be entered/attacked.
+
+### A1C3M1 - Ylaya: The Spy
+- change: Raise level cap from 14 to 20
+
+### A1C3M2 - Ylaya: The Break
+- change: Raise level cap from 22 to 25
+- fix: unit attack/hit animation stuters on adventure map
+
+### A1C3M3 - Ylaya: The Meeting
+- fix: unit attack/hit animation stuters on adventure map
+
+### A1C3M5 - Ylaya: The Decoupling
+- fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
+- change: Adjusted Siege catapult attack animation frequency. Now it is more like siege engine and less like gatling gun.
 
 ## Dialogue changes
 
