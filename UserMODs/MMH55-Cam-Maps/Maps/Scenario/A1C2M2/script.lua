@@ -115,7 +115,7 @@ function DwellingCaptured( oldowner, newowner )
 	if cnt < 6 then
 		return
 	end;
-	sleep( 1 );
+	sleep( 30 );
 	SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );
 	SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
 	if attack_delay == 0 then
@@ -138,7 +138,7 @@ function H55_ThrTriggerDaily()
 		H55_ThrNewDayTrigger = 0;
 		H55_FrtNewDayTrigger = 1;
 		DeployReserveHero( ENEMY_HERO, 22, 3, 0 );
-		sleep( 10 );
+		sleep( 30 );
 		--EnableHeroAI( ENEMY_HERO, nil ); --H55 fix
 		GiveExp( ENEMY_HERO, attacker_expa );
 		coeff = ( GetDate( WEEK ) + ( GetDate( MONTH ) - 1 ) * 4 ) * attacking_army_coeff;
@@ -179,9 +179,9 @@ function EnemyHeroKilled( heroname )
 	if heroname == ENEMY_HERO then
 		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M2");
 		StartDialogScene( "/DialogScenes/A1C2/M2/S1/DialogScene.xdb#xpointer(/DialogScene)" );
-		sleep(1);
+		sleep(10);
 		SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
-		sleep(3);
+		sleep(10);
 		Win();
 	end;
 end;
@@ -204,8 +204,7 @@ function H55_TriggerDaily()
 end;
 
 function PuppetMaster()
-	local PlayObjectAnimation = 
-	function( p1, p2, p3 )
+	local PlayObjectAnimation = function( p1, p2, p3 )
 		if IsObjectExists( p1 ) then
 			PlayObjectAnimation( p1, p2, p3 );
 		end;
@@ -220,7 +219,7 @@ function PuppetMaster()
 			sleep( 5 );
 			PlayObjectAnimation( 'puppet1', 'hit', ONESHOT );
 		end;
-		sleep( random( 15 ) + 15 );
+		sleep( random( 25 ) + 15 );
 	end;
 end;
 
@@ -243,7 +242,7 @@ end;
 -- запускается комбат на специальной арене
 function RunCombat( heroname )
 	Trigger( OBJECT_TOUCH_TRIGGER, "liches", nil );
-	StartCombat( heroname, nil, 2, CREATURE_DEMILICH, 12, CREATURE_WIGHT, 6, nil, nil, '/Scenes/CombatArenas/Subterra_abyss.xdb#xpointer(/AdventureFlybyScene)' );
+	StartCombat( heroname, nil, 3, CREATURE_DEMILICH, 12 + __difficulty * 2, CREATURE_WIGHT, 6  + __difficulty, CREATURE_VAMPIRE_LORD, 18 + __difficulty*3, nil, nil, '/Scenes/CombatArenas/Subterra_abyss.xdb#xpointer(/AdventureFlybyScene)' );
 	RemoveObject( "liches" );
 end;
 

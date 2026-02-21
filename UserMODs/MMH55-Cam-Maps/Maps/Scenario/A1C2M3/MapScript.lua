@@ -677,16 +677,16 @@ Trigger( OBJECT_CAPTURE_TRIGGER, "Town", "secondobj" );
 function Caravan() ------- Ставим караван на карту
 	SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_ACTIVE );
 	caravanArrivingTime = GetDate(DAY) + 10 - diff*2
-	while GetDate(DAY) < caravanArrivingTime do sleep(5); end;
+	while GetDate(DAY) < caravanArrivingTime do sleep(20); end;
 	x, y, floor = RegionToPoint( "caravan_here");
 	--DeployReserveHero(EnemyHero2, x, y, floor);
 	CreateCaravan( "caravan", PLAYER_2, 0, 133, 114, 0, 2, 40 );
-	sleep( 1 );
+	sleep( 30 );
 	AddObjectCreatures( "caravan", CREATURE_CHAMPION, 2 + diff * 1 );
 	AddObjectCreatures( "caravan", CREATURE_VINDICATOR, 20 + diff * 5 );
 	AddObjectCreatures( "caravan", CREATURE_ZEALOT, 4 + diff * 3 );
 	AddObjectCreatures( "caravan", CREATURE_LONGBOWMAN, 17 +8*diff);
-	sleep( 3 );
+	sleep( 30 );
 	zoom = 35;
 	MoveCamera( x, y, floor, 45, 1.3, 0, 0, 0, 1);
 	OpenCircleFog(x, y, floor, 12 , PLAYER_1);
@@ -695,14 +695,14 @@ function Caravan() ------- Ставим караван на карту
 	x, y, floor = RegionToPoint( "Caravan_Out");
 	OpenCircleFog(x, y, floor, 12 , PLAYER_1);
 	while GetCurrentPlayer() == PLAYER_1 do
-		sleep(3);
+		sleep(10);
 	end;
 	startThread( showMeCaravan );
 end;
 
 function CheckCaravan()
 	while IsObjectExists( "caravan" ) do
-		sleep( 3 );
+		sleep( 500 );
 		if IsObjectExists( "caravan" ) then
 			x, y = GetObjectPosition( "caravan" );
 			if x == 2 and y == 40 then
@@ -719,7 +719,7 @@ end;
 function showMeCaravan()
 	while IsObjectExists( "caravan" ) do
 		while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep(3);
+			sleep(10);
 		end;
 		x,y,fl = GetObjectPosition( "caravan" );
 		OpenCircleFog( x, y, fl, 5, PLAYER_1 );
@@ -802,3 +802,12 @@ end;
 H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
 startThread( Def );
 startThread( Diff_leveladd );
+
+-- debug --
+-- AddHeroCreatures("Wulfstan", CREATURE_LONGBOWMAN, 2000);
+-- sleep(10);
+-- H55_NoFog(1);
+-- sleep(10);
+-- MakeHeroInteractWithObject("Wulfstan", "Prion_under");
+-- sleep(20);
+-- SetObjectOwner("Town", PLAYER_1);

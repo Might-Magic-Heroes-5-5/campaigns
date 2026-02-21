@@ -40,18 +40,25 @@ end
 function set_light(type)
 	if type == 0 then
 		SetAmbientLight(0, "c5m5_dawn", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dawn.xdb#xpointer(/AmbientLight)");
 	elseif type == 1 then
 		SetAmbientLight(0, "c5m5_dusk1", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk1.xdb#xpointer(/AmbientLight)");
 	elseif type == 2 then
 		SetAmbientLight(0, "c5m5_dusk2", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk2.xdb#xpointer(/AmbientLight)");
 	elseif type == 3 then
 		SetAmbientLight(0, "c5m5_dusk3", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk3.xdb#xpointer(/AmbientLight)");
 	elseif type == 4 then
 		SetAmbientLight(0, "c5m5_dusk4", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk4.xdb#xpointer(/AmbientLight)");
 	elseif type == 5 then
 		SetAmbientLight(0, "c5m5_dusk5", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_dusk5.xdb#xpointer(/AmbientLight)");
 	elseif type == 6 then
 		SetAmbientLight(0, "c5m5_night", not nil, 5)
+		SetCombatLight("/Lights/_(AmbientLight)/AdvMap/C5M5/c5m5_night.xdb#xpointer(/AmbientLight)");
 	end
 end
 

@@ -333,6 +333,8 @@ end;
 
 function AIAction3()
 	heroname = "Freyda"
+	SaveHeroAllSetArtifactsEquipped("Duncan", "A1C1M5");
+	sleep(5);
 	BlockGame();
 	sleep(5);
 	DeployReserveHero( "Ving", 75, 4, GROUND );

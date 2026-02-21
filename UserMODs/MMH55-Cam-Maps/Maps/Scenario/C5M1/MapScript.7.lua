@@ -60,7 +60,7 @@ function at_sylvan_post_gate(h_n)
 	elseif GetObjectOwner(h_n) == 2 then
 		local x,y,z = GetObjectPosition(h_n);
 		local choice = nil;
-		local closest_distance = 9999;
+		local closest_distance = 30;
 		for name, coords in SylvanPosts do
 			local dx = coords[1] - x;
 			local dy = coords[2] - y;
@@ -115,7 +115,9 @@ end
 function attackBorder(hero, pos)
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(3-dif));
-	DeployReserveHero(hero, RegionToPoint('EnemyHere'));
+	if IsHeroAlive(hero) == nil then
+		DeployReserveHero(hero, RegionToPoint('EnemyHere'));
+	end
 	local num = GetDate(MONTH)*4 - 4 + GetDate(WEEK);
 	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*5);
 	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 15 + num*7  + dif*3);
@@ -236,13 +238,13 @@ OBJECTIVES = {
 	end,
 
 	holdBorders_attack_count = 5,
-	holdBorders_attack_day = 0,
+	holdBorders_attack_day = 1,
 	holdBorders = function()
 		if OBJECTIVES.state.holdBorders[2] == 1 then
 			SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.holdBorders[2] = 2;
-		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(DAY_OF_WEEK) > OBJECTIVES.holdBorders_attack_day and GetDate(DAY_OF_WEEK) > random(6) then
-			OBJECTIVES.holdBorders_attack_day = OBJECTIVES.holdBorders_attack_day + 1;
+		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(ABSOLUTE_DAY) > OBJECTIVES.holdBorders_attack_day and GetDate(DAY_OF_WEEK) > random(6) then
+			OBJECTIVES.holdBorders_attack_day = OBJECTIVES.holdBorders_attack_day + 7;
 			hero_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
 			position_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
 			local hero = heroes[hero_idx];
