@@ -216,7 +216,7 @@ function H55c_AI_main()
 				startThreadOnce( H55c_AI_UpdateTargetWeight,  i );
 			end
 		end
-		sleep(100);
+		sleep(20);
 	end
 end
 
