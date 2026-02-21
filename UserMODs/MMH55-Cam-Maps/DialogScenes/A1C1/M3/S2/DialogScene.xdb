@@ -807,7 +807,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName>sporator</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -950,7 +950,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>idle00</AnimName>
+					<AnimName>sporator</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -1038,7 +1038,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName>sporator</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -1563,16 +1563,7 @@
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
 				</Item>
-				<Item>
-					<heroLink href="#xpointer(id(item_D36CAD33-64F0-40EB-840F-FC17B2E63F0D)/AdvMapHero)"/>
-					<monsterLink/>
-					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
-					<AnimName>idle00</AnimName>
-					<MovePoints/>
-					<FinalAngle>0</FinalAngle>
-					<MovementSpeed>0</MovementSpeed>
-				</Item>
+				<Item/>
 			</CustomAnimations>
 			<MusicVolumePercent>0</MusicVolumePercent>
 			<MusicFadeOutDuration>0</MusicFadeOutDuration>
@@ -1591,7 +1582,7 @@
 			<monsterLink/>
 			<MonsterCustomName href=""/>
 			<cameraSet/>
-			<NewCameraSet href="23-24.xdb#xpointer(/DSceneCameraSet)"/>
+			<NewCameraSet href="25-25.xdb#xpointer(/DSceneCameraSet)"/>
 			<StopAmbient>false</StopAmbient>
 			<StopMusic>false</StopMusic>
 			<DynamicCamera>true</DynamicCamera>
@@ -1639,16 +1630,7 @@
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
 				</Item>
-				<Item>
-					<heroLink href="#xpointer(id(item_D36CAD33-64F0-40EB-840F-FC17B2E63F0D)/AdvMapHero)"/>
-					<monsterLink/>
-					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sporator</AnimName>
-					<MovePoints/>
-					<FinalAngle>0</FinalAngle>
-					<MovementSpeed>0</MovementSpeed>
-				</Item>
+				<Item/>
 			</CustomAnimations>
 			<MusicVolumePercent>0</MusicVolumePercent>
 			<MusicFadeOutDuration>0</MusicFadeOutDuration>

@@ -1006,7 +1006,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName>spbellicose</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -1098,7 +1098,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>spbellicose</AnimName>
+					<AnimName>happy</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -1107,7 +1107,7 @@
 					<heroLink href="#xpointer(id(item_82E794F2-E739-48B2-A758-8896B779E769)/AdvMapHero)"/>
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>1</AnimationDelay>
+					<AnimationDelay>20</AnimationDelay>
 					<AnimName>idle01</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
@@ -1444,9 +1444,9 @@
 				<Item>
 					<heroLink href="#xpointer(id(item_72677AA5-783E-48F6-958E-1A7646D6A051)/AdvMapHero)"/>
 					<monsterLink/>
-					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
-					<AnimName>idle00</AnimName>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>5</AnimationDelay>
+					<AnimName>spbellicose</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -1478,11 +1478,11 @@
 			<StopAmbient>false</StopAmbient>
 			<StopMusic>false</StopMusic>
 			<DynamicCamera>true</DynamicCamera>
-			<duration>3</duration>
+			<duration>5</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>-1</ActorAnimationIndex>
-			<AnimName/>
+			<AnimName>idle00</AnimName>
 			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds>
 				<Item>
@@ -1596,12 +1596,12 @@
 			<StopAmbient>false</StopAmbient>
 			<StopMusic>false</StopMusic>
 			<DynamicCamera>true</DynamicCamera>
-			<duration>1</duration>
+			<duration>0</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>-1</ActorAnimationIndex>
 			<AnimName/>
-			<AnimationDelay>0</AnimationDelay>
+			<AnimationDelay>10</AnimationDelay>
 			<CustomSounds>
 				<Item>
 					<Delay>4</Delay>
@@ -1780,7 +1780,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName>sporator</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -2101,7 +2101,7 @@
 						</Item>
 					</MovePoints>
 					<FinalAngle>90</FinalAngle>
-					<MovementSpeed>0</MovementSpeed>
+					<MovementSpeed>1</MovementSpeed>
 				</Item>
 			</CustomAnimations>
 			<MusicVolumePercent>0</MusicVolumePercent>
@@ -2248,7 +2248,7 @@
 						</Item>
 					</MovePoints>
 					<FinalAngle>1</FinalAngle>
-					<MovementSpeed>0</MovementSpeed>
+					<MovementSpeed>1</MovementSpeed>
 				</Item>
 			</CustomAnimations>
 			<MusicVolumePercent>0</MusicVolumePercent>
@@ -2398,7 +2398,7 @@
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName>sporator</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
