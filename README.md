@@ -413,6 +413,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and Mооnst@r from the [Remastered Campaigns project](https://forum.heroesworld.ru/showthread.php?t=18706).
 
+- Added Widescreen support for loading screens, cinematics and dialogues.
+
 ### C1M1 – Haven: The Queen
 - scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged.
 
