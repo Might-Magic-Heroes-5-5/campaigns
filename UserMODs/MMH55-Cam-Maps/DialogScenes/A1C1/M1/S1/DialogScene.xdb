@@ -182,7 +182,7 @@
 						</AdvMapHero>
 					</heroLink>
 					<monsterLink/>
-					<AnimationIndex>0</AnimationIndex>
+					<AnimationIndex>1</AnimationIndex>
 					<AnimationDelay>-6</AnimationDelay>
 					<AnimName>move</AnimName>
 					<MovePoints>
@@ -455,7 +455,7 @@
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight/>
 			<ActorAnimationIndex>-1</ActorAnimationIndex>
-			<AnimName/>
+			<AnimName>sporator</AnimName>
 			<AnimationDelay>0</AnimationDelay>
 			<CustomSounds/>
 			<CustomEffects/>
@@ -463,9 +463,9 @@
 				<Item>
 					<heroLink href="#xpointer(id(item_C128AF98-86E0-409C-A5B2-1FBD4F28AB4F)/AdvMapHero)"/>
 					<monsterLink/>
-					<AnimationIndex>0</AnimationIndex>
+					<AnimationIndex>-3</AnimationIndex>
 					<AnimationDelay>0</AnimationDelay>
-					<AnimName>sphaugtiness</AnimName>
+					<AnimName/>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
 					<MovementSpeed>0</MovementSpeed>
@@ -642,7 +642,7 @@
 					<heroLink href="#xpointer(id(item_122B6EBF-0886-4A92-B32D-3F342BA5C6FF)/AdvMapHero)"/>
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
+					<AnimationDelay>20</AnimationDelay>
 					<AnimName>idle00</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>
@@ -718,7 +718,7 @@
 					<heroLink href="#xpointer(id(item_DF3F90C2-B97F-4379-B0B9-6AAB59CE0C9E)/AdvMapHero)"/>
 					<monsterLink/>
 					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>2.5</AnimationDelay>
+					<AnimationDelay>30</AnimationDelay>
 					<AnimName>spneutral</AnimName>
 					<MovePoints/>
 					<FinalAngle>0</FinalAngle>

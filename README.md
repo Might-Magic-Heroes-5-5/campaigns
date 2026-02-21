@@ -458,3 +458,29 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### C6M4 – Academy: The Alliance
 - scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them
+
+### A1C1M1 - Freyda: Rebels
+- scene(intro): Alaric speech animation
+- scene(ambush): Freyda reaction timing when soldier is killed
+
+### A1C1M2 - Freyda: The Suspicion
+- scene(intro): Alaric speech animation
+- scene(intro): Peasant convertion to Horned Daemons was not in sync and looked weird
+- scene(burnt hut): Alaric speech animation
+
+### A1C1M3 - Freyda: Duncan 
+- scene(intro): leading peasant happy animation duration was too short
+- scene(outro): Alaric speech animation
+
+### A1C1M4 - Freyda: Negotiations 
+- scene(intro): Alaric speech animation
+
+### A1C2M2 - Wulfstan:  The Ambush
+- scene(outro): Corrected Rolf's camera position as Isabel's model was visible on the widescreen monitor before she appeared.
+
+### A1C2M5 - Wulfstan: Laszlo
+- scene(outro): Removed an incorrect English phrase in the final cutscene of the fifth mission.
+
+### A1C3M5 - Ylaya: The Decoupling
+- scene(Alaric withdrawal): Alaric speech animation
+- scene(outro): Alaric speech animation
