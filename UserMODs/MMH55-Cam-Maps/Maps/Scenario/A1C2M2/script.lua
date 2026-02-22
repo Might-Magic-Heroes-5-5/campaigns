@@ -130,6 +130,19 @@ function DwellingCaptured( oldowner, newowner )
 	end;
 end;
 
+
+function A1C2M2_set_enemy_army(str)
+	DeployReserveHero( ENEMY_HERO, 22, 3, 0 );
+	sleep(30);
+	GiveExp( ENEMY_HERO, attacker_expa );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_CHAMPION, 		35  +  5 * str );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_ZEALOT,			60  + 10 * str );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_BATTLE_GRIFFIN, 	90  + 20 * str );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_VINDICATOR, 		280 + 40 * str );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_LONGBOWMAN, 		220 + 60 * str );
+	sleep(10);
+end
+
 function H55_ThrTriggerDaily()
 	if GetDate( DAY ) == attack_date then
 		--Trigger( NEW_DAY_TRIGGER, nil );
@@ -137,16 +150,9 @@ function H55_ThrTriggerDaily()
 		H55_SecNewDayTrigger = 0;
 		H55_ThrNewDayTrigger = 0;
 		H55_FrtNewDayTrigger = 1;
-		DeployReserveHero( ENEMY_HERO, 22, 3, 0 );
-		sleep( 30 );
-		--EnableHeroAI( ENEMY_HERO, nil ); --H55 fix
-		GiveExp( ENEMY_HERO, attacker_expa );
-		coeff = ( GetDate( WEEK ) + ( GetDate( MONTH ) - 1 ) * 4 ) * attacking_army_coeff;
-		AddHeroCreatures( ENEMY_HERO, CREATURE_CHAMPION, 2 * coeff );
-		AddHeroCreatures( ENEMY_HERO, CREATURE_VINDICATOR, 12 * coeff );
-		AddHeroCreatures( ENEMY_HERO, CREATURE_LONGBOWMAN, 14 * coeff );
-		AddHeroCreatures( ENEMY_HERO, CREATURE_ZEALOT, 3 * coeff );
-		AddHeroCreatures( ENEMY_HERO, CREATURE_BATTLE_GRIFFIN, 6 * coeff );
+		--coeff = ( GetDate( WEEK ) + ( GetDate( MONTH ) - 1 ) * 4 ) * attacking_army_coeff;
+		coeff = GetDifficulty();
+		A1C2M2_set_enemy_army(coeff)
 		H55_AttackTown(ENEMY_HERO,'town');
 		--MoveHero( ENEMY_HERO, GetObjectPosition( 'town' ) );
 		--Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'EnemyHeroKilled' ); --H55 fix
