@@ -384,6 +384,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Raise level cap from 22 to 25.
 
 ### A1C2M3 - Wulfstan: The Guerrillas
+- fix: Underground Haven hero did not patrol as intended
 - fix: Caravan for "Intercept gold caravan" quest occasionally did not appear which made the mission unable to complete.
 
 ### A1C2M4 - Wulfstan: Two Brothers
@@ -404,6 +405,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C3M3 - Ylaya: The Meeting
 - fix: unit attack/hit animation stuters on adventure map
+- fix: unreachable resource pile near the town towards the north
 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
