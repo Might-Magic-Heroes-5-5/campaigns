@@ -217,7 +217,7 @@ end
 -- ### LUA Multiclicker guard
 H55c_LUA = {
 	busy = nil,
-	cooldown = 20,
+	cooldown = 60,
   
 	guard = function()
 	    if H55c_LUA.busy ~= nil then return not nil end;
