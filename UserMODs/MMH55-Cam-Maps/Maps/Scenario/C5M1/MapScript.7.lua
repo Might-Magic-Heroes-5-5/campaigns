@@ -105,10 +105,12 @@ function borderPosts_capture_count(play_1,play_2,name_h)
 			bor = bor + 1;
 		end
 	end
-	if play_1 == 1 and bor == 1 then
-		OBJECTIVES.state.recapturePost[2] = 2;
-	elseif play_1 == 2 and bor == 0 then
-		OBJECTIVES.state.recapturePost[2] = 4;
+	if OBJECTIVES.state.holdBorders[2] < 10 then
+		if play_1 == 1 and bor == 1 then
+			OBJECTIVES.state.recapturePost[2] = 2;
+		elseif play_1 == 2 and bor == 0 then
+			OBJECTIVES.state.recapturePost[2] = 4;
+		end
 	end
 end
 
@@ -333,6 +335,13 @@ OBJECTIVES = {
 			SetObjectiveState('prim5', OBJECTIVE_COMPLETED);
 			AddHeroCreatures("Heam", CREATURE_TREANT_GUARDIAN, 1);
 			OBJECTIVES.state.recapturePost[2] = 1;
+		end
+		
+		if OBJECTIVES.state.holdBorders[2] == 10 then
+			if GetObjectiveState('prim5') == OBJECTIVE_ACTIVE then
+				SetObjectiveState('prim5', OBJECTIVE_COMPLETED);
+			end
+			OBJECTIVES.state.recapturePost[2] = 10;
 		end
 	end,
 }
