@@ -58,6 +58,7 @@ function at_sylvan_post_gate(h_n)
 	if GetObjectOwner(h_n) == 1 then
 		MessageBox('/Maps/Scenario/C5M1/alarm.txt');
 	elseif GetObjectOwner(h_n) == 2 then
+		if H55c_LUA.guard() == not nil then return end
 		local x,y,z = GetObjectPosition(h_n);
 		local choice = nil;
 		local closest_distance = 30;
@@ -116,27 +117,28 @@ end
 
 function attackBorder(hero, pos)
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(3-dif));
+	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(dif/4));
 	if IsHeroAlive(hero) == nil then
 		DeployReserveHero(hero, RegionToPoint('EnemyHere'));
 	end
 	local num = GetDate(MONTH)*4 - 4 + GetDate(WEEK);
-	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*5);
-	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 15 + num*7  + dif*3);
-	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  9 + num*4  + dif*2);
-	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  5 + num*2  + dif);
-	AddHeroCreatures(hero,	   	  CREATURE_DEMILICH,      num    + dif);
-	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  2 + num*dif/2);
-	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + num*dif/4);
+	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*2);
+	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 12 + num*5  + dif*2);
+	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  9 + num*4  + dif);
+	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  5 + num*2  + dif/2);
+	AddHeroCreatures(hero,	   	  CREATURE_DEMILICH,      num    + dif/2);
+	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  2 + num*dif/4);
+	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + num*dif/8);
 	EnableHeroAI(hero, not nil);
 	sleep(5);
+	DenyAIHeroFlee(hero, not nil);
 	MoveHero(hero, pos[1], pos[2], pos[3]);
 	print(hero," attack at border post ",pos[1],":",pos[2],":",pos[3]);
 end
 
 DIFFICULTY = {
 	[0] = function()
-		dif = 0;
+		dif = 1;
 		demon_invasion_day = 43;
 		SetTownBuildingLimitLevel('Damlad', 11, 2);
 		SetTownBuildingLimitLevel('Damlad', 12, 2);
@@ -144,17 +146,17 @@ DIFFICULTY = {
 	end,
 
 	[1] = function()
-		dif = 0;
+		dif = 2;
 		demon_invasion_day = 39;
 	end,
 
 	[2] = function()
-		dif = 1;
+		dif = 3;
 		demon_invasion_day = 34;
 	end,
 
 	[3] = function()
-		dif = 2;
+		dif = 4;
 		demon_invasion_day = 30;
 	end,
 }
@@ -290,15 +292,15 @@ OBJECTIVES = {
 		if OBJECTIVES.state.demonArmy[2] == 1 and GetDate(DAY) == demon_invasion_day then
 			DeployReserveHero("Biara" , RegionToPoint('EnemyHere'));
 			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(3-dif));
-			AddHeroCreatures("Biara",		 		  CREATURE_IMP, (5 + dif)*10);
-			AddHeroCreatures("Biara",	   	 CREATURE_HORNED_DEMON,  (5 + dif)*5);
-			AddHeroCreatures("Biara", 			  CREATURE_CERBERI,  (5 + dif)*2);
-			AddHeroCreatures("Biara",   CREATURE_INFERNAL_SUCCUBUS,  (5 + dif*2));
-			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE,      5 + dif);
-			AddHeroCreatures("Biara",				CREATURE_BALOR,      2 + dif);
-			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL,      2 + dif);
-			EnableHeroAI("Biara" ,not nil);
+			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(dif/4));
+			AddHeroCreatures("Biara",		 	 CREATURE_FAMILIAR, dif *  15);
+			AddHeroCreatures("Biara",	   	 CREATURE_HORNED_DEMON, dif *   7);
+			AddHeroCreatures("Biara", 			  CREATURE_CERBERI, dif *   5);
+			AddHeroCreatures("Biara",   CREATURE_INFERNAL_SUCCUBUS, dif *   4);
+			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif *   3);
+			AddHeroCreatures("Biara",				CREATURE_BALOR, dif * 1.5);
+			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL, dif *   1);
+			EnableHeroAI("Biara", not nil);
 			sleep(5);
 			startThread(H55_AttackTown,"Biara", "Damlad");
 			OBJECTIVES.state.demonArmy[2] = 2;
