@@ -25,9 +25,13 @@ towns={'town1','town2','town3','town4','town5','town6'}
 respawns_x={37,84,41,160,95,26}
 respawns_y={39,86,152,31,92,21}
 respawns_z={GROUND,GROUND,GROUND,GROUND,UNDERGROUND,UNDERGROUND}
-kolyan_army_normal={30,25,20,15}
-kolyan_army_hard={50,40,30,25}
-kolyan_army_heroic={70,55,40,35}
+kolyan_army={
+ [0]={30,25,20,15},
+ [1]={50,40,30,25},
+ [2]={70,55,40,35},
+ [3]={90,70,50,45},
+}
+
 creatures_types={CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_GHOST, CREATURE_VAMPIRE_LORD, CREATURE_DEMILICH, CREATURE_WRAITH, CREATURE_SHADOW_DRAGON}
 
 function blocking()  --блокает проходимость тайлов вокруг шадоу драконов для PLAYER_2, чтоб он сам их не поубивал как дурак
@@ -88,24 +92,14 @@ function ressurect(loser, winner) --триггерная функция, запускается после смерти
 		end
 		DeployReserveHero('Nikolay',check_place()) --респавн Коляна
 		sleep(10) --без этой паузы следующая функция не стаботает!!!!
-		army() --добавление Коляну свежей армии
+		DenyAIHeroFlee(hero, not nil);
+		update_army() --добавление Коляну свежей армии
 	end
 end
 
-function army() --добавление армии Коляну после респавноа
-	if GetDifficulty()==DIFFICULTY_NORMAL then
-		give_creatures(kolyan_army_normal)
-	else
-		if GetDifficulty()==DIFFICULTY_HARD then
-			give_creatures(kolyan_army_hard)
-		else
-			give_creatures(kolyan_army_heroic)
-		end
-	end
-end
-
-function give_creatures(diff_mod) --подфункция для army()
-	for i,h in diff_mod do
+function update_army() --добавление армии Коляну после респавноа
+	local diff = GetDifficulty();
+	for i,h in kolyan_army[diff] do
 		AddHeroCreatures('Nikolay', creatures_types[i+3] , 1+diff_mod[i])
 		print("Kolyan gain ",1+diff_mod[i], creatures_types[i+3])
 	end
@@ -232,6 +226,8 @@ DIFFICULTY = {
 		for a = 0,6 do
 			SetPlayerResource(PLAYER_2, a, 0);
 		end
+		ChangeHeroStat('Nikolay', STAT_ATTACK, 5);
+		ChangeHeroStat('Nikolay', STAT_DEFENCE, 5);
 	end,
 	
 	[2] = function()
@@ -244,6 +240,8 @@ DIFFICULTY = {
 			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 30);
 			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 20);
 		end
+		ChangeHeroStat('Nikolay', STAT_ATTACK, 10);
+		ChangeHeroStat('Nikolay', STAT_DEFENCE, 10);
 	end,
 	
 	[3] = function()
@@ -257,6 +255,8 @@ DIFFICULTY = {
 			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE, 30);
 			AddObjectCreatures(dang_array[i], CREATURE_GHOST, 37);
 		end
+		ChangeHeroStat('Nikolay', STAT_ATTACK, 15);
+		ChangeHeroStat('Nikolay', STAT_DEFENCE, 15);
 	end,
 }
 
@@ -280,7 +280,9 @@ OBJECTIVES = {
 		H55_CamFixTooManySkills(PLAYER_1,"Heam");
 		CINEMATICS.intro();
 		DeployReserveHero('Nikolay',84,86,GROUND);
-		ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000);
+		DenyAIHeroFlee('Nikolay', not nil);
+		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
+		ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000+exp);
 		blocking();
 		Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'ressurect');
 		startThread(DIFFICULTY[GetDifficulty()]);
@@ -314,7 +316,7 @@ OBJECTIVES = {
 	great_night_progress = 0,
 	defeatNikolay = function()
 		-- Objective is started by C5M5.xdb
-		if OBJECTIVES.state.defeatNikolay[2] == 1 and OBJECTIVES.progress_day < GetDate() then
+		if OBJECTIVES.state.defeatNikolay[2] == 1 and OBJECTIVES.progress_day < GetDate(ABSOLUTE_DAY) then
 			OBJECTIVES.great_night_progress=OBJECTIVES.great_night_progress+dragons_count()*night_diff;
 			print ("zlo = ", OBJECTIVES.great_night_progress);
 			local power=OBJECTIVES.great_night_progress/1008 --насколько драконы закончили свою работу
@@ -341,7 +343,7 @@ OBJECTIVES = {
 				if new_progress == 6 then pcall(MessageBox("/Maps/Scenario/C5M5/night3.txt")); end
 				OBJECTIVES.progress_sky = new_progress;
 			end
-			OBJECTIVES.progress_day = GetDate();
+			OBJECTIVES.progress_day = GetDate(ABSOLUTE_DAY);
 		elseif OBJECTIVES.state.defeatNikolay[2] == 2 then
 			ChangeHeroStat('Nikolay', STAT_MOVE_POINTS, 6500000);
 			MoveHero('Nikolay', GetObjectPosition("Heam"));
@@ -421,7 +423,6 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.killDragons[2] == 3 and m == 0 then
 			CINEMATICS.dragonsLeft0(); --все драконы убиты
 			set_light(0);
-			SetCombatLight("c5m5_dawn");
 			OBJECTIVES.state.killDragons[2] = 10;
 		end
 	end
@@ -429,3 +430,7 @@ OBJECTIVES = {
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
+
+function go()
+	MakeHeroInteractWithObject("Heam", "Nikolay");
+end

@@ -342,6 +342,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
+- change: Biara army size increased
 
 ### C5M3 - Sylvan: The Defense
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
@@ -355,9 +356,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M4 - Sylvan: The Archipelago
 - new: Added Memory Mentor
+- change: Inferno heroes army is now stronger and will scale up with every month that passes by
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
+- fix: Nikolay occasionally transfered his army to other heroes due to AI not considering him the main player hero.
+- fix: Nikolay was fleeing from combat when he was losing while he has to fight till the very end.
+- change: Nikolay army is now stronger on Impossible difficulty. He also knows all Dark and Summoning spells and gains 0/5/10/15 Attack and Defense on Normal/Hard/Heroic/Impossible difficuties.
 - new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
 - new: Combat arena light and Skydome reflects the one on the adventure map.
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
