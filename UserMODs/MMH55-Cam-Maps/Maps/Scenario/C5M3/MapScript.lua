@@ -92,7 +92,7 @@ function attack(town)
 	local week = GetDate(MONTH)*4 - 4 + GetDate(WEEK);
 	if IsHeroAlive(hero) == nil then
 		DeployReserveHero(hero, RegionToPoint("Start"));
-		sleep ( 1 );
+		sleep ( 20 );
 		exp = GetHeroStat(hero, STAT_EXPERIENCE);
 		if GetHeroStat(hero, STAT_EXPERIENCE) < GetHeroStat(OUR_HERO, STAT_EXPERIENCE) then
 			ChangeHeroStat(hero, STAT_EXPERIENCE , exp + (1000*week));

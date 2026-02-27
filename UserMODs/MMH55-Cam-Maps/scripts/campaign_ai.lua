@@ -153,10 +153,13 @@ function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 				local owner = owner_status[1];
 				if owner ~= player and ai.enemies[owner] and ai.enemies[owner].is_enemy == 1 then
 					local x, y, z = place_status[1], place_status[2], place_status[3];
-					local cost = 0;
+					local cost = 99999999;
 					local p_cost = pcall(CalcHeroMoveCost,name,x,y,z);
 					if p_cost == nil or p_cost[1] < 0 then
-						cost = H55_GetDistance(name, item)*100
+						local h55_cost = pcall(H55_GetDistance, name, item);
+						if h55_cost ~= nil and h55_cost[1] > 0 then
+							cost = h55_cost[1]*100;
+						end
 					else
 						cost = p_cost[1];
 					end
@@ -213,10 +216,10 @@ function H55c_AI_main()
 	while true do
 		for i = 1, 8 do
 			if H55c_AI_CONTROLLED["player"..i] ~= nil and H55c_AI_CONTROLLED["player"..i].state == 2 then
-				startThreadOnce( H55c_AI_UpdateTargetWeight,  i );
+				pcall(startThreadOnce, H55c_AI_UpdateTargetWeight, i );
 			end
 		end
-		sleep(20);
+		sleep(30);
 	end
 end
 
@@ -245,6 +248,7 @@ function H55c_AIReport(player)
 end
 
 function H55c_AIAddHero(name)
+	H55c_AI_print(0, "Adding hero "..name);
 	local player = GetObjectOwner(name)
 	H55c_AI_CONTROLLED["player" .. player].heroes[name] = {
 		weights = {},

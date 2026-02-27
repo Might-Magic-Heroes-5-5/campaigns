@@ -29,11 +29,11 @@ startThread(H55_InitSetArtifacts);
 borders={'Border1','Border2','Border3','Border4','Border5'};
 points={'Border1','Border2','Border3','Border4','Border5'};
 SylvanPosts = {
- ["Border1"] = { 15, 76, 0 },
- ["Border2"] = { 32, 67, 0 },
- ["Border3"] = { 49, 54, 0 },
- ["Border4"] = { 65, 37, 0 },
- ["Border5"] = { 103, 21, 0 },
+ ["Border1"] = { 15, 76, 0, nil },
+ ["Border2"] = { 32, 67, 0, nil },
+ ["Border3"] = { 49, 54, 0, nil },
+ ["Border4"] = { 65, 37, 0, nil },
+ ["Border5"] = { 103, 21, 0, nil },
 }
 
 ai_regions={'ai_block1','ai_block2','ai_block3','ai_block4','ai_block5'};
@@ -54,14 +54,18 @@ function contest_point()
 	end
 end
 
+function mark_attacked(id)
+    C5M1_attacked_garrison[id] = 1   -- any non-nil value
+end
+
 function at_sylvan_post_gate(h_n)
 	if GetObjectOwner(h_n) == 1 then
 		MessageBox('/Maps/Scenario/C5M1/alarm.txt');
 	elseif GetObjectOwner(h_n) == 2 then
-		if H55c_LUA.guard() == not nil then return end
 		local x,y,z = GetObjectPosition(h_n);
 		local choice = nil;
 		local closest_distance = 30;
+		local onslaught_hero = nil;
 		for name, coords in SylvanPosts do
 			local dx = coords[1] - x;
 			local dy = coords[2] - y;
@@ -69,11 +73,15 @@ function at_sylvan_post_gate(h_n)
 			if closest_distance > distance then
 				closest_distance = distance;
 				choice = name;
+				onslaught_hero = coords[4];
 			end
 		end
-		if choice ~= nil and GetObjectOwner(choice) ~= 2 then
+		print(h_n);
+		print(onslaught_hero);
+		if choice ~= nil and onslaught_hero == h_n and GetObjectOwner(choice) ~= 2 then
 			ChangeHeroStat(h_n, STAT_MOVE_POINTS, -5000);
-			MakeHeroInteractWithObject(h_n, choice);
+			startThreadOnce(MakeHeroInteractWithObject, h_n, choice);
+			SylvanPosts[choice][4] = nil;
 		end
 	end
 end
@@ -98,7 +106,7 @@ function borderPosts_capture()
 	end
 end
 
-function borderPosts_capture_count(play_1,play_2,name_h)
+function borderPosts_capture_count(play_1,play_2,name_h,garrison)
 	bor = 0;
 	for a = 1,5 do
 		sleep(5);
@@ -113,26 +121,30 @@ function borderPosts_capture_count(play_1,play_2,name_h)
 			OBJECTIVES.state.recapturePost[2] = 4;
 		end
 	end
+	if GetObjectOwner(garrison) == 2 then
+		SylvanPosts[garrison][4] = nil;
+	end
 end
 
-function attackBorder(hero, pos)
+function attackBorder(hero, order)
+	pos = SylvanPosts[order];
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(dif/4));
 	if IsHeroAlive(hero) == nil then
 		DeployReserveHero(hero, RegionToPoint('EnemyHere'));
 	end
 	local num = GetDate(MONTH)*4 - 4 + GetDate(WEEK);
-	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*2);
-	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 12 + num*5  + dif*2);
-	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  9 + num*4  + dif);
-	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  5 + num*2  + dif/2);
+	AddHeroCreatures(hero, CREATURE_SKELETON_ARCHER, 20 + num*10 + dif*3);
+	AddHeroCreatures(hero,			CREATURE_ZOMBIE, 10 + num*5  + dif*3);
+	AddHeroCreatures(hero,		  	 CREATURE_GHOST,  7 + num*4  + dif);
+	AddHeroCreatures(hero, 	  CREATURE_VAMPIRE_LORD,  4 + num*2  + dif/2);
 	AddHeroCreatures(hero,	   	  CREATURE_DEMILICH,      num    + dif/2);
-	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  2 + num*dif/4);
+	AddHeroCreatures(hero,		 	CREATURE_WRAITH,  1 + num*dif/4);
 	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + num*dif/8);
-	EnableHeroAI(hero, not nil);
 	sleep(5);
 	DenyAIHeroFlee(hero, not nil);
 	MoveHero(hero, pos[1], pos[2], pos[3]);
+	SylvanPosts[order][4] = hero;
 	print(hero," attack at border post ",pos[1],":",pos[2],":",pos[3]);
 end
 
@@ -253,7 +265,7 @@ OBJECTIVES = {
 			position_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
 			local hero = heroes[hero_idx];
 			local post = points[position_idx];
-			attackBorder(hero, SylvanPosts[post]);
+			attackBorder(hero, post);
 			OBJECTIVES.holdBorders_attack_count = OBJECTIVES.holdBorders_attack_count - 1;
 			heroes=remove_element(hero, heroes);
 			points=remove_element(post, points);
@@ -293,13 +305,13 @@ OBJECTIVES = {
 			DeployReserveHero("Biara" , RegionToPoint('EnemyHere'));
 			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(dif/4));
-			AddHeroCreatures("Biara",		 	 CREATURE_FAMILIAR, dif *  15);
-			AddHeroCreatures("Biara",	   	 CREATURE_HORNED_DEMON, dif *   7);
-			AddHeroCreatures("Biara", 			  CREATURE_CERBERI, dif *   5);
-			AddHeroCreatures("Biara",   CREATURE_INFERNAL_SUCCUBUS, dif *   4);
-			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif *   3);
-			AddHeroCreatures("Biara",				CREATURE_BALOR, dif * 1.5);
-			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL, dif *   1);
+			AddHeroCreatures("Biara",		 	 CREATURE_FAMILIAR, dif *  30);
+			AddHeroCreatures("Biara",	    CREATURE_HORNED_LEAPER, dif *  20);
+			AddHeroCreatures("Biara", 			  CREATURE_CERBERI, dif *  15);
+			AddHeroCreatures("Biara",   CREATURE_INFERNAL_SUCCUBUS, dif *  12);
+			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif *   7);
+			AddHeroCreatures("Biara",				CREATURE_BALOR, dif *   4);
+			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL, dif *   3);
 			EnableHeroAI("Biara", not nil);
 			sleep(5);
 			startThread(H55_AttackTown,"Biara", "Damlad");

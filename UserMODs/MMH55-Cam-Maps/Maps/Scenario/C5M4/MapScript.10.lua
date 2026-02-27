@@ -29,10 +29,9 @@ for res_count=0,6,1 do
 	SetPlayerResource(1, res_count, 0);
 end;
 ------- DEMON HEROES ARMY DEPENDANCE OF GAME DIFFICULTY---------------
-ArmyMult = 0;
-Diff = GetDifficulty ();
-if Diff == DIFFICULTY_HARD then ArmyMult = 1; end;
-if Diff == DIFFICULTY_HEROIC then ArmyMult = 2; end;
+
+Diff = GetDifficulty();
+ArmyMult = 1 + Diff;
 ------- REMOVE SOME HARD MOBS FROM MAP IN EASY AND NORMAL MODE -------
 if Diff == DIFFICULTY_EASY then
 	RemoveObject ('1alpha-wight');
@@ -122,13 +121,15 @@ function ComeToIsland ()
 		DemonHalfArmy ('Biara');
 	end;
 	if ArmyMult>0 then 	------ ADDITIONAL TROOPS FOR JAZAZ AND BIARA
+	 local month = GetDate(MONTH);
+	 ArmyMult = ArmyMult + month;
 	 AddHeroCreatures('Jazaz', CREATURE_BALOR, 3*ArmyMult); --- PIT FIENDS
 	 AddHeroCreatures('Jazaz', CREATURE_CERBERI, 31*ArmyMult); --- CERBERI
 	 AddHeroCreatures('Jazaz', CREATURE_FRIGHTFUL_NIGHTMARE, 6*ArmyMult); --- HELL CHARGERS
 	 AddHeroCreatures('Jazaz', CREATURE_HORNED_DEMON, 32*ArmyMult); --- HORNED DEMONS
-	 if ArmyMult==2 then AddHeroCreatures('Jazaz', CREATURE_ARCHDEVIL, 2*ArmyMult)
-		else AddHeroCreatures('Jazaz', CREATURE_DEVIL, 2*ArmyMult); end;
-	 AddHeroCreatures('Biara', CREATURE_INFERNAL_SUCCUBUS, 29*ArmyMult);
+	 AddHeroCreatures('Jazaz', CREATURE_ARCHDEVIL, 2*ArmyMult);
+	 AddHeroCreatures('Biara', CREATURE_INFERNAL_SUCCUBUS, 15*ArmyMult);
+	 AddHeroCreatures('Biara', CREATURE_SUCCUBUS_SEDUCER,  15*ArmyMult);
 	end;
 	x, y, z = RegionToPoint('Biara_Here');
 	OpenCircleFog(x, y, z, 11, PLAYER_1);
