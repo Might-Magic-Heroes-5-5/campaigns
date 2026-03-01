@@ -7315,27 +7315,6 @@
 				<IsRemovable>false</IsRemovable>
 			</AdvMapStatic>
 		</Item>
-		<Item href="#n:inline(AdvMapCartographer)" id="item_BE1939E5-11FA-4519-9B63-88CAF9D9D6FC">
-			<AdvMapCartographer>
-				<Pos>
-					<x>84</x>
-					<y>93</y>
-					<z>0</z>
-				</Pos>
-				<Rot>6.28319</Rot>
-				<Floor>0</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Cartographer.(AdvMapCartographerShared).xdb#xpointer(/AdvMapCartographerShared)"/>
-				<CaptureTrigger>
-					<Action>
-						<FunctionName/>
-					</Action>
-				</CaptureTrigger>
-				<Cost>4000</Cost>
-			</AdvMapCartographer>
-		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_6462549C-352A-40D1-A515-98C29C8CB7FB">
 			<AdvMapStatic>
 				<Pos>
@@ -49413,6 +49392,29 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Redwood_Observatory_Snow.(AdvMapBuildingShared).xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_5BBE279B-DE15-4A4C-A170-BAD0BEFAC9F0">
+			<AdvMapBuilding>
+				<Pos>
+					<x>84</x>
+					<y>93</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0.786092</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
 				<PlayerID>PLAYER_NONE</PlayerID>
 				<CaptureTrigger>
 					<Action>

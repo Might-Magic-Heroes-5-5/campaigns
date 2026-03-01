@@ -28663,22 +28663,6 @@
 				<IsRemovable>false</IsRemovable>
 			</AdvMapStatic>
 		</Item>
-		<Item href="#n:inline(AdvMapStatic)" id="item_67535EAE-FE22-45C5-9008-2107BFC0E60A">
-			<AdvMapStatic>
-				<Pos>
-					<x>15.4842</x>
-					<y>50.1045</y>
-					<z>0</z>
-				</Pos>
-				<Rot>0</Rot>
-				<Floor>0</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Grass/Tree/SpurceTrees/Spruce_5x4.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
-				<IsRemovable>false</IsRemovable>
-			</AdvMapStatic>
-		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_709FC3AA-DB91-4390-ACC5-F852629AFEC9">
 			<AdvMapStatic>
 				<Pos>
@@ -44953,6 +44937,84 @@
 					<Icon64x64/>
 				</Textures>
 			</AdvMapHero>
+		</Item>
+				<Item href="#n:inline(AdvMapMonster)" id="item_6FD6EE80-D1BD-4291-A1C7-DB7E05DF9535">
+			<AdvMapMonster>
+				<Pos>
+					<x>15</x>
+					<y>52</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Neutral/Earth_Elemental.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>true</Custom>
+				<Amount>15</Amount>
+				<Amount2>25</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_HOSTILE</Mood>
+				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+				<DoesNotDependOnDifficulty>false</DoesNotDependOnDifficulty>
+				<AdditionalStacks>
+					<Item>
+						<Creature>CREATURE_FIRE_ELEMENTAL</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>5</Amount>
+						<Amount2>8</Amount2>
+					</Item>
+					<Item>
+						<Creature>CREATURE_AIR_ELEMENTAL</Creature>
+						<CustomAmount>true</CustomAmount>
+						<Amount>8</Amount>
+						<Amount2>12</Amount2>
+					</Item>
+				</AdditionalStacks>
+				<SingleMonsterNameFileRef href=""/>
+				<MultipleMonstersNameFileRef href=""/>
+				<RacesRandomGroupID>0</RacesRandomGroupID>
+				<relationsOverrides/>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_E649250B-0038-40BE-BE19-84BD09AB92D1">
+			<AdvMapBuilding>
+				<Pos>
+					<x>15</x>
+					<y>53</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
 		</Item>
 	</objects>
 	<Resources>

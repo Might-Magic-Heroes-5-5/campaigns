@@ -375,6 +375,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
 
+### A1C1M4 - Freyda: Negotiations
+- new: Added Memory Mentor
+
+### A1C1M5 - Freyda: The Choice
+- new: Added Memory Mentor
+
 ### A1C2M1 - Wulfstan: The Borderzone
 - change: Raise level cap from 14 to 20
 
@@ -382,6 +388,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Enemy hero leading the final attack is now more challenging.
 - change: Lich stack with hidden army at Dungeon entry is now more challenging.
 - change: Raise level cap from 22 to 25.
+- new: Added Memory Mentor
 
 ### A1C2M3 - Wulfstan: The Guerrillas
 - fix: Underground Haven hero did not patrol as intended
@@ -391,6 +398,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight.
 - fix: Duncan artifacts from mission A1C1M5 were not loaded
 - change: Torhall siege combat is now more challenging.
+- change: Replaced Cartographer with Memory Mentor
 
 ### A1C2M5 - Wulfstan: Laszlo
 - fix: Duncan artifacts from mission A1C2M4 were not loaded
@@ -406,10 +414,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C3M3 - Ylaya: The Meeting
 - fix: unit attack/hit animation stuters on adventure map
 - fix: unreachable resource pile near the town towards the north
+- new: Added Memory Mentor
 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
 - change: Adjusted Siege catapult attack animation frequency. Now it is more like siege engine and less like gatling gun.
+- new: Added Memory Mentor
 
 ## Dialogue changes
 

@@ -22499,6 +22499,29 @@
 				<MessageFileRef href=""/>
 			</AdvMapTreasure>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_5E022DD8-CAB7-40EB-B543-0FC6ECE8830B">
+			<AdvMapBuilding>
+				<Pos>
+					<x>37</x>
+					<y>103</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>

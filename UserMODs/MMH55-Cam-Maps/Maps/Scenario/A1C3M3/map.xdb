@@ -31646,6 +31646,29 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 			</AdvMapMonster>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_B6680678-25C3-4768-A7E2-574E72C63BC3">
+			<AdvMapBuilding>
+				<Pos>
+					<x>107</x>
+					<y>93</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.24999</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>

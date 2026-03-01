@@ -69731,8 +69731,8 @@
 		<Item href="#n:inline(AdvMapMonster)" id="item_7F611A88-ECFD-42B6-BACA-CD03511BBD7D">
 			<AdvMapMonster>
 				<Pos>
-					<x>167</x>
-					<y>5</y>
+					<x>168</x>
+					<y>4</y>
 					<z>0</z>
 				</Pos>
 				<Rot>3.14159</Rot>
@@ -69859,6 +69859,29 @@
 				<Shared href="/MapObjects/Grass/Misc/Fence_04.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
 				<IsRemovable>false</IsRemovable>
 			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_6118FCF3-F1D3-4DCE-91A4-E3E22D8AF68F">
+			<AdvMapBuilding>
+				<Pos>
+					<x>169</x>
+					<y>3</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
 		</Item>
 	</objects>
 	<Resources>
