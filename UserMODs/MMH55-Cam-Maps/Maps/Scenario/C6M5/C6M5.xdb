@@ -6598,7 +6598,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MASTER_GREMLIN</Creature>
-						<Count>250</Count>
+						<Count>300</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
@@ -6610,11 +6610,11 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCH_MAGI</Creature>
-						<Count>45</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MASTER_GENIE</Creature>
-						<Count>65</Count>
+						<Count>80</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
@@ -6740,11 +6740,11 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_DRUID_ELDER</Creature>
-						<Count>130</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WAR_UNICORN</Creature>
-						<Count>90</Count>
+						<Count>75</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
@@ -6842,27 +6842,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Count>120</Count>
+						<Count>300</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>171</Count>
+						<Count>250</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>173</Count>
+						<Count>230</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Count>65</Count>
+						<Count>90</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CLERIC</Creature>
-						<Count>45</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
-						<Count>56</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHANGEL</Creature>
@@ -6956,7 +6956,7 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Count>136</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
@@ -6968,7 +6968,7 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAOS_HYDRA</Creature>
-						<Count>49</Count>
+						<Count>55</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MATRIARCH</Creature>
@@ -9292,6 +9292,27 @@
 				</CaptureTrigger>
 				<GroupID>0</GroupID>
 			</AdvMapBuilding>
+		</Item>
+		<Item href="#n:inline(AdvMapHillFort)" id="item_B0F2F89F-3ACF-4A2C-861C-BB28BCCA6096">
+			<AdvMapHillFort>
+				<Pos>
+					<x>46</x>
+					<y>54</y>
+					<z>0</z>
+				</Pos>
+				<Rot>1.5708</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Hill_Fort.(AdvMapHillFortShared).xdb#xpointer(/AdvMapHillFortShared)"/>
+				<CreaturesUpgradesFilter>
+					<ForbiddenBasicUpgradeTiers/>
+					<ForbiddenAlterUpgradeTiers/>
+					<NotUpgradeable/>
+					<ForbiddenUpgrades/>
+				</CreaturesUpgradesFilter>
+			</AdvMapHillFort>
 		</Item>
 	</objects>
 	<Resources>

@@ -52,7 +52,7 @@
 					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Knight/victory.xdb#xpointer(/Sound)"/>
 				</Item>
 				<Item>
-					<Delay>14</Delay>
+					<Delay>14.4</Delay>
 					<sound href="/Sounds/_(Sound)/Heroes/Knight/buff.xdb#xpointer(/Sound)"/>
 				</Item>
 			</CustomSounds>
@@ -79,12 +79,7 @@
 			<ActorAnimationIndex>1</ActorAnimationIndex>
 			<AnimName>cast</AnimName>
 			<AnimationDelay>0</AnimationDelay>
-			<CustomSounds>
-				<Item>
-					<Delay>-2.3</Delay>
-					<sound href="/Sounds/_(Sound)/Heroes/Knight/buff.xdb#xpointer(/Sound)"/>
-				</Item>
-			</CustomSounds>
+			<CustomSounds/>
 			<CustomEffects/>
 			<CustomAnimations/>
 			<MusicVolumePercent>100</MusicVolumePercent>

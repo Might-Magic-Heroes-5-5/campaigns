@@ -71,12 +71,12 @@ BATTLES = {
     zehir = {
       start = function(nameHero)
         StartCombat("Zehir", "Berein", 6,
-		CREATURE_WRAITH, 15 + d * 5,
-		CREATURE_SKELETON_ARCHER, 60 + d * 5,
-		CREATURE_ZOMBIE, 50 + d * 5,
-		CREATURE_GHOST, 50 + d * 5,		
-		CREATURE_VAMPIRE_LORD, 55 + d * 5,
-		CREATURE_DEMILICH, 30 + d * 5,
+		         CREATURE_WRAITH,  40 + d *  40,
+	   CREATURE_SKELETON_WARRIOR, 250 + d * 250,
+		         CREATURE_ZOMBIE, 150 + d * 150,
+		          CREATURE_GHOST, 100 + d * 100,		
+		   CREATURE_VAMPIRE_LORD,  75 + d *  75,
+		       CREATURE_DEMILICH,  50 + d *  50,
 		'/Maps/Scenario/C6M3/CombatScript_zehir.xdb#xpointer(/Script)',
 		"BATTLES.zehir.finish",
 		'/Scenes/CombatArenas/Boss_c6m3_Dirt.xdb#xpointer(/AdventureFlybyScene)');
@@ -93,10 +93,11 @@ BATTLES = {
 	godric = {
 		start = function()
 			StartCombat("Godric", "Berein", 4,
-			CREATURE_DEMILICH, 30 + d * 5,
-			CREATURE_SKELETON_ARCHER, 70 + d * 5,
-			CREATURE_MANES, 70 + d * 5,		
-			CREATURE_VAMPIRE, 65 + d * 5,
+			       CREATURE_DEMILICH,  50 + d *  50,
+			   CREATURE_VAMPIRE_LORD,  75 + d *  75,			
+			          CREATURE_GHOST, 300 + d * 200,		
+				  CREATURE_NOSFERATU, 300 + d * 200,
+			CREATURE_SKELETON_ARCHER, 250 + d * 250,
 			'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
 			"BATTLES.godric.finish",
 			'/Scenes/CombatArenas/Boss_c6m3_Dirt2.xdb#xpointer(/AdventureFlybyScene)')
@@ -214,6 +215,8 @@ OBJECTIVES = {
 		if OBJECTIVES.state.meetFindan[2] == 2 then
 			DeployReserveHero("Heam", 84, 41, 0);
 			sleep(10);
+			H55_CamFixTooManySkills(PLAYER_1, "Heam");
+			sleep(10);
 			MoveHero("Heam", 86, 42, 0);
 			EnableHeroAI("Heam", nil);
 			OBJECTIVES.state.isFindanAlive[2] = 1;
@@ -233,6 +236,8 @@ OBJECTIVES = {
 			CINEMATICS.meetGodric();
 			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
 			SetObjectOwner("Godric", PLAYER_1);
+			sleep(10);
+			H55_CamFixTooManySkills(PLAYER_1, "Godric");
 			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian", "GodricMeetsAllies");
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town", "GodricFight");

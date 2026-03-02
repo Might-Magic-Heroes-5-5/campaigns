@@ -173,7 +173,8 @@ function PObjective3_4complete()
 			Save("Save") 
 			sleep(10);
 			StartDialogScene("/DialogScenes/C4/M5/D1/DialogScene.xdb#xpointer(/DialogScene)")
-			sleep(6);
+			sleep(10);
+			StartCutScene("/Maps/Cutscenes/C4M5/_.(AnimScene).xdb#xpointer(/AnimScene)");
 			Win(); 
 			break;
 		end;	

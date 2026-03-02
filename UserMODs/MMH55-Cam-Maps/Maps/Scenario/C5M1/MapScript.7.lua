@@ -175,7 +175,6 @@ DIFFICULTY = {
 
 CINEMATICS = {
 	intro = function()
-		StartCutScene("/Maps/Cutscenes/C4M5/_.(AnimScene).xdb#xpointer(/AnimScene)");
 		StartDialogScene("/DialogScenes/C5/M1/D1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
     end,

@@ -772,7 +772,7 @@
 			<StopAmbient>false</StopAmbient>
 			<StopMusic>false</StopMusic>
 			<DynamicCamera>true</DynamicCamera>
-			<duration>1</duration>
+			<duration>3</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2).xdb#xpointer(/AmbientLight)"/>
 			<ActorAnimationIndex>-1</ActorAnimationIndex>
@@ -868,7 +868,7 @@
 					<heroLink/>
 					<monsterLink href="ArchDevil.xdb#xpointer(/AdvMapMonster)"/>
 					<AnimationIndex>8</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
+					<AnimationDelay>1</AnimationDelay>
 					<AnimName/>
 				</Item>
 				<Item>
@@ -900,7 +900,7 @@
 			<StopAmbient>false</StopAmbient>
 			<StopMusic>false</StopMusic>
 			<DynamicCamera>true</DynamicCamera>
-			<duration>2</duration>
+			<duration>3</duration>
 			<soundDuration>0</soundDuration>
 			<CustomAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2).xdb#xpointer(/AmbientLight)"/>
 			<ActorAnimationIndex>-1</ActorAnimationIndex>
@@ -1142,7 +1142,7 @@
 					<heroLink/>
 					<monsterLink href="Paladin.2.xdb#xpointer(/AdvMapMonster)"/>
 					<AnimationIndex>0</AnimationIndex>
-					<AnimationDelay>0</AnimationDelay>
+					<AnimationDelay>-2</AnimationDelay>
 					<AnimName/>
 				</Item>
 				<Item>

@@ -297,7 +297,12 @@
 			<ActorAnimationIndex>6</ActorAnimationIndex>
 			<AnimName>call</AnimName>
 			<AnimationDelay>6</AnimationDelay>
-			<CustomSounds/>
+			<CustomSounds>
+				<Item>
+					<Delay>5.5</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Knight/call.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
 			<CustomEffects/>
 			<CustomAnimations/>
 			<MusicVolumePercent>1</MusicVolumePercent>

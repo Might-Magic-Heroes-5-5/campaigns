@@ -20,6 +20,47 @@ function Town_count()
 	return count; 
 end
 
+
+DIFFICULTY = {
+	[0] = function()
+		print ("normal");
+		GiveExp( "Aberrar", 15000 );
+	end,
+	[1] = function()
+		print ("hard");
+		GiveExp( "Aberrar", 20000 );
+		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 100);
+		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE,  80);
+		AddObjectCreatures("nar_ankar",           CREATURE_GHOST,  60);
+		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD,  40);
+		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  25);
+		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  10);
+		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,   5);
+	end,
+	[2] = function()
+		print ("heroic");
+		GiveExp( "Aberrar", 25000 );
+		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 250);
+		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 200);
+		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 150);
+		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD, 100);
+		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  70);
+		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  30);
+		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  20);
+	end,
+	[3] = function()
+		print ("impossible");
+		GiveExp( "Aberrar", 30000 );
+		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 700);
+		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 500);
+		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 300);
+		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD, 250);
+		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH, 150);
+		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  60);
+		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  50);
+	end,
+}
+
 CINEMATICS = {
 	intro = function()
 		StartDialogScene("/DialogScenes/C6/M2/R1/DialogScene.xdb#xpointer(/DialogScene)");
@@ -63,10 +104,14 @@ OBJECTIVES = {
 	prepare = function()
 		CINEMATICS.intro();
 		H55_CamFixTooManySkills(PLAYER_1,"Zehir");
-		GiveExp( "Aberrar", 13200 );
 		SetObjectiveVisible("obj3", nil);
 		SetRegionBlocked("block", not nil, PLAYER_3);
 		SetRegionBlocked("block", not nil, PLAYER_2);
+		startThread(DIFFICULTY[GetDifficulty()]);
+		DenyAIHeroFlee('Aberrar', not nil);
+		DenyAIHeroFlee('Thant', not nil);
+		EnableHeroAI('Thant', nil);
+		SetHeroRoleMode('Thant', HERO_ROLE_MODE_HERMIT);
 	end,
 	
 	run = function()
