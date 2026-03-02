@@ -187,10 +187,10 @@ OBJECTIVES = {
 	
 	-- Prepare Player 3 heroes
     DeployReserveHero( "Marder", 27, 9, GROUND )
-    sleep();
+    sleep(10);
     EnableHeroAI( "Marder", nil );
     MoveHero( "Marder", 26, 9, GROUND );
-	
+	sleep(10);
 	CINEMATICS.intro();
 	
 	SetObjectEnabled("witch_hut",nil);

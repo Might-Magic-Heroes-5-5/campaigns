@@ -1,4 +1,10 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_UNICORN_HORN_BOW,
@@ -81,7 +87,7 @@ end
 function ressurect(loser, winner) --триггерная функция, запускается после смерти героя PLAYER_2, респавнит Коляна...или не респавнит
 	if loser=='Nikolay' then --убитого героя зовут Колян?
 		if winner~=nil then --его убили или сам слажал?
-			if GetHeroCreatures(winner, CREATURE_PHOENIX) > 0 or OBJECTIVES.state.killDragons[2] == 10 then --были ли у убийцы фениксы в армии на конец битвы, или Коляна убили при солнечном свете?
+			if GetHeroCreatures(winner, CREATURE_PHOENIX) > 0 or OBJECTIVES.state.killDragons[2] == 10 or OBJECTIVES.state.defeatNikolay[2] == 2 then --были ли у убийцы фениксы в армии на конец битвы, или Коляна убили при солнечном свете?
 				OBJECTIVES.state.defeatNikolay[2] = 9;
 			else --облом с фениксами или светом вышел?
 				if first_time==1 then --который уже раз Коляна валим?
@@ -91,8 +97,8 @@ function ressurect(loser, winner) --триггерная функция, запускается после смерти
 			end
 		end
 		DeployReserveHero('Nikolay',check_place()) --респавн Коляна
-		sleep(10) --без этой паузы следующая функция не стаботает!!!!
-		DenyAIHeroFlee(hero, not nil);
+		sleep(15) --без этой паузы следующая функция не стаботает!!!!
+		DenyAIHeroFlee('Nikolay', not nil);
 		update_army() --добавление Коляну свежей армии
 	end
 end
@@ -200,6 +206,15 @@ CINEMATICS = {
     end,
 }
 
+function disableEnemyFleeing()
+	sleep(30); -- wait till Nikolay is deployed and part of the roster
+	local heroes = GetPlayerHeroes(PLAYER_2)
+	for i, hero in heroes do
+		print(hero);
+		DenyAIHeroFlee(hero, not nil)
+	end
+end
+
 DIFFICULTY = {
 	[0] = function()
 		print ("easy");
@@ -278,14 +293,16 @@ OBJECTIVES = {
 	prepare = function()
 		first_time=1
 		H55_CamFixTooManySkills(PLAYER_1,"Heam");
+		H55_CamFixTooManySkills(PLAYER_1,"Diraya");
+		H55_CamFixTooManySkills(PLAYER_1,"Nadaur");
 		CINEMATICS.intro();
 		DeployReserveHero('Nikolay',84,86,GROUND);
-		DenyAIHeroFlee('Nikolay', not nil);
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 		ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000+exp);
 		blocking();
 		Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'ressurect');
 		startThread(DIFFICULTY[GetDifficulty()]);
+		disableEnemyFleeing();
 	end,
 	
 	run = function()
@@ -336,17 +353,24 @@ OBJECTIVES = {
 			if OBJECTIVES.state.killDragons[2] < 10 and OBJECTIVES.progress_sky ~= new_progress then
 				set_light(new_progress);
 				if new_progress == 4 then 
-					pcall(MessageBox("/Maps/Scenario/C5M5/night1.txt"));
+					pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night1.txt");
 					CINEMATICS.showDragons();
 				end
-				if new_progress == 5 then pcall(MessageBox("/Maps/Scenario/C5M5/night2.txt")); end
-				if new_progress == 6 then pcall(MessageBox("/Maps/Scenario/C5M5/night3.txt")); end
+				if new_progress == 5 then pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night2.txt"); end
+				if new_progress == 6 then pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night3.txt"); end
 				OBJECTIVES.progress_sky = new_progress;
 			end
-			OBJECTIVES.progress_day = GetDate(ABSOLUTE_DAY);
+			OBJECTIVES.progress_day = OBJECTIVES.date;
 		elseif OBJECTIVES.state.defeatNikolay[2] == 2 then
 			ChangeHeroStat('Nikolay', STAT_MOVE_POINTS, 6500000);
-			MoveHero('Nikolay', GetObjectPosition("Heam"));
+			if OBJECTIVES.progress_day <= OBJECTIVES.date then
+				local h_x, h_y, h_z = GetObjectPosition("Heam");
+				local move_nikolay = pcall(MoveHero, 'Nikolay', h_x, h_y, h_z);
+				if move_nikolay == nil then
+					SetObjectPosition('Nikolay', check_place());
+				end
+				OBJECTIVES.progress_day = OBJECTIVES.date + 1;
+			end
 		elseif OBJECTIVES.state.defeatNikolay[2] == 9 then
 			SaveHeroAllSetArtifactsEquipped("Heam", "C5M5");
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
@@ -433,4 +457,8 @@ startThread(OBJECTIVES.start)
 
 function go()
 	MakeHeroInteractWithObject("Heam", "Nikolay");
+end
+
+function fast()
+	OBJECTIVES.great_night_progress=990;
 end

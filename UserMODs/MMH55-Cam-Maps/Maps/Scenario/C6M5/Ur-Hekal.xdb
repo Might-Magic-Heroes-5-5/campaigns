@@ -14,7 +14,7 @@
 	<PlayerID>PLAYER_2</PlayerID>
 	<CaptureTrigger>
 		<Action>
-			<FunctionName>fight_heam</FunctionName>
+			<FunctionName>fight_biara</FunctionName>
 		</Action>
 	</CaptureTrigger>
 	<HeroDeployTrigger>
@@ -67,7 +67,7 @@
 	<spellIDs/>
 	<CaptionFileRef href=""/>
 	<GarrisonHero href="Biara.xdb#xpointer(/AdvMapHero)"/>
-	<Script href="biara_godric.xdb#xpointer(/Script)"/>
+	<Script href="biara_fight.xdb#xpointer(/Script)"/>
 	<RndSource>RND_NONE</RndSource>
 	<LinkToPlayer>PLAYER_2</LinkToPlayer>
 	<LinkToTown/>

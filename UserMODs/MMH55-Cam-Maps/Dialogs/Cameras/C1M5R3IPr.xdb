@@ -2,16 +2,16 @@
 <DSceneCamera>
 	<Pos>
 		<Rod>36.3428</Rod>
-		<Pitch>0.224803</Pitch>
+		<Pitch>0</Pitch>
 		<Yaw>0.225601</Yaw>
-		<Roll>0</Roll>
-		<FOV>35</FOV>
+		<Roll>0.01</Roll>
+		<FOV>25</FOV>
 		<ClipDistanceMin>1</ClipDistanceMin>
 		<ClipDistanceMax>500</ClipDistanceMax>
 		<Anchor>
-			<x>109.031</x>
-			<y>53.2955</y>
-			<z>9.8555</z>
+			<x>110</x>
+			<y>50</y>
+			<z>5.4</z>
 		</Anchor>
 	</Pos>
 	<Absolute>true</Absolute>

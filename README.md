@@ -361,7 +361,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
 - fix: Nikolay occasionally transfered his army to other heroes due to AI not considering him the main player hero.
-- fix: Nikolay was fleeing from combat when he was losing while he has to fight till the very end.
+- fix: Player 2 heroes no longer flee from combat and fight till the very end.
 - change: Nikolay army is now stronger on Impossible difficulty. He also knows all Dark and Summoning spells and gains 0/5/10/15 Attack and Defense on Normal/Hard/Heroic/Impossible difficuties.
 - new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
 - new: Combat arena light and Skydome reflects the one on the adventure map.
@@ -372,10 +372,19 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C6M2 - Academy: The Liberation
 - fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
 - fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
+- fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 
+- new: Lorekeep now has a hero that guards it (was empty before) and his army power is based on game difficulty level.
 - new: Added Memory Mentor
 
 ### C6M4 - Academy: The Alliance
+- fix: added missing scene after Isabel is defeated
 - new: Added Memory Mentor
+- change: Isabel army size significantly increased and is based on difficulty
+
+### C6M5 - Academy: Zehir's Hope
+- new: Added Hill Fort on the map and the player starts with 500000 gold
+- changed: Reworked Biara and Sovereign fights
+- changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
@@ -433,7 +442,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - Added Widescreen support for loading screens, cinematics and dialogues.
 
 ### C1M1 – Haven: The Queen
-- scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged.
+- scene(intro): Footman die from Succubus retaliation and then they are seen alive in the next camera shot. Now Footman are just damaged. Cavalry die animation was shown at Pit Lord Meteor Shower cast when they were already dead. Modified the timings of some scenes for better immersion.
 
 ### C1M2 – Haven: Rebellion
 - scene(intro): Removed overly green fog ambience
@@ -447,7 +456,11 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### C1M5 – Haven: The Fall of the King
 - scene(intro): Added missing Freyda cheer animation when she agrees with Godric
-- scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast
+- scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast. Removed double buff sound. Adjusted angle so camera will not dip below terrain level.
+- scene(Isabell going to Nicolai): 
+
+### C2M1 – Inferno: The Betrayal
+- scene(spot Erasiel): Scene showed enemy as Agrael instead of Erasiel
 
 ### C2M2 – Inferno: The Promise
 - scene(clash with Haven army): Added missing Griffin flying animation at the end of scene
@@ -467,18 +480,23 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(deserting units): Added mountain and misc doodads in the background
 - scene(capture Nebyrciaz): Added missing Agrael cast animation
 
+### C2M5 – Inferno: Agrael's Decision
+- scene(outro): Removed overly green ambience
+
 ### C3M1 – Necropolis: The Temptation
 - scene(intro): Removed overly foggy ambience
 - scene(Markal death): Added missing Markal spell effect during cast
+- scene(reach Vigil): Adjusted camera height so scene so Markal stays in frame.
 
 ### C3M3 – Necropolis: The Invasion
 - scene(gather skeletons): Slightly adjusted camera set movement to sync with army cheer
 
 ### C3M5 – Necropolis: Lord of Heresh
+- scene(intro): Added missing sound of Godric being hit by archer arrows. Blind effect cast on archers was positioned too low.
 - scene(at prison): Added missing Freyda reaction after Markal cast
 
 ### C4M1 – Dungeon: The Clanlord
-- scene(intro): Added grass and mountain doodads
+- scene(intro): Added grass and mountain doodads. One of the riders behind Raelag was "happy" insead of sitting idle.
 
 ### C4M2 – Dungeon: The Expansion
 - scene(intro): Improved Raelag and Matron idle animation pace.
@@ -491,10 +509,14 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(Inferno defeated): Added missing spell effect during Raeleg cheer
 
 ### C4M5 – Dungeon: Raelag's Offer
-- scene(outro): Fixed endless hoof movement sound
+- scene(outro): Fixed endless hoof movement sound. Fixed Markal was seen in camera before he arrives.
 
 ### C5M2 – Sylvan: The Emerald Ones
 - scene(dragons assembled): Adjusted camera height to keep Findan inside frame
+
+### C5M3 – Sylvan: The Defense
+- scene(capture town): Dragons were seen in camera view before they arrived in combat
+- scene(free both heroes): fixed both hero models were using Diraya female, now the second hero model is Findan's as it should.
 
 ### C5M4 - Sylvan: The Archipelago
 - scene(defend Tieru): Camera angle adjacent to show Findan instead of the sky above him
@@ -507,6 +529,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### C6M3 - Academy: The Triumvirate
 - scene(intro): Added missing idle animation which caused Narxes to T-pose
+- scene(prison): Added missing bash sound when godric hit his shield
 
 ### C6M4 – Academy: The Alliance
 - scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them

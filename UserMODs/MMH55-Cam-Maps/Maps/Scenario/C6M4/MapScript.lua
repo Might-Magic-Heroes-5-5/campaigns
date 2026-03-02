@@ -37,6 +37,11 @@ CINEMATICS = {
 		sleep( 2 );
 	end,
 	
+	defeatIsabel = function()
+		StartDialogScene("/DialogScenes/C6/M4/D5/DialogScene.xdb#xpointer(/DialogScene)")
+		sleep( 2 );
+	end,
+	
 	outro = function()
 		StartCutScene("/Maps/Cutscenes/C6M4/_.(AnimScene).xdb#xpointer(/AnimScene)");
 		sleep( 2 );
@@ -74,14 +79,14 @@ OBJECTIVES = {
 		GiveExp("Christian", 10000 );
 		GiveExp(   "Tamika", 15000 );
 		GiveExp(    "Effig", 20000 );
-		d = GetDifficulty() - 1;
-		AddHeroCreatures("Isabell",    CREATURE_MILITIAMAN, 200 + d * 10);
-		AddHeroCreatures("Isabell",      CREATURE_MARKSMAN, 100 + d * 10);
-		AddHeroCreatures("Isabell",     CREATURE_SWORDSMAN,  70 + d * 10);
-		AddHeroCreatures("Isabell", CREATURE_ROYAL_GRIFFIN,  50 + d * 5);
-		AddHeroCreatures("Isabell",        CREATURE_CLERIC,  40 + d * 5);
-		AddHeroCreatures("Isabell",       CREATURE_PALADIN,  30 + d * 5);
-		AddHeroCreatures("Isabell",     CREATURE_ARCHANGEL,   6 + d * 5);
+		d = GetDifficulty();
+		AddHeroCreatures("Isabell",    CREATURE_MILITIAMAN, 1000 + d * 1000);
+		AddHeroCreatures("Isabell",      CREATURE_MARKSMAN, 500  + d *  750);
+		AddHeroCreatures("Isabell",     CREATURE_SWORDSMAN, 300  + d *  400);
+		AddHeroCreatures("Isabell", CREATURE_ROYAL_GRIFFIN, 200  + d *  300);
+		AddHeroCreatures("Isabell",        CREATURE_CLERIC, 150  + d *  200);
+		AddHeroCreatures("Isabell",       CREATURE_PALADIN, 100  + d *  100);
+		AddHeroCreatures("Isabell",     CREATURE_ARCHANGEL, 50   + d *   75);
 		EnableHeroAI("Isabell", nil);
 		SetRegionBlocked("forbid", not nil, PLAYER_4);
 		SetRegionBlocked("forbid", not nil, PLAYER_5);
@@ -105,6 +110,7 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
+				CINEMATICS.defeatIsabel();
 				CINEMATICS.outro();
 				sleep(10);
 				Win();
