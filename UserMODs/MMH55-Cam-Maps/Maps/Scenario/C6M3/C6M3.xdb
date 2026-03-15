@@ -38,17 +38,17 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -59,41 +59,41 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -143,7 +143,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -265,17 +265,17 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -286,41 +286,41 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -370,7 +370,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -482,17 +482,17 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -503,41 +503,41 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -587,7 +587,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -691,7 +691,118 @@
 					<y>0</y>
 				</ShipTile>
 				<Specialization href="/GameMechanics/TownSpecialization/Haven/Random/Millfield.xdb#xpointer(/TownSpecialization)"/>
-				<buildings/>
+				<buildings>
+					<Item>
+						<Type>TB_TOWN_HALL</Type>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_FORT</Type>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_MARKETPLACE</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SHIPYARD</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_TAVERN</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_BLACKSMITH</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_MAGIC_GUILD</Type>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_1</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_2</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_3</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_4</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_5</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_6</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_DWELLING_7</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_GRAIL</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_WONDER</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_0</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_1</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_2</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_3</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_4</Type>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+					<Item>
+						<Type>TB_SPECIAL_5</Type>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
+				</buildings>
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
@@ -1169,27 +1280,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>30</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PRIEST</Creature>
-						<Count>25</Count>
+						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CAVALIER</Creature>
-						<Count>15</Count>
+						<Count>20</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>22</Count>
+						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ANGEL</Creature>
-						<Count>1</Count>
+						<Count>5</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -54334,12 +54445,12 @@
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero/>
-				<Script/>
+				<Script href="/Maps/Scenario/C6M3/CombatScript_heam.xdb#xpointer(/Script)"/>
 				<RndSource>RND_NONE</RndSource>
 				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
 				<LinkToTown/>
 				<CanCaptureOnlyNotVisit>false</CanCaptureOnlyNotVisit>
-				<AllowQuickCombat>true</AllowQuickCombat>
+				<AllowQuickCombat>false</AllowQuickCombat>
 			</AdvMapTown>
 		</Item>
 		<Item href="#n:inline(AdvMapTown)" id="id17837196-0243-446a-9180-18648913b014">
