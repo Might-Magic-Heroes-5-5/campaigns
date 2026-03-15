@@ -376,6 +376,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Lorekeep now has a hero that guards it (was empty before) and his army power is based on game difficulty level.
 - new: Added Memory Mentor
 
+### C6M3 - Academy: The Triumvirate
+- fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
+- change: Markal fights are now more challenging and scale with difficulty and time.
+
 ### C6M4 - Academy: The Alliance
 - fix: added missing scene after Isabel is defeated
 - new: Added Memory Mentor

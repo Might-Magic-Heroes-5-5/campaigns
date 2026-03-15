@@ -48,7 +48,7 @@ function GodricFight(hero)
 	end
 end
 
-d = GetDifficulty() - 1;
+d = GetDifficulty() + 1;
 
 -- Messages
 function AreYouReady()
@@ -56,6 +56,7 @@ function AreYouReady()
 end
 
 function WeAreReady()
+	SetGameVar("game_time", GetDate(ABSOLUTE_DAY));
 	BATTLES.zehir.start();
 end
 
@@ -71,12 +72,12 @@ BATTLES = {
     zehir = {
       start = function(nameHero)
         StartCombat("Zehir", "Berein", 6,
-		         CREATURE_WRAITH,  40 + d *  40,
-	   CREATURE_SKELETON_WARRIOR, 250 + d * 250,
-		         CREATURE_ZOMBIE, 150 + d * 150,
-		          CREATURE_GHOST, 100 + d * 100,		
-		   CREATURE_VAMPIRE_LORD,  75 + d *  75,
-		       CREATURE_DEMILICH,  50 + d *  50,
+		         CREATURE_WRAITH,  40,
+	   CREATURE_SKELETON_WARRIOR, 200,
+		         CREATURE_ZOMBIE, 150,
+		          CREATURE_GHOST, 100,		
+		   CREATURE_VAMPIRE_LORD,  75,
+		       CREATURE_DEMILICH,  50,
 		'/Maps/Scenario/C6M3/CombatScript_zehir.xdb#xpointer(/Script)',
 		"BATTLES.zehir.finish",
 		'/Scenes/CombatArenas/Boss_c6m3_Dirt.xdb#xpointer(/AdventureFlybyScene)');
@@ -92,12 +93,12 @@ BATTLES = {
 	
 	godric = {
 		start = function()
-			StartCombat("Godric", "Berein", 4,
-			       CREATURE_DEMILICH,  50 + d *  50,
-			   CREATURE_VAMPIRE_LORD,  75 + d *  75,			
-			          CREATURE_GHOST, 300 + d * 200,		
-				  CREATURE_NOSFERATU, 300 + d * 200,
-			CREATURE_SKELETON_ARCHER, 250 + d * 250,
+			StartCombat("Godric", "Berein", 5,
+			       CREATURE_DEMILICH,  50,
+			   CREATURE_VAMPIRE_LORD,  75,			
+			          CREATURE_GHOST, 300,		
+				  CREATURE_NOSFERATU, 300,
+			CREATURE_SKELETON_ARCHER, 250,
 			'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
 			"BATTLES.godric.finish",
 			'/Scenes/CombatArenas/Boss_c6m3_Dirt2.xdb#xpointer(/AdventureFlybyScene)')
@@ -112,8 +113,20 @@ BATTLES = {
 	
 	findan = {
 		start = function()
-			SiegeTown("Heam", "/Maps/Scenario/C6M3/Spes.xdb#xpointer(/AdvMapTown)", '/Scenes/CombatArenas/Boss_c6m3_Siege.xdb#xpointer(/AdventureFlybyScene)');
-		end
+			DeployReserveHero("Berein", 2, 22, 0 );
+			sleep(10);
+			AddObjectCreatures("Berein",      CREATURE_LICH_MASTER, 50);
+			AddObjectCreatures("Berein",          CREATURE_BANSHEE, 25);
+			AddObjectCreatures("Berein",    CREATURE_HORROR_DRAGON, 15);
+			AddObjectCreatures("Berein",        CREATURE_NOSFERATU, 75);
+			AddObjectCreatures("Berein",      CREATURE_POLTERGEIST, 100);
+			AddObjectCreatures("Berein",   CREATURE_DISEASE_ZOMBIE, 200);
+			AddObjectCreatures("Berein", CREATURE_SKELETON_WARRIOR, 400);
+			SetObjectPosition("Berein", 20, 14, 0 );
+			sleep(10);
+			SetObjectEnabled("spes", not nil);
+			MakeHeroInteractWithObject("Heam", "spes");
+		end,
 	}
 }
 
@@ -182,6 +195,7 @@ OBJECTIVES = {
 		SetRegionBlocked("heam", not nil, PLAYER_2);
 		SetRegionBlocked("block", not nil, PLAYER_2);	
 		Trigger(OBJECT_TOUCH_TRIGGER, "prison", "MeetingGodric");
+		TeachHeroSpell("Berein", 21); -- required for final finght
 	end,
 	
 	run = function()
@@ -276,9 +290,7 @@ OBJECTIVES = {
 			Trigger(OBJECT_TOUCH_TRIGGER, "spes", nil);
 			Trigger(OBJECT_TOUCH_TRIGGER, "post", nil);
 			OBJECTIVES.state.defeatMarkal[2] = 5;
-		elseif OBJECTIVES.state.defeatMarkal[2] == 6 then
-			SetObjectOwner("spes", PLAYER_1);
-			sleep(5);
+		elseif OBJECTIVES.state.defeatMarkal[2] == 5 and GetObjectOwner("spes") == PLAYER_1 then
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.defeatMarkal[2] = 10;
 		end
