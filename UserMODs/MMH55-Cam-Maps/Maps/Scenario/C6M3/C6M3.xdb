@@ -79,7 +79,7 @@
 					<Item>
 						<Type>TB_DWELLING_2</Type>
 						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
@@ -271,7 +271,7 @@
 					<Item>
 						<Type>TB_FORT</Type>
 						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
@@ -54445,7 +54445,8 @@
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero/>
-				<Script href="/Maps/Scenario/C6M3/CombatScript_heam.xdb#xpointer(/Script)"/>
+				<!-- <Script href="/Maps/Scenario/C6M3/CombatScript_heam.xdb#xpointer(/Script)"/> -->
+				<Script/>
 				<RndSource>RND_NONE</RndSource>
 				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
 				<LinkToTown/>

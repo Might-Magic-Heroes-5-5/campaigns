@@ -378,7 +378,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
-- change: Markal fights are now more challenging and scale with difficulty and time.
+- change: First Garrison troop strength increased by about 30%
+- change: Haven towns are now of higher town level:
+   - Dwellings: T1, T2, T3, T4, T5 built up to non-upgraded level.
+   - Magic Guilds  from none to level 3
+   - Common buildings: Village to Town Hall, +Marketplace, +Blacksmith, Tavern is disabled.
+- change: Markal fights are now more challenging and scale with difficulty and time passed.
 
 ### C6M4 - Academy: The Alliance
 - fix: added missing scene after Isabel is defeated
