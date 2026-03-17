@@ -180,9 +180,9 @@ OBJECTIVES = {
 	state = {
 		captureSiris	= { "CaptureImarium", 1 },	-- recapture Siris town
 		defendSiris		= {  "DefendImarium", 0 },	-- defend Siris town from enemy attacks
-		isAlive			= { "HeamSurvive",    1 },	-- Findan must survive
-		prepareGarison	= { "harrison",       1 },	-- Reinforce the garison with druids, unicorns and dragons
-		getHeroes		= { "twoheros",       1 }, 	-- Free the two commanders
+		isAlive			= {    "HeamSurvive", 1 },	-- Findan must survive
+		prepareGarison	= {       "harrison", 1 },	-- Reinforce the garison with druids, unicorns and dragons
+		getHeroes		= {       "twoheros", 1 }, 	-- Free the two commanders
 	},
 
 	start = function()
@@ -211,7 +211,7 @@ OBJECTIVES = {
 				end
 			end
 
-			if GetObjectiveState("HeamSurvive") == OBJECTIVE_FAILED or GetObjectiveState("twoheros") == OBJECTIVE_FAILED then
+			if GetObjectiveState("HeamSurvive") == OBJECTIVE_FAILED or GetObjectiveState("twoheros") == OBJECTIVE_FAILED or GetObjectiveState("CaptureImarium") == OBJECTIVE_FAILED or GetObjectiveState("DefendImarium") == OBJECTIVE_FAILED then
 				Loose();
 				return
 			end
@@ -240,14 +240,19 @@ OBJECTIVES = {
 			MoveHeroRealTime("Effig", 80, 125);
 			CINEMATICS.intro();
 			OBJECTIVES.state.captureSiris[2] = 3;
-		elseif OBJECTIVES.state.captureSiris[2] == 3 and GetObjectOwner(OUR_TOWN) == 1 then
-			Save("autosave");
-			CINEMATICS.captureSiris();
-			Reso = GetPlayerResource(PLAYER_1, GOLD) + 5000;
-			SetPlayerResource(PLAYER_1, GOLD, Reso);
-			SetObjectiveState("CaptureImarium", OBJECTIVE_COMPLETED );
-			OBJECTIVES.state.defendSiris[2] = 1;
-			OBJECTIVES.state.captureSiris[2] = 10;
+		elseif OBJECTIVES.state.captureSiris[2] == 3 then
+			if OBJECTIVES.date > 7 then
+				SetObjectiveState("CaptureImarium", OBJECTIVE_FAILED );
+				OBJECTIVES.state.captureSiris[2] = 11;
+			elseif GetObjectOwner(OUR_TOWN) == 1 then
+				Save("autosave");
+				CINEMATICS.captureSiris();
+				Reso = GetPlayerResource(PLAYER_1, GOLD) + 5000;
+				SetPlayerResource(PLAYER_1, GOLD, Reso);
+				SetObjectiveState("CaptureImarium", OBJECTIVE_COMPLETED );
+				OBJECTIVES.state.defendSiris[2] = 1;
+				OBJECTIVES.state.captureSiris[2] = 10;
+			end
 		end
 	end,
 	
@@ -255,7 +260,7 @@ OBJECTIVES = {
 	defendSiris_next = 0,
 	defendSiris_continuous_attack = 0,
 	defendSiris = function()
-		if OBJECTIVES.state.defendSiris[2] == 1 and GetObjectOwner(OUR_TOWN) == 1 then
+		if OBJECTIVES.state.defendSiris[2] == 1 then
 			SetObjectiveState("DefendImarium", OBJECTIVE_ACTIVE );
 			startThread(attack, OUR_TOWN);
 			OBJECTIVES.state.defendSiris[2] = 2;
@@ -267,6 +272,11 @@ OBJECTIVES = {
 			startThread(attack, OUR_TOWN);
 			OBJECTIVES.defendSiris_next = OBJECTIVES.defendSiris_next + random(8) + 8 - dif;
 			print ("next attack on day ", OBJECTIVES.defendSiris_start + OBJECTIVES.defendSiris_next);
+		end
+		
+		if GetObjectOwner(OUR_TOWN) ~= PLAYER_1 then
+			SetObjectiveState("DefendImarium", OBJECTIVE_FAILED );
+			OBJECTIVES.state.defendSiris[2] = 11;
 		end
 	end,
 				
