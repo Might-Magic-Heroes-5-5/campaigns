@@ -1,7 +1,7 @@
 d = GetDifficulty();
 defender_turn = 0
 game_time = GetGameVar("game_time");
-army_rating = 2*d + game_time/14 -- 2 points per month
+army_rating = 2*d + game_time/10 -- 2 points per month
 
 summon = {
 	inside = {
