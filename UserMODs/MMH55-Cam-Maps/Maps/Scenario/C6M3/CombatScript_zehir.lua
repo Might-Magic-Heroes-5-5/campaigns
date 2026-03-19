@@ -1,7 +1,7 @@
 d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-army_rating = 2*d + game_time/14 -- 2 points per month
+army_rating = 2*d + game_time/10 -- 2 points per month
 
 function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
@@ -51,7 +51,7 @@ function DefenderHeroMove(heroName)
 		SetUnitManaPoints(GetDefenderHero(),510);
 	end
 	
-	return nil;
+	return not nil;
 end
 
 death = 0

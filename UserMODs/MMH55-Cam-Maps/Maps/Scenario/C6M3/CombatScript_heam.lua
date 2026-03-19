@@ -44,8 +44,8 @@ end
 death = 0;
 function DefenderCreatureDeath(unit_s)
 	death = death + 1;
-	print("wave "..death);
 	if death <= waves then
+		print("wave "..death);
 		local unit_type = GetCreatureType(unit_s);
 		for i = 1, 7 do
 			if string.match(summon.units[i].id[1], unit_type) or string.match(summon.units[i].id[2], unit_type) or string.match(summon.units[i].id[3], unit_type) then
@@ -53,7 +53,7 @@ function DefenderCreatureDeath(unit_s)
 				if i == 5 then
 					fort = not nil;
 				end
-				SummonCreature(DEFENDER, summon.units[i].id[3], (1.5 + death/10) * summon.units[i].size, get_coords(fort));
+				SummonCreature(DEFENDER, summon.units[i].id[3], (1.5 + death/7.5) * summon.units[i].size, get_coords(fort));
 				break
 			end
 		end
