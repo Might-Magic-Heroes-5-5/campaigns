@@ -444,6 +444,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Adjusted Siege catapult attack animation frequency. Now it is more like siege engine and less like gatling gun.
 - new: Added Memory Mentor
 
+### A2C0M0 - Rage of The Tribes: A Murder of Crows
+- fix: Removed wondering enemy player hero.
+- changed: Voron Peak defending army strengtened
+
 ## Dialogue changes
 
 Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and Mооnst@r from the [Remastered Campaigns project](https://forum.heroesworld.ru/showthread.php?t=18706).

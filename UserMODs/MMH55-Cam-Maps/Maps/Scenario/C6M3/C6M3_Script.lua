@@ -115,13 +115,15 @@ BATTLES = {
 		start = function()
 			DeployReserveHero("Berein", 2, 22, 0 );
 			sleep(10);
-			AddObjectCreatures("Berein",      CREATURE_LICH_MASTER, 50);
-			AddObjectCreatures("Berein",          CREATURE_BANSHEE, 25);
-			AddObjectCreatures("Berein",    CREATURE_HORROR_DRAGON, 15);
-			AddObjectCreatures("Berein",        CREATURE_NOSFERATU, 75);
-			AddObjectCreatures("Berein",      CREATURE_POLTERGEIST, 100);
-			AddObjectCreatures("Berein",   CREATURE_DISEASE_ZOMBIE, 200);
-			AddObjectCreatures("Berein", CREATURE_SKELETON_WARRIOR, 400);
+			AddHeroCreatures("Berein",      CREATURE_LICH_MASTER, 50);
+			sleep(10);
+			RemoveHeroCreatures("Berein", CREATURE_SKELETON_ARCHER, 999);
+			AddHeroCreatures("Berein", CREATURE_SKELETON_WARRIOR, 400);
+			AddHeroCreatures("Berein",          CREATURE_BANSHEE, 25);
+			AddHeroCreatures("Berein",    CREATURE_HORROR_DRAGON, 15);
+			AddHeroCreatures("Berein",        CREATURE_NOSFERATU, 75);
+			AddHeroCreatures("Berein",      CREATURE_POLTERGEIST, 100);
+			AddHeroCreatures("Berein",   CREATURE_DISEASE_ZOMBIE, 200);
 			SetObjectPosition("Berein", 20, 14, 0 );
 			sleep(10);
 			SetObjectEnabled("spes", not nil);

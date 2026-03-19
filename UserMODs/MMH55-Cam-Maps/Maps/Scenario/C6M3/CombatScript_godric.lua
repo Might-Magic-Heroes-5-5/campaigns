@@ -1,7 +1,8 @@
-d = GetDifficulty();
+d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-army_rating = 2*d + game_time/10 -- 2 points per month
+army_rating = game_time/(18-3*d) -- 2.33/2/3.5/4.67 points per month
+waves = 4 + 2*d;
 
 summon = {
 	inside = {
@@ -31,59 +32,36 @@ function get_coords(in_fort)
 	return x, y;
 end
 
+-- Markal summons and casts during first "wave" turns
 function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
-	if defender_turn == 1 then
-		-- summoning reinforcements on the 1st turn of Markal
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*40, get_coords(not nil));
-		SummonCreature(DEFENDER,  CREATURE_DISEASE_ZOMBIE, army_rating*52,     get_coords(nil));
-		print("first summon");
-	 elseif defender_turn == 3 then
-		-- summoning reinforcements on the 3rd turn of Markal
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*40, get_coords(not nil));
-		SummonCreature(DEFENDER,  CREATURE_DISEASE_ZOMBIE, army_rating*22, get_coords(nil));
-		print("second summon");
-	elseif defender_turn == 5 then
-		-- summoning reinforcements on the 3rd turn of Markal
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*35, get_coords(not nil));
-		SummonCreature(DEFENDER,  CREATURE_DISEASE_ZOMBIE, army_rating*16, get_coords(nil));
-		print("second summon");
-	elseif defender_turn == 7 then
-		-- summoning reinforcements on the 3rd turn of Markal
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*28, get_coords(not nil));
-		SummonCreature(DEFENDER,  CREATURE_DISEASE_ZOMBIE, army_rating*12, get_coords(nil));
-		print("second summon");
-	elseif defender_turn < 10 then
-		UnitCastGlobalSpell(GetDefenderHero(),21)
+	if defender_turn <= waves then
+		if math.fmod(defender_turn, 2) ~= 0 then
+			SummonCreature(DEFENDER, CREATURE_SKELETON, army_rating*200, get_coords(not nil));
+			SummonCreature(DEFENDER,  CREATURE_WALKING_DEAD, army_rating*200, get_coords(nil));
+		else
+			UnitCastGlobalSpell(GetDefenderHero(),21);
+		end
+		return not nil -- defend because Markal already did special action
 	end
-	return nil
+	return nil -- cast a spell
 end
 
 -- reinforcements after death
 death = 0
+unit_type = { CREATURE_SKELETON_WARRIOR, CREATURE_GHOST, CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_POLTERGEIST, CREATURE_DISEASE_ZOMBIE, CREATURE_NOSFERATU };
+unit_size = {                         3,              1,                        3,               2,                    1,                       2,                0.7 };
 function DefenderCreatureDeath()
+	if (table.length(GetDefenderCreatures()) == 0) then
+		Finish(ATTACKER)
+		return
+	end
+	
 	death = death + 1
-	if death == 1 then
-		sleep(10);
-		-- summoning creatures upon the death of the first necrostack
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*66, get_coords(not nil));
+
+	if death <= 7 then
+		SummonCreature(DEFENDER, unit_type[death], army_rating*math.random(10, 15)*unit_size, get_coords(not nil));
 	end
-	if death == 2 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*15, get_coords(nil));
-	end
-	if death == 3 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*31, get_coords(not nil));
-	end
-	if death == 4 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating*23, get_coords(nil));
-	end
-	if (table.length(GetDefenderCreatures()) == 0) then Finish(ATTACKER) end;
 end
 
 function AttackerCreatureDeath(unit)
@@ -101,5 +79,6 @@ while combatStarted() == nil do
 end;
 
 print("Combat Godric");
+SetUnitManaPoints(GetDefenderHero(),510)
 setATB(GetDefenderHero(), 0 );
 sleep(10);
