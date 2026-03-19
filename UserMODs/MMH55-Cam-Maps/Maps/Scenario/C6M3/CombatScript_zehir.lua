@@ -1,83 +1,42 @@
 d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-army_rating = 2*d + game_time/10 -- 2 points per month
+army_rating = game_time/(18-3*d) -- 2.33/2/3.5/4.67 points per month
+waves = 12 + d;
 
+-- Markal summons and casts during first "wave" turns
 function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
-	print("Markal's turn number ",defender_turn);
-		-- every turn Markal's mana is being reset to 510 points
-		-- and he casts UnholyWord
 	if defender_turn == 1 then
-		SetUnitManaPoints(GetDefenderHero(),510);
-		SummonCreature(DEFENDER,  CREATURE_MANES,  army_rating*20, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*15, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*50, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER,  CREATURE_LICH, army_rating*20, math.random(3,10), math.random(2,12));
+	elseif defender_turn <= waves and math.fmod(defender_turn, 2) ~= 0 then
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));		
+	else
+		return nil -- cast a spell
 	end
-	if defender_turn == 2 then
-		SetUnitManaPoints(GetDefenderHero(),510);
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*15, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER,  CREATURE_LICH,  army_rating*8, math.random(3,10), math.random(2,12));
-	end
-	if defender_turn == 3 then
-		SetUnitManaPoints(GetDefenderHero(),510);
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-	end
-	if defender_turn == 4 then
-		SetUnitManaPoints(GetDefenderHero(),510);
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-	end
-	if defender_turn == 5 then
-		SetUnitManaPoints(GetDefenderHero(),510);
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-	end
-	if defender_turn == 6 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));		
-		SetUnitManaPoints(GetDefenderHero(),510);
-	end
-	if defender_turn == 7 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-		SetUnitManaPoints(GetDefenderHero(),510);
-	end
-	if defender_turn == 8 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-		SetUnitManaPoints(GetDefenderHero(),510);
-	end
-	if defender_turn == 9 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-		SetUnitManaPoints(GetDefenderHero(),510);
-	end
-	if defender_turn == 10 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
-		SetUnitManaPoints(GetDefenderHero(),510);
-	end
-	
-	return not nil;
+	return not nil -- defend because Markal already did special action
 end
 
 death = 0
 function DefenderCreatureDeath()
+	if (table.length(GetDefenderCreatures()) == 0) then
+		Finish(ATTACKER)
+		return
+	end
+	
 	death = death + 1
-	if death == 1 then
-		sleep(10);
-		-- summoning creatures upon the death of the first necrostack
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*66, math.random(3,10), math.random(2,12));
+	local unit_type = CREATURE_SKELETON;
+	local unit_size = 2;
+	if math.fmod(death, 2) == 0 then
+		unit_type = CREATURE_WALKING_DEAD;
+		unit_size = 1;
 	end
-	if death == 2 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating*15, math.random(3,10), math.random(2,12));
+	
+	if death <= 7 then
+		SummonCreature(DEFENDER, unit_type, unit_size*army_rating*math.random(20, 40), math.random(3,10), math.random(2,12));
 	end
-	if death == 3 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating*31, math.random(3,10), math.random(2,12));
-	end
-	if death == 4 then
-		sleep(10);
-		-- summoning creatures upon the death of the second necrostack
-		SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating*23, math.random(3,10), math.random(2,12));
-	end
-	if (table.length(GetDefenderCreatures()) == 0) then Finish(ATTACKER) end;
 end
 
 function AttackerCreatureDeath()

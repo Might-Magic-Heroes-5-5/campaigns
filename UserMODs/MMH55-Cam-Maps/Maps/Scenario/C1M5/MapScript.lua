@@ -81,7 +81,7 @@ CINEMATICS = {
 	end,
 
 	GodrickLearnsIsabellPrisonLocation = function()
-		MessageBox("/Maps/Scenario/C1M5/Tutorial/C1M5_C11.txt", "CINEMATICS.GodrickLearnsIsabellPrisonLocation2");
+		startThread( MessageBox, "/Maps/Scenario/C1M5/Tutorial/C1M5_C11.txt", "CINEMATICS.GodrickLearnsIsabellPrisonLocation2" );
 	end,
 	
 	GodrickLearnsIsabellPrisonLocation2 = function()
@@ -305,6 +305,7 @@ OBJECTIVES = {
 			sleep(2);
 			H55c_AIAddHero('Agrael');
 			SetHeroLootable( 'Agrael', nil );
+			SetHeroRoleMode( 'Agrael', HERO_ROLE_MODE_HERMIT );
 			sleep(5);
 			if __difficulty <= DIFFICULTY_NORMAL then
 				RemoveHeroCreatures( 'Agrael',        CREATURE_DEVIL,  5 );

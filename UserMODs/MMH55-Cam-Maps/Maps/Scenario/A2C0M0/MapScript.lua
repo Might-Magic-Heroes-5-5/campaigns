@@ -79,19 +79,32 @@ TouchedBuilding = "fake";
 ----------------------------------------------------------------------------------------
 ------------------------------   INITIAL CONDITIONS   ----------------------------------
 ----------------------------------------------------------------------------------------
-if GetDifficulty() == DIFFICULTY_EASY then
-	diff = 2;
-	print("MAIN: Difficulty level is EASY");
-elseif GetDifficulty() == DIFFICULTY_NORMAL then
-	diff = 2;
-	print("MAIN: Difficulty level is NORMAL");
-elseif GetDifficulty() == DIFFICULTY_HARD then
-	diff = 3;
-	print("MAIN: Difficulty level is HARD");
-elseif GetDifficulty() == DIFFICULTY_HEROIC then
-	diff = 4;
-	print("MAIN: Difficulty level is HEROIC");
-end;
+
+DIFFICULTY = {
+	[0] = function()
+		ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 10000 )
+		diff = 1;
+		print("Difficulty Level is NORMAL");
+	end,
+	[1] = function()
+		ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 20000 )
+		diff = 2;
+		print("Difficulty Level is HARD");
+	end,
+	[2] = function()
+		ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 25000 );
+		diff = 3;
+		print("Difficulty Level is HEROIC");
+	end,
+	[3] = function()
+		ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 30000 );
+		diff = 4;
+		print("Difficulty Level is IMPOSSIBLE");
+	end,
+}
+
+DIFFICULTY[GetDifficulty()]();
+RemoveHeroCreatures( "Quroq", CREATURE_ORC_WARRIOR, 10*diff );
 
 MakeHeroReturnToTavernAfterDeath( "Nathaniel", not nil, 0);
 MakeHeroReturnToTavernAfterDeath( "Giar", not nil, 0);
@@ -134,22 +147,13 @@ SetRegionBlocked( "skeletons", not nil, PLAYER_2 );
 SetRegionBlocked( "sucrificial_pit", not nil, PLAYER_2 );
 
 EnableHeroAI( AI_HERO, nil );
-SetHeroRoleMode( AI_HERO, HERO_ROLE_MODE_HERMIT );
+SetHeroRoleMode(  AI_HERO,   HERO_ROLE_MODE_HERMIT );
+AddHeroCreatures( AI_HERO,     CREATURE_LONGBOWMAN, 60*diff);
+AddHeroCreatures( AI_HERO,     CREATURE_VINDICATOR, 50*diff);
+AddHeroCreatures( AI_HERO, CREATURE_BATTLE_GRIFFIN, 35*diff);
+AddHeroCreatures( AI_HERO,       CREATURE_CHAMPION, 10*diff);
+AddHeroCreatures( AI_HERO,         CREATURE_SERAPH,  4*diff);
 
-AddHeroCreatures( AI_HERO, CREATURE_LONGBOWMAN, 15+10*(diff-1));
-AddHeroCreatures( AI_HERO, CREATURE_CHAMPION, 1+2*(diff-1));
-AddHeroCreatures( AI_HERO, CREATURE_VINDICATOR, 20+8*(diff-1));
-AddHeroCreatures( AI_HERO, CREATURE_BATTLE_GRIFFIN, 3+3*(diff-1));
-
-if GetDifficulty()~=DIFFICULTY_EASY then
-	RemoveHeroCreatures( "Quroq", CREATURE_ORC_WARRIOR, 10*GetDifficulty() );
-end;
-
-if GetDifficulty()==DIFFICULTY_HEROIC then
-	ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 11000 );
-	AddHeroCreatures( AI_HERO, CREATURE_CHAMPION, 6 );
-	AddHeroCreatures( AI_HERO, CREATURE_SERAPH, 5 );
-end;
 
 OverrideObjectTooltipNameAndDescription( "prison", "", PATH.."Tooltip_Prison.txt");
 
