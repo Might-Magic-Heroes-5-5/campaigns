@@ -386,7 +386,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Markal fights are now more challenging and scale with difficulty and time passed.
 
 ### C6M4 - Academy: The Alliance
-- fix: added missing scene after Isabel is defeated
+- fix: archer dwelling (at 150,148) could not transport units via caravan due to terrain block
 - new: Added Memory Mentor
 - change: Isabel army size significantly increased and is based on difficulty
 
@@ -546,6 +546,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### C6M4 – Academy: The Alliance
 - scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them
+- scene(outro): added missing scene after Isabel is defeated
 
 ### A1C1M1 - Freyda: Rebels
 - scene(intro): Alaric speech animation
