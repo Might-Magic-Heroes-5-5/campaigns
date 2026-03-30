@@ -1,7 +1,7 @@
 d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-waves = game_time/(22-3*d) -- 2.15/2.54/3.11/3.5
+waves = game_time/(22-3*d) -- 1.47/1.75/2.15/2.8
 army_rating = d*0.2
 
 summon = {

@@ -448,6 +448,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Removed wondering enemy player hero.
 - changed: Voron Peak defending army strengtened
 
+### A2C1M1 - The Will of Asha: Last Soul Standing
+- change: Removed tutorial messages as player has already get to know Necromancy in the previous campaigns plus some information is not correct for MMH55.
+- change: Reduced amount of defenders (difficulty increase) for troops in the first Necro town.
+- fix: Iluma-Nadin location was not reveled at game start.
+- fix: Objective buildings (Forge, Which Hut, Portal) triggered messages for the human player when visited by the AI player heroes.
+
 ## Dialogue changes
 
 Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and Mооnst@r from the [Remastered Campaigns project](https://forum.heroesworld.ru/showthread.php?t=18706).
@@ -573,3 +579,8 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### A1C3M5 - Ylaya: The Decoupling
 - scene(Alaric withdrawal): Alaric speech animation
 - scene(outro): Alaric speech animation
+
+### A2C1M1 - The Will of Asha: Last Soul Standing
+- scene(find key part, visit which): Removed Ornella being teleported as she was already present at the correct place. Jovani rotation adjusted to face Ornella when talking.
+- scene(through portal): Removed Ornella being teleported as she was already present at the correct place. Adjusted ending visual effects on Ornella and Malfoy.
+- scene(capture outpost town): fixed Librarian not appearing for conversation.
