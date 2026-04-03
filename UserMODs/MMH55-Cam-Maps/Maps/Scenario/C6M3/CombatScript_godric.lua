@@ -37,10 +37,10 @@ function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
 	if defender_turn <= waves then
 		if math.fmod(defender_turn, 2) ~= 0 then
-			SummonCreature(DEFENDER, CREATURE_SKELETON, army_rating*200, get_coords(not nil));
-			SummonCreature(DEFENDER,  CREATURE_WALKING_DEAD, army_rating*200, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating*100, get_coords(not nil));
+			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 60,     get_coords(nil));
 		else
-			UnitCastGlobalSpell(GetDefenderHero(),21);
+			UnitCastGlobalSpell(GetDefenderHero(), 21);
 		end
 		return not nil -- defend because Markal already did special action
 	end
@@ -50,17 +50,17 @@ end
 -- reinforcements after death
 death = 0
 unit_type = { CREATURE_SKELETON_WARRIOR, CREATURE_GHOST, CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_POLTERGEIST, CREATURE_DISEASE_ZOMBIE, CREATURE_NOSFERATU };
-unit_size = {                         3,              1,                        3,               2,                    1,                       2,                0.7 };
+unit_size = {                         4,            1.5,                        5,               3,                   1.5,                      4,                  1 };
 function DefenderCreatureDeath()
 	if (table.length(GetDefenderCreatures()) == 0) then
 		Finish(ATTACKER)
 		return
 	end
 	
-	death = death + 1
+	death = death + 1;
 
 	if death <= 7 then
-		SummonCreature(DEFENDER, unit_type[death], army_rating*math.random(10, 15)*unit_size, get_coords(not nil));
+		SummonCreature(DEFENDER, unit_type[death], army_rating*math.random(10, 15)*unit_size[death], get_coords(not nil));
 	end
 end
 

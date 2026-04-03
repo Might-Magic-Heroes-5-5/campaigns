@@ -70,7 +70,7 @@ end
 
 BATTLES = {
     zehir = {
-      start = function(nameHero)
+      start = function()
         StartCombat("Zehir", "Berein", 6,
 		         CREATURE_WRAITH,  40,
 	   CREATURE_SKELETON_WARRIOR, 200,
