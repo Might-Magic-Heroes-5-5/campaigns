@@ -1,18 +1,15 @@
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); ----!!!
+
 H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_STAFF_OF_VEXINGS,
-ARTIFACT_CLOAK_OF_MOURNING,
-ARTIFACT_RING_OF_DEATH,
-ARTIFACT_SKULL_HELMET
-
+	ARTIFACT_STAFF_OF_VEXINGS,
+	ARTIFACT_CLOAK_OF_MOURNING,
+	ARTIFACT_RING_OF_DEATH,
+	ARTIFACT_SKULL_HELMET
 };
 
 PlayerHero = "Arantir"
-ChangeHeroStat("Arantir",STAT_MANA_POINTS,20);
+ChangeHeroStat("Arantir", STAT_MANA_POINTS, 20);
 SetHeroesExpCoef( 0.6 );
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); ----!!!
-
---SetPlayerResource(1, 6, 20000);
 
 DenyAIHeroesFlee( PLAYER_4, 1 );
 DenyAIHeroesFlee( PLAYER_2, 1 );
@@ -26,10 +23,6 @@ function x2()
 end
 
 BlockTownGarrisonForAI( "winner", not nil )
-
---sleep( 3 );
---SetObjectiveState('prim1',OBJECTIVE_ACTIVE);
---SetObjectiveState('prim4',OBJECTIVE_ACTIVE);
 
 GiveExp( "Faiz", 65000 ); ---addexp
 GiveExp( "Gamor", 41000 ); ---addexp
@@ -49,20 +42,20 @@ function Diff_level()
 	slozhnost = GetDifficulty(); 
 	if slozhnost == DIFFICULTY_EASY then
 		print ('ALL_AI_BLOCKED');
-		SetRegionBlocked("z1", 1, PLAYER_2); 
-		SetRegionBlocked("z1", 1, PLAYER_3);
-		SetRegionBlocked("z2", 1, PLAYER_2); 
-		SetRegionBlocked("z2", 1, PLAYER_3);
-		SetRegionBlocked("z3", 1, PLAYER_2); 
-		SetRegionBlocked("z3", 1, PLAYER_3);
-		SetRegionBlocked("z4", 1, PLAYER_2); 
-		SetRegionBlocked("z4", 1, PLAYER_3);
+		SetRegionBlocked("z1", not nil, PLAYER_2); 
+		SetRegionBlocked("z1", not nil, PLAYER_3);
+		SetRegionBlocked("z2", not nil, PLAYER_2); 
+		SetRegionBlocked("z2", not nil, PLAYER_3);
+		SetRegionBlocked("z3", not nil, PLAYER_2); 
+		SetRegionBlocked("z3", not nil, PLAYER_3);
+		SetRegionBlocked("z4", not nil, PLAYER_2); 
+		SetRegionBlocked("z4", not nil, PLAYER_3);
 	elseif slozhnost == DIFFICULTY_NORMAL then
 		print ('2AI_REGIONS_BLOCKED');
-		SetRegionBlocked("z1", 1, PLAYER_2); 
-		SetRegionBlocked("z1", 1, PLAYER_3);
-		SetRegionBlocked("z2", 1, PLAYER_2); 
-		SetRegionBlocked("z2", 1, PLAYER_3);
+		SetRegionBlocked("z1", not nil, PLAYER_2); 
+		SetRegionBlocked("z1", not nil, PLAYER_3);
+		SetRegionBlocked("z2", not nil, PLAYER_2); 
+		SetRegionBlocked("z2", not nil, PLAYER_3);
 	elseif slozhnost == DIFFICULTY_HARD then
 		print ('ALL_REGIONS_FREE');
 		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 10);
@@ -80,60 +73,56 @@ function Diff_level()
 end;
 ----------------------------------------------------//Block_regions
 --vamp1
-SetRegionBlocked("vamp1", 1, PLAYER_2); 
-SetRegionBlocked("vamp1", 1, PLAYER_3); 
+SetRegionBlocked("vamp1", not nil, PLAYER_2); 
+SetRegionBlocked("vamp1", not nil, PLAYER_3); 
 
-SetRegionBlocked("demon_block", 1, PLAYER_4); 
+SetRegionBlocked("demon_block", not nil, PLAYER_4); 
 
-SetRegionBlocked("mage1", 1, PLAYER_1); 
-SetRegionBlocked("mage1", 1, PLAYER_2);
-SetRegionBlocked("mage1", 1, PLAYER_3); 
+SetRegionBlocked("mage1", not nil, PLAYER_1); 
+SetRegionBlocked("mage1", not nil, PLAYER_2);
+SetRegionBlocked("mage1", not nil, PLAYER_3); 
  
 
-SetRegionBlocked("b1", 1, PLAYER_2); 
-SetRegionBlocked("b1", 1, PLAYER_3); 
+SetRegionBlocked("b1", not nil, PLAYER_2); 
+SetRegionBlocked("b1", not nil, PLAYER_3); 
   
-SetRegionBlocked("b2", 1, PLAYER_2); 
-SetRegionBlocked("b2", 1, PLAYER_3); 
+SetRegionBlocked("b2", not nil, PLAYER_2); 
+SetRegionBlocked("b2", not nil, PLAYER_3); 
 
-SetRegionBlocked("b3", 1, PLAYER_2); 
-SetRegionBlocked("b3", 1, PLAYER_3); 
+SetRegionBlocked("b3", not nil, PLAYER_2); 
+SetRegionBlocked("b3", not nil, PLAYER_3); 
 
-SetRegionBlocked("b4", 1, PLAYER_2); 
-SetRegionBlocked("b4", 1, PLAYER_3); 
+SetRegionBlocked("b4", not nil, PLAYER_2); 
+SetRegionBlocked("b4", not nil, PLAYER_3); 
 
-SetRegionBlocked("key1", 1, PLAYER_2); 
-SetRegionBlocked("key1", 1, PLAYER_3); 
+SetRegionBlocked("key1", not nil, PLAYER_2); 
+SetRegionBlocked("key1", not nil, PLAYER_3); 
 
-SetRegionBlocked("key2", 1, PLAYER_2); 
-SetRegionBlocked("key2", 1, PLAYER_3); 
+SetRegionBlocked("key2", not nil, PLAYER_2); 
+SetRegionBlocked("key2", not nil, PLAYER_3); 
 
-SetRegionBlocked("key3", 1, PLAYER_2); 
-SetRegionBlocked("key3", 1, PLAYER_3); 
+SetRegionBlocked("key3", not nil, PLAYER_2); 
+SetRegionBlocked("key3", not nil, PLAYER_3); 
 
-SetRegionBlocked("ent1", 1, PLAYER_2); 
-SetRegionBlocked("ent1", 1, PLAYER_3); 
+SetRegionBlocked("ent1", not nil, PLAYER_2); 
+SetRegionBlocked("ent1", not nil, PLAYER_3); 
 
-SetRegionBlocked("ent2", 1, PLAYER_2); 
-SetRegionBlocked("ent2", 1, PLAYER_3); 
+SetRegionBlocked("ent2", not nil, PLAYER_2); 
+SetRegionBlocked("ent2", not nil, PLAYER_3); 
 
-SetRegionBlocked("back", 1, PLAYER_1); 
+SetRegionBlocked("back", not nil, PLAYER_1); 
 
-SetRegionBlocked("nb1", 1, PLAYER_2); 
-SetRegionBlocked("nb1", 1, PLAYER_3);
+SetRegionBlocked("nb1", not nil, PLAYER_2); 
+SetRegionBlocked("nb1", not nil, PLAYER_3);
 
-SetRegionBlocked("n_sec", 1, PLAYER_2); 
-SetRegionBlocked("n_sec", 1, PLAYER_3);
-
-
+SetRegionBlocked("n_sec", not nil, PLAYER_2); 
+SetRegionBlocked("n_sec", not nil, PLAYER_3);
 print ('....CHECK2....'); 
-
- 
 --------------------------------------------------//Main_heroes_death
 
 function Main_hero_de()  
 	while 1 do
-		sleep(10);
+		sleep(40);
 		if IsHeroAlive(PlayerHero) == nil then 
 			sleep(2);
 			Loose();
@@ -149,11 +138,6 @@ function AIAction()
 	BlockGame();
 	sleep(5);
 	StartAdvMapDialog (5); -----------------------------------------------------5_adv_map_dialog
---	sleep(25);
---	UnblockGame();
---	sleep(5);
---	BlockGame();
---	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO
 	sleep(30);
 	EnableHeroAI("Nur", not nil);
 	ChangeHeroStat( "Nur", STAT_MOVE_POINTS, 30000 );
@@ -168,11 +152,10 @@ end;
 --------------------------------------------------//Start_sec_obj_enterdangeon
 function Demon_obj()  
 	while 1 do
-		sleep(10);
+		sleep(40);
 		if IsHeroAlive("Nur") == nil then  
 			SetObjectiveState('prim2',OBJECTIVE_ACTIVE);			
 			startThread(AIAction2);
-			sleep(2);
 			break;
 		end;
 	end;
@@ -187,7 +170,6 @@ function AIAction2()
 	StartAdvMapDialog (1, "AI3"); -----------------------------------------------------1_adv_map_dialog
 	sleep(25);
 	UnblockGame();
---	SetObjectPosition( "Astral", 92, 49, GROUND );	
 end;
 
 function AI3()
@@ -197,7 +179,7 @@ end;
 ---------------------------------------------------//Demon_death
 function Demon_kill()  
 	while 1 do
-		sleep(10);
+		sleep(30);
 		if IsHeroAlive("Gamor") == nil then  
 			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
 			sleep(10);
@@ -214,7 +196,7 @@ end;
 
 function Objective_prim1()  
 	while 1 do
-		sleep(10);
+		sleep(30);
 		if GetPlayerState(PLAYER_2) == PLAYER_LOST then
 			sleep(5);
 			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
@@ -229,7 +211,7 @@ end;
 
 function Complete_obj3()
 	while 1 do	
-		sleep( 10 );
+		sleep( 30 );
 		if (GetObjectOwner("winner") == PLAYER_1) then
 			sleep( 5 );
 			SetObjectiveState('prim3',OBJECTIVE_COMPLETED);
@@ -264,7 +246,7 @@ end;
 
 function Complete_sec2obj()
 	while 1 do	
-		sleep( 10 );
+		sleep( 20 );
 		if GetObjectOwner("vamp1") == PLAYER_1 and GetObjectOwner("vamp2") == PLAYER_1 and GetObjectOwner("vamp3") == PLAYER_1 then
 			sleep( 5 );
 			SetObjectiveState('sec2',OBJECTIVE_COMPLETED);

@@ -17,7 +17,8 @@ function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M5");
 	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M4" );
 	LoadHeroAllSetArtifacts( "Duncan" , "A1C2M5" );
-	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M5" );
+	H55_CamFixTooManySkills(PLAYER_1,"Shadwyn");
+	H55_CamFixTooManySkills(PLAYER_2,"Duncan");
 end
 
 startThread(H55_InitSetArtifacts);
@@ -172,7 +173,7 @@ function Catapult()
 			end
 			Play3DSound( "/Sounds/_(Sound)/SFX/FireballHitMono.xdb#xpointer(/Sound)", x, y, 0 );
 		end
-		sleep( 80 + random(50) );
+		sleep( 200 + random(50) );
 	end
 end
 
@@ -189,7 +190,7 @@ function Siege( counter )
 				PlayObjectAnimation( 'siege' .. counter, 'rangeattack', ONESHOT );
 			end
 		end
-		sleep( 20 + random( 20 ) );
+		sleep( 100 + random( 50 ) );
 	end
 end
 
@@ -321,8 +322,6 @@ OBJECTIVES = {
 		for i = 1, 12 do
 			startThread( Siege, i ); -- анимации осаждающих кричей
 		end
-		H55_CamFixTooManySkills(PLAYER_1,"Shadwyn");
-		H55_CamFixTooManySkills(PLAYER_2,"Duncan");
 		CINEMATICS.intro();
 		startThread(DIFFICULTY[GetDifficulty()]);
 		SetRegionBlocked("gate", 1, PLAYER_3); 
@@ -419,12 +418,12 @@ OBJECTIVES = {
 			SetObjectOwner( 'SD', 1 );
 			DeployReserveHero( FREYDA, 13, 8, 0 );
 			DeployReserveHero( WULFSTAN, 17, 8, 0 );
-			sleep(5);
-			H55_CamFixTooManySkills(PLAYER_1,"Freyda");
-			H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
-			sleep (5);
-			LoadHeroAllSetArtifacts( "Freyda", "A1C1M5" );
+			sleep(10);
+			LoadHeroAllSetArtifacts(   "Freyda", "A1C1M5" );
 			LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M5" );
+			sleep(10);
+			H55_CamFixTooManySkills(PLAYER_1,   "Freyda");
+			H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
 			SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );
 			SetRegionBlocked( 'deploy1', nil, PLAYER_1 );
 			SetRegionBlocked( 'deploy2', nil, PLAYER_1 );

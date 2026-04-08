@@ -9,17 +9,16 @@ ARTIFACT_DWARVEN_MITHRAL_SHIELD
 
 };
 
-H55_CamFixTooManySkills(PLAYER_1,"Freyda");
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M5");
 	LoadHeroAllSetArtifacts( "Freyda" , "A1C1M4" );
+	sleep(20);
+	H55_CamFixTooManySkills(PLAYER_1,"Freyda");
 end;
 
 startThread(H55_InitSetArtifacts);
-
 --========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
 --###################################### BEGIN #########################################################
 --CONSTANTS
@@ -243,13 +242,12 @@ function AIAction()
 	ChangeHeroStat( "Sarge", STAT_MOVE_POINTS, 30000 );
 	MoveHeroRealTime( "Sarge", 43, 118, 0 );
 	sleep(20);
-	UnblockGame();
-	sleep(10);
 	OpenCircleFog( 34, 26, 0, 4, PLAYER_1 ); ---фог c Дункана
 	MoveCamera(34, 26, 0, 50, 1);
-	sleep(20);
-	MoveCamera(43, 114, 0, 50, 1);	
+	sleep(120);
+	MoveCamera(43, 114, 0, 50, 1);
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Exit_1",nil);
+	UnblockGame();
 end;
 -------------------------------------Освобождаем Дункана
 
