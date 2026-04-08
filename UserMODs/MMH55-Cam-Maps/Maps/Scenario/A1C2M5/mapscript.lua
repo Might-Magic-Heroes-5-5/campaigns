@@ -6,6 +6,9 @@ function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M5");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M4" );
 	LoadHeroAllSetArtifacts( "Duncan" , "A1C2M4" );
+	sleep(20);
+	H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
+	H55_CamFixTooManySkills(PLAYER_1,"Duncan");	
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -233,8 +236,11 @@ Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
 function laszlo_ai_enabled(hero)
 	print("######### enable Laszlo");
 	RemoveObject("dummy");
-	sleep( 3 );
+	sleep(10);
 	EnableHeroAI(EnemyHero, not nil);
+	if IsObjectExists("laszlo_trigger") then
+		Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", nil);
+	end
 	Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
 	Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
 end
@@ -254,8 +260,6 @@ function H55_TriggerDaily()
 	end;
 end;
 
-H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
-H55_CamFixTooManySkills(PLAYER_1,"Duncan");
 diffcheck();
 startThread (objective4);
 startThread (win_check);

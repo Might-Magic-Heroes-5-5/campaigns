@@ -398,6 +398,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
 
+### A1C1M3 - Freyda: Duncan
+- new: Teal enemy player now has a layered defense by a triage of heroes and garrisons where Duncan sits at the very core for the mission finale. Their armies sizes depend on game difficulty.
+- fix: Teal enemy player sabotage groups against Freyda was not working as intended. Now town recruits will desert, mines will get stolen, rebel forces will appear on map to block pathing.
+
 ### A1C1M4 - Freyda: Negotiations
 - new: Added Memory Mentor
 
@@ -449,10 +453,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - changed: Voron Peak defending army strengtened
 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
-- change: Removed tutorial messages as player has already get to know Necromancy in the previous campaigns plus some information is not correct for MMH55.
+- change: Removed tutorial messages as player has already been introduced to Necromancy in previous missions.
 - change: Reduced amount of defenders (difficulty increase) for troops in the first Necro town.
 - fix: Iluma-Nadin location was not reveled at game start.
 - fix: Objective buildings (Forge, Which Hut, Portal) triggered messages for the human player when visited by the AI player heroes.
+
+### A2C1M3 - The Will of Asha: The Bull's Wake
+- change: Removed human player tavern hiring limit ( was 6 ).
 
 ## Dialogue changes
 
@@ -570,7 +577,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### A1C1M4 - Freyda: Negotiations 
 - scene(intro): Alaric speech animation
 
-### A1C2M2 - Wulfstan:  The Ambush
+### A1C2M2 - Wulfstan: The Ambush
 - scene(outro): Corrected Rolf's camera position as Isabel's model was visible on the widescreen monitor before she appeared.
 
 ### A1C2M5 - Wulfstan: Laszlo
@@ -582,5 +589,4 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
 - scene(find key part, visit which): Removed Ornella being teleported as she was already present at the correct place. Jovani rotation adjusted to face Ornella when talking.
-- scene(through portal): Removed Ornella being teleported as she was already present at the correct place. Adjusted ending visual effects on Ornella and Malfoy.
-- scene(capture outpost town): fixed Librarian not appearing for conversation.
+- scene(through portal): Removed Ornella being teleported as she was already present at the correct place.

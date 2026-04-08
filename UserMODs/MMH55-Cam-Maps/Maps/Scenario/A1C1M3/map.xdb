@@ -45,8 +45,8 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_2</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
@@ -95,12 +95,12 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
 					</Item>
 					<Item>
@@ -156,64 +156,7 @@
 				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
-				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_A7586D2B-1642-4D83-83F1-B4BF754A49CB">
-					<AdvMapHero>
-						<Pos>
-							<x>0</x>
-							<y>0</y>
-							<z>0</z>
-						</Pos>
-						<Rot>0</Rot>
-						<Floor>0</Floor>
-						<Name/>
-						<CombatScript/>
-						<pointLights/>
-						<Shared href="/MapObjects/Haven/Duncan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>0</Experience>
-						<armySlots>
-							<Item>
-								<Creature>CREATURE_SWORDSMAN</Creature>
-								<Count>34</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_PALADIN</Creature>
-								<Count>5</Count>
-							</Item>
-						</armySlots>
-						<artifactIDs/>
-						<isUntransferable/>
-						<Editable>
-							<NameFileRef href=""/>
-							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs>
-								<Item>HERO_SKILL_TOUGHNESS</Item>
-							</perkIDs>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
-							<FavoriteEnemies/>
-						</Editable>
-						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
-						<LossTrigger>
-							<Action>
-								<FunctionName/>
-							</Action>
-						</LossTrigger>
-						<AllowQuickCombat>true</AllowQuickCombat>
-						<Textures>
-							<Icon128x128/>
-							<Icon64x64/>
-						</Textures>
-					</AdvMapHero>
-				</GarrisonHero>
+				<GarrisonHero/>
 				<Script/>
 				<RndSource>RND_NONE</RndSource>
 				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
@@ -259,7 +202,7 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -299,7 +242,7 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -416,7 +359,7 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
 					</Item>
 					<Item>
@@ -934,12 +877,12 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -959,7 +902,7 @@
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
 					</Item>
 					<Item>
@@ -979,12 +922,12 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
 					</Item>
 					<Item>
@@ -1029,12 +972,12 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -14911,7 +14854,7 @@
 			<AdvMapHero>
 				<Pos>
 					<x>15</x>
-					<y>80</y>
+					<y>82</y>
 					<z>0</z>
 				</Pos>
 				<Rot>0</Rot>
@@ -14919,7 +14862,7 @@
 				<Name/>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Haven/Glen.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+				<Shared href="/MapObjects/Haven/Duncan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
 				<Experience>0</Experience>
 				<armySlots>
@@ -14938,7 +14881,9 @@
 					<Spellpower>0</Spellpower>
 					<Knowledge>0</Knowledge>
 					<skills/>
-					<perkIDs/>
+					<perkIDs>
+						<Item>HERO_SKILL_TOUGHNESS</Item>
+					</perkIDs>
 					<spellIDs/>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
@@ -14946,7 +14891,7 @@
 					<FavoriteEnemies/>
 				</Editable>
 				<OverrideMask>0</OverrideMask>
-				<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+				<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
 						<FunctionName/>

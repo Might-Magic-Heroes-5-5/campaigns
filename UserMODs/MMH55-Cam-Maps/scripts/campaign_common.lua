@@ -214,6 +214,13 @@ function IsAnyHeroPlayerHasArtifact( playerID, artifID )
 	return nil
 end
 
+function PlayVoiceoverAndBlockGame( voiceoverName )
+	BlockGame();
+	Play2DSound( voiceoverName );
+	sleep( GetSoundTimeInSleeps( voiceoverName ) )
+	UnblockGame();
+end
+
 -- ### LUA Multiclicker guard
 H55c_LUA = {
 	busy = nil,

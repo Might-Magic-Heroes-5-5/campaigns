@@ -1,10 +1,16 @@
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
 H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_STAFF_OF_VEXINGS,
-ARTIFACT_CLOAK_OF_MOURNING,
-ARTIFACT_RING_OF_DEATH,
-ARTIFACT_SKULL_HELMET
-
+	ARTIFACT_STAFF_OF_VEXINGS,
+	ARTIFACT_CLOAK_OF_MOURNING,
+	ARTIFACT_RING_OF_DEATH,
+	ARTIFACT_SKULL_HELMET
 };
 
 -------------------------------------------------------------------
@@ -16,11 +22,6 @@ ARTIFACT_SKULL_HELMET
 --        Project Name: H5A2
 --            Map Name: A2C1M3
 --  Script Description: MapScript
- --------------------------------------------------------------------
- --------------------------------------------------------------------
-
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
-
 --------------------------------------------------------------------
 ----------------- CONSTANTS ----------------------------------------
 --------------------------------------------------------------------
@@ -50,10 +51,8 @@ VOICEOVER_MISSION_START = "/Maps/Scenario/A2C1M3/C1M3_VO2_Ornella_01sound.xdb#xp
 
 SOUND_EFFECT_PLAGUE = "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)";
 
-
 HAVEN_TOWNS = {"SouthHavenTown", "EastHavenTown", "WestHavenTown"};
 HAVEN_TOWNS.n = table.length( HAVEN_TOWNS );
-
 NECROPOLIS = "Necropolis";
 
 ARANTIR = "Arantir";
@@ -181,7 +180,7 @@ elseif GetDifficulty() == DIFFICULTY_HARD then
 elseif GetDifficulty() == DIFFICULTY_HEROIC then
 	difLevel = 4;
 	print ("Difficulty level is HEROIC");
-end;
+end
 
 AddHeroCreatures( ORNELLA, CREATURE_SKELETON_ARCHER, 140-difLevel*25);
 AddHeroCreatures( ORNELLA, CREATURE_ZOMBIE, 50-difLevel*8);
@@ -205,93 +204,72 @@ SetPlayerStartResource( PLAYER_1, MERCURY, 16 - difLevel*2 );
 
 DenyAIHeroFlee( ARANTIR, not nil );
 DenyAIHeroFlee( ORNELLA, not nil );
-
-SetObjectiveState( "prim1_MeetArantir", OBJECTIVE_ACTIVE );
 --------------------------------------------------------------------
 ----------------- FUNCTIONS ----------------------------------------
 --------------------------------------------------------------------
 
-function GiveTransferribleArifacts()
+function H55_InitSetArtifacts()
     InitAllSetArtifacts( "A2C1M3" );
-    --LoadHeroAllSetArtifacts( ORNELLA, "A2C1M1" );
+    LoadHeroAllSetArtifacts( ORNELLA, "A2C1M1" );
 end
 
 function SetLight( level, time )
 	SetAmbientLight( GROUND, "fog_light_level"..level, not nil, time);
-end;
+end
 
 function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
 	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
 	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
-	sleep(1);
+	sleep(10);
 	MoveHeroRealTime( heroName, x, y, GROUND );
-end;
+end
 
 function SetPointLights( level )
 	for i=1, POINT_LIGHTS.n do
 		SetObjectFlashlight("light"..i, "undead_light"..level);
-	end;
-end;
+	end
+end
 
 function ResetPointLights()
 	for i=1, POINT_LIGHTS.n do
 		SetObjectFlashlight( "light"..i );
-	end;
-end;
+	end
+end
 
 
 function testLightsIn( delay )
 	for i=1, 8 do
 		SetObjectFlashlight("graveyard_1", "necrolight"..i);
 		sleep(delay);
-	end;
-end;
+	end
+end
 function testLightsOut( delay )
 	for i=8, 1, -1 do
 		SetObjectFlashlight("graveyard_1", "necrolight"..i);
 		sleep(delay);
-	end;
-end;
+	end
+end
 function testLightsInOut( delay )
 	while 1 do
 		for i=1, 8 do
 			SetObjectFlashlight("graveyard_1", "necrolight"..i);
 			sleep(delay);
-		end;
+		end
 		for i=7, 2, -1 do
 			SetObjectFlashlight("graveyard_1", "necrolight"..i);
 			sleep(delay);
-		end;
+		end
 	sleep(1);
-	end;
-end;
+	end
+end
 
 function CreatePointLights( level )
 	for i=1, POINT_LIGHTS.n do
 		CreateStatic("light"..i,"/MapObjects/Dirt/Misc/Will_o_the_wisp.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)",POINT_LIGHTS[i][1],POINT_LIGHTS[i][2], GROUND);
-	end;
+	end
 	sleep( 1 );
 	SetPointLights( level );
-end;
-
-print("variables defined");
-
-function DisablePlayerHeroHiring()
-	while 1 do
-		while table.length( GetPlayerHeroes( PLAYER_1 ) ) < 6 do sleep(1); end;
-		
-		for race_id = 0, 7 do
-			AllowPlayerTavernRace( PLAYER_1, race_id, 0 );
-		end;
-		
-		while table.length( GetPlayerHeroes( PLAYER_1 ) ) >= 6 do sleep(1); end;
-		
-		for race_id = 0, 7 do
-			AllowPlayerTavernRace( PLAYER_1, race_id, 1 );		
-		end;
-		sleep(1);
-	end;
-end;
+end
 
 ------------------------------------------------------------------------
 --     Function Name: startInitialConditions() 
@@ -304,136 +282,13 @@ function startInitialConditions()
 	sleep(15);
 	x,y = GetObjectPosition( ORNELLA );
 	MoveCamera( x, y, GROUND, 50, 1.3, 0, 1, 1, 1);
-end;
-
-------------------------------------------------------------------------
---     Function Name: IsOrnellaMeetArantir( heroName ) heroName - имя героя, вошедшего в регион
---     Description: Запускается при входе любого героя игрока в регион встречи а Арантиром
-------------------------------------------------------------------------
-
-function IsOrnellaMeetArantir()
-	while IsObjectExists( "angel" ) == not nil do sleep(5); end;
-	if heroWhoAttacksAngels ~= ORNELLA then
-		SetRegionBlocked( "scene_ornella", nil );
-		return_x, return_y, return_floor = GetObjectPosition( ORNELLA );
-		scene_x, scene_y = RegionToPoint( "scene_ornella" );
-		SetObjectPosition( ORNELLA, scene_x, scene_y, GROUND );
-		sleep(1);
-		SetObjectRotation( ORNELLA, 45 );
-	end;
-	SetObjectiveState( "prim1_MeetArantir", OBJECTIVE_COMPLETED );
-	SetRegionBlocked( "meeting", nil, PLAYER_2 );
-	DeployReserveHero( ARANTIR, 83, 3, GROUND );
-	sleep(1);
-	H55_CamFixTooManySkills(PLAYER_1,"Arantir");
-	LoadHeroAllSetArtifacts( ARANTIR, "A2C1M2" );
-	sleep(1);
-	SetObjectRotation( ARANTIR, 180 );
-	sleep(7);
-	SetRegionBlocked( "seraph_area_blocker", nil );
-	MoveHeroRealTimeAndReachPoint( ARANTIR, 83, 4 );
-	SetObjectiveState( "prim4_ArantirMustSurvive", OBJECTIVE_ACTIVE );
-	StartAdvMapDialog( ADVMAPSCENE_ORNELLA_MEETS_ARANTIR, "ReturnOrnella" );
-	SetPlayerResource( PLAYER_1, GOLD, GetPlayerResource( PLAYER_1, GOLD )+40000 );-- Арантир приходит с деньгами и ресурсами. Выдаем их игроку
-	SetPlayerResource( PLAYER_1, ORE, GetPlayerResource( PLAYER_1, ORE )+40 );
-	SetPlayerResource( PLAYER_1, WOOD, GetPlayerResource( PLAYER_1, WOOD )+40 );
-	SetPlayerResource( PLAYER_1, CRYSTAL, GetPlayerResource( PLAYER_1, CRYSTAL )+20 );
-	SetPlayerResource( PLAYER_1, GEM, GetPlayerResource( PLAYER_1, GEM )+20 );
-	SetPlayerResource( PLAYER_1, SULFUR, GetPlayerResource( PLAYER_1, SULFUR )+20 );
-	SetPlayerResource( PLAYER_1, MERCURY, GetPlayerResource( PLAYER_1, MERCURY )+30 );		
-	--startThread( IsAllHavenTownsCaptured );
-	Trigger( OBJECT_CAPTURE_TRIGGER, "WestHavenTown", "IsMainTownCaptured" );
-	startThread( ArantirMustSurvive );
-	SetLight( 2, 3 );
-	sleep(25);
-	CreatePointLights( 2 );
-	SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_ACTIVE );
-end;
-
+end
 
 function ReturnOrnella()
 	if heroWhoAttacksAngels ~= ORNELLA then
 		SetObjectPosition( ORNELLA, return_x, return_y, return_floor );
-	end;
-end;
-------------------------------------------------------------------------
---     Function Name: IsAllHavenTownsCaptured() 
---     Description: Проверяет все ли города противника на карте захвачены
-------------------------------------------------------------------------
-function IsAllHavenTownsCaptured()
-	SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_ACTIVE );
-	repeat
-		capturedTowns = 0;
-		for i=1, HAVEN_TOWNS.n do
-			if GetObjectOwner(HAVEN_TOWNS[i]) == PLAYER_1 then
-				capturedTowns = capturedTowns  + 1;
-			end;
-		end;
-		if capturedTowns == 1 and firstTownCaptured == 0 then
-			firstTownCaptured = 1;
-			SetLight( 3, 3 );
-			sleep(25);
-			SetPointLights( 3 );
-			StartDialogScene( "/DialogScenes/A2C1/M3/S1/DialogScene.xdb#xpointer(/DialogScene)" );
-		end;
-		sleep(1);
-	until capturedTowns == 3;
-	print("IsAllHavenTownsCaptured: all towns are captured");	
-	--SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_COMPLETED );
-end;
-
-function IsMainTownCaptured( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_COMPLETED );
-		print( "Main enemy town was captured!" );
-	end;
-end;
-
-------------------------------------------------------------------------
---     Function Name: PlayerWin() 
---     Description: Комплитит миссию, если задания "Встретиться с Арантиром" и "Захватить все города" выполнены
-------------------------------------------------------------------------
-function PlayerWin()
-	while GetObjectiveState( "prim1_MeetArantir" ) ~= OBJECTIVE_COMPLETED or
-		  GetObjectiveState( "prim2_CaptureAllTowns" ) ~= OBJECTIVE_COMPLETED
-		do
-		 sleep(5);
-	end;
-	SetObjectRotation( ARANTIR, 0 );
-	SetRegionBlocked("ArantirRegion", nil, PLAYER_1);
-	SetRegionBlocked("OrnellaRegion", nil, PLAYER_1);
-	SetObjectPosition( ARANTIR, 23, 127, GROUND );
-	SetObjectPosition( ORNELLA, 23, 123, GROUND );
-	StartAdvMapDialog( ADVMAPSCENE_END_OF_MISSION, "win" );
-end;
-
-function win()
-	SaveHeroAllSetArtifactsEquipped( ORNELLA, "A2C1M3" );
-	SaveHeroAllSetArtifactsEquipped( ARANTIR, "A2C1M3" );
-	sleep(5); --H55 fix
-	Win( PLAYER_1 );
-end;
-
-------------------------------------------------------------------------
---     Function Name: ArantirMustSurvive() 
---     Description: Фейлит миссию, если герой Арантир уничтожен
-------------------------------------------------------------------------
-function ArantirMustSurvive()
-	sleep(5);
-	while IsHeroAlive( ARANTIR ) == not nil do sleep(10); end;
-	print("Our glorious hero Arantir is dead");
-	Loose(PLAYER_1);
-end;
-
-------------------------------------------------------------------------
---     Function Name: OrnellaMustSurvive() 
---     Description: Фейлит миссию, если герой Орнелла уничтожен
-------------------------------------------------------------------------
-function OrnellaMustSurvive()
-	while IsHeroAlive( ORNELLA ) == not nil do sleep(10); end;
-	print("Our glorious hero Ornella is dead");
-	Loose(PLAYER_1);
-end;
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: IsZombiesTouched() 
@@ -450,12 +305,12 @@ function IsZombiesTouched( heroName, objectName )
 			x_zombie, y_zombie, floor_zombie = GetObjectPosition( "zombie" );
 			PlayVisualEffect( EFFECT_PLAGUE, "zombie" );
 			Play2DSound( SOUND_EFFECT_PLAGUE );
-			sleep(3);
+			sleep(10);
 			RemoveObject( "zombie" );
 			RemoveObject("selection_zombie");
-			sleep(1);
+			sleep(10);
 			CreateMonster( "not nil_zombie", CREATURE_ZOMBIE, ZOMBIE_COUNT-difLevel*8, x_zombie, y_zombie, floor_zombie , MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
-			sleep(1);
+			sleep(10);
 			SetObjectEnabled( "not nil_zombie", nil );
 			sleep(15);
 			--MessageBox( PATH.."MessageBox12_LazyZombieAnswer.txt", "NosferatuDeploy" );
@@ -464,27 +319,27 @@ function IsZombiesTouched( heroName, objectName )
 			UnblockGame();
 		else
 			MessageBox( PATH.."MessageBox12_LazyZombieAnswer.txt" );
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function NosferatuDeploy()
 	BlockGame()
 	CreateMonster( "nosferatu", CREATURE_NOSFERATU, NOSFERATU_COUNT-difLevel*2, 70, 24, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
-	sleep(1);
+	sleep(10);
 	SetObjectEnabled( "nosferatu", nil );
-	sleep(1);
+	sleep(10);
 	Trigger( OBJECT_TOUCH_TRIGGER, "nosferatu", "IsNosferatuTouched" );
 	UnblockGame();
 	StartAdvMapDialog( ADVMAPSCENE_ORNELLA_MEET_ZOMBIES );
-end;
+end
 
 function IsNosferatuTouched( heroName )
 	if GetObjectOwner( heroName ) == PLAYER_1 then
 		heroName_zombiesJoin = heroName;
 		QuestionBox( PATH.."MessageBox13_NosferatuFirstVisit.txt", "ZombiesWantJoin", "ZombiesWantPayTax"  );
-	end;
-end;
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: ZombiesWantJoin() 
@@ -495,27 +350,23 @@ function ZombiesWantJoin()
 	Trigger( OBJECT_TOUCH_TRIGGER, "not nil_zombie", "RedirectToNosferatu" );
 	Trigger( OBJECT_TOUCH_TRIGGER, "nosferatu", nil );
 	SetObjectEnabled( "not nil_zombie", not nil );
-	sleep(1);
+	sleep(20);
 	UnblockGame();
-
 	x_zombie, y_zombie = GetObjectPosition("not nil_zombie");
 	MoveHeroRealTimeAndReachPoint( heroName_zombiesJoin, x_zombie, y_zombie, GROUND );
-end;
+end
 
 function RedirectToNosferatu()
 	SetObjectEnabled( "nosferatu", not nil );
 	startThread( NosferatuJoin );
-end;
+end
 
 function NosferatuJoin()
 	-- Wait zombies joined or defeated
 	--
-	while IsObjectExists("not nil_zombie") == not nil and IsObjectExists("nosferatu") == not nil do
-		sleep(2);
+	while IsObjectExists("not nil_zombie") == not nil do
+		sleep(1);
 	end
-
-	-- Go to nosferatu
-	--
 	if IsObjectExists("nosferatu") == not nil then
 		x_nosferatu, y_nosferatu = GetObjectPosition( "nosferatu" );
 		MoveHeroRealTimeAndReachPoint( heroName_zombiesJoin, x_nosferatu, y_nosferatu, GROUND );
@@ -526,13 +377,13 @@ function NosferatuJoin()
 	BlockGame();
 	joinedCreaturesCount = joinedCreaturesCount + 1; --Увеличиваем счетчик собранных кричей Некрополиса на единицу
 	SetObjectiveProgress( "sec2_JoinNecropolisCreatures", joinedCreaturesCount, PLAYER_1 );
-	sleep(1);
+	sleep(10);
 	heroWhoFoundLastCreature = heroName_zombiesJoin;
 	TransformToNecroDwelling( "ZombieVillageHouse01", CREATURE_SKELETON, CREATURE_SKELETON_WARRIOR, SKELETONS_COUNT - difLevel*5 );
-	sleep(3);
+	sleep(20);
 	TransformToNecroDwelling( "ZombieVillageHouse02", CREATURE_SKELETON, CREATURE_SKELETON_WARRIOR, SKELETONS_COUNT - difLevel*5 );
 	UnblockGame();
-end;
+end
 
 ------------------------------------------------------------------------
 --     Function Name: ZombiesWantPayTax() 
@@ -541,7 +392,7 @@ end;
 function ZombiesWantPayTax()
 	H55_NewDayTrigger = 1;
 	--Trigger(NEW_DAY_TRIGGER, "PayZombieTax");
-end;
+end
 
 ------------------------------------------------------------------------
 --     Function Name: PayZombieTax() 
@@ -554,8 +405,8 @@ function H55_TriggerDaily()
 	else
 		H55_NewDayTrigger = 0;
 		--Trigger(NEW_DAY_TRIGGER, nil);
-	end;
-end;
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: IsVampiresTouched() 
@@ -564,21 +415,21 @@ end;
 function IsVampiresTouched( heroName )
 	if GetObjectOwner( heroName ) == PLAYER_1 then
 	--StartDialogScene(); -- здесь должна быть диалоговая сцена про присоединение вампиров и рассказ о некрополисе поблизости
-	BlockGame();	
-	x_vampire, y_vampire, floor_vampire = GetObjectPosition( "vampire" );
-	PlayVisualEffect( EFFECT_PLAGUE, "vampire" );
-	Play2DSound( SOUND_EFFECT_PLAGUE );
-	sleep(3);
-	RemoveObject( "vampire" );
-	RemoveObject("selection_vampire");
-	sleep(1);
-	CreateMonster( "not nil_vampire", CREATURE_VAMPIRE, VAMPIRES_COUNT, x_vampire, y_vampire, floor_vampire, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
-	Trigger( OBJECT_CAPTURE_TRIGGER, "Necropolis", "IsNecropolisCaptured" );
-	sleep(15);
-	UnblockGame();
-	startThread( VampiresWantJoin );
-	end;
-end;
+		BlockGame();	
+		x_vampire, y_vampire, floor_vampire = GetObjectPosition( "vampire" );
+		PlayVisualEffect( EFFECT_PLAGUE, "vampire" );
+		Play2DSound( SOUND_EFFECT_PLAGUE );
+		sleep(15);
+		RemoveObject( "vampire" );
+		RemoveObject("selection_vampire");
+		sleep(5);
+		CreateMonster( "not nil_vampire", CREATURE_VAMPIRE, VAMPIRES_COUNT, x_vampire, y_vampire, floor_vampire, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
+		Trigger( OBJECT_CAPTURE_TRIGGER, "Necropolis", "IsNecropolisCaptured" );
+		sleep(15);
+		UnblockGame();
+		startThread( VampiresWantJoin );
+	end
+end
 
 function TransformToNecroDwelling( objectName, creatureType, guardType, guardCount )
 	guardName = "creature_"..objectName;
@@ -601,23 +452,23 @@ function TransformToNecroDwelling( objectName, creatureType, guardType, guardCou
 			angle = 270;
 		elseif objectName == "ZombieVillageHouse01" then
 			angle = 90;
-		end;
+		end
 		local x_guard, y_guard, floor_guard = GetObjectPosition( guardName );
 		PlayVisualEffect( EFFECT_PLAGUE, guardName );
 		Play2DSound( SOUND_EFFECT_PLAGUE );
-		sleep(3);
+		sleep(5);
 		RemoveObject( guardName );
-		sleep(1);
+		sleep(10);
 		CreateMonster( "not nil_"..guardName, guardType, guardCount, x_guard, y_guard, floor_guard, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, angle );
-		sleep(1);
+		sleep(10);
 		PlayObjectAnimation( "not nil_"..guardName, "happy", ONESHOT );
-	end;
-end;
+	end
+end
 
 
 function IsOkPressed()
 	isOkPressed = 1;
-end;
+end
 ------------------------------------------------------------------------
 --     Function Name: VampiresWantJoin( heroName ) 
 --     Description: К армии героя игрока присоединяются вампиры.
@@ -626,17 +477,17 @@ function VampiresWantJoin()
 	sleep(1);
 	--MessageBox( "Maps/Scenario/A2C1M3/MessageBox04_VampireMessage.txt", "IsOkPressed" );
 	StartAdvMapDialog( ADVMAPSCENE_ORNELLA_JOINS_VAMPIRES, "IsOkPressed" );
-	while isOkPressed == 0 do sleep(1); end;
+	while isOkPressed == 0 do sleep(1); end
 	isOkPressed = 0;
 	joinedCreaturesCount = joinedCreaturesCount + 1; --Увеличиваем счетчик собранных кричей Некрополиса на единицу
 	MoveHeroRealTimeAndReachPoint( ORNELLA, x_vampire, y_vampire, GROUND );
 	
-	while IsObjectExists("not nil_vampire")==not nil do sleep(1); end;
+	while IsObjectExists("not nil_vampire")==not nil do sleep(1); end
 	BlockGame();
 	print("VampiresWantJoin: Game is blocked");
 	
 	TransformToNecroDwelling( "VampireVillageHouse01", CREATURE_SKELETON, CREATURE_SKELETON, SKELETONS_COUNT - difLevel*5 );
-	sleep(3);
+	sleep(15);
 	TransformToNecroDwelling( "VampireVillageHouse02", CREATURE_SKELETON, CREATURE_SKELETON, SKELETONS_COUNT - difLevel*5 );
 	sleep(15);
 	
@@ -644,9 +495,9 @@ function VampiresWantJoin()
 	Necropolis_x, Necropolis_y = GetObjectPosition( NECROPOLIS ); 
 	
 	OpenCircleFog( Necropolis_x, Necropolis_y, GROUND, 12, PLAYER_1 );
-	MoveCamera( Necropolis_x, Necropolis_y, GROUND, 50, 1.3, 0, 1, 1, 1 ); -- Показываем игроку Некрополис
 	sleep(15);
-	
+	MoveCamera( Necropolis_x, Necropolis_y, GROUND, 50, 1.3, 0, 1, 1, 1 ); -- Показываем игроку Некрополис
+	sleep(60);
 	MoveCamera( Ornella_x, Ornella_y , GROUND, 50, 1.3, 0, 1, 1, 1);
 	UnblockGame();
 	print("VampiresWantJoin: Game is unblocked");
@@ -661,7 +512,7 @@ function VampiresWantJoin()
 	Trigger( OBJECT_CAPTURE_TRIGGER, NECROPOLIS, "IsNecropolisCaptured" );
 	
 	startThread( IsCreaturesJoined ); 
-end;
+end
 
 
 ------------------------------------------------------------------------
@@ -675,17 +526,17 @@ function IsLichesTouched( heroName )
 		x_lich, y_lich, floor_lich = GetObjectPosition( "lich" );
 		PlayVisualEffect( EFFECT_PLAGUE, "lich" );
 		Play2DSound( SOUND_EFFECT_PLAGUE );
-		sleep(3);
+		sleep(5);
 		RemoveObject( "lich" );
 		RemoveObject("selection_lich");
-		sleep(1);
+		sleep(10);
 		CreateMonster( "not nil_lich", CREATURE_LICH, LICHES_COUNT-difLevel, x_lich, y_lich, floor_lich, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
 		Play2DSound( VOICEOVER_MEET_LICHES );
 		sleep(15);
 		UnblockGame();
 		startThread( LichesWantJoin );
-	end;
-end;
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: LichesWantJoin() 
@@ -694,7 +545,7 @@ end;
 function LichesWantJoin()
 	--MessageBox("Maps/Scenario/A2C1M3/MessageBox03_lichMessage.txt", "IsOkPressed");
 	--StartAdvMapDialog( ADVMAPSCENE_ORNELLA_JOINS_LICHES, "IsOkPressed" );
-	--while isOkPressed == 0 do sleep(1); end;
+	--while isOkPressed == 0 do sleep(1); end
 	--isOkPressed = 0;
 	joinedCreaturesCount = joinedCreaturesCount + 1; --Увеличиваем счетчик собранных кричей Некрополиса на единицу
 	x_lich, y_lich, floor_lich = GetObjectPosition( "not nil_lich" );
@@ -704,7 +555,7 @@ function LichesWantJoin()
 	TransformToNecroDwelling( "LichVillageHouse01", CREATURE_SKELETON, CREATURE_SKELETON_ARCHER, SKELETONS_COUNT - difLevel*5 );
 	sleep(3);
 	TransformToNecroDwelling( "LichVillageHouse02", CREATURE_SKELETON, CREATURE_SKELETON_ARCHER, SKELETONS_COUNT - difLevel*5 );
-end;
+end
 
 
 ------------------------------------------------------------------------
@@ -718,13 +569,12 @@ function IsNecropolisCaptured( oldOwner, newOwner, heroName )
 			if firstNecropolisCapturing == 0 then
 				firstNecropolisCapturing = 1;
 				GiveArtefact( heroName, ARTIFACT_BONESTUDDED_LEATHER );
-			end;
-		end;
+			end
+		end
 	else
 		SetObjectiveState(  "sec1_CaptureNecropolis", OBJECTIVE_ACTIVE );-- выдаем снова, если АИ отбил город
-	end;
-end;
-
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: IsCreaturesJoined() 
@@ -732,26 +582,26 @@ end;
 --	   когда количество найденных стеков созданий (joinedCreaturesCount) некрополиса достигнет 6-ти.
 ------------------------------------------------------------------------
 function IsCreaturesJoined() 
-	while joinedCreaturesCount < 7 do sleep(10); end;
-	repeat sleep(2); until isMilitaryPostVoiceoverFinished == 1;
-	repeat sleep(2); until isTowerVoiceoverFinished == 1;
+	while joinedCreaturesCount < 7 do sleep(10); end
+	repeat sleep(20); until isMilitaryPostVoiceoverFinished == 1;
+	repeat sleep(20); until isTowerVoiceoverFinished == 1;
 	BlockGame();
 	SetObjectiveState( "sec2_JoinNecropolisCreatures", OBJECTIVE_COMPLETED );
 	local x,y = GetObjectPosition( heroWhoFoundLastCreature );
 	CreateMonster( "wraith", CREATURE_WRAITH, 13 - difLevel, x,y, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN );
-	sleep(1);
+	sleep(20);
 	--SetObjectRotationToObject( "wraith", heroWhoFoundLastCreature );
 	--SetObjectRotationToObject( heroWhoFoundLastCreature , "wraith" );
 	UnblockGame();
 	OverrideAdvMapDialogPos( ADVMAPSCENE_ORNELLA_JOINS_WRAITHES, GROUND, x, y, 7 );	
 	StartAdvMapDialog( ADVMAPSCENE_ORNELLA_JOINS_WRAITHES, "JoinWraiths" );
 	--MessageBox( PATH.."WraithsWantJoin.txt", "JoinWraiths" );		
-end;
+end
 
 function JoinWraiths()
 	x_monster, y_monster = GetObjectPosition( "wraith" );
 	MoveHeroRealTimeAndReachPoint( heroWhoFoundLastCreature, x_monster, y_monster, GROUND );
-end;
+end
 
 ------------------------------------------------------------------------
 --     Function Name: RazeBuildingWithEffects() 
@@ -762,7 +612,7 @@ function RazeBuildingWithEffects( objectName )
 	PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/Start_dust_S.xdb#xpointer(/Effect)", "","tag1", x, y, 0, floor ); -- Пыль
 	PlayVisualEffect( "/Effects/_(Effect)/Characters/Heroes/DemonLord/Path/Level_2b.xdb#xpointer(/Effect)","","tag2", x, y, 0, floor ); -- Огонь
 	RazeBuilding( objectName );
-end;
+end
 
 ------------------------------------------------------------------------
 --     Function Name: GraveYardZombiesWantJoin() 
@@ -786,10 +636,9 @@ function GraveYardZombiesWantJoin( heroName )
 			AddHeroCreatures( heroName, CREATURE_WALKING_DEAD, addedCreatures );
 		else
 			MessageBox(PATH.."GraveYardEmpty.txt");
-		end;
-	end;
-end;
-
+		end
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: GraveYardUpgradedZombiesWantJoin() 
@@ -813,9 +662,9 @@ function GraveYardUpgradedZombiesWantJoin( heroName )
 			AddHeroCreatures( heroName, CREATURE_ZOMBIE, addedCreatures );
 		else
 			MessageBox(PATH.."GraveYardEmpty.txt");
-		end;
-	end;
-end;
+		end
+	end
+end
 
 ------------------------------------------------------------------------
 --     Function Name: ReplaceToNecropoisDwelling() 
@@ -840,19 +689,14 @@ function ReplaceToNecropoisDwelling( heroName, objectName )
 			ReplaceDwelling( objectName, TOWN_NECROMANCY, CREATURE_WIGHT, CREATURE_DEATH_KNIGHT, CREATURE_LICH, CREATURE_VAMPIRE );
 			PlayVoiceoverAndBlockGame( VOICEOVER_MILITARY_POST_CONVERTED );
 			isMilitaryPostVoiceoverFinished = 1;
-		end;
+		end
 		joinedCreaturesCount = joinedCreaturesCount + 1;
 		sleep(1);
 		SetObjectEnabled( objectName, not nil );
 		SetObjectOwner( objectName, PLAYER_1 );
 		RemoveObject( "selection_"..objectName );
-	end;
-end;
-
-
-function test()
-	DeployReserveHero("Ving", 7, 26, GROUND);
-end;
+	end
+end
 
 function PlaySceneTownCaptured( oldOwner, newOwner, heroName )
 	if newOwner == PLAYER_1 then
@@ -862,46 +706,169 @@ function PlaySceneTownCaptured( oldOwner, newOwner, heroName )
 		SetLight( 3, 3 );
 		sleep(25);
 		SetPointLights( 3 );
-	end;
-end;
+	end
+end
 
 function OpenTeleportForAI()
 	repeat sleep(1); until GetDate( DAY )==DAY_TO_OPEN_TELEPORT;
 	SetRegionBlocked( "TeleportBlocker", nil, PLAYER_2 );
 	print("Teleport was opened for AI heroes");
-end;
-
-function PlayVoiceoverAndBlockGame( voiceoverName )
-	BlockGame();
-	Play2DSound( voiceoverName );
-	sleep( GetSoundTimeInSleeps( voiceoverName ) )
-	UnblockGame();
-end;
+end
 
 function SetHeroNameWhoTouchAngel( heroName )
 	heroWhoAttacksAngels = heroName;
-end;	
+end
 
-H55_CamFixTooManySkills(PLAYER_1,"OrnellaNecro");
+CINEMATICS = {
+	outro = function()
+		SetObjectRotation( ARANTIR, 0 );
+		SetObjectRotation( ORNELLA, 180 );
+		SetRegionBlocked("ArantirRegion", nil, PLAYER_1);
+		SetRegionBlocked("OrnellaRegion", nil, PLAYER_1);
+		SetObjectPosition( ARANTIR, 23, 126, GROUND );
+		SetObjectPosition( ORNELLA, 23, 123, GROUND );
+		sleep(10);
+		StartAdvMapDialog( ADVMAPSCENE_END_OF_MISSION );
+	end,
+}
 
-startThread( IsOrnellaMeetArantir );
-Trigger( OBJECT_TOUCH_TRIGGER, "graveyard_1", "GraveYardZombiesWantJoin" );
-Trigger( OBJECT_TOUCH_TRIGGER, "graveyard_2", "GraveYardUpgradedZombiesWantJoin" );
-Trigger( OBJECT_TOUCH_TRIGGER, "lich", "IsLichesTouched" );
-Trigger( OBJECT_TOUCH_TRIGGER, "vampire", "IsVampiresTouched" );
-Trigger( OBJECT_TOUCH_TRIGGER, "zombie", "IsZombiesTouched" );
-Trigger( OBJECT_TOUCH_TRIGGER, "FootmanTower", "ReplaceToNecropoisDwelling" );
-Trigger( OBJECT_TOUCH_TRIGGER, "Castle", "ReplaceToNecropoisDwelling" );
-Trigger( OBJECT_TOUCH_TRIGGER, "angel", "SetHeroNameWhoTouchAngel" );
+OBJECTIVES = {
+	state = {
+		meetAranthir 		= { 	   "prim1_MeetArantir", 1 },			-- Ornella must meet Aranthir
+		captureMillfield 	= {    "prim2_CaptureAllTowns", 0 },			-- Capture Millfield town
+		ornellaIsAlive  	= { "prim3_OrnellaMustSurvive", 1 },			-- Ornella must survive
+		aranthirIsAlive		= { "prim4_ArantirMustSurvive", 0 },			-- Aranthir must survive
+	},
 
-Trigger( OBJECT_CAPTURE_TRIGGER, "EastHavenTown", "PlaySceneTownCaptured" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "SouthHavenTown", "PlaySceneTownCaptured" );
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
+		Trigger( OBJECT_TOUCH_TRIGGER,  "graveyard_1",         "GraveYardZombiesWantJoin" );
+		Trigger( OBJECT_TOUCH_TRIGGER,  "graveyard_2", "GraveYardUpgradedZombiesWantJoin" );
+		Trigger( OBJECT_TOUCH_TRIGGER,         "lich",                  "IsLichesTouched" );
+		Trigger( OBJECT_TOUCH_TRIGGER,      "vampire",                "IsVampiresTouched" );
+		Trigger( OBJECT_TOUCH_TRIGGER,       "zombie",                 "IsZombiesTouched" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "FootmanTower",       "ReplaceToNecropoisDwelling" );
+		Trigger( OBJECT_TOUCH_TRIGGER,       "Castle",       "ReplaceToNecropoisDwelling" );
+		Trigger( OBJECT_TOUCH_TRIGGER,        "angel",         "SetHeroNameWhoTouchAngel" );
 
-startThread( PlayerWin );
-startThread( OrnellaMustSurvive );
-startThread( DisablePlayerHeroHiring );
-startThread( GiveTransferribleArifacts );
-startThread( OpenTeleportForAI );
-startThread( PlayVoiceoverAndBlockGame, VOICEOVER_MISSION_START );
---startThread( startInitialConditions );
-print("all functions are ran");
+		Trigger( OBJECT_CAPTURE_TRIGGER,  "EastHavenTown", "PlaySceneTownCaptured" );
+		Trigger( OBJECT_CAPTURE_TRIGGER, "SouthHavenTown", "PlaySceneTownCaptured" );
+
+		startThread( H55_InitSetArtifacts );
+		startThread( OpenTeleportForAI );
+		startThread( PlayVoiceoverAndBlockGame, VOICEOVER_MISSION_START );
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+			
+			if GetObjectiveState("prim3_OrnellaMustSurvive") == OBJECTIVE_FAILED and GetObjectiveState("prim4_ArantirMustSurvive") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("prim1_MeetArantir") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2_CaptureAllTowns") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep(20);
+				SaveHeroAllSetArtifactsEquipped( ORNELLA, "A2C1M3" );
+				SaveHeroAllSetArtifactsEquipped( ARANTIR, "A2C1M3" );
+				sleep(20);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	meetAranthir = function()
+		if OBJECTIVES.state.meetAranthir[2] == 1 then
+			SetObjectiveState( "prim1_MeetArantir", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.meetAranthir[2] = 2;
+		elseif OBJECTIVES.state.meetAranthir[2] == 2 and IsObjectExists( "angel" ) == nil then
+			if heroWhoAttacksAngels ~= ORNELLA then
+				SetRegionBlocked( "scene_ornella", nil );
+				return_x, return_y, return_floor = GetObjectPosition( ORNELLA );
+				scene_x, scene_y = RegionToPoint( "scene_ornella" );
+				SetObjectPosition( ORNELLA, scene_x, scene_y, GROUND );
+				sleep(10);
+				SetObjectRotation( ORNELLA, 45 );
+			end
+			SetObjectiveState( "prim1_MeetArantir", OBJECTIVE_COMPLETED );
+			SetRegionBlocked( "meeting", nil, PLAYER_2 );
+			DeployReserveHero( ARANTIR, 83, 3, GROUND );
+			sleep(20);
+			LoadHeroAllSetArtifacts( ARANTIR, "A2C1M2" );
+			sleep(20);
+			H55_CamFixTooManySkills(PLAYER_1, "Arantir");
+			sleep(10);
+			SetObjectRotation( ARANTIR, 180 );
+			SetRegionBlocked( "seraph_area_blocker", nil );
+			sleep(20);
+			MoveHeroRealTimeAndReachPoint( ARANTIR, 83, 4 );
+			sleep(10);
+			StartAdvMapDialog( ADVMAPSCENE_ORNELLA_MEETS_ARANTIR, "ReturnOrnella" );
+			SetPlayerResource( PLAYER_1,    GOLD, GetPlayerResource( PLAYER_1,    GOLD )+40000 );-- Арантир приходит с деньгами и ресурсами. Выдаем их игроку
+			SetPlayerResource( PLAYER_1,     ORE, GetPlayerResource( PLAYER_1,     ORE )+   40 );
+			SetPlayerResource( PLAYER_1,    WOOD, GetPlayerResource( PLAYER_1,    WOOD )+   40 );
+			SetPlayerResource( PLAYER_1, CRYSTAL, GetPlayerResource( PLAYER_1, CRYSTAL )+   20 );
+			SetPlayerResource( PLAYER_1,     GEM, GetPlayerResource( PLAYER_1,     GEM )+   20 );
+			SetPlayerResource( PLAYER_1,  SULFUR, GetPlayerResource( PLAYER_1,  SULFUR )+   20 );
+			SetPlayerResource( PLAYER_1, MERCURY, GetPlayerResource( PLAYER_1, MERCURY )+   30 );		
+			SetLight( 2, 3 );
+			sleep(25);
+			CreatePointLights( 2 );
+			OBJECTIVES.state.aranthirIsAlive[2] = 1;
+			OBJECTIVES.state.captureMillfield[2] = 1;
+			OBJECTIVES.state.meetAranthir[2] = 10;
+		end
+	end,
+	
+	captureMillfield = function()
+		if OBJECTIVES.state.captureMillfield[2] == 1 then
+			SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.captureMillfield[2] = 2;
+		elseif OBJECTIVES.state.captureMillfield[2] == 2 and GetObjectOwner("WestHavenTown") == PLAYER_1 then
+			SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.captureMillfield[2] = 10;
+		end
+	end,
+	
+	aranthirIsAlive = function()
+		if OBJECTIVES.state.aranthirIsAlive[2] == 1 then
+			SetObjectiveState( "prim4_ArantirMustSurvive", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.aranthirIsAlive[2] = 2;
+		elseif OBJECTIVES.state.aranthirIsAlive[2] == 2 and IsHeroAlive("Arantir") == nil then
+			SetObjectiveState("prim4_ArantirMustSurvive", OBJECTIVE_FAILED);
+			OBJECTIVES.state.aranthirIsAlive[2] = 11;
+		end
+	end,
+	
+	ornellaIsAlive = function()
+		-- start of this task is handled by A1C1M3.xdb 
+		if OBJECTIVES.state.aranthirIsAlive[2] == 1 and IsHeroAlive(ORNELLA) == nil then
+			SetObjectiveState("prim3_OrnellaMustSurvive", OBJECTIVE_FAILED);
+			OBJECTIVES.state.aranthirIsAlive[2] = 11;
+		end
+	end
+}
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start);
+
+------------------- DEBUG ------------------------
+function a2c1m3_debug(state)
+	if state == 1 then
+		SetObjectPosition(ORNELLA, 66, 22);
+	end
+end
