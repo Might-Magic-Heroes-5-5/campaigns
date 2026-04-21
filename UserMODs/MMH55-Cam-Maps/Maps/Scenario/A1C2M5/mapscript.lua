@@ -1,6 +1,41 @@
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
+    sleep()
+end
+
 H55_PlayerStatus = {0,1,2,1,1,2,2,2};
 
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+H55c_AI_CONTROLLED = {
+  player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+      state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+	   heroes = {},
+	  enemies = {},
+  },
+  player2 = { 		     -- Red Haven player
+      state = 2,         -- Make Lazlo charge the player
+	   heroes = {},
+  	enemies = {
+	    { priority = 1.0, heroes = 0.1, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER4
+    }
+  },
+  player3 = { 		     --
+      state = 1,         -- 
+	   heroes = {},
+	  enemies = {},
+  },
+  player4 = { 		     --
+      state = 1,         -- 
+	   heroes = {},
+	  enemies = {},
+  }
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M5");
@@ -106,13 +141,9 @@ function transformTroops( heroName )
 	print("Hero ", heroName, " is dead. Function transformTroops terminated");
 end;
 
- 
-
 startThread(RH_Respawn);
---====================================================================================================
+
 --###################################### END #########################################################
-
-
 --===================================== MAIN SCRIPT BODY =============================================
 PlayerHero1 = "Wulfstan"
 PlayerHero2 = "Duncan"
@@ -123,37 +154,15 @@ StartAdvMapDialog( 0 );
 SetRegionBlocked("laszlo_block", not nil, PLAYER_2);
 EnableHeroAI(EnemyHero, nil);
 
-function diffcheck()
-	if GetDifficulty() == DIFFICULTY_EASY then
-		diff = 1;
-		print ("easy");
-		startThread(diffsetup);
-	elseif GetDifficulty() == DIFFICULTY_NORMAL then
-		diff = 1;
-		print ("normal");
-		startThread(diffsetup);
-	elseif GetDifficulty() == DIFFICULTY_HARD then
-		diff = 2;
-		print ("Hard");
-		startThread(diffsetup);
-	elseif GetDifficulty() == DIFFICULTY_HEROIC then
-		diff = 3;
-		print ("Impossible");
-		startThread(diffsetup);
-	end;
-end;
-
-
 function diffsetup()
 	for creatureID = 1, CREATURES_COUNT-1 do 
 		CreatureSetUp = GetHeroCreatures(EnemyHero, creatureID);
 		if GetHeroCreatures(EnemyHero, creatureID) > 2 then
 			RemoveHeroCreatures(EnemyHero, creatureID, CreatureSetUp);
 			AddHeroCreatures(EnemyHero, creatureID, CreatureSetUp * diff);
-		end;	
+		end;
 	end;
 end;
-
 
 SetObjectEnabled("portal", nil);
 
@@ -192,7 +201,6 @@ function d_scene()
 	SetObjectiveState("obj2", OBJECTIVE_COMPLETED);
 	print ("objective 2 completed");
 	objective1();
-	print ("objective 1 is checking...");
 end;
 
 ---------Main Objective 4----------
@@ -201,7 +209,7 @@ function objective4()
 	while 1 do
 		if IsHeroAlive(PlayerHero1) == nil or IsHeroAlive(PlayerHero2) == nil then
 			SetObjectiveState("obj4", OBJECTIVE_FAILED);
-			sleep(3);
+			sleep(10);
 			Loose();
 			break;
 		end;
@@ -214,16 +222,15 @@ end;
 function win_check()
 	while 1 do
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
-			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M5");
-			sleep(5);
-			SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M5");
-			sleep(1);
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
-			sleep(5);
+			sleep(20);
+			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M5");
+			SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M5");
+			sleep(20);
 			Win();
 			break;
 		end;
-	sleep( 3 );
+	sleep( 20 );
 	end;
 end;
 
@@ -235,32 +242,30 @@ Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
 
 function laszlo_ai_enabled(hero)
 	print("######### enable Laszlo");
-	RemoveObject("dummy");
-	sleep(10);
-	EnableHeroAI(EnemyHero, not nil);
-	if IsObjectExists("laszlo_trigger") then
-		Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", nil);
+	H55c_AIAddHero( EnemyHero );
+	local gain = 1 + GetDifficulty() + 0.2 * GetDate(MONTH);
+	H55c_updateArmy( EnemyHero, gain, H55c_CREATURES.HAVEN );
+	if IsObjectExists("dummy") then
+		RemoveObject("dummy");
 	end
-	Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
-	Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
+	if IsObjectExists("laszlo_trigger") then
+		Trigger(OBJECT_TOUCH_TRIGGER, "laszlo_trigger", nil);
+	end
+	Trigger(OBJECT_TOUCH_TRIGGER,  "library", nil);
+	Trigger(OBJECT_TOUCH_TRIGGER, "garrison", nil);
 end
 
 H55_NewDayTrigger = 1;
---Trigger (NEW_DAY_TRIGGER, "activation_by_date");
 
 function H55_TriggerDaily()
 	if GetDate(MONTH) == 6 then
-		RemoveObject("dummy");
-		sleep( 3 );
-		EnableHeroAI(EnemyHero, not nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "library", nil);
-		Trigger (OBJECT_TOUCH_TRIGGER, "garrison", nil);
+		laszlo_ai_enabled();
 		H55_NewDayTrigger = 0;
-		--Trigger (NEW_DAY_TRIGGER, nil);
 	end;
 end;
 
-diffcheck();
 startThread (objective4);
 startThread (win_check);
 Trigger (OBJECT_TOUCH_TRIGGER, "portal", "portal");
+
+startThread( H55c_AI_main )

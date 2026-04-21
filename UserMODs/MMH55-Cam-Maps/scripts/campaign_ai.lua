@@ -96,7 +96,7 @@ end
 function H55c_AI_SetHeroTarget(name, hero, idx)
 	H55c_AI_error = "H55c_AI_SetHeroTarget";
 	errorHook(H55c_AI_crash);
-	target = hero.targets[idx];
+	local target = hero.targets[idx];
 	if target == nil then
 		return 0
 	end
@@ -183,9 +183,10 @@ function H55c_AI_UpdateTargetWeight(player)
 	H55c_AI_last_run_day = GetDate(ABSOLUTE_DAY)
 	H55c_AI_run_during_player_turn = GetCurrentPlayer();
 	errorHook(H55c_AI_crash);
-	if H55c_AI_CONTROLLED["player" .. player].state ~= 2 then return end
-	H55c_AI_print(1, "updating weight for player " .. player)
 	local ai = H55c_AI_CONTROLLED["player" .. player];
+	if ai.state ~= 2 then return end
+	H55c_AI_print(1, "updating weight for player " .. player)
+	
 
 	-- update hero list with the currently available roster
 	H55c_AI_lists.heroes = GetObjectNamesByType("HERO");
@@ -247,7 +248,8 @@ function H55c_AIReport(player)
 	end
 end
 
-function H55c_AIAddHero(name)
+function H55c_AIAddHero(...)
+	local name = arg[1];
 	H55c_AI_print(0, "Adding hero "..name);
 	local player = GetObjectOwner(name)
 	H55c_AI_CONTROLLED["player" .. player].heroes[name] = {
@@ -260,9 +262,22 @@ function H55c_AIAddHero(name)
 	EnableHeroAI(  name, not nil);
 	DenyAIHeroFlee(name, not nil);
 end
-      
+
+function H55c_AIRemoveHero(...)
+	local name = arg[1];
+	H55c_AI_print(0, "Removing hero " .. name)
+	local player = GetObjectOwner(name)
+
+	if H55c_AI_CONTROLLED["player" .. player] ~= nil then
+		if H55c_AI_CONTROLLED["player" .. player].heroes ~= nil then
+			H55c_AI_CONTROLLED["player" .. player].heroes[name] = nil
+		end
+	end
+	EnableHeroAI(name, not nil);
+end
+  
 function H55c_AIStats()
-	print( "last updated on day ", H55c_AI_last_run_day, " during player ",H55c_AI_run_during_player_turn," turn." );
+	print( "last updated on day ", H55c_AI_last_run_day, " during player ", H55c_AI_run_during_player_turn," turn." );
 	print( H55c_AI_crash_counter," AI crashes so far. Last crash type at ", H55c_AI_error_stamp );
 end
 --

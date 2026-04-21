@@ -41,7 +41,6 @@ print ('....CHECK1....');
 function Diff_level()
 	slozhnost = GetDifficulty(); 
 	if slozhnost == DIFFICULTY_EASY then
-		print ('ALL_AI_BLOCKED');
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
@@ -51,23 +50,36 @@ function Diff_level()
 		SetRegionBlocked("z4", not nil, PLAYER_2); 
 		SetRegionBlocked("z4", not nil, PLAYER_3);
 	elseif slozhnost == DIFFICULTY_NORMAL then
-		print ('2AI_REGIONS_BLOCKED');
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
 		SetRegionBlocked("z2", not nil, PLAYER_3);
-	elseif slozhnost == DIFFICULTY_HARD then
-		print ('ALL_REGIONS_FREE');
-		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 10);
-		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 2);
 		AddHeroCreatures("Gamor", CREATURE_INFERNAL_SUCCUBUS, 60);
 		AddHeroCreatures("Gamor", CREATURE_ARCHDEVIL, 5 );
+		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL,  25);
+		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  20);
+		AddObjectCreatures("winner", 		  CREATURE_CERBERI,  37);
+		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 10);
+	elseif slozhnost == DIFFICULTY_HARD then
+		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 10);
+		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 50);
+		AddHeroCreatures("Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  20);
+		AddHeroCreatures("Gamor",   CREATURE_INFERNAL_SUCCUBUS, 180);
+		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL,  50);
+		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  40);
+		AddObjectCreatures("winner", 		  CREATURE_CERBERI,  75);
+		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 20);
 	elseif slozhnost == DIFFICULTY_HEROIC then
-		print ('ALL_REGIONS_FREE');
 		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 20);
-		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 4);
-		AddHeroCreatures("Gamor", CREATURE_INFERNAL_SUCCUBUS, 180);
-		AddHeroCreatures("Gamor", CREATURE_ARCHDEVIL, 20 );
+		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 100);
+		AddHeroCreatures("Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  50);
+		AddHeroCreatures("Gamor",   CREATURE_INFERNAL_SUCCUBUS, 300);
+		AddHeroCreatures("Gamor",           CREATURE_ARCHDEVIL,  40);
+		AddHeroCreatures("Faiz",            CREATURE_ARCHDEVIL,  40);
+		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL, 100);
+		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  80);
+		AddObjectCreatures("winner", 		  CREATURE_CERBERI, 150);
+		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 40);
 	end;
 	print('difficulty = ',slozhnost);
 end;
