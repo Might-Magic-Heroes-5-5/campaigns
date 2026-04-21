@@ -26,11 +26,11 @@ CINEMATICS = {
 	findKeyParts = function()
 		OpenCircleFog(41, 56, GROUND, 8, PLAYER_1);
 		sleep( 20 );
-		MoveCamera(41, 56, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+		MoveCamera(41, 56, GROUND, 30, 3.14/3, 0, 0, 1, 1);
 		sleep( 40 );
 		MessageBox("/Maps/Scenario/A2C1M1/pmessage.txt");
 		sleep( 40 );
-		MoveCamera(24, 56, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+		MoveCamera(24, 56, GROUND, 50, 3.14/3, 0, 0, 1, 1);
 	end,
 	
 	foundLowerKey = function()
@@ -66,34 +66,28 @@ CINEMATICS = {
 	meetLibrarian = function()
 		BlockGame();
 		sleep( 20 );
-		x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( PlayerHero );
 		CreateMonster( "mage", CREATURE_MAGI, 10, 19, 59, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 270 );
-		SetObjectPosition( PlayerHero, 17, 58, GROUND );
 		SetObjectRotation( PlayerHero, 90 );
 		sleep(20);
+		UnblockGame();
 		StartAdvMapDialog(0);  -------------------------0_adv_map_scene
 		sleep( 10 );
 		RemoveObject( "mage" ) 
-		SetObjectPosition( PlayerHero, x_orn_scene, y_orn_scene, floor_orn_scene );
 		sleep( 20 );
-		UnblockGame();
 	end,
 	
 	meetLibrarian2 = function()
 		BlockGame();
 		sleep( 20 );
-		x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( PlayerHero );
 		CreateMonster( "mage", CREATURE_MAGI, 10, 70, 13, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 180 );
 		sleep( 50 );
-		SetObjectPosition( PlayerHero, 70, 15, GROUND );
 		SetObjectRotation( PlayerHero, 0 );
 		sleep( 50 );
+		UnblockGame();
 		StartAdvMapDialog (7);  -------------------------0_adv_map_scene
 		sleep( 50 );
 		RemoveObject( "mage" ) 
-		SetObjectPosition( PlayerHero, x_orn_scene, y_orn_scene, floor_orn_scene );
 		sleep( 20 );
-		UnblockGame();
 	end,
 	
     throughPortal = function()
@@ -121,21 +115,21 @@ CINEMATICS = {
 		StartAdvMapDialog (2, "RemoveGiovanni" );
 		sleep( 20 );
 		OpenCircleFog(77, 5, GROUND, 8, PLAYER_1);
-		MoveCamera(77, 5, GROUND, 25, 3.14/3, 0, 1, 1, 1);
-		sleep( 100 );
+		MoveCamera(77, 5, GROUND, 30, 3.14/3, 0, 0, 1, 1);
+		sleep( 80 );
 		MessageBox("/Maps/Scenario/a2c1m1/witch_message.txt");
-		sleep( 50 );
-		MoveCamera(x, y, level, 25, 3.14/3, 0, 1, 1, 1);
+		sleep( 30 );
+		MoveCamera(x, y, level, 50, 3.14/3, 0, 0, 1, 1);
 	end,
 
 	specialTroopsFinish = function()
 		local x, y, level = GetObjectPosition(PlayerHero)
 		OpenCircleFog(5, 65, GROUND, 6, PLAYER_1);
-		MoveCamera(5, 65, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+		MoveCamera(5, 65, GROUND, 30, 3.14/3, 0, 0, 1, 1);
 		sleep( 30 );
 		MessageBox("/Maps/Scenario/a2c1m1/message03.txt");
 		sleep( 20 );
-		MoveCamera(x, y, level, 25, 3.14/3, 0, 1, 1, 1);
+		MoveCamera(x, y, level, 50, 3.14/3, 0, 0, 1, 1);
 	end,
 
 	whichTaskFinish = function()
@@ -168,6 +162,7 @@ end
 
 function HowToOpenPortal(hero)
 	if GetObjectOwner(hero) == PLAYER_1 then
+		BlockGame();
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "bolt", nil );
 		OBJECTIVES.state.findUpperKeyPart[2] = 1;
 		OBJECTIVES.state.findLowerKeyPart[2] = 1;
@@ -178,18 +173,40 @@ function RemoveGiovanni()
 	RemoveObject( "Giovanni" );
 end
 
+function A2C1M1_saveArtifacts(hero)
+	local i = 0;
+	local result = not nil;
+	migrateArtifacts_store = {};
+	repeat
+		result = pcall(HasArtefact,hero, i, 1);
+		if result ~= nil and result[1] ~= nil then
+			table.insert(migrateArtifacts_store, i);
+		end
+		i = i+1;
+	until result == nil
+end
+
+function A2C1M1_loadArtifacts(hero)
+	for i = 1, migrateArtifacts_store.n do
+		GiveArtifact(hero, migrateArtifacts_store[i]);
+	end
+end
+
 function ornella_ex()
 	pexp = GetHeroStat(PlayerHero, STAT_EXPERIENCE);
 	PlayVisualEffect("/Effects/_(Effect)/Spells/Phantom_Out.xdb#xpointer(/Effect)", PlayerHero, 0, 0, GROUND);
 	sleep( 30 );
 	RemoveObject(PlayerHero);
-	sleep( 50 );
-	DeployReserveHero("OrnellaNecro", 53, 84, GROUND);
 	sleep( 10 );
-	GiveHeroSkill("OrnellaNecro",SKILL_NECROMANCY);
-	--SaveHeroAllSetArtifactsEquipped("OrnellaNecro");
+	DeployReserveHero("OrnellaNecro", 53, 84, GROUND);
+	sleep( 20 );
+	GiveHeroSkill("OrnellaNecro", SKILL_NECROMANCY);
 	sleep( 50 );
 	ChangeHeroStat("OrnellaNecro", STAT_EXPERIENCE, pexp);
+	InitAllSetArtifacts( "A2C1M1", "OrnellaNecro" );
+	A2C1M1_loadArtifacts("OrnellaNecro");
+	sleep(20);
+	SaveHeroAllSetArtifactsEquipped("OrnellaNecro", "A2C1M1");
 end
 
 function StrangeMineOre(hero)
@@ -209,7 +226,7 @@ end
 
 function PlaySceneIfTownCapured()
 	while 1 do
-		sleep(30);
+		sleep(10);
 		if GetObjectOwner("outpost1") == PLAYER_1 then
 			CINEMATICS.meetLibrarian();
 			return
@@ -358,10 +375,12 @@ OBJECTIVES = {
 			MessageBox("/Maps/Scenario/a2c1m1/warning.txt");
 			OBJECTIVES.state.captureNadin[2] = 2;
 		elseif OBJECTIVES.state.captureNadin[2] == 2 and GetObjectOwner("apelsin") == PLAYER_1 then
+			startThread(A2C1M1_saveArtifacts, "Ornella")
 			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
 			CINEMATICS.outro();
+			sleep( 50 );
 			ornella_ex();
-			sleep( 200 );
+			sleep( 100 );
 			OBJECTIVES.state.captureNadin[2] = 10;
 		end
 		
@@ -380,6 +399,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.findLowerKeyPart[2] == 1 then
 			SetObjectiveState("obj2", OBJECTIVE_ACTIVE);
 			CINEMATICS.findKeyParts();
+			UnblockGame();
 			OBJECTIVES.state.findLowerKeyPart[2] = 2;
 		elseif OBJECTIVES.state.findLowerKeyPart[2] == 2 and IsObjectExists("keeper") == nil then
 			StopVisualEffects("keeper_fx");
@@ -435,14 +455,16 @@ OBJECTIVES = {
 
 	mendTheKey = function()
 		if OBJECTIVES.state.mendTheKey[2] == 1 and OBJECTIVES.state.findLowerKeyPart[2] == 10 and OBJECTIVES.state.findUpperKeyPart[2] == 10 then
+			BlockGame();
 			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
 			a,b,terrain = GetObjectPosition( PlayerHero )
 			OpenCircleFog(7, 89, GROUND, 8, PLAYER_1);
-			MoveCamera(7, 89, GROUND, 25, 3.14/3, 0, 1, 1, 1);
-			sleep( 20 );
+			MoveCamera(7, 89, GROUND, 30, 3.14/3, 0, 0, 1, 1);
+			sleep( 60 );
+			UnblockGame();
 			MessageBox("/Maps/Scenario/a2c1m1/forge_message.txt");
-			sleep( 20 );
-			MoveCamera(a, b, terrain, 25, 3.14/3, 0, 1, 1, 1);
+			sleep( 30 );
+			MoveCamera(a, b, terrain, 50, 3.14/3, 0, 0, 1, 1);
 			OBJECTIVES.state.mendTheKey[2] = 2;
 		elseif OBJECTIVES.state.mendTheKey[2] == 3 then
 			local p_ore = GetPlayerResource(PLAYER_1, ORE);

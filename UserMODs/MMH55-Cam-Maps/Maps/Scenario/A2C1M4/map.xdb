@@ -432,7 +432,7 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -54107,6 +54107,36 @@
 				</Action>
 			</ExitTrigger>
 		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>99</x1>
+				<y1>74</y1>
+				<x2>100</x2>
+				<y2>78</y2>
+			</Rect>
+			<Name>REGION_KEEP_AI_AWAY</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
 	<UndergroundTerrainFileName href="UndergroundTerrain.bin"/>
@@ -54579,9 +54609,30 @@
 						<CombatScript/>
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_1</PlayerID>
+						<PlayerID>PLAYER_2</PlayerID>
 						<Experience>0</Experience>
-						<armySlots/>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_BALOR</Creature>
+								<Count>2</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_SUCCUBUS</Creature>
+								<Count>10</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_HELL_HOUND</Creature>
+								<Count>15</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_CERBERI</Creature>
+								<Count>15</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_FAMILIAR</Creature>
+								<Count>40</Count>
+							</Item>
+						</armySlots>
 						<artifactIDs/>
 						<isUntransferable/>
 						<Editable>

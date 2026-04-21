@@ -407,7 +407,8 @@ function PlayerWin()
 	Win(PLAYER_1);
 end;
 -- MAIN
-H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
+H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
+H55_CamFixTooManySkills(PLAYER_2,   "Duncan");
 -- StartDialogScene("/DialogScenes/A1C2/M4/S1/DialogScene.xdb#xpointer(/DialogScene)");
 enableObjects();
 Trigger(REGION_ENTER_AND_STOP_TRIGGER, "rolf_attack","IfWulfstanEnterRolfRegion");

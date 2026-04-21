@@ -92,12 +92,6 @@ function startThreadOnce( func, p1, p2, p3 )
 	startThread( newfunc );
 end
 
-function H55c_fog()
-    OpenCircleFog(0, 0, 0, 9999, PLAYER_1);
-	sleep(10);
-    OpenCircleFog(0, 0, 1, 9999, PLAYER_1);
-end
-
 creature_costs =
 {  15,  25,   50,  80,   85,  130,   250, 370, 600, 850, 1300, 1700, 2800, 3500, -- haven
 	 25,  45,   40,  60,  110,  160,   240, 350, 550, 780, 1400, 1666, 2666, 3666, -- inferno
@@ -221,6 +215,22 @@ function PlayVoiceoverAndBlockGame( voiceoverName )
 	UnblockGame();
 end
 
+function H55c_updateArmy(hero, gain, list, ...)
+	for i = 1, table.length(list) do
+		local count = GetHeroCreatures( hero, list[i] );
+		local new_count = count * gain;
+		if arg[1] ~= nil then
+			new_count = arg[1][i] * gain;
+		end
+		if new_count > 0 then
+			AddHeroCreatures( hero, list[i], new_count );
+		end
+		if new_count > count + 2 and count > 0 then
+			RemoveHeroCreatures( hero, list[i], count );
+		end
+	end
+end
+
 -- ### LUA Multiclicker guard
 H55c_LUA = {
 	busy = nil,
@@ -251,3 +261,9 @@ function H55c_debug()
 		print(k,"[",v[1],"] = ",v[2]);
 	end
 end
+
+H55c_CREATURES = {
+	HAVEN      = {   1,   2, 106,   3,   4, 107,   5,   6, 108,   7,   8, 109,   9,  10, 110,  11,  12, 111,  13,  14, 112 },
+	INFERNO    = {  15,  16, 131,  17,  18, 132,  19,  20, 133,  21,  22, 134,  23,  24, 135,  25,  26, 136,  27,  28, 137 },
+	STRONGHOLD = { 117, 118, 173, 119, 120, 174, 121, 122, 175, 123, 124, 176, 125, 126, 177, 127, 128, 178, 129, 130, 179 },
+}
