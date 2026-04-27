@@ -76,18 +76,18 @@ function A1C1M3_SetPlayer2Army(coef)
 	AddObjectCreatures(      "Ving",     CREATURE_ARCHER, 25 * coef );
 	AddObjectCreatures(      "Ving",    CREATURE_FOOTMAN, 10 * coef );
 	AddObjectCreatures(      "Ving",     CREATURE_PRIEST,  2 * coef );
-	ChangeHeroStat( 'Ving', STAT_EXPERIENCE, 3000*coef );
+	ChangeHeroStat( 'Ving', STAT_EXPERIENCE, 10000 * coef );
 	AddObjectCreatures(     "Sarge", CREATURE_MILITIAMAN, 50 * coef );
 	AddObjectCreatures(     "Sarge",     CREATURE_ARCHER, 25 * coef );
 	AddObjectCreatures(     "Sarge",    CREATURE_FOOTMAN, 10 * coef );
 	AddObjectCreatures(     "Sarge",   CREATURE_CHAMPION,  1 * coef );
-	ChangeHeroStat( 'Sarge', STAT_EXPERIENCE, 3000*coef );
+	ChangeHeroStat( 'Sarge', STAT_EXPERIENCE, 10000 * coef );
 	AddObjectCreatures(    "Duncan", CREATURE_MILITIAMAN, 80 * coef );
 	AddObjectCreatures(    "Duncan",   CREATURE_MARKSMAN, 40 * coef );
 	AddObjectCreatures(    "Duncan",  CREATURE_SWORDSMAN, 20 * coef );
 	AddObjectCreatures(    "Duncan",     CREATURE_PRIEST,  3 * coef );
 	AddObjectCreatures(    "Duncan",   CREATURE_CHAMPION,  4 * coef );
-	ChangeHeroStat( 'Duncan', STAT_EXPERIENCE, 75000 );
+	ChangeHeroStat( 'Duncan', STAT_EXPERIENCE, 35000 * math.pow(2, coef));
 end
 
 DIFFICULTY = {
@@ -406,13 +406,14 @@ OBJECTIVES = {
 	prepare = function()
 		H55_CamFixTooManySkills(PLAYER_1,'Freyda');
 		CINEMATICS.intro();
-		startThread(DIFFICULTY[GetDifficulty()]);
-		EnableHeroAI( 'Duncan', nil ); 												-- Дункан сидит в своей столице
+		EnableHeroAI( 'Duncan', nil );
 		SetHeroRoleMode( 'Duncan', HERO_ROLE_MODE_HERMIT );
-		SetHeroRoleMode( 'Ving', HERO_ROLE_MODE_HERMIT );
-		SetHeroRoleMode( 'Sarge', HERO_ROLE_MODE_HERMIT );
+		SetHeroRoleMode(   'Ving', HERO_ROLE_MODE_HERMIT );
+		SetHeroRoleMode(  'Sarge', HERO_ROLE_MODE_HERMIT );
+		startThread(DIFFICULTY[GetDifficulty()]);
 		for i = 1, 3 do
 			SetRegionBlocked( 'block' .. i, not nil, PLAYER_2 );                			-- заблокировать оборотней для АИ
+			SetRegionBlocked( 'AIblockG' .. i, not nil, PLAYER_2);
 			Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'event' .. i, 'SendAndrei' ); 			-- триггер на приближение к столице
 			SetObjectEnabled( 'demon' .. i, nil ); 						   					-- отключить им ф-ность
 			Trigger( OBJECT_TOUCH_TRIGGER, "demon" .. i, "BATTLES.ShapeShifter" ); 			-- повесить триггер на них
@@ -421,7 +422,6 @@ OBJECTIVES = {
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'horror', 'CINEMATICS.welcomedByHorror' );
 		for i = 1, 4 do
 			Trigger( OBJECT_CAPTURE_TRIGGER, "town" .. i, "TownCaptured" ); 		-- повесить триггер на захват любого из городов
-			EnableAIHeroHiring( PLAYER_3, 'town' .. i, nil );
 		end
 	end,
 	

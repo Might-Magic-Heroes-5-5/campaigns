@@ -14880,7 +14880,12 @@
 					<Defence>0</Defence>
 					<Spellpower>0</Spellpower>
 					<Knowledge>0</Knowledge>
-					<skills/>
+					<skills>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
+						</Item>
+					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_TOUGHNESS</Item>
 					</perkIDs>
@@ -19960,6 +19965,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -19985,6 +19995,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -20010,6 +20025,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -20035,6 +20055,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -20060,6 +20085,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -20085,6 +20115,11 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 		<Item>
 			<Floor>0</Floor>
@@ -20110,6 +20145,101 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>19</x1>
+				<y1>44</y1>
+				<x2>20</x2>
+				<y2>44</y2>
+			</Rect>
+			<Name>AIblockG1</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>0</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>46</x1>
+				<y1>71</y1>
+				<x2>46</x2>
+				<y2>73</y2>
+			</Rect>
+			<Name>AIblockG2</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>0</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
+		<Item>
+			<Floor>1</Floor>
+			<Rect>
+				<x1>43</x1>
+				<y1>30</y1>
+				<x2>56</x2>
+				<y2>42</y2>
+			</Rect>
+			<Name>AIblockG3</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>0</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
@@ -20131,7 +20261,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>28</HeroMaxLevel>
+	<HeroMaxLevel>30</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>

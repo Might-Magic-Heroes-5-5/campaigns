@@ -291,6 +291,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: increased grail spawn locations from 3 to 11
 - change: "Protect Dunmor" quest - enemy onslaught attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
 - change: "Protect Dunmor" quest - onslaught attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
+- change: level cap increased from 32 to 35
 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
@@ -398,15 +399,20 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
 
+### A1C1M2 - Freyda: The Suspicion
+- change: final inferno attack is now more challenging
+
 ### A1C1M3 - Freyda: Duncan
 - new: Teal enemy player now has a layered defense by a triage of heroes and garrisons where Duncan sits at the very core for the mission finale. Their armies sizes depend on game difficulty.
 - fix: Teal enemy player sabotage groups against Freyda was not working as intended. Now town recruits will desert, mines will get stolen, rebel forces will appear on map to block pathing.
+- change: level cap increased from 28 to 30
 
 ### A1C1M4 - Freyda: Negotiations
 - new: Added Memory Mentor
 
 ### A1C1M5 - Freyda: The Choice
 - new: Added Memory Mentor
+- change: Final naval combat is now more challenging
 
 ### A1C2M1 - Wulfstan: The Borderzone
 - change: Raise level cap from 14 to 20
@@ -424,11 +430,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C2M4 - Wulfstan: Two Brothers
 - fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight.
 - fix: Duncan artifacts from mission A1C1M5 were not loaded
-- change: Torhall siege combat is now more challenging.
+- change: Torhall final siege combat is now more challenging
 - change: Replaced Cartographer with Memory Mentor
 
 ### A1C2M5 - Wulfstan: Laszlo
-- fix: Duncan artifacts from mission A1C2M4 were not loaded
+- fix: Duncan artifacts from previous mission were not loaded
 - fix: Dwarven Treasury could not be entered/attacked.
 - change: Laszlo is now stronger and will agressively attack the player
 
@@ -450,6 +456,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
 - change: Horncrest army animations on adventure map were too frequent. Siege catapult is now more like siege engine and less like gatling gun.
+- change: Horncrest siege enemy hero Lorenzo is now more powerful
+- change: Lostdale siege enemy hero Andreas is now more powerful
+- change: King Toulghar final fight is more challenging
 - new: Added Memory Mentor
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
@@ -503,7 +512,6 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### C1M5 – Haven: The Fall of the King
 - scene(intro): Added missing Freyda cheer animation when she agrees with Godric
 - scene(Isabell going to Nicolai): Added missing Isabel sword animation during cast. Removed double buff sound. Adjusted angle so camera will not dip below terrain level.
-- scene(Isabell going to Nicolai): 
 
 ### C2M1 – Inferno: The Betrayal
 - scene(spot Erasiel): Scene showed enemy as Agrael instead of Erasiel
@@ -590,7 +598,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(intro): Peasant convertion to Horned Daemons was not in sync and looked weird
 - scene(burnt hut): Alaric speech animation
 
-### A1C1M3 - Freyda: Duncan 
+### A1C1M3 - Freyda: Duncan
 - scene(intro): leading peasant happy animation duration was too short
 - scene(outro): Alaric speech animation
 

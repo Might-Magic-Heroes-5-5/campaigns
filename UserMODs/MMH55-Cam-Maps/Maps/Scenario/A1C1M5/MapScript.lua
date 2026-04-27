@@ -8,7 +8,7 @@ ARTIFACT_DWARVEN_MITHRAL_HELMET,
 ARTIFACT_DWARVEN_MITHRAL_SHIELD
 
 };
-
+slozhnost = GetDifficulty(); 
 H55_CamFixTooManySkills(PLAYER_1,"Freyda");
 
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
@@ -32,7 +32,6 @@ function Start_reg()
 end;
 ------------------------------------------Diff
 function Diff_level()
-	slozhnost = GetDifficulty(); 
 	if slozhnost == DIFFICULTY_NORMAL then
 		AddObjectCreatures("Dgar", CREATURE_SERAPH, 2);
 		AddObjectCreatures("Dgar", CREATURE_LONGBOWMAN, 30);
@@ -218,6 +217,14 @@ function AIAction3()
 	sleep(15);	
 	ChangeHeroStat( "Freyda", STAT_MOVE_POINTS, -30000 );
 	ChangeHeroStat( "Ving", STAT_MOVE_POINTS, 30000 );
+	local army_ratio = slozhnost + 1;
+	AddObjectCreatures("Ving",     CREATURE_SERAPH, army_ratio *  15);
+	AddObjectCreatures("Ving",   CREATURE_CHAMPION, army_ratio *  30);
+	AddObjectCreatures("Ving",     CREATURE_ZEALOT, army_ratio *  50);
+	AddObjectCreatures("Ving", CREATURE_VINDICATOR, army_ratio * 150);
+	AddObjectCreatures("Ving", CREATURE_LONGBOWMAN, army_ratio * 200);
+	AddObjectCreatures("Ving",   CREATURE_LANDLORD, army_ratio * 250);
+	sleep(50);
 	MoveHeroRealTime( "Ving", GetObjectPosition( heroname )  );
 	sleep(30);
 	UnblockGame();

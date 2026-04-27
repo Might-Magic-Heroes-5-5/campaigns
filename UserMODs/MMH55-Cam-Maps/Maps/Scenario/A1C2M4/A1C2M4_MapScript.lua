@@ -56,6 +56,19 @@ assembledDwarves = 0;
 waitUntilAnswer = 1;
 isPursuit = 0;
 
+function A1C2M4_SetRutgerArmy(koef)
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR, CREATURE_LONGBOWMAN, 120 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR, CREATURE_VINDICATOR, 100 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_ZEALOT,  30 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,   CREATURE_CHAMPION,  20 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_SERAPH,   7 * koef );
+	GiveExp( ENEMY_GARRISON_HERO, 1 + 80000 * math.pow(2,koef));
+	ChangeHeroStat(ENEMY_GARRISON_HERO,      STAT_ATTACK, 4 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO,     STAT_DEFENCE, 5 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO, STAT_SPELL_POWER, 2 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO,   STAT_KNOWLEDGE, 3 * koef);
+end
+
 print("Variables and Constants defined");
 
 	if GetDifficulty() == DIFFICULTY_EASY then
@@ -66,6 +79,7 @@ print("Variables and Constants defined");
 		SetPlayerStartResource(PLAYER_1,CRYSTAL,10);
 		SetPlayerStartResource(PLAYER_1,GEM,10);
 		SetPlayerStartResource(PLAYER_1,GOLD,10000);
+		A1C2M4_SetRutgerArmy(1);
 		print("Difficulty level is EASY");
 		else
 		if GetDifficulty() == DIFFICULTY_NORMAL then
@@ -76,6 +90,7 @@ print("Variables and Constants defined");
 			SetPlayerStartResource(PLAYER_1,SULFUR,5);
 			SetPlayerStartResource(PLAYER_1,GEM,5);
 			SetPlayerStartResource(PLAYER_1,GOLD,7000);
+			A1C2M4_SetRutgerArmy(2);
 			print("Difficulty level is NORMAL");
 			else
 			if GetDifficulty() == DIFFICULTY_HARD then
@@ -86,6 +101,7 @@ print("Variables and Constants defined");
 				SetPlayerStartResource(PLAYER_1,CRYSTAL,0);
 				SetPlayerStartResource(PLAYER_1,GEM,0);
 				SetPlayerStartResource(PLAYER_1,GOLD,3000);
+				A1C2M4_SetRutgerArmy(3);
 				print("Difficulty level is HARD");
 				else
 				if GetDifficulty() == DIFFICULTY_HEROIC then
@@ -96,6 +112,7 @@ print("Variables and Constants defined");
 					SetPlayerStartResource(PLAYER_1,CRYSTAL,0);
 					SetPlayerStartResource(PLAYER_1,GEM,0);
 					SetPlayerStartResource(PLAYER_1,GOLD,0);
+					A1C2M4_SetRutgerArmy(4);
 					print("Difficulty level is HEROIC");
 				end;
 			end;

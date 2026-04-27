@@ -181,7 +181,7 @@ if GetDifficulty() == DIFFICULTY_EASY then
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
-	DF = 0;
+	DF = 1;
 else
 	if GetDifficulty() == DIFFICULTY_NORMAL then
 		print("Difficulty level is NORMAL");
@@ -191,17 +191,17 @@ else
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
 		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
-		DF = 1;
+		DF = 2;
 	else
 		if GetDifficulty() == DIFFICULTY_HARD then
 			print("Difficulty level is HARD");
 			AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 10);
 			AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
-			DF = 2;
+			DF = 3;
 		else
 			if GetDifficulty() == DIFFICULTY_HEROIC then
 				print("Difficulty level is HEROIC");
-				DF = 3;
+				DF = 4;
 			end;
 		end;
 	end;
@@ -861,7 +861,7 @@ function final()
 	PlayObjectAnimation("balor", "move",ONESHOT_STILL);
 	print("animation move played");
 	sleep(2);
-	StartCombat(OUR_HERO_FREYDA, nil,5,CREATURE_BALOR,1+DF*1,CREATURE_INFERNAL_SUCCUBUS, 5+DF*2, CREATURE_CERBERI, 10+DF*3, CREATURE_DEMON, 25+DF*4, CREATURE_IMP, 70+DF*5,nil,"combatResult",nil,nil);
+	StartCombat(OUR_HERO_FREYDA, nil,5,CREATURE_BALOR,1+DF*3,CREATURE_INFERNAL_SUCCUBUS, 1+DF*15, CREATURE_CERBERI, 1+DF*22, CREATURE_DEMON, 1+DF*33, CREATURE_IMP, 1+DF*50,nil,"combatResult",nil,nil);
 	print("combat started")
 	RemoveObject("imp");
 	RemoveObject("balor");
