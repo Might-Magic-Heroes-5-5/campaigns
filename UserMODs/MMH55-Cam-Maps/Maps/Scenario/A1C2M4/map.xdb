@@ -17666,17 +17666,17 @@
 						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
 					</Item>
+					<Item>
+						<Type>TB_FORT</Type>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+					</Item>
 				</buildings>
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_ANGEL</Creature>
-						<Count>1</Count>
-					</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs>
 					<Item>SPELL_MAGIC_ARROW</Item>
 					<Item>SPELL_MAGIC_FIST</Item>

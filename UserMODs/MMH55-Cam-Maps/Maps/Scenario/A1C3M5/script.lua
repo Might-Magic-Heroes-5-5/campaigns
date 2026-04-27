@@ -133,17 +133,41 @@ ISABELL = 'Isabell_A1';
 DIFFICULTY = {
 	[0] = function()
 		redhaven_coeff = 1.0;
+		SetKingTolgharArmy(1);
 	end,
 	[1] = function()
 		redhaven_coeff = 1.25;
+		SetKingTolgharArmy(2);
 	end,
 	[2] = function()
 		redhaven_coeff = 1.5;
+		SetKingTolgharArmy(3);
 	end,
 	[3] = function()
 		redhaven_coeff = 1.5;
+		SetKingTolgharArmy(4);
 	end,
 }
+
+function SetKingTolgharArmy(koef)
+	AddHeroCreatures(KINGTOLGHAR,  CREATURE_STOUT_DEFENDER, koef * 350 );
+	AddHeroCreatures(KINGTOLGHAR, 	  CREATURE_AXE_THROWER, koef * 230 );
+	AddHeroCreatures(KINGTOLGHAR, CREATURE_BLACKBEAR_RIDER, koef * 130 );
+	AddHeroCreatures(KINGTOLGHAR,		CREATURE_BERSERKER, koef * 85 );
+	AddHeroCreatures(KINGTOLGHAR,	   CREATURE_FLAME_MAGE, koef * 50 );
+	AddHeroCreatures(KINGTOLGHAR,		  CREATURE_WARLORD, koef * 30 );
+	AddHeroCreatures(KINGTOLGHAR,	 CREATURE_MAGMA_DRAGON, koef * 20 );
+	sleep(10);
+	ChangeHeroStat( KINGTOLGHAR,      STAT_ATTACK, koef * 3 );
+	ChangeHeroStat( KINGTOLGHAR,     STAT_DEFENCE, koef * 3 );
+	ChangeHeroStat( KINGTOLGHAR, STAT_SPELL_POWER, koef * 3 );
+	ChangeHeroStat( KINGTOLGHAR,   STAT_KNOWLEDGE, koef * 3 );
+	GiveExp(       KINGTOLGHAR, 100000 + 40000 * math.pow(2, koef));
+	GiveExp(          'Marder', 100000 + 30000 * math.pow(2, koef));
+	GiveExp( 'RedHeavenHero01', 100000 + 30000 * math.pow(2, koef));
+	GiveExp(            ALARIC, 100000 + 40000 * math.pow(2, koef));
+	GiveExp(         SIEGEHERO, 100000 + 40000 * math.pow(2, koef));
+end
 
 -- управление эффектами и анимациями катапульты
 function Catapult()
@@ -173,7 +197,7 @@ function Catapult()
 			end
 			Play3DSound( "/Sounds/_(Sound)/SFX/FireballHitMono.xdb#xpointer(/Sound)", x, y, 0 );
 		end
-		sleep( 200 + random(50) );
+		sleep( 400 + random(100) );
 	end
 end
 
@@ -190,7 +214,7 @@ function Siege( counter )
 				PlayObjectAnimation( 'siege' .. counter, 'rangeattack', ONESHOT );
 			end
 		end
-		sleep( 100 + random( 50 ) );
+		sleep( 200 + random( 100 ) );
 	end
 end
 
@@ -332,10 +356,6 @@ OBJECTIVES = {
 		EnableHeroAI( KINGTOLGHAR, nil ); -- сидит в Tor Hrall
 		EnableHeroAI( ALARIC, nil ); -- Аларик, сидит около Tor Hrall
 		EnableAIHeroHiring( PLAYER_2, 'SD', nil );
-		GiveExp( 'Marder', 140000 );
-		GiveExp( ALARIC, 140000 );
-		GiveExp( SIEGEHERO, 120000 );
-		GiveExp( KINGTOLGHAR, 201007 );	
 		FireWorks();
 		for i = PLAYER_3, PLAYER_5 do -- уменьшить приоритет нейтрального города и заблокировать гномскую сокровищницу для всех врагов
 			SetAIPlayerAttractor( 'dungeon_town', i, -1 );

@@ -345,7 +345,7 @@ end;
 
 function play_animation(unit1, unit2)
 	while 1 do
-		sleep(25);
+		sleep(100);
 		local mover1 = nil;
 		local mover2 = nil;
 		if random(2) == 0 then
@@ -354,16 +354,20 @@ function play_animation(unit1, unit2)
 			mover1, mover2 = unit2, unit1;
 		end
 		
-		if IsObjectExists(mover1) == nil or IsObjectExists(mover2) == nil then
-			if IsObjectExists(mover1) ~= nil then RemoveObject(mover1); end;
+		if IsObjectExists(mover1) == nil then
 			if IsObjectExists(mover2) ~= nil then RemoveObject(mover2); end;
 			return
+		else
+			PlayObjectAnimation(mover1, "attack00", ONESHOT);
 		end
-		
-		PlayObjectAnimation(mover1, "attack00", ONESHOT);
-		sleep(10);
-		PlayObjectAnimation(mover2, "hit", ONESHOT);
-		sleep(random(120));
+		sleep(12);
+		if IsObjectExists(mover2) == nil then
+			if IsObjectExists(mover1) ~= nil then RemoveObject(mover1); end;
+			return
+		else
+			PlayObjectAnimation(mover2, "hit", ONESHOT);
+		end
+		sleep(random(150));
 	end
 end
 

@@ -12,7 +12,7 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_2</PlayerID>
-	<Experience>90000</Experience>
+	<Experience>0</Experience>
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_LONGBOWMAN</Creature>
@@ -46,19 +46,19 @@
 		<Knowledge>5</Knowledge>
 		<skills>
 			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
+				<Mastery>MASTERY_BASIC</Mastery>
 				<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_EXPERT</Mastery>
+				<Mastery>MASTERY_BASIC</Mastery>
 				<SkillID>HERO_SKILL_OFFENCE</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_OFFENCE</SkillID>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_DEFENCE</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
+				<Mastery>MASTERY_BASIC</Mastery>
 				<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
 			</Item>
 		</skills>
