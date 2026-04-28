@@ -463,7 +463,6 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Removed human player tavern hiring limit ( was 6 ).
 
 ### A2C1M4 - The Will of Asha: Beasts and Bones
-- fix: Erik NPC could be attacked
 - fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less then 7 days after he has spawned
 - fix: capturing all Gold mines would not complete the related quest
 - fix: Units from Inferno town could be taken by Inferno onsalught heroes
@@ -471,7 +470,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - changed: Stronghold wave heroes army strenth scale with time and difficulty
 
 ### A2C1M5 - The Will of Asha: The Bull's Wake
-- change: Heroes level cap removed
+- change: Hero level cap removed (was 40)
+- change: Orlando army is now more challenging
+- change: Enemy Haven towns are now fully built
 
 ## Dialogue changes
 

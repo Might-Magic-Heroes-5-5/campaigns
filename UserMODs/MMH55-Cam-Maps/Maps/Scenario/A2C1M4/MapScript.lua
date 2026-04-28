@@ -221,6 +221,7 @@ Trigger(OBJECT_TOUCH_TRIGGER, 'PORTAL_GUARD_02', 'f_destroy_portal_guard_02');
 function f_speak_with_erik_about_the_dungeon_route( hero )
 	if GetObjectOwner( hero ) == PLAYER_1 then
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_WIZARD_CHAT", nil);
+		SetObjectEnabled("WIZARD_TRAP_STARTER", not nil)
 		CINEMATICS.dungeonEntrance( hero );
 	end
 end

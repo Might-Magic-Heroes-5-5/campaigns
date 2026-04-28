@@ -1,13 +1,11 @@
-H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_STAFF_OF_VEXINGS,
-ARTIFACT_CLOAK_OF_MOURNING,
-ARTIFACT_RING_OF_DEATH,
-ARTIFACT_SKULL_HELMET
-
-};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_STAFF_OF_VEXINGS,
+	ARTIFACT_CLOAK_OF_MOURNING,
+	ARTIFACT_RING_OF_DEATH,
+	ARTIFACT_SKULL_HELMET
+};
 
 ---------------------------------------------------------------------------------------------------
 --------------------------------- CONSTANTS ----------------------------------------------
@@ -1422,10 +1420,6 @@ end;
 ---------------------------------------------------
 --*-- GAMEPLAY FUNCTIONS --*--
 ---------------------------------------------------
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	print ("easy");	
-	
 function SetObjectCreatures( objName, creatureID, newCount )
    local count = GetObjectCreatures( objName, creatureID );
    if count == newCount then
@@ -1437,35 +1431,12 @@ function SetObjectCreatures( objName, creatureID, newCount )
      AddObjectCreatures( objName, creatureID, newCount - count );
    end;
 end;
- 
-function SetObjectCreatures_2( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
 
-function SetObjectCreatures_3( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-sleep(1);	
+if GetDifficulty() == DIFFICULTY_EASY then
+	print ("easy");	
 	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 60 );
-	SetObjectCreatures_2( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
-	SetObjectCreatures_3( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_BONE_DRAGON, 7);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_WIGHT, 14);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 20);
@@ -1479,47 +1450,9 @@ sleep(1);
 end;
 if GetDifficulty() == DIFFICULTY_NORMAL then
 	print ("normal");
-	
-function SetObjectCreatures( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
- 
-function SetObjectCreatures_2( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-function SetObjectCreatures_3( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-sleep(1);
 	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 40 );
-	SetObjectCreatures_2( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
-	SetObjectCreatures_3( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 15);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 8);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 15);	
@@ -1533,47 +1466,9 @@ sleep(1);
 end;
 if GetDifficulty() == DIFFICULTY_HARD then
 	print ("hard");
-	
-function SetObjectCreatures( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
- 
-function SetObjectCreatures_2( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-function SetObjectCreatures_3( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-	sleep(1);
 	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 25 );
-	SetObjectCreatures_2( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 90 );
-	SetObjectCreatures_3( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 360 );	
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 90 );
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 360 );	
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 6);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 8);
 	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_ARCHER, 30);
@@ -1588,47 +1483,9 @@ end;
 end;
 if GetDifficulty() == DIFFICULTY_HEROIC then
 	print ("heroic");
-	
-	function SetObjectCreatures( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
- 
-function SetObjectCreatures_2( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-function SetObjectCreatures_3( objName, creatureID, newCount )
-   local count = GetObjectCreatures( objName, creatureID );
-   if count == newCount then
-     return
-   end;
-   if count > newCount then
-     RemoveObjectCreatures( objName, creatureID, count - newCount );
-   else
-     AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
-
-	sleep(1);
 	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 15 );
-	SetObjectCreatures_2( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 70 );
-	SetObjectCreatures_3( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 300 );
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 70 );
+	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 300 );
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 2);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 1);
 	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 2);
@@ -1696,6 +1553,23 @@ function f_start_ost_block_disabled()
 	SetRegionBlocked("Start_ost_block", nil, PLAYER_2); -- ”праздн€ет блокировку зоны у восточного города
 end;
 
+A2C1M5_EVIL_TOWN_REINFORCEMENTS = {
+		--   T7, T6, T5, T4,  T3,  T2
+	 [0] = {  2,  4, 10, 30,  50,  80 },
+	 [1] = {  4,  8, 16, 40,  75, 120 },
+	 [2] = {  6, 12, 23, 50, 100, 160 },
+	 [3] = {  7, 16, 30, 60, 125, 200 },
+}
+
+function A2C1M5_reinforceEvilTown( game_diff )
+	AddObjectCreatures(OBJECT_EVIL_TOWN,         CREATURE_ARCH_DEMON, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][1]);
+	AddObjectCreatures(OBJECT_EVIL_TOWN,          CREATURE_PIT_SPAWN, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][2]);
+	AddObjectCreatures(OBJECT_EVIL_TOWN,           CREATURE_HELLMARE, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][3]);
+	AddObjectCreatures(OBJECT_EVIL_TOWN,   CREATURE_SUCCUBUS_SEDUCER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][4]);
+	AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][5]);
+	AddObjectCreatures(OBJECT_EVIL_TOWN,      CREATURE_HORNED_LEAPER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][6]);
+end
+
 function H55_TriggerDaily()
 	if (GetDate( DAY ) == 22) then
 		f_start_west_block_disabled();
@@ -1720,12 +1594,7 @@ function H55_TriggerDaily()
 		f_random_caravan_message();
 	end;
 	if (GetDate( DAY_OF_WEEK ) == 1) then
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_ARCH_DEMON, 1);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_PIT_SPAWN, 2);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HELLMARE, 3);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_SUCCUBUS_SEDUCER, 5);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, 9);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HORNED_LEAPER, 15);
+		A2C1M5_reinforceEvilTown(0);
 	end;		
 end;
 
@@ -1753,12 +1622,7 @@ function H55_SecTriggerDaily()
 		f_random_caravan_message();
 	end;
 	if (GetDate( DAY_OF_WEEK ) == 1) then
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_ARCH_DEMON, 1);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_PIT_SPAWN, 2);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HELLMARE, 4);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_SUCCUBUS_SEDUCER, 7);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, 12);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HORNED_LEAPER, 20);
+		A2C1M5_reinforceEvilTown(1);
 	end;		
 end;
 
@@ -1782,12 +1646,7 @@ function H55_ThrTriggerDaily()
 		f_random_caravan_message();
 	end;
 	if (GetDate( DAY_OF_WEEK ) == 1) then
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_ARCH_DEMON, 2);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_PIT_SPAWN, 4);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HELLMARE, 6);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_SUCCUBUS_SEDUCER, 10);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, 18);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HORNED_LEAPER, 45);
+		A2C1M5_reinforceEvilTown(2);
 	end;		
 end;
 
@@ -1810,31 +1669,22 @@ function H55_FrtTriggerDaily()
 		f_random_caravan_message();
 	end;
 	if (GetDate( DAY_OF_WEEK ) == 1) then
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_ARCH_DEMON, 2);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_PIT_SPAWN, 4);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HELLMARE, 6);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_SUCCUBUS_SEDUCER, 10);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, 36);
-		AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_HORNED_LEAPER, 30);
+		A2C1M5_reinforceEvilTown( 3 );
 	end;		
 end;
 
 if GetDifficulty() == DIFFICULTY_EASY then
 	H55_NewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_easy");
 	CreateArtifact("", ARTIFACT_LION_HIDE_CAPE , 138, 7, GROUND);
 end;
 if GetDifficulty() == DIFFICULTY_NORMAL then
 	H55_SecNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_normal");
 end;
 if GetDifficulty() == DIFFICULTY_HARD then
 	H55_ThrNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_hard");
 end;
 if GetDifficulty() == DIFFICULTY_HEROIC then
 	H55_FrtNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_heroic");
 end;
 
 function f_random_caravan_message()
@@ -1951,13 +1801,10 @@ function GameVarBonus()
 		sleep(2);
 		PLAYER_GOLD_BONUS = PLAYER_GOLD + GOLD_BONUS;
 		sleep(2);
-		SetPlayerResource(PLAYER_1, GOLD, PLAYER_GOLD_BONUS)
-		print ("gold");
+		SetPlayerResource(PLAYER_1, GOLD, PLAYER_GOLD_BONUS);
 		print( "BONUS_checked_1" );
 	end;
 end;
-
-
 
 startThread( GameVarBonus );
 
@@ -2099,9 +1946,8 @@ SetDisabledObjectMode( OBJECT_INFERNO_ALTAR , DISABLED_INTERACT );
 --------------------------------------
 function Main_hero_de()  
 	while 1 do
-		sleep(10);
+		sleep(20);
 		if IsHeroAlive("Arantir") == nil then 
-			sleep(2);
 			Loose();
 			break;
 		end;
@@ -2110,7 +1956,7 @@ end;
 
 function Complete_valeria()
 	while 1 do	
-		sleep( 6 );
+		sleep( 20 );
 		if IsObjectExists( "RedHeavenHero03" ) == not nil then
 			if GetObjectOwner("RedHeavenHero03") == PLAYER_1 then
 				sleep(2);
