@@ -181,7 +181,7 @@ function H55_SecTriggerDaily()
 	end;
 end;
 
-function H55_ThrNewDayTrigger()
+function H55_ThrTriggerDaily()
 	if ( GetDate(MONTH) == 2 ) and ( GetDate(WEEK) == 2 ) and (GetDate(DAY_OF_WEEK) == 7 ) and IsHeroAlive("Ohtar") == not nil then 
 		--EnableHeroAI("Ohtar",nil); --H55 fix
 		MoveHero( "Ohtar", 61, 76, 0 ) 
