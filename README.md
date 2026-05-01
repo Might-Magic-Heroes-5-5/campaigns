@@ -440,13 +440,16 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: unit attack/hit animation stuters on adventure map
 
 ### A1C3M3 - Ylaya: The Meeting
-- fix: unit attack/hit animation stuters on adventure map
+- fix: unit attack/hit animations on adventure map were too frequent and had stuters
 - fix: unreachable resource pile near the town towards the north
 - new: Added Memory Mentor
 
+### A1C3M4 - Ylaya: The Dragons
+- change: Thralsai and his army are now more challenging
+
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
-- change: Adjusted Siege catapult attack animation frequency. Now it is more like siege engine and less like gatling gun.
+- change: Horncrest army animations on adventure map were too frequent. Siege catapult is now more like siege engine and less like gatling gun.
 - new: Added Memory Mentor
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
@@ -456,8 +459,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
 - change: Removed tutorial messages as player has already been introduced to Necromancy in previous missions.
 - change: Reduced amount of defenders (difficulty increase) for troops in the first Necro town.
-- fix: Iluma-Nadin location was not reveled at game start.
+- fix: Iluma-Nadin location was not revealed at game start.
 - fix: Objective buildings (Forge, Which Hut, Portal) triggered messages for the human player when visited by the AI player heroes.
+- fix: Ornella artifacts were not transfered to her Necromancer version at the end of the mission
+
+### A2C1M2 - The Will of Asha: The Grim Crusade
+- change: enemy heroes Faiz and Gamor armies are more challenging
 
 ### A2C1M3 - The Will of Asha: The Bull's Wake
 - change: Removed human player tavern hiring limit ( was 6 ).
@@ -466,8 +473,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less then 7 days after he has spawned
 - fix: capturing all Gold mines would not complete the related quest
 - fix: Units from Inferno town could be taken by Inferno onsalught heroes
-- changed: Inferno wave heroes army strenth scale with time and difficulty
-- changed: Stronghold wave heroes army strenth scale with time and difficulty
+- changed: Inferno wave heroes army strength scale with time and difficulty
+- changed: Stronghold wave heroes army strength scale with time and difficulty
 
 ### A2C1M5 - The Will of Asha: The Bull's Wake
 - change: Hero level cap removed (was 40)

@@ -233,16 +233,17 @@ function deployThralsai()
 	MessageBox("Maps/Scenario/A1C3M4/MsgBox_ThralsaiApproaching.txt");
 	print("Time to Tralsai invasion");
 	DeployReserveHero( ENEMY_HERO_THRALSAI, 5, 105, UNDERGROUND);
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_ASSASSIN, 450+GetDifficulty()*130 );
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_BLOOD_WITCH, 200+GetDifficulty()*70 );
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_MINOTAUR_KING, 130+GetDifficulty()*50 );
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_RAVAGER, 50+GetDifficulty()*25 );
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_CHAOS_HYDRA, 35+GetDifficulty()*17 );
-	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_MATRIARCH, 52+GetDifficulty()*12 );
-	ChangeHeroStat( ENEMY_HERO_THRALSAI, STAT_ATTACK, GetDifficulty()+1 );
-	ChangeHeroStat( ENEMY_HERO_THRALSAI, STAT_DEFENCE, GetDifficulty()+1 );
-	ChangeHeroStat( ENEMY_HERO_THRALSAI, STAT_SPELL_POWER, GetDifficulty()+1 );
-	ChangeHeroStat( ENEMY_HERO_THRALSAI, STAT_KNOWLEDGE, GetDifficulty()+1 );
+	local coef = GetDifficulty() + 1;
+	AddHeroCreatures( ENEMY_HERO_THRALSAI,      CREATURE_ASSASSIN, 450 + coef*250 );
+	AddHeroCreatures( ENEMY_HERO_THRALSAI,   CREATURE_BLOOD_WITCH, 200 + coef*200 );
+	AddHeroCreatures( ENEMY_HERO_THRALSAI, CREATURE_MINOTAUR_KING, 150 + coef*150 );
+	AddHeroCreatures( ENEMY_HERO_THRALSAI,       CREATURE_RAVAGER,  75 + coef* 75 );
+	AddHeroCreatures( ENEMY_HERO_THRALSAI,   CREATURE_CHAOS_HYDRA,  50 + coef* 50 );
+	AddHeroCreatures( ENEMY_HERO_THRALSAI,     CREATURE_MATRIARCH,  50 + coef* 40 );
+	ChangeHeroStat( ENEMY_HERO_THRALSAI,      STAT_ATTACK, coef*5 );
+	ChangeHeroStat( ENEMY_HERO_THRALSAI,     STAT_DEFENCE, coef*5 );
+	ChangeHeroStat( ENEMY_HERO_THRALSAI, STAT_SPELL_POWER, coef*5 );
+	ChangeHeroStat( ENEMY_HERO_THRALSAI,   STAT_KNOWLEDGE, coef*5 );
 	if GetDifficulty() == DIFFICULTY_HEROIC then
 		GiveArtefact( ENEMY_HERO_THRALSAI, ARTIFACT_ICEBERG_SHIELD );
 		GiveArtefact( ENEMY_HERO_THRALSAI, ARTIFACT_CROWN_OF_COURAGE );
