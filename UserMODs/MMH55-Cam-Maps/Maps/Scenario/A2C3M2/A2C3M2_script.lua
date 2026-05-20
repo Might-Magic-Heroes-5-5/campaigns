@@ -8,14 +8,9 @@
 --            Map Name: A2C3M2
 --  Script Description: MapScript
  --------------------------------------------------------------------
- --------------------------------------------------------------------
-
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
---------------------------------------------------------------------
 ----------------- CONSTANTS ----------------------------------------
 --------------------------------------------------------------------
-
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 -- константы для имен героев
 OUR_HERO_ZEHIR = "Zehir";
 OUR_HERO_DUNCAN = "Duncan";
@@ -134,7 +129,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function GiveTransferrableArtifacts()
 	InitAllSetArtifacts( "A2C3M2", OUR_HERO_ZEHIR );
     LoadHeroAllSetArtifacts( OUR_HERO_ZEHIR, "A2C3M1" );
-end;
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1,"Zehir");
+end
 
 --if (GetGameVar("BONUS_A2C3M1") == "1") then GiveArtefact("Zehir", ARTIFACT_ROBE_OF_MAGI ); end; -- Выдать игроку артефакт, если в а2с3м1 игрок выполнил дополнительный квест дварфа
 
@@ -1179,5 +1176,4 @@ function mainStart()
 	moveTown();
 	UnblockGame();
 end;
-H55_CamFixTooManySkills(PLAYER_1,"Zehir");
 startThread( mainStart );

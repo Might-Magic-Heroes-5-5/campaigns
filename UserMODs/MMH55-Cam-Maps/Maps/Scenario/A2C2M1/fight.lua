@@ -24,4 +24,3 @@ function Start()
     sleep(5);
     EnableCinematicCamera(not nil);
 end;
-GetDiffculty

@@ -158,41 +158,106 @@ CINEMATICS = {
 	end,
 }
 
-function ErewelReinforcements()
-	if GetDifficulty() == DIFFICULTY_EASY then
-		print("Difficulty level is NORMAL. Reinforcements did not add");
-		AddObjectCreatures("imarium",CREATURE_PIXIE, 7);
-		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 5);
-		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
-		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 5);
-		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 1);
-	elseif GetDifficulty() == DIFFICULTY_NORMAL then
-		print("Difficulty level is NORMAL. Reinforcements did not add");
-		AddObjectCreatures("imarium",CREATURE_PIXIE, 10);
-		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 8);
-		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 4);
-		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 7);	
-		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 3);
-		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 1);
-	elseif GetDifficulty() == DIFFICULTY_HARD then
-		print("Difficulty level is HARD. Reinforcements added...");
-		AddObjectCreatures("imarium",CREATURE_PIXIE, 15);
-		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 12);
-		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 6);
-		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 10);	
-		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 4);
-		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 2);
-	elseif GetDifficulty() == DIFFICULTY_HEROIC then
-		print("Difficulty level is HEROIC. Reinforcements added...");
-		AddObjectCreatures("imarium",CREATURE_PIXIE, 20);
-		AddObjectCreatures("imarium",CREATURE_GRAND_ELF, 16);
-		AddObjectCreatures("imarium",CREATURE_DRUID_ELDER, 8);
-		AddObjectCreatures("imarium",CREATURE_WAR_DANCER, 14);	
-		AddObjectCreatures("imarium",CREATURE_WAR_UNICORN, 6);
-		AddObjectCreatures("imarium",CREATURE_TREANT_GUARDIAN, 3);
-	end
+DIFFICULTY = {
+	[0] = function()
+		SetEnemyHeroesArmy(1);
+	end,
+	[1] = function()
+		SetEnemyHeroesArmy(2);
+	end,
+	[2] = function()
+		SetEnemyHeroesArmy(3);
+	end,
+	[3] = function()
+		SetEnemyHeroesArmy(4);
+	end,
+}
+
+function SetEnemyHeroesArmy(koef)
+	AddHeroCreatures("Grok", 		  CREATURE_IMP, 50 + koef * 25 );
+	AddHeroCreatures("Grok", CREATURE_HORNED_DEMON, 20 + koef * 20 );
+	AddHeroCreatures("Grok", 	  CREATURE_CERBERI, 10 + koef * 10 );
+	ChangeHeroStat("Grok",      STAT_ATTACK, 2 * koef);
+	ChangeHeroStat("Grok",     STAT_DEFENCE, 2 * koef);
+	ChangeHeroStat("Grok", STAT_SPELL_POWER, 2 * koef);
+	ChangeHeroStat("Grok",   STAT_KNOWLEDGE, 2 * koef);
+	GiveExp("Grok", 20000 * math.pow(2, koef));
+	AddHeroCreatures("Itil", 	 CREATURE_SPRITE, 20 + koef * 20 );
+	AddHeroCreatures("Itil", CREATURE_WAR_DANCER, 10 + koef * 10 );
+	AddHeroCreatures("Itil",  CREATURE_GRAND_ELF,  5 + koef *  5 );
+	ChangeHeroStat("Itil",      STAT_ATTACK, 2 * koef);
+	ChangeHeroStat("Itil",     STAT_DEFENCE, 2 * koef);
+	ChangeHeroStat("Itil", STAT_SPELL_POWER, 2 * koef);
+	ChangeHeroStat("Itil",   STAT_KNOWLEDGE, 2 * koef);
+	GiveExp("Itil", 20000 * math.pow(2, koef));
+	AddHeroCreatures("Linaas", 	   CREATURE_SPRITE, koef * 25 );
+	AddHeroCreatures("Linaas", CREATURE_WAR_DANCER, koef * 20 );
+	AddHeroCreatures("Linaas",  CREATURE_GRAND_ELF, koef * 10 );
+	ChangeHeroStat("Linaas",      STAT_ATTACK, 2 * koef);
+	ChangeHeroStat("Linaas",     STAT_DEFENCE, 2 * koef);
+	ChangeHeroStat("Linaas", STAT_SPELL_POWER, 2 * koef);
+	ChangeHeroStat("Linaas",   STAT_KNOWLEDGE, 2 * koef);
+	GiveExp("Linaas", 20000 * math.pow(2, koef));
+	AddHeroCreatures("Diraya", 	   CREATURE_SPRITE, koef * 25 );
+	AddHeroCreatures("Diraya", CREATURE_WAR_DANCER, koef * 20 );
+	AddHeroCreatures("Diraya",  CREATURE_GRAND_ELF, koef * 10 );
+	ChangeHeroStat("Diraya",      STAT_ATTACK, 2 * koef);
+	ChangeHeroStat("Diraya",     STAT_DEFENCE, 2 * koef);
+	ChangeHeroStat("Diraya", STAT_SPELL_POWER, 2 * koef);
+	ChangeHeroStat("Diraya",   STAT_KNOWLEDGE, 2 * koef);
+	GiveExp("Diraya", 20000 * math.pow(2, koef));
+	ChangeHeroStat("Elleshar",      STAT_ATTACK, 3 * koef);
+	ChangeHeroStat("Elleshar",     STAT_DEFENCE, 3 * koef);
+	ChangeHeroStat("Elleshar", STAT_SPELL_POWER, 3 * koef);
+	ChangeHeroStat("Elleshar",   STAT_KNOWLEDGE, 3 * koef);
+	GiveExp("Elleshar", 90000 * math.pow(2, koef));
+	-- AddObjectCreatures("imarium",        CREATURE_SPRITE, koef * 200 );
+	-- AddObjectCreatures("imarium",    CREATURE_WAR_DANCER, koef * 150 );
+	-- AddObjectCreatures("imarium",     CREATURE_GRAND_ELF, koef * 100 );
+	-- AddObjectCreatures("imarium",   CREATURE_DRUID_ELDER, koef *  80 );
+	-- AddObjectCreatures("imarium", CREATURE_WHITE_UNICORN, koef *  30 );
+	-- AddObjectCreatures("imarium",  CREATURE_ANGER_TREANT, koef *  18 );
+	-- AddObjectCreatures("imarium",   CREATURE_GOLD_DRAGON, koef *   8 );
 end
 
+function ErewelReinforcements()
+	if GetDifficulty() == DIFFICULTY_EASY then
+		print("Difficulty level is NORMAL. Reinforcements added...");
+		AddObjectCreatures("imarium",        CREATURE_SPRITE, 33);
+		AddObjectCreatures("imarium",    CREATURE_WAR_DANCER, 25);
+		AddObjectCreatures("imarium",     CREATURE_GRAND_ELF, 15);
+		AddObjectCreatures("imarium",   CREATURE_DRUID_ELDER,  9);
+		AddObjectCreatures("imarium", CREATURE_WHITE_UNICORN,  3);
+	elseif GetDifficulty() == DIFFICULTY_NORMAL then
+		print("Difficulty level is HARD. Reinforcements added...");
+		AddObjectCreatures("imarium",        CREATURE_SPRITE, 33);
+		AddObjectCreatures("imarium",    CREATURE_WAR_DANCER, 25);
+		AddObjectCreatures("imarium",     CREATURE_GRAND_ELF, 15);
+		AddObjectCreatures("imarium",   CREATURE_DRUID_ELDER,  9);
+		AddObjectCreatures("imarium", CREATURE_WHITE_UNICORN,  3);
+		AddObjectCreatures("imarium",  CREATURE_ANGER_TREANT,  2);
+		AddObjectCreatures("imarium",   CREATURE_GOLD_DRAGON,  1);
+	elseif GetDifficulty() == DIFFICULTY_HARD then
+		print("Difficulty level is HEROIC. Reinforcements added...");
+		AddObjectCreatures("imarium",        CREATURE_SPRITE, 38);
+		AddObjectCreatures("imarium",    CREATURE_WAR_DANCER, 30);
+		AddObjectCreatures("imarium",     CREATURE_GRAND_ELF, 17);
+		AddObjectCreatures("imarium",   CREATURE_DRUID_ELDER, 12);
+		AddObjectCreatures("imarium", CREATURE_WHITE_UNICORN,  5);
+		AddObjectCreatures("imarium",  CREATURE_ANGER_TREANT,  4);
+		AddObjectCreatures("imarium",   CREATURE_GOLD_DRAGON,  2);
+	elseif GetDifficulty() == DIFFICULTY_HEROIC then
+		print("Difficulty level is IMPOSSIBLE. Reinforcements added...");
+		AddObjectCreatures("imarium",        CREATURE_SPRITE, 43);
+		AddObjectCreatures("imarium",    CREATURE_WAR_DANCER, 35);
+		AddObjectCreatures("imarium",     CREATURE_GRAND_ELF, 23);
+		AddObjectCreatures("imarium",   CREATURE_DRUID_ELDER, 14);
+		AddObjectCreatures("imarium", CREATURE_WHITE_UNICORN,  7);
+		AddObjectCreatures("imarium",  CREATURE_ANGER_TREANT,  5);
+		AddObjectCreatures("imarium",   CREATURE_GOLD_DRAGON,  2);
+	end
+end
+	
 function EnemyGate()
 	print("Thread Enemy Gate has been started...");
 	while 1 do
@@ -224,6 +289,7 @@ OBJECTIVES = {
 	
 	prepare = function()
 		H55_CamFixTooManySkills(PLAYER_1,"Agrael");
+		startThread(DIFFICULTY[GetDifficulty()]);
 		startThread(EnemyGate);
 		Trigger(OBJECT_TOUCH_TRIGGER, "dragons", "DialogBeforeCombatVSdragons", nil);
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons", "OBJECTIVES._dragons_active");
@@ -401,3 +467,8 @@ end
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
 startThread( H55c_AI_main )
+
+
+function _dbg()
+	MakeHeroInteractWithObject("Agrael", "imarium");
+end

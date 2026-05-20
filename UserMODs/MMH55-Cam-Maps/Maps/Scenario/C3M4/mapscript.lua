@@ -3,6 +3,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M4");
     LoadHeroAllSetArtifacts("Berein", "C3M3" );
+	sleep(30);
+	H55_CamFixTooManySkills(PLAYER_1, "Berein");
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -105,7 +107,6 @@ function Post_Bone2()
 	end;
 end;
 --------------------------------//Main thread
-H55_CamFixTooManySkills(PLAYER_1,"Berein");
 startThread(Dialog1);
 
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "100","mob1", nil );

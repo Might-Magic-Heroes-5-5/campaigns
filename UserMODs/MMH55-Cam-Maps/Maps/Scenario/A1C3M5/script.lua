@@ -223,6 +223,7 @@ function RedHavenHeroLost( heroname )
 		siege_hero_defeated = 1;
 		RazeBuilding( 'kotopult' );
 		sleep( 10 );
+		PlayObjectAnimation( 'kotopult', 'death', ONESHOT_STILL );
 		StopVisualEffects( "townfire" );
 	end
 end

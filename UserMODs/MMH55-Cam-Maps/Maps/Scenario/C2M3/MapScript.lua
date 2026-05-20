@@ -6,15 +6,13 @@ while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
-H55_PlayerStatus = {0,1,2,2,2,2,2,2};
-
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M3");
     LoadHeroAllSetArtifacts("Agrael", "C2M2" );
 end
 
 startThread(H55_InitSetArtifacts);
-
+H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 DIFFICULTY = {
 	[0] = function()
 		print("Difficulty Level is EASY");
@@ -35,7 +33,7 @@ DIFFICULTY = {
 	
 	[1] = function()
 		print("Difficulty Level is NORMAL");
-		OBJECTIVES.DaysToGillionActivation = 42;
+		OBJECTIVES.DaysToGillionActivation = 35;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 15);
 		AddHeroCreatures('Agrael', CREATURE_FAMILIAR, 30);
 		SetTownBuildingLimitLevel("Town2",TOWN_BUILDING_FORT,2);
@@ -51,7 +49,7 @@ DIFFICULTY = {
 	
 	[2] = function()
 		print("Difficulty Level is HARD");
-		OBJECTIVES.DaysToGillionActivation = 21;
+		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 4);
 		SetPlayerStartResource(PLAYER_1,WOOD,15);
 		SetPlayerStartResource(PLAYER_1,ORE,15);
@@ -235,6 +233,14 @@ OBJECTIVES = {
 			DeployReserveHero("Gillion", 115, 95, GROUND);
 			EnableHeroAI("Gillion", nil);
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
+			local army_diff = GetDifficulty() + 1;
+			AddHeroCreatures("Gillion",   CREATURE_BLADE_JUGGLER, army_diff * 30 ); 
+			AddHeroCreatures("Gillion",       CREATURE_GRAND_ELF, army_diff * 20 ); 
+			AddHeroCreatures("Gillion",           CREATURE_DRUID, army_diff * 20 );  
+			AddHeroCreatures("Gillion",       CREATURE_GRAND_ELF, army_diff * 20 ); 
+			AddHeroCreatures("Gillion",   CREATURE_BLADE_JUGGLER, army_diff * 30 ); 
+			AddHeroCreatures("Gillion", CREATURE_TREANT_GUARDIAN, army_diff * 10 ); 
+			AddHeroCreatures("Gillion",     CREATURE_GOLD_DRAGON, army_diff *  5 );
 			OBJECTIVES.DaysToGillionActivation = GetDate(ABSOLUTE_DAY) + OBJECTIVES.DaysToGillionActivation
 			OBJECTIVES.state.defeatGillion[2] = 2;
 		elseif OBJECTIVES.state.defeatGillion[2] == 2 and (OBJECTIVES.DaysToGillionActivation <= GetDate(ABSOLUTE_DAY) or OBJECTIVES.gilraenAcitve == 1) then

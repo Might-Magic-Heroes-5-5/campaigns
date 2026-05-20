@@ -5,9 +5,7 @@ doFile("/scripts/campaign_common.lua");
 while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
-
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
 H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
 	ARTIFACT_DWARVEN_MITHRAL_GREAVES,
@@ -48,16 +46,6 @@ function distance( ... )
 	return dist;
 end
 
-function A1C1M3_SetResources( player, wood, ore, sulfur, crystal, gem, mercury, gold)
-	SetPlayerStartResource( player,    WOOD,    wood );
-	SetPlayerStartResource( player,     ORE,     ore );
-	SetPlayerStartResource( player,  SULFUR,  sulfur );
-	SetPlayerStartResource( player, CRYSTAL, crystal );
-	SetPlayerStartResource( player,     GEM,     gem );
-	SetPlayerStartResource( player, MERCURY, mercury );
-	SetPlayerStartResource( player,    GOLD,    gold );
-end
-
 function A1C1M3_SetPlayer2Army(coef)
 	-- Garrisons
 	AddObjectCreatures( "garrison1",     CREATURE_ARCHER, 100 * coef );
@@ -94,8 +82,8 @@ DIFFICULTY = {
 	[0] = function()
 		ai_alert = 1;
 		mine_capture_prob = 5; -- удельная вероятность захвата шахты
-		A1C1M3_SetResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
-		A1C1M3_SetResources(PLAYER_2, 10, 10,  5,  5,  5,  5,  5000);
+		SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
+		SetPlayerStartResources(PLAYER_2, 10, 10,  5,  5,  5,  5,  5000);
 		rebels_quantities_coeff = 0.05;
 		A1C1M3_SetPlayer2Army(1);
 	end,
@@ -103,8 +91,8 @@ DIFFICULTY = {
 	[1] = function()
 		ai_alert = 1;
 		mine_capture_prob = 6; 											-- удельная вероятность захвата шахты
-		A1C1M3_SetResources(PLAYER_1, 15, 15,  5,  5,  5,  5, 10000);
-		A1C1M3_SetResources(PLAYER_2, 15, 15, 10, 10, 10, 10, 10000);
+		SetPlayerStartResources(PLAYER_1, 15, 15,  5,  5,  5,  5, 10000);
+		SetPlayerStartResources(PLAYER_2, 15, 15, 10, 10, 10, 10, 10000);
 		rebels_quantities_coeff = 0.1; 								-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(2);
 	end,
@@ -112,8 +100,8 @@ DIFFICULTY = {
 	[2] = function()
 		ai_alert = 2;
 		mine_capture_prob = 8; 											-- удельная вероятность захвата шахты
-		A1C1M3_SetResources(PLAYER_1, 10, 10,  5,  5,  5,  5,  8000);
-		A1C1M3_SetResources(PLAYER_2, 30, 30, 15, 15, 15, 15, 20000);
+		SetPlayerStartResources(PLAYER_1, 10, 10,  5,  5,  5,  5,  8000);
+		SetPlayerStartResources(PLAYER_2, 30, 30, 15, 15, 15, 15, 20000);
 		rebels_quantities_coeff = 0.15;									-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(3);
 	end,
@@ -121,8 +109,8 @@ DIFFICULTY = {
 	[3] = function()
 		ai_alert = 2;
 		mine_capture_prob = 10;											-- удельная вероятность захвата шахты
-		A1C1M3_SetResources(PLAYER_1,  5,  5,  5,  5,  5,  5,  6000);
-		A1C1M3_SetResources(PLAYER_2, 45, 45, 25, 25, 25, 25, 40000);
+		SetPlayerStartResources(PLAYER_1,  5,  5,  5,  5,  5,  5,  6000);
+		SetPlayerStartResources(PLAYER_2, 45, 45, 25, 25, 25, 25, 40000);
 		rebels_quantities_coeff = 0.2;									-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(4);
 	end,

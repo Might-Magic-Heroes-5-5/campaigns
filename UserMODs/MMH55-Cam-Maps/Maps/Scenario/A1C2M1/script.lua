@@ -1,7 +1,5 @@
-H55_PlayerStatus = {0,1,2,2,2,2,2,2};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
-
+H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M1");
 end;

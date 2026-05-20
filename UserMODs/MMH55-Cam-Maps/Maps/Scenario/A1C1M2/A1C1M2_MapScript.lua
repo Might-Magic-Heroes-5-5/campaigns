@@ -1,5 +1,4 @@
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
 H55_RemoveTheseArtifactsFromBanks = {
 
 ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
@@ -877,6 +876,7 @@ function combatResult( heroName, result )
 		print("you won!");
 		SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M2");
 		sleep(5);
+		StartDialogScene("/DialogScenes/A1C1/M2/S3/DialogScene.xdb#xpointer(/DialogScene)");
 		Win(PLAYER_1);
 	end;
 end;

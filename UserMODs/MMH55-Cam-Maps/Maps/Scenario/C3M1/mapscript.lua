@@ -298,14 +298,14 @@ OBJECTIVES = {
 
     prepare = function()
 		CINEMATICS.intro()
-		H55_CamFixTooManySkills(PLAYER_4,"Godric");
+		H55_CamFixTooManySkills( PLAYER_4, "Godric" );
 		--Block Regions
 		SetRegionBlocked("dungeon",1,3);
 		SetRegionBlocked("dungeon",1,2);
 		SetRegionBlocked("vampires",1,3);
 		SetRegionBlocked("almegir",1,3);
 		--Disable Hero AI
-		EnableHeroAI('Godric',nil);
+		EnableHeroAI('Godric', nil);
 		EnableHeroAI(WIZARD_1_NAME,nil);
 		EnableHeroAI(WIZARD_2_NAME,nil);
 		SetObjectEnabled(WIZARD_1_NAME,nil);
@@ -357,6 +357,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_FAILED or GetObjectiveState("prim4") == OBJECTIVE_FAILED then
 				Loose();
+				return
 			end
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
@@ -364,7 +365,8 @@ OBJECTIVES = {
 				sleep(50);
 				CINEMATICS.outro();
 				sleep(50);
-				Win();			
+				Win();
+				return
 			end
 		end
 	end,
@@ -399,7 +401,6 @@ OBJECTIVES = {
 			Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "intercept", "OBJECTIVES._avoidPatrols_exit");
 			OBJECTIVES.state.avoidPatrols[2] = 2;
 		elseif OBJECTIVES.state.avoidPatrols[2] == 3 then
-			EnableHeroAI("Dalom", not nil);
 			startThread(FollowMarkal);
 			pcall(MessageBox, "/Maps/Scenario/C3M1/intercept.txt");
 			OBJECTIVES.state.avoidPatrols[2] = 4;
@@ -446,6 +447,7 @@ function FollowMarkal()
 			C3M1_PATROL[WIZARD_2_NAME].state = 2;
 			H55c_AIAddHero(WIZARD_1_NAME);
 			H55c_AIAddHero(WIZARD_2_NAME);
+			EnableHeroAI("Dalom", not nil);
 			return
 		end
 	end

@@ -222,8 +222,8 @@ function f_meet_with_Ylaya( heroName )
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_MEET_WITH_YLAYA, nil );
 		SetObjectiveState( "pri3", OBJECTIVE_FAILED );	
 		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_NEAR_YLAYA, 0, -1, 1, 0, 0 );
-		sleep(3);
 		SetObjectPosition( HERO_YLAYA, 25, 22, 1 );
+		sleep(30);
 		StartAdvMapDialog( 4, "f_meet_with_Ylaya_finish" );
 	end;
 end;	
@@ -470,9 +470,8 @@ EnableHeroAI( DWARF_HERO, nil );
 SetObjectEnabled( DWARF_HERO, nil );
 
 x_to_return, y_to_return, floor_to_return = GetObjectPosition ( HERO_PLAYER );
-f_sec2_start_hero = ""
-first_check = 0;
 
+f_sec2_start_hero = '';
 function f_sec2_start( heroName )
 	if GetObjectOwner( heroName ) == PLAYER_1 then	
 		if heroName~=HERO_PLAYER then
@@ -499,7 +498,7 @@ function f_sec2_start_1()
 		OpenCircleFog(84, 115, 1, 5, 1);		
 		sleep(4);
 		MoveCamera(84, 115, 1, 30, 1, 0, 0, 0, 1);
-		sleep(2);
+		sleep(20);
 		SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE, PLAYER_1 );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_DWARF, "f_check_artifact" );
 		f_check_artifact( f_sec2_start_hero );
@@ -513,20 +512,10 @@ end;
 messageShown = 0;
 
 function f_check_artifact( heroName )
-	if first_check == 0 then
-		heroName = f_sec2_start_hero
-	elseif first_check > 0 then
-		f_sec2_start_hero = heroName
-	end;
-	sleep( 1 );
 	if GetObjectOwner( heroName ) == PLAYER_1 then	
 		if HasArtefact( heroName, ARTIFACT_RUNE_OF_FLAME) then
 			HeroBringArtifact = 1;
 			RemoveArtefact( heroName, ARTIFACT_RUNE_OF_FLAME );			
-			--OpenCircleFog(80, 26, 1, 5, 1);		
-			--sleep( 3 );
-			--MoveCamera(80, 26, 1, 30, 1, 1.57, 0, 0, 1);		
-			--sleep( 3 );
 			f_show_thanks_010();
 			GiveArtefact( heroName, 40 );
 			sleep( 3 );

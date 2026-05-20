@@ -1,5 +1,4 @@
 H55_PlayerStatus = {0,2,2,2,2,2,1,2};
-
 H55_RemoveTheseArtifactsFromBanks = {
 
 ARTIFACT_UNICORN_HORN_BOW,

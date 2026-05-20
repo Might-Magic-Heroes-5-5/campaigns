@@ -1,5 +1,4 @@
 H55_PlayerStatus = {0,1,1,1,1,2,2,2};
-
 H55_RemoveTheseArtifactsFromBanks = {
 
 ARTIFACT_DRAGON_SCALE_ARMOR,

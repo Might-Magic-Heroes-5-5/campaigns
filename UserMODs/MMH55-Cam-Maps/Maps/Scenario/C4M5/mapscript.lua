@@ -1,7 +1,5 @@
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
-
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C4M5");
     LoadHeroAllSetArtifacts("Raelag","C4M4");
@@ -136,6 +134,26 @@ end;
 ------------------------------------------------------///////ACT2
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "PALAEDRA","PObjective1", nil );  --PALAEDRA!!!
 
+function PrepareVeyerCombat()
+	local koef = GetDifficulty() + 1;
+	AddHeroCreatures( "Veyer",				   CREATURE_IMP, 399 + koef * 200 );
+    AddHeroCreatures( "Veyer",			   CREATURE_CERBERI, 300 + koef * 100 );
+    AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE,  50 + koef *  50 );
+    AddHeroCreatures( "Veyer",			 CREATURE_ARCHDEVIL,  20 + koef *  10 );
+    AddHeroCreatures( "Veyer",		CREATURE_FIRE_ELEMENTAL, 100 + koef *  50 );
+	ChangeHeroStat( "Veyer",      STAT_ATTACK, koef * 5 );
+    ChangeHeroStat( "Veyer",     STAT_DEFENCE, koef * 5 );
+    ChangeHeroStat( "Veyer", STAT_SPELL_POWER, koef * 5 );
+    ChangeHeroStat( "Veyer",   STAT_KNOWLEDGE, koef * 5 );
+	if koef > 2 then
+		TeachHeroSpell( "Veyer",   SPELL_BERSERK );	
+		TeachHeroSpell( "Veyer", SPELL_VAMPIRISM );
+	end
+	if koef > 1 then
+		GiveExp( "Veyer", 70000 * math.pow(2, koef - 1));
+	end
+end
+
 function PObjective34()
 sleep(2);
 BlockGame();
@@ -147,6 +165,7 @@ DeployReserveHero( "Berein", 3, 23, GROUND );
 EnableHeroAI("Isabell",nil);
 EnableHeroAI("Berein",nil);   
 sleep(6);
+PrepareVeyerCombat();
 MoveHeroRealTime( "Isabell", 5, 25, GROUND );
 MoveHeroRealTime( "Berein", 4, 23, GROUND );
 sleep(2);

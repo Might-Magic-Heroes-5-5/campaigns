@@ -46,8 +46,15 @@ function AgraelSurvive()
 	end;
 end;
 
+function stepIntoVoid(hero)
+	print(hero.." triggered");
+	StartDialogScene("/DialogScenes/C2/M5/R2/DialogScene.xdb#xpointer(/DialogScene)");
+	sleep(20);
+    Loose();
+end
 
 ---script---
 H55_CamFixTooManySkills(PLAYER_1,"Agrael");
 startThread(AgraelSurvive);
-Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru')
+Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru');
+Trigger(WAR_FOG_ENTER_TRIGGER, 'stepIntoVoid');

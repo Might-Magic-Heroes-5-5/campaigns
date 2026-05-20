@@ -6,7 +6,7 @@ doFile("/scripts/campaign_ai.lua");
 while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
-
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 H55c_AI_CONTROLLED = {
 	player1 = {
 		state = 0,       -- 0 human
@@ -29,8 +29,6 @@ function H55_InitSetArtifacts()
 end
 
 startThread(H55_InitSetArtifacts);
-
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 
 CINEMATICS = {
 	intro = function()
