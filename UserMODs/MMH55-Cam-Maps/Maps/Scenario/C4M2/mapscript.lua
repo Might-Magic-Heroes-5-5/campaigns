@@ -10,7 +10,7 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C4M2");
     LoadHeroAllSetArtifacts("Raelag", "C4M1" );
-	sleep(30);
+	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1, "Raelag" );
 end
 
@@ -214,7 +214,8 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState('prim3') == OBJECTIVE_COMPLETED then
-				SaveHeroAllSetArtifactsEquipped("Raelag", "C4M2");
+				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M2" );
+				SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M2" );
 				sleep(50)
 				Win();
 			end
@@ -253,16 +254,16 @@ OBJECTIVES = {
 		end
 	end,
 	
-	captureTowns_KhelodinArrive = 0,
+	captureTowns_KelodinArrive = 0,
 	captureTowns = function()
 		if OBJECTIVES.state.captureTowns[2] == 1 and ( GetObjectOwner("post1") == PLAYER_1 or GetObjectOwner("post2") == PLAYER_1 ) then
 			CINEMATICS.captureGarrison(); --Сцена посещения гарнизона
 			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE )
 			OBJECTIVES.state.captureTowns[2] = 2;
 		elseif OBJECTIVES.state.captureTowns[2] == 3 then  
-			OBJECTIVES.captureTowns_KhelodinArrive = OBJECTIVES.date + 1;
+			OBJECTIVES.captureTowns_KelodinArrive = OBJECTIVES.date + 1;
 			OBJECTIVES.state.captureTowns[2] = 4;
-		elseif OBJECTIVES.state.captureTowns[2] == 4 and OBJECTIVES.captureTowns_KhelodinArrive <= OBJECTIVES.date then
+		elseif OBJECTIVES.state.captureTowns[2] == 4 and OBJECTIVES.captureTowns_KelodinArrive <= OBJECTIVES.date then
 			DeployReserveHero('Kelodin', 14, 156, 1);
 			CINEMATICS.meetShadya();
 			sleep(20);

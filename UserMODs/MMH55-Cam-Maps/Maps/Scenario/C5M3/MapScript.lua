@@ -20,7 +20,9 @@ H55_RemoveTheseArtifactsFromBanks = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M3");
-    LoadHeroAllSetArtifacts("Heam", "C5M2" );
+    LoadHeroAllSetArtifacts( "Heam", "C5M2" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Heam" );
 end
 
 OUR_HERO = "Heam";
@@ -195,7 +197,6 @@ OBJECTIVES = {
 		SetRegionBlocked("prison2", 1, 2);
 		SetRegionBlocked("prison1", 1, 2);
 		SetRegionBlocked("block",   1, 1);
-		H55_CamFixTooManySkills(PLAYER_1,OUR_HERO);
 		startThread(DIFFICULTY[GetDifficulty()]);
 		SetPlayerResource(PLAYER_2, GOLD, 30000);
 		SetPlayerHeroesCountNotForHire(PLAYER_2, 6);
@@ -217,7 +218,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("harrison") == OBJECTIVE_COMPLETED and GetObjectiveState("twoheros") == OBJECTIVE_COMPLETED then
-				SaveHeroAllSetArtifactsEquipped(OUR_HERO, "C5M3");
+				SaveHeroAllSetArtifactsEquipped(   "Heam", "C5M3");
+				SaveHeroAllSetArtifactsEquipped( "Diraya", "C5M3");
+				SaveHeroAllSetArtifactsEquipped( "Nadaur", "C5M3");
+				sleep(20);
 				CINEMATICS.outro();
 				sleep(10);
 				Win();

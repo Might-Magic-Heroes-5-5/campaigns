@@ -32,7 +32,7 @@ AIHero11 = "Egil"
 AIHero12 = "Menel"
 
 function startSetArtifactsInit()
-	InitAllSetArtifacts( "A2C2M2", PlayerHero );
+	InitAllSetArtifacts( "A2C2M2", "Kujin" );
 end
 startThread( startSetArtifactsInit );
 
@@ -496,7 +496,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and GetObjectiveState("obj4") == OBJECTIVE_COMPLETED and GetObjectiveState("obj5") == OBJECTIVE_COMPLETED then
 				startThread( VoiceOver4 );
-				SaveHeroAllSetArtifactsEquipped( PlayerHero, "A2C2M2" );
+				SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M2" );
 				SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
 				SetObjectiveState( "obj6", OBJECTIVE_COMPLETED );
 				sleep( 15 );

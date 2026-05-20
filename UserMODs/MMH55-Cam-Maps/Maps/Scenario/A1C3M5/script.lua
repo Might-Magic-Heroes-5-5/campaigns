@@ -15,10 +15,11 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M5");
-	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M4" );
-	LoadHeroAllSetArtifacts( "Duncan" , "A1C2M5" );
-	H55_CamFixTooManySkills(PLAYER_1,"Shadwyn");
-	H55_CamFixTooManySkills(PLAYER_2,"Duncan");
+	LoadHeroAllSetArtifacts( "Shadwyn",  "A1C3M4" );
+	LoadHeroAllSetArtifacts(  "Duncan",  "A1C2M5" );
+	sleep(40);
+	H55_CamFixTooManySkills(  PLAYER_1, "Shadwyn" );
+	H55_CamFixTooManySkills(  PLAYER_2,  "Duncan" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -442,7 +443,7 @@ OBJECTIVES = {
 			sleep(10);
 			LoadHeroAllSetArtifacts(   "Freyda", "A1C1M5" );
 			LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M5" );
-			sleep(10);
+			sleep(20);
 			H55_CamFixTooManySkills(PLAYER_1,   "Freyda");
 			H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
 			SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );

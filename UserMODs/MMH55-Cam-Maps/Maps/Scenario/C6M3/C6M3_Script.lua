@@ -4,6 +4,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M3");
     LoadHeroAllSetArtifacts("Zehir", "C6M2" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Zehir" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -182,7 +184,6 @@ OBJECTIVES = {
 	prepare = function()
 		SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
 		CINEMATICS.intro();
-		H55_CamFixTooManySkills(PLAYER_1,"Zehir");
 		GiveExp( "Nathaniel", 80000 );
 		GiveExp( "Brem", 80000 );
 		Trigger(OBJECT_TOUCH_TRIGGER, "spes", "YouAreNotReady");
@@ -215,7 +216,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
-				SaveHeroAllSetArtifactsEquipped("Zehir", "C6M3");
+				SaveHeroAllSetArtifactsEquipped(  "Zehir", "C6M3" );
+				SaveHeroAllSetArtifactsEquipped( "Godric", "C6M3" );
+				SaveHeroAllSetArtifactsEquipped(   "Heam", "C6M3" );
+				sleep(30);
 				Save("Scene_18");
 				sleep(10);
 				CINEMATICS.outro();
@@ -230,6 +234,8 @@ OBJECTIVES = {
 		if OBJECTIVES.state.meetFindan[2] == 2 then
 			DeployReserveHero("Heam", 84, 41, 0);
 			sleep(10);
+			LoadHeroAllSetArtifacts("Zehir", "C5M5" );
+			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Heam");
 			sleep(10);
 			MoveHero("Heam", 86, 42, 0);
@@ -252,6 +258,8 @@ OBJECTIVES = {
 			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
 			SetObjectOwner("Godric", PLAYER_1);
 			sleep(10);
+			LoadHeroAllSetArtifacts( "Godric", "C3M4" );
+			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Godric");
 			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian", "GodricMeetsAllies");

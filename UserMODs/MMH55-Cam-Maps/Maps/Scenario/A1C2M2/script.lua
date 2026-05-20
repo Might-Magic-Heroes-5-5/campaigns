@@ -3,6 +3,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M2");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M1" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -261,7 +263,6 @@ function Gluki( heroname )
 end;
 	
 -------------------------------------------
-H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
 StartAdvMapDialog( 0 );
 SetupDifficulty();
 

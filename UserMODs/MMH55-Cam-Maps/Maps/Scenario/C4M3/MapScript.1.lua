@@ -1,4 +1,3 @@
--- Initialize MMH55 specific config
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
@@ -37,7 +36,7 @@ function H55_InitSetArtifacts()
   InitAllSetArtifacts("C4M3");
   LoadHeroAllSetArtifacts(  "Raelag", "C4M2" );
   LoadHeroAllSetArtifacts( "Kelodin", "C4M2" );
-  sleep(30);
+  sleep(40); -- wait for artifacts to load
   H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
   H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );
 end
@@ -121,7 +120,9 @@ OBJECTIVES = {
 			end
     
 			if GetObjectiveState( 'prim1') == OBJECTIVE_COMPLETED then
-				SaveHeroAllSetArtifactsEquipped("Raelag", "C4M3");
+				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M3" );
+				SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M3" );
+				sleep(40);
 				Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
 				Save("quicksave");
 				CINEMATICS.outro();

@@ -2,7 +2,11 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C4M4");
-    LoadHeroAllSetArtifacts("Raelag","C4M3");
+    LoadHeroAllSetArtifacts(  "Raelag", "C4M3" );
+    LoadHeroAllSetArtifacts( "Kelodin", "C4M3" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
+	H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -50,7 +54,9 @@ end;
 Trigger(OBJECT_TOUCH_TRIGGER , 'Gate','key');
 
 function key()
-	SaveHeroAllSetArtifactsEquipped("Raelag", "C4M4");
+	SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M4");
+	SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M4");
+	sleep(20);
 	StartDialogScene('/DialogScenes/C4/M4/R4/DialogScene.xdb#xpointer(/DialogScene)');
 	SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
 	sleep(5);
@@ -138,8 +144,6 @@ if GetDifficulty() == DIFFICULTY_EASY then
 	RemoveObject("dogs");
 end;
 
-H55_CamFixTooManySkills(PLAYER_1,"Raelag");
-H55_CamFixTooManySkills(PLAYER_1,"Kelodin");
 exp = GetHeroStat("Raelag", STAT_EXPERIENCE);
 ChangeHeroStat(ENEMY_HERO, STAT_EXPERIENCE , exp/(3-dif));
 AddHeroCreatures(ENEMY_HERO,CREATURE_IMP , 50 + dif*40);

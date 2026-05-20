@@ -43,7 +43,9 @@ H55_RemoveTheseArtifactsFromBanks = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M4");
-	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M3" );
+	LoadHeroAllSetArtifacts( "Shadwyn", "A1C3M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Shadwyn" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -243,7 +245,6 @@ OBJECTIVES = {
 		startThread(DIFFICULTY[GetDifficulty()]);
 		SetObjectEnabled("HutOfMagi", nil);
 		SetObjectEnabled("dragon_teleport", nil);
-		H55_CamFixTooManySkills(PLAYER_1, "Shadwyn");
 		EnableAIHeroHiring(PLAYER_3, "dwarven_town", nil);
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "A1C3M4_markHeroDefeated" );
 		Trigger(OBJECT_CAPTURE_TRIGGER, "dwarven_town", "dwarvenTownReward");

@@ -53,9 +53,12 @@ H55_RemoveTheseArtifactsFromBanks = {
 };
 
 function f_artifacts_sets()
-	InitAllSetArtifacts( "A2C1M4", HERO_PLAYER_MAIN, HERO_PLAYER_SEC );
-	LoadHeroAllSetArtifacts( HERO_PLAYER_MAIN, "A2C1M3");
-	LoadHeroAllSetArtifacts( HERO_PLAYER_SEC, "A2C1M3");
+	InitAllSetArtifacts( "A2C1M4", "Arantir", "OrnellaNecro" );
+	LoadHeroAllSetArtifacts(      "Arantir", "A2C1M3");
+	LoadHeroAllSetArtifacts( "OrnellaNecro", "A2C1M3");
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1,      "Arantir");
+	H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
 end
 
 -----------------------------------------------------------------------------------------------------
@@ -524,8 +527,6 @@ OBJECTIVES = {
 		DenyAIHeroFlee(HERO_PLAYER_SEC, 1);
 
 		SetHeroesExpCoef( 0.5 );
-		H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
-		H55_CamFixTooManySkills(PLAYER_1,      "Arantir");
 		BlockTownGarrisonForAI('TOWN_INFERNO', not nil); -- does not work for QAI
 	end,
 	
@@ -545,8 +546,8 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("OBJECTIVE_PRI_01") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_03") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_SEC_04") == OBJECTIVE_COMPLETED then
-				SaveHeroAllSetArtifactsEquipped( HERO_PLAYER_MAIN, "A2C1M4" );
-				SaveHeroAllSetArtifactsEquipped( HERO_PLAYER_SEC, "A2C1M4" );
+				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
+				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
 				sleep(100);
 				Win();
 				return

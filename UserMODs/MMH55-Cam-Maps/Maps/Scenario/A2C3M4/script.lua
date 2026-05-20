@@ -4,8 +4,10 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 -------------------------------------------------
 function x2()
-	InitAllSetArtifacts("A2C3M4", "Zehir" );
-	LoadHeroAllSetArtifacts( "Zehir",  "A2C3M3"  );
+	InitAllSetArtifacts( "A2C3M4", "Zehir" );
+	LoadHeroAllSetArtifacts( "Zehir",  "A2C3M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Zehir" );
 end
 -------------------------------------------------
 OpenCircleFog( 91, 86, 0, 16, PLAYER_1 ); ---фог_cо_столицы
@@ -815,8 +817,6 @@ function GarrisonSetUp()
 end;
 
 ------------------------------------------------------/MAIN
-H55_CamFixTooManySkills(PLAYER_1,"Zehir");
-
 startThread( KujinFightSetUp );
 startThread( DiffSetUp );
 startThread( GarrisonSetUp ); 

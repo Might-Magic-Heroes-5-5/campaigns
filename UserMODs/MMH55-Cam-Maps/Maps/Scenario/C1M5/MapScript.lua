@@ -252,6 +252,8 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState( "prim5") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Isabell", "C1M5");
+				sleep(40);
 				Save("scene3" );
 				CINEMATICS.outro();
 				Win();
@@ -276,8 +278,9 @@ OBJECTIVES = {
 			CINEMATICS.rescueIsabell();
 			sleep(1);
 			GiveExp( 'Godric', 2000 );
-			LoadHeroAllSetArtifacts( "Isabell", "C1M4" );
 			SetRegionBlocked( 'AIblock', nil, PLAYER_2 );
+			LoadHeroAllSetArtifacts( "Isabell", "C1M4" );
+			sleep(40); -- wait artifacts to get loaded
 			H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
 			OBJECTIVES.state.rescueIsabell[2] = 5;		
 		elseif OBJECTIVES.state.rescueIsabell[2] == 5 and GetObjectOwner("Dummar") == PLAYER_1 then
@@ -380,6 +383,7 @@ OBJECTIVES = {
 			OBJECTIVES.state.sendGodric[2] = 2;
 		elseif OBJECTIVES.state.sendGodric[2] == 3 then
 			SaveHeroAllSetArtifactsEquipped("Godric", "C1M5");
+			sleep(40);
 			MoveHeroRealTime( "Godric", 134, 11, 0 );
 			local n = 0;
 			while GetObjectPos( "Godric" ) ~= 134 do

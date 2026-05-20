@@ -1,7 +1,7 @@
 d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-army_rating = game_time/(18-3*d) -- 2.33/2/3.5/4.67 points per month
+army_rating = game_time/(18-3*d) -- 2.33/3/3.5/4.67 points per month
 waves = 12 + d;
 
 -- Markal summons and casts during first "wave" turns

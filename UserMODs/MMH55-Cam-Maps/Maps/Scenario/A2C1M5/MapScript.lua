@@ -100,11 +100,6 @@ OBJECT_SULFUR_01 = 'Sulfur1';
 OBJECT_SIGN_01 = 'Sign1';
 OBJECT_SIGN_02 = 'Sign2';
 OBJECT_SIGN_03 = 'Sign3';
---------------------------------------
-
-
-
----------------------------------------
 
 function InitTeleportsPairs()
 	TeleportsPairs = {};
@@ -246,11 +241,12 @@ SetRegionBlocked( "RegionToArantir", not nil );
 
 --*-- Artifacts Sets Loading--*--
 function f_artifacts_sets()
-
 	InitAllSetArtifacts( "A2C1M5", "Arantir",  "OrnellaNecro" );
-
-	LoadHeroAllSetArtifacts(  "OrnellaNecro",  "A2C1M4"  );
-	LoadHeroAllSetArtifacts(  "Arantir",  "A2C1M4"  );
+	LoadHeroAllSetArtifacts( "OrnellaNecro", "A2C1M4" );
+	LoadHeroAllSetArtifacts(      "Arantir", "A2C1M4" );
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
+	H55_CamFixTooManySkills(PLAYER_1,	   "Arantir");
 end;
 
 startThread( f_artifacts_sets );
@@ -1969,8 +1965,6 @@ end;
 
 
 --------------------------------------MAIN///////
-H55_CamFixTooManySkills(PLAYER_1,"Arantir");
-H55_CamFixTooManySkills(PLAYER_1,"OrnellaNecro");
 startThread(Main_hero_de);
 startThread(Complete_valeria);
 print("MAIN: end script isEqual reached");

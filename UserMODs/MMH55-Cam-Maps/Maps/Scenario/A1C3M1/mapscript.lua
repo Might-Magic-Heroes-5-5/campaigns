@@ -356,4 +356,3 @@ diff_setup();
 startThread (sranaya_pignya);	
 startThread (objective1);
 startThread (objective2);
------------------------------------------

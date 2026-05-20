@@ -127,10 +127,10 @@ print( "MAIN: All variables are defined" );
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function GiveTransferrableArtifacts()
-	InitAllSetArtifacts( "A2C3M2", OUR_HERO_ZEHIR );
-    LoadHeroAllSetArtifacts( OUR_HERO_ZEHIR, "A2C3M1" );
+	InitAllSetArtifacts( "A2C3M2", "Zehir", "Duncan", "Freyda" );
+    LoadHeroAllSetArtifacts( "Zehir", "A2C3M1" );
 	sleep(40);
-	H55_CamFixTooManySkills(PLAYER_1,"Zehir");
+	H55_CamFixTooManySkills( PLAYER_1, "Zehir");
 end
 
 --if (GetGameVar("BONUS_A2C3M1") == "1") then GiveArtefact("Zehir", ARTIFACT_ROBE_OF_MAGI ); end; -- Выдать игроку артефакт, если в а2с3м1 игрок выполнил дополнительный квест дварфа
@@ -827,9 +827,11 @@ function DeployDuncanAndFreyda()
 	sleep(3);
 	SetObjectPosition( OUR_HERO_ZEHIR, 2, 70, GROUND );
 	sleep(5);
-	
 	DeployReserveHero( OUR_HERO_DUNCAN, 4, 68, GROUND );
 	DeployReserveHero( OUR_HERO_FREYDA, 5, 70, GROUND );
+	sleep(20);
+	H55_CamFixTooManySkills( PLAYER_1, "Duncan" );
+	H55_CamFixTooManySkills( PLAYER_1, "Freyda" );
 	sleep(1);
 	SetObjectRotation( OUR_HERO_DUNCAN, 90 );
 	SetObjectRotation( OUR_HERO_FREYDA, 90 );

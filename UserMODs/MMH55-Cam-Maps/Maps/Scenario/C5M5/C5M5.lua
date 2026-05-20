@@ -19,7 +19,13 @@ H55_RemoveTheseArtifactsFromBanks = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M5");
-    LoadHeroAllSetArtifacts("Heam", "C5M4" );
+    LoadHeroAllSetArtifacts(   "Heam", "C5M4" );
+    LoadHeroAllSetArtifacts( "Diraya", "C5M3" );
+    LoadHeroAllSetArtifacts(   "Heam", "C5M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1,   "Heam" );
+	H55_CamFixTooManySkills( PLAYER_1, "Diraya" );
+	H55_CamFixTooManySkills( PLAYER_1, "Nadaur" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -292,9 +298,6 @@ OBJECTIVES = {
 	
 	prepare = function()
 		first_time=1
-		H55_CamFixTooManySkills(PLAYER_1,"Heam");
-		H55_CamFixTooManySkills(PLAYER_1,"Diraya");
-		H55_CamFixTooManySkills(PLAYER_1,"Nadaur");
 		CINEMATICS.intro();
 		DeployReserveHero('Nikolay',84,86,GROUND);
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);

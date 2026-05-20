@@ -2,8 +2,11 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M4");
-	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M3" );
-	LoadHeroAllSetArtifacts( "Duncan" , "A1C1M5" );
+	LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M3" );
+	LoadHeroAllSetArtifacts(   "Duncan", "A1C1M5" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
+	H55_CamFixTooManySkills( PLAYER_2,   "Duncan" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -386,9 +389,9 @@ end;
 function CaptureTorHallr(OldOwner,NewOwner,HeroName)
 	if NewOwner == PLAYER_1 then 
 		Trigger(OBJECT_CAPTURE_TRIGGER, ENEMY_TOWN_TOR_HALLR, nil);
-		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M4");
+		SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M4" );
 		sleep(10);
-		SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M4");
+		SaveHeroAllSetArtifactsEquipped( "Duncan", "A1C2M4" );
 		SetObjectiveState("capture_tor_hallr",OBJECTIVE_COMPLETED);
 		sleep(10);
 		SetObjectiveState("wulfstan_must_survive",OBJECTIVE_COMPLETED);
@@ -423,9 +426,6 @@ function PlayerWin()
 	sleep(5);
 	Win(PLAYER_1);
 end;
--- MAIN
-H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
-H55_CamFixTooManySkills(PLAYER_2,   "Duncan");
 -- StartDialogScene("/DialogScenes/A1C2/M4/S1/DialogScene.xdb#xpointer(/DialogScene)");
 enableObjects();
 Trigger(REGION_ENTER_AND_STOP_TRIGGER, "rolf_attack","IfWulfstanEnterRolfRegion");

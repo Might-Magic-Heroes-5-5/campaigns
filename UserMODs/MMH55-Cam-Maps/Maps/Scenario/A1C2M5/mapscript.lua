@@ -37,11 +37,11 @@ H55c_AI_CONTROLLED = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M5");
-	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M4" );
-	LoadHeroAllSetArtifacts( "Duncan" , "A1C2M4" );
-	sleep(20);
-	H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
-	H55_CamFixTooManySkills(PLAYER_1,"Duncan");	
+	LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M4" );
+	LoadHeroAllSetArtifacts(   "Duncan", "A1C2M4" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
+	H55_CamFixTooManySkills( PLAYER_1,   "Duncan" );	
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -222,8 +222,8 @@ function win_check()
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			sleep(20);
-			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M5");
-			SaveHeroAllSetArtifactsEquipped("Duncan", "A1C2M5");
+			SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M5" );
+			SaveHeroAllSetArtifactsEquipped(   "Duncan", "A1C2M5" );
 			sleep(20);
 			Win();
 			break;

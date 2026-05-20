@@ -262,6 +262,15 @@ function H55c_debug()
 	end
 end
 
+function LoadAndBindHeroAllSetArtifacts( hero, loadFromMissionName )
+	for i = 0, AllSetArtifactsCount - 1 do
+		local artefactIdString = '_'..AllSetArtifacts[i];
+		if GetGameVar(loadFromMissionName..'_'..hero..artefactIdString) == "1" then
+			GiveArtefact(hero, AllSetArtifacts[i], 1);
+		end;
+	end;
+end;
+
 H55c_CREATURES = {
 	HAVEN      = {   1,   2, 106,   3,   4, 107,   5,   6, 108,   7,   8, 109,   9,  10, 110,  11,  12, 111,  13,  14, 112 },
 	INFERNO    = {  15,  16, 131,  17,  18, 132,  19,  20, 133,  21,  22, 134,  23,  24, 135,  25,  26, 136,  27,  28, 137 },

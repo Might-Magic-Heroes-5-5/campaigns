@@ -15,7 +15,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M2");
-    LoadHeroAllSetArtifacts("Heam", "C5M1" );
+    LoadHeroAllSetArtifacts( "Heam", "C5M1" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Heam" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -231,7 +233,6 @@ function H55_TriggerDaily()
 end;
 
 ---script---
-H55_CamFixTooManySkills(PLAYER_1,"Heam");
 startThread(block)
 StartDialogScene('/DialogScenes/C5/M2/D1/DialogScene.xdb#xpointer(/DialogScene)');
 objective_2()

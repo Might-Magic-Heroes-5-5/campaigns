@@ -9,6 +9,8 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M3");
     LoadHeroAllSetArtifacts("Agrael", "C2M2" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Agrael" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -138,7 +140,6 @@ OBJECTIVES = {
 	end,
 
 	prepare = function()
-		H55_CamFixTooManySkills(PLAYER_1,"Agrael");
 		DeployReserveHero("Gillion", 34, 28, GROUND);
 		EnableHeroAI("Gillion", nil);
 		DenyAIHeroesFlee(PLAYER_2, not nil);

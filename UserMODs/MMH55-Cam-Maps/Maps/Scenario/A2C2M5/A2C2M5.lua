@@ -116,15 +116,13 @@ StartDialogScene( SCENE_ISABELL_TURN_INTO_BIARA );
 SetObjectiveState( "prim1_CaptureMainAcademyTown", OBJECTIVE_ACTIVE );
 
 function GiveTransferrableArtifacts()
-	InitAllSetArtifacts( "A2C2M5", OUR_HERO_GOTAI );
+	InitAllSetArtifacts( "A2C2M5", "Gottai" );
 	--InitAllSetArtifacts( "A2C2M5", OUR_HERO_KUJIN );
-    LoadHeroAllSetArtifacts( OUR_HERO_GOTAI, "A2C2M3" );
-	sleep(20);
-	H55_CamFixTooManySkills( PLAYER_1, OUR_HERO_GOTAI );
+    LoadHeroAllSetArtifacts( "Gottai", "A2C2M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Gottai" );
 	--LoadHeroAllSetArtifacts( OUR_HERO_KUJIN, "A2C2M4" );
 end;
-
-
 
 function prim2_HeroMustSurvive()
 	while IsHeroAlive( OUR_HERO_GOTAI ) == not nil do sleep(10); end;
@@ -190,7 +188,7 @@ function PlayerWin()
 	while GetObjectiveState("prim1_CaptureMainAcademyTown") ~= OBJECTIVE_COMPLETED 
 		or GetObjectiveState("prim2_KillAlaric") ~= OBJECTIVE_COMPLETED 
 	do sleep(10); end;
-	SaveHeroAllSetArtifactsEquipped( OUR_HERO_GOTAI, "A2C2M5" );
+	--SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M5" );
 	Win(PLAYER_1);
 end;
 

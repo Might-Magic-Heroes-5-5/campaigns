@@ -36,6 +36,8 @@ H55c_AI_CONTROLLED = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M4");
     LoadHeroAllSetArtifacts("Agrael", "C2M3" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Agrael" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -288,7 +290,6 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
-		H55_CamFixTooManySkills(PLAYER_1,"Agrael");
 		startThread(DIFFICULTY[GetDifficulty()]);
 		startThread(EnemyGate);
 		Trigger(OBJECT_TOUCH_TRIGGER, "dragons", "DialogBeforeCombatVSdragons", nil);

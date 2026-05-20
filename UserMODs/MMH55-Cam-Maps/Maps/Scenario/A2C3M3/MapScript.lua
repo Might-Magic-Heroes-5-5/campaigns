@@ -163,9 +163,12 @@ SetPlayerResource( PLAYER_3, GEM, 100 );
 SetPlayerResource( PLAYER_3, SULFUR, 100 );
 
 function f_artifacts_sets()
-	InitAllSetArtifacts( "A2C3M3", HERO_PLAYER );
-	LoadHeroAllSetArtifacts( HERO_PLAYER, "A2C3M2" );
-end;
+	InitAllSetArtifacts( "A2C3M3", "Zehir" );
+	LoadHeroAllSetArtifacts( "Zehir", "A2C3M2" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
+	H55_CamFixTooManySkills( PLAYER_1,    "Zehir" );
+end
 
 startThread( f_artifacts_sets );
 
@@ -343,8 +346,8 @@ function f_win_pre() --Запускается функцией f_pri4_success
 end;
 
 function f_win()
-	SaveHeroAllSetArtifactsEquipped( HERO_PLAYER, "A2C3M3");
-	SaveHeroAllSetArtifactsEquipped( WULFSTAN, "A2C3M3");
+	SaveHeroAllSetArtifactsEquipped( 	"Zehir", "A2C3M3" );
+	SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A2C3M3" );
 	sleep(5);
 	Win();
 end;
@@ -722,7 +725,6 @@ if GetDifficulty() == DIFFICULTY_HEROIC then
 	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_heroic");
 end;
 
-H55_CamFixTooManySkills(PLAYER_1,"Zehir");
 startThread( f_pri1 );
 startThread( f_pri2 );
 startThread( f_pri3 );

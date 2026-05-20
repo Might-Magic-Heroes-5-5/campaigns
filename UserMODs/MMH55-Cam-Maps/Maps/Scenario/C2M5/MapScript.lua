@@ -3,6 +3,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M5");
     LoadHeroAllSetArtifacts("Agrael", "C2M4" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Agrael" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -53,8 +55,6 @@ function stepIntoVoid(hero)
     Loose();
 end
 
----script---
-H55_CamFixTooManySkills(PLAYER_1,"Agrael");
 startThread(AgraelSurvive);
 Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru');
 Trigger(WAR_FOG_ENTER_TRIGGER, 'stepIntoVoid');

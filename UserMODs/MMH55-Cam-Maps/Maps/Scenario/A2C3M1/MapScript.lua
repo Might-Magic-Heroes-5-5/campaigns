@@ -578,7 +578,7 @@ Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_DWARF, "f_sec2_start" );
 function f_win()
 	if GetObjectiveState( "pri2" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "pri1" ) == OBJECTIVE_COMPLETED then	
 		print( "roflmao nop" )
-		SaveHeroAllSetArtifactsEquipped( HERO_PLAYER, "A2C3M1" );
+		SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M1" );
 		sleep(5);
 		Win();
 	end;
@@ -609,12 +609,24 @@ function f_djinn_1()
 	sleep( 3 );
 	SetObjectPosition( "Mutazz",13, 11, GROUND );
 	SetObjectOwner( "Mutazz", PLAYER_1 );
-	print ("before")
-	TakeAwayHeroExpFlying ( "Zehir", 200000 );
-	print ("past");
-	sleep(5);
+	print ("before");
+	local xp = GetHeroStat( "Zehir",  STAT_EXPERIENCE );
+	TakeAwayHeroExpFlying ( "Zehir", xp  - 14701 ); -- Scale hero to level 10
+	sleep(20);
+	local a =  3 - GetHeroStat( "Zehir", 	   STAT_ATTACK );
+	local d =  3 - GetHeroStat( "Zehir", 	  STAT_DEFENCE );
+	local s = 12 - GetHeroStat( "Zehir",  STAT_SPELL_POWER );
+	local k = 10 - GetHeroStat( "Zehir",    STAT_KNOWLEDGE );
+	if HasArtefact( "Zehir", 56, 1 ) then
+		d = d + 1;
+	end
+	ChangeHeroStat( "Zehir", 	  STAT_ATTACK, a );
+	ChangeHeroStat( "Zehir", 	 STAT_DEFENCE, d );
+	ChangeHeroStat( "Zehir", STAT_SPELL_POWER, s );
+	ChangeHeroStat( "Zehir",   STAT_KNOWLEDGE, k );
+	sleep(10);
 	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", CREATURE_MENTOR_DJINN, 0, 0, 0, 0, 0 );
-	sleep(3);
+	sleep(10);
 	RemoveObject( CREATURE_MENTOR_DJINN );
 end;
 
