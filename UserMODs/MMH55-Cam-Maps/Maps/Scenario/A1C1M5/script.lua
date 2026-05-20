@@ -13,8 +13,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M5");
 	LoadHeroAllSetArtifacts( "Freyda" , "A1C1M4" );
-	sleep(20);
-	H55_CamFixTooManySkills(PLAYER_1,"Freyda");
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Freyda" );
 end;
 
 startThread(H55_InitSetArtifacts);

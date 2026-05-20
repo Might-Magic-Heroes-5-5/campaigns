@@ -17,6 +17,8 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M3");
 	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M2" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Shadwyn" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -374,7 +376,6 @@ end
 -------------------- Стартовые команды ------------------------------
 ---------------------------------------------------------------------
 
-H55_CamFixTooManySkills(PLAYER_1,"Shadwyn");
 SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
 H55_NewDayTrigger = 1;
 --Trigger( NEW_DAY_TRIGGER, "RedHavenUpgrade" );

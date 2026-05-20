@@ -8,11 +8,12 @@ end
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M3");
-    LoadHeroAllSetArtifacts("Berein", "C3M2" );
+    LoadHeroAllSetArtifacts(  "Berein", "C3M2" );
+    LoadHeroAllSetArtifacts( "Isabell", "C1M5" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );
+	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
 end;
-
-H55_CamFixTooManySkills(PLAYER_1,"Berein");
-H55_CamFixTooManySkills(PLAYER_1,"Isabell");
 
 startThread(H55_InitSetArtifacts);
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_STAFF_OF_VEXINGS,ARTIFACT_RING_OF_DEATH,ARTIFACT_CLOAK_OF_MOURNING,ARTIFACT_NECROMANCER_PENDANT};
@@ -293,6 +294,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M3");
+				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M3");
 				sleep(10);
 				CINEMATICS.outro();
 				sleep(5);

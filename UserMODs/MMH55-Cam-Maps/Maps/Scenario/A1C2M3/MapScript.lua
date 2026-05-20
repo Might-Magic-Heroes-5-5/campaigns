@@ -3,6 +3,8 @@ H55_PlayerStatus = {0,1,1,1,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M3");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M2" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -797,7 +799,6 @@ function Diff_leveladd()
 	print('difficulty = ',slozhnost);
 end;
 
-H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
 startThread( Def );
 startThread( Diff_leveladd );
 

@@ -15,7 +15,9 @@ H55_RemoveTheseArtifactsFromBanks = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M3");
-	LoadHeroAllSetArtifacts( 'Freyda' , "A1C1M2" );
+	LoadHeroAllSetArtifacts( 'Freyda', "A1C1M2" );
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1,'Freyda');
 end
 
 startThread(H55_InitSetArtifacts);
@@ -392,7 +394,6 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
-		H55_CamFixTooManySkills(PLAYER_1,'Freyda');
 		CINEMATICS.intro();
 		EnableHeroAI( 'Duncan', nil );
 		SetHeroRoleMode( 'Duncan', HERO_ROLE_MODE_HERMIT );

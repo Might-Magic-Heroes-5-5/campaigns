@@ -31,8 +31,14 @@ H55c_AI_CONTROLLED = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M5");
-    LoadHeroAllSetArtifacts("Berein", "C3M4" );
-	GiveArtefact("Berein",ARTIFACT_RING_OF_DEATH);
+    LoadHeroAllSetArtifacts(  "Berein", "C3M4" );
+    LoadHeroAllSetArtifacts( "Isabell", "C3M2" );
+    LoadAndBindHeroAllSetArtifacts( "Godric", "C3M4" );
+	GiveArtefact( "Berein", ARTIFACT_RING_OF_DEATH );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );
+	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
+	H55_CamFixTooManySkills( PLAYER_2,  "Godric" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -182,9 +188,6 @@ OBJECTIVES = {
 		Save("GodricsChoice");
 		CINEMATICS.intro();
 		MoveHeroRealTime("Godric", 47,30,GROUND);
-		H55_CamFixTooManySkills(PLAYER_1,"Berein");
-		H55_CamFixTooManySkills(PLAYER_1,"Isabell");
-		H55_CamFixTooManySkills(PLAYER_2,"Godric");
 		startThread(DIFFICULTY[GetDifficulty()]);
 		startThread(IsabellLostArmy);
 		startThread(desentir);

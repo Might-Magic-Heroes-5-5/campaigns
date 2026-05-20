@@ -2,7 +2,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M2");
-    LoadHeroAllSetArtifacts("Zehir", "C6M1" );
+    LoadHeroAllSetArtifacts( "Zehir", "C6M1" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Zehir" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -103,7 +105,6 @@ OBJECTIVES = {
 	
 	prepare = function()
 		CINEMATICS.intro();
-		H55_CamFixTooManySkills(PLAYER_1,"Zehir");
 		SetObjectiveVisible("obj3", nil);
 		SetRegionBlocked("block", not nil, PLAYER_3);
 		SetRegionBlocked("block", not nil, PLAYER_2);

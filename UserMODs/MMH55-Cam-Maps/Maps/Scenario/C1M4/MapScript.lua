@@ -9,6 +9,8 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C1M4");
 	LoadHeroAllSetArtifacts( "Isabell" , "C1M3" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -221,7 +223,6 @@ OBJECTIVES = {
       OpenCircleFog( 81, 165, 0, 8, PLAYER_1 );
       x,y,z = RegionToPoint('Fog');
       OpenCircleFog(x, y, z, 5, PLAYER_1);
-      H55_CamFixTooManySkills(PLAYER_1,HERO_NAME);
 	end,
 
     run = function()

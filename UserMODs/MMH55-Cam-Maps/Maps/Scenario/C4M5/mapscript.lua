@@ -2,14 +2,14 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C4M5");
-    LoadHeroAllSetArtifacts("Raelag","C4M4");
+    LoadHeroAllSetArtifacts(  "Raelag", "C4M4" );
+    LoadHeroAllSetArtifacts( "Kelodin", "C4M4" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
+	H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );
 end;
 
 startThread(H55_InitSetArtifacts);
-
---Save("Scene 12: Realag and Isabel") 
-print("c4m5 start...........................!"); 
-
 OpenCircleFog( 10, 29, 0, 5, PLAYER_1 ); ---фог у выхода с карты
 
 SetRegionBlocked("stop1", 1, PLAYER_2);
@@ -183,9 +183,10 @@ function PObjective3_4complete()
 	while 1 do
 		sleep(10);
 		if IsHeroAlive("Veyer") == nil then 
-			SetObjectiveState('prim3',OBJECTIVE_COMPLETED);
+			SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
 			--SetObjectiveState('prim4',OBJECTIVE_COMPLETED);
-			SaveHeroAllSetArtifactsEquipped("Raelag", "C4M5");
+			SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M5" );
+			SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M5" );
 			ChangeHeroStat("Raelag", STAT_MORALE, 1);  -------Oblico_Morale!
 			ChangeHeroStat("Kelodin", STAT_MORALE, 1);  -------Oblico_Morale!
 			sleep(6);
@@ -212,8 +213,6 @@ function PObjective3_4defead()
 	end;
 end;
 --------------------------------//Main thread//
-H55_CamFixTooManySkills(PLAYER_1,"Raelag");
-H55_CamFixTooManySkills(PLAYER_1,"Kelodin");
 startThread(Start_Dialog);
 --startThread(PObjective1);
 startThread(PObjective2);

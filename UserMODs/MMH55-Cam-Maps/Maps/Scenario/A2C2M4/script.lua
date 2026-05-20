@@ -13,7 +13,7 @@ H55_RemoveTheseArtifactsFromBanks = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts( "A2C2M4", "Kujin");
 	LoadHeroAllSetArtifacts( "Kujin", "A2C2M2");
-	sleep(20);
+	sleep(40);
 	H55_CamFixTooManySkills(PLAYER_1, "Kujin");
 end
 

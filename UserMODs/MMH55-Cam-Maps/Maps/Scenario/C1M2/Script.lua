@@ -9,13 +9,14 @@ end
 HERO_NAME = "Isabell"
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C1M2");
-	LoadHeroAllSetArtifacts( HERO_NAME , "C1M1" );
+	LoadHeroAllSetArtifacts( HERO_NAME, "C1M1" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills(  PLAYER_1, HERO_NAME );
 end
 
 startThread(H55_InitSetArtifacts);
 
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
-H55_CamFixTooManySkills(PLAYER_1,HERO_NAME);
 
 m01= "c1_m2_t1" ;--"/Maps/Scenario/C1M2/tutorial/tutorial1.txt"
 m02= "c1_m2_t2" ;--"/Maps/Scenario/C1M2/tutorial/tutorial2.txt"

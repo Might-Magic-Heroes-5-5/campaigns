@@ -4,10 +4,15 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M5");
-	LoadHeroAllSetArtifacts("Godric", "C6M4");
-	LoadHeroAllSetArtifacts("Raelag", "C6M4");
-	LoadHeroAllSetArtifacts(  "Heam", "C6M4");
-    LoadHeroAllSetArtifacts( "Zehir", "C6M4");
+	LoadHeroAllSetArtifacts( "Godric", "C6M4" );
+	LoadHeroAllSetArtifacts( "Raelag", "C6M4" );
+	LoadHeroAllSetArtifacts(   "Heam", "C6M4" );
+    LoadHeroAllSetArtifacts(  "Zehir", "C6M4" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1,  "Zehir" );
+	H55_CamFixTooManySkills( PLAYER_1, "Godric" );
+	H55_CamFixTooManySkills( PLAYER_1,   "Heam" );
+	H55_CamFixTooManySkills( PLAYER_1, "Raelag" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -129,10 +134,6 @@ OBJECTIVES = {
 
 	prepare = function()
 		SetPlayerStartResource( PLAYER_1, GOLD, 500000 );
-		H55_CamFixTooManySkills(PLAYER_1,  "Zehir");
-		H55_CamFixTooManySkills(PLAYER_1, "Godric");
-		H55_CamFixTooManySkills(PLAYER_1,   "Heam");
-		H55_CamFixTooManySkills(PLAYER_1, "Raelag");
 		SetObjectEnabled("bcitadel", nil);
 		Trigger(OBJECT_CAPTURE_TRIGGER,    "town1", "TownCounter");
 		Trigger(OBJECT_CAPTURE_TRIGGER,    "town2", "TownCounter");

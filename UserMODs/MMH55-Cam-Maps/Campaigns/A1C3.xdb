@@ -464,7 +464,23 @@
 			</Bonuses>
 			<HeroesPool>
 				<Count>0</Count>
-				<Heroes/>
+				</Heroes>
+					<!-- <Item> -->
+						<!-- <HeroScriptName>Duncan</HeroScriptName> -->
+						<!-- <TargetCampaign href="A2C3.(Campaign).xdb#xpointer(/Campaign)"/> -->
+						<!-- <TargetMission>1</TargetMission> -->
+					<!-- </Item> -->
+					<!-- <Item> -->
+						<!-- <HeroScriptName>Freyda</HeroScriptName> -->
+						<!-- <TargetCampaign href="A2C3.(Campaign).xdb#xpointer(/Campaign)"/> -->
+						<!-- <TargetMission>1</TargetMission> -->
+					<!-- </Item> -->
+					<!-- <Item> -->
+						<!-- <HeroScriptName>Wulfstan</HeroScriptName> -->
+						<!-- <TargetCampaign href="A2C3.(Campaign).xdb#xpointer(/Campaign)"/> -->
+						<!-- <TargetMission>2</TargetMission> -->
+					<!-- </Item> -->
+				<!-- </Heroes> -->
 			</HeroesPool>
 			<startMusics>
 				<Item href="/Sounds/_(Music)/AdvMap-Heroes/a1-Shadwyn-Ylaya.xdb#xpointer(/Music)"/>

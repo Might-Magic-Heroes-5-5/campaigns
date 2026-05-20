@@ -18,7 +18,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M4");
-    LoadHeroAllSetArtifacts("Heam", "C5M3" );
+    LoadHeroAllSetArtifacts( "Heam", "C5M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Heam" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -258,5 +260,4 @@ function DemonHalfArmy (heroname) -- functiya upolovinivaet armiyu heroname-a (e
 	end;
 	
  end;
----------------------------------------------------
-H55_CamFixTooManySkills(PLAYER_1,"Heam");
+ 

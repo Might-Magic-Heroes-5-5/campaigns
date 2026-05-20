@@ -182,8 +182,10 @@ AllowRedHaven( PLAYER_1, 0 );
 AllowRedHaven( PLAYER_2, 0 );
 
 function GiveTransferrableArtifacts()
-    InitAllSetArtifacts( "A2C2M3", OUR_HERO_GOTAI );
-    LoadHeroAllSetArtifacts( OUR_HERO_GOTAI, "A2C2M1" );--Загрузить сетовые артефакты из миссии А2С2М1
+    InitAllSetArtifacts( "A2C2M3", "Gottai" );
+    LoadHeroAllSetArtifacts( "Gottai", "A2C2M1" );--Загрузить сетовые артефакты из миссии А2С2М1
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Gottai" );
 end;
 
 
@@ -620,7 +622,7 @@ function PlayerWin()
 		sleep(10);
 	end;
 	StartDialogScene("/DialogScenes/A2C2/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
-	SaveHeroAllSetArtifactsEquipped( OUR_HERO_GOTAI, "A2C2M3" );
+	SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M3" );
 	sleep(5);
 	Win(PLAYER_1);
 end;
@@ -1338,9 +1340,6 @@ end;
 --------------------------------------------------------------------
 ----------------- MAIN ---------------------------------------------
 --------------------------------------------------------------------
-
-H55_CamFixTooManySkills(PLAYER_1,"Gottai");
-
 Trigger( OBJECT_TOUCH_TRIGGER, "demon", "StartDemonScene");
 for i=1, PEASANT_HUTS_COUNT do
 	Trigger( OBJECT_TOUCH_TRIGGER, "peasant_hut"..i, "BurnPeasantHut" );

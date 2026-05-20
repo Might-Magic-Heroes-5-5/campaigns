@@ -2,9 +2,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M4");
-    LoadHeroAllSetArtifacts("Berein", "C3M3" );
-	sleep(30);
-	H55_CamFixTooManySkills(PLAYER_1, "Berein");
+    LoadHeroAllSetArtifacts( "Berein",   "C3M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Berein" );
 end;
 
 startThread(H55_InitSetArtifacts);

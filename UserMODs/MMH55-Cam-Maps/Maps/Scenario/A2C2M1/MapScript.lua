@@ -478,7 +478,7 @@ function WinMission()
 		UnblockGame();
 	end;
 	SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
-	SaveHeroAllSetArtifactsEquipped( PlayerHero, "A2C2M1" );
+	SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M1" );
 	sleep(5);
 	Win(PLAYER_1);
 end;

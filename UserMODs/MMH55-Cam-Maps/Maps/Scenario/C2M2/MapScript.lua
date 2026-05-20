@@ -2,7 +2,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C2M2");
-    LoadHeroAllSetArtifacts("Agrael", "C2M1" );
+    LoadHeroAllSetArtifacts( "Agrael", "C2M1" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Agrael" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -324,7 +326,6 @@ function VeyerHasNoWay()
 end;
 
 -------------------
-H55_CamFixTooManySkills(PLAYER_1,"Agrael");
 messages( 1 );
 SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
 

@@ -3,6 +3,14 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M4");
+	LoadHeroAllSetArtifacts(  "Zehir", "C6M3" );
+	LoadHeroAllSetArtifacts( "Godric", "C6M3" );
+	LoadHeroAllSetArtifacts(   "Heam", "C6M3" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Zehir" );
+	H55_CamFixTooManySkills( PLAYER_1, "Godric");
+	H55_CamFixTooManySkills( PLAYER_1,  "Heam" );
+
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -62,15 +70,7 @@ OBJECTIVES = {
 	
 	prepare = function()
 		SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
-		CINEMATICS.intro();
-		sleep(1);
-		H55_CamFixTooManySkills(PLAYER_1,"Zehir");
-		H55_CamFixTooManySkills(PLAYER_1,"Godric");
-		H55_CamFixTooManySkills(PLAYER_1,"Heam");
-		LoadHeroAllSetArtifacts("Zehir", "C6M3" );
-		LoadHeroAllSetArtifacts("Godric", "C1M5");
-		LoadHeroAllSetArtifacts("Heam", "C5M5");
-
+		CINEMATICS.intro();;
 		GiveExp(    "Sarge", 10000 );
 		GiveExp(     "Gles", 20000 );
 		GiveExp("Nathaniel", 10000 );
@@ -120,11 +120,11 @@ OBJECTIVES = {
 	
 	riteIsabel = function()
 		if OBJECTIVES.state.riteIsabel[2] == 1 and GetObjectOwner("talonguard") == PLAYER_1 then
-			SaveHeroAllSetArtifactsEquipped("Zehir", "C6M4");
-			SaveHeroAllSetArtifactsEquipped("Heam", "C6M4");
-			SaveHeroAllSetArtifactsEquipped("Godric", "C6M4");
-			SaveHeroAllSetArtifactsEquipped("Raelag", "C6M4");
-			sleep(1);
+			SaveHeroAllSetArtifactsEquipped(  "Zehir", "C6M4" );
+			SaveHeroAllSetArtifactsEquipped(   "Heam", "C6M4" );
+			SaveHeroAllSetArtifactsEquipped( "Godric", "C6M4" );
+			SaveHeroAllSetArtifactsEquipped( "Raelag", "C6M4" );
+			sleep(20);
 			Save("Scene_19");
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.riteIsabel[2] = 10;
@@ -157,13 +157,16 @@ OBJECTIVES = {
 			UnreserveHero("Raelag");
 			sleep(1)	
 			SetObjectOwner("Raelag", PLAYER_1);
-			sleep(1)	
-			LoadHeroAllSetArtifacts("Raelag", "C4M5");
-			H55_CamFixTooManySkills(PLAYER_1,"Raelag");
+			sleep(5)	
+			LoadHeroAllSetArtifacts( "Raelag", "C4M5" );
+			sleep(40);
+			H55_CamFixTooManySkills( PLAYER_1, "Raelag" );
 			UnreserveHero("Kelodin");
 			sleep(1);		
 			SetObjectOwner("Kelodin", PLAYER_1);
-			sleep(1);
+			sleep(5);
+			LoadHeroAllSetArtifacts("Kelodin", "C4M5");
+			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1,"Kelodin");
 			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1366);
 			SetObjectiveState("prim3", OBJECTIVE_COMPLETED);

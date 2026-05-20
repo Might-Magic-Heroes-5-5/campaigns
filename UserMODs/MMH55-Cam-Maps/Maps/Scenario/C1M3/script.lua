@@ -26,6 +26,8 @@ H55c_AI_CONTROLLED = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C1M3");
 	LoadHeroAllSetArtifacts( "Isabell" , "C1M2" );
+	sleep(40); -- wait for artifacts to load
+	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
 end
 
 OUR_HERO_NAME = "Isabell";
@@ -35,8 +37,6 @@ townx, towny = 32, 28;
 
 startThread(H55_InitSetArtifacts);
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
-H55_CamFixTooManySkills(PLAYER_1,OUR_HERO_NAME);
-
 
 function SetInfernoArmy( heroname, strength, week, diff )
 	local factor = {};

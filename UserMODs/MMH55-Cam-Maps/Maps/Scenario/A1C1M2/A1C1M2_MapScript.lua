@@ -12,7 +12,9 @@ doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M2");
-	LoadHeroAllSetArtifacts( "Freyda" , "A1C1M1" );
+	LoadHeroAllSetArtifacts( "Freyda", "A1C1M1" );
+	sleep(40);
+	H55_CamFixTooManySkills( PLAYER_1, "Freyda" );
 end;
 
 startThread(H55_InitSetArtifacts);
@@ -874,7 +876,7 @@ end;
 function combatResult( heroName, result )
 	if result ~= nil then
 		print("you won!");
-		SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M2");
+		SaveHeroAllSetArtifactsEquipped( "Freyda", "A1C1M3" );
 		sleep(5);
 		StartDialogScene("/DialogScenes/A1C1/M2/S3/DialogScene.xdb#xpointer(/DialogScene)");
 		Win(PLAYER_1);
@@ -993,8 +995,6 @@ if GetDifficulty() == DIFFICULTY_HARD or GetDifficulty() == DIFFICULTY_HEROIC th
 end;
 
 print("functions and triggers are started");
-
-H55_CamFixTooManySkills(PLAYER_1,"Freyda");
 
 -- OBJECTIVES
 -- запуск основных обжективов

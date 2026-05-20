@@ -211,6 +211,8 @@ DenyAIHeroFlee( ORNELLA, not nil );
 function H55_InitSetArtifacts()
     InitAllSetArtifacts( "A2C1M3" );
     LoadHeroAllSetArtifacts( ORNELLA, "A2C1M1" );
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
 end
 
 function SetLight( level, time )
@@ -746,7 +748,6 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
-		H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
 		Trigger( OBJECT_TOUCH_TRIGGER,  "graveyard_1",         "GraveYardZombiesWantJoin" );
 		Trigger( OBJECT_TOUCH_TRIGGER,  "graveyard_2", "GraveYardUpgradedZombiesWantJoin" );
 		Trigger( OBJECT_TOUCH_TRIGGER,         "lich",                  "IsLichesTouched" );
@@ -809,7 +810,7 @@ OBJECTIVES = {
 			DeployReserveHero( ARANTIR, 83, 3, GROUND );
 			sleep(20);
 			LoadHeroAllSetArtifacts( ARANTIR, "A2C1M2" );
-			sleep(20);
+			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Arantir");
 			sleep(10);
 			SetObjectRotation( ARANTIR, 180 );
