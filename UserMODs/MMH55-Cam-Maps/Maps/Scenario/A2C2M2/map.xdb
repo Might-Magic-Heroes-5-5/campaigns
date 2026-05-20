@@ -61431,80 +61431,6 @@
 				<ScalePercent>100</ScalePercent>
 			</AdvMapStatic>
 		</Item>
-		<Item href="#n:inline(AdvMapHero)" id="item_A0D3BD37-6EBD-493F-9D73-232333731113">
-			<AdvMapHero>
-				<Pos>
-					<x>111</x>
-					<y>65</y>
-					<z>0</z>
-				</Pos>
-				<Rot>3.73103</Rot>
-				<Floor>0</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Stronghold/Hero2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-				<PlayerID>PLAYER_5</PlayerID>
-				<Experience>1500</Experience>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_GOBLIN_DEFILER</Creature>
-						<Count>135</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SHAMAN</Creature>
-						<Count>26</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ORC_SLAYER</Creature>
-						<Count>54</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
-						<Count>64</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ORCCHIEF_EXECUTIONER</Creature>
-						<Count>26</Count>
-					</Item>
-				</armySlots>
-				<artifactIDs/>
-				<isUntransferable/>
-				<Editable>
-					<NameFileRef href=""/>
-					<BiographyFileRef href=""/>
-					<Offence>0</Offence>
-					<Defence>0</Defence>
-					<Spellpower>0</Spellpower>
-					<Knowledge>0</Knowledge>
-					<skills/>
-					<perkIDs/>
-					<spellIDs/>
-					<Ballista>false</Ballista>
-					<FirstAidTent>false</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
-					<FavoriteEnemies/>
-					<TalismanLevel>0</TalismanLevel>
-				</Editable>
-				<OverrideMask>0</OverrideMask>
-				<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
-				<LossTrigger>
-					<Action>
-						<FunctionName/>
-					</Action>
-				</LossTrigger>
-				<AllowQuickCombat>true</AllowQuickCombat>
-				<Textures>
-					<Icon128x128/>
-					<Icon64x64/>
-					<RoundedFace/>
-					<LeftFace/>
-					<RightFace/>
-				</Textures>
-				<PresetPrice>0</PresetPrice>
-				<BannedRaces/>
-			</AdvMapHero>
-		</Item>
 		<Item href="#n:inline(AdvMapBuilding)" id="item_79218481-1CB5-4332-A868-0966BBD6C9DC">
 			<AdvMapBuilding>
 				<Pos>
@@ -63426,6 +63352,80 @@
 			<StartHero/>
 			<HeroInTown>false</HeroInTown>
 			<ReserveHeroes>
+				<Item href="#n:inline(AdvMapHero)" id="item_A0D3BD37-6EBD-493F-9D73-232333731113">
+					<AdvMapHero>
+						<Pos>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</Pos>
+						<Rot>0</Rot>
+						<Floor>0</Floor>
+						<Name/>
+						<CombatScript/>
+						<pointLights/>
+						<Shared href="/MapObjects/Stronghold/Hero2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_5</PlayerID>
+						<Experience>1500</Experience>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_GOBLIN_DEFILER</Creature>
+								<Count>135</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_SHAMAN</Creature>
+								<Count>26</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_ORC_SLAYER</Creature>
+								<Count>54</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
+								<Count>64</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_ORCCHIEF_EXECUTIONER</Creature>
+								<Count>26</Count>
+							</Item>
+						</armySlots>
+						<artifactIDs/>
+						<isUntransferable/>
+						<Editable>
+							<NameFileRef href=""/>
+							<BiographyFileRef href=""/>
+							<Offence>0</Offence>
+							<Defence>0</Defence>
+							<Spellpower>0</Spellpower>
+							<Knowledge>0</Knowledge>
+							<skills/>
+							<perkIDs/>
+							<spellIDs/>
+							<Ballista>false</Ballista>
+							<FirstAidTent>false</FirstAidTent>
+							<AmmoCart>false</AmmoCart>
+							<FavoriteEnemies/>
+							<TalismanLevel>0</TalismanLevel>
+						</Editable>
+						<OverrideMask>0</OverrideMask>
+						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<LossTrigger>
+							<Action>
+								<FunctionName/>
+							</Action>
+						</LossTrigger>
+						<AllowQuickCombat>true</AllowQuickCombat>
+						<Textures>
+							<Icon128x128/>
+							<Icon64x64/>
+							<RoundedFace/>
+							<LeftFace/>
+							<RightFace/>
+						</Textures>
+						<PresetPrice>0</PresetPrice>
+						<BannedRaces/>
+					</AdvMapHero>
+				</Item>
 				<Item href="#n:inline(AdvMapHero)" id="item_E49388F8-CF8D-4893-A17C-1689636F1F6F">
 					<AdvMapHero>
 						<Pos>

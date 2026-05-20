@@ -35,7 +35,11 @@ H55c_AI_CONTROLLED = {
 
 function H55_InitSetArtifacts()
   InitAllSetArtifacts("C4M3");
-  LoadHeroAllSetArtifacts("Raelag", "C4M2" );
+  LoadHeroAllSetArtifacts(  "Raelag", "C4M2" );
+  LoadHeroAllSetArtifacts( "Kelodin", "C4M2" );
+  sleep(30);
+  H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
+  H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );
 end
 
 startThread(H55_InitSetArtifacts);
@@ -96,9 +100,8 @@ OBJECTIVES = {
     deafeated_waves = 0;
     dang_array = {"Dalom", "Almegir", "Eruina", "Menel", "Inagost", "Ferigl", "Segref"};
     dif = SetMissionDifficulty();
-
-    H55_CamFixTooManySkills(PLAYER_1, "Raelag");
-    H55_CamFixTooManySkills(PLAYER_1, "Kelodin");
+	DenyAIHeroesFlee(PLAYER_2, not nil);
+	DenyAIHeroesFlee(PLAYER_3, not nil);
     CINEMATICS.intro();
   end,
 

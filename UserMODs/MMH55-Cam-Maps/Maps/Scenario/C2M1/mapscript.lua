@@ -154,6 +154,31 @@ CINEMATICS = {
   end,
 }
 
+function SetMarderArmy(koef)
+	AddHeroCreatures("Marder",    CREATURE_ARCHDEVIL,  1 * koef );
+	AddHeroCreatures("Marder",        CREATURE_BALOR,  2 * koef );
+	AddHeroCreatures("Marder",     CREATURE_SUCCUBUS,  3 * koef );
+	AddHeroCreatures("Marder", 	 CREATURE_HELL_HOUND,  7 * koef );
+	AddHeroCreatures("Marder", CREATURE_HORNED_DEMON, 10 * koef );
+	AddHeroCreatures("Marder", 			CREATURE_IMP, 12 * koef );
+	GiveExp("Marder", 5000 * koef);
+end
+
+DIFFICULTY = {
+	[0] = function()
+		-- nil
+	end,
+	[1] = function()
+		SetMarderArmy(1);
+	end,
+	[2] = function()
+		SetMarderArmy(2);
+	end,
+	[3] = function()
+		SetMarderArmy(3);
+	end,
+}
+
 OBJECTIVES = {
   state = { -- 0 quest is not active or managed by map.xdb, 1 quest is active, 2-9 custom states, 10 success, 11 fail
     routeToSheogath = { "prim1", 1 },   -- 2 Godric captures Dunmor and learns he has to free Isabel ASAP, 3 Isabel is freed, 10 Isabel is free and Dunmor is captured, 11 on 8th day mission will fail
@@ -187,6 +212,7 @@ OBJECTIVES = {
 	
 	-- Prepare Player 3 heroes
     DeployReserveHero( "Marder", 27, 9, GROUND )
+	startThread(DIFFICULTY[GetDifficulty()]);
     sleep(10);
     EnableHeroAI( "Marder", nil );
     MoveHero( "Marder", 26, 9, GROUND );

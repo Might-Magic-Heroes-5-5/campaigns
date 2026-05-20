@@ -5,6 +5,7 @@ function H55_InitSetArtifacts()
 end;
 
 startThread(H55_InitSetArtifacts);
+koef = GetDifficulty();
 
 --Save("Scene 10: Appearance of Realag")
 
@@ -109,10 +110,13 @@ function Moveheroes2()
 		sleep(10);
 		if IsHeroAlive("Eruina") == not nil then
 			SetObjectPosition("Eruina", 98, 67, 1);
-			AddHeroCreatures("Eruina", CREATURE_ASSASSIN, 30 );
-			AddHeroCreatures("Eruina", CREATURE_CHAOS_HYDRA, 5 );
-			AddHeroCreatures("Eruina", CREATURE_RAVAGER, 10 );
-			AddHeroCreatures("Eruina", CREATURE_MINOTAUR_KING, 4);
+			AddHeroCreatures("Eruina", 		CREATURE_ASSASSIN, 30 + koef * 10 );
+			AddHeroCreatures("Eruina",	 CREATURE_BLOOD_WITCH,  1 + koef *  8 );
+			AddHeroCreatures("Eruina", CREATURE_MINOTAUR_KING,  1 + koef *  7 );
+			AddHeroCreatures("Eruina", 		   CREATURE_RIDER,  1 + koef *  5 );
+			AddHeroCreatures("Eruina", 		 CREATURE_RAVAGER,  1 + koef *  8 );
+			AddHeroCreatures("Eruina", 	       CREATURE_HYDRA,  1 + koef *  3 );
+			AddHeroCreatures("Eruina", 	 CREATURE_CHAOS_HYDRA,  1 + koef *  3 );
 			sleep(10);
 			SetObjectOwner("second",PLAYER_NONE);
 			break;
@@ -140,9 +144,12 @@ function Moveheroes4()
 		sleep(13);
 		if IsHeroAlive("Almegir") == not nil then
 			SetObjectPosition("Almegir", 95, 54, 1);
-			AddHeroCreatures("Almegir", CREATURE_ASSASSIN, 6);
-			AddHeroCreatures("Almegir", CREATURE_MATRON, 2);
-			AddHeroCreatures("Almegir", CREATURE_MINOTAUR_KING, 10);
+			AddHeroCreatures("Almegir", 	 CREATURE_ASSASSIN, 1 + koef * 22 );
+			AddHeroCreatures("Almegir",   CREATURE_BLOOD_WITCH, 1 + koef *  8 );
+			AddHeroCreatures("Almegir", CREATURE_MINOTAUR_KING, 1 + koef *  9 );
+			AddHeroCreatures("Almegir",			CREATURE_RIDER, 1 + koef *  5 );
+			AddHeroCreatures("Almegir",			CREATURE_HYDRA, 1 + koef *  3 );
+			AddHeroCreatures("Almegir",		   CREATURE_MATRON, 2 + koef *  2 );
 			sleep(10);
 			SetObjectOwner("fourth",PLAYER_NONE);
 			break;
@@ -170,10 +177,12 @@ function Moveheroes6()
 		sleep(15);
 		if IsHeroAlive("Ohtarig") == not nil then
 			SetObjectPosition("Ohtarig", 83, 59, 1);
-			AddHeroCreatures("Ohtarig", CREATURE_BLOOD_WITCH, 20);
-			AddHeroCreatures("Ohtarig", CREATURE_MATRIARCH, 1);
-			AddHeroCreatures("Ohtarig", CREATURE_RAVAGER, 20);
-			AddHeroCreatures("Ohtarig", CREATURE_ASSASSIN, 10);
+			AddHeroCreatures("Ohtarig",		 CREATURE_ASSASSIN, 1 + koef * 16 );
+			AddHeroCreatures("Ohtarig",   		CREATURE_WITCH, 1 + koef *  8 );
+			AddHeroCreatures("Ohtarig",   CREATURE_BLOOD_WITCH, 1 + koef * 13 );
+			AddHeroCreatures("Ohtarig", CREATURE_MINOTAUR_KING, 1 + koef *  6 );
+			AddHeroCreatures("Ohtarig", 	  CREATURE_RAVAGER, 1 + koef *  4 );
+			AddHeroCreatures("Ohtarig",		CREATURE_MATRIARCH, 1 + koef *  1 );
 			sleep(10);
 			SetObjectOwner("sixth",PLAYER_NONE);
 			break;

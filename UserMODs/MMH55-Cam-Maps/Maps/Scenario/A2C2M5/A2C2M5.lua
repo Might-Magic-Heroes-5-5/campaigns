@@ -1,10 +1,14 @@
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not InitAllSetArtifacts do
+    sleep()
+end
+
 H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_TAROT_DECK,
-ARTIFACT_ENDLESS_BAG_OF_GOLD
-
+	ARTIFACT_TAROT_DECK,
+	ARTIFACT_ENDLESS_BAG_OF_GOLD
 };
-
 
 OUR_HERO_GOTAI = "Gottai";
 --OUR_HERO_KUJIN = "Kujin";
@@ -18,13 +22,11 @@ DAY_OF_NECROMANTS_OUTCOME = 28;
 
 VOICEOVER_CAPTURE_HEAVEN_TOWN = "/Sounds/_(Sound)/SFX/Screams.xdb#xpointer(/Sound)";
 
-ADVMAPSCENE_SECONDARY_ORCTOWN_CONQUERED = 0;
-
 SCENE_ISABELL_TURN_INTO_BIARA = "/DialogScenes/A2C2/M5/S1/DialogScene.xdb#xpointer(/DialogScene)";
 SCENE_GOTAI_CONQUERS_TOWN = "/DialogScenes/A2C2/M5/S2/DialogScene.xdb#xpointer(/DialogScene)";
 SCENE_GOTAI_KILLS_ALARIC = "/DialogScenes/A2C2/M5/S3/DialogScene.xdb#xpointer(/DialogScene)";
 
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+
 
 AllowPlayerTavernRace( PLAYER_1, TOWN_INFERNO, 0 );
 AllowPlayerTavernRace( PLAYER_1, TOWN_ACADEMY, 0 );
@@ -117,6 +119,8 @@ function GiveTransferrableArtifacts()
 	InitAllSetArtifacts( "A2C2M5", OUR_HERO_GOTAI );
 	--InitAllSetArtifacts( "A2C2M5", OUR_HERO_KUJIN );
     LoadHeroAllSetArtifacts( OUR_HERO_GOTAI, "A2C2M3" );
+	sleep(20);
+	H55_CamFixTooManySkills( PLAYER_1, OUR_HERO_GOTAI );
 	--LoadHeroAllSetArtifacts( OUR_HERO_KUJIN, "A2C2M4" );
 end;
 
@@ -315,7 +319,7 @@ function NecromantsGoAway()
 				NecropolisHeroes.n = table.length( NecropolisHeroes );
 			for i=0, (NecropolisHeroes.n-1) do
 				EnableHeroAI( NecropolisHeroes[i], not nil );
-				MoveHero( NecropolisHeroes[i], 174, 133, GROUND );
+				pcall (MoveHero, NecropolisHeroes[i], 174, 133, GROUND );
 			end;
 			while GetCurrentPlayer() == PLAYER_3 do sleep(10); end;
 			sleep(5);
@@ -355,7 +359,7 @@ function IsSecondaryOrcishTownsCaptured( oldOwner, newOwner, heroName )
 				SetObjectRotation( "Gottai", 100 );
 				sleep(2);
 			end;	
-			StartAdvMapDialog( ADVMAPSCENE_SECONDARY_ORCTOWN_CONQUERED, "RemoveSceneObjects" );	
+			StartAdvMapDialog( 0, "RemoveSceneObjects" );	
 		end;
 	end;
 end;
@@ -375,7 +379,6 @@ function EnableTown()
 	SetRegionBlocked( "main_town", nil, PLAYER_4);
 end;
 
-H55_CamFixTooManySkills(PLAYER_1,"Gottai");
 startThread( prim2_HeroMustSurvive );
 startThread( PlayerWin );
 startThread( GiveTransferrableArtifacts );

@@ -40,7 +40,7 @@ PEASANT_HUTS_COUNT = 14; -- Константа для количества домиков крестьян, которые н
 OUR_HERO_GOTAI = "Gottai"; -- Константа для именя героя Готай (главный герой игрока) must survive
 PATH = "Maps/Scenario/A2C2M3/";
 
-SHOOT_COST = 15;
+SHOOT_COST = 5 + 5*GetDifficulty();
 REPAIR_GOLD_COST = 1000;
 REPAIR_WOOD_COST = 15;
 
@@ -502,7 +502,7 @@ function WantToBurn()
 end;
 
 
-function RemoveHeroFromVisitingSlot( townName )
+function RemoveHeroFromVisitingSlot( townName, hero )
 	print( "Town name is "..townName );
 	local playerOwner = GetObjectOwner( townName );
 	print("Player is "..playerOwner);
@@ -789,7 +789,7 @@ end;
 
 function TownCrush()
 	while CATAPULT_TARGETS["sw_center_blue_town"][3] < 3 do sleep(10); end;	
-	RemoveHeroFromVisitingSlot( "blue_haven_center_town" );
+	--RemoveHeroFromVisitingSlot( "blue_haven_center_town" );
 	sleep(1);
 	Play2DSound( "/Maps/Scenario/A2C2M1/Siege_WallCrash02sound.xdb#xpointer(/Sound)" );
 	RazeTown("blue_haven_center_town");	
@@ -825,7 +825,7 @@ end;
 
 function RedTownEastCrush()
 	while CATAPULT_TARGETS["sw_red_town_east"][3] < 3 do sleep(10); end;
-	RemoveHeroFromVisitingSlot("red_haven_east_town");
+	--RemoveHeroFromVisitingSlot("red_haven_east_town");
 	sleep(5);
 	Play2DSound( "/Maps/Scenario/A2C2M1/Siege_WallCrash02sound.xdb#xpointer(/Sound)" );
 	RazeTown( "red_haven_east_town" );
@@ -833,7 +833,7 @@ end;
 
 function RedTownWestCrush()
 	while CATAPULT_TARGETS["sw_red_town_west"][3] < 3 do sleep(10); end;
-	RemoveHeroFromVisitingSlot("red_haven_west_town");
+	--RemoveHeroFromVisitingSlot("red_haven_west_town");
 	sleep(5);
 	Play2DSound( "/Maps/Scenario/A2C2M1/Siege_WallCrash02sound.xdb#xpointer(/Sound)" );
 	RazeTown( "red_haven_west_town" );

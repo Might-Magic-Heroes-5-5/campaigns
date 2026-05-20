@@ -261,9 +261,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### Legend
 - **change:** something not broken but behaves different
-- **fix:** fix of ToE bug
+- **fix:** fix of a bug
 - **scene(xxx)** changes for campaign scenes/cutscenes. xxx inside brackets denote when the cutscene occurs. Intro/Outro means start/end of mission scene.
 - **new:** new campaign feature
+- ** Onslaught mode** - refers to heroes with primary and only priority task to charge at enemy towns and/or heroes based on scenario narrative
 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
@@ -276,7 +277,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C1M3 – Haven: The Siege
 - fix: Tutorial is available and updated for 5.5
 - change: enemy hero army formula was based on Isabel army size **OR** a flat limit whichever is higher. This allowed for abuse as the limit value was static and quite low. The limit formula is now based on the weeks passed since start and increase faster based on diffiuclty.
-- change: As soon as the enemy hero appears, he will try to capture the player town and will target player heroes if they are on his way
+- change: The final enemy is set to onslaught mode, he will charge at player town and target any player heroes along the way
 - new: added Memory Mentor
 - new: Added a commented ambush battle vs necro units (likely leftover by Nival developers). Winning grants a random minor artifact
 
@@ -286,12 +287,15 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C1M5 – Haven: The Fall of the King
 - fix: Tutorial is available and updated for 5.5
-- fix: Siege enemy heroes wander around instead of attacking the castle
+- fix: Siege enemy heroes are now in Onslaught mode as they wandered around instead of attacking the castle.
 - new: added Memory Mentor
 - new: increased grail spawn locations from 3 to 11
-- change: "Protect Dunmor" quest - enemy onslaught attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
-- change: "Protect Dunmor" quest - onslaught attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
+- change: "Protect Dunmor" quest - Siege attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
+- change: "Protect Dunmor" quest - Siege attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
 - change: level cap increased from 32 to 35
+
+### C2M1 – Inferno: The Betrayal
+- change: Final fight vs Erasiel is more challenging
 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
@@ -302,15 +306,19 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C2M4 – Inferno: The Ship
 - fix: Erewell stopped being reinforced after week 4.
+- change: Erewell reinforcements are now more challenging on higher difficulties
+- change: Mines around Erewell are owned by the Preserve player at the start of the game.
+- change: Preserve heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
+- change: Inferno hero Erasiel stats and army are now more challenging
 
 ### C3M1 – Necropolis: The Temptation
-- changed: Starting bonus choice
-- changed: Academy heroes tracking is available on all difficulties but their detection range is being reduced.
 - fix: Enemy hero Amin did not patrol the map as inteneded
+- changed: Academy heroes tracking is available on all difficulties but their detection range is being reduced.
+- changed: Starting bonus choice
 
 ### C3M2 – Necropolis: The Attack
 - fix: Certain player movement could make patrols halt and stop at place indefinitely
-- fix: Enemy patrol ships that attack player hero could trigger multiple combats one after another instead of one
+- fix: Enemy patrol ships attacking the player hero triggered multiple combats one after another instead of one
 
 ### C3M3 – Necropolis: The Invasion
 - fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
@@ -318,20 +326,26 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added Memory Mentor
 
 ### C3M5 – Necropolis: Lord of Heresh
-- fix: Godric's Angel trap does not trigger on a rare occasion which breaks the main quest line
+- fix: Godric's Angel trap sometimes did not trigger which broke the main quest line
 - fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle
 - change: Godric reinforcement mechanic is now aligned with game difficulty level.
 - change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location
-- change: Player3 (Academy) heroes are more aggressive, their onslaught will focus on sieging and taking player cities at any cost
+- change: Player3 (Academy) heroes are now in Onslaught mode, they will aim to take over player towns at any cost
 - new: Added Memory Mentor
 
+### C4M1 – Dungeon: The Clanlord
+- change: Improved army power of some contestants (Erina, Vayshan,Yrbeth)
+
 ### C4M2 – Dungeon: The Expansion
-- fix: Removed an undeground Vampire lords stack  as it could not be attacked nor it guarded any treasures.
+- fix: Removed an undeground Vampire lords stack as it could not be attacked nor it guarded any treasures
+- fix: Dungeon messenger heroes sometimes stuck at top of the map and jam the secondary mission progress
 
 ### C4M3 – Dungeon: The Cultists
-- fix: Red AI player (Inferno) heroes wander around instead of attacking player towns and heroes
-- fix: Red AI player (Inferno) heroes could freeze till end of game
-- fix: multiple 5.5 related script crashes that may stop mission objectives from finishing even though requirements are met
+- fix: Red AI player (Inferno) heroes are now in Onslaught mode, they will charge at player towns and heroes instead of wandering around the map
+- fix: Red AI player (Inferno) heroes sometimes froze and stopped moving till end of the game
+- fix: Blue AI player (Dungeon) and Red AI player (Inferno) heroes were fleeing midcombat. Now they will fight to the very end.
+- fix: multiple MMH55 script bugs frequently caused engine crash and prevented mission objectives from completion
+- fix: Shadya artifacts were not transfered from the previous mission
 - new: Added Memory Mentor
 
 ### C4M4 – Dungeon: The March
@@ -339,6 +353,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C4M5 – Dungeon: Raelag's Offer
 - fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
+- change: Veyer final fight is more challenging and scales with difficulty
 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
@@ -347,8 +362,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M3 - Sylvan: The Defense
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
-- change: Disabled Purple player from hiring heroes in  Syris Thalla.
-- change: Purple player oslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
+- change: Disabled Purple player from hiring heroes in Syris Thalla.
+- change: Purple player onslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
 - change: Diraya skills due to her class being changed from Avenger to Druid
 - fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla.
 - fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
@@ -360,10 +375,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Inferno heroes army is now stronger and will scale up with every month that passes by
 
 ### C5M5 - Sylvan: The Vampire Lord
-- fix: mission dialog where Findan sends a messenger to Zehir did not trigger on start of month 2. This is Nival code error and also did not appear in standard campaigns. The dialog has only narrative meaning and did not break the gameplay.
 - fix: Nikolay occasionally transfered his army to other heroes due to AI not considering him the main player hero.
 - fix: Player 2 heroes no longer flee from combat and fight till the very end.
-- change: Nikolay army is now stronger on Impossible difficulty. He also knows all Dark and Summoning spells and gains 0/5/10/15 Attack and Defense on Normal/Hard/Heroic/Impossible difficuties.
+- change: Nikolay hero has better stats and knows more spells and his army gets stronger based on difficulty.
 - new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
 - new: Combat arena light and Skydome reflects the one on the adventure map.
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
@@ -379,7 +393,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
-- change: First Garrison troop strength increased by about 30%
+- change: First garrison troop strength increased by 30%
 - change: Haven towns are now of higher town level:
    - Dwellings: T1, T2, T3, T4, T5 built up to non-upgraded level.
    - Magic Guilds  from none to level 3
@@ -393,7 +407,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M5 - Academy: Zehir's Hope
 - new: Added Hill Fort on the map and the player starts with 500000 gold
-- changed: Reworked Biara and Sovereign fights
+- changed: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
 - changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
 
 ### A1C1M1 - Freyda: Rebels
@@ -448,22 +462,25 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A1C3M3 - Ylaya: The Meeting
 - fix: unit attack/hit animations on adventure map were too frequent and had stuters
 - fix: unreachable resource pile near the town towards the north
+- change: Raise level cap from 30 to 32
 - new: Added Memory Mentor
 
 ### A1C3M4 - Ylaya: The Dragons
+- change: Soulscar heroes roamed and collected resources, dwellings, mines instead of charging player garrisons or towns but instead 
+- change: Soulscar hero waves consist of 2 heroes that attack together
 - change: Thralsai and his army are now more challenging
 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
 - change: Horncrest army animations on adventure map were too frequent. Siege catapult is now more like siege engine and less like gatling gun.
-- change: Horncrest siege enemy hero Lorenzo is now more powerful
-- change: Lostdale siege enemy hero Andreas is now more powerful
-- change: King Toulghar final fight is more challenging
+- change: Horncrest siege enemy hero Lorenzo level increased
+- change: Lostdale siege enemy hero Andreas level increased
+- change: King Toulghar level increased and his army is more challenging
 - new: Added Memory Mentor
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
-- fix: Removed wondering enemy player hero.
-- changed: Voron Peak defending army strengtened
+- fix: Removed wandering enemy player hero.
+- changed: Voron Peak defending army is more challenging
 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
 - change: Removed tutorial messages as player has already been introduced to Necromancy in previous missions.
@@ -479,7 +496,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Removed human player tavern hiring limit ( was 6 ).
 
 ### A2C1M4 - The Will of Asha: Beasts and Bones
-- fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less then 7 days after he has spawned
+- fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less than 7 days after he has spawned
 - fix: capturing all Gold mines would not complete the related quest
 - fix: Units from Inferno town could be taken by Inferno onsalught heroes
 - changed: Inferno wave heroes army strength scale with time and difficulty
@@ -489,6 +506,22 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Hero level cap removed (was 40)
 - change: Orlando army is now more challenging
 - change: Enemy Haven towns are now fully built
+
+### A2C2M2 - To Honour our Fathers: One Khan, One Clan
+- fix: Dungeon pirate heroes sometimes jammed and stopped moving.
+- fix: Stronghold Tribe harassment waves against the player did not work at all
+- change: AI harassment waves changed from 3 to infinite
+
+### A2C2M3 - To Honour our Fathers: Father Sky's Fury
+- fix: towns cannot be razed with catapults due to a bug in code
+- change: Catapult shots cost from 15 to 5/10/15/20 (based on difficulty)
+
+### A2C2M4 - To Honour our Fathers: Mother Earth's Wisdom
+- fix: QuestHuts questions are asked before their dialogs are played
+- change: Final combat vs Alastor is now more challenging
+
+### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
+- fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would be resolved only if Zehir was carrying the artifact
 
 ## Dialogue changes
 
@@ -535,12 +568,16 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(capture Nebyrciaz): Added missing Agrael cast animation
 
 ### C2M5 – Inferno: Agrael's Decision
+- scene(step in void): Added new scene removed since Vanilla. It is played when Agrael steps into the fog of war. Currently that is not possible without cheats.
 - scene(outro): Removed overly green ambience
 
 ### C3M1 – Necropolis: The Temptation
 - scene(intro): Removed overly foggy ambience
 - scene(Markal death): Added missing Markal spell effect during cast
 - scene(reach Vigil): Adjusted camera height so scene so Markal stays in frame.
+
+### C3M2 – Necropolis: The Attack
+- change: Final battle with Nur in Hikm is now more challenging and scale with difficulty. 
 
 ### C3M3 – Necropolis: The Invasion
 - scene(gather skeletons): Slightly adjusted camera set movement to sync with army cheer
@@ -579,6 +616,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### C5M5 - Sylvan: The Vampire Lord
 - scene(intro): Sound volume was too high
+- scene(messenger): We added back a broken scene that was supposed to trigger at start of month 2 but never did in MMh55 or original game due to Nival bug. Findan sends a messenger to Zehir to warn him of the great danger.
 - scene(outro): Added missing spell effect for Findan at the end
 
 ### C6M3 - Academy: The Triumvirate
@@ -597,6 +635,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(intro): Alaric speech animation
 - scene(intro): Peasant convertion to Horned Daemons was not in sync and looked weird
 - scene(burnt hut): Alaric speech animation
+- scene(outro): Added originally discarded dialog after the mission ends where Elrath brings clarity to Freyda mind with visions about Biara impersonating the queen
 
 ### A1C1M3 - Freyda: Duncan
 - scene(intro): leading peasant happy animation duration was too short

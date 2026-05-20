@@ -1,5 +1,4 @@
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-
 H55_RemoveTheseArtifactsFromBanks = {
 
 ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
@@ -19,6 +18,7 @@ function H55_InitSetArtifacts()
 end;
 
 startThread(H55_InitSetArtifacts);
+slozhnost = GetDifficulty(); 
 --========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
 --###################################### BEGIN #########################################################
 --CONSTANTS
@@ -139,8 +139,7 @@ function Start_reg()
 	end;
 end;
 ------------------------------------------Diff
-function Diff_level()
-	slozhnost = GetDifficulty(); 
+function Diff_level() 
 	if slozhnost == DIFFICULTY_NORMAL then
 		AddObjectCreatures("Dgar", CREATURE_SERAPH, 2);
 		AddObjectCreatures("Dgar", CREATURE_LONGBOWMAN, 30);
@@ -331,6 +330,8 @@ end;
 
 function AIAction3()
 	heroname = "Freyda"
+	SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M5");
+	sleep(10);
 	SaveHeroAllSetArtifactsEquipped("Duncan", "A1C1M5");
 	sleep(5);
 	BlockGame();
@@ -342,6 +343,14 @@ function AIAction3()
 	sleep(15);	
 	ChangeHeroStat( "Freyda", STAT_MOVE_POINTS, -30000 );
 	ChangeHeroStat( "Ving", STAT_MOVE_POINTS, 30000 );
+	local army_ratio = slozhnost + 1;
+	AddObjectCreatures("Ving",     CREATURE_SERAPH, army_ratio *  15);
+	AddObjectCreatures("Ving",   CREATURE_CHAMPION, army_ratio *  30);
+	AddObjectCreatures("Ving",     CREATURE_ZEALOT, army_ratio *  50);
+	AddObjectCreatures("Ving", CREATURE_VINDICATOR, army_ratio * 150);
+	AddObjectCreatures("Ving", CREATURE_LONGBOWMAN, army_ratio * 200);
+	AddObjectCreatures("Ving",   CREATURE_LANDLORD, army_ratio * 250);
+	sleep(50);
 	MoveHeroRealTime( "Ving", GetObjectPosition( heroname )  );
 	sleep(30);
 	UnblockGame();

@@ -1,139 +1,82 @@
-H55_RemoveTheseArtifactsFromBanks = {
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
-ARTIFACT_TAROT_DECK,
-ARTIFACT_ENDLESS_BAG_OF_GOLD
-
-};
-------------------------a2c2m4---------------------------
-
---print("Start_A2C1M2.................");
-
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); ----!!!
-
-function x2()
-InitAllSetArtifacts("A2C2M4", "Kujin");
-LoadHeroAllSetArtifacts("Kujin",  "A2C2M2"  );
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not InitAllSetArtifacts do
+    sleep()
 end
 
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_TAROT_DECK,
+	ARTIFACT_ENDLESS_BAG_OF_GOLD
+};
+
+function H55_InitSetArtifacts()
+	InitAllSetArtifacts( "A2C2M4", "Kujin");
+	LoadHeroAllSetArtifacts( "Kujin", "A2C2M2");
+	sleep(20);
+	H55_CamFixTooManySkills(PLAYER_1, "Kujin");
+end
 
 MAIN_HERO = "Kujin"
 ENEMY_HERO = "Efion"
-
-EnableHeroAI(ENEMY_HERO, nil);
-GiveExp(ENEMY_HERO, 202000 ); ---addexp
-H55_NewDayTrigger = 1;
---Trigger (NEW_DAY_TRIGGER, "DisableAI_TURN")
 
 function H55_TriggerDaily() -- Turn AI off on 2nd day to dont bore player
 	print ("New day");
 	if GetDate( DAY ) == 2 then 
 		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes (PLAYER_2, not nil);
 		print ("AI disabled");
-	end; 
-end;
+	end 
+end
 
-SetRegionBlocked("Andr_mobs", 1, PLAYER_1); 
+function A2C2M4_SetAlastorCombat(koef)
+	AddHeroCreatures( ENEMY_HERO,				 CREATURE_IMP, 100 + koef * 100 );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_FIREBREATHER_HOUND,  50 + koef *  50 );
+	AddHeroCreatures( ENEMY_HERO,  CREATURE_INFERNAL_SUCCUBUS,  10 + koef *  25 );
+	AddHeroCreatures( ENEMY_HERO, 		   CREATURE_NIGHTMARE,  30 + koef *  15 );
+	AddHeroCreatures( ENEMY_HERO, 		   CREATURE_PIT_SPAWN,  10 + koef *  10 );
+	AddHeroCreatures( ENEMY_HERO, 			   CREATURE_DEVIL,   5 + koef *   8 );
+	if koef == 4 then
+		TeachHeroSpell( ENEMY_HERO, SPELL_IMPLOSION );					
+		TeachHeroSpell( ENEMY_HERO,   SPELL_BERSERK );					
+		TeachHeroSpell( ENEMY_HERO, SPELL_VAMPIRISM );		
+	end
+	GiveExp( ENEMY_HERO, 262000 + 20000 * math.pow(2, koef ) );
+	EnableHeroAI( ENEMY_HERO, nil );
+end
 
-
-
--------------------------------------------------------D_Level
-function Diff_level()
-	slozhnost = GetDifficulty(); 
-	if slozhnost == DIFFICULTY_EASY then
+DIFFICULTY = {
+	[0] = function()
 		CreateMonster( "M1", CREATURE_GOBLIN, 60, 72, 73, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
 		CreateMonster( "M2", CREATURE_CENTAUR, 40, 108, 43, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 0 );
 		CreateMonster( "M3", CREATURE_ORC_WARRIOR, 50, 41, 45, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 180 );
 		CreateMonster( "M4", CREATURE_SHAMAN, 40, 46, 83, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 90 );
-	elseif slozhnost == DIFFICULTY_NORMAL then
+		A2C2M4_SetAlastorCombat(1);
+	end,
+	
+	[1] = function()
 		CreateMonster( "M5", CREATURE_ORC_WARRIOR, 30, 41, 45, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 180 );
-	elseif slozhnost == DIFFICULTY_HARD then
+		A2C2M4_SetAlastorCombat(2);
+	end,
+	
+	[2] = function()
 		RemoveHeroCreatures(MAIN_HERO, CREATURE_CENTAUR, 8);	
 		RemoveHeroCreatures(MAIN_HERO, CREATURE_ORC_WARRIOR, 10);
-		AddHeroCreatures(ENEMY_HERO, CREATURE_INFERNAL_SUCCUBUS, 60);
-		AddHeroCreatures(ENEMY_HERO, CREATURE_FAMILIAR, 200);
-	elseif slozhnost == DIFFICULTY_HEROIC then
+		A2C2M4_SetAlastorCombat(3);
+	end,
+	
+	[3] = function()
 		RemoveHeroCreatures(MAIN_HERO, CREATURE_CENTAUR, 10);	
 		RemoveHeroCreatures(MAIN_HERO, CREATURE_ORC_WARRIOR, 15);
-		AddHeroCreatures(ENEMY_HERO, CREATURE_INFERNAL_SUCCUBUS, 95);
-		AddHeroCreatures(ENEMY_HERO, CREATURE_FAMILIAR, 275);
 		RemoveObject( "1_1" );
 		RemoveObject( "1_2" );
 		RemoveObject( "1_3" );
 		RemoveObject( "1_4" );
 		RemoveObject( "1_5" );
-	end;
-	print('difficulty = ',slozhnost);
-end;
+		A2C2M4_SetAlastorCombat(4);
+	end,
+}
 
---RemoveObject( "1_1" );
-------------------------------------------------------Start_mission
-SetPlayerResource(1, 0, 0);
-SetPlayerResource(1, 1, 0);
-SetPlayerResource(1, 2, 0);
-SetPlayerResource(1, 3, 0);
-SetPlayerResource(1, 4, 0);
-SetPlayerResource(1, 5, 0);
-SetPlayerResource(1, 6, 500);
-
-SetObjectEnabled("h1", nil);
-SetObjectEnabled("h2", nil);
-SetObjectEnabled("h3", nil);
-
-sleep( 5 );
-SetObjectiveState('prim1',OBJECTIVE_ACTIVE);
-OpenCircleFog( 5, 112, 0, 4, PLAYER_1 );
-PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", MAIN_HERO, "Kujin1", 0, 0, 0, 0, 0 );
-sleep( 5 );
-MoveCamera(6, 112, GROUND, 25, 3.14/3, 0, 1, 1, 1);
-sleep( 8 );
-MoveCamera(101, 129, GROUND, 25, 3.14/3, 0, 1, 1, 1);
-sleep( 5 );
---Play2DSound( "/Sounds/_(Sound)/Heroes/Biara/Happy.xdb#xpointer(/Sound)" ); ----------------VO	
-print("CHECK");
-
---------------------------------------------------Defeat
-
-function Herkill()  
-	while 1 do
-		sleep(10);
-		if IsHeroAlive(MAIN_HERO) == nil then
-			SetObjectiveState('prim3',OBJECTIVE_FAILED);
-			sleep(2);
-			Loose();
-			break;
-		end;
-	end;
-end;
--------------------------------------------------Kill_inferno_mob
-
-function Mob() 
-	while 1 do
-		sleep ( 10 );
-		if IsObjectExists("Monster") == nil then
-			sleep( 5 );
-			SetObjectiveState('prim2',OBJECTIVE_ACTIVE);
-			break;
-		end;
-	end;
-end;
-
--------------------------------------------------Kill_inferno_hero
-function Obj2_complete()  
-	while 1 do
-		sleep(10);
-		if IsHeroAlive(ENEMY_HERO) == nil then
-			sleep(5);
-			SetObjectiveState("prim2", OBJECTIVE_COMPLETED);
-			sleep(5);
-			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO3_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-			break;
-		end;
-	end;
-end;
 -------------------------------------------------Final_combat
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Finalcombat","AIAction", nil );
-
 function AIAction()
 	BlockGame();
 	sleep(15);
@@ -143,12 +86,9 @@ function AIAction()
 	sleep(25);
 	UnblockGame();	
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Finalcombat",nil);
-end;
+end
 
 -------------------------------------------------Winners
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Final","Pobeda", nil );
-
 function Pobeda()
 	sleep(5);
 	StartDialogScene("/DialogScenes/A2C2/M4/S2/DialogScene.xdb#xpointer(/DialogScene)"); ----///Noaia oeiaeuiay 
@@ -156,11 +96,8 @@ function Pobeda()
 	SaveHeroAllSetArtifactsEquipped( "Kujin",  "A2C2M4" );
 	Win();
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Final",nil);
-end;
-
+end
 -------------------------------------------------Andrey
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Andr_zone","Andrey", nil );
-
 function Andrey()
 	sleep(5);
 	StartDialogScene("/DialogScenes/A2C2/M4/S1/DialogScene.xdb#xpointer(/DialogScene)"); ----///Noaia iia?aaaiey Aia?ay
@@ -168,347 +105,198 @@ function Andrey()
 	OpenCircleFog( 82, 10, 0, 4, PLAYER_1 );
 	MoveCamera(82, 10, GROUND, 50, 1);
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Andr_zone",nil);
-end;
+end
 
 -------------------------------------------------Teleport1
-
-Trigger (OBJECT_TOUCH_TRIGGER, "h1", "Spec_1");
-
 function Spec_1( heroname )
-	HN = heroname;
-	StartAdvMapDialog (0);   --------------------------------0_advmap_dialog
-	sleep(3);
-	QuestionBox("Maps/Scenario/A2C2M4/mess1.txt", "f_1");	
-end;
-
-
-function f_1() 
-	if GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) < 2 then
-		startThread(Rand_1);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) == 2 then
-		startThread(Rand_2);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) > 2 then
-		startThread(Rand_3);	
-	end;
-end;
-
-function Rand_1()
-local x = random(10);
-	if x <= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,nil);
-	end;
-	if x == 9 then
-	SetObjectPos(MAIN_HERO, 122, 12, GROUND);
-	end;
-end;
-
-function Rand_2()
-local x = random(10);
-	if x <= 4 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,nil);
-	end;
-	if x >= 5 then
-	SetObjectPos(MAIN_HERO, 122, 12, GROUND);
-	end;
-end;
-
-function Rand_3()
-local x = random(10);
-	if x <= 7 then
-	SetObjectPos(MAIN_HERO, 122, 12, GROUND);
-	end;
-	if x >= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,CREATURE_SUCCUBUS,3,nil);
-	end;
-end;
---------------------------------------------------------Teleport2
-Trigger (OBJECT_TOUCH_TRIGGER, "h2", "Spec_2");
+	StartAdvMapDialog (0, "QuestionBox('Maps/Scenario/A2C2M4/mess1.txt', 'KnowledgeTest(1)')");
+end
 
 function Spec_2( heroname )
-	HN = heroname;
-	StartAdvMapDialog (1);   --------------------------------1_advmap_dialog
-	sleep(3);
-	QuestionBox("Maps/Scenario/A2C2M4/mess1.txt", "f_2");	
-end;
-
-
-function f_2() 
-	if GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) < 3 then
-		startThread(Rand_11);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) == 3 then
-		startThread(Rand_22);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) > 3 then
-		startThread(Rand_33);	
-	end;
-end;
-
-
-function Rand_11()
-local x = random(10);
-	if x <= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,nil);
-	end;
-	if x == 9 then
-	SetObjectPos(MAIN_HERO, 14, 16, GROUND);
-	end;
-end;
-
-function Rand_22()
-local x = random(10);
-	if x <= 4 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,nil);
-	end;
-	if x >= 5 then
-	SetObjectPos(MAIN_HERO, 14, 16, GROUND);
-	end;
-end;
-
-function Rand_33()
-local x = random(10);
-	if x <= 7 then
-	SetObjectPos(MAIN_HERO, 14, 16, GROUND);
-	end;
-	if x >= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,CREATURE_INFERNAL_SUCCUBUS,5,nil);
-	end;
-end;
-----------------------------------------------------Teleport3
-
-Trigger (OBJECT_TOUCH_TRIGGER, "h3", "Spec_3");
+	StartAdvMapDialog (1, "QuestionBox('Maps/Scenario/A2C2M4/mess1.txt', 'KnowledgeTest(2)')");
+end
 
 function Spec_3( heroname )
-	HN = heroname;
-	StartAdvMapDialog (2);   --------------------------------2_advmap_dialog
-	sleep(2);
-	QuestionBox("Maps/Scenario/A2C2M4/mess1.txt", "f_3");	
-end;
+	StartAdvMapDialog (2, "QuestionBox('Maps/Scenario/A2C2M4/mess1.txt', 'KnowledgeTest(3)')");
+end
 
+A2C2M4_HUTS = {
+	[1] = {	coords = { 122,  12 }, army = { 		 CREATURE_SUCCUBUS, 3 }	},
+	[2] = {	coords = {  14,  16 }, army = { CREATURE_INFERNAL_SUCCUBUS, 5 }	},
+	[3] = {	coords = {  61, 102 }, army = { 			CREATURE_BALOR, 1 }	},
+}
 
-function f_3() 
-	if GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) < 4 then
-		startThread(Rand_111);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) == 4 then
-		startThread(Rand_222);
-	elseif GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) > 4 then
-		startThread(Rand_333);	
-	end;
-end;
-
-function Rand_111()
-local x = random(10);
-	if x <= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_BALOR,1,CREATURE_BALOR,1,CREATURE_BALOR,1,nil);
-	end;
-	if x == 9 then
-	SetObjectPos(MAIN_HERO, 61, 102, GROUND);
-	end;
-end;
-
-function Rand_222()
-local x = random(10);
-	if x <= 4 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_BALOR,1,CREATURE_BALOR,1,CREATURE_BALOR,1,nil);
-	end;
-	if x >= 5 then
-	SetObjectPos(MAIN_HERO, 61, 102, GROUND);
-	end;
-end;
-
-function Rand_333()
-local x = random(10);
-	if x <= 7 then
-	SetObjectPos(MAIN_HERO, 61, 102, GROUND);
-	end;
-	if x >= 8 then
-	StartCombat(MAIN_HERO,nil,3,CREATURE_BALOR,1,CREATURE_BALOR,1,CREATURE_BALOR,1,nil);
-	end;
-end;
-
+function KnowledgeTest( id )
+	local value = (1 + GetDifficulty()) * (1 + id);
+	local hut = A2C2M4_HUTS[id];
+	if GetHeroStat( MAIN_HERO, STAT_KNOWLEDGE ) >= random(value) then
+		SetObjectPos(MAIN_HERO, hut.coords[1], hut.coords[2], GROUND);
+	else
+		StartCombat(MAIN_HERO,nil,3,hut.army[1],hut.army[2],hut.army[1],hut.army[2],hut.army[1],hut.army[2],nil);
+	end
+end
 
 ----------------------------------------Sec_Objs1
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary1","SecObj1", nil );
-
-function SecObj1()
-	sleep(2);	
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary1",nil);
-	sleep(5);
-	SetObjectiveState('sec1',OBJECTIVE_ACTIVE);
-	Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO4_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-	startThread(Artef_1);
-	print("CHECK1.................");
-end;
-
-function Artef_1()
-	while HasArtefact("Kujin", 87 ) ~= not nil do sleep(5) end;
-	SetObjectiveState("sec1", OBJECTIVE_COMPLETED);
-end;
-------------------------------------------Sec_1_faled
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary2","SecObj2_faled", nil );
+function SecObj1()	
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary1", nil);
+	OBJECTIVES.state.findTarrot[2] = 1;
+end
 
 function SecObj2_faled()
-	sleep(2);	
-	if GetObjectiveState("sec1") == OBJECTIVE_ACTIVE then
-		sleep(2)
-		SetObjectiveState('sec1',OBJECTIVE_FAILED);
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary2",nil);
-		print("Secondary1_faled!!!.................");
-	else print("Secondary1_no_active.................");
-	end;
-end;
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary2", nil);
+	if OBJECTIVES.state.findTarrot[2] > 0 and OBJECTIVES.state.findTarrot[2] < 10 then
+		OBJECTIVES.state.findTarrot[2] = 9;
+	end
+end
+
 ----------------------------------------Sec_Objs2_SINK_TEMPLE
+function SecObj2()	
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1", nil);
+	sleep(20);
+	Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO11_Kujin_01sound.xdb#xpointer(/Sound)" );
+end
 
-function SecObj2()
-	sleep(3);	
-	SetObjectiveState('sec2',OBJECTIVE_ACTIVE);
-	sleep(3);
-	Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO11_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1",nil);
-	
-	-- startThread(GotBank); --Nival messed this up
-	sleep(1);
-	SetObjectiveState("sec2", OBJECTIVE_COMPLETED);
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1","SecObj2", nil );
-
--- function GotBank( hero, obj )
-  -- if hero == MAIN_HERO and obj == "temple" then
-	-- SetObjectiveState("sec2", OBJECTIVE_COMPLETED);
-  -- end;
--- end;
+function VO_12(hero)
+	if hero == MAIN_HERO then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1",nil );
+		Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO12_Kujin_01sound.xdb#xpointer(/Sound)" );
+	end
+end
 
 -------------------------------------------Traps
-
 function Combat1()
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "trap1", nil);	
 	CreateMonster( "ms1", CREATURE_SUCCUBUS, 65, 123, 45, 0, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 180 );
-	sleep(2);
+	sleep(20);
 	PlayVisualEffect( "/Effects/_(Effect)/Spells/Bloodlust.xdb#xpointer(/Effect)", "ms1", "ms11", 0, 0, 0, 0, 0 );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "trap1",nil);	
-end;
+	Play2DSound( "/Sounds/_(Sound)/Heroes/Biara/Happy.xdb#xpointer(/Sound)" );	
+end
 
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "trap1","Combat1", nil );
 -------------------------------------------DIALOGS--------------------------------
 function dialog_1(hero)
-	print(hero.." enter");
 	if hero == MAIN_HERO then
-		sleep(5);
-		StartAdvMapDialog (3);   --------------------------------3_advmap_dialog
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dialog_one",nil);
-	end;
-end;
-
+		sleep(5);
+		StartAdvMapDialog (3);
+	end
+end
 
 function Dialog_mage()
 	while 1 do	
-		sleep( 8 );
+		sleep( 20 );
 		if IsPlayerHeroesInRegion ( PLAYER_1, "bridge" ) == not nil then
-			sleep( 2 );
-			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO2_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---			Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO
 			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dialog_one",nil);
-			break;
-		end;
-	end;
-end;
+			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO2_Kujin_01sound.xdb#xpointer(/Sound)" );
+			break
+		end
+	end
+end
 
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dialog_one","dialog_1");
-------------------------------------------------------------------VO_SURHAT_QUESTS
+OBJECTIVES = {
+	state = {
+	   defeatHero = { "prim2", 1 }, -- Banish Inferno Hero
+		  isAlive = { "prim3", 1 }, -- Kujin must survive
+	   findTarrot = {  "sec1", 0 }, -- Find the Tarrot Deck
+	},
 
---function x_volw()
---	sleep( 6 );
---	Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO7_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO	
---	Trigger(OBJECT_TOUCH_TRIGGER, "SUR2", nil);
---end;
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
 
---Trigger(OBJECT_TOUCH_TRIGGER, "SUR2", "x_volw");
--------------------------------------------
---function x_merc()
---	sleep( 6 );
---	Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO9_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO	
---	Trigger(OBJECT_TOUCH_TRIGGER, "SUR3", nil);
---end;
+    prepare = function()
+		startThread(H55_InitSetArtifacts);
+		startThread(Dialog_mage);
+		H55_NewDayTrigger = 1;
+		SetRegionBlocked("Andr_mobs", 1, PLAYER_1);
+		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 500);
+		SetObjectEnabled("h1", nil);
+		SetObjectEnabled("h2", nil);
+		SetObjectEnabled("h3", nil);
 
---Trigger(OBJECT_TOUCH_TRIGGER, "SUR3", "x_merc");
-----------------------------------------------------------------VO_LOST_TEMPLE
---function VO_11(hero)
---	print(hero.." enter");
---	if hero == MAIN_HERO then
---		sleep(5);
---		Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO11_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1",nil);
---	end;
---end;
+		sleep( 5 );
+		SetObjectiveState('prim1',OBJECTIVE_ACTIVE);
+		OpenCircleFog( 5, 112, 0, 4, PLAYER_1 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", MAIN_HERO, "Kujin1", 0, 0, 0, 0, 0 );
+		sleep( 5 );
+		MoveCamera(6, 112, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+		sleep( 8 );
+		MoveCamera(101, 129, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+		sleep( 5 );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Finalcombat", "AIAction", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 	  "Final",   "Pobeda", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,   "Andr_zone",   "Andrey", nil );
+		Trigger (OBJECT_TOUCH_TRIGGER, "h1", "Spec_1");
+		Trigger (OBJECT_TOUCH_TRIGGER, "h2", "Spec_2");
+		Trigger (OBJECT_TOUCH_TRIGGER, "h3", "Spec_3");
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary1", 		"SecObj1", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "secondary2", "SecObj2_faled", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,   "Temple_1", 		"SecObj2", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 	 "trap1", 		"Combat1", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dialog_one", 	   "dialog_1");
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,   "Temple_2", 		  "VO_12");
+		startThread(DIFFICULTY[GetDifficulty()]);
+    end,
 
---Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1","VO_11");
------------------------------------------
-function VO_12(hero)
-	print(hero.." enter");
-	if hero == MAIN_HERO then
-		sleep(5);
-		Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO12_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_1",nil);
-	end;
-end;
+    run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
 
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Temple_2","VO_12");
------------------------------------------------------------------VO_TAROT_QUEST
---function Tarot_objective1()
---	while 1 do
---		if GetObjectiveState("Assa") == OBJECTIVE_ACTIVE then
---			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO5_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---			sleep(5);
---			startThread(Tarot_objective2);
---			break;
---		end;
---	sleep( 3 );
---	end;	
---end;
+			if GetObjectiveState("prim3") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			-- Win is triggered by player hero entering a region called "Final"
+		end
+	end,
+	
+	defeatHero = function()
+		if OBJECTIVES.state.defeatHero[2] == 1 and IsObjectExists("Monster") == nil then
+			SetObjectiveState('prim2',OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.defeatHero[2] = 2;
+		elseif OBJECTIVES.state.defeatHero[2] == 2 and IsHeroAlive(ENEMY_HERO) == nil then
+			SetObjectiveState("prim2", OBJECTIVE_COMPLETED);
+			sleep(5);
+			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO3_Kujin_01sound.xdb#xpointer(/Sound)" );
+			OBJECTIVES.state.defeatHero[2] = 10;
+		end
+	end,
+	
+	isAlive = function()
+		-- start of this task is handled by A2C2M4.xdb
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive(MAIN_HERO) == nil then
+			SetObjectiveState('prim3', OBJECTIVE_FAILED);
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	findTarrot = function()
+		if OBJECTIVES.state.findTarrot[2] == 1 then
+			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO4_Kujin_01sound.xdb#xpointer(/Sound)" );
+			SetObjectiveState('sec1', OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.findTarrot[2] = 2;
+		elseif OBJECTIVES.state.findTarrot[2] == 2 and HasArtefact("Kujin", ARTIFACT_TAROT_DECK ) then
+			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO6_Kujin_01sound.xdb#xpointer(/Sound)");
+			SetObjectiveState("sec1", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.findTarrot[2] = 10;			
+		elseif OBJECTIVES.state.findTarrot[2] == 9 then
+			SetObjectiveState('sec1', OBJECTIVE_FAILED);
+			OBJECTIVES.state.findTarrot[2] = 11;
+		end
+	end
+}
 
---function Tarot_objective2()
---	while 1 do
---		if GetObjectiveState("Assa") == OBJECTIVE_COMPLETED then
---			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO6_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---			break;
---		end;
---	sleep( 3 );
---	end;	
---end;
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start);
 
---function Wolves_1()
---	while 1 do
---		if GetObjectiveState("Q1") == OBJECTIVE_ACTIVE then
---			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO8_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---			sleep(2);
---			break;
---		end;
---	sleep( 3 );
---	end;	
---end;
-
---function Orks_1()
---	while 1 do
---		if GetObjectiveState("Q2") == OBJECTIVE_ACTIVE then
---			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO10_Kujin_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---			sleep(2);
---			break;
---		end;
---	sleep( 3 );
---	end;	
---end;
--------------------------------------------Main-----------------------------------
---startThread(Orks_1);
---startThread(Wolves_1);
---startThread(Tarot_objective1);
-
-H55_CamFixTooManySkills(PLAYER_1,"Kujin");
-
-startThread(x2);
-
-startThread(Dialog_mage);
-
-startThread(Herkill);
-startThread(Mob);
-startThread(Obj2_complete);
-startThread(Diff_level);
+function A2C2M4_debug()
+	pcall(H55_NoFog, 1);
+	SetObjectPosition("Kujin", 31, 123);
+end

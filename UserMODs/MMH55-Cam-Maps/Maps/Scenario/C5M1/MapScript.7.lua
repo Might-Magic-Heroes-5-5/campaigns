@@ -5,7 +5,6 @@ doFile("/scripts/campaign_common.lua");
 while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
-
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 
 H55_RemoveTheseArtifactsFromBanks = {

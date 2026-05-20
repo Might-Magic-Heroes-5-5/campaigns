@@ -1192,7 +1192,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Sawmill.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1250,7 +1250,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Crystal_Cavern.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1272,7 +1272,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Gem_Pond.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1294,7 +1294,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Gold_Mine.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1316,7 +1316,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Sulfur_Dune.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1361,7 +1361,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Ore_Pit.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -1527,7 +1527,7 @@
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Alchemist_Lab.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -79911,7 +79911,7 @@
 				</Editable>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_PIXIE</Creature>
+						<Creature>CREATURE_SPRITE</Creature>
 						<Count>100</Count>
 					</Item>
 					<Item>
@@ -79924,7 +79924,19 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRAND_ELF</Creature>
-						<Count>34</Count>
+						<Count>30</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_WAR_DANCER</Creature>
+						<Count>40</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_WHITE_UNICORN</Creature>
+						<Count>5</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_ANGER_TREANT</Creature>
+						<Count>3</Count>
 					</Item>
 				</armySlots>
 				<spellIDs/>
@@ -87632,16 +87644,16 @@
 				<Experience>40000</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_DRUID</Creature>
-						<Count>6</Count>
+						<Creature>CREATURE_SPRITE</Creature>
+						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_TREANT</Creature>
-						<Count>4</Count>
+						<Creature>CREATURE_WAR_DANCER</Creature>
+						<Count>20</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WOOD_ELF</Creature>
-						<Count>12</Count>
+						<Creature>CREATURE_GRAND_ELF</Creature>
+						<Count>10</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -87690,16 +87702,16 @@
 				<Experience>40000</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_UNICORN</Creature>
-						<Count>4</Count>
+						<Creature>CREATURE_SPRITE</Creature>
+						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_TREANT</Creature>
-						<Count>4</Count>
+						<Creature>CREATURE_WAR_DANCER</Creature>
+						<Count>20</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_PIXIE</Creature>
-						<Count>60</Count>
+						<Creature>CREATURE_GRAND_ELF</Creature>
+						<Count>10</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>

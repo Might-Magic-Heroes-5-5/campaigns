@@ -21,6 +21,22 @@ C3M2_PATROLS = {
 	Sufi = { state = 0, coords = {{66,43}, {94,35}, {116,30}, {129,40}        } },
 }
 
+function C3M2_SetHikmArmy( koef )
+	print("final fight setup");
+	AddObjectCreatures( "Hikm",  	CREATURE_MASTER_GREMLIN, 199 + koef * 100 );
+	AddObjectCreatures( "Hikm",  CREATURE_OBSIDIAN_GARGOYLE, 150 + koef *  80 );
+	AddObjectCreatures( "Hikm",  	   CREATURE_STEEL_GOLEM, 120 + koef *  70 );
+	AddObjectCreatures( "Hikm",  		 CREATURE_ARCH_MAGI,  80 + koef *  40 );
+	AddObjectCreatures( "Hikm",  	  CREATURE_MASTER_GENIE,  40 + koef *  30 );
+	AddObjectCreatures( "Hikm",  	 CREATURE_RAKSHASA_RUKH,  20 + koef *  10 );
+	AddObjectCreatures( "Hikm",  		CREATURE_STORM_LORD,   4 + koef *   5 );
+	ChangeHeroStat("Astral", 	  STAT_ATTACK, koef * 2 );
+	ChangeHeroStat("Astral", 	 STAT_DEFENCE, koef * 2 );
+	ChangeHeroStat("Astral", STAT_SPELL_POWER, koef * 3 );
+	ChangeHeroStat("Astral",   STAT_KNOWLEDGE, koef * 3 ); 
+	GiveExp( "Astral", 1 + 29000 * math.pow(2, koef - 1));
+end
+
 DIFFICULTY = {
 	[0] = function()
 		CreateMonster("liches2",CREATURE_LICH,16,80,12,0); --peasant hut
@@ -37,13 +53,8 @@ DIFFICULTY = {
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,60);
 		AddHeroCreatures("Berein",CREATURE_LICH,8);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,10);
-		SetPlayerStartResource(1,WOOD,30);
-		SetPlayerStartResource(1,ORE,30);
-		SetPlayerStartResource(1,SULFUR,10);
-		SetPlayerStartResource(1,CRYSTAL,10);
-		SetPlayerStartResource(1,MERCURY,10);
-		SetPlayerStartResource(1,GEM,10);
-		SetPlayerStartResource(1,GOLD,12000);
+		SetPlayerStartResources( PLAYER_1, 30, 30, 10, 10, 10, 10, 12000);
+		C3M2_SetHikmArmy(1);
 		DifficultyFactor = 3;
 		print("Difficulty level is easy.");
 	end,
@@ -60,13 +71,8 @@ DIFFICULTY = {
 		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_FORT,2);
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,40);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,6);
-		SetPlayerStartResource(1,WOOD,20);
-		SetPlayerStartResource(1,ORE,20);
-		SetPlayerStartResource(1,SULFUR,5);
-		SetPlayerStartResource(1,CRYSTAL,5);
-		SetPlayerStartResource(1,MERCURY,5);
-		SetPlayerStartResource(1,GEM,4);
-		SetPlayerStartResource(1,GOLD,6000);
+		SetPlayerStartResources( PLAYER_1, 20, 20, 5, 5, 5, 4, 6000);
+		C3M2_SetHikmArmy(2);
 		DifficultyFactor = 3;
 		print("Difficulty level is normal.");
 	end,
@@ -76,13 +82,8 @@ DIFFICULTY = {
 		CreateMonster("vampires",CREATURE_VAMPIRE,22,18,16,0); --Arena
 		CreateMonster("wights",CREATURE_GHOST,52,81,116,0); --Ruined Tower
 		TeachHeroSpell("Nur",SPELL_PHANTOM);
-		SetPlayerStartResource(1,WOOD,12);
-		SetPlayerStartResource(1,ORE,12);
-		SetPlayerStartResource(1,SULFUR,3);
-		SetPlayerStartResource(1,CRYSTAL,3);
-		SetPlayerStartResource(1,MERCURY,3);
-		SetPlayerStartResource(1,GEM,2);
-		SetPlayerStartResource(1,GOLD,2500);
+		SetPlayerStartResources( PLAYER_1, 12, 12, 3, 3, 3, 2, 2500 );
+		C3M2_SetHikmArmy(3);
 		DifficultyFactor = 2;
 		print("Difficulty level is hard.");
 	end,
@@ -90,13 +91,9 @@ DIFFICULTY = {
 	[3] = function()
 		TeachHeroSpell("Nur",SPELL_RESURRECT);
 		TeachHeroSpell("Nur",SPELL_PHANTOM );
-		SetPlayerStartResource(1,WOOD,10);
-		SetPlayerStartResource(1,ORE,10);
-		SetPlayerStartResource(1,SULFUR,3);
-		SetPlayerStartResource(1,CRYSTAL,3);
-		SetPlayerStartResource(1,MERCURY,3);
-		SetPlayerStartResource(1,GEM,2);
-		SetPlayerStartResource(1,GOLD,2000);
+		print("Set Resource");
+		SetPlayerStartResources( PLAYER_1, 10, 10, 3, 3, 3, 2, 2000 );
+		C3M2_SetHikmArmy(4);
 		DifficultyFactor = 2;
 		print("Difficulty level is heroic.");
 	end,
@@ -184,7 +181,7 @@ OBJECTIVES = {
 
 		EnableAIHeroHiring(PLAYER_2,"Hikm",nil);
 		SetObjectEnabled("Titans",nil);
-		startThread(DIFFICULTY[GetDifficulty()]);
+		DIFFICULTY[GetDifficulty()]();
 		PatrolTerminated = 0;
 		DETECT_RADIUS = 18;
 		startThread(Patrol2, "Nur");
@@ -212,8 +209,9 @@ OBJECTIVES = {
 			-- Loss is handled by C3M2.xdb
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
+				sleep(100);
 				CINEMATICS.outro();
-				sleep(50);
+				sleep(100);
 				Win();
 				return
 			end
@@ -380,4 +378,8 @@ function printvar(delay)
 		print("Hero near patrol is ", hz);
 		print("Continue intercept = ", IsConditionTrue[3]);
 	end
+end
+
+function t1()
+	MakeHeroInteractWithObject("Berein", "Hikm");
 end

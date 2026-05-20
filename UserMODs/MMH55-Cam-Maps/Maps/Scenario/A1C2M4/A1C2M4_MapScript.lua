@@ -57,16 +57,16 @@ waitUntilAnswer = 1;
 isPursuit = 0;
 
 function A1C2M4_SetRutgerArmy(koef)
-	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR, CREATURE_LONGBOWMAN, 120 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR, CREATURE_LONGBOWMAN, 125 * koef );
 	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR, CREATURE_VINDICATOR, 100 * koef );
-	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_ZEALOT,  30 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_ZEALOT,  35 * koef );
 	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,   CREATURE_CHAMPION,  20 * koef );
-	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_SERAPH,   7 * koef );
+	AddObjectCreatures( ENEMY_TOWN_TOR_HALLR,     CREATURE_SERAPH,   6 * koef );
 	GiveExp( ENEMY_GARRISON_HERO, 1 + 80000 * math.pow(2,koef));
-	ChangeHeroStat(ENEMY_GARRISON_HERO,      STAT_ATTACK, 4 * koef);
-	ChangeHeroStat(ENEMY_GARRISON_HERO,     STAT_DEFENCE, 5 * koef);
-	ChangeHeroStat(ENEMY_GARRISON_HERO, STAT_SPELL_POWER, 2 * koef);
-	ChangeHeroStat(ENEMY_GARRISON_HERO,   STAT_KNOWLEDGE, 3 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO,      STAT_ATTACK, 3 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO,     STAT_DEFENCE, 4 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO, STAT_SPELL_POWER, 1 * koef);
+	ChangeHeroStat(ENEMY_GARRISON_HERO,   STAT_KNOWLEDGE, 2 * koef);
 end
 
 print("Variables and Constants defined");
