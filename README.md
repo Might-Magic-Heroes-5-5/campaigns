@@ -345,7 +345,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Red AI player (Inferno) heroes sometimes froze and stopped moving till end of the game
 - fix: Blue AI player (Dungeon) and Red AI player (Inferno) heroes were fleeing midcombat. Now they will fight to the very end.
 - fix: multiple MMH55 script bugs frequently caused engine crash and prevented mission objectives from completion
-- fix: Shadya artifacts were not transfered from the previous mission
+- fix: Shadya artifacts were not transferred from the previous mission
 - new: Added Memory Mentor
 
 ### C4M4 – Dungeon: The March
@@ -375,7 +375,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Inferno heroes army is now stronger and will scale up with every month that passes by
 
 ### C5M5 - Sylvan: The Vampire Lord
-- fix: Nikolay occasionally transfered his army to other heroes due to AI not considering him the main player hero.
+- fix: Nikolay occasionally transferred his army to other heroes due to AI not considering him the main player hero.
 - fix: Player 2 heroes no longer flee from combat and fight till the very end.
 - change: Nikolay hero has better stats and knows more spells and his army gets stronger based on difficulty.
 - new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
