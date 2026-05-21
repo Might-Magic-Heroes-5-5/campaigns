@@ -769,7 +769,7 @@ function Winner()
 		if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M3");
 			StartDialogScene("/DialogScenes/A1C2/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
-			sleep ( 10 );
+			sleep ( 100 );
 			Win();
 			break;
 		end;

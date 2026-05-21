@@ -361,6 +361,7 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				sleep(100);
 				Win();
 				return
 			end

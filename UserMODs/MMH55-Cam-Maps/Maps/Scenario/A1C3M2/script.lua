@@ -100,9 +100,9 @@ function Winner()
 		if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M2");
 			sleep(30);
-			StartDialogScene("/DialogScenes/A1C3/M2/S1/DialogScene.xdb#xpointer(/DialogScene)"); ----//Финальная сцена
-			SetObjectiveState('prim1',OBJECTIVE_COMPLETED);
-			sleep(10);
+			StartDialogScene("/DialogScenes/A1C3/M2/S1/DialogScene.xdb#xpointer(/DialogScene)");
+			SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
+			sleep(100);
 			Win();
 			break;
 		end;

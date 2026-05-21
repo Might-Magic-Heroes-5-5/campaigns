@@ -438,8 +438,14 @@
 				</Item>
 			</Bonuses>
 			<HeroesPool>
-				<Count>0</Count>
-				<Heroes/>
+				<Count>1</Count>
+				<Heroes>
+					<Item>
+						<HeroScriptName>Zehir</HeroScriptName>
+						<TargetCampaign href="A2C3.(Campaign).xdb#xpointer(/Campaign)"/>
+						<TargetMission>0</TargetMission>
+					</Item>
+				</Heroes>
 			</HeroesPool>
 		</Item>
 	</Missions>

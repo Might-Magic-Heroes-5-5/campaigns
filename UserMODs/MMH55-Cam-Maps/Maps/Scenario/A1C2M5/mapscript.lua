@@ -224,7 +224,7 @@ function win_check()
 			sleep(20);
 			SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M5" );
 			SaveHeroAllSetArtifactsEquipped(   "Duncan", "A1C2M5" );
-			sleep(20);
+			sleep(100);
 			Win();
 			break;
 		end;

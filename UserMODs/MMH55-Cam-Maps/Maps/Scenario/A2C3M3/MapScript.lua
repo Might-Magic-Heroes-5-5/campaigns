@@ -348,7 +348,7 @@ end;
 function f_win()
 	SaveHeroAllSetArtifactsEquipped( 	"Zehir", "A2C3M3" );
 	SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A2C3M3" );
-	sleep(5);
+	sleep(100);
 	Win();
 end;
 

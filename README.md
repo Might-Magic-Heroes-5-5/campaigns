@@ -487,7 +487,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Reduced amount of defenders (difficulty increase) for troops in the first Necro town.
 - fix: Iluma-Nadin location was not revealed at game start.
 - fix: Objective buildings (Forge, Which Hut, Portal) triggered messages for the human player when visited by the AI player heroes.
-- fix: Ornella artifacts were not transfered to her Necromancer version at the end of the mission
+- fix: Ornella artifacts were not transferred to her Necromancer version at the end of the mission
 
 ### A2C1M2 - The Will of Asha: The Grim Crusade
 - change: enemy heroes Faiz and Gamor armies are more challenging
@@ -522,6 +522,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
 - fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would be resolved only if Zehir was carrying the artifact
+- change: Zehir skills and stats are now transfered from his last mission Zehir's Hope
+- change: Summoning Ilkhm town will consume Zegir XP and bring him to level 10 as well as scale his stats down
 
 ## Dialogue changes
 

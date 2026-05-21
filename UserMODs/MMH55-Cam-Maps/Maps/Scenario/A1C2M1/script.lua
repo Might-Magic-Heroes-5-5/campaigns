@@ -68,7 +68,7 @@ function Objective2()
 		if  GetHeroCreatures( "Wulfstan", CREATURE_STOUT_DEFENDER ) >= 300 then
 			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M1");
 			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-			sleep( 2 );
+			sleep( 50 );
 			Win(); 
 			break;
 		end;

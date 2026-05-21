@@ -531,7 +531,7 @@ function Secscene ()
 end;
 
 function Allwin ()
-	print("Allwin");
+	sleep(50);
 	Win();
 end;	
 ----------------------------//////Deploy_ally_creatures

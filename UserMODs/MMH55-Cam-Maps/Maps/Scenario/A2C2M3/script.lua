@@ -82,10 +82,9 @@ end;
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Final","Pobeda", nil );
 
 function Pobeda()
-	sleep(5);
-	Win();
-	sleep(2);
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Final",nil);
+	sleep(100);
+	Win();
 end;
 
 -------------------------------------------------1

@@ -292,9 +292,9 @@ end;
 
 function DoWin()
 	SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M1");
-	sleep(5);
+	sleep(20);
 	SetObjectiveState("obj2", OBJECTIVE_COMPLETED);
-	sleep(5);
+	sleep(100);
 	Win();
 end;
 

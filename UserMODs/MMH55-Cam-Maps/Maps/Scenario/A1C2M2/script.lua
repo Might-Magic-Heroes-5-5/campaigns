@@ -165,9 +165,9 @@ function H55_FrtTriggerDaily()
 	if IsHeroAlive( ENEMY_HERO ) == nil then
 		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M2");
 		StartDialogScene( "/DialogScenes/A1C2/M2/S1/DialogScene.xdb#xpointer(/DialogScene)" );
-		sleep( 5 );
+		sleep( 20 );
 		SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
-		sleep( 5 );
+		sleep( 20 );
 		Win();
 	end;
 end;

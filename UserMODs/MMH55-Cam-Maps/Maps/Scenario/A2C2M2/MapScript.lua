@@ -499,7 +499,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M2" );
 				SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
 				SetObjectiveState( "obj6", OBJECTIVE_COMPLETED );
-				sleep( 15 );
+				sleep( 100 );
 				Win();
 				return
 			end
