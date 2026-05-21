@@ -136,21 +136,46 @@ Trigger( REGION_ENTER_AND_STOP_TRIGGER, "PALAEDRA","PObjective1", nil );  --PALA
 
 function PrepareVeyerCombat()
 	local koef = GetDifficulty() + 1;
-	AddHeroCreatures( "Veyer",				   CREATURE_IMP, 399 + koef * 200 );
-    AddHeroCreatures( "Veyer",			   CREATURE_CERBERI, 300 + koef * 100 );
-    AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE,  50 + koef *  50 );
-    AddHeroCreatures( "Veyer",			 CREATURE_ARCHDEVIL,  20 + koef *  10 );
-    AddHeroCreatures( "Veyer",		CREATURE_FIRE_ELEMENTAL, 100 + koef *  50 );
-	ChangeHeroStat( "Veyer",      STAT_ATTACK, koef * 5 );
+	AddHeroCreatures( "Veyer", CREATURE_IMP, 499);
+    AddHeroCreatures( "Veyer",	  CREATURE_CERBERI, 400);
+    AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 100);
+    AddHeroCreatures( "Veyer",	CREATURE_ARCHDEVIL,  25);
+    AddHeroCreatures( "Veyer", CREATURE_FIRE_ELEMENTAL, 100);
+	ChangeHeroStat( "Veyer", STAT_ATTACK, koef * 5 );
     ChangeHeroStat( "Veyer",     STAT_DEFENCE, koef * 5 );
     ChangeHeroStat( "Veyer", STAT_SPELL_POWER, koef * 5 );
-    ChangeHeroStat( "Veyer",   STAT_KNOWLEDGE, koef * 5 );
+    
+        if koef > 1 then
+                GiveHeroSkill( "Veyer", PERK_BALLISTA );
+                GiveHeroSkill( "Veyer", SKILL_LEARNING );
+                AddHeroCreatures( "Veyer", CREATURE_IMP, 300 );
+                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 250 );
+                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
+                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL,  20 );
+                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 100);
+        end
 	if koef > 2 then
 		TeachHeroSpell( "Veyer",   SPELL_BERSERK );	
 		TeachHeroSpell( "Veyer", SPELL_VAMPIRISM );
-	end
-	if koef > 1 then
-		GiveExp( "Veyer", 70000 * math.pow(2, koef - 1));
+                GiveHeroSkill( "Veyer", SKILL_LEARNING );
+                GiveHeroSkill( "Veyer", SKILL_LEARNING );
+                GiveHeroSkill( "Veyer", PERK_FIRST_AID );
+                AddHeroCreatures( "Veyer", CREATURE_IMP, 200 );
+                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 200 );
+                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
+                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
+                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
+        end
+        if koef > 3 then
+                GiveHeroSkill( "Veyer", HERO_SKILL_QUICKNESS_OF_MIND );
+                GiveHeroSkill( "Veyer", PERK_EAGLE_EYE );
+                GiveHeroSkill( "Veyer", NECROMANCER_FEAT_LAST_AID );
+                GiveHeroSkill( "Veyer", PERK_TOUGHNESS );
+               AddHeroCreatures( "Veyer", CREATURE_IMP, 100 );
+                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 150 );
+                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 40);
+                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
+                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
 	end
 end
 
