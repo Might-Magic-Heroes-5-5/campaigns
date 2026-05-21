@@ -208,7 +208,7 @@ CINEMATICS = {
 	
 	outro = function()
 		StartDialogScene('/DialogScenes/C5/M5/D2/DialogScene.xdb#xpointer(/DialogScene)');
-		sleep( 2 );
+		sleep( 100 );
     end,
 }
 
@@ -324,7 +324,7 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-				sleep(10);
+				sleep(100);
 				Win();
 				return
 			end

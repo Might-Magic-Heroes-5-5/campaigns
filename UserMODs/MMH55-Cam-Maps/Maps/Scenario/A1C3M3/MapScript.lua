@@ -209,12 +209,12 @@ function winmission(herowin)
 		SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "finish",  nil );
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
-		sleep (5);
+		sleep (10);
 		SetObjectPosition(PlayerHero, 50, 50, 0);
-		sleep (1);
-		--		RemoveObject(PlayerHero);
+		sleep (20);
 		Save("autosave");
 		StartDialogScene("/DialogScenes/A1C3/M3/S2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(100);
 		Win();
 	end;
 end;

@@ -425,7 +425,7 @@ function f_win() --Запускается функцией f_pri6_success
 	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
 	startThread( f_pri1_success );
 	startThread( f_pri5_success );	
-	sleep(20);
+	sleep(100);
 	Win();
 end;
 

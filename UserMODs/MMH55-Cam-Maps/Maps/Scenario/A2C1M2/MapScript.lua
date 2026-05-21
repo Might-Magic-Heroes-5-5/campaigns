@@ -250,7 +250,7 @@ end;
 
 function Complete_miss_fin()
 	SaveHeroAllSetArtifactsEquipped( "Arantir",  "A2C1M2" );
-	sleep(5);
+	sleep(100);
 	Win();
 end;
 

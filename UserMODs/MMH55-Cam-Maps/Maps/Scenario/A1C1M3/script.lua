@@ -431,7 +431,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState( "prim1" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "prim2" ) == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped('Freyda', "A1C1M3");
-				sleep( 50 );
+				sleep( 100 );
 				Win();
 			end
 		end

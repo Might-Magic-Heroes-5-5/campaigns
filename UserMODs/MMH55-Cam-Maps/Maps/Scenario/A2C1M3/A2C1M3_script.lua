@@ -782,10 +782,10 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim1_MeetArantir") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2_CaptureAllTowns") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(20);
+				sleep(100);
 				SaveHeroAllSetArtifactsEquipped( ORNELLA, "A2C1M3" );
 				SaveHeroAllSetArtifactsEquipped( ARANTIR, "A2C1M3" );
-				sleep(20);
+				sleep(100);
 				Win();
 				return
 			end

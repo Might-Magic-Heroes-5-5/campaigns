@@ -221,9 +221,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped(   "Heam", "C6M3" );
 				sleep(30);
 				Save("Scene_18");
-				sleep(10);
-				CINEMATICS.outro();
-				sleep(20);
+				sleep(200);
 				Win();
 				return
 			end
@@ -300,6 +298,7 @@ OBJECTIVES = {
 			Trigger(OBJECT_TOUCH_TRIGGER, "post", nil);
 			OBJECTIVES.state.defeatMarkal[2] = 5;
 		elseif OBJECTIVES.state.defeatMarkal[2] == 5 and GetObjectOwner("spes") == PLAYER_1 then
+			CINEMATICS.outro();
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.defeatMarkal[2] = 10;
 		end

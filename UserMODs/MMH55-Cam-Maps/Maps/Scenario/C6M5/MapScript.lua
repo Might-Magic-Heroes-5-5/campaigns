@@ -163,9 +163,9 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("reach_deamon_lord") == OBJECTIVE_COMPLETED and GetObjectiveState("capture_biara") == OBJECTIVE_COMPLETED then
 				SetObjectiveState("save_isabell", OBJECTIVE_COMPLETED);
-				sleep(50);
+				sleep(100);
 				CINEMATICS.outro();
-				sleep(20);
+				sleep(100);
 				Win();
 				return
 			end

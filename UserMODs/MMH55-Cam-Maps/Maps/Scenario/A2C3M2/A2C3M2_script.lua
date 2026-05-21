@@ -74,7 +74,6 @@ SOUND_EFFECT_HOLY_WORD = "/Sounds/_(Sound)/Spells/HolyWord_______255.xdb#xpointe
 SOUND_EFFECT_GATING = "/Sounds/_(Sound)/Spells/SummonOverEnd.xdb#xpointer(/Sound)";
 
 -- константы для диалоговых сцен
---SCENE_MISSION_COMPLETED = "/DialogScenes/A2C3/M2/S2/DialogScene.xdb#xpointer(/DialogScene)";
 SCENE_ZEHIR_COMPLETES_RITE = "/DialogScenes/A2C3/M2/S1/DialogScene.xdb#xpointer(/DialogScene)";
 SCENE_ZEHIR_DUNCAN_FREYDA_DISCUSS = "/DialogScenes/A2C3/M2/S2/DialogScene.xdb#xpointer(/DialogScene)";
 
@@ -1013,9 +1012,9 @@ function prim_DefeatInfernoHeroAndDestroyTown_completed()
 	--StartDialogScene( SCENE_ZEHIR_DUNCAN_FREYDA_DISCUSS );
 	SaveHeroAllSetArtifactsEquipped( OUR_HERO_FREYDA, "A2C3M2");
 	SaveHeroAllSetArtifactsEquipped( OUR_HERO_DUNCAN, "A2C3M2");
-	sleep(1);
+	sleep(20);
 	SetObjectiveState( "prim5_CaptureDeamonMainTown", OBJECTIVE_COMPLETED );
-	--StartDialogScene( SCENE_MISSION_COMPLETED, "WinMission");
+	sleep(100);
 	Win(PLAYER_1);
 end;
 
@@ -1032,12 +1031,6 @@ function PlayVoiceoverWhenMainInfernoTownDestroyed()
 		Play2DSound( VOICEOVER_MAIN_INFERNO_TOWN_DESTROYED );
 	end;
 end;
-
-function WinMission()
-	sleep(5);
-	Win(PLAYER_1);
-end;
-
 
 ------------------------------------------------------------------------
 --     Function Name: 

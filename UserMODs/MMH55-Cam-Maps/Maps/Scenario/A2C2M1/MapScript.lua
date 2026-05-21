@@ -479,7 +479,7 @@ function WinMission()
 	end;
 	SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
 	SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M1" );
-	sleep(5);
+	sleep(100);
 	Win(PLAYER_1);
 end;
 

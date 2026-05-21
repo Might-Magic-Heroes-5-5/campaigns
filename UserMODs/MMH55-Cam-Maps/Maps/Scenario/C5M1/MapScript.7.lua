@@ -243,8 +243,7 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
-				CINEMATICS.outro();
-				sleep(10);
+				sleep(100);
 				Win();
 				return
 			end
@@ -328,6 +327,7 @@ OBJECTIVES = {
 			SaveHeroAllSetArtifactsEquipped("Heam", "C5M1");
 			SetObjectiveState("prim4", OBJECTIVE_COMPLETED);
 			sleep(5);
+			CINEMATICS.outro();
 			LevelUpHero("Heam");
 			OBJECTIVES.state.demonArmy[2] = 10;
 		end

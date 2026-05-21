@@ -381,9 +381,8 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-				sleep( 20 );
 				Save("autosave");
-				CINEMATICS.outro();
+				sleep(100);
 				Win();
 				return
 			end
@@ -466,6 +465,7 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
 			OBJECTIVES.state.captureTorHrall[2] = 2;
 		elseif OBJECTIVES.state.captureTorHrall[2] == 2 and GetObjectOwner("TorHrall") == PLAYER_1 then
+			CINEMATICS.outro();
 			SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.captureTorHrall[2] = 10;
 		end

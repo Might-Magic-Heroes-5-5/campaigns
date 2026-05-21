@@ -579,7 +579,7 @@ function f_win()
 	if GetObjectiveState( "pri2" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "pri1" ) == OBJECTIVE_COMPLETED then	
 		print( "roflmao nop" )
 		SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M1" );
-		sleep(5);
+		sleep(50);
 		Win();
 	end;
 end;

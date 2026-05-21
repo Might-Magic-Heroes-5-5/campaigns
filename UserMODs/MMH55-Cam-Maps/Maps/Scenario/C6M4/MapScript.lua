@@ -109,9 +109,7 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-				CINEMATICS.defeatIsabel();
-				CINEMATICS.outro();
-				sleep(10);
+				sleep(100);
 				Win();
 				return
 			end
@@ -127,6 +125,8 @@ OBJECTIVES = {
 			sleep(20);
 			Save("Scene_19");
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
+			CINEMATICS.defeatIsabel();
+			CINEMATICS.outro();
 			OBJECTIVES.state.riteIsabel[2] = 10;
 		end
 	end,
