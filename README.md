@@ -311,6 +311,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Preserve heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
 - change: Inferno hero Erasiel stats and army are now more challenging
 
+### C2M5 – Inferno: Agrael's Decision
+- change: The creature stack defending Tieru bridge scales with difficulty
+
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
 - changed: Academy heroes tracking is available on all difficulties but their detection range is being reduced.

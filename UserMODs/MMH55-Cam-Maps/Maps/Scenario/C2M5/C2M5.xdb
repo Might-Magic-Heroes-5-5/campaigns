@@ -37605,7 +37605,7 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>tieru_guards</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Preserve/Gold_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -37614,7 +37614,7 @@
 				<Amount2>4</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>false</DoesNotGrow>
+				<DoesNotGrow>true</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -37632,7 +37632,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_UNICORN</Creature>
+						<Creature>CREATURE_WAR_UNICORN</Creature>
 						<Amount>9</Amount>
 						<Amount2>12</Amount2>
 						<CustomAmount>true</CustomAmount>
