@@ -1,10 +1,12 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
+
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 
 H55_RemoveTheseArtifactsFromBanks = {
@@ -23,6 +25,28 @@ function H55_InitSetArtifacts()
 end
 
 startThread(H55_InitSetArtifacts);
+
+H55c_AI_CONTROLLED = {
+  player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+      state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+	  heroes = {},
+	  enemies = {},
+  },
+  player2 = {
+      state = 1,
+	  heroes = {},
+	  enemies = {},
+  },
+  player3 = {
+      state = 2,       -- Red Inferno player - Biara
+	  heroes = {},
+	  enemies = {
+	    { priority = 1.0, heroes = 0.5, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+	    { priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+      }
+  }
+}
 
 ---VARS AND CONSTANTS---
 borders={'Border1','Border2','Border3','Border4','Border5'};
@@ -48,7 +72,7 @@ end
 
 function contest_point()
 	for k,h in pl_message_regions do
-		sleep(5);
+		sleep(20);
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER,pl_message_regions[k],"at_sylvan_post_gate");
 	end
 end
@@ -57,31 +81,9 @@ function mark_attacked(id)
     C5M1_attacked_garrison[id] = 1   -- any non-nil value
 end
 
-function at_sylvan_post_gate(h_n)
-	if GetObjectOwner(h_n) == 1 then
+function at_sylvan_post_gate(hero)
+	if GetObjectOwner(hero) == PLAYER_1 then
 		MessageBox('/Maps/Scenario/C5M1/alarm.txt');
-	elseif GetObjectOwner(h_n) == 2 then
-		local x,y,z = GetObjectPosition(h_n);
-		local choice = nil;
-		local closest_distance = 30;
-		local onslaught_hero = nil;
-		for name, coords in SylvanPosts do
-			local dx = coords[1] - x;
-			local dy = coords[2] - y;
-			local distance = math.sqrt(dx*dx + dy*dy);
-			if closest_distance > distance then
-				closest_distance = distance;
-				choice = name;
-				onslaught_hero = coords[4];
-			end
-		end
-		print(h_n);
-		print(onslaught_hero);
-		if choice ~= nil and onslaught_hero == h_n and GetObjectOwner(choice) ~= 2 then
-			ChangeHeroStat(h_n, STAT_MOVE_POINTS, -5000);
-			startThreadOnce(MakeHeroInteractWithObject, h_n, choice);
-			SylvanPosts[choice][4] = nil;
-		end
 	end
 end
 
@@ -126,7 +128,7 @@ function borderPosts_capture_count(play_1,play_2,name_h,garrison)
 end
 
 function attackBorder(hero, order)
-	pos = SylvanPosts[order];
+	--pos = SylvanPosts[order];
 	exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 	ChangeHeroStat(hero, STAT_EXPERIENCE, exp*(dif/4));
 	if IsHeroAlive(hero) == nil then
@@ -142,15 +144,15 @@ function attackBorder(hero, order)
 	AddHeroCreatures(hero,	 CREATURE_SHADOW_DRAGON,  1 + num*dif/8);
 	sleep(5);
 	DenyAIHeroFlee(hero, not nil);
-	MoveHero(hero, pos[1], pos[2], pos[3]);
-	SylvanPosts[order][4] = hero;
-	print(hero," attack at border post ",pos[1],":",pos[2],":",pos[3]);
+	--MoveHero(hero, pos[1], pos[2], pos[3]);
+	--SylvanPosts[order][4] = hero;
+	--print(hero," attack at border post ",pos[1],":",pos[2],":",pos[3]);
 end
 
 DIFFICULTY = {
 	[0] = function()
 		dif = 1;
-		demon_invasion_day = 43;
+		demon_invasion_day = 37;
 		SetTownBuildingLimitLevel('Damlad', 11, 2);
 		SetTownBuildingLimitLevel('Damlad', 12, 2);
 		AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
@@ -158,17 +160,17 @@ DIFFICULTY = {
 
 	[1] = function()
 		dif = 2;
-		demon_invasion_day = 39;
+		demon_invasion_day = 37;
 	end,
 
 	[2] = function()
 		dif = 3;
-		demon_invasion_day = 34;
+		demon_invasion_day = 37;
 	end,
 
 	[3] = function()
 		dif = 4;
-		demon_invasion_day = 30;
+		demon_invasion_day = 37;
 	end,
 }
 
@@ -267,7 +269,8 @@ OBJECTIVES = {
 			heroes=remove_element(hero, heroes);
 			points=remove_element(post, points);
 		end
-		if OBJECTIVES.state.holdBorders[2] > 1 and OBJECTIVES.state.demonArmy[2] == 3 then
+
+		if OBJECTIVES.state.holdBorders[2] > 1 and OBJECTIVES.state.demonArmy[2] > 1 then
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.holdBorders[2] = 10;
 		end
@@ -310,8 +313,8 @@ OBJECTIVES = {
 			AddHeroCreatures("Biara",				CREATURE_BALOR, dif *   4);
 			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL, dif *   3);
 			EnableHeroAI("Biara", not nil);
-			sleep(5);
-			startThread(H55_AttackTown,"Biara", "Damlad");
+			sleep(10);
+			H55c_AIAddHero("Biara");
 			OBJECTIVES.state.demonArmy[2] = 2;
 		elseif OBJECTIVES.state.demonArmy[2] == 2 and IsObjectVisible(PLAYER_1, "Biara") then
 			CINEMATICS.demonArmy();
@@ -326,7 +329,7 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.demonArmy[2] == 3 and IsHeroAlive("Biara") == nil then
 			SaveHeroAllSetArtifactsEquipped("Heam", "C5M1");
 			SetObjectiveState("prim4", OBJECTIVE_COMPLETED);
-			sleep(5);
+			sleep(10);
 			CINEMATICS.outro();
 			LevelUpHero("Heam");
 			OBJECTIVES.state.demonArmy[2] = 10;
@@ -360,3 +363,4 @@ OBJECTIVES = {
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
+startThread( H55c_AI_main );
