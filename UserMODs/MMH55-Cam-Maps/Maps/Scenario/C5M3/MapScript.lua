@@ -217,7 +217,7 @@ OBJECTIVES = {
 				return
 			end
 			
-			if GetObjectiveState("harrison") == OBJECTIVE_COMPLETED and GetObjectiveState("twoheros") == OBJECTIVE_COMPLETED then;
+			if GetObjectiveState("harrison") == OBJECTIVE_COMPLETED and GetObjectiveState("twoheros") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
 				sleep(100);
 				SaveHeroAllSetArtifactsEquipped(   "Heam", "C5M3");
