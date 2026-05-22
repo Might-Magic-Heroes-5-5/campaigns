@@ -55,6 +55,34 @@ function stepIntoVoid(hero)
     Loose();
 end
 
+function SetFinalCombat()
+	local diff = GetDifficulty();
+	if diff == 0 then
+		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  60 );
+		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  30 );
+		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  15 );
+	end
+
+	if diff == 1 then
+		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  75 );
+		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  50 );
+		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  25 );
+	end
+
+	if diff == 2 then
+		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  90 );
+		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  60 );
+		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  35 );
+	end
+
+	if diff == 3 then
+		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN, 100 );
+		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  75 );
+		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  40 );
+	end
+end
+
+startThread(SetFinalCombat);
 startThread(AgraelSurvive);
 Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru');
 Trigger(WAR_FOG_ENTER_TRIGGER, 'stepIntoVoid');
