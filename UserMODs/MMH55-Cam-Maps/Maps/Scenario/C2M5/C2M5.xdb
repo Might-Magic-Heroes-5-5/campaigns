@@ -38303,6 +38303,29 @@
 				<GroupID>0</GroupID>
 			</AdvMapBuilding>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_202E0EED-9152-4DF4-9DFB-70A2BBCEBF9D">
+			<AdvMapBuilding>
+				<Pos>
+					<x>142</x>
+					<y>109</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Objects-All-Terra/War_Machine_Factory.(AdvMapBuildingShared).xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
@@ -38377,6 +38400,66 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>147</x1>
+				<y1>9</y1>
+				<x2>150</x2>
+				<y2>20</y2>
+			</Rect>
+			<Name>fog_death1</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>156</x1>
+				<y1>61</y1>
+				<x2>172</x2>
+				<y2>68</y2>
+			</Rect>
+			<Name>fog_death2</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>

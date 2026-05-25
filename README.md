@@ -313,6 +313,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C2M5 – Inferno: Agrael's Decision
 - change: The creature stack defending Tieru bridge scales with difficulty
+- new: Added War Machine factory on the map
 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
@@ -573,7 +574,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 - scene(capture Nebyrciaz): Added missing Agrael cast animation
 
 ### C2M5 – Inferno: Agrael's Decision
-- scene(step in void): Added new scene removed since Vanilla. It is played when Agrael steps into the fog of war. Currently that is not possible without cheats.
+- scene(step in void): Added new scene removed since Vanilla. It is played when Agrael steps close to the fog of war on some places on the map. He is consumed by it and thus defeated.
 - scene(outro): Removed overly green ambience
 
 ### C3M1 – Necropolis: The Temptation
