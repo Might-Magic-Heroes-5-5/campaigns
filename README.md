@@ -306,7 +306,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C2M4 – Inferno: The Ship
 - fix: Erewell stopped being reinforced after week 4.
-- change: Erewell reinforcements are now more challenging on higher difficulties
+- change: Erewell town is fully developed and reinforcements are now more challenging on higher difficulties
 - change: Mines around Erewell are owned by the Preserve player at the start of the game.
 - change: Preserve heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
 - change: Inferno hero Erasiel stats and army are now more challenging
