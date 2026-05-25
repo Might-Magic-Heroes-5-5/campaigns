@@ -85,4 +85,5 @@ end
 startThread(SetFinalCombat);
 startThread(AgraelSurvive);
 Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru');
-Trigger(WAR_FOG_ENTER_TRIGGER, 'stepIntoVoid');
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death1', 'stepIntoVoid');
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death2', 'stepIntoVoid');
