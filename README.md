@@ -310,6 +310,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Mines around Erewell are owned by the Preserve player at the start of the game.
 - change: Preserve heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
 - change: Inferno hero Erasiel stats and army are now more challenging
+- new: Added Memory Mentor
 
 ### C2M5 – Inferno: Agrael's Decision
 - change: The creature stack defending Tieru bridge scales with difficulty
