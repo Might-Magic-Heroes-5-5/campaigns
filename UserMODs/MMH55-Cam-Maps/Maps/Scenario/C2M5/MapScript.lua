@@ -5,7 +5,7 @@ function H55_InitSetArtifacts()
     LoadHeroAllSetArtifacts("Agrael", "C2M4" );
 	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1, "Agrael" );
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
@@ -36,7 +36,7 @@ end
 function AgraelSurvive()
 	print ("Thread AgraelSurvive has been started...");
 	while 1 do
-		sleep(10);
+		sleep(20);
 		if (IsHeroAlive("Agrael") == nil) then
 			print("Our glorious hero is dead, but his dark soul will be with us forever...");
 			sleep(20);
@@ -44,15 +44,22 @@ function AgraelSurvive()
 			sleep(30);
 			Loose(0);
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function stepIntoVoid(hero)
 	print(hero.." triggered");
 	StartDialogScene("/DialogScenes/C2/M5/R2/DialogScene.xdb#xpointer(/DialogScene)");
 	sleep(20);
     Loose();
+end
+
+function AgraelHasDefeatedMapGuardians()
+	while IsObjectExists("cartographer_guard") ~= nil do sleep(50); end
+	print("Void disabled");
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death1', nil );
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death2', nil );
 end
 
 function SetFinalCombat()
@@ -84,6 +91,7 @@ end
 
 startThread(SetFinalCombat);
 startThread(AgraelSurvive);
-Trigger(REGION_ENTER_AND_STOP_TRIGGER,'tieru', 'AgraelComeToTieru');
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death1', 'stepIntoVoid');
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death2', 'stepIntoVoid');
+startThread(AgraelHasDefeatedMapGuardians);
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'tieru', 'AgraelComeToTieru' );
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death1', 'stepIntoVoid' );
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'fog_death2', 'stepIntoVoid' );
