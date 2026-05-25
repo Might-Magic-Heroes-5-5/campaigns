@@ -151,26 +151,27 @@ end
 
 function GetExpToLevel( j )
 	local a = 1;
-	if j >= 30 then a = 30 else a = j end;
+	if j >= 40 then a = 40 else a = j end;
 	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
 	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
 	ExpArrayLess12.n = 12;
 					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
-	ExpArrayMore12 = {24320,28784,34141,40569,48283,57539,68647,81977,97972,117166,140200,167839};
+	ExpArrayMore12 = {24300,28700,34100,40500,48200,57400,68500,81700,97600,116000,139000,167000};
 	ExpArrayMore12.n = 12;
-					--LEVEL 25     26     27     28     29     30     31      32      33      34
-	ExpArrayMore25 = {201007,244126,304491,395040,539917,786208,1229533,2071000,3756484,7294215};
-	ExpArrayMore25.n = 10;
+					--LEVEL 25     26     27     28     29     30     31      32      33      34      35     36     37     38     39    40 
+	ExpArrayMore25 = {200000,239000,286000,343000,411000,492000,590000,706000,846000,1010000,1210000,1450000,1740000,2080000,2500000,3000000,3600000};
+	ExpArrayMore25.n = 16;
+
 	if a <= 12 then
 		sum = ExpArrayLess12[a];
 	else
 		if a < 25 then
 			sum = ExpArrayMore12[a-12];
 		else
-			if a < 35 then
+			if a < 40 then
 				sum = ExpArrayMore25[a-24];
 			else
-				print("Das ist fantastisch!!!");
+				print("Wonderfull!!!");
 				sum = 0;
 			end
 		end
