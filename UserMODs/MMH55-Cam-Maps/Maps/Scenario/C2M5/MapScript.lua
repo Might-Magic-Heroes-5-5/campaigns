@@ -58,27 +58,27 @@ end
 function SetFinalCombat()
 	local diff = GetDifficulty();
 	if diff == 0 then
-		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  60 );
-		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  30 );
-		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  15 );
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 44 );
+                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 44 );
+                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 44);
 	end
 
 	if diff == 1 then
-		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  75 );
-		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  50 );
-		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  25 );
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 79 );
+                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 79 );
+                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 79);
 	end
 
 	if diff == 2 then
-		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN,  90 );
-		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  60 );
-		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  35 );
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 114 );
+                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 114);
+                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 114);
 	end
 
 	if diff == 3 then
-		AddObjectCreatures("tieru_guards", 	   CREATURE_WAR_UNICORN, 100 );
-		AddObjectCreatures("tieru_guards", CREATURE_TREANT_GUARDIAN,  75 );
-		AddObjectCreatures("tieru_guards", 	   CREATURE_GOLD_DRAGON,  40 );
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 149 );
+                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 149 );
+                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 149 );
 	end
 end
 
