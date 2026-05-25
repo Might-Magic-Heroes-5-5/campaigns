@@ -97713,6 +97713,29 @@
 				</AdditionalStacks>
 			</AdvMapMonster>
 		</Item>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_ED581654-F546-4C66-9837-A238E7266FC6">
+			<AdvMapBuilding>
+				<Pos>
+					<x>17</x>
+					<y>115</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/H5A2/SpellMentor.xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
