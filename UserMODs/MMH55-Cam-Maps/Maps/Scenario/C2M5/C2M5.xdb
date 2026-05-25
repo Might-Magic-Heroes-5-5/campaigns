@@ -29495,7 +29495,6 @@
 				<Shared href="/MapObjects/Preserve/Alt_upgrade/Rainbow_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>4</Amount>
-				<Amount2>5</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -29512,19 +29511,17 @@
 				</Resources>
 				<ArtifactID>ARTIFACT_NONE</ArtifactID>
 				<Mood>MONSTER_MOOD_WILD</Mood>
-				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WHITE_UNICORN</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>12</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
-						<Amount>5</Amount>
-						<Amount2>7</Amount2>
+						<Creature>CREATURE_ANGER_TREANT</Creature>
+						<Amount>8</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -36485,8 +36482,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Preserve/Alt_upgrade/Rainbow_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>4</Amount>
-				<Amount2>5</Amount2>
+				<Amount>15</Amount>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -36503,19 +36499,17 @@
 				</Resources>
 				<ArtifactID>ARTIFACT_NONE</ArtifactID>
 				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
-				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<Courage>MONSTER_COURAGE_ALWAYS_FIGHT</Courage>
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WAR_UNICORN</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>100</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
-						<Amount>5</Amount>
-						<Amount2>7</Amount2>
+						<Creature>CREATURE_ANGER_TREANT</Creature>
+						<Amount>75</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -37610,8 +37604,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Preserve/Gold_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>3</Amount>
-				<Amount2>4</Amount2>
+				<Amount>1</Amount>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37632,15 +37625,13 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_WAR_UNICORN</Creature>
-						<Amount>9</Amount>
-						<Amount2>12</Amount2>
+						<Creature>CREATURE_RAINBOW_DRAGON</Creature>
+						<Amount>1</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
-						<Amount>7</Amount>
-						<Amount2>9</Amount2>
+						<Creature>CREATURE_GREEN_DRAGON</Creature>
+						<Amount>1</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
