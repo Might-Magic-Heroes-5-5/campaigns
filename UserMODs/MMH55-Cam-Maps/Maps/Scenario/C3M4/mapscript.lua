@@ -23,8 +23,12 @@ SetPlayerResource(1, 4, 0);
 SetPlayerResource(1, 5, 0);
 SetPlayerResource(1, 6, 1);
 
-ChangeHeroStat("Cyrus", STAT_EXPERIENCE, 140000);
-
+local army_diff = GetDifficulty() + 1;
+ChangeHeroStat("Cyrus", STAT_EXPERIENCE, 140000);        
+                        ChangeHeroStat("Cyrus", STAT_ATTACK, 3 * army_diff);
+						ChangeHeroStat("Cyrus", STAT_DEFENCE, 3 * army_diff);
+						ChangeHeroStat("Cyrus", STAT_SPELL_POWER, 4 * army_diff);
+						ChangeHeroStat("Cyrus", STAT_KNOWLEDGE, 4 * army_diff);
 ----------------------------------//Titans
 function mob1()
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "100", nil );
