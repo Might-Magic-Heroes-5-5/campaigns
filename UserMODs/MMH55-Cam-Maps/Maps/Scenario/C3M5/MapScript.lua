@@ -359,7 +359,7 @@ end
 BATTLES = {
   ambushByAngels = {
     start = function(hero)
-      StartCombat("Berein",nil,4,CREATURE_ARCHANGEL,4,CREATURE_ANGEL,5,CREATURE_ANGEL,5,CREATURE_ARCHANGEL,4,nil,"BATTLES.ambushByAngels.finish");
+      StartCombat("Berein",nil,3,CREATURE_ARCHANGEL,12,CREATURE_ANGEL,10,CREATURE_ANGEL,10,nil,"BATTLES.ambushByAngels.finish");
     end,
 
     finish = function(hero, result)
@@ -442,16 +442,16 @@ function desentir()
 			end
 			if GetDifficulty() == 2 then
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
-				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 1); -- Paladins
-				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 2); -- Priests
-				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")   + 10); -- Footman
-				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")    + 7); -- Archers
+				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17")  + 1); -- Paladins
+				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 2); -- Inquisitors
+				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")   + 10); -- Squires
+				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")    + 7); -- Marksman
 			elseif GetDifficulty() == 3 then
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
-				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16")  + 2); -- Paladins
-				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 3); -- Priests
-				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")   + 11); -- Footman
-				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")    + 8); -- Archers
+				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17")  + 2); -- Paladins
+				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 3); -- Inquisitors
+				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")   + 11); -- Squires
+				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")    + 8); -- Marksman
 			end
 			desentir_day = GetDate(ABSOLUTE_DAY);
 		end
