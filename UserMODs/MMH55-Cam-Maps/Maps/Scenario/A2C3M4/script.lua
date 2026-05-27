@@ -171,7 +171,7 @@ function Start_Wolfstan()
 end;
 
 function WulfstanSetUp()
-	LoadHeroAllSetArtifacts( "Wulfstan",  "A2C3M3"  );
+	-- LoadHeroAllSetArtifacts( "Wulfstan",  "A2C3M3"  );
 	H55_CamFixTooManySkills(PLAYER_1,"Wulfstan");
 	sleep( 2 );
 	ChangeHeroStat( "Wulfstan", STAT_MANA_POINTS, 500 );
@@ -258,7 +258,7 @@ function Start_Freyda()
 	sleep(8);
 	Play2DSound( "/Maps/Scenario/A2C3M4/C3M4_VO18_Freyda_01sound.xdb#xpointer(/Sound)" );
 	sleep( 40 );
-	LoadHeroAllSetArtifacts( "Freyda",  "A2C3M2"  );  -----!
+	-- LoadHeroAllSetArtifacts( "Freyda",  "A2C3M2"  );  -----!
 	H55_CamFixTooManySkills(PLAYER_1,"Freyda");
 	sleep( 2 );
 	ChangeHeroStat( "Freyda", STAT_MANA_POINTS, 500 );
@@ -359,7 +359,7 @@ function Start_Kujin()
 end;
 
 function KujinSetUp()
-	LoadHeroAllSetArtifacts( "Kujin",  "A2C2M4"  );
+	-- LoadHeroAllSetArtifacts( "Kujin",  "A2C2M4"  );
 	-- LoadHeroAllSetArtifacts( "Gottai",  "A2C2M5"  ); --was not in TOE originally
 	sleep( 2 );
 	ChangeHeroStat( "Kujin", STAT_MANA_POINTS, 500 );

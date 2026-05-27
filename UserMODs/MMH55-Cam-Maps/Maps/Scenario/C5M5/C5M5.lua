@@ -20,8 +20,8 @@ H55_RemoveTheseArtifactsFromBanks = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C5M5");
     LoadHeroAllSetArtifacts(   "Heam", "C5M4" );
-    LoadHeroAllSetArtifacts( "Diraya", "C5M3" );
-    LoadHeroAllSetArtifacts(   "Heam", "C5M3" );
+    --LoadHeroAllSetArtifacts( "Diraya", "C5M3" );
+    --LoadHeroAllSetArtifacts( "Nadaur", "C5M3" );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1,   "Heam" );
 	H55_CamFixTooManySkills( PLAYER_1, "Diraya" );

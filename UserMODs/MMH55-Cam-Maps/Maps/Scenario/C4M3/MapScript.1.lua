@@ -35,7 +35,7 @@ H55c_AI_CONTROLLED = {
 function H55_InitSetArtifacts()
   InitAllSetArtifacts("C4M3");
   LoadHeroAllSetArtifacts(  "Raelag", "C4M2" );
-  LoadHeroAllSetArtifacts( "Kelodin", "C4M2" );
+  -- LoadHeroAllSetArtifacts( "Kelodin", "C4M2" );
   sleep(40); -- wait for artifacts to load
   H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
   H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );
@@ -121,7 +121,7 @@ OBJECTIVES = {
     
 			if GetObjectiveState( 'prim1') == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M3" );
-				SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M3" );
+				--SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M3" );
 				sleep(40);
 				Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
 				Save("quicksave");

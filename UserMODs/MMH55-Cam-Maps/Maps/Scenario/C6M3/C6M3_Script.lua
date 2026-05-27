@@ -232,7 +232,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.meetFindan[2] == 2 then
 			DeployReserveHero("Heam", 84, 41, 0);
 			sleep(10);
-			LoadHeroAllSetArtifacts("Zehir", "C5M5" );
+			-- LoadHeroAllSetArtifacts("Heam", "C5M5" );
 			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Heam");
 			sleep(10);
@@ -256,7 +256,7 @@ OBJECTIVES = {
 			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
 			SetObjectOwner("Godric", PLAYER_1);
 			sleep(10);
-			LoadHeroAllSetArtifacts( "Godric", "C3M4" );
+			-- LoadHeroAllSetArtifacts( "Godric", "C3M4" );
 			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Godric");
 			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);

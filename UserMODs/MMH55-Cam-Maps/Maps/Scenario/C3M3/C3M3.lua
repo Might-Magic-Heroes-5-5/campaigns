@@ -9,7 +9,7 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M3");
     LoadHeroAllSetArtifacts(  "Berein", "C3M2" );
-    LoadHeroAllSetArtifacts( "Isabell", "C1M5" );
+    -- LoadHeroAllSetArtifacts( "Isabell", "C1M5" );
 	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );
 	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
