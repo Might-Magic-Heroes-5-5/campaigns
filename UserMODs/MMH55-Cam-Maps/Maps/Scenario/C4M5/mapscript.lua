@@ -3,7 +3,7 @@ H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C4M5");
     LoadHeroAllSetArtifacts(  "Raelag", "C4M4" );
-    LoadHeroAllSetArtifacts( "Kelodin", "C4M4" );
+    -- LoadHeroAllSetArtifacts( "Kelodin", "C4M4" );
 	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1,  "Raelag" );
 	H55_CamFixTooManySkills( PLAYER_1, "Kelodin" );

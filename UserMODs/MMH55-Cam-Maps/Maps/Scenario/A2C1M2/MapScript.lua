@@ -19,7 +19,6 @@ print("Start_A2C1M2.................");
 
 function x2()
 	InitAllSetArtifacts( "A2C1M2", PlayerHero );
---	LoadHeroAllSetArtifacts( PlayerHero, "A2C1M1" );
 end
 
 BlockTownGarrisonForAI( "winner", not nil )

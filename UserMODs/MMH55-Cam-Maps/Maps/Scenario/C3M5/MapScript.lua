@@ -32,8 +32,8 @@ H55c_AI_CONTROLLED = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M5");
     LoadHeroAllSetArtifacts(  "Berein", "C3M4" );
-    LoadHeroAllSetArtifacts( "Isabell", "C3M2" );
-    LoadAndBindHeroAllSetArtifacts( "Godric", "C3M4" );
+    -- LoadHeroAllSetArtifacts( "Isabell", "C3M2" );
+    -- LoadAndBindHeroAllSetArtifacts( "Godric", "C3M4" );
 	GiveArtefact( "Berein", ARTIFACT_RING_OF_DEATH );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );

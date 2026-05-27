@@ -221,8 +221,8 @@ OBJECTIVES = {
 				CINEMATICS.outro();
 				sleep(100);
 				SaveHeroAllSetArtifactsEquipped(   "Heam", "C5M3");
-				SaveHeroAllSetArtifactsEquipped( "Diraya", "C5M3");
-				SaveHeroAllSetArtifactsEquipped( "Nadaur", "C5M3");
+				--SaveHeroAllSetArtifactsEquipped( "Diraya", "C5M3");
+				--SaveHeroAllSetArtifactsEquipped( "Nadaur", "C5M3");
 				sleep(100);
 				Win();
 				return
@@ -233,7 +233,7 @@ OBJECTIVES = {
 	captureSiris = function()
 		if OBJECTIVES.state.captureSiris[2] == 1 then
 			BlockGame();
-			MoveCamera( 81, 126, 0, 40, 0.925, 0.279, 1, 1 );
+			MoveCamera( 82, 129, 0, 40, 0.925, 0.150, 1, 0 );
 			sleep(30);
 			EnableHeroAI("Effig", nil);
 			MoveHeroRealTime("Effig", 80, 125);

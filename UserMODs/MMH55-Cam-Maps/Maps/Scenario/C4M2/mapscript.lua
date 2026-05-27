@@ -215,7 +215,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState('prim3') == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M2" );
-				SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M2" );
+				--SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M2" );
 				sleep(50)
 				Win();
 			end

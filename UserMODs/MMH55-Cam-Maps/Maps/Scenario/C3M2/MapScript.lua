@@ -9,7 +9,7 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M2");
 	LoadHeroAllSetArtifacts( "Berein", "C3M1" );
-	LoadHeroAllSetArtifacts( "Godric", "C1M5" );
+	-- LoadHeroAllSetArtifacts( "Godric", "C1M5" );
 	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1, "Berein" );
 	H55_CamFixTooManySkills( PLAYER_1, "Godric" );
@@ -272,7 +272,7 @@ OBJECTIVES = {
 	  
 		if (GetObjectOwner("Hikm") == PLAYER_1) then
 			SaveHeroAllSetArtifactsEquipped("Berein", "C3M2");
-			SaveHeroAllSetArtifactsEquipped("Godric", "C3M2");
+			-- SaveHeroAllSetArtifactsEquipped("Godric", "C3M2");
 			sleep(20);
 			if GetObjectiveState("prim2") == OBJECTIVE_UNKNOWN then
 				SetObjectiveState("prim2",OBJECTIVE_ACTIVE);
