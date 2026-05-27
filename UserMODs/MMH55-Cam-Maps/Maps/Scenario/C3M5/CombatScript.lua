@@ -83,31 +83,31 @@ if GetAttackerHero() ~= nil and GetDefenderHero() ~= nil then
 		if GetGameVar("C3M5_Difficulty") == "normal" then
 			print("Godric has reinforcemets for NORMAL difficulty level");
 			SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19") + 12); -- Angel
-			SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16") + 18); -- Paladins
-			SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14") + 40); -- Priests
-			SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")  + 150); -- Footman
-			SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")  + 100); -- Archers
+			SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17") + 18); -- Paladins
+			SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14") + 40); -- Inquisitors
+			SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")  + 150); -- Squires
+			SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")  + 100); -- Marksman
 		elseif GetGameVar("C3M5_Difficulty") == "hard" then
 			print("Godric has reinforcemets for HARD difficulty level");
 			SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19") + 25); -- Angel
-			SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures16") + 40); -- Paladins
-			SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14") + 60); -- Priests
-			SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures4")  + 300); -- Footman
-			SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures7")  + 200); -- Archers
+			SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17") + 40); -- Paladins
+			SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14") + 60); -- Inquisitors
+			SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")  + 300); -- Squires
+			SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")  + 200); -- Marksman
 		elseif GetGameVar("C3M5_Difficulty") == "heroic" then
 			print("Godric has reinforcemets for HEROIC difficulty level");
 			SetGameVar("C3M5_creatures19",math.max(GetGameVar("C3M5_creatures19") + 12,  35)); -- Angel
-			SetGameVar("C3M5_creatures16",math.max(GetGameVar("C3M5_creatures16") + 30,  50)); -- Paladins
-			SetGameVar("C3M5_creatures14",math.max(GetGameVar("C3M5_creatures14") + 30,  75)); -- Priests
-			SetGameVar("C3M5_creatures4",math.max(GetGameVar("C3M5_creatures4")  + 150, 400)); -- Footman
-			SetGameVar("C3M5_creatures7",math.max(GetGameVar("C3M5_creatures7")  + 120, 275)); -- Archers
+			SetGameVar("C3M5_creatures16",math.max(GetGameVar("C3M5_creatures17") + 30,  50)); -- Paladins
+			SetGameVar("C3M5_creatures14",math.max(GetGameVar("C3M5_creatures14") + 30,  75)); -- Inquisitors
+			SetGameVar("C3M5_creatures4",math.max(GetGameVar("C3M5_creatures5")  + 150, 400)); -- Squires
+			SetGameVar("C3M5_creatures7",math.max(GetGameVar("C3M5_creatures8")  + 120, 275)); -- Marksman
 		elseif GetGameVar("C3M5_Difficulty") == "impossible" then
 			print("Godric has reinforcemets for IMPOSSIBLE difficulty level");
 			SetGameVar("C3M5_creatures19",math.max(GetGameVar("C3M5_creatures19") + 20,  50)); -- Angel
-			SetGameVar("C3M5_creatures16",math.max(GetGameVar("C3M5_creatures16") + 20,  70)); -- Paladins
-			SetGameVar("C3M5_creatures14",math.max(GetGameVar("C3M5_creatures14") + 20, 100)); -- Priests
-			SetGameVar("C3M5_creatures4",math.max(GetGameVar("C3M5_creatures4")  + 200, 500)); -- Footman
-			SetGameVar("C3M5_creatures7",math.max(GetGameVar("C3M5_creatures7")  + 150, 350)); -- Archers
+			SetGameVar("C3M5_creatures16",math.max(GetGameVar("C3M5_creatures17") + 20,  70)); -- Paladins
+			SetGameVar("C3M5_creatures14",math.max(GetGameVar("C3M5_creatures14") + 20, 100)); -- Inquisitors
+			SetGameVar("C3M5_creatures4",math.max(GetGameVar("C3M5_creatures5")  + 200, 500)); -- Squires
+			SetGameVar("C3M5_creatures7",math.max(GetGameVar("C3M5_creatures8")  + 150, 350)); -- Marksman
 		end
 		EnableAutoFinish(nil);
 		SetControlMode(ATTACKER,MODE_MANUAL);
