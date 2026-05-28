@@ -5382,11 +5382,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCH_DEMON</Creature>
-						<Count>35</Count>
+						<Count>1000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
-				<AllowQuickCombat>true</AllowQuickCombat>
+				<AllowQuickCombat>false</AllowQuickCombat>
 				<TownType>TOWN_HEAVEN</TownType>
 			</AdvMapGarrison>
 		</Item>
@@ -5412,11 +5428,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCH_DEMON</Creature>
-						<Count>35</Count>
+						<Count>1000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_FAMILIAR</Creature>
+						<Count>100000</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
-				<AllowQuickCombat>true</AllowQuickCombat>
+				<AllowQuickCombat>false</AllowQuickCombat>
 				<TownType>TOWN_HEAVEN</TownType>
 			</AdvMapGarrison>
 		</Item>
@@ -72768,8 +72800,32 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_GOBLIN</Creature>
-								<Count>1</Count>
+								<Creature>CREATURE_GOBLIN_DEFILER</Creature>
+								<Count>2500</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_CYCLOP_UNTAMED</Creature>
+								<Count>35</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_CENTAUR_NOMAD</Creature>
+								<Count>600</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_SHAMAN_HAG</Creature>
+								<Count>400</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_CYCLOP_BLOODEYED</Creature>
+								<Count>40</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_ORCCHIEF_CHIEFTAIN</Creature>
+								<Count>320</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_WYVERN_POISONOUS</Creature>
+								<Count>90</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -72783,7 +72839,14 @@
 							<Knowledge>0</Knowledge>
 							<skills/>
 							<perkIDs/>
-							<spellIDs/>
+							<spellIDs>
+								<Item>SPELL_WARCRY_RALLING_CRY</Item>
+								<Item>SPELL_WARCRY_CALL_OF_BLOOD</Item>
+								<Item>SPELL_WARCRY_WORD_OF_THE_CHIEF</Item>
+								<Item>SPELL_WARCRY_FEAR_MY_ROAR</Item>
+								<Item>SPELL_WARCRY_BATTLECRY</Item>
+								<Item>SPELL_WARCRY_SHOUT_OF_MANY</Item>
+							</spellIDs>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
 							<AmmoCart>false</AmmoCart>

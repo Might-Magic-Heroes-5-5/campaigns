@@ -531,6 +531,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Zehir skills and stats are now transfered from his last mission Zehir's Hope
 - change: Summoning Ilkhm town will consume Zegir XP and bring him to level 10 as well as scale his stats down
 
+### A2C3M4 - Flying to the Rescue: A Flamboyant Exit
+- fix: Dungeon player heroes werent able to accessthe Subterranean gate (at 69, 152) and thus gain resources and develop as enemy.
+- change: Dungeon player heroes cannot go thorugh the portal anymore.
+- change: Gottai leads the inferno town siege instead of Kujin
+- change: Talonguard garrisons guards increased to 400k Ims and 1000 ArchDevils. It is up to the player to find a way to the town.
+- change: The two Biara reinforcement groups arrive 1 month earlier for each difficulty level above normal. Reinforcements arrived on months 4 and 5, now they arrive on months 5/4, 4/3, 3,2, 2/1.
+
 ## Dialogue changes
 
 Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and Mооnst@r from the [Remastered Campaigns project](https://forum.heroesworld.ru/showthread.php?t=18706).
