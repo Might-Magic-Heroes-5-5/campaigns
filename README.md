@@ -369,7 +369,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
 - change: Disabled Purple player from hiring heroes in Syris Thalla.
 - change: Purple player onslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
-- change: Diraya skills due to her class being changed from Avenger to Druid
+- change: Dirael and Talanar skills and stats adjusted to fit class changes
+- change: Dirael and Talanar prison guards are more challenging
 - fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla.
 - fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
 - fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan.
