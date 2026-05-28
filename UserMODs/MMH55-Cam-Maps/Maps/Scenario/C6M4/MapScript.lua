@@ -70,7 +70,7 @@ OBJECTIVES = {
 	
 	prepare = function()
 		SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
-		CINEMATICS.intro();;
+		CINEMATICS.intro();
 		GiveExp(    "Sarge", 10000 );
 		GiveExp(     "Gles", 20000 );
 		GiveExp("Nathaniel", 10000 );
