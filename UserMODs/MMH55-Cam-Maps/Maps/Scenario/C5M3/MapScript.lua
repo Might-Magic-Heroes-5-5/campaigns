@@ -49,19 +49,19 @@ C5M3_ENEMY_ARMY = {
 	end,
 	
 	Nemor = function(week)
-		AddObjectCreatures("Nemor", CREATURE_SKELETON, (23 + dif)*week);
-		AddObjectCreatures("Nemor",	  CREATURE_ZOMBIE, (16 + dif)*week);
-		AddObjectCreatures("Nemor",    CREATURE_MANES, (12 + dif)*week);
-		AddObjectCreatures("Nemor",  CREATURE_VAMPIRE, 7*week + dif);
-		AddObjectCreatures("Nemor",     CREATURE_LICH, 5*week + dif);
+		AddObjectCreatures("Nemor", CREATURE_SKELETON, (1 + (dif + week) * 50) + 5 * dif);
+		AddObjectCreatures("Nemor",	  CREATURE_ZOMBIE, (1 + (dif + week) * 35) + 5 * dif);
+		AddObjectCreatures("Nemor",    CREATURE_MANES, (1 + (dif + week) * 18) + 4 * dif);
+		AddObjectCreatures("Nemor",  CREATURE_VAMPIRE, (1 + (dif + week) *  9) + 3 * dif);
+		AddObjectCreatures("Nemor",     CREATURE_LICH, (1 + (dif + week) *  7) + 2 * dif);
 	end,
 	
 	Gles = function(week)
-		AddObjectCreatures("Gles", 		  CREATURE_SKELETON, (29 + dif)*week);
-		AddObjectCreatures("Gles", CREATURE_SKELETON_ARCHER, (22 + dif)*week);
-		AddObjectCreatures("Gles", 			CREATURE_ZOMBIE, (16 + dif)*week);
-		AddObjectCreatures("Gles", 			 CREATURE_GHOST, 10*week + dif);
-		AddObjectCreatures("Gles", 			  CREATURE_LICH, 5*week + dif);
+		AddObjectCreatures("Gles", 		  CREATURE_SKELETON, (1 + (dif + week) * 50) + 5 * dif);
+		AddObjectCreatures("Gles", CREATURE_SKELETON_ARCHER, (1 + (dif + week) * 45) + 5 * dif);
+		AddObjectCreatures("Gles", 			CREATURE_ZOMBIE, (1 + (dif + week) * 35) + 4 * dif);
+		AddObjectCreatures("Gles", 			 CREATURE_GHOST, (1 + (dif + week) * 22) + 3 * dif);
+		AddObjectCreatures("Gles", 			  CREATURE_LICH, (1 + (dif + week) *  7) + 2 * dif);
 	end
 }
 
@@ -140,7 +140,7 @@ DIFFICULTY = {
 	end,
 
 	[3] = function()
-		dif = 4;
+		dif = 3;
 		print ("heroic");
 	end,
 }
@@ -219,11 +219,11 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("harrison") == OBJECTIVE_COMPLETED and GetObjectiveState("twoheros") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(100);
-				SaveHeroAllSetArtifactsEquipped(   "Heam", "C5M3");
+				sleep(80);
+				SaveHeroAllSetArtifactsEquipped( "Heam", "C5M3");
 				--SaveHeroAllSetArtifactsEquipped( "Diraya", "C5M3");
 				--SaveHeroAllSetArtifactsEquipped( "Nadaur", "C5M3");
-				sleep(100);
+				sleep(20);
 				Win();
 				return
 			end
