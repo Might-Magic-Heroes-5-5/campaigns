@@ -258,7 +258,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.holdBorders[2] == 1 then
 			SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.holdBorders[2] = 2;
-		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(ABSOLUTE_DAY) > OBJECTIVES.holdBorders_attack_day and GetDate(DAY_OF_WEEK) > random(6) then
+		elseif OBJECTIVES.state.holdBorders[2] == 2 and GetDate(ABSOLUTE_DAY) > OBJECTIVES.holdBorders_attack_day and GetDate(DAY_OF_WEEK) > random(6) and OBJECTIVES.holdBorders_attack_count > 0 then
 			OBJECTIVES.holdBorders_attack_day = OBJECTIVES.holdBorders_attack_day + 7;
 			hero_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
 			position_idx = random(OBJECTIVES.holdBorders_attack_count) + 1;
@@ -303,15 +303,27 @@ OBJECTIVES = {
 	demonArmy = function()
 		if OBJECTIVES.state.demonArmy[2] == 1 and GetDate(DAY) == demon_invasion_day then
 			DeployReserveHero("Biara" , RegionToPoint('EnemyHere'));
+			sleep(50); -- Wait Biara to be deployed before adding units
 			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(dif/4));
-			AddHeroCreatures("Biara",		 	 CREATURE_FAMILIAR, dif *  30);
-			AddHeroCreatures("Biara",	    CREATURE_HORNED_LEAPER, dif *  20);
-			AddHeroCreatures("Biara", 			  CREATURE_CERBERI, dif *  15);
-			AddHeroCreatures("Biara",   CREATURE_INFERNAL_SUCCUBUS, dif *  12);
-			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif *   7);
-			AddHeroCreatures("Biara",				CREATURE_BALOR, dif *   4);
-			AddHeroCreatures("Biara",			CREATURE_ARCHDEVIL, dif *   3);
+                       GiveHeroSkill("Biara", PERK_MASTER_OF_FIRE);
+                       GiveHeroSkill("Biara", PERK_MASTER_OF_ICE);
+                       GiveHeroSkill("Biara", HERO_SKILL_SET_AFIRE);
+                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
+                       GiveHeroSkill("Biara", SKILL_OFFENCE);
+                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
+                       GiveHeroSkill("Biara", PERK_DEATH_SCREAM);
+                       GiveHeroSkill("Biara", NECROMANCER_FEAT_CHILLING_STEEL);
+                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
+                       GiveHeroSkill("Biara", HERO_SKILL_SHRUG_DARKNESS);
+
+			AddHeroCreatures("Biara", CREATURE_IMP, dif * 30);
+			AddHeroCreatures("Biara", CREATURE_HORNED_LEAPER, dif * 20);
+			AddHeroCreatures("Biara", CREATURE_CERBERI, dif * 15);
+			AddHeroCreatures("Biara", CREATURE_INFERNAL_SUCCUBUS, dif * 12);
+			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif * 6);
+			AddHeroCreatures("Biara", CREATURE_BALOR, dif * 5);
+			AddHeroCreatures("Biara", CREATURE_ARCHDEVIL, dif * 2);
 			EnableHeroAI("Biara", not nil);
 			sleep(10);
 			H55c_AIAddHero("Biara");
