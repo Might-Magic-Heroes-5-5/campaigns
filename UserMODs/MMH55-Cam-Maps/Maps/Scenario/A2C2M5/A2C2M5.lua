@@ -188,7 +188,7 @@ function PlayerWin()
 	while GetObjectiveState("prim1_CaptureMainAcademyTown") ~= OBJECTIVE_COMPLETED 
 		or GetObjectiveState("prim2_KillAlaric") ~= OBJECTIVE_COMPLETED 
 	do sleep(10); end;
-	--SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M5" );
+	SaveHeroAllSetArtifactsEquipped( OUR_HERO_GOTAI, "A2C2M5" );
 	Win(PLAYER_1);
 end;
 
