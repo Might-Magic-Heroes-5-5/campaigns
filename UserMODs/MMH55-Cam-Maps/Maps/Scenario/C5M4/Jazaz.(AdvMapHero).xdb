@@ -12,23 +12,31 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_7</PlayerID>
-	<Experience>255000</Experience>
+	<Experience>1210000</Experience>
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_BALOR</Creature>
-			<Count>6</Count>
+			<Count>15</Count>
 		</Item>
 		<Item>
-			<Creature>CREATURE_FAMILIAR</Creature>
-			<Count>49</Count>
+			<Creature>CREATURE_IMP</Creature>
+			<Count>250</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_HORNED_DEMON</Creature>
-			<Count>48</Count>
+			<Count>200</Count>
 		</Item>
 		<Item>
-			<Creature>CREATURE_NIGHTMARE</Creature>
-			<Count>13</Count>
+			<Creature>CREATURE_CERBERI</Creature>
+			<Count>150</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
+			<Count>30</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_ARCHDEVIL</Creature>
+			<Count>6</Count>
 		</Item>
 	</armySlots>
 	<artifactIDs/>
@@ -36,35 +44,50 @@
 	<Editable>
 		<NameFileRef href=""/>
 		<BiographyFileRef href=""/>
-		<Offence>13</Offence>
-		<Defence>11</Defence>
-		<Spellpower>6</Spellpower>
-		<Knowledge>6</Knowledge>
+		<Offence>25</Offence>
+		<Defence>20</Defence>
+		<Spellpower>5</Spellpower>
+		<Knowledge>10</Knowledge>
 		<skills>
 			<Item>
-				<Mastery>MASTERY_BASIC</Mastery>
+				<Mastery>MASTERY_EXPERT</Mastery>
 				<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
-			</Item>
-			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
-			</Item>
-			<Item>
-				<Mastery>MASTERY_ADVANCED</Mastery>
+				<Mastery>MASTERY_EXPERT</Mastery>
 				<SkillID>HERO_SKILL_OFFENCE</SkillID>
 			</Item>
+			<Item>
+				<Mastery>MASTERY_EXPERT</Mastery>
+				<SkillID>HERO_SKILL_DEFENCE</SkillID>
+			</Item>
+			<Item>
+				<Mastery>MASTERY_EXPERT</Mastery>
+				<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+			</Item>
+			<Item>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_SHATTER_SUMMONING_MAGIC</SkillID>
+			</Item>
+			<Item>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC</SkillID>
+			</Item>
+
 		</skills>
 		<perkIDs>
-			<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
-			<Item>HERO_SKILL_CONSUME_CORPSE</Item>
-			<Item>HERO_SKILL_FIRE_AFFINITY</Item>
-			<Item>HERO_SKILL_DEMONIC_FIRE</Item>
+			<Item>HERO_SKILL_MASTER_OF_MIND</Item>
+			<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+			<Item>HERO_SKILL_EVASION</Item>
+			<Item>HERO_SKILL_TOUGHNESS</Item>
 			<Item>HERO_SKILL_TACTICS</Item>
-			<Item>HERO_SKILL_DEMONIC_STRIKE</Item>
+			<Item>HERO_SKILL_ANCIENT_SMITHY</Item>
+			<Item>HERO_SKILL_FOG_VEIL</Item>
+			<Item>HERO_SKILL_FRENZY</Item>
+			<Item>HERO_SKILL_EMPATHY</Item>
+			<Item>HERO_SKILL_ENCOURAGE</Item>
+                        <Item>HERO_SKILL_SOIL_BURN</Item>
+                        <Item>HERO_SKILL_FAST_AND_FURIOUS</Item>
 		</perkIDs>
 		<spellIDs>
 			<Item>SPELL_FIREWALL</Item>

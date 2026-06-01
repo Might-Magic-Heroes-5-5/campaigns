@@ -15,24 +15,8 @@
 	<Experience>330000</Experience>
 	<armySlots>
 		<Item>
-			<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-			<Count>31</Count>
-		</Item>
-		<Item>
-			<Creature>CREATURE_SUCCUBUS</Creature>
-			<Count>39</Count>
-		</Item>
-		<Item>
-			<Creature>CREATURE_DEMON</Creature>
-			<Count>40</Count>
-		</Item>
-		<Item>
-			<Creature>CREATURE_FAMILIAR</Creature>
-			<Count>51</Count>
-		</Item>
-		<Item>
-			<Creature>CREATURE_HORNED_DEMON</Creature>
-			<Count>34</Count>
+			<Creature>CREATURE_CERBERI</Creature>
+			<Count>1</Count>
 		</Item>
 	</armySlots>
 	<artifactIDs/>
@@ -40,10 +24,10 @@
 	<Editable>
 		<NameFileRef href=""/>
 		<BiographyFileRef href=""/>
-		<Offence>11</Offence>
-		<Defence>11</Defence>
-		<Spellpower>17</Spellpower>
-		<Knowledge>13</Knowledge>
+		<Offence>15</Offence>
+		<Defence>14</Defence>
+		<Spellpower>26</Spellpower>
+		<Knowledge>24</Knowledge>
 		<skills>
 			<Item>
 				<Mastery>MASTERY_EXPERT</Mastery>
@@ -81,6 +65,12 @@
 			<Item>HERO_SKILL_TELEPORT_ASSAULT</Item>
 			<Item>HERO_SKILL_POWER_OF_HASTE</Item>
 			<Item>HERO_SKILL_QUICK_GATING</Item>
+			<Item>PERK_FRENZY</Item>
+			<Item>WARLOCK_FEAT_POWER_OF_HASTE</Item>
+			<Item>PERK_MYSTICISM</Item>
+			<Item>WARLOCK_FEAT_PAYBACK</Item>
+			<Item>NECROMANCER_FEAT_DEAD_LUCK</Item>
+			<Item>PERK_LUCKY_STRIKE</Item>
 		</perkIDs>
 		<spellIDs>
 			<Item>SPELL_ANIMATE_DEAD</Item>
@@ -88,6 +78,7 @@
 			<Item>SPELL_CHAIN_LIGHTNING</Item>
 			<Item>SPELL_METEOR_SHOWER</Item>
 			<Item>SPELL_UNHOLY_WORD</Item>
+			<Item>SPELL_PHANTOM</Item>
 		</spellIDs>
 		<Ballista>false</Ballista>
 		<FirstAidTent>false</FirstAidTent>
