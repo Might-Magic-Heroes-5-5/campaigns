@@ -44,6 +44,22 @@ function TieruDeath()
 	OBJECTIVES.state.saveTieru[2] = 5;
 end
 
+function NavalAttack(hero)
+	if hero == "Heam" then
+		BlockGame()
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'NavalAttack', nil );
+		local x, y, z = GetObjectPosition("Oddrema");
+		OpenCircleFog( x, y, z, 15, PLAYER_1 );
+		MoveCamera( x - 5, y, z, 50, 0.7, 0.5 );
+		ChangeHeroStat( "Oddrema", STAT_MOVE_POINTS, 1000000 );
+		x, y, z = GetObjectPosition("Heam");
+		sleep(100);
+		MoveHeroRealTime( "Oddrema", x, y, z );
+		sleep(30);
+		UnblockGame();
+	end
+end
+
 CINEMATICS = {
 	intro = function()
 		StartDialogScene("/DialogScenes/C5/M4/R1/DialogScene.xdb#xpointer(/DialogScene)");
@@ -73,10 +89,11 @@ CINEMATICS = {
 		x, y, z = RegionToPoint('Biara_Here');
 		MoveCamera(x, y, z, 65, 3.14/4, 3.14/2+(3.14/6));
 		MoveHeroRealTime('Biara', RegionToPoint('Biara_Step_Here'));
-		sleep( 160 );
 		x, y, z = RegionToPoint('Teleport_Here');
 		y=y+0.5;
+		sleep( 230 );
 		SetObjectPosition ('Biara', x,y,z);
+		sleep( 95 );
 		ChangeHeroStat('Heam', STAT_MOVE_POINTS, -1000000);
 		ChangeHeroStat('Heam', STAT_MOVE_POINTS, leftmove);
 		UnblockGame();
@@ -85,6 +102,15 @@ CINEMATICS = {
 	deathOfTieru = function()
 		StartDialogScene("/DialogScenes/C5/M4/D1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
+	end,
+	
+	showBiara = function()
+		local x, y, z = RegionToPoint('Teleport_Here');
+		OpenCircleFog(x, y, z, 10, PLAYER_1);	
+		MoveCamera(x, y, z, 40, 3.14/2, 3.14);
+		sleep(100);
+		x, y, z = GetObjectPosition("Heam");
+		MoveCamera(x, y, z, 40, 0.9, 1.1);
 	end,
 	
 	outro = function()
@@ -139,6 +165,7 @@ DIFFICULTY = {
 		AddObjectCreatures('Delta-wight', CREATURE_WIGHT, 20); -- podzemley. mob na hodu
 	end,
 }
+
 
 OBJECTIVES = {
 	state = {
@@ -208,7 +235,7 @@ OBJECTIVES = {
 			OpenCircleFog(x, y, z, 8, PLAYER_1);
 			x, y, z = RegionToPoint('Jazaz_Here');
 			OpenCircleFog(x, y, z, 8, PLAYER_2);
-			sleep(15);
+			sleep(50);
 			EnableHeroAI( 'Jazaz', nil );
 			EnableHeroAI( 'Biara', nil );
 			local ArmyMult = diff + GetDate(MONTH);
@@ -230,6 +257,7 @@ OBJECTIVES = {
 			OBJECTIVES.state.saveTieru[2] = 4;
 		elseif OBJECTIVES.state.saveTieru[2] == 5 then
 			CINEMATICS.goToTieru();
+			Save ('Will_of_Tieru');
 			CINEMATICS.deathOfTieru();
 			SetObjectiveState( 'prim2', OBJECTIVE_FAILED );
 			OBJECTIVES.state.defeatBiara[2] = 1;
@@ -239,10 +267,13 @@ OBJECTIVES = {
 	
 	defeatBiara = function()
 		if OBJECTIVES.state.defeatBiara[2] == 1 then
-			SetObjectiveState('prim3', OBJECTIVE_ACTIVE);
-			x, y, z = RegionToPoint('Teleport_Here');
-			OpenCircleFog(x, y, z, 10, PLAYER_1);	
-			MoveCamera(x, y, z, 40, 3.14/2, 3.14);
+			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
+			CINEMATICS.showBiara();
+			Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'NavalAttack', 'NavalAttack' );
+			DeployReserveHero( 'Oddrema', 135, 55, GROUND );
+			sleep( 20 );
+			SetObjectRotation( "Oddrema", 66 );
+			EnableHeroAI('Oddrema', nil);
 			OBJECTIVES.state.defeatBiara[2] = 2;
 		elseif OBJECTIVES.state.defeatBiara[2] == 2 and IsHeroAlive("Biara") == nil then
 			SaveHeroAllSetArtifactsEquipped( "Heam", "C5M4" );

@@ -378,6 +378,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M4 - Sylvan: The Archipelago
 - new: Added Memory Mentor
+- new: added a naval fight ( originally prepared by Nival but was never introduced in the scenario )
 - change: Inferno heroes army is now stronger and will scale up with every month that passes by
 
 ### C5M5 - Sylvan: The Vampire Lord
