@@ -156,8 +156,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Cleric.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>10</Amount>
-				<Amount2>13</Amount2>
+				<Amount>18</Amount>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -180,20 +179,18 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Amount>14</Amount>
-						<Amount2>19</Amount2>
+						<Amount>34</Amount>
+						
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
-						<Amount>10</Amount>
-						<Amount2>15</Amount2>
+						<Amount>20</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CAVALIER</Creature>
-						<Amount>6</Amount>
-						<Amount2>9</Amount2>
+						<Amount>9</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -109586,7 +109583,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Necropolis/Nikolay.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>0</Experience>
+						<Experience>11200000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_SKELETON_ARCHER</Creature>
@@ -109618,24 +109615,53 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href="bio.txt"/>
-							<Offence>5</Offence>
-							<Defence>10</Defence>
-							<Spellpower>14</Spellpower>
-							<Knowledge>8</Knowledge>
+							<Offence>15</Offence>
+							<Defence>15</Defence>
+							<Spellpower>35</Spellpower>
+							<Knowledge>25</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>SKILL_DARK_MAGIC</SkillID>
 								</Item>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>SKILL_SUMMONING_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>SKILL_DEFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>SKILL_LUCK</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>SKILL_SORCERY</SkillID>
 								</Item>
 							</skills>
 							<perkIDs>
 								<Item>HERO_SKILL_MASTER_OF_ANIMATION</Item>
-								<Item>HERO_SKILL_PATHFINDING</Item>
 								<Item>HERO_SKILL_DEATH_SCREAM</Item>
+								<Item>HERO_SKILL_CHILLING_STEEL</Item>
+								<Item>HERO_SKILL_CHILLING_BONES</Item>
+								<Item>HERO_SKILL_POWER_OF_STONE</Item>
+								<Item>HERO_SKILL_POWER_OF_HASTE</Item>
+								<Item>HERO_SKILL_MASTER_OF_MIND</Item>
+								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_EVASION</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>
+								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_DEAD_LUCK</Item>
+								<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
+								<Item>HERO_SKILL_SOIL_BURN</Item>
 							</perkIDs>
 							<spellIDs>
 								<Item>SPELL_CONJURE_PHOENIX</Item>
