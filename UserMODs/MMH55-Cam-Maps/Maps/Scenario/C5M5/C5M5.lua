@@ -112,8 +112,8 @@ end
 function update_army() --добавление армии Коляну после респавноа
 	local diff = GetDifficulty();
 	for i,h in kolyan_army[diff] do
-		AddHeroCreatures('Nikolay', creatures_types[i+3] , 1+diff_mod[i])
-		print("Kolyan gain ",1+diff_mod[i], creatures_types[i+3])
+		AddHeroCreatures('Nikolay', creatures_types[i+3] , 1+kolyan_army[diff][i])
+		print("Kolyan gain ",1+kolyan_army[diff][i]," ", creatures_types[i+3])
 	end
 end
 
@@ -221,6 +221,90 @@ function disableEnemyFleeing()
 	end
 end
 
+function SetUpNikolay(koef)
+	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_CHILLING_STEEL);
+	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_CHILLING_BONES);
+	GiveHeroSkill("Nikolay", SKILL_DARK_MAGIC);
+	GiveHeroSkill("Nikolay", SKILL_DARK_MAGIC);
+	GiveHeroSkill("Nikolay", PERK_MASTER_OF_CURSES);
+	GiveHeroSkill("Nikolay", PERK_MASTER_OF_MIND);
+	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
+	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
+	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
+	GiveHeroSkill("Nikolay", PERK_FRENZY);
+	GiveHeroSkill("Nikolay", PERK_ARCHERY);
+	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
+	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
+	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
+	GiveHeroSkill("Nikolay", PERK_EVASION);
+	GiveHeroSkill("Nikolay", PERK_TOUGHNESS);
+	GiveHeroSkill("Nikolay", HERO_SKILL_DEFENSIVE_FORMATION);
+	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
+	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
+	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
+	GiveHeroSkill("Nikolay", PERK_MASTER_OF_CREATURES);
+	GiveHeroSkill("Nikolay", DEMON_FEAT_FIRE_AFFINITY);
+	GiveHeroSkill("Nikolay", PERK_MASTER_OF_ANIMATION);
+	GiveHeroSkill("Nikolay", SKILL_SORCERY);
+	GiveHeroSkill("Nikolay", SKILL_SORCERY);
+	GiveHeroSkill("Nikolay", SKILL_SORCERY);
+	GiveHeroSkill("Nikolay", PERK_MYSTICISM);
+	GiveHeroSkill("Nikolay", WARLOCK_FEAT_PAYBACK);
+	GiveHeroSkill("Nikolay", SKILL_LUCK);
+	GiveHeroSkill("Nikolay", SKILL_LUCK);
+	GiveHeroSkill("Nikolay", SKILL_LUCK);
+	GiveHeroSkill("Nikolay", PERK_RESISTANCE);
+	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_DEAD_LUCK);
+	GiveHeroSkill("Nikolay", HERO_SKILL_DWARVEN_LUCK);
+	
+	if koef > 1 then 
+		GiveHeroSkill("Nikolay", RANGER_FEAT_SOIL_BURN);
+		GiveHeroSkill("Nikolay", WARLOCK_FEAT_POWER_OF_HASTE);
+		GiveHeroSkill("Nikolay", SKILL_LEARNING);
+		GiveHeroSkill("Nikolay", PERK_INTELLIGENCE);
+	end
+	
+	if koef > 2 then
+		GiveHeroSkill("Nikolay", RANGER_FEAT_INSIGHTS);
+		GiveHeroSkill("Nikolay", SKILL_LEARNING);
+		GiveHeroSkill("Nikolay", PERK_EAGLE_EYE);
+	end
+	
+	if koef > 3 then
+		GiveHeroSkill("Nikolay", SKILL_LEARNING);
+		GiveHeroSkill("Nikolay", PERK_INTELLIGENCE);
+		GiveHeroSkill("Nikolay", HERO_SKILL_QUICKNESS_OF_MIND);
+	end
+	
+	if koef == 2 then
+		ChangeHeroStat("Nikolay", STAT_ATTACK, 19);
+		ChangeHeroStat("Nikolay", STAT_DEFENCE, 17);
+		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 32);
+		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 29);
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 11);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 12);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 13);
+	elseif koef == 3 then
+		ChangeHeroStat("Nikolay", STAT_ATTACK, 24);
+		ChangeHeroStat("Nikolay", STAT_DEFENCE, 22);
+		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 37);
+		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 34);
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 31);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 32);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 43);
+		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 35);
+	elseif koef == 4 then
+		ChangeHeroStat("Nikolay", STAT_ATTACK, 29);
+		ChangeHeroStat("Nikolay", STAT_DEFENCE, 27);
+		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 42);
+		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 39);
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 41);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 42);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 58);
+		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 55);
+	end
+end
+
 DIFFICULTY = {
 	[0] = function()
 		print ("easy");
@@ -230,10 +314,9 @@ DIFFICULTY = {
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
 		end
-		for a = 0,6 do
-			SetPlayerResource(PLAYER_2, a, 0);
-		end
+		SetPlayerStartResources(PLAYER_2, 0, 0, 0, 0, 0, 0, 0);
 		AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
+		SetUpNikolay(1);
 	end,
 	
 	[1] = function()
@@ -244,11 +327,8 @@ DIFFICULTY = {
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
 		end;
-		for a = 0,6 do
-			SetPlayerResource(PLAYER_2, a, 0);
-		end
-		ChangeHeroStat('Nikolay', STAT_ATTACK, 5);
-		ChangeHeroStat('Nikolay', STAT_DEFENCE, 5);
+		SetPlayerStartResources(PLAYER_2, 0, 0, 0, 0, 0, 0, 0);
+		SetUpNikolay(2);
 	end,
 	
 	[2] = function()
@@ -261,8 +341,7 @@ DIFFICULTY = {
 			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 30);
 			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 20);
 		end
-		ChangeHeroStat('Nikolay', STAT_ATTACK, 10);
-		ChangeHeroStat('Nikolay', STAT_DEFENCE, 10);
+		SetUpNikolay(3);
 	end,
 	
 	[3] = function()
@@ -276,8 +355,7 @@ DIFFICULTY = {
 			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE, 30);
 			AddObjectCreatures(dang_array[i], CREATURE_GHOST, 37);
 		end
-		ChangeHeroStat('Nikolay', STAT_ATTACK, 15);
-		ChangeHeroStat('Nikolay', STAT_DEFENCE, 15);
+		SetUpNikolay(4);
 	end,
 }
 
@@ -464,4 +542,12 @@ end
 
 function fast()
 	OBJECTIVES.great_night_progress=990;
+end
+
+function check()
+	local plr = 1;
+	if GetObjectOwner("Nikolay") == 1 then
+		plr = 2;
+	end
+	SetObjectOwner("Nikolay", plr);
 end
