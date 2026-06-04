@@ -12,19 +12,23 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Inferno/Oddrema.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_7</PlayerID>
-	<Experience>29600</Experience>
+	<Experience>200000</Experience>
 	<armySlots>
 		<Item>
-			<Creature>CREATURE_SUCCUBUS</Creature>
-			<Count>38</Count>
+			<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
+			<Count>50</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-			<Count>17</Count>
+			<Count>25</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_CERBERI</Creature>
-			<Count>44</Count>
+			<Count>100</Count>
+		</Item>
+		<Item>
+			<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
+			<Count>100</Count>
 		</Item>
 	</armySlots>
 	<artifactIDs/>
@@ -32,18 +36,26 @@
 	<Editable>
 		<NameFileRef href=""/>
 		<BiographyFileRef href=""/>
-		<Offence>0</Offence>
-		<Defence>0</Defence>
-		<Spellpower>0</Spellpower>
-		<Knowledge>0</Knowledge>
-		<skills/>
+		<Offence>20</Offence>
+		<Defence>15</Defence>
+		<Spellpower>25</Spellpower>
+		<Knowledge>6</Knowledge>
+		<skills>
+			<Item>
+				<Mastery>MASTERY_EXPERT</Mastery>
+				<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+			</Item>
+<skills/>
+<perkIDs>
+			<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+			<Item>HERO_SKILL_SET_AFIRE</Item>
 		<perkIDs/>
 		<spellIDs>
 			<Item>SPELL_FIREBALL</Item>
 		</spellIDs>
 		<Ballista>false</Ballista>
-		<FirstAidTent>false</FirstAidTent>
-		<AmmoCart>false</AmmoCart>
+		<FirstAidTent>True</FirstAidTent>
+		<AmmoCart>True</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
 	<OverrideMask>64</OverrideMask>

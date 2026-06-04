@@ -274,6 +274,10 @@ OBJECTIVES = {
 			sleep( 20 );
 			SetObjectRotation( "Oddrema", 66 );
 			EnableHeroAI('Oddrema', nil);
+			AddHeroCreatures( 'Oddrema',CREATURE_INFERNAL_SUCCUBUS, 5 * ArmyMult );
+			AddHeroCreatures( 'Oddrema',CREATURE_INFERNAL_CERBERI, 10 * ArmyMult );
+			AddHeroCreatures( 'Oddrema',CREATURE_FIREBREATHER_HOUND, 10 * ArmyMult );
+			AddHeroCreatures( 'Oddrema',CREATURE_FRIGHTFUL_NIGHTMARE, 3 * ArmyMult );
 			OBJECTIVES.state.defeatBiara[2] = 2;
 		elseif OBJECTIVES.state.defeatBiara[2] == 2 and IsHeroAlive("Biara") == nil then
 			SaveHeroAllSetArtifactsEquipped( "Heam", "C5M4" );
