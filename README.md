@@ -392,9 +392,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - changed: Night counter increases 25% faster at Hard, 50% faster at Heroic and 75% faster at Impossible difficulty
 
 ### C6M2 - Academy: The Liberation
-- fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when the mission is about to end.
-- fix: Lorekeep capture quest can now change from completed to active state if the enemy captures it from the player.
+- fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
 - fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 
+- changed: Angel creature stack on Lorekeep island now grows with time passed.
 - new: Lorekeep now has a hero that guards it (was empty before) and his army power is based on game difficulty level.
 - new: Added Memory Mentor
 

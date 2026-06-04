@@ -44,22 +44,22 @@ DIFFICULTY = {
 		GiveExp( "Aberrar", 25000 );
 		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 250);
 		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 200);
-		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 150);
-		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD, 100);
-		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  70);
+		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 120);
+		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD,  80);
+		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  50);
 		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  30);
-		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  20);
+		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  15);
 	end,
 	[3] = function()
 		print ("impossible");
 		GiveExp( "Aberrar", 30000 );
-		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 700);
-		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 500);
-		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 300);
-		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD, 250);
-		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH, 150);
-		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  60);
-		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  50);
+		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 500);
+		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 300);
+		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 220);
+		AddObjectCreatures("nar_ankar",    CREATURE_VAMPIRE_LORD, 150);
+		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  80);
+		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  45);
+		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  25);
 	end,
 }
 
@@ -106,13 +106,15 @@ OBJECTIVES = {
 	prepare = function()
 		CINEMATICS.intro();
 		SetObjectiveVisible("obj3", nil);
-		SetRegionBlocked("block", not nil, PLAYER_3);
+		SetRegionBlocked("block_lorekeep", not nil, PLAYER_2);
+		SetRegionBlocked("block_lorekeep", not nil, PLAYER_3);
 		SetRegionBlocked("block", not nil, PLAYER_2);
+		SetRegionBlocked("block", not nil, PLAYER_3);
 		startThread(DIFFICULTY[GetDifficulty()]);
 		DenyAIHeroFlee('Aberrar', not nil);
 		DenyAIHeroFlee('Thant', not nil);
 		EnableHeroAI('Thant', nil);
-		SetHeroRoleMode('Thant', HERO_ROLE_MODE_HERMIT);
+	
 	end,
 	
 	run = function()
