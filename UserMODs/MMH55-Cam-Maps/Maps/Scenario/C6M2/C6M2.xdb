@@ -6907,7 +6907,7 @@
 				<Amount2>23</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>true</DoesNotGrow>
+				<DoesNotGrow>false</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -20719,7 +20719,7 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -20764,7 +20764,7 @@
 					<Item>
 						<Type>TB_DWELLING_7</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
@@ -60798,6 +60798,36 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>109</x1>
+				<y1>18</y1>
+				<x2>111</x2>
+				<y2>20</y2>
+			</Rect>
+			<Name>block_lorekeep</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
