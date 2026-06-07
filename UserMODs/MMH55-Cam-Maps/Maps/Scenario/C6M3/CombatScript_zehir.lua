@@ -10,9 +10,13 @@ function DefenderHeroMove(heroName)
 	if defender_turn == 1 then
 		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*50, math.random(3,10), math.random(2,12));
 		SummonCreature(DEFENDER,  CREATURE_LICH, army_rating*20, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*30, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
 	elseif defender_turn <= waves and math.fmod(defender_turn, 2) ~= 0 then
 		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));		
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));	
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*25, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
 	else
 		return nil -- cast a spell
 	end

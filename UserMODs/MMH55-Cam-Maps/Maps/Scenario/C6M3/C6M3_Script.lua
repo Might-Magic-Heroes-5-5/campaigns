@@ -96,9 +96,9 @@ BATTLES = {
 		start = function()
 			StartCombat("Godric", "Berein", 5,
 			       CREATURE_DEMILICH,  50,
-			   CREATURE_VAMPIRE_LORD,  75,			
+			   CREATURE_VAMPIRE_LORD, 200,			
 			          CREATURE_GHOST, 300,		
-				  CREATURE_NOSFERATU, 300,
+				  CREATURE_NOSFERATU, 200,
 			CREATURE_SKELETON_ARCHER, 250,
 			'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
 			"BATTLES.godric.finish",
@@ -231,8 +231,8 @@ OBJECTIVES = {
 	meetFindan = function()
 		if OBJECTIVES.state.meetFindan[2] == 2 then
 			DeployReserveHero("Heam", 84, 41, 0);
-			sleep(10);
-			-- LoadHeroAllSetArtifacts("Heam", "C5M5" );
+			sleep(20);
+			LoadHeroAllSetArtifacts("Heam", "C5M5" );
 			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Heam");
 			sleep(10);
@@ -255,8 +255,8 @@ OBJECTIVES = {
 			CINEMATICS.meetGodric();
 			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
 			SetObjectOwner("Godric", PLAYER_1);
-			sleep(10);
-			-- LoadHeroAllSetArtifacts( "Godric", "C3M4" );
+			sleep(20);
+			LoadHeroAllSetArtifacts( "Godric", "C1M5" );
 			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Godric");
 			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
