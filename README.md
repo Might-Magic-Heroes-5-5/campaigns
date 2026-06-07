@@ -530,7 +530,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
 - fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would be resolved only if Zehir was carrying the artifact
 - change: Zehir skills and stats are now transfered from his last mission Zehir's Hope
-- change: Summoning Ilkhm town will consume Zegir XP and bring him to level 10 as well as scale his stats down
+- change: Summoning Ilkhm town will consume Zehir XP and bring him to level 10 as well as scale his stats down
+
+### A2C3M2 - Flying to the Rescue: Tearing the Veil
+- fix: After capturing the main Heaven town, not all Heaven heroes ownership was transfered to the player
 
 ### A2C3M4 - Flying to the Rescue: A Flamboyant Exit
 - fix: Dungeon player heroes werent able to accessthe Subterranean gate (at 69, 152) and thus gain resources and develop as enemy.

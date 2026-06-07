@@ -979,6 +979,7 @@ function GiveToPlayerAllRedHeavenBuildings()
 	RH_heroes = GetObjectsInRegion( "RedHeavenRegion", OBJECT_HERO );
 	if table.length( RH_heroes ) > 0 then
 		for i=0, table.length( RH_heroes )-1 do
+			sleep(10);
 			SetObjectOwner( RH_heroes[i], PLAYER_1 );
 		end;
 	end;
@@ -987,6 +988,7 @@ function GiveToPlayerAllRedHeavenBuildings()
 
 	for i=1, table.length( RH_mines ) do
 		if GetObjectOwner( RH_mines[i] )==PLAYER_3 then
+			sleep(10);
 			SetObjectOwner( RH_mines[i], PLAYER_1);
 		end;
 	end;
