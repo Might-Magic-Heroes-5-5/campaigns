@@ -37,8 +37,12 @@ function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
 	if defender_turn <= waves then
 		if math.fmod(defender_turn, 2) ~= 0 then
-			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating*100, get_coords(not nil));
-			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 60,     get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 80, get_coords(not nil));
+			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 50,     get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 50,     get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 90, get_coords(not nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 80, get_coords(not nil));
+			return nil	-- cast a spell
 		else
 			UnitCastGlobalSpell(GetDefenderHero(), 21);
 		end
@@ -50,7 +54,7 @@ end
 -- reinforcements after death
 death = 0
 unit_type = { CREATURE_SKELETON_WARRIOR, CREATURE_GHOST, CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_POLTERGEIST, CREATURE_DISEASE_ZOMBIE, CREATURE_NOSFERATU };
-unit_size = {                         4,            1.5,                        5,               3,                   1.5,                      4,                  1 };
+unit_size = {                         5,            1.75,                        5.5,               3,                   1.5,                      4,                  1 };
 function DefenderCreatureDeath()
 	if (table.length(GetDefenderCreatures()) == 0) then
 		Finish(ATTACKER)
