@@ -419,6 +419,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
+- change: level cap increased from 12 to 15
+- change: Freyda starts with more army at lower difficulty levels
+- change: Caldwell and Randell armies are now more challenging
 
 ### A1C1M2 - Freyda: The Suspicion
 - change: final inferno attack is now more challenging
