@@ -430,6 +430,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Teal enemy player now has a layered defense by a triage of heroes and garrisons where Duncan sits at the very core for the mission finale. Their armies sizes depend on game difficulty.
 - fix: Teal enemy player sabotage groups against Freyda was not working as intended. Now town recruits will desert, mines will get stolen, rebel forces will appear on map to block pathing.
 - change: level cap increased from 28 to 30
+- change: Duncan town is now more fortified
+- change: Inferno ambushes are now more challenging based on difficulty
 
 ### A1C1M4 - Freyda: Negotiations
 - new: Added Memory Mentor
