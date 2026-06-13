@@ -438,7 +438,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C1M5 - Freyda: The Choice
 - new: Added Memory Mentor
-- change: Final naval combat is now more challenging
+- change: Once you free Duncan (level 1), he will gain exp to reach level 30.
+- change: Buffed the started Freyda's army considering the 80% of the size required to go to Thor Hrall in previous mission (same for all difficulties)
+- change: Red Heaven player hero Lorenzo is deployed at Castlegate, with a role of town defender. His level will depend on game difficulty.
+- change: Red Heaven player hero Andreas level and army power depend on game difficulty. 
+- change: Teal Heaven player heroes Klaus and Rutger levels depend on game difficulty.
+- change: Mission final naval combat is now more challenging.
 
 ### A1C2M1 - Wulfstan: The Borderzone
 - change: Raise level cap from 14 to 20
