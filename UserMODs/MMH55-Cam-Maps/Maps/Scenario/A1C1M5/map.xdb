@@ -56,12 +56,12 @@
 					<Item>
 						<Type>TB_SHIPYARD</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -1193,27 +1193,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SERAPH</Creature>
-						<Count>25</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>400</Count>
+						<Count>750</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>160</Count>
+						<Count>300</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>250</Count>
+						<Count>500</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>75</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -1242,27 +1242,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SERAPH</Creature>
-						<Count>25</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>400</Count>
+						<Count>750</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>160</Count>
+						<Count>300</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>250</Count>
+						<Count>500</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>75</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -21056,23 +21056,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>30</Count>
+						<Count>64</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CLERIC</Creature>
-						<Count>6</Count>
+						<Count>12</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>15</Count>
+						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Count>90</Count>
+						<Count>80</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Count>9</Count>
+						<Count>24</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_PALADIN</Creature>
+						<Count>4</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -33952,15 +33956,15 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SERAPH</Creature>
-						<Count>3</Count>
+						<Count>5</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>80</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
@@ -34126,19 +34130,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Count>18</Count>
+						<Count>54</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CAVALIER</Creature>
-						<Count>2</Count>
+						<Count>6</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FOOTMAN</Creature>
-						<Count>15</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>6</Count>
+						<Count>18</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs>
@@ -62436,8 +62440,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Paladin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>1</Amount>
-				<Amount2>3</Amount2>
+				<Amount>3</Amount>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
