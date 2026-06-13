@@ -2,7 +2,7 @@ d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
 army_rating = game_time/(18-3*d) -- 2.33/3/3.5/4.67 points per month
-waves = 4 + 2*d;
+waves = 9 + d;
 
 summon = {
 	inside = {
@@ -36,12 +36,61 @@ end
 function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
 	if defender_turn <= waves then
-		if math.fmod(defender_turn, 2) ~= 0 then
-			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 80, get_coords(not nil));
-			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 50,     get_coords(nil));
-			SummonCreature(DEFENDER, CREATURE_WALKING_DEAD, army_rating* 50,     get_coords(nil));
-			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 90, get_coords(not nil));
-			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating* 80, get_coords(not nil));
+		if defender_turn == 1 then
+			SummonCreature(DEFENDER, CREATURE_SHADOW_DRAGON, army_rating *  3, get_coords(nil));
+			SummonCreature(DEFENDER,	  CREATURE_SKELETON, army_rating * 80, get_coords(nil));
+			SummonCreature(DEFENDER,		  CREATURE_LICH, army_rating * 20, get_coords(not nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 2 then
+			SummonCreature(DEFENDER, 	   CREATURE_ZOMBIE, army_rating * 30, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_VAMPIRE_LORD, army_rating *  7, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating * 20, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON, army_rating * 20, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 3 then
+			SummonCreature(DEFENDER,  CREATURE_SKELETON_ARCHER, army_rating * 60, get_coords(nil));
+			SummonCreature(DEFENDER,	CREATURE_SHADOW_DRAGON, army_rating *  2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 30, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 30, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 4 then
+			SummonCreature(DEFENDER,  CREATURE_SKELETON_ARCHER, army_rating * 50, get_coords(nil));
+			SummonCreature(DEFENDER,    CREATURE_SHADOW_DRAGON, army_rating *  2, get_coords(nil));
+			SummonCreature(DEFENDER,	 CREATURE_VAMPIRE_LORD, army_rating *  5, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 40, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 40, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 5 then
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 3, get_coords(nil));
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 3, get_coords(nil));
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 6 then
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating * 30, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating * 30, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn == 7 then
+			SummonCreature(DEFENDER,     CREATURE_SHADOW_DRAGON, army_rating* 1, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON_WARRIOR, army_rating* 30, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SHADOW_DRAGON, army_rating* 1, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SKELETON_WARRIOR, army_rating* 30, get_coords(nil));
+			SummonCreature(DEFENDER,     CREATURE_SHADOW_DRAGON, army_rating* 1, get_coords(nil));
+			return nil	-- cast a spell
+		elseif defender_turn <= waves and math.fmod(defender_turn, 8) ~= 9 then
+			SummonCreature(DEFENDER,	  CREATURE_BONE_DRAGON, army_rating *  1, get_coords(nil));
+			SummonCreature(DEFENDER, 	CREATURE_SHADOW_DRAGON, army_rating *  1, get_coords(nil));
+			SummonCreature(DEFENDER,			CREATURE_WIGHT, army_rating *  1, get_coords(nil));
+			SummonCreature(DEFENDER,			CREATURE_WIGHT, army_rating *  1, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 30, get_coords(nil));
+			SummonCreature(DEFENDER, 	  CREATURE_BONE_DRAGON, army_rating *  1, get_coords(nil));
 			return nil	-- cast a spell
 		else
 			UnitCastGlobalSpell(GetDefenderHero(), 21);
@@ -54,7 +103,7 @@ end
 -- reinforcements after death
 death = 0
 unit_type = { CREATURE_SKELETON_WARRIOR, CREATURE_GHOST, CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_POLTERGEIST, CREATURE_DISEASE_ZOMBIE, CREATURE_NOSFERATU };
-unit_size = {                         5,            1.75,                        5.5,               3,                   1.5,                      4,                  1 };
+unit_size = {                         5,           1.75,                      5.5,               3,                  1.5,                       4,                  1 };
 function DefenderCreatureDeath()
 	if (table.length(GetDefenderCreatures()) == 0) then
 		Finish(ATTACKER)
