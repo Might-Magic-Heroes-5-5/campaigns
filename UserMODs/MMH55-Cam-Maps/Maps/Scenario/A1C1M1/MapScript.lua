@@ -25,7 +25,7 @@ end;
 --Save("autosave");
 StartDialogScene("/DialogScenes/A1C1/INTRO/I1/DialogScene.xdb#xpointer(/DialogScene)");
 StartDialogScene("/DialogScenes/A1C1/M1/S1/DialogScene.xdb#xpointer(/DialogScene)");
-for a = 0,6 do --- Устанавливаем стартовые ресурсы в 0
+for a = 0,6 do --- Current state of things 0
 	SetPlayerResource(PLAYER_1, a, 0);
 end;
 
@@ -38,44 +38,44 @@ end;
 RemoveObject( "Caldwell_DSU" );
 DisableCameraFollowHeroes( 0, 0, 0 );
 ---------------------------------------------------------------------
------------------- СТАРТОВЫЕ МАССИВЫ И ПЕРЕМЕННЫЕ -------------------
+------------------ SUMMARY AND RESPONSABILITY -------------------
 ---------------------------------------------------------------------
 
-EnemyHero1 = "Gillion" --- константа для имени первого героя эльфов
-EnemyHero2 = "Itil" --- константа для имени второго героя эльфов
-PlayerHero1 = "Freyda" --- константа для имени первого героя игрока Freida
-PlayerHero2 = "Laszlo" --- константа для имени второго героя игрока Laszlo
+EnemyHero1 = "Gillion" --- A name for the first elf character
+EnemyHero2 = "Itil" --- A name for the second elf character
+PlayerHero1 = "Freyda" --- A name for the first player character Freida
+PlayerHero2 = "Laszlo" --- A name for the second player character Laszlo
 
 removed_rebels = 0;
 
 rebel_array = { "rebel1", "rebel2", "rebel3", "rebel4", "rebel5", "rebel6", "rebel7", "rebel8", "rebel9", "rebel10",
 				"rebel11", "rebel12", "rebel13", "rebel14", "rebel15", "rebel16", "rebel17", "rebel18", "rebel19", "rebel20",
 				"rebel21", "rebel22", "rebel23", "rebel24", "rebel25", "rebel26", "rebel27", "rebel28", "rebel29", "rebel30",
-				"rebel31", "rebel32"}; --- Массив скриптовых имен мятежных кричей
+				"rebel31", "rebel32"}; --- A scripted collection of rebellious names
 
-farm_array = {"Farm1" , "Farm2" , "Farm3" , "Farm4" , "Farm5" , "Farm6" , "Farm7" , "Farm8"} --- Массив всех ферм
+farm_array = {"Farm1" , "Farm2" , "Farm3" , "Farm4" , "Farm5" , "Farm6" , "Farm7" , "Farm8"} --- Total amount of farms
 
 caldwellarmy_array  = {"caldwellarmy1" , "caldwellarmy2" ,"caldwellarmy3" ,"caldwellarmy4" , "caldwellarmy5" ,
 					"caldwellarmy6", "caldwellarmy7", "caldwellarmy8", "caldwellarmy9", "caldwellarmy10",
 					"caldwellarmy11", "caldwellarmy12", "caldwellarmy13", "caldwellarmy14", "caldwellarmy15",
-					"caldwellarmy16", "caldwellarmy17", "caldwellarmy18", "caldwellarmy19"} --- Массив адвенчурной армии Калдвела
+					"caldwellarmy16", "caldwellarmy17", "caldwellarmy18", "caldwellarmy19"} --- Caldwell adventure army 
 
 Randellarmy_array  = {"Randellarmy1" , "Randellarmy2" ,"Randellarmy3" ,"Randellarmy4" , "Randellarmy5" ,
 					"Randellarmy6", "Randellarmy7", "Randellarmy8", "Randellarmy9", "Randellarmy10",
 					"Randellarmy11", "Randellarmy12", "Randellarmy13", "Randellarmy14", "Randellarmy15",
-					"Randellarmy16"} --- Массив адвенчурной армии Ронделла
+					"Randellarmy16"} --- Randell adventure army 
 
-elvenwar_array = {"elvenwar1" , "elvenwar2" , "elvenwar3" , "elvenwar4" , "elvenwar5" , "elvenwar6" , "elvenwar7"} --- Массив эльфийских войск в засаде на Красный апргрейд
+elvenwar_array = {"elvenwar1" , "elvenwar2" , "elvenwar3" , "elvenwar4" , "elvenwar5" , "elvenwar6" , "elvenwar7"} --- Elfs ambush on the red flag
 
 elf_ambush_array= {"elf_ambush1" , "elf_ambush2" ,"elf_ambush3" ,"elf_ambush4" , "elf_ambush5" ,
 				"elf_ambush6" ,"elf_ambush7" ,"elf_ambush8" ,"elf_ambush9"} --- Массив простых эльфийских засад
 
-c_tier_array = {0 , 10 , 0 , 8 , 0 , 7 , 0 , 5 , 0 , 2 , 0 , 1 } --- Массив стартовой армии Калдвелла, порядковый номер числа в массиве совпадает с ID кричи
+c_tier_array = {0 , 50 , 0 , 40 , 0 , 35 , 0 , 25 , 0 , 10 , 0 , 15 } --- The started army of Caldwell; the sequence number in the mass corresponds to the player's ID
 
-r_tier_array = {0 , 10 , 0 , 8 , 0 , 7 , 0 , 5 , 0 , 2 , 0 , 1 } --- Массив стартовой армии Ронделла, порядковый номер числа в массиве совпадает с ID кричи
+r_tier_array = {0 , 50 , 0 , 40 , 0 , 35 , 0 , 25 , 0 , 25 , 0 , 5 } --- The started army of Randell; the sequence number in the mass corresponds to the player's ID
 
-h_tier_array = {107 , 106 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12} --- Массив ID кричей возможных в армиях героев игрока
-l_tier_array = {10 , 20 , 20 , 20 , 10 , 10 , 5 , 5 , 3 , 3 , 2 , 2 , 1 , 1} --- Массив потерь при попадании в засаду и дезертирстве
+h_tier_array = {107 , 106 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12} --- The total number of possible characters in the player's hero armies
+l_tier_array = {10 , 20 , 20 , 20 , 10 , 10 , 5 , 5 , 3 , 3 , 2 , 2 , 1 , 1} --- Army casualties resulting from ambushes and desertion
 t_tier_array = {"/Maps/Scenario/A1C1M1/messagebox_ambush1.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush2.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush3.txt" ,
 				"/Maps/Scenario/A1C1M1/messagebox_ambush4.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush5.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush6.txt" ,
 				"/Maps/Scenario/A1C1M1/messagebox_ambush7.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush8.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush9.txt" ,
@@ -83,17 +83,17 @@ t_tier_array = {"/Maps/Scenario/A1C1M1/messagebox_ambush1.txt" , "/Maps/Scenario
 				"/Maps/Scenario/A1C1M1/messagebox_ambush13.txt" , "/Maps/Scenario/A1C1M1/messagebox_ambush14.txt"} --- Массив текстов
 
 training_array = {"training1" , "training2" , "training3" , "training4" , "training5", "training6" , "training7",
-					"training8" , "training9" , "training10" , "training11" , "training12" , "training13", "training14"} --- Массив анимационных кричей
+					"training8" , "training9" , "training10" , "training11" , "training12" , "training13", "training14"} --- A collection of animated clips
 
-effect_array = {"rangeattack" , "attack01" , "specability" , "death" , "hit" , "happy" , "idle00" , "stir00"} --- Массив анимаций
+effect_array = {"rangeattack" , "attack01" , "specability" , "death" , "hit" , "happy" , "idle00" , "stir00"} --- A collection of animations
 
-type_effect_array = {ONESHOT, ONESHOT, ONESHOT, ONESHOT_STILL , ONESHOT, ONESHOT, ONESHOT, ONESHOT}--- Массив типов пройгрышей анимаций
+type_effect_array = {ONESHOT, ONESHOT, ONESHOT, ONESHOT_STILL , ONESHOT, ONESHOT, ONESHOT, ONESHOT}--- A collection of animated game types
 
 rebel_array_numbers = {}; --- Массив стартового количества кричей в каждом стеке мятежных кричей
 rebel_array_final = {}; --- Массив финального количества (по достижении котороко крича телепортится) кричей в каждом стеке мятежных кричей
 rebel_array_Names = {}; --- Массив ID кричей (крестьянин, лучник. и т.д.
 
--------------------------------- ID кричей -------------------------
+-------------------------------- ID of the units -------------------------
 CREATURE_PEASANT = 1
 CREATURE_MILITIAMAN = 2
 CREATURE_ARCHER = 3
@@ -118,108 +118,108 @@ obj_count = 0; --- Счетчик выполненных обжективов при достижении значения 3 мисс
 if GetDifficulty() == DIFFICULTY_EASY then
 	diff = 0;
 	print ("easy");
-	AddHeroCreatures(PlayerHero1, 1, 70);
-	AddHeroCreatures(PlayerHero1, 3, 44);
-	AddHeroCreatures(PlayerHero1, 5, 37);
-	AddHeroCreatures(PlayerHero1, 7, 29);
-	AddHeroCreatures(PlayerHero1, 9, 14);
-	AddHeroCreatures(PlayerHero1, 11, 7);
+	AddHeroCreatures(PlayerHero1, CREATURE_PEASANT, 80);
+	AddHeroCreatures(PlayerHero1, CREATURE_ARCHER, 50);
+	AddHeroCreatures(PlayerHero1, CREATURE_FOOTMAN, 40);
+	AddHeroCreatures(PlayerHero1, CREATURE_GRIFFIN, 30);
+	AddHeroCreatures(PlayerHero1, CREATURE_PRIEST, 16);
+	AddHeroCreatures(PlayerHero1, CREATURE_CAVALIER, 8);
 	sleep (1);
-	RemoveObjectCreatures(PlayerHero1, 2, 10);
-	AddHeroCreatures(PlayerHero2, 1, 70);
-	AddHeroCreatures(PlayerHero2, 3, 44);
-	AddHeroCreatures(PlayerHero2, 5, 37);
-	AddHeroCreatures(PlayerHero2, 7, 29);
-	AddHeroCreatures(PlayerHero2, 9, 14);
-	AddHeroCreatures(PlayerHero2, 11, 7);
+	RemoveObjectCreatures(PlayerHero1, CREATURE_MILITIAMAN, 10);
+	AddHeroCreatures(PlayerHero2, CREATURE_PEASANT, 80);
+	AddHeroCreatures(PlayerHero2, CREATURE_ARCHER, 50);
+	AddHeroCreatures(PlayerHero2, CREATURE_FOOTMAN, 40);
+	AddHeroCreatures(PlayerHero2, CREATURE_GRIFFIN, 30);
+	AddHeroCreatures(PlayerHero2, CREATURE_PRIEST, 16);
+	AddHeroCreatures(PlayerHero2, CREATURE_CAVALIER, 8);
 	sleep (1);
-	RemoveObjectCreatures(PlayerHero2, 2, 10);
+	RemoveObjectCreatures(PlayerHero2, CREATURE_MILITIAMAN, 10);
 end;
 
 if GetDifficulty() == DIFFICULTY_NORMAL then
 	diff = 1;
     print ("normal");
-	AddHeroCreatures(PlayerHero1, 1, 70);
-	AddHeroCreatures(PlayerHero1, 3, 44);
-	AddHeroCreatures(PlayerHero1, 5, 37);
-	AddHeroCreatures(PlayerHero1, 7, 29);
-	AddHeroCreatures(PlayerHero1, 9, 14);
-	AddHeroCreatures(PlayerHero1, 11, 7);
+	AddHeroCreatures(PlayerHero1, CREATURE_PEASANT, 70);
+	AddHeroCreatures(PlayerHero1, CREATURE_ARCHER, 40);
+	AddHeroCreatures(PlayerHero1, CREATURE_FOOTMAN, 37);
+	AddHeroCreatures(PlayerHero1, CREATURE_GRIFFIN, 29);
+	AddHeroCreatures(PlayerHero1, CREATURE_PRIEST, 14);
+	AddHeroCreatures(PlayerHero1, CREATURE_CAVALIER, 6);
 	sleep (1);
-	RemoveObjectCreatures(PlayerHero1, 2, 10);
-	AddHeroCreatures(PlayerHero2, 1, 70);
-	AddHeroCreatures(PlayerHero2, 3, 44);
-	AddHeroCreatures(PlayerHero2, 5, 37);
-	AddHeroCreatures(PlayerHero2, 7, 29);
-	AddHeroCreatures(PlayerHero2, 9, 14);
-	AddHeroCreatures(PlayerHero2, 11, 7);
+	RemoveObjectCreatures(PlayerHero1, CREATURE_MILITIAMAN, 10);
+	AddHeroCreatures(PlayerHero2, CREATURE_PEASANT, 70);
+	AddHeroCreatures(PlayerHero2, CREATURE_ARCHER, 44);
+	AddHeroCreatures(PlayerHero2, CREATURE_FOOTMAN, 37);
+	AddHeroCreatures(PlayerHero2, CREATURE_GRIFFIN, 29);
+	AddHeroCreatures(PlayerHero2, CREATURE_PRIEST, 14);
+	AddHeroCreatures(PlayerHero2, CREATURE_CAVALIER, 6);
 	sleep (1);
-	RemoveObjectCreatures(PlayerHero2, 2, 10);
+	RemoveObjectCreatures(PlayerHero2, CREATURE_MILITIAMAN, 10);
 end;
 
 if GetDifficulty() == DIFFICULTY_HARD then
 	diff = 2;
     print ("Hard");
-	AddHeroCreatures(PlayerHero1, 2, 50);
-	AddHeroCreatures(PlayerHero1, 4, 35);
-	AddHeroCreatures(PlayerHero1, 6, 28);
-	AddHeroCreatures(PlayerHero1, 8, 16);
-	AddHeroCreatures(PlayerHero1, 10, 10);
-	AddHeroCreatures(PlayerHero1, 12, 3);
-	AddHeroCreatures(PlayerHero2, 2, 50);
-	AddHeroCreatures(PlayerHero2, 4, 35);
-	AddHeroCreatures(PlayerHero2, 6, 28);
-	AddHeroCreatures(PlayerHero2, 8, 16);
-	AddHeroCreatures(PlayerHero2, 10, 10);
-	AddHeroCreatures(PlayerHero2, 12, 3);
+	AddHeroCreatures(PlayerHero1, CREATURE_MILITIAMAN, 50);
+	AddHeroCreatures(PlayerHero1, CREATURE_MARKSMAN, 35);
+	AddHeroCreatures(PlayerHero1, CREATURE_SWORDSMAN, 28);
+	AddHeroCreatures(PlayerHero1, CREATURE_ROYAL_GRIFFIN, 20);
+	AddHeroCreatures(PlayerHero1, CREATURE_CLERIC, 10);
+	AddHeroCreatures(PlayerHero1, CREATURE_PALADIN, 4);
+	AddHeroCreatures(PlayerHero2, CREATURE_MILITIAMAN, 50);
+	AddHeroCreatures(PlayerHero2, CREATURE_MARKSMAN, 35);
+	AddHeroCreatures(PlayerHero2, CREATURE_SWORDSMAN, 28);
+	AddHeroCreatures(PlayerHero2, CREATURE_ROYAL_GRIFFIN, 20);
+	AddHeroCreatures(PlayerHero2, CREATURE_CLERIC, 10);
+	AddHeroCreatures(PlayerHero2, CREATURE_PALADIN, 4);
 end;
 
 if GetDifficulty() == DIFFICULTY_HEROIC then
 	diff = 3;
     print ("Impossible");
-	AddHeroCreatures(PlayerHero1, 2, 30);
-	AddHeroCreatures(PlayerHero1, 4, 20);
-	AddHeroCreatures(PlayerHero1, 6, 15);
-	AddHeroCreatures(PlayerHero1, 8, 10);
-	AddHeroCreatures(PlayerHero1, 10, 5);
-	AddHeroCreatures(PlayerHero1, 12, 1);
-	AddHeroCreatures(PlayerHero2, 2, 30);
-	AddHeroCreatures(PlayerHero2, 4, 20);
-	AddHeroCreatures(PlayerHero2, 6, 15);
-	AddHeroCreatures(PlayerHero2, 8, 10);
-	AddHeroCreatures(PlayerHero2, 10, 5);
-	AddHeroCreatures(PlayerHero2, 12, 1);
+	AddHeroCreatures(PlayerHero1, CREATURE_MILITIAMAN, 40);
+	AddHeroCreatures(PlayerHero1, CREATURE_MARKSMAN, 25);
+	AddHeroCreatures(PlayerHero1, CREATURE_SWORDSMAN, 20);
+	AddHeroCreatures(PlayerHero1, CREATURE_ROYAL_GRIFFIN, 15);
+	AddHeroCreatures(PlayerHero1, CREATURE_CLERIC, 7);
+	AddHeroCreatures(PlayerHero1, CREATURE_PALADIN, 3);
+	AddHeroCreatures(PlayerHero2, CREATURE_MILITIAMAN, 40);
+	AddHeroCreatures(PlayerHero2, CREATURE_MARKSMAN, 25);
+	AddHeroCreatures(PlayerHero2, CREATURE_SWORDSMAN, 20);
+	AddHeroCreatures(PlayerHero2, CREATURE_ROYAL_GRIFFIN, 15);
+	AddHeroCreatures(PlayerHero2, CREATURE_CLERIC, 7);
+	AddHeroCreatures(PlayerHero2, CREATURE_PALADIN, 3);
 end;
 
-AddObjectCreatures("rh1", 106, 99- 10*diff);
-AddObjectCreatures("rh2", 106, 99- 10*diff);
-AddObjectCreatures("rh3", 106, 99- 10*diff);
-AddObjectCreatures("rh4", 107, 49- 5*diff);
-AddObjectCreatures("rh5", 107, 49- 5*diff);
+AddObjectCreatures("rh1", 106, 99- 6*diff);
+AddObjectCreatures("rh2", 106, 99- 6*diff);
+AddObjectCreatures("rh3", 106, 99- 6*diff);
+AddObjectCreatures("rh4", 107, 49- 3*diff);
+AddObjectCreatures("rh5", 107, 49- 3*diff);
 
 ---------------------------------------------------------------------
------------------------ СТАРТОВЫЕ НАСТРОЙКИ КАРТЫ -------------------
+----------------------- DEFAULT MAP SETTINGS -------------------
 ---------------------------------------------------------------------
 
 
-function Start_count() --Заполняем массивы мятежных кричей
+function Start_count() -- We are filling the air with angry shouts
 	for num = 1, table.length(rebel_array) do
 		for id = 1,12 do
 			if GetObjectCreatures(rebel_array[num], id) > 0 then
 				id_creature = id;
 			end;
 		end;
-		rebel_array_numbers [num] = GetObjectCreatures(rebel_array[num], id_creature); -- стартовое значение
-		rebel_array_final [num] = rebel_array_numbers [num]*(2 + diff*0.5); -- пороговое значение
-		rebel_array_Names [num] = id_creature; -- ID кричи
+		rebel_array_numbers [num] = GetObjectCreatures(rebel_array[num], id_creature); -- default value
+		rebel_array_final [num] = rebel_array_numbers [num]*(2 + diff*0.5); -- threshold value
+		rebel_array_Names [num] = id_creature; 
 	end;
 end;
 
-for f = 1,8 do -- вешаем триггеры на все фермы
+for f = 1,8 do -- We are installing triggers on all farms
 	Trigger(OBJECT_CAPTURE_TRIGGER, farm_array[f] ,"secondary1");
 end;
 
---- вешаем триггеры на эльфийские засады
+--- We are hanging off the elf's ambushes.
 Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush4" ,"diff_ambush");
 Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush30" ,"diff_ambush1");
 
