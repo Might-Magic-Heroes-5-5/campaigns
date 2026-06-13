@@ -1,5 +1,4 @@
 H55_PlayerStatus = {0,1,2,2,2,2,2,2};
-d = GetDifficulty() + 1;
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
@@ -16,6 +15,118 @@ function H55_InitSetArtifacts()
 end;
 
 startThread(H55_InitSetArtifacts);
+
+DIFFICULTY = {
+	[0] = function()
+		d = 1;
+		print ("normal");
+		AddHeroCreatures("Godric", CREATURE_MILITIAMAN, 100);
+		AddHeroCreatures("Godric", CREATURE_MARKSMAN, 100);
+		AddHeroCreatures("Godric", CREATURE_SWORDSMAN, 80);
+		AddHeroCreatures("Godric", CREATURE_ROYAL_GRIFFIN, 40);
+		AddHeroCreatures("Godric", CREATURE_CLERIC, 20);
+		AddHeroCreatures("Godric", CREATURE_PALADIN, 20);
+		AddHeroCreatures("Godric", CREATURE_ARCHANGEL, 10);
+		AddHeroCreatures("Heam", CREATURE_SPRITE, 80);
+		AddHeroCreatures("Heam", CREATURE_WAR_DANCER, 80);
+		AddHeroCreatures("Heam", CREATURE_GRAND_ELF, 60);
+		AddHeroCreatures("Heam", CREATURE_DRUID_ELDER, 40);
+		AddHeroCreatures("Heam", CREATURE_WAR_UNICORN, 20);
+	    AddHeroCreatures("Heam", CREATURE_TREANT_GUARDIAN, 16);
+		AddHeroCreatures("Heam", CREATURE_GOLD_DRAGON, 8);
+		AddHeroCreatures("Raelag", CREATURE_ASSASSIN, 80);
+		AddHeroCreatures("Raelag", CREATURE_BLOOD_WITCH, 80);
+		AddHeroCreatures("Raelag", CREATURE_MINOTAUR_KING, 60);
+		AddHeroCreatures("Raelag", CREATURE_RAVAGER, 40);
+		AddHeroCreatures("Raelag", CREATURE_CHAOS_HYDRA, 20);
+		AddHeroCreatures("Raelag", CREATURE_MATRIARCH, 16);
+		AddHeroCreatures("Raelag", CREATURE_BLACK_DRAGON, 8);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GREMLIN, 100);
+		AddHeroCreatures("Zehir", CREATURE_OBSIDIAN_GARGOYLE, 100);
+		AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 80);
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 40);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GENIE, 20);
+		AddHeroCreatures("Zehir", CREATURE_RAKSHASA_RUKH, 20);
+		AddHeroCreatures("Zehir", CREATURE_TITAN, 10);
+	end,
+
+	[1] = function()
+		d = 2;
+		print ("hard");
+		AddHeroCreatures("Godric", CREATURE_MILITIAMAN, 50);
+		AddHeroCreatures("Godric", CREATURE_MARKSMAN, 50);
+		AddHeroCreatures("Godric", CREATURE_SWORDSMAN, 40);
+		AddHeroCreatures("Godric", CREATURE_ROYAL_GRIFFIN, 20);
+		AddHeroCreatures("Godric", CREATURE_CLERIC, 15);
+		AddHeroCreatures("Godric", CREATURE_PALADIN, 10);
+		AddHeroCreatures("Godric", CREATURE_ARCHANGEL, 9);
+		AddHeroCreatures("Heam", CREATURE_SPRITE, 40);
+		AddHeroCreatures("Heam", CREATURE_WAR_DANCER, 40);
+		AddHeroCreatures("Heam", CREATURE_GRAND_ELF, 30);
+		AddHeroCreatures("Heam", CREATURE_DRUID_ELDER, 20);
+		AddHeroCreatures("Heam", CREATURE_WAR_UNICORN, 15);
+	    AddHeroCreatures("Heam", CREATURE_TREANT_GUARDIAN, 20);
+		AddHeroCreatures("Heam", CREATURE_GOLD_DRAGON, 5);
+		AddHeroCreatures("Raelag", CREATURE_ASSASSIN, 50);
+		AddHeroCreatures("Raelag", CREATURE_BLOOD_WITCH, 50);
+		AddHeroCreatures("Raelag", CREATURE_MINOTAUR_KING, 40);
+		AddHeroCreatures("Raelag", CREATURE_RAVAGER, 20);
+		AddHeroCreatures("Raelag", CREATURE_CHAOS_HYDRA, 15);
+		AddHeroCreatures("Raelag", CREATURE_MATRIARCH, 10);
+		AddHeroCreatures("Raelag", CREATURE_BLACK_DRAGON, 4);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GREMLIN, 50);
+		AddHeroCreatures("Zehir", CREATURE_OBSIDIAN_GARGOYLE, 50);
+		AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 40);
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 20);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GENIE, 15);
+		AddHeroCreatures("Zehir", CREATURE_RAKSHASA_RUKH, 15);
+		AddHeroCreatures("Zehir", CREATURE_TITAN, 9);
+	end,
+
+	[2] = function()
+		d = 3;
+		print ("heroic");
+		AddHeroCreatures("Godric", CREATURE_MILITIAMAN, 25);
+		AddHeroCreatures("Godric", CREATURE_MARKSMAN, 25);
+		AddHeroCreatures("Godric", CREATURE_SWORDSMAN, 20);
+		AddHeroCreatures("Godric", CREATURE_ROYAL_GRIFFIN, 10);
+		AddHeroCreatures("Godric", CREATURE_CLERIC, 15);
+		AddHeroCreatures("Godric", CREATURE_PALADIN, 10);
+		AddHeroCreatures("Godric", CREATURE_ARCHANGEL, 7);
+		AddHeroCreatures("Heam", CREATURE_SPRITE, 20);
+		AddHeroCreatures("Heam", CREATURE_WAR_DANCER, 20);
+		AddHeroCreatures("Heam", CREATURE_GRAND_ELF, 15);
+		AddHeroCreatures("Heam", CREATURE_DRUID_ELDER, 10);
+		AddHeroCreatures("Heam", CREATURE_WAR_UNICORN, 10);
+	    AddHeroCreatures("Heam", CREATURE_TREANT_GUARDIAN, 10);
+		AddHeroCreatures("Heam", CREATURE_GOLD_DRAGON, 3);
+		AddHeroCreatures("Raelag", CREATURE_ASSASSIN, 25);
+		AddHeroCreatures("Raelag", CREATURE_BLOOD_WITCH, 25);
+		AddHeroCreatures("Raelag", CREATURE_MINOTAUR_KING, 20);
+		AddHeroCreatures("Raelag", CREATURE_RAVAGER, 10);
+		AddHeroCreatures("Raelag", CREATURE_CHAOS_HYDRA, 10);
+		AddHeroCreatures("Raelag", CREATURE_MATRIARCH, 10);
+		AddHeroCreatures("Raelag", CREATURE_BLACK_DRAGON, 3);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GREMLIN, 25);
+		AddHeroCreatures("Zehir", CREATURE_OBSIDIAN_GARGOYLE, 25);
+		AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 20);
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 10);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GENIE, 10);
+		AddHeroCreatures("Zehir", CREATURE_RAKSHASA_RUKH, 10);
+		AddHeroCreatures("Zehir", CREATURE_TITAN, 7);
+	end,
+
+	[3] = function()
+		d = 4;
+		print ("impossible");
+		AddHeroCreatures("Godric", CREATURE_CLERIC, 15);
+		AddHeroCreatures("Godric", CREATURE_PALADIN, 10);
+		AddHeroCreatures("Godric", CREATURE_ARCHANGEL, 5);
+		AddHeroCreatures("Zehir", CREATURE_MASTER_GENIE, 10);
+		AddHeroCreatures("Zehir", CREATURE_RAKSHASA_RUKH, 10);
+		AddHeroCreatures("Zehir", CREATURE_TITAN, 5);
+	end,
+}
 
 town_array = {"town1","town2","town3","town4"};
 town_array.n = 4;
@@ -142,6 +253,7 @@ OBJECTIVES = {
 		Trigger(  OBJECT_TOUCH_TRIGGER, "bcitadel",       "barmy");
 		Trigger(  OBJECT_TOUCH_TRIGGER, "scitadel",    "Question");
 		OpenCircleFog(58, 51, 0, 10, PLAYER_1);
+		startThread(DIFFICULTY[GetDifficulty()]);
 		CINEMATICS.intro();
 	end,
 

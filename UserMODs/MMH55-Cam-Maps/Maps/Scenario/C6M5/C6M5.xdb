@@ -6598,31 +6598,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MASTER_GREMLIN</Creature>
-						<Count>300</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
-						<Count>250</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STEEL_GOLEM</Creature>
-						<Count>167</Count>
+						<Count>120</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCH_MAGI</Creature>
-						<Count>60</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MASTER_GENIE</Creature>
 						<Count>80</Count>
 					</Item>
 					<Item>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>60</Count>
+					</Item>
+					<Item>
 						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
-						<Count>65</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_TITAN</Creature>
-						<Count>40</Count>
+						<Count>30</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -6728,31 +6728,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SPRITE</Creature>
-						<Count>280</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WAR_DANCER</Creature>
-						<Count>195</Count>
+						<Count>120</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRAND_ELF</Creature>
-						<Count>145</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DRUID_ELDER</Creature>
 						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WAR_UNICORN</Creature>
+						<Creature>CREATURE_DRUID_ELDER</Creature>
 						<Count>75</Count>
 					</Item>
 					<Item>
+						<Creature>CREATURE_WAR_UNICORN</Creature>
+						<Count>50</Count>
+					</Item>
+					<Item>
 						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
-						<Count>62</Count>
+						<Count>35</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GOLD_DRAGON</Creature>
-						<Count>45</Count>
+						<Count>20</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -6842,19 +6842,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Count>300</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>250</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>230</Count>
+						<Count>120</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Count>90</Count>
+						<Count>80</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CLERIC</Creature>
@@ -6862,11 +6862,11 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
-						<Count>60</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHANGEL</Creature>
-						<Count>46</Count>
+						<Count>30</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -6952,31 +6952,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>168</Count>
+						<Count>160</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Count>150</Count>
+						<Count>120</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Count>153</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_RAVAGER</Creature>
-						<Count>68</Count>
+						<Count>70</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAOS_HYDRA</Creature>
-						<Count>55</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MATRIARCH</Creature>
-						<Count>67</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLACK_DRAGON</Creature>
-						<Count>45</Count>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -9517,7 +9517,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>0</HeroMaxLevel>
+	<HeroMaxLevel>41</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
