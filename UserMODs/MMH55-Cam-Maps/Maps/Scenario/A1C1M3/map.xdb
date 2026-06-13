@@ -40,13 +40,13 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_4</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
@@ -60,8 +60,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -75,22 +75,22 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -21706,7 +21706,6 @@
 		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Ving.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	</AvailableHeroes>
 	<MapRumours>
 		<Item>

@@ -72,11 +72,12 @@ function A1C1M3_SetPlayer2Army(coef)
 	AddObjectCreatures(     "Sarge",    CREATURE_FOOTMAN, 10 * coef );
 	AddObjectCreatures(     "Sarge",   CREATURE_CHAMPION,  1 * coef );
 	ChangeHeroStat( 'Sarge', STAT_EXPERIENCE, 10000 * coef );
-	AddObjectCreatures(    "Duncan", CREATURE_MILITIAMAN, 80 * coef );
-	AddObjectCreatures(    "Duncan",   CREATURE_MARKSMAN, 40 * coef );
-	AddObjectCreatures(    "Duncan",  CREATURE_SWORDSMAN, 20 * coef );
-	AddObjectCreatures(    "Duncan",     CREATURE_PRIEST,  3 * coef );
-	AddObjectCreatures(    "Duncan",   CREATURE_CHAMPION,  4 * coef );
+	AddObjectCreatures(    "Duncan", CREATURE_MILITIAMAN, 256 * coef );
+	AddObjectCreatures(    "Duncan",   CREATURE_MARKSMAN, 130 * coef );
+	AddObjectCreatures(    "Duncan",  CREATURE_SWORDSMAN, 75 * coef );
+	AddObjectCreatures(    "Duncan",     CREATURE_PRIEST,  25 * coef );
+	AddObjectCreatures(    "Duncan",   CREATURE_CHAMPION,  15 * coef );
+	AddObjectCreatures(    "Duncan", CREATURE_ROYAL_GRIFFIN, 40 * coef );
 	ChangeHeroStat( 'Duncan', STAT_EXPERIENCE, 35000 * math.pow(2, coef));
 end
 
@@ -325,13 +326,13 @@ BATTLES = {
 		PlayVisualEffect( "/Effects/_(Effect)/Characters/Gating.xdb#xpointer(/Effect)", objectname, "eff1", 0, 0, 0, 0, 0 );
 		sleep( 20 );
 		if objectname == "demon1" then
-			StartCombat( heroname, nil, 3, CREATURE_SUCCUBUS, 9, CREATURE_SUCCUBUS, 9, CREATURE_SUCCUBUS, 9, nil, nil );
+			StartCombat( heroname, nil, 3, CREATURE_SUCCUBUS, 9 * coef, CREATURE_SUCCUBUS, 9 * coef, CREATURE_SUCCUBUS, 9 * coef, nil, nil );
 			SetRegionBlocked( 'block1', nil, PLAYER_2 );
 		elseif objectname == "demon2" then
-			StartCombat( heroname, nil, 3, CREATURE_INFERNAL_SUCCUBUS, 9, CREATURE_INFERNAL_SUCCUBUS, 9, CREATURE_INFERNAL_SUCCUBUS, 9, nil, nil );
+			StartCombat( heroname, nil, 3, CREATURE_INFERNAL_SUCCUBUS, 9 * coef, CREATURE_INFERNAL_SUCCUBUS, 9 * coef, CREATURE_INFERNAL_SUCCUBUS, 9 * coef, nil, nil );
 			SetRegionBlocked( 'block2', nil, PLAYER_2 );
 		elseif objectname == "demon3" then
-			StartCombat( heroname, nil, 3, CREATURE_SUCCUBUS, 9, CREATURE_INFERNAL_SUCCUBUS, 9, CREATURE_SUCCUBUS, 9, nil, nil );
+			StartCombat( heroname, nil, 3, CREATURE_SUCCUBUS, 9 * coef, CREATURE_INFERNAL_SUCCUBUS, 9 * coef, CREATURE_SUCCUBUS, 9 * coef, nil, nil );
 			SetRegionBlocked( 'block3', nil, PLAYER_2 );
 		end
 		RemoveObject( objectname );
@@ -396,7 +397,6 @@ OBJECTIVES = {
 	prepare = function()
 		CINEMATICS.intro();
 		EnableHeroAI( 'Duncan', nil );
-		SetHeroRoleMode( 'Duncan', HERO_ROLE_MODE_HERMIT );
 		SetHeroRoleMode(   'Ving', HERO_ROLE_MODE_HERMIT );
 		SetHeroRoleMode(  'Sarge', HERO_ROLE_MODE_HERMIT );
 		startThread(DIFFICULTY[GetDifficulty()]);
