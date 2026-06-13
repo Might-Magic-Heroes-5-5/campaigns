@@ -2,20 +2,61 @@ d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
 army_rating = game_time/(18-3*d) -- 2.33/3/3.5/4.67 points per month
-waves = 12 + d;
+waves = 9 + d;
 
 -- Markal summons and casts during first "wave" turns
 function DefenderHeroMove(heroName)
 	defender_turn = defender_turn + 1
 	if defender_turn == 1 then
-		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*50, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER,  CREATURE_LICH, army_rating*20, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*30, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*30, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER,  CREATURE_LICH, army_rating*25, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*35, math.random(3,10), math.random(2,12));
 		return nil	-- cast a spell
-	elseif defender_turn <= waves and math.fmod(defender_turn, 2) ~= 0 then
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));
-		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*18, math.random(3,10), math.random(2,12));	
-		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*25, math.random(3,10), math.random(2,12));
+	elseif defender_turn == 2 then
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*10, math.random(3,10), math.random(2,12));	
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*15, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_LICH, army_rating*6, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*8, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
+	elseif defender_turn == 3 then
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*6, math.random(3,10), math.random(2,12));	
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*5, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_LICH, army_rating*4, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*5, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*2, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
+	elseif defender_turn == 4 then
+		SummonCreature(DEFENDER, CREATURE_MANES, army_rating*4, math.random(3,10), math.random(2,12));	
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*3, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating*45, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
+	elseif defender_turn == 5 then
+		SummonCreature(DEFENDER, CREATURE_VAMPIRE, army_rating*3, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*2, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating*35, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*2, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
+	elseif defender_turn == 6 then
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*2, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating*25, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*2, math.random(3,10), math.random(2,12));
+		return nil	-- cast a spell
+	elseif defender_turn <= waves and math.fmod(defender_turn, 7) ~= 8 then
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_BONE_DRAGON, army_rating*1, math.random(3,10), math.random(2,12));
+		SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating*15, math.random(3,10), math.random(2,12));
+
 		return nil	-- cast a spell
 	else
 		return nil -- cast a spell
