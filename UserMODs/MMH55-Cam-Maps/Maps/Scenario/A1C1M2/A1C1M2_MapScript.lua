@@ -862,7 +862,7 @@ function final()
 	PlayObjectAnimation("balor", "move",ONESHOT_STILL);
 	print("animation move played");
 	sleep(2);
-	StartCombat(OUR_HERO_FREYDA, nil,5,CREATURE_BALOR,1+DF*3,CREATURE_INFERNAL_SUCCUBUS, 1+DF*15, CREATURE_CERBERI, 1+DF*22, CREATURE_DEMON, 1+DF*33, CREATURE_IMP, 1+DF*50,nil,"combatResult",nil,nil);
+	StartCombat(OUR_HERO_FREYDA, nil,5,CREATURE_BALOR,1+DF*5,CREATURE_INFERNAL_SUCCUBUS, 1+DF*25, CREATURE_CERBERI, 1+DF*35, CREATURE_DEMON, 1+DF*50, CREATURE_IMP, 1+DF*65,nil,"combatResult",nil,nil);
 	print("combat started")
 	RemoveObject("imp");
 	RemoveObject("balor");
@@ -876,9 +876,10 @@ end;
 function combatResult( heroName, result )
 	if result ~= nil then
 		print("you won!");
-		SaveHeroAllSetArtifactsEquipped( "Freyda", "A1C1M3" );
-		sleep(5);
+		SaveHeroAllSetArtifactsEquipped( "Freyda", "A1C1M2" );
+		sleep(20);
 		StartDialogScene("/DialogScenes/A1C1/M2/S3/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(40);
 		Win(PLAYER_1);
 	end;
 end;
