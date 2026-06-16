@@ -16799,16 +16799,8 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_LONGBOWMAN</Creature>
-								<Count>20</Count>
-							</Item>
-							<Item>
 								<Creature>CREATURE_LANDLORD</Creature>
-								<Count>90</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-								<Count>8</Count>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -16859,16 +16851,8 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_ZEALOT</Creature>
-								<Count>8</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_LONGBOWMAN</Creature>
-								<Count>40</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-								<Count>30</Count>
+								<Creature>CREATURE_LANDLORD</Creature>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -16919,24 +16903,8 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_CHAMPION</Creature>
-								<Count>5</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_LONGBOWMAN</Creature>
-								<Count>40</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_VINDICATOR</Creature>
-								<Count>30</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-								<Count>25</Count>
-							</Item>
-							<Item>
 								<Creature>CREATURE_LANDLORD</Creature>
-								<Count>260</Count>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -16988,15 +16956,7 @@
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_LANDLORD</Creature>
-								<Count>80</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_LONGBOWMAN</Creature>
-								<Count>20</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_VINDICATOR</Creature>
-								<Count>15</Count>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -17047,16 +17007,8 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-								<Count>10</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_LONGBOWMAN</Creature>
-								<Count>35</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_VINDICATOR</Creature>
-								<Count>25</Count>
+								<Creature>CREATURE_LANDLORD</Creature>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -17107,20 +17059,8 @@
 						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_ZEALOT</Creature>
-								<Count>20</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-								<Count>25</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_CHAMPION</Creature>
-								<Count>14</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_VINDICATOR</Creature>
-								<Count>85</Count>
+								<Creature>CREATURE_LANDLORD</Creature>
+								<Count>1</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -17985,8 +17925,11 @@
 							<ObscureCaptionFileRef href=""/>
 							<DescriptionFileRef href="Description2.txt"/>
 							<ProgressCommentsFileRef/>
-							<Kind>OBJECTIVE_KIND_MANUAL</Kind>
-							<Parameters/>
+							<Kind>OBJECTIVE_KIND_ASSEMBLE_ARMY</Kind>
+							<Parameters>
+								<Item>93</Item>
+								<Item>500</Item>
+							</Parameters>
 							<Timeout>-1</Timeout>
 							<Holdout>-1</Holdout>
 							<Dependencies/>
