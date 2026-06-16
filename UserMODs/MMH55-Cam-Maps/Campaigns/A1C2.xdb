@@ -19,7 +19,7 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_DEFENDER</Creature>
+						<Creature>CREATURE_AXE_THROWER</Creature>
 						<Count>15</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
@@ -42,7 +42,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_BEAR_RIDER</Creature>
-						<Count>5</Count>
+						<Count>10</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -64,7 +64,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_BERSERKER</Creature>
-						<Count>5</Count>
+						<Count>7</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>

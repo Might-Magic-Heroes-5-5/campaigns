@@ -89,7 +89,7 @@ function H55c_AI_roamHero(name)
 	H55c_AI_print(1, "Activate ROAMING mode for ".. name);
 	-- these next two lines are required to unbind AI hero target before release it in roaming mode
 	local x, y, z = GetObjectPosition(name);
-	MoveHero(name, x, y, z);
+	pcall( MoveHero, name, x, y, z );
 	EnableHeroAI(name, not nil);
 end
 
