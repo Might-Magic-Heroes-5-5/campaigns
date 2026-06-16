@@ -1,180 +1,204 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
+    sleep()
+end
+
 H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M1");
-end;
+end
 
-startThread(H55_InitSetArtifacts);
+H55c_AI_CONTROLLED = {
+	player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+		state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+		heroes = {},
+		enemies = {},
+	},
+	player2 = { 		   -- Red Haven player.
+		state = 2,         -- Leads onslaught against player town.
+		heroes = {},
+		enemies = {
+			{ priority = 1.0, heroes = -1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes =  1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+		}
+	},
+}
 
-sleep(10);
---Save("autosave");
-StartDialogScene("/DialogScenes/A1C2/M1/S1/DialogScene.xdb#xpointer(/DialogScene)", "", "autosave"); ----//TEST!
+BATTLES = {
+	wave = {
+		id = 1,
+		size = {
+			[1] = { 1, 2, 2, 2, 1, 1, 1 }, -- 10
+			[2] = { 2, 2, 2, 2, 1, 1, 1 }, -- 11
+			[3] = { 2, 2, 3, 3, 1, 1, 1 }, -- 13
+			[4] = { 3, 3, 3, 3, 1, 1, 1 }, -- 15
+		},
+	},
+	heroes = { "Christian", "Maeve", "Brem", "Sarge", "Ving", "Orrin" },
+	army_idx = 1,
+	army_multiplier = 0,
+	army = {
+		{ CREATURE_LONGBOWMAN,  39, CREATURE_BATTLE_GRIFFIN,  15, CREATURE_VINDICATOR,  26 },   -- Wave 1, hero 1
+		{   CREATURE_LANDLORD, 150, CREATURE_BATTLE_GRIFFIN,  15,	  CREATURE_ZEALOT,   8 },	-- Wave 1, hero 2
+		{ CREATURE_LONGBOWMAN,  39, CREATURE_BATTLE_GRIFFIN,  15, CREATURE_VINDICATOR,  26 },	-- Wave 1, hero 3
+		{ CREATURE_LONGBOWMAN,  67, CREATURE_BATTLE_GRIFFIN,  26, CREATURE_VINDICATOR,  46 },	-- Wave 2, hero 1
+		{   CREATURE_LANDLORD, 200, CREATURE_BATTLE_GRIFFIN,  26,	  CREATURE_ZEALOT,  13 },	-- Wave 2, hero 2
+		{ CREATURE_LONGBOWMAN,  67, CREATURE_BATTLE_GRIFFIN,  26, CREATURE_VINDICATOR,  46 },	-- Wave 2, hero 3
+		{ CREATURE_LONGBOWMAN,  95, CREATURE_BATTLE_GRIFFIN,  37, CREATURE_VINDICATOR,  66 },	-- Wave 3, hero 1
+		{   CREATURE_LANDLORD, 200, CREATURE_BATTLE_GRIFFIN,  37,	  CREATURE_ZEALOT,  18 },	-- Wave 3, hero 2
+		{ CREATURE_LONGBOWMAN,  95, CREATURE_BATTLE_GRIFFIN,  37, CREATURE_VINDICATOR,  66 },	-- Wave 3, hero 3
+		{ CREATURE_LONGBOWMAN, 151, CREATURE_BATTLE_GRIFFIN,  55, CREATURE_VINDICATOR, 106 },	-- Wave 4, hero 1
+		{   CREATURE_LANDLORD, 300, CREATURE_BATTLE_GRIFFIN,  55,	  CREATURE_ZEALOT,  28 },	-- Wave 4, hero 2
+		{ CREATURE_LONGBOWMAN, 151, CREATURE_BATTLE_GRIFFIN,  55, CREATURE_VINDICATOR, 106 },	-- Wave 4, hero 3
+		{   CREATURE_LANDLORD, 390,		CREATURE_LONGBOWMAN, 180, CREATURE_VINDICATOR, 140, CREATURE_BATTLE_GRIFFIN,  65, CREATURE_CHAMPION, 10 }, -- wave 5
+		{ CREATURE_VINDICATOR, 185, CREATURE_BATTLE_GRIFFIN,  65,	  CREATURE_ZEALOT,  30,		  CREATURE_CHAMPION,  20 }, -- wave 6
+		{ CREATURE_VINDICATOR, 235, CREATURE_BATTLE_GRIFFIN,  90,	  CREATURE_ZEALOT,  45,		  CREATURE_CHAMPION,  30 }, -- wave 7
+	},
 
+	sources = { { 86,  3, GROUND }, { 34,  7, GROUND }, { 19, 13, GROUND } },
 
---SetPlayerResource(1, 0, 10);
---SetPlayerResource(1, 1, 10);
---SetPlayerResource(1, 2, 0);
---SetPlayerResource(1, 3, 0);
---SetPlayerResource(1, 4, 0);
---SetPlayerResource(1, 5, 0);
---SetPlayerResource(1, 6, 10000);
----------------------------------Сложность
-function Diff_level()
-	slozhnost = GetDifficulty(); 
-	if slozhnost == DIFFICULTY_EASY then
-		AddHeroCreatures("Wulfstan", CREATURE_DEFENDER, 10);
-		--AddHeroCreatures("Wulfstan", CREATURE_AXE_FIGHTER, 10);
-		print("DIFFICULTY_EASY//////////////");	 
-	elseif slozhnost == DIFFICULTY_NORMAL then
-		AddHeroCreatures("Wulfstan", CREATURE_DEFENDER, 10);
-		print("DIFFICULTY_NORMAL//////////////");
-	end;
-	print('difficulty = ',slozhnost);
-end;
-
----------------------------------Атаки на города
-
-function Random_castles1()
-	if (GetObjectOwner("town2") ~= PLAYER_1) then
-		if ( random( 2 ) == 1 ) then
-			MoveHero( "Orrin", 17, 77, 0 )    
-		else
-			MoveHero( "Orrin", 86, 78, 0 )
+	sendWave = function()
+		local wave = math.mod(BATTLES.wave.id - 1, table.length(BATTLES.wave.size[GetDifficulty() + 1])) + 1;
+		if wave == 1 then
+			BATTLES.army_idx = 1;
+			BATTLES.army_multiplier = BATTLES.army_multiplier + 1;
 		end
-	else  
-		MoveHero( "Orrin", 53, 53, 0 ) 
-	end
-	sleep(1)
-end;
-
-function Random_castles2()
-	if (GetObjectOwner("town3") ~= PLAYER_1) then
-		if ( random( 2 ) == 1 ) then
-			MoveHero( "Sarge", 17, 77, 0 )    
-		else
-			MoveHero( "Sarge", 53, 53, 0 )
+		for i = 1, BATTLES.wave.size[GetDifficulty() + 1][wave] do
+			local hero = BATTLES.chooseHero();
+			if hero ~= nil then
+				local xp = GetExpToLevel( 1 + 3 * (BATTLES.wave.id - 1));
+				local roster = BATTLES.army[BATTLES.army_idx];
+				startThread(BATTLES.sendHero, hero, xp, roster, BATTLES.army_multiplier, BATTLES.sources[i]);
+				BATTLES.army_idx = BATTLES.army_idx + 1;
+				sleep( 30 ); -- wait for deployment before next hero is selected
+			end
 		end
-	else  
-		MoveHero( "Sarge", 86, 78, 0 ) 
-	end
-	sleep(1)
-end;
+		BATTLES.wave.id = BATTLES.wave.id + 1;
+	end,
 
+	chooseHero = function()
+		local loop_guard = 0;
+		while loop_guard < 20 do
+			local hero = BATTLES.heroes[math.random(1, table.length(BATTLES.heroes))];
+			if IsHeroAlive(hero) == nil then return hero; end
+			loop_guard = loop_guard + 1;
+		end
+	end,
+	
+	sendHero = function(hero, xp, roster, multiplier, source)
+		DeployReserveHero( hero, source[1], source[2], source[3] );
+		sleep( 20 ); -- Wait until hero deployment completes
+		SetHeroRoleMode( hero, HERO_ROLE_MODE_HERMIT );
+		GiveExp( hero, xp);
+		pcall(BATTLES.setArmy, hero, roster, multiplier);
+		H55c_AIAddHero( hero );
+	end,
 
-----------------------------------Собираем кричей
-function Objective2()
-	while 1 do
+	setArmy = function(hero, roster, multiplier)
+		for i = 1, table.length(roster), 2 do
+			AddHeroCreatures( hero, roster[i], roster[i+1] * multiplier );
+		end
+		sleep(40);
+		RemoveHeroCreatures( hero, CREATURE_LANDLORD, 1 );
+	end,
+}
+
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/A1C2/M1/S1/DialogScene.xdb#xpointer(/DialogScene)", "", "autosave");
 		sleep( 2 );
-		if  GetHeroCreatures( "Wulfstan", CREATURE_STOUT_DEFENDER ) >= 300 then
-			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M1");
-			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-			sleep( 50 );
-			Win(); 
-			break;
-		end;
-	end;
-end;
----------------------------------Герой погиб
-function Objective3_defead()  
-	while 1 do
-		sleep(10);
-		if IsHeroAlive("Wulfstan") == nil then
-			SetObjectiveState('prim3',OBJECTIVE_FAILED);
-			sleep(20);
-			Loose();
-			break;
-		end;
-	end;
-end;
+	end,
+}
 
---------------------------------Проверка городов на поражение
-function Loose_towns()
-	while 1 do
-		if (GetObjectOwner("town1") == PLAYER_2) and (GetObjectOwner("town2") == PLAYER_2) then
+OBJECTIVES = {
+	date = 0,
+	state = {
+		holdTowns   = { "prim1", 1 },	-- hold at least two towns
+		getArmy		= { "prim2", 0 },	-- Wulfstan must collect 500 defenders
+		isAlive		= { "prim3", 1 },	-- Wulfstan must survive
+		buildShrine = {  "sec1", 1 },	-- build Runic shrine of the first circle
+	},
+
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+	prepare = function()
+		CINEMATICS.intro();
+		startThread(H55_InitSetArtifacts);
+		GiveHeroSkill( "Wulfstan", HERO_SKILL_RUNELORE );
+	end,
+
+	run = function()
+		while true do
 			sleep(10);
-			Loose();
-			return
-		end;
-		if (GetObjectOwner("town1") == PLAYER_2) and (GetObjectOwner("town3") == PLAYER_2) then
-			sleep(10);
-			Loose();
-			return
-		end;
-		if (GetObjectOwner("town2") == PLAYER_2) and (GetObjectOwner("town3") == PLAYER_2) then
-			sleep(10);
-			Loose();
-			return
-		end;
-		sleep();
-	end;
-end;
---------------------------------Вызываем героев противника
-function H55_TriggerDaily()
-	if ( GetDate(MONTH) == 1 ) and ( GetDate(WEEK) == 2 ) and (GetDate(DAY_OF_WEEK) == 2 ) then 
-		DeployReserveHero( "Christian", 86, 3, GROUND ); -- деплоим 1 героя
-		sleep(10);
-		--EnableHeroAI("Christian",nil); --H55 fix
-		MoveHero( "Christian", 53, 53, 0 )   
-	end;
-	if ( GetDate(MONTH) == 1 ) and ( GetDate(WEEK) == 3 ) and (GetDate(DAY_OF_WEEK) == 1 ) then 
-		DeployReserveHero( "Maeve", 34, 7, GROUND ); -- деплоим 1 героя аи для захвата шахт!!!
-		GiveExp( "Maeve", 3000 ); ---addexp!!!
-		sleep(10);
-		SetAIPlayerAttractor('C1', PLAYER_2, 1);
-		SetAIPlayerAttractor('C2', PLAYER_2, 1);
-		SetAIPlayerAttractor('C3', PLAYER_2, 1);  
-	end;
-	if ( GetDate(MONTH) == 1 ) and ( GetDate(WEEK) == 4 ) and (GetDate(DAY_OF_WEEK) == 1 ) then 
-		DeployReserveHero( "Orrin", 86, 3, GROUND ); -- деплоим 2 героя
-		GiveExp( "Orrin", 6000 ); ---addexp!!!
-		sleep(10);
-		--EnableHeroAI("Orrin",nil); --H55 fix
-		startThread( Random_castles1 ); 
-	end;
-	if ( GetDate(MONTH) == 2 ) and ( GetDate(WEEK) == 1 ) and (GetDate(DAY_OF_WEEK) == 3 ) then 
-		DeployReserveHero( "Brem", 4, 20, GROUND ); -- деплоим 2 героя аи для захвата шахт!!!
-		GiveExp( "Brem", 9000 ); ---addexp!!!
-		sleep(10);
-		SetAIPlayerAttractor('C1', PLAYER_2, 1);
-		SetAIPlayerAttractor('C2', PLAYER_2, 1);
-		SetAIPlayerAttractor('C3', PLAYER_2, 1);  
-	end;
-	if ( GetDate(MONTH) == 2 ) and ( GetDate(WEEK) == 3 ) and (GetDate(DAY_OF_WEEK) == 2 ) then 
-		DeployReserveHero( "Sarge", 34, 7, GROUND ); -- деплоим 3 героя
-		GiveExp( "Sarge", 15000 ); ---addexp!!!
-		sleep(10);
-		--EnableHeroAI("Sarge",nil); --H55 fix
-		startThread( Random_castles2 ); 
-	end;
-	if ( GetDate(MONTH) == 3 ) and ( GetDate(WEEK) == 2 ) and (GetDate(DAY_OF_WEEK) == 5 ) then 
-		DeployReserveHero( "Ving", 86, 3, GROUND ); -- деплоим 3 героя аи для захвата шахт!!!
-		GiveExp( "Ving", 25000 ); ---addexp!!!
-	end;
-end;
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
 
--------------------------------//Учебное задание
-function Objective4_sec()  
-	while 1 do
-		sleep(10);
-		if GetTownBuildingLevel('town1', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 or GetTownBuildingLevel('town2', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 or GetTownBuildingLevel('town3', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 then
-			sleep(10);
-			SetObjectiveState('sec1',OBJECTIVE_COMPLETED);
-			sleep(5);
-			break;
-		end;
-	end;
-end;
+			if GetObjectiveState("prim1") == OBJECTIVE_FAILED or GetObjectiveState("prim3") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
 
--------------------------------//////MAIN
-GiveHeroSkill("Wulfstan",HERO_SKILL_RUNELORE);
+			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M1");
+				sleep(100);
+				Win();
+				return
+			end
+		end
+	end,
 
-startThread( Diff_level );
-startThread( Objective2 );
-startThread( Objective3_defead );
+	holdTowns_attackDate = 8,
+	holdTowns = function()
+	-- start of this task is handled by map.xdb
+		local enemy_towns = 0;
+		for i, town in { "town1", "town2", "town3" } do
+			if GetObjectOwner(town) == PLAYER_2 then
+				enemy_towns = enemy_towns + 1;
+			end
+		end
+		if enemy_towns > 1 then
+			SetObjectiveState( "prim1", OBJECTIVE_FAILED );
+			OBJECTIVES.state.holdTowns[2] = 11;
+		end
 
-startThread( Loose_towns );
+		if OBJECTIVES.date >= OBJECTIVES.holdTowns_attackDate then
+			BATTLES.sendWave();
+			OBJECTIVES.holdTowns_attackDate = OBJECTIVES.holdTowns_attackDate + 7;
+		end
+	end,
 
-H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "Enemy",nil );
+	getArmy = function()
+	-- start and end of this task is handled by map.xdb
+	end,
 
-startThread( Objective4_sec );
+	isAlive = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Wulfstan") == nil then
+			SetObjectiveState( 'prim3', OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+
+	buildShrine = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.buildShrine[2] == 1 and ( GetTownBuildingLevel('town1', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 or GetTownBuildingLevel('town2', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 or GetTownBuildingLevel('town3', TOWN_BUILDING_FORTRESS_RUNIC_SHRINE) == 1 ) then
+			SetObjectiveState( 'sec1', OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.buildShrine[2] = 10;
+		end
+	end,
+}
+
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
+startThread( H55c_AI_main );

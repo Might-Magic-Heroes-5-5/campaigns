@@ -446,7 +446,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Mission final naval combat is now more challenging.
 
 ### A1C2M1 - Wulfstan: The Borderzone
+- change: Reworked map starting bonus options
 - change: Raise level cap from 14 to 20
+- change: Red Heaven onslaught waves have been redesign and challenge scales up with diffculty.
 
 ### A1C2M2 - Wulfstan: The Ambush
 - change: Enemy hero leading the final attack is now more challenging.
