@@ -6,49 +6,33 @@ while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
-HERO_NAME = "Isabell"
+H55_RemoveTheseArtifactsFromBanks = { ARTIFACT_BOOTS_OF_LEVITATION };
+
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C1M2");
-	LoadHeroAllSetArtifacts( HERO_NAME, "C1M1" );
+	LoadHeroAllSetArtifacts( "Isabell", "C1M1" );
 	sleep(40); -- wait for artifacts to load
-	H55_CamFixTooManySkills(  PLAYER_1, HERO_NAME );
+	H55_CamFixTooManySkills(  PLAYER_1, "Isabell" );
 end
 
 startThread(H55_InitSetArtifacts);
 
-H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
-
-m01= "c1_m2_t1" ;--"/Maps/Scenario/C1M2/tutorial/tutorial1.txt"
-m02= "c1_m2_t2" ;--"/Maps/Scenario/C1M2/tutorial/tutorial2.txt"
-m03= "c1_m2_t3" ;--"/Maps/Scenario/C1M2/tutorial/tutorial3.txt"
-m04= "c1_m2_t4" ;--"/Maps/Scenario/C1M2/tutorial/tutorial4.txt"
-m05= "c1_m2_t5" ;--"/Maps/Scenario/C1M2/tutorial/tutorial5.txt"
-m06= "c1_m2_t6_1" ;--"/Maps/Scenario/C1M2/tutorial/tutorial6.txt"
+-- Unused tutorial messages
 m63= "c1_m2_t6_2" ;--"/Maps/Scenario/C1M2/tutorial/tutorial61.txt"
-m61= "c1_m2_t6_3" ;--"/Maps/Scenario/C1M2/tutorial/tutorial62.txt"
 m62= "c1_m2_t6_4" ;--"/Maps/Scenario/C1M2/tutorial/tutorial62.txt"
 m07= "c1_m2_t7" ;--"/Maps/Scenario/C1M2/tutorial/tutorial7.txt"
-m08= "c1_m2_t8" ;--"/Maps/Scenario/C1M2/tutorial/tutorial8.txt"
-m09= "c1_m2_t9" ;--"/Maps/Scenario/C1M2/tutorial/tutorial9.txt"
-m10= "c1_m2_t10" ;--"/Maps/Scenario/C1M2/tutorial/tutorial10.txt"
-m11= "c1_m2_t11" ;--"/Maps/Scenario/C1M2/tutorial/tutorial11.txt"
-m12= "c1_m2_t12" ;--"/Maps/Scenario/C1M2/tutorial/tutorial12.txt"
-m13= "c1_m2_t13" ;--"/Maps/Scenario/C1M2/tutorial/tutorial13.txt"
-s1="/DialogScenes/C1/M2/R1/DialogScene.xdb#xpointer(/DialogScene)";
-s2="/DialogScenes/C1/M2/R2/DialogScene.xdb#xpointer(/DialogScene)";
-s3="/DialogScenes/C1/M2/R3/DialogScene.xdb#xpointer(/DialogScene)";
 
 CINEMATICS = {
     intro = function()
-      StartDialogScene(s1);
+      StartDialogScene("/DialogScenes/C1/M2/R1/DialogScene.xdb#xpointer(/DialogScene)");
     end,
 
     captureAshwood = function()
-      StartDialogScene(s2);
+      StartDialogScene("/DialogScenes/C1/M2/R2/DialogScene.xdb#xpointer(/DialogScene)");
     end,
     
     outro = function()
-      StartDialogScene(s3);
+      StartDialogScene("/DialogScenes/C1/M2/R3/DialogScene.xdb#xpointer(/DialogScene)");
     end,
     
     showTown = function()
@@ -111,7 +95,7 @@ TUTORIALS = {
 			if thisday ~= 1 and GetObjectOwner("Hant") == PLAYER_1 then
 				sleep(50)
 				TUTORIALS.markComplete("TUTORIALS.buildPerDay");
-				TutorialMessageBox(m06);
+				TutorialMessageBox("c1_m2_t6_1");
 				return
 			end
 		end
@@ -121,7 +105,7 @@ TUTORIALS = {
 		while true do
 			TUTORIALS.markComplete("TUTORIALS.seizeTown");
 			WaitForTutorialMessageBox();
-			TutorialMessageBox(m01);
+			TutorialMessageBox("c1_m2_t1");
 			return
 		end
 	end,
@@ -133,7 +117,7 @@ TUTORIALS = {
 			if thisday == 1 and GetObjectOwner("Hant") == PLAYER_1 then
 				TUTORIALS.markComplete("TUTORIALS.weeklyPopulation");
 				WaitForTutorialMessageBox();
-				TutorialMessageBox(m08);
+				TutorialMessageBox("c1_m2_t8");
 				return
 			end
 		end
@@ -159,7 +143,7 @@ TUTORIALS = {
 			if thisday == 15 then
 				TUTORIALS.markComplete("TUTORIALS.moonWeeks");
 				WaitForTutorialMessageBox();
-				TutorialMessageBox(m09);
+				TutorialMessageBox("c1_m2_t9");
 				return
 			end
 		end
@@ -168,7 +152,7 @@ TUTORIALS = {
     checkHeroPerks = function()  -- hint about perks, see Isabell's combat script
 		while true do
 			sleep(30);
-			if HasHeroSkill(HERO_NAME, PERK_HOLY_CHARGE) or HasHeroSkill(HERO_NAME, PERK_DEMONIC_STRIKE) or HasHeroSkill(HERO_NAME, HERO_SKILL_POWERFULL_BLOW) or HasHeroSkill(HERO_NAME, PERK_PRAYER) then
+			if HasHeroSkill("Isabell", PERK_HOLY_CHARGE) or HasHeroSkill("Isabell", PERK_DEMONIC_STRIKE) or HasHeroSkill("Isabell", HERO_SKILL_POWERFULL_BLOW) or HasHeroSkill("Isabell", PERK_PRAYER) then
 				SetGameVar("temp.C1M2_perk_hint", 1);
 				TUTORIALS.markComplete("TUTORIALS.checkHeroPerks");
 				return
@@ -180,35 +164,35 @@ TUTORIALS = {
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r03', nil);
 		TUTORIALS.markComplete("TUTORIALS.luck");
 		WaitForTutorialMessageBox();
-		TutorialMessageBox(m03);
+		TutorialMessageBox("c1_m2_t3");
     end,
 
     morale = function() --tutorial 04
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r04', nil)
 		TUTORIALS.markComplete("TUTORIALS.morale");
 		WaitForTutorialMessageBox();
-		TutorialMessageBox(m04);
+		TutorialMessageBox("c1_m2_t4");
     end,
 
     attack_town = function() --tutorial 05
       Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r05', nil)
       TUTORIALS.markComplete("TUTORIALS.attack_town");
 	  WaitForTutorialMessageBox();
-      TutorialMessageBox(m05);
+      TutorialMessageBox("c1_m2_t5");
     end,
     
     defence = function() --tutorial 10
       Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r12', nil)
       TUTORIALS.markComplete("TUTORIALS.defence");
 	  WaitForTutorialMessageBox();
-      TutorialMessageBox(m10);
+      TutorialMessageBox("c1_m2_t10");
     end,
 
 	attack = function() --tutorial 11
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER ,'r11', nil)
 		TUTORIALS.markComplete("TUTORIALS.attack");
 		WaitForTutorialMessageBox();
-		TutorialMessageBox(m11);
+		TutorialMessageBox("c1_m2_t11");
     end,
     
     mineCapturedHint = function()
@@ -222,15 +206,15 @@ TUTORIALS = {
     
     DisableHeroScript = function()
 		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER ,'castle', nil);
-		ResetHeroCombatScript(HERO_NAME);
+		ResetHeroCombatScript("Isabell");
     end
 }
 
 OBJECTIVES = {
     state =  {  -- 0 quest is not active, 1-9 quest is active/custom states, 10 success, 11 fail
-      captureStrongbow = { "prim1", 1 }, -- 1 quest active, 10 strongbow captured
-      assembleArchers  = { "prim2", 0 }, -- 0 waiting to trigger quest, 2 gather archers, 10 success
-      captureAshwood   = { "prim3", 0 }, -- 0 waiting to trigger cinmatic, 10 end of checks
+      captureStrongbow = { "prim1", 0 }, -- 
+      assembleArchers  = { "prim2", 1 }, -- 1 waiting to trigger quest, 2 gather archers, 10 success
+      captureAshwood   = { "prim3", 1 }, -- 1 waiting to trigger cinmatic, 10 end of checks
       isAlive          = { "prim4", 1 },
     },
 
@@ -240,27 +224,19 @@ OBJECTIVES = {
     end,
     
     prepare = function()
-      SetPlayerStartResource( PLAYER_1,    WOOD,    5 );
-      SetPlayerStartResource( PLAYER_1,     ORE,    0 );
-      SetPlayerStartResource( PLAYER_1,     GEM,    0 );
-      SetPlayerStartResource( PLAYER_1, CRYSTAL,    0 );
-      SetPlayerStartResource( PLAYER_1,  SULFUR,    0 );
-      SetPlayerStartResource( PLAYER_1, MERCURY,    0 );
-      SetPlayerStartResource( PLAYER_1,    GOLD, 2000 );
-      strongbowCaptureDay = 0;
+		SetPlayerStartResources( PLAYER_1, 5, 0, 0, 0, 0, 0, 2000 );
+		strongbowCaptureDay = 0;
       
-      -- Game difficulty adjustment
-      if __difficulty >= DIFFICULTY_NORMAL then
-		    AddObjectCreatures( 'Tradeville',     CREATURE_ARCHER, ( __difficulty - 1 ) * 30 ); -- -1 is for new difficulty levels (VERSION: P0)
-		    AddObjectCreatures( 'Tradeville',    CREATURE_FOOTMAN, ( __difficulty - 1 ) * 20 );
-		    AddObjectCreatures( 'Tradeville', CREATURE_MILITIAMAN, ( __difficulty - 1 ) * 60 );
-      end
-      
-      -- Set triggers
-      Trigger( OBJECT_TOUCH_TRIGGER,  "tower",  "CINEMATICS.showTown" );
-      Trigger( OBJECT_TOUCH_TRIGGER, "tower2", "CINEMATICS.showTown2" );
+		if __difficulty >= DIFFICULTY_NORMAL then
+			AddObjectCreatures( 'Tradeville',     CREATURE_ARCHER, 1 + ( __difficulty - 1 ) * 30 );
+			AddObjectCreatures( 'Tradeville',    CREATURE_FOOTMAN, 1 + ( __difficulty - 1 ) * 20 );
+			AddObjectCreatures( 'Tradeville', CREATURE_MILITIAMAN, 1 + ( __difficulty - 1 ) * 60 );
+		end
 
-      CINEMATICS.intro();
+		Trigger( OBJECT_TOUCH_TRIGGER,  "tower",  "CINEMATICS.showTown" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "tower2", "CINEMATICS.showTown2" );
+
+		CINEMATICS.intro();
     end,
 
     run = function()
@@ -282,7 +258,7 @@ OBJECTIVES = {
 				CINEMATICS.outro();
 				sleep(1);
 				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
-				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M2");
+				SaveHeroAllSetArtifactsEquipped("Isabell", "C1M2");
 				sleep(5);
 				Win();
 				return
@@ -291,26 +267,16 @@ OBJECTIVES = {
     end,
 
 	captureStrongbow = function()
-	-- completion of this task is handled by C1M2.xdb
+	-- start and finish of this task is handled by C1M2.xdb
     -- prize: 1000 gold
-		if OBJECTIVES.state.captureStrongbow[2] == 1 then
-			SetObjectiveState('prim1', OBJECTIVE_ACTIVE);
-			OBJECTIVES.state.captureStrongbow[2] = 2; 
-		elseif OBJECTIVES.state.captureStrongbow[2] == 2 and GetObjectOwner("Hant") == PLAYER_1 then
-			strongbowCaptureDay = GetDate(ABSOLUTE_DAY);
-			print("Strongbow captured on day " .. strongbowCaptureDay);
-			OBJECTIVES.state.assembleArchers[2] = 1;
-			OBJECTIVES.state.captureAshwood[2] = 1;
-			OBJECTIVES.state.captureStrongbow[2] = 10;
-		end
 	end,
     
     assembleArchers = function()
 	  -- start of this task is handled by C1M2.xdb
-		if OBJECTIVES.state.assembleArchers[2] == 1 then
-			if ( GetHeroCreatures( HERO_NAME, CREATURE_ARCHER ) + GetHeroCreatures( HERO_NAME, CREATURE_MARKSMAN ) + GetHeroCreatures( HERO_NAME, CREATURE_LONGBOWMAN ) ) >= 100 then
+		if OBJECTIVES.state.assembleArchers[2] == 1 and GetObjectOwner("Hant") == PLAYER_1 then
+			if ( GetHeroCreatures( "Isabell", CREATURE_ARCHER ) + GetHeroCreatures( "Isabell", CREATURE_MARKSMAN ) + GetHeroCreatures( "Isabell", CREATURE_LONGBOWMAN ) ) >= 100 then
 				SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-				GiveExp( HERO_NAME, 3000 );
+				GiveExp( "Isabell", 3000 );
 				OBJECTIVES.state.assembleArchers[2] = 10;
 			end
 		end
@@ -318,19 +284,19 @@ OBJECTIVES = {
     
     captureAshwood = function()
     -- completion of this task is handled by C1M2.xdb
-    -- prize: None
-		if OBJECTIVES.state.captureAshwood[2] == 1 then
-			if (GetDate(ABSOLUTE_DAY) >= (strongbowCaptureDay + 3)) then
-				CINEMATICS.captureAshwood();
-				SetObjectiveState('prim3', OBJECTIVE_ACTIVE)
-				OBJECTIVES.state.captureAshwood[2] = 10;
-			end
+		if OBJECTIVES.state.captureAshwood[2] == 1 and GetObjectOwner("Hant") == PLAYER_1 then
+			strongbowCaptureDay = OBJECTIVES.date;
+			OBJECTIVES.state.captureAshwood[2] = 2;
+		elseif OBJECTIVES.state.captureAshwood[2] == 2 and OBJECTIVES.date >= (strongbowCaptureDay + 3) then
+			CINEMATICS.captureAshwood();
+			SetObjectiveState('prim3', OBJECTIVE_ACTIVE)
+			OBJECTIVES.state.captureAshwood[2] = 10;
 		end
 	end,
       
 	isAlive = function()
     -- start of this task is handled by C1M2.xdb
-		if IsHeroAlive(HERO_NAME) == nil then
+		if IsHeroAlive("Isabell") == nil then
 			SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
 			sleep(2);
 		end
