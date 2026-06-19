@@ -1,5 +1,10 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not InitAllSetArtifacts do
+    sleep()
+end;
+
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M2");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M1" );
@@ -12,7 +17,6 @@ startThread(H55_InitSetArtifacts);
 ENEMY_HERO = 'RedHeavenHero01';
 ENEMY_IN_TOWN = 'RedHeavenHero02';
 attack_date = 0;
------##################################################DB
 
 function Diff_Garr()
 	slozhnost = GetDifficulty(); 
@@ -33,46 +37,33 @@ function Diff_Garr()
 	end;
 	print('difficulty = ',slozhnost);
 end;
-------################################################end
 
 -- установка настроек по уровню сложности
 function SetupDifficulty()
 	slozhnost = GetDifficulty();
 	if slozhnost == DIFFICULTY_EASY then
-		start_wood = 20;
-		start_ore = 20;
-		start_sec_resource = 10;
-		start_gold = 20000;
-		attacking_army_coeff = 0.5;
-		attacker_expa = 25000;
-		town_army_coeff = 0.4;
+		SetPlayerStartResources(PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);
+		attacking_army_coeff = 1.0;
+		attacker_expa = 34100;
+		town_army_coeff = 0.7;
 		attack_delay = 4;
 	elseif slozhnost == DIFFICULTY_NORMAL then
-		start_wood = 15;
-		start_ore = 15;
-		start_sec_resource = 10;
-		start_gold = 15000;
-		attacking_army_coeff = 1.0;
-		attacker_expa = 30000;
-		town_army_coeff = 0.8;
+		SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
+		attacking_army_coeff = 1.33;
+		attacker_expa = 68500;
+		town_army_coeff = 1;
 		attack_delay = 3;
 	elseif slozhnost == DIFFICULTY_HARD then
-		start_wood = 10;
-		start_ore = 10;
-		start_sec_resource = 5;
-		start_gold = 10000;
-		attacking_army_coeff = 1.4;
-		attacker_expa = 50000;
-		town_army_coeff = 1.0;
+		SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
+		attacking_army_coeff = 1.66;
+		attacker_expa = 116000;
+		town_army_coeff = 1.3;
 		attack_delay = 2;
 	elseif slozhnost == DIFFICULTY_HEROIC then
-		start_wood = 5;
-		start_ore = 5;
-		start_sec_resource = 5;
-		start_gold = 10000;
-		attacking_army_coeff = 1.7;
-		attacker_expa = 70000;
-		town_army_coeff = 1.2;
+		SetPlayerStartResources(PLAYER_1, 5, 5, 5, 5, 5, 5, 10000);
+		attacking_army_coeff = 2.0;
+		attacker_expa = 200000;
+		town_army_coeff = 1.6;
 		attack_delay = 1;
 	end;
 	AddHeroCreatures( ENEMY_IN_TOWN, CREATURE_LONGBOWMAN, 52 * town_army_coeff );
@@ -133,30 +124,26 @@ function DwellingCaptured( oldowner, newowner )
 end;
 
 
-function A1C2M2_set_enemy_army(str)
+function A1C2M2_set_enemy_army()
 	DeployReserveHero( ENEMY_HERO, 22, 3, 0 );
 	sleep(30);
 	GiveExp( ENEMY_HERO, attacker_expa );
-	AddHeroCreatures( ENEMY_HERO, CREATURE_CHAMPION, 		35  +  5 * str );
-	AddHeroCreatures( ENEMY_HERO, CREATURE_ZEALOT,			60  + 10 * str );
-	AddHeroCreatures( ENEMY_HERO, CREATURE_BATTLE_GRIFFIN, 	90  + 20 * str );
-	AddHeroCreatures( ENEMY_HERO, CREATURE_VINDICATOR, 		280 + 40 * str );
-	AddHeroCreatures( ENEMY_HERO, CREATURE_LONGBOWMAN, 		220 + 60 * str );
+	AddHeroCreatures( ENEMY_HERO, CREATURE_CHAMPION, 		35  * attacking_army_coeff);
+	AddHeroCreatures( ENEMY_HERO, CREATURE_ZEALOT,			60  * attacking_army_coeff);
+	AddHeroCreatures( ENEMY_HERO, CREATURE_BATTLE_GRIFFIN, 	80  * attacking_army_coeff);
+	AddHeroCreatures( ENEMY_HERO, CREATURE_VINDICATOR, 		250 * attacking_army_coeff);
+	AddHeroCreatures( ENEMY_HERO, CREATURE_LONGBOWMAN, 		300 * attacking_army_coeff);
 	sleep(10);
 end
 
 function H55_ThrTriggerDaily()
 	if GetDate( DAY ) == attack_date then
-		--Trigger( NEW_DAY_TRIGGER, nil );
 		H55_NewDayTrigger = 0;
 		H55_SecNewDayTrigger = 0;
 		H55_ThrNewDayTrigger = 0;
 		H55_FrtNewDayTrigger = 1;
-		--coeff = ( GetDate( WEEK ) + ( GetDate( MONTH ) - 1 ) * 4 ) * attacking_army_coeff;
-		coeff = GetDifficulty();
-		A1C2M2_set_enemy_army(coeff)
-		H55_AttackTown(ENEMY_HERO,'town');
-		--MoveHero( ENEMY_HERO, GetObjectPosition( 'town' ) );
+		A1C2M2_set_enemy_army();
+		H55_AttackTown( ENEMY_HERO, 'town' );
 		--Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'EnemyHeroKilled' ); --H55 fix
 	end;
 end;
@@ -180,18 +167,6 @@ function MinesCaptured( oldowner, newowner )
 		end;
 	end;
 	SetObjectiveState( 'sec1', OBJECTIVE_COMPLETED );
-end;
-
--- убит ататующий герой
-function EnemyHeroKilled( heroname )
-	if heroname == ENEMY_HERO then
-		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M2");
-		StartDialogScene( "/DialogScenes/A1C2/M2/S1/DialogScene.xdb#xpointer(/DialogScene)" );
-		sleep(10);
-		SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
-		sleep(10);
-		Win();
-	end;
 end;
 
 -- понюхана тюрьма
@@ -261,18 +236,9 @@ function Gluki( heroname )
 	ChangeHeroStat( heroname, STAT_MORALE, 5 );
 	ChangeHeroStat( heroname, STAT_LUCK, 5 );
 end;
-	
--------------------------------------------
+
 StartAdvMapDialog( 0 );
 SetupDifficulty();
-
-SetPlayerStartResource( PLAYER_1, WOOD, start_wood );
-SetPlayerStartResource( PLAYER_1, ORE, start_ore );
-SetPlayerStartResource( PLAYER_1, SULFUR, start_sec_resource );
-SetPlayerStartResource( PLAYER_1, CRYSTAL, start_sec_resource );
-SetPlayerStartResource( PLAYER_1, GEM, start_sec_resource );
-SetPlayerStartResource( PLAYER_1, MERCURY, start_sec_resource );
-SetPlayerStartResource( PLAYER_1, GOLD, start_gold );
 
 Trigger( OBJECT_TOUCH_TRIGGER, "liches", "RunCombat" ); -- на личей в подземелье
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Griby", "Gluki" ); -- галлюциногенные грибы
@@ -290,7 +256,6 @@ OpenCircleFog( x, y, f, 5, PLAYER_1 );
 Trigger( OBJECT_CAPTURE_TRIGGER, "town", "TownCaptured" ); -- триггер на захват города
 Trigger( OBJECT_TOUCH_TRIGGER, "tomb", "BreakTomb" ); -- триггер на опустошение tomb of the warrior
 H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "NewDay" );
 H55_TriggerDaily();
 for i = 1, 6 do
 	Trigger( OBJECT_CAPTURE_TRIGGER, "dwelling".. i, "DwellingCaptured" ); -- триггер на захват любого двеллинга
@@ -300,6 +265,4 @@ for i = 1, 4 do
 end;
 startThread( PuppetMaster );
 Torchion();
-------------------------------------------
-
-startThread( Diff_Garr ); ---##########DB
+startThread( Diff_Garr );
