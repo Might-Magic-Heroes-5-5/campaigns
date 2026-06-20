@@ -1,812 +1,478 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
 H55_PlayerStatus = {0,1,1,1,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M3");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M2" );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
-end;
+end
 
-startThread(H55_InitSetArtifacts);
-
------------------- СТАРТОВЫЕ МАССИВЫ И ПЕРЕМЕННЫЕ -------------------
-EnableHeroAI("RedHeavenHero03", nil);
-EnableHeroAI("RedHeavenHero02", nil);--специальный герой в горе(хозяин Медной горы), надобный токмо ради того, чтобы player2 не мог быть уничтожен игроком и корован мог ходить
-EnemyHero2 = "Caravan" --- константа для имени каравана
-EnemyHero3 = "RedHeavenHero01" --- константа для имени третьего вражеского героя (подземлей)
-isTownCaptured = 0;
-
-FreidaHero = "Freyda" --- константа для имени героя Freida
-
-PlayerHero1 = "Wulfstan" --- константа для имени героя игрока Wulfstan
-
-AliHero1 = "Ottar" ---- герой сидящий в тюрьме союзный игроку
-
+--                     right bottom     left bottom       right top       right treasury   left orepit       left top
 patrol_under_array = {"patrol_u_l_1" , "patrol_u_r_1" , "patrol_u_l_2" , "patrol_u_l_3" , "patrol_u_r_2" , "patrol_u_r_3" }
-
-target_under_patrol = 0;
-reinforcement = 1000000
 freidaappears = 7 + random (5);
-sleep (1);
---caravanappear = 38 + random (10);
------------------- Открытие регионов на пути фрейды -------------------
-x, y, f = RegionToPoint( "vieuzone1");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-sleep (1);
-x, y, f = RegionToPoint( "vieuzone2");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-sleep (1);
-x, y, f = RegionToPoint( "vieuzone3");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-sleep (1);
-x, y, f = RegionToPoint( "vieuzone4");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-sleep (1);
-x, y, f = RegionToPoint( "vieuzone5");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-sleep (1);
-x, y, f = RegionToPoint( "vieuzone6");
-OpenCircleFog(x, y, f, 12 , PLAYER_1);
-
----------------- МОДИФИКАТОРЫ ОТ УРОВНЯ СЛОЖНОСТИ -------------------
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	diff = 1;
-	caravanappear = 10 + random( 2 );
-	print ("easy");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	diff = 1;
-	caravanappear = 10 + random( 2 );
-    print ("normal");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_HARD then
-	diff = 2;
-	caravanappear = 8 + random( 2 );
-    print ("Hard");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	diff = 3;
-	caravanappear = 6 + random( 2 );
-    print ("Impossible");
----Тело функции
-end;
-AddHeroCreatures("RedHeavenHero01", CREATURE_LANDLORD, 1+10*diff);
-AddHeroCreatures("RedHeavenHero01", CREATURE_LONGBOWMAN, 1+7*diff);
-AddHeroCreatures("RedHeavenHero01", CREATURE_VINDICATOR, 1+5*diff);
-AddHeroCreatures("RedHeavenHero01", CREATURE_BATTLE_GRIFFIN, 1+3*diff);
-
-AddHeroCreatures("RedHeavenHero03", CREATURE_LANDLORD, 1+25*diff);
-AddHeroCreatures("RedHeavenHero03", CREATURE_LONGBOWMAN, 1+10*diff);
-AddHeroCreatures("RedHeavenHero03", CREATURE_CHAMPION, 1+3*diff);
-AddHeroCreatures("RedHeavenHero03", CREATURE_ZEALOT, 1+4*diff);
-AddHeroCreatures("RedHeavenHero03", CREATURE_BATTLE_GRIFFIN, 1+4*diff);
----------------------------------------------------------------------
------------------------ СТАРТОВЫЕ НАСТРОЙКИ КАРТЫ -------------------
----------------------------------------------------------------------
-
---EnableHeroAI(EnemyHero3, nil); --- Вражеские патрули будут жестко управляться скриптом
-
---SetRegionBlocked("block", 1, PLAYER_1); --- Блокируем возможность для игрока атаковать караван при появлении
-
-for a = 0,6 do --- Устанавливаем стартовые ресурсы в 0
-	SetPlayerResource(PLAYER_1, a, 0);
-end;
-
-
----------------------------------------------------------------------
------------------------ ГЛАВНЫЕ ФУНКЦИОНАЛЫ -------------------------
----------------------------------------------------------------------
-
--- Функция вычисляющая расстояние от объекта Object1 до объекта Object2.
--- Если объекты находятся на разных уровнях функция возвращает -1.
-function Distance(Object1,Object2)
-	Obj1_x,Obj1_y,Obj1_z = GetObjectPosition(Object1);
-	Obj2_x,Obj2_y,Obj2_z = GetObjectPosition(Object2);
-	if Obj1_z == Obj2_z then
-		SQRT = sqrt((Obj1_x - Obj2_x)*(Obj1_x - Obj2_x) + (Obj1_y - Obj2_y)*(Obj1_y - Obj2_y));
-		return SQRT;
-		else
---		print("Error. Objects are not at same ground level.");
-		return -1;
-	end;
-end;
-
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "LostHero" ); --- триггер на потерю героя игроком
-function LostHero( HeroName )
-	if HeroName == PlayerHero1 then
-		SetObjectiveState("Prim4", OBJECTIVE_FAILED);
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
-		sleep (15);
-		Loose();
-	end;
-end;
-
-function LostHero2( HeroName2 )
-	if HeroName2 == EnemyHero2 then
-		SetObjectiveState("prim3_intercept_caravan", OBJECTIVE_COMPLETED);
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, nil );
-		startThread(Winner);
-	end;
-end;
-
 ----------------------- Забег Фрейды-------------------------
-function freydamoves()
+function freydaMove1()
+	while GetDate(ABSOLUTE_DAY) < freidaappears do sleep(50); end;
 	x, y, floor = RegionToPoint( "freydahere");
-	DeployReserveHero(FreidaHero, x, y, floor);
-	sleep ( 1 );
-	Trigger(OBJECT_TOUCH_TRIGGER , "Mine2", "nextmove2");
-	MoveHero(FreidaHero, GetObjectPosition( "Mine2" ));
-end;
+	DeployReserveHero("Freyda", x, y, floor);
+	Trigger(OBJECT_TOUCH_TRIGGER , "Mine2", "freydaMove2");
+	sleep(20);
+	MoveHero("Freyda", GetObjectPosition( "Mine2" ));
+end
 
-function nextmove2()
+function freydaMove2()
 	Trigger(OBJECT_TOUCH_TRIGGER , "Mine2", nil);
-	sleep (1);
-	Trigger(OBJECT_TOUCH_TRIGGER , "dwarftown", "nextmove3");
-	MoveHero(FreidaHero, GetObjectPosition( "dwarftown" ));
-end;
+	Trigger(OBJECT_TOUCH_TRIGGER , "dwarftown", "freydaMove3");
+	MoveHero("Freyda", GetObjectPosition( "dwarftown" ));
+end
 
-function nextmove3()
+function freydaMove3()
 	Trigger(OBJECT_TOUCH_TRIGGER , "dwarftown", nil);
-	sleep (1);
-	MoveHero(FreidaHero, RegionToPoint('freidagoout'));
-end;
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'freidagoout', "freydaMove4");
+	MoveHero("Freyda", RegionToPoint('freidagoout'));
+end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'freidagoout', "eriseFreyda");
-function eriseFreyda()
-	RemoveObject(FreidaHero);
+function freydaMove4()
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'freidagoout', nil);
-end;
+	RemoveObject( "Freyda" );
+end
 
 ----------------------- Патруль подземлей ---------------------------
-function patrol_under()
-	if random ( 2 ) == 0 then
-		MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[1]));
-	else
-		MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[2]));
-	end;
-	target_under_patrol = 0;
-end;
+target_located = 0;
+patrol_destination = 0;
+function startPatrol(hero)
+	patrol_destination = math.random(1, 6);
+	MoveHero("RedHeavenHero01", RegionToPoint(patrol_under_array[patrol_destination]));
+	startThread(setPatrolDestination, hero);
+end
 
-function patrol_under1(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 3 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[2]));
-		else
-			if random ( 2 ) == 0 then
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[3]));
-			else
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[4]));
-			end;
-		end;
-		target_under_patrol = 0;
-	end;
-end;
+function setPatrolDestination(hero)
+	while target_located == 0 do
+		if H55c_GetDistanceToRegion(hero, patrol_under_array[patrol_destination]) < 4 then
+			local new_target = patrol_destination;
+			while new_target == patrol_destination do
+				new_target = math.random(1, 6);
+			end
+			MoveHero("RedHeavenHero01", RegionToPoint(patrol_under_array[new_target]));
+			patrol_destination = new_target;
+		end
+		sleep(5);
+	end
+end
 
-function patrol_under2(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 3 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[1]));
-		else
-			if random ( 2 ) == 0 then
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[5]));
-			else
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[6]));
-			end;
-		end;
-		target_under_patrol = 0;
-	end;
-end;
-
-function patrol_under3(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 3 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[1]));
-		else
-			if random ( 2 ) == 0 then
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[4]));
-			else
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[6]));
-			end;
-		end;
-		target_under_patrol = 0;
-	end;
-end;
-
-function patrol_under4(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 2 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[1]));
-		else
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[3]));
-		end;
-		target_under_patrol = 0;
-	end;
-end;
-
-function patrol_under5(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 2 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[2]));
-		else
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[6]));
-		end;
-		target_under_patrol = 0;
-	end;
-end;
-
-function patrol_under6(hero_in)
-	if hero_in ~= EnemyHero3 then
-		return
-	end;
-	if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-		MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-		target_under_patrol = 1;
-	else
-		if random ( 3 ) == 0 then
-			MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[2]));
-		else
-			if random ( 2 ) == 0 then
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[3]));
-			else
-				MoveHero(EnemyHero3, RegionToPoint(patrol_under_array[5]));
-			end;
-		end;
-		target_under_patrol = 0;
-	end;
-end;
-
-for a = 1,6 do
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, patrol_under_array[a], "patrol_under"..a);
-end;
-
-function H55_TriggerDaily() ------ Функция счетчик дней
-	if GetDate(DAY) >= reinforcement and reinforcement > 0 then
-		AddObjectCreatures(PlayerHero1, 99 , 50);
-		MessageBox ("/Maps/Scenario/A1C2M3/messagebox3.txt" );
-		reinforcement = 0
-	end;
-	if GetDate(DAY) == freidaappears then
-		startThread(freydamoves);
-	end;
-	if GetDate(WEEK) == 4 and GetObjectiveState("prim1") ~= OBJECTIVE_COMPLETED then
-		SetObjectiveState("prim1", OBJECTIVE_FAILED);
-		sleep ( 20 );
-		Loose();
-	end;
-end;
-
-function patrols1()
-	while IsObjectExists(EnemyHero3) ~= nil do
-		sleep ( 20 );
-		if Distance ( PlayerHero1, EnemyHero3) < 15 and Distance ( PlayerHero1, EnemyHero3) ~= -1 then
-			if IsObjectExists(EnemyHero3) then
-				MoveHero(EnemyHero3, GetObjectPosition(PlayerHero1));
-			end;
-			target_under_patrol = 1;
+function huntMode(hero, target)
+	while IsObjectExists(hero) ~= nil do
+		sleep ( 10 );
+		if H55_GetDistance( target, hero ) < 15 then
+			MoveHero(hero, GetObjectPosition(target));
+			target_located = 1;
 			print ("here");
---			sleep ( 1 );
---			return
-		end;
-		if target_under_patrol == 1 and (Distance ( PlayerHero1, EnemyHero3) > 15 or Distance ( PlayerHero1, EnemyHero3) == -1) then
-			startThread(patrol_under);
-		end;
-	end;
-end;
+		elseif target_located == 1 then
+			target_located = 0;
+			startThread(setPatrolDestination, hero);
+		end
+	end
+end
 
----------------------------------------------------------------------
----------------- Гномики отвлекатели под землей ----------------------
----------------------------------------------------------------------
-SetObjectEnabled("sacriface1", nil);
-SetObjectEnabled("sacriface2", nil);
-SetObjectEnabled("sacriface3", nil);
+function removeDwarvesFromEnemyHero(hero)
+	while IsHeroAlive( hero ) ~= nil do
+		if GetHeroCreatures( hero, CREATURE_DEFENDER ) > 0 then
+			RemoveHeroCreatures( hero, CREATURE_DEFENDER, 10000);
+		end
+		sleep(50);
+	end
+end
 
-Trigger(OBJECT_TOUCH_TRIGGER , "sacriface1" , "firsrtouch1");
-Trigger(OBJECT_TOUCH_TRIGGER , "sacriface2" , "firsrtouch2");
-Trigger(OBJECT_TOUCH_TRIGGER , "sacriface3" , "firsrtouch3");
+---------------------- Гномик --------------------------
+DWARVES = {
+	choice = 0,
+	['sacriface1'] = 1,
+	['sacriface2'] = 2,
+	['sacriface3'] = 3,
+	
+	speak = function(hero, object)
+		DWARVES.choice = DWARVES[object];
+		StopVisualEffects( "stop"..DWARVES.choice );
+		QuestionBox("/Maps/Scenario/A1C2M3/messagebox1.txt" , "DWARVES.ambush" , "DWARVES.join");
+		Trigger(OBJECT_TOUCH_TRIGGER , "sacriface"..DWARVES.choice , nil);
+	end,
+	
+	join = function()
+		RemoveObject( "sacriface"..DWARVES.choice );
+		AddHeroCreatures( "Wulfstan", 92 , 20 - diff * 3 );
+	end,
+	
+	ambush = function()
+		BlockGame();
+		x, y, f = GetObjectPosition( "underway"..DWARVES.choice.."2" );
+		OpenCircleFog(x, y, f, 7 , PLAYER_1);
+		MoveCamera( x, y - 5, f, 25, 0, 0, 0, 1, 1 );
+		sleep ( 5 );
+		RemoveObject( "sacriface"..DWARVES.choice );
+		x,y,z = RegionToPoint('taunt'..DWARVES.choice);
+		CreateMob("sacriface"..DWARVES.choice.."2", 92 , 20, x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
+		sleep ( 20 );
+		while not Exists( "sacriface"..DWARVES.choice.."2" ) do
+			sleep( 1 );
+		end
+		PlayObjectAnimation("sacriface"..DWARVES.choice.."2" , "attack00", IDLE);
+		Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)", x, y, z );
+		sleep ( 100 );
+		x, y, f = GetObjectPosition( "Wulfstan" );
+		MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
+		MoveHero("RedHeavenHero01", RegionToPoint('taunt'..DWARVES.choice..'hero'));
+		UnblockGame();
+	end,
+}
 
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'taunt1hero', "fight1");
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'taunt2hero', "fight2");
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'taunt3hero', "fight3");
-
-function removeEnemyHeroDwarves()
-	while IsHeroAlive( EnemyHero3 )==not nil do
-		if GetHeroCreatures( EnemyHero3, CREATURE_DEFENDER ) > 0 then
-			RemoveHeroCreatures( EnemyHero3, CREATURE_DEFENDER, 10000);
-		end;
-		sleep(5);
-	end;
-end;
-
----------------------- Левый Нижний Гномик --------------------------
-function firsrtouch1()
-	StopVisualEffects ("stop1");
-	QuestionBox ("/Maps/Scenario/A1C2M3/messagebox1.txt" , "RIP1" , "nofirsrtouch1");
-	Trigger(OBJECT_TOUCH_TRIGGER , "sacriface1" , nil);
-end;
-function nofirsrtouch1()
-	--x, y, f = GetObjectPosition( PlayerHero1 );
-	--MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
-	RemoveObject("sacriface1");
-	AddHeroCreatures(PlayerHero1, 92 , 20 - 3*diff);
-end;
-function RIP1()
-	x, y, f = GetObjectPosition( "underway12" );
-	OpenCircleFog(x, y, f, 7 , PLAYER_1);
-	zoom = 25;
-	MoveCamera( x, y - 5, f, zoom, 0, 5.24, 0, 1, 1 );
-	sleep ( 5 );
-	RemoveObject("sacriface1");
-	x,y,z = RegionToPoint('taunt1');
-	CreateMob("sacriface12", 92 , 20, x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
-	sleep ( 1 );
-	--SetObjectEnabled("sacriface12", nil);
-	MoveHero(EnemyHero3, RegionToPoint('taunt1hero'));
-	target_under_patrol = 0;
-	--MoveCamera( x, y, z, zoom, 0, 0, 0, 1 );
-	--sleep (3);
-	while not Exists( "sacriface12" ) do
-		sleep( 1 );
-	end;
-	PlayObjectAnimation("sacriface12" , "attack00", IDLE);
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)", x, y, z );
-	sleep (20);
-	x, y, f = GetObjectPosition( PlayerHero1 );
-	MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
-end;
------------------------- Правый Гномик ------------------------------
-function firsrtouch2()
-	StopVisualEffects ("stop2");
-	QuestionBox ("/Maps/Scenario/A1C2M3/messagebox1.txt" , "RIP2" , "nofirsrtouch2");
-	Trigger(OBJECT_TOUCH_TRIGGER , "sacriface2" , nil);
-end;
-function nofirsrtouch2()
-	--x, y, f = GetObjectPosition( PlayerHero1 );
-	--MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
-	RemoveObject("sacriface2");
-	AddHeroCreatures(PlayerHero1, 92 , 20 - 3*diff);
-end;
-function RIP2()
-	x, y, f = GetObjectPosition( "underway22" );
-	OpenCircleFog(x, y, f, 7 , PLAYER_1);
-	zoom = 25;
-	MoveCamera( x, y - 5, f, zoom, 0, 0, 0, 1, 1 );
-	sleep ( 5 );
-	RemoveObject("sacriface2");
-	x,y,z = RegionToPoint('taunt2');
-	CreateMob("sacriface22", 92 , 20, x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
-	sleep ( 1 );
-	--SetObjectEnabled("sacriface22", nil);
-	MoveHero(EnemyHero3, RegionToPoint('taunt2hero'));
-	target_under_patrol = 0;
-	--MoveCamera( x, y, z, zoom, 0, 0, 0, 1 );
-	--sleep ( 3 );
-	while not Exists( "sacriface22" ) do
-		sleep( 1 );
-	end;
-	PlayObjectAnimation("sacriface22" , "attack00", IDLE);
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)", x, y, z );
-	sleep (20);
-	x, y, f = GetObjectPosition( PlayerHero1 );
-	MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
-end;
--------------------------- Верхний Гномик ----------------------------
-function firsrtouch3()
-	StopVisualEffects ("stop3");
-	QuestionBox ("/Maps/Scenario/A1C2M3/messagebox1.txt" , "RIP3" , "nofirsrtouch3");
-	Trigger(OBJECT_TOUCH_TRIGGER , "sacriface3" , nil);
-end;
-function nofirsrtouch3()
-	--x, y, f = GetObjectPosition( PlayerHero1 );
-	--MoveCamera( x, y, f, 50, 0, 0, 0, 1, 1 );
-	RemoveObject("sacriface3");
-	AddHeroCreatures(PlayerHero1, 92 , 20 - 3*diff);
-end;
-function RIP3()
---	print ("opa");
-	x, y, f = GetObjectPosition( "underway32" );
-	zoom = 25;
-	MoveCamera( x, y - 5, f, zoom, 0, 0, 0, 1, 1 );
-	OpenCircleFog(x, y, f, 7 , PLAYER_1);
-	sleep ( 5 );
-	RemoveObject("sacriface3");
-	x,y,z = RegionToPoint('taunt3');
-	CreateMob("sacriface32", 92 , 20, x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
-	sleep ( 1 );
-	--SetObjectEnabled("sacriface32", nil);
-	MoveHero(EnemyHero3, RegionToPoint('taunt3hero'));
-	target_under_patrol = 0;
-	--MoveCamera( x, y, z, zoom, 0, 0, 0, 1 );
-	--sleep ( 3 );
-	while not Exists( "sacriface32" ) do
-		sleep( 1 );
-	end;
-	PlayObjectAnimation("sacriface32" , "attack00", IDLE);
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)", x, y, z );
-	sleep (20);
-	x, y, f = GetObjectPosition( PlayerHero1 );
-	MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
-end;
-
-function fight1()
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)");
-	sleep ( 10 );
-	PlayVisualEffect("/Effects/_(Effect)/Spells/MagicFist.xdb#xpointer(/Effect)", "sacriface12");
-	sleep ( 5 );
-	PlayObjectAnimation("sacriface12" , "idle00", ONESHOT);
-	sleep ( 10 );
-	PlayObjectAnimation("sacriface12" , "death", ONESHOT_STILL);
-	sleep ( 10 );
-	RemoveObject("sacriface12");
-	target_under_patrol = 1;
-end;
-
-function fight2()
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)");
-	sleep ( 10 );
-	PlayVisualEffect("/Effects/_(Effect)/Spells/MagicFist.xdb#xpointer(/Effect)", "sacriface22");
-	sleep ( 5 );
-	PlayObjectAnimation("sacriface22" , "idle00", ONESHOT);
-	sleep ( 10 );
-	PlayObjectAnimation("sacriface22" , "death", ONESHOT_STILL);
-	sleep ( 10 );
-	RemoveObject("sacriface22");
-	target_under_patrol = 1;
-end;
-
-function fight3()
-	Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)");
-	sleep ( 10 );
-	PlayVisualEffect("/Effects/_(Effect)/Spells/MagicFist.xdb#xpointer(/Effect)", "sacriface32");
-	sleep ( 5 );
-	PlayObjectAnimation("sacriface32" , "idle00", ONESHOT);
-	sleep ( 10 );
-	PlayObjectAnimation("sacriface32" , "death", ONESHOT_STILL);
-	sleep ( 10 );
-	RemoveObject("sacriface32");
-	target_under_patrol = 1;
-end;
-
-H55_NewDayTrigger = 1;
---Trigger(NEW_DAY_TRIGGER , "patrols"); --- Триггер на наступление нового дн
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'dwarfs_cave', "hi"); --- Триггер для анимации гномиков в пещере
-Trigger(OBJECT_TOUCH_TRIGGER , "Prion_under" , "freedom1"); --- Триггер на освобождения героя из тюрьмы
-
-function hi()
-	x, y, f = RegionToPoint( "openfog" );
-	OpenCircleFog(x, y, f, 12 , PLAYER_1);
-	for i = 1, 3 do
-		x, y, f = GetObjectPosition( "sacriface" .. i );
-		MoveCamera( x, y, f, 15, 0, 0, 0, 1, 1 );
-		sleep( 1 );
-		PlayObjectAnimation("sacriface" .. i, "attack00", ONESHOT);
-		sleep( 10 );
-	end;
-	x, y, f = GetObjectPosition( PlayerHero1 );
-	MoveCamera( x, y, f, 20, 0, 0, 0, 1, 1 );
-	PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface1" , "stop1");
-	PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface2" , "stop2");
-	PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface3" , "stop3");
-end;
-
-function freedom1()
+function openPrisonCell()
 	Trigger(OBJECT_TOUCH_TRIGGER , "Prion_under" , nil );
-	sleep ( 1 );
-	SetObjectOwner(AliHero1, PLAYER_3);
-	sleep ( 10 );
-	--EnableHeroAI(AliHero1, nil); --H55 fix
-	xe = 0
-	if IsObjectExists(EnemyHero3) == not nil then
-		xe, ye, fe = GetObjectPosition( EnemyHero3 );
-	end;
-	if xe > 73 then
-		if IsObjectExists("under_left_guard")==not nil then
-			MoveHero( AliHero1, RegionToPoint( 'under_escape_left' ) );
-			Trigger( OBJECT_TOUCH_TRIGGER, "under_left_guard", "sec1_clearLeftGuards" );
-		else
-			MoveHero( AliHero1, RegionToPoint( 'escapeAH1_left' ) );
-		end;
-	else
-		if IsObjectExists("under_right_guard")==not nil then
-			MoveHero( AliHero1, RegionToPoint( 'under_escape_right') );
-			Trigger( OBJECT_TOUCH_TRIGGER, "under_right_guard", "sec1_clearRightGuards" );
-		else
-			MoveHero( AliHero1, RegionToPoint( 'escapeAH1_right' ) );
-		end;
-	end;
-	SetObjectiveState("prim1", OBJECTIVE_COMPLETED);
-	SetObjectiveState("sec1", OBJECTIVE_ACTIVE);
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, "alliesHeroLose" );
-	if GetObjectiveState("prim2") ~= OBJECTIVE_COMPLETED then
-		SetObjectiveState("prim2", OBJECTIVE_ACTIVE);
-		x, y, f = GetObjectPosition( "Town" );
-		zoom = 35;
-		MoveCamera( x, y, f, zoom, 1.4, 0, 0, 0, 1 );
-		OpenCircleFog(x, y, f, 12 , PLAYER_1);
-		sleep(20);
-		Pl_x, Pl_y, Pl_floor = GetObjectPosition( PlayerHero1 );
-		MoveCamera( Pl_x, Pl_y, Pl_floor, zoom, 1.4, 0, 0, 0, 1 );
-	else
-		startThread(Caravan);
-	end;
-end;
+	OBJECTIVES.state.freeHero[2] = 3;
+end
 
-function sec1_clearLeftGuards( heroName )
-	print(" Hero ", heroName, " has touched left vindicators");
-	if IsHeroAlive( heroName ) == not nil then
-		if heroName == AliHero1 then
-			RemoveObject( AliHero1 );
-			sleep(5);
-			CreateMonster("Vindicator", CREATURE_VINDICATOR, 12, 16,13,1, MONSTER_MOOD_WILD, MONSTER_COURAGE_ALWAYS_FIGHT);
-			print("monster created");
-		else
-			MoveHero( AliHero1, RegionToPoint( 'escapeAH1_left' ) );
-		end;
-	else
-		Trigger( OBJECT_TOUCH_TRIGGER, "under_left_guard", nil );
-	end;
-end;
-
-function sec1_clearRightGuards( heroName )
-	if IsHeroAlive( heroName ) == not nil then
-		if heroName == AliHero1 then
-			RemoveObject( AliHero1 );
-			sleep(5);
-			CreateMonster("Vindicator2", CREATURE_VINDICATOR, 12, 125,79,1, MONSTER_MOOD_WILD, MONSTER_COURAGE_ALWAYS_FIGHT);
-			print("monster created");
-		else
-			MoveHero( AliHero1, RegionToPoint( 'escapeAH1_right' ) );
-		end;
-	else
-		Trigger( OBJECT_TOUCH_TRIGGER, "under_right_guard", nil );
-	end;
-end;
-
-function alliesHeroLose( heroName )
-	if heroName == AliHero1 then SetObjectiveState( "sec1", OBJECTIVE_FAILED ); end;
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil );
-end;
-
-function ulg()
-	if IsObjectExists("under_left_guard") == nil then
-		MoveHero(AliHero1, RegionToPoint('escapeAH1_left'));
-		sleep ( 10 );
-		return
-	end;
-	sleep ( 10 );
-	startThread(ulgrun);
-end;
-
-function ulgrun()
-	sleep ( 10 );
-	startThread(ulg);
-end;
-
-function urg()
-	if IsObjectExists("under_right_guard") == nil then
-		MoveHero(AliHero1, RegionToPoint('escapeAH1_right'));
-		sleep ( 10 );
-		return
-	end;
-	sleep ( 10 );
-	startThread(urgrun);
-end;
-
-function urgrun()
-	sleep ( 10 );
-	startThread(urg);
-end;
-
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'escapeAH1_right', "secondary");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'escapeAH1_left', "secondary");
-
-function secondary(hero_escape) --
-	if hero_escape == AliHero1 then
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil );
-		sleep ( 1 );
-		RemoveObject(AliHero1);
-		SetObjectiveState("sec1", OBJECTIVE_COMPLETED);
-		reinforcement = GetDate(DAY) + 1;
+function HellmarExits( hero_escape )
+	if hero_escape == "Ottar"  then
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'escapeAH1_right', nil);
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'escapeAH1_left', nil);
-	end;
-end;
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER,  'escapeAH1_left', nil);
+		OBJECTIVES.state.allyEscape[2] = 3;
+	end
+end
 
-function secondobj() ------- После выполнения второго обжектива делаем все здания в городе доступными для постройки
-	Trigger( OBJECT_CAPTURE_TRIGGER, "Town", nil );
-	if GetObjectiveState("prim2") ~= OBJECTIVE_ACTIVE then
-		SetObjectiveState( "prim2", OBJECTIVE_ACTIVE );
-	end;
-	sleep(1);
-	SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
-	SetTownBuildingLimitLevel( 'Town', 13, 2 );
-	SetTownBuildingLimitLevel( 'Town', 12, 2 );
-	SetTownBuildingLimitLevel( 'Town', 11, 2 );
-	SetTownBuildingLimitLevel( 'Town', 10, 2 );
-	SetTownBuildingLimitLevel( 'Town', 9, 2 );
-	SetTownBuildingLimitLevel( 'Town', 8, 2 );
-	SetTownBuildingLimitLevel( 'Town', 7, 2 );
-	SetTownBuildingLimitLevel( 'Town', 4, 1 );
-	sleep(5);
-	if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-		startThread( Caravan );
-	end;
-end;
+function HellmarSendsHelp( delivery_time )
+	while GetDate(ABSOLUTE_DAY) < delivery_time do sleep( 50 ); end
+	AddObjectCreatures("Wulfstan", 99, 50);
+	MessageBox ("/Maps/Scenario/A1C2M3/messagebox3.txt" );
+end
 
-startThread(patrol_under);
-startThread(patrols1);
-SetObjectiveState("prim1", OBJECTIVE_ACTIVE);
-Trigger( OBJECT_CAPTURE_TRIGGER, "Town", "secondobj" );
+function setupEnemyHeroes( diff )
+	-- Setup underground patrol hero
+	AddHeroCreatures( "RedHeavenHero01",	   CREATURE_LANDLORD, 1 + diff * 15 );
+	AddHeroCreatures( "RedHeavenHero01",	 CREATURE_LONGBOWMAN, 1 + diff * 12 );
+	AddHeroCreatures( "RedHeavenHero01",	 CREATURE_VINDICATOR, 1 + diff *  9 );
+	AddHeroCreatures( "RedHeavenHero01", CREATURE_BATTLE_GRIFFIN, 1 + diff *  6 );
+	startThread(startPatrol, "RedHeavenHero01");
+	startThread( huntMode, "RedHeavenHero01", "Wulfstan" );
+	startThread( removeDwarvesFromEnemyHero, "RedHeavenHero01" );
+	-- Setup town defender hero
+	GiveHeroSkill("RedHeavenHero03", 		 SKILL_WAR_MACHINES );
+	GiveHeroSkill("RedHeavenHero03", 		 SKILL_WAR_MACHINES );
+	GiveHeroSkill("RedHeavenHero03", 		 SKILL_WAR_MACHINES );
+	GiveHeroSkill("RedHeavenHero03", 			 SKILL_TRAINING );
+	GiveHeroSkill("RedHeavenHero03", DEMON_FEAT_CRITICAL_STRIKE );
+	--Setup Caravan
+	GiveHeroSkill(		  "Caravan", 			SKILL_LOGISTICS );
+	GiveHeroSkill(		  "Caravan", 		   PERK_PATHFINDING );
+	if diff > 1 then
+		GiveHeroSkill( 		   "Caravan",		  SKILL_LOGISTICS );
+		GiveHeroSkill( "RedHeavenHero03", 		 SKILL_LEADERSHIP );
+		GiveHeroSkill( "RedHeavenHero03", 			PERK_BALLISTA );
+		GiveHeroSkill( "RedHeavenHero03", 		   PERK_FIRST_AID );
+		GiveHeroSkill( "RedHeavenHero03", KNIGHT_FEAT_RETRIBUTION );
+	end
+	if diff > 2 then
+		GiveHeroSkill( 		   "Caravan",			  SKILL_LOGISTICS );
+		GiveHeroSkill( "RedHeavenHero03", 		  PERK_EXPERT_TRAINER );
+		GiveHeroSkill( "RedHeavenHero03", KNIGHT_FEAT_TRIPLE_BALLISTA );
+		GiveHeroSkill( "RedHeavenHero03", 				SKILL_DEFENCE );
+		GiveHeroSkill( "RedHeavenHero03", 		 WIZARD_FEAT_WILDFIRE );
+		GiveHeroSkill( "RedHeavenHero03", 	   HERO_SKILL_PREPARATION );
+	end
+	if diff > 3 then
+		GiveHeroSkill( "RedHeavenHero03", NECROMANCER_FEAT_LAST_AID );
+		GiveHeroSkill( "RedHeavenHero03", HERO_SKILL_RUNIC_MACHINES );
+		GiveHeroSkill( "RedHeavenHero03",  HERO_SKILL_STUNNING_BLOW );
+	end
+	AddHeroCreatures( "RedHeavenHero03",	   CREATURE_LANDLORD, 400 + diff * 100 );
+	AddHeroCreatures( "RedHeavenHero03",	 CREATURE_LONGBOWMAN, 300 + diff *  50 );
+	AddHeroCreatures( "RedHeavenHero03",	   CREATURE_CHAMPION,  20 + diff *  10 );
+	AddHeroCreatures( "RedHeavenHero03",		 CREATURE_ZEALOT,  50 + diff *  20 );
+	AddHeroCreatures( "RedHeavenHero03", CREATURE_BATTLE_GRIFFIN, 100 + diff *  30 );
+	AddHeroCreatures( "RedHeavenHero03",	 CREATURE_VINDICATOR, 200 + diff *  40 );
+	ChangeHeroStat( "RedHeavenHero03", 	STAT_ATTACK, diff * 3 );
+	ChangeHeroStat( "RedHeavenHero03", STAT_DEFENCE, diff * 4 );
+end
 
-function Caravan() ------- Ставим караван на карту
-	SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_ACTIVE );
-	caravanArrivingTime = GetDate(DAY) + 10 - diff*2
-	while GetDate(DAY) < caravanArrivingTime do sleep(20); end;
-	x, y, floor = RegionToPoint( "caravan_here");
-	--DeployReserveHero(EnemyHero2, x, y, floor);
-	CreateCaravan( "caravan", PLAYER_2, 0, 133, 114, 0, 2, 40 );
-	sleep( 30 );
-	AddObjectCreatures( "caravan", CREATURE_CHAMPION, 2 + diff * 1 );
-	AddObjectCreatures( "caravan", CREATURE_VINDICATOR, 20 + diff * 5 );
-	AddObjectCreatures( "caravan", CREATURE_ZEALOT, 4 + diff * 3 );
-	AddObjectCreatures( "caravan", CREATURE_LONGBOWMAN, 17 +8*diff);
-	sleep( 30 );
-	zoom = 35;
-	MoveCamera( x, y, floor, 45, 1.3, 0, 0, 0, 1);
-	OpenCircleFog(x, y, floor, 12 , PLAYER_1);
+function caravanEscape( hero )
+	if hero == "Caravan" then
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Caravan_Out", nil );
+		OBJECTIVES.state.captureCaravan[2] = 9;
+	end
+end
 
-	startThread( CheckCaravan );
-	x, y, floor = RegionToPoint( "Caravan_Out");
-	OpenCircleFog(x, y, floor, 12 , PLAYER_1);
-	while GetCurrentPlayer() == PLAYER_1 do
-		sleep(10);
-	end;
-	startThread( showMeCaravan );
-end;
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+		print ("normal");
+	end,
 
-function CheckCaravan()
-	while IsObjectExists( "caravan" ) do
-		sleep( 500 );
-		if IsObjectExists( "caravan" ) then
-			x, y = GetObjectPosition( "caravan" );
-			if x == 2 and y == 40 then
-				SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_FAILED );
+	[1] = function()
+		diff = 2;
+		print ("hard");
+	end,
+
+	[2] = function()
+		diff = 3;
+		print ("heroic");
+	end,
+
+	[3] = function()
+		diff = 4;
+		print ("impossible");
+	end,
+}
+
+CINEMATICS = {
+	intro = function()
+		for i = 1, 6 do
+			local x, y, f = RegionToPoint( "vieuzone"..i );
+			OpenCircleFog(x, y, f, 12 , PLAYER_1);
+			sleep( 10 );
+		end
+	end,
+	
+	showTown = function()
+		BlockGame();
+		local x, y, f = GetObjectPosition( "Town" );
+		OpenCircleFog(x, y, f, 12 , PLAYER_1);
+		MoveCamera( x, y, f, 35, 1.4, 0, 0, 0, 1 );
+		sleep( 100 );
+		local Pl_x, Pl_y, Pl_floor = GetObjectPosition( "Wulfstan" );
+		MoveCamera( Pl_x, Pl_y, Pl_floor, 35, 1.4, 0, 0, 0, 1 );
+		UnblockGame();
+	end,
+	
+	showDwarves = function()
+		BlockGame();
+		x, y, f = RegionToPoint( "openfog" );
+		OpenCircleFog(x, y, f, 12 , PLAYER_1);
+		for i = 1, 3 do
+			x, y, f = GetObjectPosition( "sacriface" .. i );
+			MoveCamera( x, y, f, 15, 0, 0, 0, 1, 1 );
+			sleep( 1 );
+			PlayObjectAnimation("sacriface" .. i, "attack00", ONESHOT);
+			sleep( 40 );
+		end
+		x, y, f = GetObjectPosition( "Wulfstan" );
+		MoveCamera( x, y, f, 20, 0, 0, 0, 1, 1 );
+		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface1", "stop1");
+		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface2", "stop2");
+		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/_BuildingFree_S.xdb#xpointer(/Effect)", "sacriface3", "stop3");
+		UnblockGame();
+	end,
+	
+	showCaravan = function()
+		local first = 0;
+		while IsObjectExists( "Caravan" ) do
+			while GetCurrentPlayer() ~= PLAYER_1 do sleep(20); end
+			BlockGame();
+			x,y,fl = GetObjectPosition( "Caravan" );
+			OpenCircleFog( x, y, fl, 5, PLAYER_1 );
+			MoveCamera( x, y, fl, 45, 1.3, 0, 0, 0, 1);
+			if first == 0 then
+				sleep( 100 );
+				x, y, floor = RegionToPoint( "Caravan_Out");
+				OpenCircleFog(x, y, floor, 12, PLAYER_1);
+				MoveCamera( x, y, floor, 45, 1, 0.3, 0, 0, 0);
+				first = 1;
+			end
+			sleep(40);
+			UnblockGame();
+			while GetCurrentPlayer() == PLAYER_1 do sleep( 50 ); end
+		end
+	end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/A1C2/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+}
+
+OBJECTIVES = {
+	date = 0,
+	state = {
+		freeHero 	   = { 					 "prim1", 1 },	-- Free Ottar, 1-2 active, 3-10 complete, 11 fail
+		captureTown	   = { 					 "prim2", 1 },	-- Capture Merasgar; 1 waiting for quest requirements, 2 active, 10 compete
+		captureCaravan = { "prim3_intercept_caravan", 1 },	-- Capture the enemy caravan; 1-2 Waiting for quest requirements, 3 active, 10 compete, 11 fail
+		isAlive		   = { 					 "Prim4", 1 },	-- Wulfstan must survive
+		allyEscape	   = { 					  "sec1", 0 },	-- Hellmar must escape the map
+	},
+
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+	prepare = function()
+		startThread(H55_InitSetArtifacts);
+		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
+		EnableHeroAI("RedHeavenHero03", nil);
+		EnableHeroAI("RedHeavenHero02", nil); --специальный герой в горе(хозяин Медной горы), надобный токмо ради того, чтобы player2 не мог быть уничтожен игроком и корован мог ходить
+		DIFFICULTY[GetDifficulty()]();
+		CINEMATICS.intro();
+		startThread(setupEnemyHeroes, diff);
+		SetObjectEnabled( "sacriface1", nil );
+		SetObjectEnabled( "sacriface2", nil );
+		SetObjectEnabled( "sacriface3", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'dwarfs_cave', "CINEMATICS.showDwarves" );
+		Trigger( OBJECT_TOUCH_TRIGGER,  "sacriface1",   "DWARVES.speak" );
+		Trigger( OBJECT_TOUCH_TRIGGER,  "sacriface2",   "DWARVES.speak" );
+		Trigger( OBJECT_TOUCH_TRIGGER,  "sacriface3",   "DWARVES.speak" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "Prion_under",  "openPrisonCell" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'escapeAH1_right', "HellmarExits" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,  'escapeAH1_left', "HellmarExits" );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "CaravanExit", "caravanEscape" );
+		startThread( freydaMove1 );
+	end,
+
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+
+			if GetObjectiveState("prim1") == OBJECTIVE_FAILED or GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_FAILED or GetObjectiveState("Prim4") == OBJECTIVE_FAILED then
+				Loose();
 				return
-			end;
-		end;
-	end;
-	SetPlayerResource( PLAYER_1, GOLD, GetPlayerResource(PLAYER_1, GOLD)+55000-diff*10000);
-	SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_COMPLETED );
-	startThread(Winner);
-end;
+			end
 
-function showMeCaravan()
-	while IsObjectExists( "caravan" ) do
-		while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep(10);
-		end;
-		x,y,fl = GetObjectPosition( "caravan" );
-		OpenCircleFog( x, y, fl, 5, PLAYER_1 );
-		MoveCamera( x, y, fl, 45, 1.3, 0, 0, 0, 1);
-		while GetCurrentPlayer() == PLAYER_1 do
-			sleep(3);
-		end;
-	end;
-end;
+			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M3");
+				CINEMATICS.outro();
+				sleep ( 100 );
+				Win();
+				return
+			end
+		end
+	end,
+	
+	freeHero = function()
+		if OBJECTIVES.state.freeHero[2] == 1 then
+			SetObjectiveState( "prim1", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.freeHero[2] = 2;
+		elseif OBJECTIVES.state.freeHero[2] == 3 then
+			SetObjectOwner("Ottar", PLAYER_3);
+			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.allyEscape[2] = 1;
+			OBJECTIVES.state.freeHero[2] = 10;
+		end
+		
+		if GetDate(WEEK) == 4 then
+			SetObjectiveState( "prim1", OBJECTIVE_FAILED );
+		end
+	end,
+	
+	captureTown = function()
+		if OBJECTIVES.state.captureTown[2] == 1 and (GetObjectOwner("Town") == PLAYER_1 or OBJECTIVES.state.freeHero[2] == 10) then
+			SetObjectiveState("prim2", OBJECTIVE_ACTIVE);
+			CINEMATICS.showTown();
+			OBJECTIVES.state.captureTown[2] = 2;
+		elseif OBJECTIVES.state.captureTown[2] == 2 and GetObjectOwner("Town") == PLAYER_1 then
+			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
+			SetTownBuildingLimitLevel( 'Town', 13, 2 );
+			SetTownBuildingLimitLevel( 'Town', 12, 2 );
+			SetTownBuildingLimitLevel( 'Town', 11, 2 );
+			SetTownBuildingLimitLevel( 'Town', 10, 2 );
+			SetTownBuildingLimitLevel( 'Town', 9, 2 );
+			SetTownBuildingLimitLevel( 'Town', 8, 2 );
+			SetTownBuildingLimitLevel( 'Town', 7, 2 );
+			SetTownBuildingLimitLevel( 'Town', 4, 1 );
+			OBJECTIVES.state.captureTown[2] = 10;
+		end
+	end,
+	
+	captureCaravan_time = 0,
+	captureCaravan = function()
+		if OBJECTIVES.state.captureCaravan[2] == 1 and OBJECTIVES.state.freeHero[2] == 10 and OBJECTIVES.state.captureTown[2] == 10 then
+			SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_ACTIVE );
+			OBJECTIVES.captureCaravan_time = GetDate(DAY) + 10 - diff*2
+			OBJECTIVES.state.captureCaravan[2] = 2;
+		elseif OBJECTIVES.state.captureCaravan[2] == 2 and OBJECTIVES.date >= OBJECTIVES.captureCaravan_time then
+			x, y, floor = RegionToPoint( "caravan_here" );
+			DeployReserveHero( "Caravan", 133, 114, 0 );
+			sleep( 50 );
+			SetHeroRoleMode( "Caravan", HERO_ROLE_MODE_HERMIT );
+			AddHeroCreatures( "Caravan",   CREATURE_CHAMPION,  30 + diff * 10 );
+			AddHeroCreatures( "Caravan", CREATURE_VINDICATOR, 200 + diff * 40 );
+			AddHeroCreatures( "Caravan",	 CREATURE_ZEALOT,  40 + diff * 15 );
+			AddHeroCreatures( "Caravan", CREATURE_LONGBOWMAN, 249 + diff * 50 );
+			if diff == 4 then
+				GiveArtefact( "Caravan", ARTIFACT_BOOTS_OF_SPEED, 1 );
+			end
+			startThread( CINEMATICS.showCaravan );
+			OBJECTIVES.state.captureCaravan[2] = 3;
+		elseif OBJECTIVES.state.captureCaravan[2] == 3 then
+			if IsHeroAlive( "Caravan" ) then
+				pcall( MoveHero, "Caravan", 2, 40, 0 );
+			else
+				SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_COMPLETED );
+				SetPlayerResource( PLAYER_1, GOLD, GetPlayerResource(PLAYER_1, GOLD) + 55000 - diff * 10000 );
+				OBJECTIVES.state.captureCaravan[2] = 10;
+			end
+		elseif OBJECTIVES.state.captureCaravan[2] == 9 then
+			RemoveObject( "Caravan" );
+			SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_FAILED );
+			OBJECTIVES.state.captureCaravan[2] = 11;
+		end
+	end,
+	
+	isAlive = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Wulfstan") == nil then
+			SetObjectiveState( "Prim4", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	allyEscape = function()
+		if OBJECTIVES.state.allyEscape[2] == 1 then
+			SetObjectiveState( "sec1", OBJECTIVE_ACTIVE );
+			local xe = 0
+			if IsObjectExists("RedHeavenHero01") == not nil then
+				xe, ye, fe = GetObjectPosition( "RedHeavenHero01" );
+			end
+			if xe > 73 then
+				MoveHero( "Ottar", RegionToPoint( 'escapeAH1_left' ) );
+			else
+				MoveHero( "Ottar", RegionToPoint( 'escapeAH1_right' ) );
+			end
+			OBJECTIVES.state.allyEscape[2] = 2;
+		elseif OBJECTIVES.state.allyEscape[2] == 3 then
+			SetObjectiveState( "sec1", OBJECTIVE_COMPLETED );
+			RemoveObject( "Ottar" );
+			startThread( HellmarSendsHelp, OBJECTIVES.date );
+			OBJECTIVES.state.allyEscape[2] = 10;
+		end
+		
+		if IsHeroAlive("Ottar") == nil then
+			SetObjectiveState( "sec1", OBJECTIVE_FAILED );
+			OBJECTIVES.state.allyEscape[2] = 11;
+		end
+	end,
+}
 
-function next_step()
-	MoveHero(EnemyHero2, RegionToPoint( "Caravan_Move2" ));
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move1', nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move2', "next_step2");
-end;
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
 
-function next_step2()
-	MoveHero(EnemyHero2, RegionToPoint( "Caravan_Move3" ));
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move2', nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move3', "next_step3");
-end;
-
-function next_step3()
-	MoveHero(EnemyHero2, RegionToPoint( "Caravan_Move4" ));
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move3', nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move4', "next_step4");
-end;
-
-function next_step4()
-	MoveHero(EnemyHero2, RegionToPoint( "Caravan_Out" ));
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Move4', nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'Caravan_Out', "finish");
-end;
-
-function finish()
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, nil );
-	sleep ( 5 );
-	RemoveObject(EnemyHero2);
-	SetObjectiveState("prim3_intercept_caravan", OBJECTIVE_FAILED);
-	sleep ( 10 );
-	Loose ();
-end;
-
-function Winner()
-	while 1 do
-		sleep( 3 );
-		if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_COMPLETED then
-			SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M3");
-			StartDialogScene("/DialogScenes/A1C2/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
-			sleep ( 100 );
-			Win();
-			break;
-		end;
-	end;
-end;
----------------------------------##################
-function Def()  
-	while 1 do
-		sleep(10);
-		if IsHeroAlive("Wulfstan") == nil then
-			SetObjectiveState("Prim4", OBJECTIVE_FAILED);
-			sleep(10);
-			Loose();
-			break;
-		end;
-	end;
-end;
-
-function Diff_leveladd()
-	slozhnost = GetDifficulty(); 
-	if slozhnost == DIFFICULTY_EASY then
-		AddHeroCreatures("Wulfstan", CREATURE_DEFENDER, 30);
-		--AddHeroCreatures("Wulfstan", CREATURE_BEAR_RIDER, 30);
-		--AddHeroCreatures("Wulfstan", CREATURE_BROWLER, 10);
-		sleep(5);
-	end;
-	print('difficulty = ',slozhnost);
-end;
-
-startThread( Def );
-startThread( Diff_leveladd );
-
--- debug --
--- AddHeroCreatures("Wulfstan", CREATURE_LONGBOWMAN, 2000);
--- sleep(10);
--- H55_NoFog(1);
--- sleep(10);
--- MakeHeroInteractWithObject("Wulfstan", "Prion_under");
--- sleep(20);
--- SetObjectOwner("Town", PLAYER_1);
+function A1C2M3_dbg(var)
+	if var == 1 then
+		H55_NoFog(1);
+		H55_Speedrun(1);
+		MakeHeroInteractWithObject("Wulfstan", "Prion_under");
+	elseif var == 2 then
+		SetObjectOwner("Town", PLAYER_1);
+	elseif var == 3 then
+		OBJECTIVES.state.captureCaravan[2] = 2;
+		OBJECTIVES.captureCaravan_time = 0;
+	end
+end
