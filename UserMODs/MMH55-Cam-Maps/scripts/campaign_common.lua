@@ -272,8 +272,67 @@ function LoadAndBindHeroAllSetArtifacts( hero, loadFromMissionName )
 	end;
 end;
 
+function H55c_GetDistanceToRegion(object1,region)
+	local x1,y1,z1 = GetObjectPosition(object1);
+	local x2,y2,z2 = RegionToPoint(region);
+	local a = 0;
+	local b = 0;
+	local distance = 0;
+	if z1 == z2 then
+		if x1 > x2 then a = x1-x2 elseif x2 > x1 then a = x2-x1 end;
+		if y1 > y2 then b = y1-y2 elseif y2 > y1 then b = y2-y1 end;
+		if a == 0 then 
+			distance = b; 
+		elseif b == 0 then 
+			distance = a;
+		else
+			local pythagoras1 = a*a;
+			local pythagoras2 = b*b;
+			distance = math.round(math.sqrt(pythagoras1+pythagoras2));
+		end;
+	else
+		distance = 1000;
+	end;
+	return distance;
+end
+
 H55c_CREATURES = {
 	HAVEN      = {   1,   2, 106,   3,   4, 107,   5,   6, 108,   7,   8, 109,   9,  10, 110,  11,  12, 111,  13,  14, 112 },
 	INFERNO    = {  15,  16, 131,  17,  18, 132,  19,  20, 133,  21,  22, 134,  23,  24, 135,  25,  26, 136,  27,  28, 137 },
 	STRONGHOLD = { 117, 118, 173, 119, 120, 174, 121, 122, 175, 123, 124, 176, 125, 126, 177, 127, 128, 178, 129, 130, 179 },
+}
+
+function H55c_ReduceHeroMovementPointsByFactor(hero, MPFactor)
+	while IsHeroAlive( hero ) ~= nil or MPFactor > 0 do
+		local CurrentPlayer = GetCurrentPlayer();
+		while CurrentPlayer == GetCurrentPlayer() do
+			CurrentPlayer = GetCurrentPlayer();
+			sleep(10);
+		end
+		if CurrentPlayer == PLAYER_1 and IsHeroAlive( hero ) ~= nil then
+			CaravanMP = GetHeroStat( hero, STAT_MOVE_POINTS );
+			delta = (CaravanMP - math.mod(CaravanMP,MPFactor)) / MPFactor;
+			ChangeHeroStat( hero, STAT_MOVE_POINTS, -delta);
+		end
+	end
+end
+
+H55c_Log = {
+	LOG_ARRAY = {},
+	ID = 1,
+	
+	add = function(message)
+		LOG_ARRAY[log_id] = message;
+		H55c_Log.ID = H55c_Log.ID + 1;
+	end,
+	
+	show = function(size)
+		local starting_line = table.length(LOG_ARRAY) - size;
+		if starting_line < 1 then
+			starting_line = 1;
+		end
+		for i = starting_line, table.length(LOG_ARRAY) do
+			print(LOG_ARRAY[i]);
+		end
+	end,
 }
