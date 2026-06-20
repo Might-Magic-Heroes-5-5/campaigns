@@ -457,8 +457,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added Memory Mentor
 
 ### A1C2M3 - Wulfstan: The Guerrillas
-- fix: Underground Haven hero did not patrol as intended
-- fix: Caravan for "Intercept gold caravan" quest occasionally did not appear which made the mission unable to complete.
+- fix: Enemy hero Andreas did not patrol the undeground as intended
+- fix: Quest Caravan occasionally did not appear which made the mission unable to complete.
+- fix: Asking the underground dwarves to lure enemy hero Andreas made them also joining him on visit
+- change: Enemy hero Andreas (patrol) is now more challenging and his power scales with difficulty
+- change: Enemy hero Valeria (town guard) is now more challenging and his power scales with difficulty
+- change: Quest Caravan acompanying army is now more challenging on higher difficulties
+- change: Reduced Quest Caravan movement points on lower difficulties so the player has a larger window for interception
+- new: Add a Hill Fort that is available to the player
 
 ### A1C2M4 - Wulfstan: Two Brothers
 - fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight.
