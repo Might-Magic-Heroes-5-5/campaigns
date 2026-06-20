@@ -7588,7 +7588,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Haven/RedHeavenHero03.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>150000</Experience>
+						<Experience>492000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
@@ -7600,10 +7600,10 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>9</Offence>
-							<Defence>14</Defence>
-							<Spellpower>6</Spellpower>
-							<Knowledge>3</Knowledge>
+							<Offence>10</Offence>
+							<Defence>15</Defence>
+							<Spellpower>5</Spellpower>
+							<Knowledge>10</Knowledge>
 							<skills>
 								<Item>
 									<Mastery>MASTERY_ADVANCED</Mastery>
@@ -7634,9 +7634,9 @@
 								<Item>HERO_SKILL_EVASION</Item>
 							</perkIDs>
 							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
 						<OverrideMask>40</OverrideMask>
@@ -13745,8 +13745,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dwarf/Warlord.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>1</Amount>
-				<Amount2>1</Amount2>
+				<Amount>2</Amount>
+				<Amount2>2</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -13781,8 +13781,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dwarf/Thane.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>1</Amount>
-				<Amount2>1</Amount2>
+				<Amount>2</Amount>
+				<Amount2>2</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -13817,8 +13817,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dwarf/Thane.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>1</Amount>
-				<Amount2>1</Amount2>
+				<Amount>2</Amount>
+				<Amount2>2</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -14026,8 +14026,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dwarf/Magma_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>1</Amount>
-				<Amount2>1</Amount2>
+				<Amount>2</Amount>
+				<Amount2>2</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -14244,7 +14244,7 @@
 				<Amount2>40</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>true</DoesNotGrow>
+				<DoesNotGrow>false</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -22005,11 +22005,11 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dwarf/Axe_Fighter.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
+				<Amount>35</Amount>
 				<Amount2>35</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>true</DoesNotGrow>
+				<DoesNotGrow>false</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -76326,6 +76326,27 @@
 				</Textures>
 			</AdvMapHero>
 		</Item>
+		<Item href="#n:inline(AdvMapHillFort)" id="item_2308D930-FE5A-4035-8219-6FB465008A64">
+			<AdvMapHillFort>
+				<Pos>
+					<x>38</x>
+					<y>27</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Hill_Fort_2.(AdvMapHillFortShared).xdb#xpointer(/AdvMapHillFortShared)"/>
+				<CreaturesUpgradesFilter>
+					<ForbiddenBasicUpgradeTiers/>
+					<ForbiddenAlterUpgradeTiers/>
+					<NotUpgradeable/>
+					<ForbiddenUpgrades/>
+				</CreaturesUpgradesFilter>
+			</AdvMapHillFort>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
@@ -76414,9 +76435,9 @@
 			<Floor>1</Floor>
 			<Rect>
 				<x1>51</x1>
-				<y1>93</y1>
+				<y1>95</y1>
 				<x2>51</x2>
-				<y2>93</y2>
+				<y2>95</y2>
 			</Rect>
 			<Name>patrol_u_r_3</Name>
 			<Color>
@@ -76438,9 +76459,9 @@
 		<Item>
 			<Floor>1</Floor>
 			<Rect>
-				<x1>91</x1>
+				<x1>90</x1>
 				<y1>52</y1>
-				<x2>91</x2>
+				<x2>90</x2>
 				<y2>52</y2>
 			</Rect>
 			<Name>patrol_u_l_1</Name>
@@ -76463,10 +76484,10 @@
 		<Item>
 			<Floor>1</Floor>
 			<Rect>
-				<x1>90</x1>
-				<y1>91</y1>
-				<x2>90</x2>
-				<y2>91</y2>
+				<x1>89</x1>
+				<y1>87</y1>
+				<x2>89</x2>
+				<y2>87</y2>
 			</Rect>
 			<Name>patrol_u_l_2</Name>
 			<Color>
@@ -77163,10 +77184,10 @@
 		<Item>
 			<Floor>0</Floor>
 			<Rect>
-				<x1>5</x1>
-				<y1>39</y1>
-				<x2>5</x2>
-				<y2>39</y2>
+				<x1>4</x1>
+				<y1>40</y1>
+				<x2>4</x2>
+				<y2>40</y2>
 			</Rect>
 			<Name>Caravan_Out</Name>
 			<Color>
@@ -77184,6 +77205,36 @@
 					<FunctionName/>
 				</Action>
 			</EnterWithoutStopTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>3</x1>
+				<y1>39</y1>
+				<x2>5</x2>
+				<y2>41</y2>
+			</Rect>
+			<Name>CaravanExit</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
 		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
@@ -77248,7 +77299,60 @@
 			<CaptureAbility>0</CaptureAbility>
 			<StartHero/>
 			<HeroInTown>false</HeroInTown>
-			<ReserveHeroes/>
+			<ReserveHeroes>
+				<Item href="#n:inline(AdvMapHero)" id="item_9E6A32E1-A39A-40A0-9086-0894225523FC">
+					<AdvMapHero ObjectRecordID="1001839">
+						<Pos>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</Pos>
+						<Rot>0</Rot>
+						<Floor>0</Floor>
+						<Name>caravan</Name>
+						<CombatScript/>
+						<pointLights/>
+						<Shared href="/MapObjects/Caravan/Caravan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_2</PlayerID>
+						<Experience>0</Experience>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_LONGBOWMAN</Creature>
+								<Count>1</Count>
+							</Item>
+						</armySlots>
+						<artifactIDs/>
+						<isUntransferable/>
+						<Editable>
+							<NameFileRef href=""/>
+							<BiographyFileRef href=""/>
+							<Offence>0</Offence>
+							<Defence>0</Defence>
+							<Spellpower>0</Spellpower>
+							<Knowledge>0</Knowledge>
+							<skills/>
+							<perkIDs/>
+							<spellIDs/>
+							<Ballista>false</Ballista>
+							<FirstAidTent>True</FirstAidTent>
+							<AmmoCart>True</AmmoCart>
+							<FavoriteEnemies/>
+						</Editable>
+						<OverrideMask>64</OverrideMask>
+						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<LossTrigger>
+							<Action>
+								<FunctionName/>
+							</Action>
+						</LossTrigger>
+						<AllowQuickCombat>false</AllowQuickCombat>
+						<Textures>
+							<Icon128x128/>
+							<Icon64x64/>
+						</Textures>
+					</AdvMapHero>
+				</Item>
+			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
 					<FunctionName/>
