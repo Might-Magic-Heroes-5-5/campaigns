@@ -467,9 +467,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added a Hill Fort that is available to the player
 
 ### A1C2M4 - Wulfstan: Two Brothers
-- fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight.
+- fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight
 - fix: Duncan artifacts from mission A1C1M5 were not loaded
-- change: Torhall final siege combat is now more challenging
+- change: Torhall final siege combat is now more challenging with higher difficulties
+- change: Enemy hero Rolf army is now more challenging with higher difficulties
 - change: Replaced Cartographer with Memory Mentor
 
 ### A1C2M5 - Wulfstan: Laszlo
