@@ -158,7 +158,12 @@ function diffsetup()
 		if GetHeroCreatures(EnemyHero, creatureID) > 2 then
 			RemoveHeroCreatures(EnemyHero, creatureID, CreatureSetUp);
 			AddHeroCreatures(EnemyHero, creatureID, CreatureSetUp * diff);
-		end;
+			ChangeHeroStat(EnemyHero, 	   STAT_ATTACK, 4 * diff);
+			ChangeHeroStat(EnemyHero, 	  STAT_DEFENCE, 4 * diff);
+			ChangeHeroStat(EnemyHero, STAT_SPELL_POWER, 2 * diff);
+			ChangeHeroStat(EnemyHero, 	STAT_KNOWLEDGE, 2 * diff);
+			ChangeHeroStat(EnemyHero,  STAT_EXPERIENCE, 260000 * diff);
+		end
 	end;
 end;
 
@@ -241,7 +246,7 @@ Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
 function laszlo_ai_enabled(hero)
 	print("######### enable Laszlo");
 	H55c_AIAddHero( EnemyHero );
-	local gain = 1 + GetDifficulty() + 0.2 * GetDate(MONTH);
+	local gain = 1 + GetDifficulty() + 0.25 * GetDate(MONTH);
 	H55c_updateArmy( EnemyHero, gain, H55c_CREATURES.HAVEN );
 	if IsObjectExists("dummy") then
 		RemoveObject("dummy");
