@@ -166,7 +166,6 @@ DIFFICULTY = {
 	end,
 }
 
-
 OBJECTIVES = {
 	state = {
 			   findTieru = { "prim1", 1 }, -- Find Tieru 
