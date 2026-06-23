@@ -55,9 +55,6 @@ SCENE_DRAGON_FOUND="";
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/A2_Zehir/A2_Zehir.lua");
 
---sleep(5);
-
---if (GetGameVar("BONUS_A2C3M1") == "1") then GiveArtefact("Zehir", ARTIFACT_ROBE_OF_MAGI ); end; -- Выдать игроку артефакт, если в а2с3м1 игрок выполнил дополнительный квест дварфа
 --if GetGameVar( "A2C3M2_ZehirHasGrail" ) == "1" then GiveArtefact( "Zehir", ARTIFACT_GRAAL ); end; -- Выдать игроку грааль, если он оставил его себе в предыдущей миссии
 
 function summon_creatures()
@@ -84,29 +81,6 @@ function move_town()
 end;
 
 startThread( move_town );
-
---*-- Logfile beginning - for testing purposes --*--
-
-
- -- MOVE CAMERA TO PROPER STARTING POSITION
-
---*-- ECONOMIC VARIABLES --*--
-
-
---*-- Setting starting player resources --*--
-
-
---*-- Setting deadline --*--
-
-
-
-
----------------------------------------------------------------------------------------------------
--------------------------------- VARIABLES -------------------------------------------------
----------------------------------------------------------------------------------------------------
-
-
-
 ---------------------------------------------------------------------------------------------------
 ------------------------------- START MAP SETTINGS -----------------------------------
 ---------------------------------------------------------------------------------------------------
@@ -151,16 +125,8 @@ DenyAIHeroFlee(HERO_PLAYER, not nil);
 DenyAIHeroFlee(WULFSTAN, not nil);
 
 MakeHeroReturnToTavernAfterDeath(HERO_PLAYER, 1, 1 );
-
 DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes( PLAYER_3, not nil );
-
-SetPlayerResource( PLAYER_3, GOLD, 100000 );
-SetPlayerResource( PLAYER_3, ORE, 100 );
-SetPlayerResource( PLAYER_3, WOOD, 100 );
-SetPlayerResource( PLAYER_3, MERCURY, 100 );
-SetPlayerResource( PLAYER_3, CRYSTAL, 100 );
-SetPlayerResource( PLAYER_3, GEM, 100 );
-SetPlayerResource( PLAYER_3, SULFUR, 100 );
+SetPlayerStartResources(PLAYER_3, 100, 100, 100, 100, 100, 100, 100000);
 
 function f_artifacts_sets()
 	InitAllSetArtifacts( "A2C3M3", "Zehir" );
@@ -184,20 +150,6 @@ startThread( Z_graal );
 -------------------------------- FUNCTIONS ------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------
---*-- PRIMARY QUESTS CHECK FUNCTIONS --*--
-------------------------------------------------------------------
-
-
------------------------------------------------------------------------
---*-- SECONDARY QUESTS CHECK FUNCTIONS --*--
------------------------------------------------------------------------
-
-
-------------------------------------------------------------------
---*-- PRIMARY QUESTS START FUNCTIONS --*--
-------------------------------------------------------------------
---pri1
 function f_pri1() --Запускается стартером
     SetObjectiveState('pri1', OBJECTIVE_ACTIVE, PLAYER_1);
 end;
@@ -262,10 +214,6 @@ function f_check_fail_hero() --Запускается триггером Trigger(PLAYER_REMOVE_HERO_
 		sleep(1);		
 		startThread( f_loose );
 	end;
-
-	-- f_pri1_fail();	
-	-- f_pri2_fail();
-	-- f_pri3_fail();
 end;
 
 --pri2
@@ -310,24 +258,6 @@ function f_pri4_success(hero) --Запускается триггером Trigger(OBJECT_TOUCH_TRIGG
 	end;
 end;
 
------------------------------------------------------------------------
---*-- PRIMARY QUESTS FINISH FUNCTIONS --*--
------------------------------------------------------------------------
-
-
------------------------------------------------------------------------
---*-- SECONDARY QUESTS START FUNCTIONS --*--
------------------------------------------------------------------------
-
-
-----------------------------------------------------------------------------
---*-- SECONDARY QUESTS FINISH FUNCTIONS --*--
-----------------------------------------------------------------------------
-
-
------------------------------------------------------
---*-- MISC ACTIONS FUNCTIONS --*--
------------------------------------------------------
 function f_win_pre() --Запускается функцией f_pri4_success
 	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
 	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, nil);
@@ -556,26 +486,26 @@ end;
 
 function H55_FrtTriggerDaily()
 	difficulty = 3;
-		if (GetDate( DAY ) == 2) then	
-			DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 50000);
-		end;
-		if (GetDate( DAY ) == 8) then
-			DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 70000);
-		end;
-		if (GetDate( DAY ) == 20) then
-			DeployReserveHero(ENEMY_HERO1, 67, 64, 1);			
-			--Trigger(NEW_DAY_TRIGGER, nil);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 400000);
-			sleep(6);
-			H55_FrtNewDayTrigger = 0;
-			H55_FifNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
-		end;
+	if (GetDate( DAY ) == 2) then	
+		DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
+		sleep(4);
+		ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 50000);
+	end
+	if (GetDate( DAY ) == 8) then
+		DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
+		sleep(4);
+		ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 70000);
+	end
+	if (GetDate( DAY ) == 20) then
+		DeployReserveHero(ENEMY_HERO1, 67, 64, 1);			
+		--Trigger(NEW_DAY_TRIGGER, nil);
+		sleep(4);
+		ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 400000);
+		sleep(6);
+		H55_FrtNewDayTrigger = 0;
+		H55_FifNewDayTrigger = 1;
+		--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
+	end
 end;
 
 
@@ -585,13 +515,13 @@ end;
 function H55_FifTriggerDaily() --Запускается триггером Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later")
 	if (GetDate( DAY_OF_WEEK ) == 1) and (IsHeroAlive( ENEMY_HERO1 ) ~= not nil) then
 		DeployReserveHero(ENEMY_HERO1, 67, 64, 1);
-	end;
+	end
 	if (GetDate( DAY_OF_WEEK ) == 3) and (IsHeroAlive( ENEMY_HERO2 ) ~= not nil) then
 		DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-	end;
+	end
 	if (GetDate( DAY_OF_WEEK ) == 7) and (IsHeroAlive( ENEMY_HERO3 ) ~= not nil) then
 		DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
-	end;
+	end
 end;
 
 function DeployRolf()
@@ -734,7 +664,3 @@ startThread( PlayVoiceoverIfZehirExitUnderground );
 startThread( PlayVoiceoverIfZehirHasKey );
 startThread( ReturnWulfstanToUnderground );
 --startThread( ShowMessageWhenZehirExitsUnderground );
-
---TeachHeroSpell( WULFSTAN, SPELL_TOWN_PORTAL );
-
---*-- END OF FILE --*--
