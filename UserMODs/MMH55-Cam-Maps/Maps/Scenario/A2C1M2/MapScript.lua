@@ -1,4 +1,10 @@
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua"); ----!!!
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_STAFF_OF_VEXINGS,
@@ -7,39 +13,178 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_SKULL_HELMET
 };
 
-PlayerHero = "Arantir"
-ChangeHeroStat("Arantir", STAT_MANA_POINTS, 20);
-SetHeroesExpCoef( 0.6 );
-
-DenyAIHeroesFlee( PLAYER_4, 1 );
-DenyAIHeroesFlee( PLAYER_2, 1 );
-DenyAIHeroesFlee( PLAYER_1, 1 );
-
-print("Start_A2C1M2.................");
-
-function x2()
-	InitAllSetArtifacts( "A2C1M2", PlayerHero );
+function H55_InitSetArtifacts()
+	InitAllSetArtifacts( "A2C1M2", "Arantir" );
 end
 
-BlockTownGarrisonForAI( "winner", not nil )
+startThread(H55_InitSetArtifacts);
 
-GiveExp( "Faiz", 65000 ); ---addexp
-GiveExp( "Gamor", 41000 ); ---addexp
-GiveExp( "Astral", 1000 ); ---addexp
+function MessageGateLockedByKey( hero )
+	if OBJECTIVES.state.defeatLocalLeader[2] < 10 then 
+		Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO3_Arantir_01sound.xdb#xpointer(/Sound)" );
+		SetObjectPosition( hero, 125, 14, 0 );
+		MessageBox ("Maps/Scenario/A2C1M2/key.txt");
+	else
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "key_zone", nil );
+		Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO4_Arantir_01sound.xdb#xpointer(/Sound)" );
+	end
+end
 
-EnableHeroAI("Nur", nil);
-EnableHeroAI("Gamor", nil);
-EnableHeroAI("Faiz", nil);
+function SpawnSuccubus()
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd2", nil );
+	RemoveObject("i2");
+	sleep( 10 );
+	CreateMonster( "m2", CREATURE_INFERNAL_SUCCUBUS, 160, 92, 79, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
+	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO7_Arantir_01sound.xdb#xpointer(/Sound)" );
+end
 
-SetTownBuildingLimitLevel("t1", TOWN_BUILDING_DWELLING_4, 0);
-SetTownBuildingLimitLevel("t2", TOWN_BUILDING_DWELLING_4, 0);
-SetTownBuildingLimitLevel("t1", TOWN_BUILDING_TAVERN, 0);
-print ('....CHECK1....');
+function SpawnPitLords()
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd3", nil );
+	RemoveObject("i3");
+	sleep( 10 );
+	CreateMonster( "m3", CREATURE_BALOR, 18, 107, 77, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
+	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO8_Arantir_01sound.xdb#xpointer(/Sound)" );	
+end
 
-----------------------------------------------------//Diff
-function Diff_level()
-	slozhnost = GetDifficulty(); 
-	if slozhnost == DIFFICULTY_EASY then
+function MageChargesIntoArantirTown()
+	BlockGame();
+	sleep(5);
+	CINEMATICS.meetMage();
+	sleep(30);
+	EnableHeroAI("Nur", not nil);
+	ChangeHeroStat( "Nur", STAT_MOVE_POINTS, 30000 );
+	MoveHeroRealTime( "Nur", GetObjectPosition( "Arantir" ) );
+	sleep(20);
+	UnblockGame();	
+end
+
+function RemoveMage()
+	SetObjectPosition( "Astral", 92, 49, GROUND );
+	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" );
+end
+
+function meetZombies( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "n_sec", nil );
+		OBJECTIVES.state.findVampireCrypts[2] = 1;
+	end
+end
+
+function enterSecretPath( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dang", nil );
+		OBJECTIVES.state.findSecretPath[2] = 3;
+	end
+end
+
+function WarningMagicFirewall( hero )
+	MessageBox ( "Maps/Scenario/A2C1M2/mummy.txt" );
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic1", nil);
+end
+
+function EnterMagicFireWall( hero )
+	if IsObjectInRegion (hero, "magic2") ~= nil then
+		BlockGame();
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/AnimateDead.xdb#xpointer(/Effect)", hero, "hn1", 0, 0, 0, 0, 0 );
+		sleep(50);
+		UnblockGame();
+		StartCombat(hero,nil,4,CREATURE_MUMMY,50,CREATURE_MUMMY,50,CREATURE_MUMMY,50,CREATURE_MUMMY,50,nil);
+	end
+end
+
+function VisitDeathKnightHut()
+	if GetObjectiveState("Neck") == OBJECTIVE_ACTIVE and GetHeroLevel( "Arantir" ) < 5 then
+		SetObjectPosition( "Arantir", 119, 122, GROUND );
+		SetObjectRotation( "Arantir", 90 );
+		CINEMATICS.notWorthyForDeathKnights();
+	end
+end
+
+CINEMATICS = {
+	meetMage = function()
+		StartAdvMapDialog(5); 
+		sleep(2);
+	end,
+	
+	interogateMage = function()
+		BlockGame();
+		StartAdvMapDialog (1, "RemoveMage");
+		sleep(2);
+		UnblockGame();
+	end,
+	
+	meetSeer = function()
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "mage2", nil );
+		BlockGame();
+		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
+		SetObjectPosition( "Arantir", 129, 90, 0 );
+		SetObjectRotation( "Arantir", 90 );
+		StartAdvMapDialog( 3 );
+		sleep(10);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", "Arantir", "ara1", 0, 0, 0, 0, 0 );
+		sleep(8);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckBad.xdb#xpointer(/Effect)", "mg", "mag1", 0, 0, 0, 0, 0 );
+		sleep(5);
+		pcall(RemoveObject, "mg" );
+		sleep(2);
+		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
+		UnblockGame();
+	end,
+	
+	meetDeathKnights = function()
+		StartAdvMapDialog(0);
+		sleep(2);
+	end,
+	
+	joinDeathKnights = function()
+		StartAdvMapDialog(7);
+		sleep(2);
+	end,
+	
+	notWorthyForDeathKnights = function()
+		StartAdvMapDialog(8);
+		sleep(2);
+	end,
+	
+	meetZombies = function()
+		BlockGame();
+		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
+		SetObjectPosition( "Arantir", 29, 112, 0 );
+		SetObjectRotation( "Arantir", 360 );
+		StartAdvMapDialog(6);
+		sleep( 8 );
+		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
+		OpenCircleFog( 27, 100, 0, 4, PLAYER_1 );
+		sleep( 50 );
+		UnblockGame();
+	end,
+	
+	meetVampires = function()
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "vamp1", nil );
+		BlockGame();
+		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
+		sleep( 4 );
+		SetObjectPosition( "Arantir", 15, 65, 1 );
+		SetObjectRotation( "Arantir", 90 );
+		sleep( 3 );
+		StartAdvMapDialog(2);
+		sleep( 10 );
+		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
+		sleep( 6 );
+		UnblockGame();
+		SetRegionBlocked( "vamp1", nil, PLAYER_2 ); 
+		SetRegionBlocked( "vamp1", nil, PLAYER_3 ); 
+	end,
+	
+	outro = function()
+		StartDialogScene( "/DialogScenes/A2C1/M2/S2/DialogScene.xdb#xpointer(/DialogScene)" );
+		sleep(2);
+	end,
+}
+
+
+DIFFICULTY = {
+	[0] = function()
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
@@ -48,475 +193,254 @@ function Diff_level()
 		SetRegionBlocked("z3", not nil, PLAYER_3);
 		SetRegionBlocked("z4", not nil, PLAYER_2); 
 		SetRegionBlocked("z4", not nil, PLAYER_3);
-	elseif slozhnost == DIFFICULTY_NORMAL then
+		print("Difficulty Level is NORMAL");
+	end,
+	
+	[1] = function()
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
 		SetRegionBlocked("z2", not nil, PLAYER_3);
-		AddHeroCreatures("Gamor", CREATURE_INFERNAL_SUCCUBUS, 60);
-		AddHeroCreatures("Gamor", CREATURE_ARCHDEVIL, 5 );
-		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL,  25);
-		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  20);
-		AddObjectCreatures("winner", 		  CREATURE_CERBERI,  37);
-		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 10);
-	elseif slozhnost == DIFFICULTY_HARD then
-		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 10);
-		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 50);
-		AddHeroCreatures("Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  20);
-		AddHeroCreatures("Gamor",   CREATURE_INFERNAL_SUCCUBUS, 180);
-		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL,  50);
-		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  40);
-		AddObjectCreatures("winner", 		  CREATURE_CERBERI,  75);
-		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 20);
-	elseif slozhnost == DIFFICULTY_HEROIC then
-		RemoveHeroCreatures(PlayerHero, CREATURE_SKELETON, 20);
-		AddHeroCreatures("Nur", CREATURE_IRON_GOLEM, 100);
-		AddHeroCreatures("Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  50);
-		AddHeroCreatures("Gamor",   CREATURE_INFERNAL_SUCCUBUS, 300);
-		AddHeroCreatures("Gamor",           CREATURE_ARCHDEVIL,  40);
-		AddHeroCreatures("Faiz",            CREATURE_ARCHDEVIL,  40);
-		AddObjectCreatures("winner",   CREATURE_FIRE_ELEMENTAL, 100);
-		AddObjectCreatures("winner", CREATURE_SUCCUBUS_SEDUCER,  80);
-		AddObjectCreatures("winner", 		  CREATURE_CERBERI, 150);
-		AddObjectCreatures("winner", 	     CREATURE_PIT_SPAWN, 40);
-	end;
-	print('difficulty = ',slozhnost);
-end;
-----------------------------------------------------//Block_regions
---vamp1
-SetRegionBlocked("vamp1", not nil, PLAYER_2); 
-SetRegionBlocked("vamp1", not nil, PLAYER_3); 
+		AddHeroCreatures( "Gamor", CREATURE_INFERNAL_SUCCUBUS, 60 );
+		AddHeroCreatures( "Gamor", CREATURE_ARCHDEVIL, 5 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  25 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  20 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  37 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  10 );
+		print("Difficulty Level is HARD");
+	end,
+	
+	[2] = function()
+		RemoveHeroCreatures("Arantir", CREATURE_SKELETON, 10);
+		AddHeroCreatures( "Nur", CREATURE_IRON_GOLEM, 50);
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  20 );
+		AddHeroCreatures( "Gamor",   CREATURE_INFERNAL_SUCCUBUS, 180 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  50 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  40 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  75 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  20 );
+		print("Difficulty Level is HEROIC");
+	end,
+	
+	[3] = function()
+		RemoveHeroCreatures("Arantir", CREATURE_SKELETON, 20);
+		AddHeroCreatures( "Nur", CREATURE_IRON_GOLEM, 100);
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  50 );
+		AddHeroCreatures( "Gamor",   CREATURE_INFERNAL_SUCCUBUS, 300 );
+		AddHeroCreatures( "Gamor",           CREATURE_ARCHDEVIL,  40 );
+		AddHeroCreatures( "Faiz",            CREATURE_ARCHDEVIL,  40 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL, 100 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  80 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI, 150 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  40 );
+		print("Difficulty Level is IMPOSSIBLE");
+	end,
+}
 
-SetRegionBlocked("demon_block", not nil, PLAYER_4); 
+OBJECTIVES = {
+	state = {
+		eliminateSorcerer  = { "prim1", 1 }, -- find the demon sorcerer
+		defeatLocalLeader  = { "prim2", 1 }, -- defeat the local demon leader
+		findCultistsLeader = { "prim3", 1 }, -- find the cultists leader
+		isAlive 		   = { "prim4", 1 }, -- Arantir must survive
+		findSecretPath	   = { "Prim5", 1 }, -- find secret underground path
+		joinDeathKnights   = {  "Neck", 1 }, -- Death nights will join when hero gains level 5
+		findVampireCrypts  = {  "sec2", 0 }, -- Find all vampire crypts in the underground
+	},
 
-SetRegionBlocked("mage1", not nil, PLAYER_1); 
-SetRegionBlocked("mage1", not nil, PLAYER_2);
-SetRegionBlocked("mage1", not nil, PLAYER_3); 
- 
-
-SetRegionBlocked("b1", not nil, PLAYER_2); 
-SetRegionBlocked("b1", not nil, PLAYER_3); 
-  
-SetRegionBlocked("b2", not nil, PLAYER_2); 
-SetRegionBlocked("b2", not nil, PLAYER_3); 
-
-SetRegionBlocked("b3", not nil, PLAYER_2); 
-SetRegionBlocked("b3", not nil, PLAYER_3); 
-
-SetRegionBlocked("b4", not nil, PLAYER_2); 
-SetRegionBlocked("b4", not nil, PLAYER_3); 
-
-SetRegionBlocked("key1", not nil, PLAYER_2); 
-SetRegionBlocked("key1", not nil, PLAYER_3); 
-
-SetRegionBlocked("key2", not nil, PLAYER_2); 
-SetRegionBlocked("key2", not nil, PLAYER_3); 
-
-SetRegionBlocked("key3", not nil, PLAYER_2); 
-SetRegionBlocked("key3", not nil, PLAYER_3); 
-
-SetRegionBlocked("ent1", not nil, PLAYER_2); 
-SetRegionBlocked("ent1", not nil, PLAYER_3); 
-
-SetRegionBlocked("ent2", not nil, PLAYER_2); 
-SetRegionBlocked("ent2", not nil, PLAYER_3); 
-
-SetRegionBlocked("back", not nil, PLAYER_1); 
-
-SetRegionBlocked("nb1", not nil, PLAYER_2); 
-SetRegionBlocked("nb1", not nil, PLAYER_3);
-
-SetRegionBlocked("n_sec", not nil, PLAYER_2); 
-SetRegionBlocked("n_sec", not nil, PLAYER_3);
-print ('....CHECK2....'); 
---------------------------------------------------//Main_heroes_death
-
-function Main_hero_de()  
-	while 1 do
-		sleep(40);
-		if IsHeroAlive(PlayerHero) == nil then 
-			sleep(2);
-			Loose();
-			break;
-		end;
-	end;
-end;
-
----------------------------------------------------//First_Attack_Mages
-
-function AIAction()
---	sleep(3);
-	BlockGame();
-	sleep(5);
-	StartAdvMapDialog (5); -----------------------------------------------------5_adv_map_dialog
-	sleep(30);
-	EnableHeroAI("Nur", not nil);
-	ChangeHeroStat( "Nur", STAT_MOVE_POINTS, 30000 );
-	MoveHeroRealTime( "Nur", GetObjectPosition( PlayerHero ) );
-	sleep(20);
-	UnblockGame();
-	sleep(5);
-	SetTownBuildingLimitLevel("t1", TOWN_BUILDING_TAVERN, 1);	
-	SetObjectiveState('prim1',OBJECTIVE_ACTIVE);
-	SetObjectiveState('prim4',OBJECTIVE_ACTIVE);	
-end;
---------------------------------------------------//Start_sec_obj_enterdangeon
-function Demon_obj()  
-	while 1 do
-		sleep(40);
-		if IsHeroAlive("Nur") == nil then  
-			SetObjectiveState('prim2',OBJECTIVE_ACTIVE);			
-			startThread(AIAction2);
-			break;
-		end;
-	end;
-end;
------------------------advmap_dialog_after_batle
-function AIAction2()
-	SetObjectRotation( "Astral", 270 );
-	SetObjectPosition( "Astral", 117, 118, GROUND );
-	sleep(2);
-	BlockGame();
-	sleep(3);
-	StartAdvMapDialog (1, "AI3"); -----------------------------------------------------1_adv_map_dialog
-	sleep(25);
-	UnblockGame();
-end;
-
-function AI3()
-	SetObjectPosition( "Astral", 92, 49, GROUND );
-	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-end;
----------------------------------------------------//Demon_death
-function Demon_kill()  
-	while 1 do
-		sleep(30);
-		if IsHeroAlive("Gamor") == nil then  
-			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		ChangeHeroStat("Arantir", STAT_MANA_POINTS, 20);
+		SetHeroesExpCoef( 0.6 );
+		DenyAIHeroesFlee( PLAYER_4, 1 );
+		DenyAIHeroesFlee( PLAYER_2, 1 );
+		DenyAIHeroesFlee( PLAYER_1, 1 );
+		BlockTownGarrisonForAI( "winner", not nil )
+		GiveExp(   "Faiz", 65000 );
+		GiveExp(  "Gamor", 41000 );
+		GiveExp( "Astral",  1000 );
+		EnableHeroAI(   "Nur", nil );
+		EnableHeroAI( "Gamor", nil );
+		EnableHeroAI(  "Faiz", nil );
+		SetTownBuildingLimitLevel( "t2", TOWN_BUILDING_DWELLING_4, 0 );
+		SetTownBuildingLimitLevel( "t1", TOWN_BUILDING_DWELLING_4, 0 );
+		SetRegionBlocked( 		"vamp1", not nil, PLAYER_2 );	-- Block player 2 from access vampire dwelling area
+		SetRegionBlocked( 		"vamp1", not nil, PLAYER_3 );	-- Block player 3 from access vampire dwelling area
+		SetRegionBlocked( "demon_block", not nil, PLAYER_4 );   -- Block player 4 hero from getting out of Mutazz town
+		SetRegionBlocked( 		"mage1", not nil, PLAYER_1 );	-- Block mage seer NPC from being attacked by player 1
+		SetRegionBlocked( 		"mage1", not nil, PLAYER_2 );	-- Block mage seer NPC from being attacked by player 2
+		SetRegionBlocked( 		"mage1", not nil, PLAYER_3 );	-- Block mage seer NPC from being attacked by player 3
+		SetRegionBlocked( 		   "b1", not nil, PLAYER_2 ); 	-- Block player 2 from magic fire zone
+		SetRegionBlocked( 		   "b1", not nil, PLAYER_3 ); 	-- Block player 3 from magic fire zone
+		SetRegionBlocked( 		   "b2", not nil, PLAYER_2 );	-- Block player 2 from key_zone
+		SetRegionBlocked( 		   "b2", not nil, PLAYER_3 ); 	-- Block player 3 from key_zone
+		SetRegionBlocked( 		   "b3", not nil, PLAYER_2 );	-- Block player 2 from interracting with player 3
+		SetRegionBlocked( 		   "b3", not nil, PLAYER_3 );  	-- Block player 3 from interracting with player 2
+		SetRegionBlocked( 		   "b4", not nil, PLAYER_2 ); 	-- Block player 2 from Cloak of Mourning
+		SetRegionBlocked( 		   "b4", not nil, PLAYER_3 ); 	-- Block player 3 from Cloak of Mourning
+		SetRegionBlocked(		 "key2", not nil, PLAYER_2 );	-- Block player 2 from accessing Vampire underground
+		SetRegionBlocked(		 "key2", not nil, PLAYER_3 ); 	-- Block player 3 from accessing Vampire underground
+		SetRegionBlocked(		 "key3", not nil, PLAYER_2 );	-- Block player 2 from accessing local cult leader underground
+		SetRegionBlocked(		 "key3", not nil, PLAYER_3 ); 	-- Block player 3 from accessing local cult leader underground 
+		SetRegionBlocked(		 "ent2", not nil, PLAYER_2 ); 	-- Block player 2 from accessing player 1 zone
+		SetRegionBlocked(		 "ent2", not nil, PLAYER_3 ); 	-- Block player 3 from accessing player 1 zone
+		SetRegionBlocked(		 "back", not nil, PLAYER_1 );	-- Magic wall blocking player 1 from reaching the Cultists leader
+		SetRegionBlocked( 		  "nb1", not nil, PLAYER_2 ); 	-- Block player 2 from accessing red key tent and boots of speed
+		SetRegionBlocked(		  "nb1", not nil, PLAYER_3 );	-- Block player 3 from accessing red key tent and boots of speed
+		SetRegionBlocked( 		"n_sec", not nil, PLAYER_2 ); 	-- Block player 2 from interracting with the zombies
+		SetRegionBlocked( 		"n_sec", not nil, PLAYER_3 );	-- Block player 3 from interracting with the zombies
+		DIFFICULTY[GetDifficulty()]();
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,	   "n_sec",	 			"meetZombies" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 	"dang",			"enterSecretPath" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "key_zone",	 "MessageGateLockedByKey" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,	  "magic1",	   "WarningMagicFirewall" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,	  "magic2",		 "EnterMagicFireWall" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 	 "dd2",			  "SpawnSuccubus" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 	 "dd3",			  "SpawnPitLords" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,	   "mage2",		"CINEMATICS.meetSeer" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,	   "vamp1", "CINEMATICS.meetVampires" );
+	end,
+	
+	run = function()
+		while true do
 			sleep(10);
-			Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO6_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO	
-			SetObjectiveState('prim3',OBJECTIVE_ACTIVE);
-			SetObjectiveState('Prim5',OBJECTIVE_ACTIVE);
-			sleep(10); 
-			MessageBox ("Maps/Scenario/A2C1M2/key3.txt");
-			break;
-		end;
-	end;
-end;
---------------------------------------------------//Mages_death
-
-function Objective_prim1()  
-	while 1 do
-		sleep(30);
-		if GetPlayerState(PLAYER_2) == PLAYER_LOST then
-			sleep(5);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+			
+			if GetObjectiveState("prim4") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped( "Arantir",  "A2C1M2" );
+				sleep(100);
+				CINEMATICS.outro();
+				sleep(80);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	eliminateSorcerer = function()
+		if OBJECTIVES.state.eliminateSorcerer[2] == 1 then
+			SetObjectiveState( 'prim1', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.eliminateSorcerer[2] = 2;
+		elseif OBJECTIVES.state.eliminateSorcerer[2] == 2 and GetPlayerState(PLAYER_2) == PLAYER_LOST then
 			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
-			print ('................Mage_defeated....');
-			SetRegionBlocked("b3", nil, PLAYER_3);
-			break;
-		end;
-	end;
-end;
---------------------------------------------------//Final_City_defeat
-
-
-function Complete_obj3()
-	while 1 do	
-		sleep( 30 );
-		if (GetObjectOwner("winner") == PLAYER_1) then
-			sleep( 5 );
-			SetObjectiveState('prim3',OBJECTIVE_COMPLETED);
-			SetRegionBlocked("back", nil, PLAYER_1);
+			SetRegionBlocked( "b3", nil, PLAYER_3 ); -- Allow player 3 to access player 2 area
+			OBJECTIVES.state.eliminateSorcerer[2] = 10;
+		end
+	end,
+	
+	defeatLocalLeader_armyDay = 8,
+	defeatLocalLeader = function()
+		if OBJECTIVES.state.defeatLocalLeader[2] == 1 then  
+			startThread(MageChargesIntoArantirTown);
+			OBJECTIVES.state.defeatLocalLeader[2] = 2;
+		elseif OBJECTIVES.state.defeatLocalLeader[2] == 2 and IsHeroAlive("Nur") == nil then
+			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
+			SetObjectRotation( "Astral", 270 );
+			SetObjectPosition( "Astral", 117, 118, GROUND );
+			CINEMATICS.interogateMage();
+			OBJECTIVES.state.defeatLocalLeader[2] = 3;
+		elseif OBJECTIVES.state.defeatLocalLeader[2] == 3 and IsHeroAlive("Gamor") == nil then
+			SetObjectiveState( "prim2", OBJECTIVE_COMPLETED );
+			Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO6_Arantir_01sound.xdb#xpointer(/Sound)" );
+			sleep(30); 
+			MessageBox ("Maps/Scenario/A2C1M2/key3.txt");
+			OBJECTIVES.state.defeatLocalLeader[2] = 10;
+		end
+		
+		if OBJECTIVES.date >= OBJECTIVES.defeatLocalLeader_armyDay then
+			AddHeroCreatures( "Gamor", CREATURE_INFERNAL_SUCCUBUS, 20 );
+			AddHeroCreatures( "Gamor", 		  CREATURE_ARCHDEVIL,  5 );
+			OBJECTIVES.defeatLocalLeader_armyDay = OBJECTIVES.defeatLocalLeader_armyDay + 7;
+		end		
+	end,
+	
+	findCultistsLeader_armyDay = 8,
+	findCultistsLeader = function()
+		if OBJECTIVES.state.findCultistsLeader[2] == 1 and OBJECTIVES.state.defeatLocalLeader[2] == 10 then  
+			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.findCultistsLeader[2] = 2;
+		elseif OBJECTIVES.state.findCultistsLeader[2] == 2 and GetObjectOwner("winner") == PLAYER_1 then
+			SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
+			SetRegionBlocked( "back", nil, PLAYER_1 );
 			RemoveObject("e1");
 			RemoveObject("e2");
 			RemoveObject("e3");
-			sleep( 5 );
-			break;
-		end;
-	end;
-end;
---------------------------------------------------//Winn_all
-function Complete_miss()
-	while 1 do	
-		sleep( 10 );
-		if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-			sleep( 5 );
-			StartDialogScene( "/DialogScenes/A2C1/M2/S2/DialogScene.xdb#xpointer(/DialogScene)", "Complete_miss_fin" ); ----///Сцена финальнаяC1M2_S1 
-			break;
-		end;
-	end;
-end;
+			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic2", nil ); -- remove the magic firewall threat
+			OBJECTIVES.state.findCultistsLeader[2] = 10;
+		end
+		
+		if OBJECTIVES.date >= OBJECTIVES.findCultistsLeader_armyDay then
+			AddObjectCreatures( "winner", 		CREATURE_TITAN,  2 );
+			AddObjectCreatures( "winner", 	CREATURE_ARCH_MAGI, 10 );
+			AddObjectCreatures( "winner",  CREATURE_IRON_GOLEM, 50 );
+			OBJECTIVES.findCultistsLeader_armyDay = OBJECTIVES.findCultistsLeader_armyDay + 7;
+		end			
+	end,
+	
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 then
+			SetObjectiveState( 'prim4', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.isAlive[2] = 2;
+		elseif OBJECTIVES.state.isAlive[2] == 2 and IsHeroAlive("Arantir") == nil then
+			SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	findSecretPath = function()
+		if OBJECTIVES.state.findSecretPath[2] == 1 and OBJECTIVES.state.defeatLocalLeader[2] == 10 then  
+			SetObjectiveState( 'Prim5', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.findSecretPath[2] = 2;
+		elseif OBJECTIVES.state.findSecretPath[2] == 3 then
+			SetObjectiveState( "Prim5", OBJECTIVE_COMPLETED );
+			MessageBox ("Maps/Scenario/A2C1M2/mess4.txt");
+			OBJECTIVES.state.findSecretPath[2] = 10;
+		end
+	end,
+	
+	joinDeathKnights = function()
+	-- Lifecycle of this task is handled by map.xdb
+		if OBJECTIVES.state.joinDeathKnights[2] == 1 and GetObjectiveState("Neck") == OBJECTIVE_ACTIVE then
+			SetObjectPosition( "Arantir", 119, 122, GROUND );
+			SetObjectRotation( "Arantir", 90 );
+			CINEMATICS.meetDeathKnights();
+			Trigger(OBJECT_TOUCH_TRIGGER, "Neck_", "VisitDeathKnightHut");
+			OBJECTIVES.state.joinDeathKnights[2] = 2;
+		elseif OBJECTIVES.state.joinDeathKnights[2] == 2 and GetObjectiveState("Neck") == OBJECTIVE_COMPLETED then
+			SetObjectPosition( "Arantir", 119, 122, GROUND );
+			SetObjectRotation( "Arantir", 90 );
+			CINEMATICS.joinDeathKnights();
+			OBJECTIVES.state.joinDeathKnights[2] = 10;
+		end
+	end,
+	
+	findVampireCrypts = function()
+		if OBJECTIVES.state.findVampireCrypts[2] == 1 then  
+			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE );
+			CINEMATICS.meetZombies();
+			OBJECTIVES.state.findVampireCrypts[2] = 2;
+		elseif OBJECTIVES.state.findVampireCrypts[2] == 2 and GetObjectOwner("vamp1") == PLAYER_1 and GetObjectOwner("vamp2") == PLAYER_1 and GetObjectOwner("vamp3") == PLAYER_1 then
+			SetObjectiveState( 'sec2', OBJECTIVE_COMPLETED );
+			SetTownBuildingLimitLevel( "t1", TOWN_BUILDING_DWELLING_4, 2 );
+			SetTownBuildingLimitLevel( "t2", TOWN_BUILDING_DWELLING_4, 2 );
+			OBJECTIVES.state.findVampireCrypts[2] = 10;
+		end
+	end
+}
 
-function Complete_miss_fin()
-	SaveHeroAllSetArtifactsEquipped( "Arantir",  "A2C1M2" );
-	sleep(100);
-	Win();
-end;
-
----------------------------------------------//Sec2_complete_vamp_dwellings
-
-function Complete_sec2obj()
-	while 1 do	
-		sleep( 20 );
-		if GetObjectOwner("vamp1") == PLAYER_1 and GetObjectOwner("vamp2") == PLAYER_1 and GetObjectOwner("vamp3") == PLAYER_1 then
-			sleep( 5 );
-			SetObjectiveState('sec2',OBJECTIVE_COMPLETED);
-			sleep( 5 );
-			SetTownBuildingLimitLevel("t1", TOWN_BUILDING_DWELLING_4, 2);
-			SetTownBuildingLimitLevel("t2", TOWN_BUILDING_DWELLING_4, 2);
-			break;
-		end;
-	end;
-end;
-
---------------------------//Sec2obj_start
-
-function SecObj1start()
-	x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( PlayerHero );
-	BlockGame();
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "n_sec",nil);
-	sleep( 5 );
-	SetObjectiveState('sec2',OBJECTIVE_ACTIVE);
-	SetObjectPosition( PlayerHero, 29, 112, 0 );
-	SetObjectRotation( PlayerHero, 360 );
-	StartAdvMapDialog (6); -----------------------------------------------------6_adv_map_dialog
-	sleep( 8 );
-	SetObjectPosition( PlayerHero, x_orn_scene, y_orn_scene, floor_orn_scene );
-	OpenCircleFog( 27, 100, 0, 4, PLAYER_1 );
-	sleep(2);
-	UnblockGame();	
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "n_sec","SecObj1start", nil );
-
----------------------------------------------//Complete_sec1_obj
-
-function SecObj1complete()
-	sleep(2);	
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dang",nil);
-	sleep(5);
-	SetObjectiveState( "Prim5", OBJECTIVE_COMPLETED );
-	sleep(10);
-	MessageBox ("Maps/Scenario/A2C1M2/mess4.txt");
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dang","SecObj1complete", nil );
-
-----------------------------//Keyzone_enter_check
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "key_zone","Warningmess" );
-
-function Warningmess ( heroname )
-	HN = heroname;
-	if IsObjectInRegion (HN, "key_zone") == not nil and IsHeroAlive("Gamor") ~= nil and GetObjectiveState("prim3") ~= OBJECTIVE_COMPLETED then 
-		sleep(2);
-		Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO3_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---		HN = heroname;
-		SetObjectPosition( HN, 125, 14, 0 );
-		sleep( 10 );
-		MessageBox ("Maps/Scenario/A2C1M2/key.txt");
-	else
-	print("Region_disable");
-	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO4_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "key_zone",nil);
-	end;
-end;
-
-
--------------------------//Mummi_warning
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic1","Warning" );
-
-
-function Warning ( heroname )
-	HN = heroname;
-	MessageBox ("Maps/Scenario/A2C1M2/mummy.txt");
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic1",nil);
-end;
-
-------------------------//Mummi_combat
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic2","Pipez" );
-
-function Pipez ( heroname )
-	HN = heroname;
-	if IsObjectInRegion (HN, "magic2") == not nil and GetObjectiveState("prim3") ~= OBJECTIVE_COMPLETED then
-		BlockGame();
---		sleep(6);
---		SetObjectPosition( HN, 82, 7, 0 );
-		sleep(10);
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/AnimateDead.xdb#xpointer(/Effect)", HN, "hn1", 0, 0, 0, 0, 0 );
-		sleep(15);
-		UnblockGame();
-		StartCombat(HN,nil,4,CREATURE_MUMMY,50,CREATURE_MUMMY,50,CREATURE_MUMMY,50,CREATURE_MUMMY,50,nil);
-	else
-	print("Region_mymmi_disable");
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "magic2",nil);
-	end;
-end;
---------------------------------------//Time_events
-function H55_TriggerDaily()
-	if ( GetDate(MONTH) == 3 ) and ( GetDate(WEEK) == 3 ) and (GetDate(DAY_OF_WEEK) == 1 ) then 
-		AddHeroCreatures("Gamor", CREATURE_INFERNAL_SUCCUBUS, 20);
-		AddHeroCreatures("Gamor", CREATURE_ARCHDEVIL, 5);
-		AddObjectCreatures("winner", CREATURE_TITAN, 2);
-		AddObjectCreatures("winner", CREATURE_ARCH_MAGI, 10);
-		AddObjectCreatures("winner", CREATURE_IRON_GOLEM, 50);
-	end;
-	if ( GetDate(MONTH) == 4 ) and ( GetDate(WEEK) == 3 ) and (GetDate(DAY_OF_WEEK) == 1 ) then 
-		AddHeroCreatures("Gamor", CREATURE_INFERNAL_SUCCUBUS, 100);
-		AddHeroCreatures("Gamor", CREATURE_ARCHDEVIL, 20);
-		AddObjectCreatures("winner", CREATURE_TITAN, 10);
-		AddObjectCreatures("winner", CREATURE_ARCH_MAGI, 35);
-		AddObjectCreatures("winner", CREATURE_IRON_GOLEM, 100);
-	end;
-end;
-----------------------------------------///
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd2","Dem2", nil );
-
-function Dem2()
-	RemoveObject("i2");
-	sleep(3);
-	CreateMonster( "m2", CREATURE_INFERNAL_SUCCUBUS, 160, 92, 79, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd2",nil);
-	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO7_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO_Суккубы 	
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd3","Dem3", nil );
-
-function Dem3()
-	RemoveObject("i3");
-	sleep(2);
-	CreateMonster( "m3", CREATURE_BALOR, 18, 107, 77, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd3",nil);
-	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO8_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO_Pit_Lords	
-end;
-
--------------------------------------Dialogs-------------------------------
-
---function dialog_1(hero)
---	print(hero.." enter");
---	if hero == PlayerHero then
---		sleep(5);
---		StartAdvMapDialog (3);   --------------------------------2_advmap_dialog
---		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "mage2",nil);
---		sleep(3);
---		startThread(caput_mage);
---	end;
---end;
-
-function dialog_1()
-	x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( PlayerHero );
-	sleep( 3 );
-	SetObjectPosition( PlayerHero, 129, 90, 0 );
-	SetObjectRotation( PlayerHero, 90 );
-	BlockGame();
-	sleep( 3 );
-	StartAdvMapDialog (3);   --------------------------------2_advmap_dialog
-	sleep(3);
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "mage2",nil);
-	startThread(caput_mage);
-end;
-
-function caput_mage()
---	BlockGame();
-	sleep(2);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", PlayerHero, "ara1", 0, 0, 0, 0, 0 );
-	sleep(8);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckBad.xdb#xpointer(/Effect)", "mg", "mag1", 0, 0, 0, 0, 0 );
-	sleep(5);
-	RemoveObject( "mg" );
-	sleep(2);
-	SetObjectPosition( PlayerHero, x_orn_scene, y_orn_scene, floor_orn_scene );
-	UnblockGame();
-	SetRegionBlocked("mage1", nil, PLAYER_1);
-end
-
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "mage2","dialog_1");
-
-
-function dialog_2()
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "vamp1",nil);
-	BlockGame();
-	x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( PlayerHero );
-	sleep( 4 );
-	SetObjectPosition( PlayerHero, 15, 65, 1 );
-	SetObjectRotation( PlayerHero, 90 );
-	sleep( 3 );
-	StartAdvMapDialog (2);   --------------------------------2_advmap_dialog
-	sleep( 10 );
-	SetObjectPosition( PlayerHero, x_orn_scene, y_orn_scene, floor_orn_scene );
-	sleep( 6 );
-	UnblockGame();
---	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "vamp1",nil);
-	SetRegionBlocked("vamp1", nil, PLAYER_2); 
-	SetRegionBlocked("vamp1", nil, PLAYER_3); 
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "vamp1","dialog_2" );
------------------------------------------------------------------////death_knight_advmap_dialogs
-function Death_kn_objective()
-	while 1 do
-		if GetObjectiveState("Neck") == OBJECTIVE_ACTIVE then
-			SetObjectPosition( PlayerHero, 119, 122, GROUND );
-			SetObjectRotation( PlayerHero, 90 );
-			StartAdvMapDialog (0);   --------------------------------0_advmap_dialog
-			print("Death_knight_start");
-			sleep(5);
-			startThread(Death_kn_objective2);
-			sleep(5);
-			Trigger(OBJECT_TOUCH_TRIGGER, "Neck_", "Death_kn_objective3");
-			break;
-		end;
-	sleep( 3 );
-	end;	
-end;
-
-function Death_kn_objective2()
-	while 1 do
-		if GetObjectiveState("Neck") == OBJECTIVE_COMPLETED then
-			SetObjectPosition( PlayerHero, 119, 122, GROUND );
-			SetObjectRotation( PlayerHero, 90 );
-			StartAdvMapDialog (7);   --------------------------------7_advmap_dialog
-			print("Death_knight_complete.....");
-			break;
-		end;
-	sleep( 3 );
-	end;	
-end;
-
-function Death_kn_objective3()
-	startThread(Death_kn_objective3_1);
-end;
-
-function Death_kn_objective3_1()
-	if GetObjectiveState("Neck") == OBJECTIVE_ACTIVE and GetHeroLevel( PlayerHero ) < 5 then
-		SetObjectPosition( PlayerHero, 119, 122, GROUND );
-		SetObjectRotation( PlayerHero, 90 );
---		Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_AM3_Undead2_01sound.xdb#xpointer(/Sound)" ); ----------------VO
---		MessageBox ("Maps/Scenario/A2C1M2/C1M2_AM3_Undead2_0.txt");
-		print("Death_knight_IN_complete_new.....");
-		StartAdvMapDialog (8);   ------------------------------------8_advmap_dialog
-	end;
-end;
-
---function StrangeMineOre(hero)
-
--------------------------------------//////Main
-startThread(Death_kn_objective);
-startThread(x2);
-startThread(AIAction);
-
-H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "Time_events",nil );
-
-startThread(Main_hero_de);
-startThread(Demon_obj);
-startThread(Demon_kill);
-startThread(Objective_prim1);
-startThread(Complete_obj3);
-startThread(Complete_sec2obj);
-startThread(Complete_miss);
-startThread(Diff_level);
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
