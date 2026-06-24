@@ -124,6 +124,7 @@ end
 
 function dwarvenTownReward( oldOwner, newOwner, heroName )
 	if newOwner == PLAYER_1 then
+		Trigger( OBJECT_CAPTURE_TRIGGER, "dwarven_town", nil );
 		GiveArtefact( heroName, ARTIFACT_DWARVEN_MITHRAL_CUIRASS );
 		GiveArtefact( heroName, ARTIFACT_DWARVEN_MITHRAL_GREAVES );
 		GiveArtefact( heroName, ARTIFACT_DWARVEN_MITHRAL_HELMET );
@@ -265,8 +266,9 @@ OBJECTIVES = {
 				end
 			end
 
-			if GetObjectiveState("DefendTown") == OBJECTIVE_FAILED or GetObjectiveState("HeroesMustSurvive") == OBJECTIVE_FAILED or GetObjectiveState("DefendTown") == OBJECTIVE_FAILED then
+			if GetObjectiveState("DefendTown") == OBJECTIVE_FAILED or GetObjectiveState("HeroesMustSurvive") == OBJECTIVE_FAILED then
 				Loose();
+				return
 			end
 			
 			if GetObjectiveState("DefeatThralsai") == OBJECTIVE_COMPLETED then

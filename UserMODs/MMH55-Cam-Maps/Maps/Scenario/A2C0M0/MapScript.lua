@@ -3,8 +3,8 @@
 ----------------------------------------------------------------------------------------
 
 loopSoundsLocks = 0
-function LockLoopSounds() loopSoundsLocks = loopSoundsLocks + 1; end;
-function UnlockLoopSounds() loopSoundsLocks = loopSoundsLocks - 1; end;
+function LockLoopSounds() loopSoundsLocks = loopSoundsLocks + 1; end
+function UnlockLoopSounds() loopSoundsLocks = loopSoundsLocks - 1; end
 
 -- HERO NAMES -------------------------------------------
 QUROQ = "Quroq";
@@ -54,12 +54,9 @@ COMBAT_SCRIPT = "/Maps/Scenario/A2C0M0/A2C0M0_CombatVSPeasants.(Script).xdb#xpoi
 
 
 -- OTHER -------------------------------------------------
-LISTENING_DISTANCE = 20; -- расстояние на котором Курок "слышит" вопли своих сородичей, игроку показывают скриптовую сценку про их муки.
-
+LISTENING_DISTANCE = 18; -- расстояние на котором Курок "слышит" вопли своих сородичей, игроку показывают скриптовую сценку про их муки.
 FIRST_COMBAT_PEASANTS_AMOUNT = 80; -- количество в стеке. Стеков четыре. Число надо умножать на 4.
 BUTCHERS_TO_DEPLOY = 30; -- Количество освобождаемых бутчеров
-
-
 
 ----------------------------------------------------------------------------------------
 ----------------------------------   VARIABLES   ---------------------------------------
@@ -67,14 +64,9 @@ BUTCHERS_TO_DEPLOY = 30; -- Количество освобождаемых бутчеров
 isGoblinsShowed = 0;
 isButchersShowed = 0;
 isCyclopsShowed = 0;
-
 creaturesCollected = 0;
 butchersDeployed = 0;
-
-isTutorialOn = 1;
-
 TouchedBuilding = "fake";
-
 
 ----------------------------------------------------------------------------------------
 ------------------------------   INITIAL CONDITIONS   ----------------------------------
@@ -105,7 +97,6 @@ DIFFICULTY = {
 
 DIFFICULTY[GetDifficulty()]();
 RemoveHeroCreatures( "Quroq", CREATURE_ORC_WARRIOR, 10*diff );
-
 MakeHeroReturnToTavernAfterDeath( "Nathaniel", not nil, 0);
 MakeHeroReturnToTavernAfterDeath( "Giar", not nil, 0);
 MakeHeroReturnToTavernAfterDeath( "Glen", not nil, 0);
@@ -116,21 +107,16 @@ MakeHeroReturnToTavernAfterDeath( "Christian", not nil, 0);
 --MakeHeroReturnToTavernAfterDeath( "RedHeavenHero01", not nil, 0);
 --MakeHeroReturnToTavernAfterDeath( "RedHeavenHero02", not nil, 0);
 --MakeHeroReturnToTavernAfterDeath( "RedHeavenHero03", not nil, 0);
-
 SetObjectEnabled( "HutOfMagi_Cyclops", nil );
 SetObjectEnabled( "HutOfMagi_Goblins", nil );
 SetObjectEnabled( "HutOfMagi_Butchers", nil );
-
 SetObjectEnabled( "prison", nil );
-
 SetObjectEnabled( "peasant_1", nil );
 SetObjectEnabled( "peasant_2", nil );
 SetObjectEnabled( "centaur", nil );
-
 SetObjectEnabled( "west_hut", nil );
 SetObjectEnabled( "east_hut", nil );
 SetObjectEnabled( "south_hut", nil );
-
 SetRegionBlocked( "centaur_dwelling_area", not nil, PLAYER_1 );
 SetRegionBlocked( "goblin_dwelling_area", not nil, PLAYER_1 );
 SetRegionBlocked( "military_post_area", not nil, PLAYER_1 );
@@ -145,7 +131,6 @@ SetRegionBlocked( "ai5", not nil, PLAYER_2 );
 SetRegionBlocked( "ai6", not nil, PLAYER_2 );
 SetRegionBlocked( "skeletons", not nil, PLAYER_2 );
 SetRegionBlocked( "sucrificial_pit", not nil, PLAYER_2 );
-
 EnableHeroAI( AI_HERO, nil );
 SetHeroRoleMode(  AI_HERO,   HERO_ROLE_MODE_HERMIT );
 AddHeroCreatures( AI_HERO,     CREATURE_LONGBOWMAN, 60*diff);
@@ -153,17 +138,8 @@ AddHeroCreatures( AI_HERO,     CREATURE_VINDICATOR, 50*diff);
 AddHeroCreatures( AI_HERO, CREATURE_BATTLE_GRIFFIN, 35*diff);
 AddHeroCreatures( AI_HERO,       CREATURE_CHAMPION, 10*diff);
 AddHeroCreatures( AI_HERO,         CREATURE_SERAPH,  4*diff);
-
-
 OverrideObjectTooltipNameAndDescription( "prison", "", PATH.."Tooltip_Prison.txt");
-
-SetPlayerStartResource( PLAYER_1, GOLD, 1000+1000*(4-diff) );
-SetPlayerStartResource( PLAYER_1, ORE, 0 );
-SetPlayerStartResource( PLAYER_1, WOOD, 0 );
-SetPlayerStartResource( PLAYER_1, CRYSTAL, 0 );
-SetPlayerStartResource( PLAYER_1, GEM, 0 );
-SetPlayerStartResource( PLAYER_1, SULFUR, 0 );
-SetPlayerStartResource( PLAYER_1, MERCURY, 0 );
+SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 1000+1000*(4-diff));
 
 function PlayStartVoiceover()
 	UnlockLoopSounds();
@@ -171,7 +147,7 @@ function PlayStartVoiceover()
 	Play2DSound( VOICEOVER_MISSION_START );
 	sleep(GetSoundTimeInSleeps( VOICEOVER_MISSION_START ));
 	UnblockGame();
-end;
+end
 
 LockLoopSounds();
 StartDialogScene( "/DialogScenes/A2C0/M1/S1/DialogScene.xdb#xpointer(/DialogScene)", "PlayStartVoiceover" );
@@ -202,33 +178,32 @@ function PlayRazedTownEffects( townName )
 	
 	PlayVisualEffect( EFFECT_DUST, "", "fire", x+4, y, 0, 0, floor );
 	PlayVisualEffect( EFFECT_FIRE_02, "", "fire", x+4, y, 0, 0, floor );
-end;
-
+end
 
 function IsPeasantHutTouched( heroName, objectName )
 	if heroName==QUROQ then
 		TouchedBuilding = objectName;
 		QuestionBox( PATH.."MsgBox_DoYouWantBurnHut.txt", "WantBurnHut");
-	end;
-end;
+	end
+end
 
 function SetAIHeroesRoleModeFreelancer()
 	while GetObjectiveState( "prim1_CaptureTown")~=OBJECTIVE_COMPLETED do
-		while GetCurrentPlayer()~=PLAYER_2 do sleep(1); end;
+		while GetCurrentPlayer()~=PLAYER_2 do sleep(1); end
 		print("AI turn");
 		playerHeroes = GetPlayerHeroes( PLAYER_2 );
 		for i=0, table.length( playerHeroes )-1	do
 			if playerHeroes[i]~=AI_HERO then
 				SetHeroRoleMode( playerHeroes[i], HERO_ROLE_MODE_FREEMAN );
 				print("Role mode for hero ",playerHeroes[i]," was switched to freelancer");
-			end;
-		end;
-		while GetCurrentPlayer()==PLAYER_2 do sleep(1); end;
+			end
+		end
+		while GetCurrentPlayer()==PLAYER_2 do sleep(1); end
 		print("AI turn finished");
 		sleep(1);
-	end;
+	end
 	print("SetAIHeroesRoleModeFreelancer:  AI player doesn't exist. Function terminated");
-end;
+end
 
 function WantBurnHut()
 	Trigger( OBJECT_TOUCH_TRIGGER, TouchedBuilding, nil );
@@ -247,15 +222,14 @@ function WantBurnHut()
 	SetPlayerResource( PLAYER_1, GOLD, ( GetPlayerResource(PLAYER_1, GOLD)+2500 ), QUROQ );
 	sleep(5);
 	ChangeHeroStat( QUROQ, STAT_EXPERIENCE, 2000 );
-end;
-
+end
 
 function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
 	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
 	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
 	sleep(1);
 	MoveHeroRealTime( heroName, x, y, GROUND );
-end;
+end
 
 function Distance( object1, object2, x, y )
 	distance = -1;
@@ -269,34 +243,34 @@ function Distance( object1, object2, x, y )
 				distance = sqrt((x_1-x)*(x_1-x) + (y_1-y)*(y_1-y));
 			else
 				print("Distance: ERROR. You must specify coorinates!");
-			end;
-		end;
+			end
+		end
 	else
 		print("Distance: ERROR. Object doesn't exist!");
-	end;
+	end
 	return distance;
-end;
+end
 
 function ShowCyclopsIfListeningDistanceReached()
-	while Distance( QUROQ, "cyclop" ) > LISTENING_DISTANCE do sleep(1); end;
+	while Distance( QUROQ, "cyclop" ) > LISTENING_DISTANCE do sleep(5); end
 	if isCyclopsShowed==0 and IsHeroAlive( QUROQ )==not nil then 
 		PlayCyclopScene();
-	end;
-end;
+	end
+end
 
 function ShowGoblinsIfListeningDistanceReached()
-	while Distance( QUROQ, "goblin_gold" ) > LISTENING_DISTANCE do sleep(1); end;
+	while Distance( QUROQ, "goblin_gold" ) > LISTENING_DISTANCE do sleep(5); end
 	if isGoblinsShowed==0 and IsHeroAlive( QUROQ )==not nil  then 
 		PlayGoblinsScene();
-	end;
-end;
+	end
+end
 
 function ShowButchersIfListeningDistanceReached()
-	while Distance( QUROQ, "prison" ) > LISTENING_DISTANCE do sleep(1); end;
+	while Distance( QUROQ, "prison" ) > LISTENING_DISTANCE do sleep(5); end
 	if isButchersShowed==0 and IsHeroAlive( QUROQ )==not nil then 
 		PlayButcherScene();
-	end;
-end;
+	end
+end
 
 function HutOfMagi( heroName, hutName )
 	if GetObjectOwner( heroName ) == PLAYER_1 then
@@ -306,12 +280,10 @@ function HutOfMagi( heroName, hutName )
 			startThread( PlayButcherScene );
 		elseif hutName == "HutOfMagi_Goblins" then
 			startThread( PlayGoblinsScene );
-		end;
+		end
 		MarkObjectAsVisited( hutName, heroName );
-	end;
-end;
-
-
+	end
+end
 
 function PlayCentaursScene()
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", nil );
@@ -325,7 +297,7 @@ function PlayCentaursScene()
 	sleep(15);
 	local x,y,z = GetObjectPosition( QUROQ )
 	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end;
+end
 
 function PlayGoblinsScene()
 	BlockGame();
@@ -350,11 +322,11 @@ function PlayGoblinsScene()
 		sleep(15);
 		RemoveObject("goblin_left");
 		MessageBox( MSGBOX_GOBLINS_SCENE );
-	end;
+	end
 	local x,y,z = GetObjectPosition( QUROQ );
 	UnblockGame();
 	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end;
+end
 
 function PlayButcherScene()
 	OpenCircleFog( 22, 22, GROUND, 7, PLAYER_1);
@@ -364,11 +336,11 @@ function PlayButcherScene()
 	if isButchersShowed == 0 then 
 		isButchersShowed = 1;
 		MessageBox( MSGBOX_BUTCHERS_SCENE );
-	end;
+	end
 	local x,y,z = GetObjectPosition( QUROQ )
 	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
 	UnblockGame();
-end;
+end
 
 function PlayCyclopScene()
 	BlockGame();
@@ -398,14 +370,14 @@ function PlayCyclopScene()
 		PlayObjectAnimation("cyclop", "happy", ONESHOT );
 		sleep(15);
 		MessageBox( MSGBOX_CYCLOPS_SCENE );
-	end;
+	end
 	local x,y,z = GetObjectPosition( QUROQ )
 	UnblockGame();
 	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end;
+end
 
 function IsGoblinsGuardKilled()
-	while IsObjectExists( "goblins_guard" ) == not nil do sleep(2); end;
+	while IsObjectExists( "goblins_guard" ) == not nil do sleep(2); end
 	print("IsGoblinsGuardKilled: Goblins are liberated!!!");
 	BlockGame();	
 	MoveCamera( 129, 127, GROUND, 20, 0.7, 0.5, 0, 0, 1 );
@@ -427,9 +399,9 @@ function IsGoblinsGuardKilled()
 	sleep(15);
 	UnblockGame();
 	MoveHeroRealTimeAndReachPoint( QUROQ, GetObjectPosition("goblin_ore") );
-	while IsObjectExists("goblin_ore")==not nil do sleep(1); end;
+	while IsObjectExists("goblin_ore")==not nil do sleep(1); end
 	MoveHeroRealTimeAndReachPoint( QUROQ, GetObjectPosition("goblin_gold") );
-	while IsObjectExists("goblin_gold")==not nil do sleep(1); end;
+	while IsObjectExists("goblin_gold")==not nil do sleep(1); end
 	print("IsGoblinsGuardKilled: All goblins enslaved!");	
 	local hero_x, hero_y, hero_floor = GetObjectPosition( QUROQ );
 	SetRegionBlocked( "goblin_dwelling_area", nil );
@@ -440,16 +412,15 @@ function IsGoblinsGuardKilled()
 	sleep(15);
 	MessageBox( PATH.."MsgBox_CanRecruitGoblins.txt" );
 	MoveCamera( hero_x, hero_y, hero_floor, 35, 0.9, 0, 0, 0, 1 );
-end;
-
+end
 
 function IsPrisonTouched( heroName )
 	butchersDeployed = 1; --> See the DeployButchers() function
 	Trigger( OBJECT_TOUCH_TRIGGER, "prison", "PrisonVisited" );
-end;
+end
 	
 function DeployButchers()
-	while butchersDeployed==0 do sleep(2); end;
+	while butchersDeployed==0 do sleep(2); end
 	local x, y, floor = GetObjectPosition(QUROQ);
 	BlockGame();	
 	CreateMonster( "butchers", CREATURE_ORCCHIEF_BUTCHER, BUTCHERS_TO_DEPLOY*2, x, y, floor, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN );
@@ -462,7 +433,7 @@ function DeployButchers()
 	UnblockGame();
 	MessageBox(PATH.."MsgBox_Butchersthanks.txt");
 	MoveHeroRealTimeAndReachPoint( QUROQ, GetObjectPosition("butchers") );
-	while IsObjectExists( "butchers" )==not nil do sleep(1); end;
+	while IsObjectExists( "butchers" )==not nil do sleep(1); end
 	local hero_x, hero_y, hero_floor = GetObjectPosition( QUROQ );
 	SetRegionBlocked( "military_post_area", nil );
 	PlayVisualEffect( EFFECT_DUST, "", "", 128, 8, GROUND );
@@ -474,14 +445,14 @@ function DeployButchers()
 	creaturesCollected = creaturesCollected  + 1;
 	SetObjectiveProgress( "prim2_CollectCreatures", creaturesCollected );
 	MarkObjectAsVisited( "prison", QUROQ );
-end;
+end
 
 function PrisonVisited()
 	MessageBox( PATH.."MsgBox_PrisonIsEmpty.txt" );
-end;
+end
 
 function IsCyclopsGuardKilled()
-	while IsObjectExists( "cyclops_guard" ) == not nil do sleep(2); end;
+	while IsObjectExists( "cyclops_guard" ) == not nil do sleep(2); end
 	BlockGame()
 	MoveCamera( 34, 89, GROUND, 15, 0.6, -0.4, 0, 0, 1 );
 	SetObjectRotation( "cyclop", 270 );
@@ -523,14 +494,11 @@ function IsCyclopsGuardKilled()
 	Play2DSound( VOICEOVER_QUROQ_RELEASES_CYCLOPS );
 	sleep(10);
 	MoveHeroRealTimeAndReachPoint( QUROQ, GetObjectPosition("cyclop"));
-	while IsObjectExists("cyclop")==not nil do sleep(1); end;
+	while IsObjectExists("cyclop")==not nil do sleep(1); end
 	creaturesCollected = creaturesCollected  + 1;
 	SetObjectiveProgress( "prim2_CollectCreatures", creaturesCollected );
 	UnblockGame();
-end;
-
-
-
+end
 
 function StartCombatVsPeasant()
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "centaur_region", nil );
@@ -540,8 +508,7 @@ function StartCombatVsPeasant()
 								CREATURE_PEASANT, FIRST_COMBAT_PEASANTS_AMOUNT,
 								CREATURE_PEASANT, FIRST_COMBAT_PEASANTS_AMOUNT, 
 								COMBAT_SCRIPT,"IsPeasantsDefeated", nil, nil );
-end;
-
+end
 
 function IsPeasantsDefeated( heroName, combatResult )
 	if combatResult == not nil then
@@ -557,12 +524,12 @@ function IsPeasantsDefeated( heroName, combatResult )
 		startThread( JoinCentaurs );
 	else
 		print("Our glorious hero is defeated!");
-	end;
-end;
+	end
+end
 
 function JoinCentaurs()
 	MoveHeroRealTimeAndReachPoint( QUROQ, GetObjectPosition("centaur") );
-	while IsObjectExists("centaur")==not nil do sleep(1); end;
+	while IsObjectExists("centaur")==not nil do sleep(1); end
 	SetRegionBlocked( "centaur_dwelling_area", nil );
 	PlayVisualEffect( EFFECT_DUST, "", "", 125, 12, GROUND );
 	CreateDwelling( "centaur_dwelling", TOWN_STRONGHOLD, 2, PLAYER_1, 125, 12, GROUND, 0 );
@@ -577,15 +544,15 @@ function JoinCentaurs()
 	sleep(1);
 	TutorialMessageBox( "MsgBox_RagePointsAfterCombat");--must be tutorial
 	startThread( Prim2_CollectAllStrongholdCreatures );
-end;
+end
 
 function SacrificePeasants()
-	while IsObjectExists("sucrifice_peasants")==not nil do sleep(1); end;
+	while IsObjectExists("sucrifice_peasants")==not nil do sleep(1); end
 	MessageBox( PATH.."MsgBox_CanSucrificePeasantst.txt");
-end;
+end
 
 function SacrificeSkeletons()
-	while IsObjectExists("sucrifice_skeleton")==not nil do sleep(1); end;
+	while IsObjectExists("sucrifice_skeleton")==not nil do sleep(1); end
 	MessageBox( PATH.."MsgBox_CanSucrificeSkeletons.txt");
 	BlockGame();	
 	local pit_x, pit_y, pit_floor = GetObjectPosition("sacrificial_pit");
@@ -595,20 +562,20 @@ function SacrificeSkeletons()
 	sleep(10);
 	MoveCamera( hero_x, hero_y, hero_floor, 35, 0.9, 0, 0, 0, 1 );
 	UnblockGame();
-end;
+end
 
 function PlayLoopSound( soundName, objectName )
 	local delay;
 	delay = GetSoundTimeInSleeps( soundName ) + 1;
-	if delay < 1 then delay=1; end;
+	if delay < 1 then delay=1; end
 	while 1 do
-		if IsObjectExists( objectName )==nil then return end;
+		if IsObjectExists( objectName )==nil then return end
 		if loopSoundsLocks <= 0 then
 			Play3DSound( soundName, GetObjectPosition( objectName ) );
-		end;
+		end
 		sleep( delay );
-	end;
-end;
+	end
+end
 
 ----------------------------------------------------------------------------------------
 -----------------------   OBJECTIVES AND WIN CONDITIONS   ------------------------------
@@ -621,33 +588,31 @@ function Prim1_CaptureHeavenTown( oldOwner, newOwner )
 		RazeTown( "heaven_town" );
 		PlayRazedTownEffects( "heaven_town" );
 		--Play2DSound( VOICEOVER_DESTROY_TOWN_COMPLETED );
-	end;
-end;
+	end
+end
 
 function Prim2_CollectAllStrongholdCreatures()
-	while creaturesCollected < 3 do sleep(5); end;
+	while creaturesCollected < 3 do sleep(5); end
 	SetObjectiveState( "prim2_CollectCreatures", OBJECTIVE_COMPLETED );
 	--Play2DSound( VOICEOVER_RELEASE_ALL_CREATURES_COMPLETED );
-end;
+end
 
 function Prim3_QuroqMustSurvive()
-	while IsHeroAlive( QUROQ )==not nil do sleep(5); end;
+	while IsHeroAlive( QUROQ )==not nil do sleep(5); end
 	SetObjectiveState( "prim3_QuroqMustSurvive", OBJECTIVE_FAILED );
 	sleep(10);
 	Loose();
-end;
+end
 
 function PlayerWin()
 	repeat
-		sleep(5);
+		sleep(30);
 	until GetObjectiveState("prim1_CaptureTown")==OBJECTIVE_COMPLETED and GetObjectiveState("prim2_CollectCreatures")==OBJECTIVE_COMPLETED;
 	LockLoopSounds();
 	StartDialogScene( "/DialogScenes/A2C0/M1/S2/DialogScene.xdb#xpointer(/DialogScene)", "UnlockLoopSounds" );
 	print("All objectives completed");	
 	Win( PLAYER_1 );
-end;
-
-
+end
 
 ----------------------------------------------------------------------------------------
 -------------------------   TUTORIAL FUNCTIONS   ---------------------------------------
@@ -658,11 +623,11 @@ function Tutorial_UseCyclopsNotification(heroName)
 		print("hero in region");
 		TutorialMessageBox( "MsgBox_UseCyclops" );
 		startThread( ShowCyclops );
-	end;
-end;
+	end
+end
 
 function ShowCyclops()
-	while IsTutorialMessageBoxOpen()==not nil do sleep(1); end;
+	while IsTutorialMessageBoxOpen()==not nil do sleep(1); end
 	BlockGame();
 	OpenCircleFog( 34, 89, GROUND, 7, PLAYER_1 );
 	MoveCamera( 34, 89, GROUND, 15, 0.6, -0.4, 0, 0, 1 );
@@ -671,7 +636,7 @@ function ShowCyclops()
 	sleep(15);
 	MoveCamera( x, y, floor, 35, 0.9, 0, 0, 0, 1 );
 	UnblockGame();
-end;
+end
 
 function StopTriggerIfCyclopsNotExist()
 	while IsObjectExists("cyclop") == not nil do -- Пока циклоп присутствует на карте 
@@ -682,36 +647,34 @@ function StopTriggerIfCyclopsNotExist()
 			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "UseCyclopsTutorialNotification_area", nil ); -- снимать триггер, выходить из фунции
 			print("StopTriggerIfCyclopsNotExist: trigger stopped. Cyclop is dead");
 			return
-		end;
+		end
 		if IsTutorialEnabled() ~= not nil then -- если был выключен туториал
 			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "UseCyclopsTutorialNotification_area", nil ); -- снимать триггер, но из функции не выходить
 			print("StopTriggerIfCyclopsNotExist: trigger stopped. Waiting for enabling tutorial...");
-		end;
+		end
 		repeat sleep(1); until IsTutorialEnabled() == not nil; -- ждать, не включит ли игрок туториал
 		print("StopTriggerIfCyclopsNotExist: tutorial is enabled");
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "UseCyclopsTutorialNotification_area", "Tutorial_UseCyclopsNotification" ); -- если включен туториал снова вешать триггер на регион перед городом
 		sleep(1);
-	end;
+	end
 	print("StopTriggerIfCyclopsNotExist: function terminated");
-end;
+end
 
 function Tutorial_HeroHasSkill_battleElation()
 	repeat sleep(1); until HasHeroSkill( QUROQ, HERO_SKILL_BATTLE_ELATION )==not nil;
 	if IsTutorialEnabled() == not nil then
 		TutorialMessageBox( "MsgBox_HeroHasBattleElation" );
 		WaitForTutorialMessageBox();
-	end;
-end;
+	end
+end
 
 function Tutorial_HeroHasSkill_MemoryOfOurBlood()
 	repeat sleep(1); until HasHeroSkill( QUROQ, HERO_SKILL_MEMORY_OF_OUR_BLOOD )==not nil;
 	if IsTutorialEnabled() == not nil then
 		TutorialMessageBox( "MsgBox_HeroHasMemoryOfOurBlood" );
 		WaitForTutorialMessageBox();
-	end;
-end;
-
-
+	end
+end
 ----------------------------------------------------------------------------------------
 ----------------------------------   MAIN   --------------------------------------------
 ----------------------------------------------------------------------------------------
@@ -720,14 +683,11 @@ Trigger( OBJECT_TOUCH_TRIGGER, "HutOfMagi_Cyclops", "HutOfMagi" );
 Trigger( OBJECT_TOUCH_TRIGGER, "HutOfMagi_Goblins", "HutOfMagi" );
 Trigger( OBJECT_TOUCH_TRIGGER, "HutOfMagi_Butchers", "HutOfMagi" );
 Trigger( OBJECT_TOUCH_TRIGGER, "prison", "IsPrisonTouched" );
-
 Trigger( OBJECT_TOUCH_TRIGGER, "west_hut", "IsPeasantHutTouched" );
 Trigger( OBJECT_TOUCH_TRIGGER, "east_hut", "IsPeasantHutTouched" );
 Trigger( OBJECT_TOUCH_TRIGGER, "south_hut", "IsPeasantHutTouched" );
-
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", "PlayCentaursScene" );
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "centaur_region", "StartCombatVsPeasant" );
-
 startThread( PlayerWin );
 Trigger( OBJECT_CAPTURE_TRIGGER, "heaven_town", "Prim1_CaptureHeavenTown" );
 startThread( Prim3_QuroqMustSurvive );
@@ -737,15 +697,12 @@ startThread( DeployButchers );
 startThread( SacrificePeasants );
 startThread( SacrificeSkeletons );
 startThread( SetAIHeroesRoleModeFreelancer );
-
 startThread( ShowCyclopsIfListeningDistanceReached );
 startThread( ShowGoblinsIfListeningDistanceReached );
 startThread( ShowButchersIfListeningDistanceReached );
 
-
 ------------------------ TUTORIAL MAIN ----------------------------------------------------
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "UseCyclopsTutorialNotification_area", "Tutorial_UseCyclopsNotification" );  
 startThread( StopTriggerIfCyclopsNotExist );
-
 startThread( Tutorial_HeroHasSkill_battleElation );
 startThread( Tutorial_HeroHasSkill_MemoryOfOurBlood );
