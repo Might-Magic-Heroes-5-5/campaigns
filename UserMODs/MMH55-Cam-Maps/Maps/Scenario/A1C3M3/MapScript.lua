@@ -1,48 +1,43 @@
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
 H55_PlayerStatus = {0,1,1,1,1,2,2,2};
 H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_DRAGON_SCALE_ARMOR,
-ARTIFACT_DRAGON_SCALE_SHIELD,
-ARTIFACT_DRAGON_BONE_GRAVES,
-ARTIFACT_DRAGON_WING_MANTLE,
-ARTIFACT_DRAGON_TEETH_NECKLACE,
-ARTIFACT_DRAGON_TALON_CROWN,
-ARTIFACT_DRAGON_EYE_RING,
-ARTIFACT_DRAGON_FLAME_TONGUE
-
+	ARTIFACT_DRAGON_SCALE_ARMOR,
+	ARTIFACT_DRAGON_SCALE_SHIELD,
+	ARTIFACT_DRAGON_BONE_GRAVES,
+	ARTIFACT_DRAGON_WING_MANTLE,
+	ARTIFACT_DRAGON_TEETH_NECKLACE,
+	ARTIFACT_DRAGON_TALON_CROWN,
+	ARTIFACT_DRAGON_EYE_RING,
+	ARTIFACT_DRAGON_FLAME_TONGUE
 };
-
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M3");
 	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M2" );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1, "Shadwyn" );
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
 --========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
---###################################### BEGIN #########################################################
---CONSTANTS
---Must be filled for each map
-
+--CONSTANTS: Must be filled for each map
 RH_RespawnPoints_XYZ_Town = { {15, 66, UNDERGROUND, "Haven"} };
 -- {X, Y, FLOOR, RESPAWN TOWN Script name (if needed, if not must be a nil)}
-	
-
 RH_heroes = { "RedHeavenHero01", "RedHeavenHero02"}; -- Pool of Red Haven heroes
-	
 AI_PLAYER = PLAYER_5; -- AI player side
 RH_heroes_must_alive_count = 2; -- Minimum of AI Red Haven heroes who might be at same time on the map
- 
---=======================================================================
-
 RH_RespawnPoints_XYZ_Town.n = table.length( RH_RespawnPoints_XYZ_Town );
 RH_heroes.n = table.length( RH_heroes );
-
 RH_TownsTotal = 0;
+
 for i=1, RH_RespawnPoints_XYZ_Town.n do
 	if RH_RespawnPoints_XYZ_Town[i][4] ~= nil then
 		EnableAIHeroHiring(AI_PLAYER, RH_RespawnPoints_XYZ_Town[i][4], nil);
@@ -95,254 +90,104 @@ function RH_Respawn()
 	end;
 end;
 
- 
-
 startThread(RH_Respawn);
---====================================================================================================
---###################################### END #########################################################
+-- ###################################### END #########################################################
 
+function SetupEnemyHeroes( diff )
+	DeployReserveHero( "Efion", RegionToPoint('INF'));
+	ChangeHeroStat(	  "Efion", STAT_EXPERIENCE, 10000 * (4 - diff) );
+	AddHeroCreatures( "Efion", 			CREATURE_IMP, (diff + 5) * 10 );
+	AddHeroCreatures( "Efion", CREATURE_HORNED_DEMON, (diff + 5) *  5 );
+	AddHeroCreatures( "Efion", 		CREATURE_CERBERI, (diff + 5) *  2 );
+	DeployReserveHero( "RedHeavenHero03", RegionToPoint('RHH'));
+	ChangeHeroStat(	  "RedHeavenHero03", 	 STAT_EXPERIENCE, 10000 * ( 4 - diff) );
+	AddHeroCreatures( "RedHeavenHero03",   CREATURE_LANDLORD, (diff + 5) * 10);
+	AddHeroCreatures( "RedHeavenHero03", CREATURE_LONGBOWMAN, (diff + 5) *  5);
+	AddHeroCreatures( "RedHeavenHero03", CREATURE_VINDICATOR, (diff + 5) *  2);
+	DeployReserveHero( "Almegir", RegionToPoint('DUNG') );
+	ChangeHeroStat(   "Almegir", 	  STAT_EXPERIENCE, 10000 * (4 - diff) );
+	AddHeroCreatures( "Almegir", 	CREATURE_ASSASSIN, (diff + 5) * 6 );
+	AddHeroCreatures( "Almegir", CREATURE_BLOOD_WITCH, (diff + 5) * 4 );
+	AddHeroCreatures( "Almegir", 	CREATURE_MINOTAUR, (diff + 5) * 2 );
+	DeployReserveHero( "Una", RegionToPoint('DWF') );
+	ChangeHeroStat(   "Una", 		  STAT_EXPERIENCE, 10000 * (4 - diff) );
+	AddHeroCreatures( "Una",  CREATURE_STOUT_DEFENDER, (diff + 5) * 10 );
+	AddHeroCreatures( "Una", 	 CREATURE_AXE_THROWER, (diff + 5) *  5 );
+	AddHeroCreatures( "Una", CREATURE_BLACKBEAR_RIDER, (diff + 5) *  2 );
+end
 
---===================================== MAIN SCRIPT BODY =============================================
+DIFFICULTY = {
+	[0] = function()
+		SetupEnemyHeroes(1);
+	    print ("normal");
+	end,
+	
+	[1] = function()
+		SetupEnemyHeroes(1);
+	    print ("hard");
+	end,
+	
+	[2] = function()
+		SetupEnemyHeroes(2);
+	    print ("heroic");
+	end,
+		
+	[3] = function()
+		SetupEnemyHeroes(3);
+	    print ("Impossible");
+	end,
+}
 
+H55_HAVEN_RED_UPGRADE_MAP = {
+	{  2, 106 }, -- Militia -> red upgrade
+	{  4, 107 },
+	{  6, 108 },
+	{  8, 109 },
+	{ 10, 110 },
+	{ 12, 111 },
+};
 
-StartDialogScene("/DialogScenes/A1C3/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
+function A1C3M3_ConvertTownUnitsToRenegade( object )
+	for i, data in H55_HAVEN_RED_UPGRADE_MAP do
+		local oldCreature = data[1];
+		local newCreature = data[2];
+		local count = GetObjectCreatures(object, oldCreature);
 
-training_array = {"training1" , "training2" , "training3" , "training4" , "training5", "training6" , "training7",
-					"training8" , "training9" , "training10" , "training11" , "training12" , "training13", "training14"} --- Массив анимационных кричей
+		if count > 0 then
+			RemoveObjectCreatures(object, oldCreature, count);
+			AddObjectCreatures(object, newCreature, count);
+		end
+	end
+end
 
----------------------------------------------------------------------
------------------- СТАРТОВЫЕ МАССИВЫ И ПЕРЕМЕННЫЕ -------------------
----------------------------------------------------------------------
+function A1C3M3_ConvertHeroUnitsToRenegade( hero )
+	for i, data in H55_HAVEN_RED_UPGRADE_MAP do
+		local oldCreature = data[1];
+		local newCreature = data[2];
+		local count = GetHeroCreatures(hero, oldCreature);
 
-PlayerHero = "Shadwyn" --- константа для имени героя игрока
+		if count > 0 then
+			RemoveHeroCreatures(hero, oldCreature, count);
+			AddHeroCreatures(hero, newCreature, count);
+		end
+	end
+end
 
-InfernoHero = "Efion" --- константа для имени героя Инферно
-
-RedHavenHero = "RedHeavenHero03" --- константа для имени героя Ред Хевен
-
-DungeonHero = "Almegir" --- константа для имени героя Данжена
-
-FortressHero = "Una" --- константа для имени героя Дварфов
-
-block_array = {"fighting1" , "fighting2" , "fighting3" , "fighting4" , "fighting5" , "fighting6" , "fighting7"} --- Массив блокируемых для АИ регионов
-
----------------------------------------------------------------------
----------------- МОДИФИКАТОРЫ ОТ УРОВНЯ СЛОЖНОСТИ -------------------
----------------------------------------------------------------------
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	diff = 1;
-    print ("easy");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	diff = 1;
-    print ("normal");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_HARD then
-	diff = 2;
-    print ("Hard");
----Тело функции
-end;
-
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	diff = 3;
-    print ("Impossible");
----Тело функции
-end;
-
-for a = 1,7 do
-	for b = 2,5 do
-		SetRegionBlocked(block_array[a], 1, b);
-	end;
-end;
-
----------------- Выдача героям АИ стртовых армий -------------------
-DeployReserveHero(InfernoHero, RegionToPoint('INF'));
-ChangeHeroStat(InfernoHero , STAT_EXPERIENCE , 10000*(4-diff));
-AddHeroCreatures(InfernoHero , CREATURE_IMP , (5 + diff)*10);
-AddHeroCreatures(InfernoHero , CREATURE_HORNED_DEMON , (5 + diff)*5);
-AddHeroCreatures(InfernoHero , CREATURE_CERBERI , (5 + diff)*2);
-
-DeployReserveHero(RedHavenHero, RegionToPoint('RHH'));
-ChangeHeroStat(RedHavenHero , STAT_EXPERIENCE , 10000*(4-diff));
-AddHeroCreatures(RedHavenHero , 106 , (5 + diff)*10);
-AddHeroCreatures(RedHavenHero , 107 , (5 + diff)*5);
-AddHeroCreatures(RedHavenHero , 108 , (5 + diff)*2);
-
-DeployReserveHero(DungeonHero, RegionToPoint('DUNG'));
-ChangeHeroStat(DungeonHero , STAT_EXPERIENCE , 10000*(4-diff));
-AddHeroCreatures(DungeonHero , 72 , (5 + diff)*6);
-AddHeroCreatures(DungeonHero , 74 , (5 + diff)*4);
-AddHeroCreatures(DungeonHero , 76 , (5 + diff)*2);
-
-DeployReserveHero(FortressHero, RegionToPoint('DWF'));
-ChangeHeroStat(FortressHero , STAT_EXPERIENCE , 10000*(4-diff));
-AddHeroCreatures(FortressHero , 93 , (5 + diff)*10);
-AddHeroCreatures(FortressHero , 95 , (5 + diff)*5);
-AddHeroCreatures(FortressHero , 97 , (5 + diff)*2);
-
----------------------------------------------------------------------
--------------------- ОСНОВНЫЕ ФУНКЦИОНАЛЬНОСТИ ----------------------
----------------------------------------------------------------------
-SetObjectiveState("obj2", OBJECTIVE_ACTIVE);
-
-function lostDragon() ---- Проверка потери дракона
+function A1C3M3_SetHavenPlayerUnitUpgrades()
+	local day = 1;
 	while 1 do
-		sleep ( 20 );
-		if GetHeroCreatures(PlayerHero, 84) == 0 then
-			SetObjectiveState("obj2", OBJECTIVE_FAILED);
-			sleep ( 10 );
-			Loose();
-			break
-		end;
-	end;
-end;
-
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "finish", "winmission"); --- Условие победы достигнуть региона на карте
-function winmission(herowin)
-	if herowin == PlayerHero then
-		SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M3");
-		SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "finish",  nil );
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
-		sleep (10);
-		SetObjectPosition(PlayerHero, 50, 50, 0);
-		sleep (20);
-		Save("autosave");
-		StartDialogScene("/DialogScenes/A1C3/M3/S2/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep(100);
-		Win();
-	end;
-end;
-
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "LostHero" ); --- триггер на потерю героя игроком
-function LostHero( HeroName )
-	if HeroName == PlayerHero then
-		SetObjectiveState("obj3", OBJECTIVE_FAILED);
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
-		sleep (15);
-		Loose();
-	end;
-end;
-
-function H55_TriggerDaily() ---- Кричи хавена скриптом заменяются на Красный апгрейд
-	if GetObjectCreatures("Haven", 2) > 0 then
-		milit = GetObjectCreatures("Haven", 2)
-		RemoveObjectCreatures("Haven", 2, milit);
-		AddObjectCreatures("Haven", 106, milit);
-	end;
-	if GetObjectCreatures("Haven", 4) > 0 then
-		footm = GetObjectCreatures("Haven", 4)
-		RemoveObjectCreatures("Haven", 4, footm);
-		AddObjectCreatures("Haven", 107, footm);
-	end;
-	if GetObjectCreatures("Haven", 6) > 0 then
-		footm = GetObjectCreatures("Haven", 6)
-		RemoveObjectCreatures("Haven", 6, footm);
-		AddObjectCreatures("Haven", 108, footm);
-	end;
-	if GetObjectCreatures("Haven", 8) > 0 then
-		footm = GetObjectCreatures("Haven", 8)
-		RemoveObjectCreatures("Haven", 8, footm);
-		AddObjectCreatures("Haven", 109, footm);
-	end;
-	if GetObjectCreatures("Haven", 10) > 0 then
-		footm = GetObjectCreatures("Haven", 10)
-		RemoveObjectCreatures("Haven", 10, footm);
-		AddObjectCreatures("Haven", 110, footm);
-	end;
-	if GetObjectCreatures("Haven", 12) > 0 then
-		footm = GetObjectCreatures("Haven", 12)
-		RemoveObjectCreatures("Haven", 12, footm);
-		AddObjectCreatures("Haven", 111, footm);
-	end;
-	heroes = GetPlayerHeroes(PLAYER_5);
-	for i, hero in heroes do
-	sleep ( 5 );
-		if GetHeroCreatures(hero, 2) > 0 then
-			milit = GetHeroCreatures(hero, 2)
-			RemoveHeroCreatures(hero, 2, milit);
-			AddHeroCreatures(hero, 106, milit);
-		end;
-		if GetHeroCreatures(hero, 4) > 0 then
-			footm = GetHeroCreatures(hero, 4)
-			RemoveHeroCreatures(hero, 4, footm);
-			AddHeroCreatures(hero, 107, footm);
-		end;
-		if GetHeroCreatures(hero, 6) > 0 then
-			footm = GetHeroCreatures(hero, 6)
-			RemoveHeroCreatures(hero, 6, footm);
-			AddHeroCreatures(hero, 108, footm);
-		end;
-		if GetHeroCreatures(hero, 8) > 0 then
-			footm = GetHeroCreatures(hero, 8)
-			RemoveHeroCreatures(hero, 8, footm);
-			AddHeroCreatures(hero, 109, footm);
-		end;
-		if GetHeroCreatures(hero, 10) > 0 then
-			footm = GetHeroCreatures(hero, 10)
-			RemoveHeroCreatures(hero, 10, footm);
-			AddHeroCreatures(hero, 110, footm);
-		end;
-		if GetHeroCreatures(hero, 12) > 0 then
-			footm = GetHeroCreatures(hero, 12)
-			RemoveHeroCreatures(hero, 12, footm);
-			AddHeroCreatures(hero, 111, footm);
-		end;
-	end;
-end;
-
----------------------------------------------------------------------
--------------------- Квест на артефакты -----------------------------
----------------------------------------------------------------------
-
-Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest");
-
-function quest(hero_n)
-	if hero_n == PlayerHero then
-		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
-		SetObjectiveState( 'sec1', OBJECTIVE_ACTIVE);
-		sleep (1);
-		startThread(quest_progress);
-	else
-		ShowFlyingSign("/Maps/Scenario/A1C3M3/flytext.txt", "hut", -1, 3.0);
-	end;
-end;
-
-function quest_progress()
-	while 1 do
-		sleep (30);
-		b = 0;
-		sleep (1);
-		for a = 36,43 do
-			if HasArtefact(PlayerHero, a) == not nil then
-				b = b+1;
-			end;
-		end;
-		sleep (1);
-		if b == 8 then
-			SetObjectiveState( 'sec1', OBJECTIVE_COMPLETED);
-			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE);
-			Trigger(OBJECT_TOUCH_TRIGGER, "hut", "quest_final");
-			break;
-		end;
-	end;
-end;
-
-function quest_final(hero_n)
-	if hero_n == PlayerHero then
-		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
-		SetObjectiveState( 'sec2', OBJECTIVE_COMPLETED);
-		for a = 36,43 do
-			RemoveArtefact(PlayerHero, a);
-		end;
-		SetObjectPosition(PlayerHero, RegionToPoint('tele'));
-	end;
-end;
+		if day <= GetDate(ABSOLUTE_DAY) then
+			pcall( A1C3M3_ConvertTownUnitsToRenegade, "Haven" );
+			local heroes = GetPlayerHeroes(PLAYER_5);
+			for i, hero in heroes do
+				sleep(10);
+				pcall( A1C3M3_ConvertHeroUnitsToRenegade, hero );
+			end
+			day = day + 1;
+		end
+		sleep(20);
+	end
+end
 
 function play_animation(unit1, unit2)
 	while 1 do
@@ -372,19 +217,166 @@ function play_animation(unit1, unit2)
 	end
 end
 
----------------------------------------------------------------------
--------------------- Стартовые команды ------------------------------
----------------------------------------------------------------------
+function portalLocation( hero )
+	if hero == "Shadwyn" then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "finish",  nil );
+		OBJECTIVES.state.reachPortal[2] = 3;
+	end
+end;
 
-SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
-H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "RedHavenUpgrade" );
-SetObjectEnabled('hut', nil);
-startThread(lostDragon);
-startThread(play_animation, training_array[1], training_array[2]);
-startThread(play_animation, training_array[3], training_array[4]);
-startThread(play_animation, training_array[5], training_array[6]);
-startThread(play_animation, training_array[7], training_array[8]);
-startThread(play_animation, training_array[9], training_array[10]);
-startThread(play_animation, training_array[11], training_array[12]);
-startThread(play_animation, training_array[13], training_array[14]);
+function StartSeerQuest( hero )
+	if hero == "Shadwyn" then
+		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
+		OBJECTIVES.state.getArtifacts[2] = 1;
+	else
+		ShowFlyingSign("/Maps/Scenario/A1C3M3/flytext.txt", "hut", -1, 3.0);
+	end
+end
+
+function HasCollectedDragonArtifacts( hero )
+	for a = 36,43 do
+		if HasArtefact( hero, a) == nil then
+			return 0;
+		end
+	end
+	return 1;
+end
+
+function ReturnArtifactsToSeer( hero )
+	if hero == "Shadwyn" then
+		Trigger(OBJECT_TOUCH_TRIGGER, "hut", nil);
+		OBJECTIVES.state.returnArtifacts[2] = 3;
+	end
+end
+
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/A1C3/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/A1C3/M3/S2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep( 2 );
+	end,
+}	
+
+OBJECTIVES = {
+	state = {
+		reachPortal		 = { "obj1", 1 }, -- Reach the sacred Asylum portal
+		keepMalassaAlive = { "obj2", 1 }, -- Malassa must survive
+		isAlive			 = { "obj3", 1 }, -- Shadwyn must survive
+		getArtifacts     = { "sec1", 0 }, -- Find Dragon set artifacts
+		returnArtifacts	 = { "sec2", 1 }, -- Return Dragon set artifacts to Seer
+	},
+
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+    prepare = function()
+		for a = 1,7 do
+			for b = 2,5 do
+				SetRegionBlocked( "fighting"..a, 1, b );
+			end
+		end
+		CINEMATICS.intro();
+		startThread(DIFFICULTY[GetDifficulty()]);
+		Trigger(OBJECT_TOUCH_TRIGGER, "hut", "StartSeerQuest");
+		SetObjectEnabled('hut', nil);
+		startThread( play_animation,  "training1",  "training2" );
+		startThread( play_animation,  "training3",  "training4" );
+		startThread( play_animation,  "training5",  "training6" );
+		startThread( play_animation,  "training7",  "training8" );
+		startThread( play_animation,  "training9", "training10" );
+		startThread( play_animation, "training11", "training12" );
+		startThread( play_animation, "training13", "training14" );
+		startThread( A1C3M3_SetHavenPlayerUnitUpgrades );
+    end,
+
+    run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					OBJECTIVES[key]();
+				end
+			end
+
+			if GetObjectiveState("obj2") == OBJECTIVE_FAILED or GetObjectiveState("obj3") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M3");
+				SetObjectPosition("Shadwyn", 50, 50, 0);
+				sleep ( 80 );
+				Save("autosave");
+				CINEMATICS.outro();
+				sleep( 40 );
+				Win();
+				return
+			end
+		end
+	end,
+	
+	reachPortal = function()
+		if OBJECTIVES.state.reachPortal[2] == 1 then
+			SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
+			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "finish", "portalLocation" );
+			OBJECTIVES.state.reachPortal[2] = 2;
+		elseif OBJECTIVES.state.reachPortal[2] == 3 then
+			SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.reachPortal[2] = 10;
+		end
+	end,
+	
+	keepMalassaAlive = function()
+		if OBJECTIVES.state.keepMalassaAlive[2] == 1 then
+			SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.keepMalassaAlive[2] = 2;
+		elseif OBJECTIVES.state.keepMalassaAlive[2] == 2 and GetHeroCreatures("Shadwyn", CREATURE_BLACK_DRAGON) == 0 then
+			SetObjectiveState( "obj2", OBJECTIVE_FAILED );
+			OBJECTIVES.state.keepMalassaAlive[2] = 11;
+		end
+	end,
+	
+	isAlive = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Shadwyn") == nil then
+			SetObjectiveState( 'obj3', OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	getArtifacts = function()
+		if OBJECTIVES.state.getArtifacts[2] == 1 then
+			SetObjectiveState( 'sec1', OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.getArtifacts[2] = 2;
+		elseif OBJECTIVES.state.getArtifacts[2] == 2 and HasCollectedDragonArtifacts("Shadwyn") == 1 then
+			SetObjectiveState( 'sec1', OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.getArtifacts[2] = 10;
+		end
+	end,
+	
+	returnArtifacts = function()
+		if OBJECTIVES.state.returnArtifacts[2] == 1 and OBJECTIVES.state.getArtifacts[2] == 10 then
+			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE );
+			Trigger( OBJECT_TOUCH_TRIGGER, "hut", "ReturnArtifactsToSeer" );
+			OBJECTIVES.state.returnArtifacts[2] = 2;
+		elseif OBJECTIVES.state.returnArtifacts[2] == 3 then
+			SetObjectiveState( 'sec2', OBJECTIVE_COMPLETED );
+			for a = 36,43 do
+				RemoveArtefact("Shadwyn", a);
+			end
+			SetObjectPosition("Shadwyn", RegionToPoint('tele'));
+			OBJECTIVES.state.returnArtifacts[2] = 10;
+		end
+	end,
+}
+		
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start);
