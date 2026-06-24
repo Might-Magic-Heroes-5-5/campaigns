@@ -4,7 +4,9 @@
 	<NameFileRef href="A1C1/CampaignName.txt"/>
 	<FullNameFileRef href="A1C1/CampaignFull.txt"/>
 	<NameCommentFileRef href="A1C1/CampaignDescription.txt"/>
-	<DependentCampaigns/>
+	<DependentCampaigns>
+		<Item href="C6.xdb#xpointer(/Campaign)"/>
+	</DependentCampaigns>
 	<Missions>
 		<Item>
 			<NameFileRef href="A1C1/A1C1M1/a1c1m1name.txt"/>
