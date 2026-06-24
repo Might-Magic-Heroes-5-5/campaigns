@@ -54,20 +54,20 @@ CINEMATICS = {
 
 TUTORIALS = {
     list = {
-    	{              m03,     REGION_ENTER_AND_STOP_TRIGGER,      "r03",               "TUTORIALS.luck", 0 }, -- Luck artifact
-    	{              m04,     REGION_ENTER_AND_STOP_TRIGGER,      "r04",             "TUTORIALS.morale", 0 }, -- Morale artifact
-    	--{              m05,     REGION_ENTER_AND_STOP_TRIGGER,      "r05",        "TUTORIALS.attack_town", 0 },
-    	{              m10,     REGION_ENTER_AND_STOP_TRIGGER,      "r12",            "TUTORIALS.defence", 0 }, -- Defense artifact
-    	{              m11,     REGION_ENTER_AND_STOP_TRIGGER,      "r11",             "TUTORIALS.attack", 0 }, -- Attack artifact
+    	{       "c1_m2_t3",     REGION_ENTER_AND_STOP_TRIGGER,      "r03",               "TUTORIALS.luck", 0 }, -- Luck artifact
+    	{       "c1_m2_t4",     REGION_ENTER_AND_STOP_TRIGGER,      "r04",             "TUTORIALS.morale", 0 }, -- Morale artifact
+    	-- {       "c1_m2_t5",     REGION_ENTER_AND_STOP_TRIGGER,      "r05",        "TUTORIALS.attack_town", 0 },
+    	{      "c1_m2_t10",     REGION_ENTER_AND_STOP_TRIGGER,      "r12",            "TUTORIALS.defence", 0 }, -- Defense artifact
+    	{      "c1_m2_t11",     REGION_ENTER_AND_STOP_TRIGGER,      "r11",             "TUTORIALS.attack", 0 }, -- Attack artifact
     	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine1",   "TUTORIALS.mineCapturedHint", 0 }, -- capture mine
     	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine2",   "TUTORIALS.mineCapturedHint", 0 },
     	{    "c1_m2_mines",            OBJECT_CAPTURE_TRIGGER,    "mine3",   "TUTORIALS.mineCapturedHint", 0 },
-    	{  			   m06,            				   THREAD,     "Hant",        "TUTORIALS.buildPerDay", 0 }, -- town captured. Explanation of what you can do (build) in city
-    	{ "c1_m2_heroperk",                            THREAD,          0,     "TUTORIALS.checkHeroPerks", 0 }, -- hero has asctivatable perks. Enable tutorial in combat
-    	{              m01,                            THREAD,          0,          "TUTORIALS.seizeTown", 0 }, -- Hint to find a town ASAP
-    	{              m08,           				   THREAD,    		0,   "TUTORIALS.weeklyPopulation", 0 }, -- start of week hiring advice
+    	{  	  "c1_m2_t6_1",            				   THREAD,     "Hant",        "TUTORIALS.buildPerDay", 0 }, -- town captured. Explanation of daily town actions
+    	{ "c1_m2_heroperk",                            THREAD,          0,     "TUTORIALS.checkHeroPerks", 0 }, -- if hero has activatable perks enable combat tutorial
+    	{       "c1_m2_t1",                            THREAD,          0,          "TUTORIALS.seizeTown", 0 }, -- Hint to find a town ASAP
+    	{       "c1_m2_t8",           				   THREAD,    		0,   "TUTORIALS.weeklyPopulation", 0 }, -- start of week hiring advice
     	{ "c1_m2_savegame",                            THREAD,          0,           "TUTORIALS.saveGame", 0 }, -- How to save a game
-    	{              m09,                            THREAD,          0,          "TUTORIALS.moonWeeks", 0 }, -- Explanation of moon weeks
+    	{       "c1_m2_t9",                            THREAD,          0,          "TUTORIALS.moonWeeks", 0 }, -- Explanation of moon weeks
     	{    "hero_screen",                            WINDOW,          0,                              0, 0 }, -- explanation of hero skill and wheel
     },
 
