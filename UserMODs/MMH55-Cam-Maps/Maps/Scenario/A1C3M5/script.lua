@@ -403,6 +403,7 @@ OBJECTIVES = {
 			OBJECTIVES.state.reachHorncrest[2] = 2;
 		elseif OBJECTIVES.state.reachHorncrest[2] == 2 and OBJECTIVES.date > 7 then
 			SetObjectiveState( 'prim1', OBJECTIVE_FAILED );
+			OBJECTIVES.state.reachHorncrest[2] = 11;
 		elseif OBJECTIVES.state.reachHorncrest[2] == 3 then
 			SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.liftSiege[2] = 1;
