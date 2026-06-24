@@ -483,7 +483,6 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C3M2 - Ylaya: The Break
 - change: Raise level cap from 22 to 25
-- fix: unit attack/hit animation stuters on adventure map
 
 ### A1C3M3 - Ylaya: The Meeting
 - fix: unit attack/hit animations on adventure map were too frequent and had stuters
