@@ -26662,7 +26662,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Raelag_A1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_1</PlayerID>
-				<Experience>202000</Experience>
+				<Experience>492000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_WITCH</Creature>
@@ -26682,14 +26682,14 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>19</Offence>
-					<Defence>14</Defence>
-					<Spellpower>20</Spellpower>
-					<Knowledge>13</Knowledge>
+					<Offence>20</Offence>
+					<Defence>20</Defence>
+					<Spellpower>35</Spellpower>
+					<Knowledge>15</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_ADVANCED</Mastery>
-							<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LOGISTICS</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
@@ -26707,9 +26707,13 @@
 							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+						</Item>
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SECRETS_OF_DESTRUCTION</Item>
+						<Item>HERO_SKILL_PATHFINDING</Item>
 						<Item>HERO_SKILL_ARCHERY</Item>
 						<Item>HERO_SKILL_FRENZY</Item>
 						<Item>HERO_SKILL_PROTECTION</Item>
@@ -26717,20 +26721,17 @@
 						<Item>HERO_SKILL_TOUGHNESS</Item>
 						<Item>HERO_SKILL_MYSTICISM</Item>
 						<Item>HERO_SKILL_EMPOWERED_SPELLS</Item>
-						<Item>HERO_SKILL_DARK_RITUAL</Item>
 						<Item>HERO_SKILL_ELEMENTAL_VISION</Item>
 						<Item>HERO_SKILL_MASTER_OF_ICE</Item>
 						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
 						<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
-						<Item>HERO_SKILL_COUNTERSPELL</Item>
-						<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
-						<Item>HERO_SKILL_MASTER_OF_ANIMATION</Item>
+						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
 					</perkIDs>
 					<spellIDs>
-						<Item>SPELL_MAGIC_FIST</Item>
-						<Item>SPELL_CONJURE_PHOENIX</Item>
+						<Item>SPELL_VAMPIRISM</Item>
+						<Item>SPELL_METEOR_SHOWER</Item>
 						<Item>SPELL_ICE_BOLT</Item>
-						<Item>SPELL_FIREWALL</Item>
+						<Item>SPELL_IMPLOSION</Item>
 						<Item>SPELL_FIREBALL</Item>
 						<Item>SPELL_STONE_SPIKES</Item>
 						<Item>SPELL_FROST_RING</Item>
@@ -26738,7 +26739,7 @@
 						<Item>SPELL_CURSE</Item>
 						<Item>SPELL_PHANTOM</Item>
 						<Item>SPELL_SLOW</Item>
-						<Item>SPELL_SUMMON_ELEMENTALS</Item>
+						<Item>SPELL_ANIMATE_DEAD</Item>
 						<Item>SPELL_FORGETFULNESS</Item>
 						<Item>SPELL_BERSERK</Item>
 						<Item>SPELL_RESURRECT</Item>
@@ -26799,7 +26800,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Isabell_A1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_1</PlayerID>
-				<Experience>202000</Experience>
+				<Experience>492000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHANGEL</Creature>
@@ -26815,13 +26816,13 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>17</Offence>
-					<Defence>21</Defence>
-					<Spellpower>9</Spellpower>
-					<Knowledge>8</Knowledge>
+					<Offence>25</Offence>
+					<Defence>35</Defence>
+					<Spellpower>15</Spellpower>
+					<Knowledge>15</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_ADVANCED</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 						</Item>
 						<Item>
@@ -26840,29 +26841,35 @@
 							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LOGISTICS</SkillID>
+						</Item>
 					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_TOUGHNESS</Item>
 						<Item>HERO_SKILL_LAST_STAND</Item>
 						<Item>HERO_SKILL_RECRUITMENT</Item>
-						<Item>HERO_SKILL_HOLY_CHARGE</Item>
+						<Item>HERO_SKILL_MASTER_OF_WRATH</Item>
 						<Item>HERO_SKILL_FIRST_AID</Item>
-						<Item>HERO_SKILL_EXPERT_TRAINER</Item>
-						<Item>HERO_SKILL_TACTICS</Item>
+						<Item>HERO_SKILL_MASTER_OF_ABJURATION</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
 						<Item>HERO_SKILL_ARCHERY</Item>
 						<Item>HERO_SKILL_WILDFIRE</Item>						
 						<Item>HERO_SKILL_MASTER_OF_BLESSING</Item>
 						<Item>HERO_SKILL_BALLISTA</Item>
 						<Item>HERO_SKILL_ENCOURAGE</Item>
 						<Item>HERO_SKILL_FAST_AND_FURIOUS</Item>
-						<Item>HERO_SKILL_HOLD_GROUND</Item>
+						<Item>HERO_SKILL_PATHFINDING</Item>
 					</perkIDs>
 					<spellIDs>
-						<Item>SPELL_LIGHTNING_BOLT</Item>
-						<Item>SPELL_HOLY_WORD</Item>
+						<Item>SPELL_DEFLECT_ARROWS</Item>
+						<Item>SPELL_CELESTIAL_SHIELD</Item>
 						<Item>SPELL_BLESS</Item>
 						<Item>SPELL_HASTE</Item>				
 						<Item>SPELL_STONESKIN</Item>
+						<Item>SPELL_BLIND</Item>
+						<Item>SPELL_RESURRECT</Item>
 					</spellIDs>
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
