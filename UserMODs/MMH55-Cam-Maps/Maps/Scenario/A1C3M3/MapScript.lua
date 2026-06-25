@@ -189,6 +189,25 @@ function A1C3M3_SetHavenPlayerUnitUpgrades()
 	end
 end
 
+
+function engage_units(unit1, unit2)
+	startThread( play_animation, unit1, unit2 );
+	startThread( check_pairs, unit1, unit2 );
+end
+
+function check_pairs(unit1, unit2)
+	while 1 do
+		sleep(10);
+		if IsObjectExists(unit1) == nil then
+			if IsObjectExists(unit2) ~= nil then RemoveObject(unit2); end;
+			return
+		elseif IsObjectExists(unit2) == nil then
+			if IsObjectExists(unit1) ~= nil then RemoveObject(unit1); end;
+			return
+		end
+	end
+end
+
 function play_animation(unit1, unit2)
 	while 1 do
 		sleep(100);
@@ -200,17 +219,11 @@ function play_animation(unit1, unit2)
 			mover1, mover2 = unit2, unit1;
 		end
 		
-		if IsObjectExists(mover1) == nil then
-			if IsObjectExists(mover2) ~= nil then RemoveObject(mover2); end;
-			return
-		else
+		if IsObjectExists(mover1) ~= nil then
 			PlayObjectAnimation(mover1, "attack00", ONESHOT);
 		end
 		sleep(12);
-		if IsObjectExists(mover2) == nil then
-			if IsObjectExists(mover1) ~= nil then RemoveObject(mover1); end;
-			return
-		else
+		if IsObjectExists(mover2) ~= nil then
 			PlayObjectAnimation(mover2, "hit", ONESHOT);
 		end
 		sleep(random(150));
@@ -285,13 +298,13 @@ OBJECTIVES = {
 		startThread(DIFFICULTY[GetDifficulty()]);
 		Trigger(OBJECT_TOUCH_TRIGGER, "hut", "StartSeerQuest");
 		SetObjectEnabled('hut', nil);
-		startThread( play_animation,  "training1",  "training2" );
-		startThread( play_animation,  "training3",  "training4" );
-		startThread( play_animation,  "training5",  "training6" );
-		startThread( play_animation,  "training7",  "training8" );
-		startThread( play_animation,  "training9", "training10" );
-		startThread( play_animation, "training11", "training12" );
-		startThread( play_animation, "training13", "training14" );
+		startThread( engage_units,  "training1",  "training2" );
+		startThread( engage_units,  "training3",  "training4" );
+		startThread( engage_units,  "training5",  "training6" );
+		startThread( engage_units,  "training7",  "training8" );
+		startThread( engage_units,  "training9", "training10" );
+		startThread( engage_units, "training11", "training12" );
+		startThread( engage_units, "training13", "training14" );
 		startThread( A1C3M3_SetHavenPlayerUnitUpgrades );
     end,
 
@@ -313,7 +326,7 @@ OBJECTIVES = {
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M3");
 				SetObjectPosition("Shadwyn", 50, 50, 0);
-				sleep ( 80 );
+				sleep( 60 );
 				Save("autosave");
 				CINEMATICS.outro();
 				sleep( 40 );
