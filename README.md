@@ -480,6 +480,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C3M1 - Ylaya: The Spy
 - change: Raise level cap from 14 to 20
+- change: Hut of the Magi quest marked units power and reward scale with game difficulty
 
 ### A1C3M2 - Ylaya: The Break
 - change: Raise level cap from 22 to 25

@@ -100,22 +100,19 @@ CINEMATICS = {
 DIFFICULTY = {
 	[0] = function()
 		diff = 1;
-	    print ("normal");
+	    QuestStatBonus = { 1, 1, 1, 1 };
 	end,
-	
 	[1] = function()
-		diff = 1;
-	    print ("hard");
-	end,
-	
-	[2] = function()
 		diff = 2;
-	    print ("heroic");
+		QuestStatBonus = { 1, 1, 2, 2 };
 	end,
-		
-	[3] = function()
+	[2] = function()
 		diff = 3;
-	    print ("Impossible");
+		QuestStatBonus = { 2, 2, 2, 2 };
+	end,
+	[3] = function()
+		diff = 4;
+		QuestStatBonus = { 2, 2, 3, 3 };
 	end,
 }
 
@@ -133,6 +130,7 @@ OBJECTIVES = {
     end,
 
     prepare = function()
+		DIFFICULTY[GetDifficulty()]();
 		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 		SetHeroesExpCoef( 0.5 );
 		CINEMATICS.intro();
@@ -149,7 +147,12 @@ OBJECTIVES = {
 		SetObjectEnabled("seer_hut", nil);
 		Trigger(OBJECT_TOUCH_TRIGGER, "seer_hut", "speakWithOracle");
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "camp", "waitForRite" );
-		startThread(DIFFICULTY[GetDifficulty()]);
+		AddObjectCreatures("m1", 	   CREATURE_WITCH, diff * 25 );
+		AddObjectCreatures("m2", 	CREATURE_ASSASSIN, diff * 30 );
+		AddObjectCreatures("m3", 	CREATURE_MINOTAUR, diff * 20 );
+		AddObjectCreatures("m4", 	CREATURE_ASSASSIN, diff * 35 );
+		AddObjectCreatures("m5",	   CREATURE_HYDRA, diff * 10 );
+		AddObjectCreatures("m6",	   CREATURE_RIDER, diff * 15 );
     end,
 
     run = function()
@@ -221,13 +224,13 @@ OBJECTIVES = {
 			OBJECTIVES.state.killUnits[2] = 2;
 		elseif OBJECTIVES.state.killUnits[2] == 2 and AreMarkedUnitsDefeated() == 1 then
 			SetObjectiveState( "sobj2", OBJECTIVE_COMPLETED );
-			local  attack = GetHeroStat( "Shadwyn",  STAT_ATTACK );
-			local defense = GetHeroStat( "Shadwyn", STAT_DEFENCE );
 			local ToLevel = GetExpToLevel( GetHeroLevel("Shadwyn") + 1 );
 			local delta = ( ToLevel - GetHeroStat( "Shadwyn", STAT_EXPERIENCE ) );
 			ChangeHeroStat( "Shadwyn", STAT_EXPERIENCE,       delta );
-			ChangeHeroStat( "Shadwyn", 	  STAT_ATTACK,  attack + 2 );
-			ChangeHeroStat( "Shadwyn",    STAT_DEFENCE, defense + 2 );
+			ChangeHeroStat( "Shadwyn",		STAT_ATTACK, QuestStatBonus[1] );
+			ChangeHeroStat( "Shadwyn",	   STAT_DEFENCE, QuestStatBonus[2] );
+			ChangeHeroStat( "Shadwyn", STAT_SPELL_POWER, QuestStatBonus[3] );
+			ChangeHeroStat( "Shadwyn",	 STAT_KNOWLEDGE, QuestStatBonus[4] );
 			OBJECTIVES.state.killUnits[2] = 10;
 		end
 	end,
