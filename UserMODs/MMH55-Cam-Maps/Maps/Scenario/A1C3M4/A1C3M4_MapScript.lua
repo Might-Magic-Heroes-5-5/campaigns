@@ -102,7 +102,7 @@ function deployReservedHero( hero, deployX, deployY, factor )
 	sleep(10);
 	H55c_AIAddHero( hero );
 	SetHeroRoleMode( hero, HERO_ROLE_MODE_HERMIT );
-	addCreatures( hero, factor, math.random());
+	addCreatures( hero, factor, math.random(0, 1));
 	print("hero ",hero," deployed on the map");
 end
 
@@ -262,7 +262,7 @@ OBJECTIVES = {
 			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
-					OBJECTIVES[key]();
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
 				end
 			end
 
