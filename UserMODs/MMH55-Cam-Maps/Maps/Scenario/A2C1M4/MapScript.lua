@@ -6,6 +6,7 @@ doFile("/scripts/campaign_ai.lua");
 while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
+
 H55_PlayerStatus = {0,1,1,1,2,2,2,2};
 H55c_AI_CONTROLLED = {
   player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
@@ -73,11 +74,9 @@ end
 
 ---------------------------------------------------------------------------------------------------
 ----------------------------- CONSTANTS --------------------------------------------------
----------------------------------------------------------------------------------------------------
-PLAYER_HERO = "Arantir"
+--------------------------------------------------------------------------------------------------- 
 HERO_PLAYER_MAIN = 'Arantir';
 HERO_PLAYER_SEC = 'OrnellaNecro';
---HERO_AI_INFERNO_02 = 'Marder';
 HERO_AI_ORC_TRAP = 'Hero9';
 HERO_AI_ORC_KUJIN = 'Hero7';
 HERO_AI_ORC_GUARD = 'Hero3';
@@ -85,6 +84,11 @@ HERO_AI_ORC_GUARD = 'Hero3';
 ---------------------------------------------------------------------------------------------------
 ----------------------------- FUNCTIONS ---------------------------------------------------
 ---------------------------------------------------------------------------------------------------
+function f_autosave()
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_AUTOSAVE", nil);
+	Save("Autosave");
+end
+
 function player_2_hero_check()
 	heroes = GetPlayerHeroes( PLAYER_2 );
 	print( "Player 2 active heroes are ", heroes );
@@ -94,8 +98,6 @@ function player_2_hero_check()
 		end
 	end
 end
-
-Trigger( PLAYER_ADD_HERO_TRIGGER, PLAYER_2, "player_2_hero_check" );
 
 function FinalTownSetUp()
 	for creatureID = 1, CREATURES_COUNT - 1 do 
@@ -145,7 +147,7 @@ end
 
 function f_road_block_check()
 	while 1 do
-		if IsObjectExists('CREATURE_BANDIT_ARMY') ~= 1 then
+		if IsObjectExists('CREATURE_BANDIT_ARMY') == nil then
 			RemoveObject('ITEM_LOG');
 			MessageBox("/Maps/Scenario/A2C1M4/messagebox_007.txt"); -- MESSAGEBOX - Arantir kills brigands and cleard the road from the fallen tree.
 			return
@@ -153,8 +155,6 @@ function f_road_block_check()
 		sleep(20);
 	end
 end
-
-startThread( f_road_block_check );
 		
 function A2C1M4_meetKujin( hero )
 	if GetObjectOwner( hero ) == PLAYER_1 then	
@@ -165,8 +165,6 @@ function A2C1M4_meetKujin( hero )
 		ChangeHeroStat( HERO_AI_ORC_GUARD, STAT_EXPERIENCE, ( setExpStat / 100 ) * ( 10 * diff ) );
 	end
 end
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "DIALOG_SCENE_KUJIN", "A2C1M4_meetKujin" );
 
 function change_owner()
 	local enemyBuildings = GetObjectNamesByType( "BUILDING" );
@@ -212,10 +210,6 @@ function f_activate_objective_to_destroy_portal(hero)
 	end
 end
 
-Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_OBJECTIVE_DESTROY_PORTAL", 'f_activate_objective_to_destroy_portal');
-Trigger(OBJECT_TOUCH_TRIGGER, 'PORTAL_GUARD_01', 'f_destroy_portal_guard_01');
-Trigger(OBJECT_TOUCH_TRIGGER, 'PORTAL_GUARD_02', 'f_destroy_portal_guard_02');
-
 ---------------------------------------------------------------------------------------------------
 --*-- OBJECT TOUCH trigger - starts coversation with Ornella friend Eric the Cavalier about the dungeon passage under the Inferno Garrison. --*--
 ---------------------------------------------------------------------------------------------------
@@ -227,36 +221,23 @@ function f_speak_with_erik_about_the_dungeon_route( hero )
 	end
 end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_WIZARD_CHAT", 'f_speak_with_erik_about_the_dungeon_route');
-
 ---------------------------------------------------------------------------------------------------
 --*-- REGION ENTER trigger - Launch Trap deployment of enemy inferno hero in subterrain passage, behind the player's hero. --*--
 ---------------------------------------------------------------------------------------------------
-function f_deploy_enemy_hero_trap(HERONAME)
---*-- This function part defines local variables: hero name + hero deployment location --*--
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_TRAP_SUBTERRAIN", nil);-- Disable Region Enter Trigger - so trap cannot be launched several times
-	MoveCamera(97, 51, 1, 30, 1, 5.5, 0, 0, 0); -- MoveCamera there
-	sleep(20);
-	DeployReserveHero('Nymus', 97, 51, 1); -- DeployReserveHero - location - underground passage not far from Trap Region, so player's hero cannot evade the combat.
-	sleep(10);
-	PlayVisualEffect("/Effects/_(Effect)/Spells/DimesionDoorEnd.xdb#xpointer(/Effect)", 'Nymus', 0, 0.5); -- PlayVisualEffect on Hero's location - Dimensional Gate Exit
-	SetAIHeroAttractor(HERONAME, 'Nymus', 2); -- Set attractor on hero, that entered Trap Region - HIGH.
-	H55c_updateArmy('Nymus', diff, H55c_CREATURES.INFERNO );
-	H55c_AIAddHero('Nymus');
-	startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO9_Arantir_01sound.xdb#xpointer(/Sound)" );
+function f_deploy_enemy_hero_trap(hero)
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_TRAP_SUBTERRAIN", nil);-- Disable Region Enter Trigger - so trap cannot be launched several times
+		MoveCamera(97, 51, 1, 30, 1, 5.5, 0, 0, 0); -- MoveCamera there
+		sleep(20);
+		DeployReserveHero('Nymus', 97, 51, 1); -- DeployReserveHero - location - underground passage not far from Trap Region, so player's hero cannot evade the combat.
+		sleep(10);
+		PlayVisualEffect("/Effects/_(Effect)/Spells/DimesionDoorEnd.xdb#xpointer(/Effect)", 'Nymus', 0, 0.5); -- PlayVisualEffect on Hero's location - Dimensional Gate Exit
+		SetAIHeroAttractor(hero, 'Nymus', 2); -- Set attractor on hero, that entered Trap Region - HIGH.
+		H55c_updateArmy('Nymus', diff, H55c_CREATURES.INFERNO );
+		H55c_AIAddHero('Nymus');
+		startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO9_Arantir_01sound.xdb#xpointer(/Sound)" );
+	end
 end
-
-Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_TRAP_SUBTERRAIN", 'f_deploy_enemy_hero_trap');
-
----------------------------------------------------------------------------------------------------
---*-- REGION ENTER trigger - starts AUTOSAVE function --*--
----------------------------------------------------------------------------------------------------
-function f_autosave()
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_AUTOSAVE", nil);
-	Save("Autosave");
-end
-
-Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_AUTOSAVE", 'f_autosave');
 
 ---------------------------------------------------------------------------------------------------
 --*-- REGION ENTER trigger - starts Priest Chat about Flammschrein --*--
@@ -269,8 +250,6 @@ function f_speak_with_priest( hero )
 	end
 end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_PRIEST_CHAT", 'f_speak_with_priest');
-
 ---------------------------------------------------------------------------------------------------
 --*-- REGION ENTER trigger - Warning messagebox appeares when player comes near the first Stronghold town
 ---------------------------------------------------------------------------------------------------
@@ -280,8 +259,6 @@ function f_warning( heroName )
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_MIGHTY_TOWN_WARNING", nil);
 	end
 end
-
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_MIGHTY_TOWN_WARNING", 'f_warning');
 
 ------------------------------------------------------------------------------------------
 --*-- OBJECT CAPTURE triggers - Notifies the game that the Inferno Lair is captured --*--
@@ -293,29 +270,25 @@ function lairCaptured( oldowner, newowner, heroname, objectname )
 	end
 end
 
-Trigger(OBJECT_CAPTURE_TRIGGER, "TOWN_INFERNO", "lairCaptured");
-
 ------------------------------------------------------------------------------------------
 --*-- REGION ENTER trigger - Start of findOrcLeader and buildFortifications quests --*--
 ------------------------------------------------------------------------------------------
-
-function f_orc_trap_start( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then
+function f_orc_trap_start( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "REGION_ORC_TRAP_START", nil );
 		BlockGame();
-		OBJECTIVES._findOrcLeader_lead = heroName;
+		OBJECTIVES._findOrcLeader_lead = hero;
 		OBJECTIVES.state.findOrcLeader[2] = 1;
 		OBJECTIVES.state.buildFortifications[2] = 1;
 	end
 end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "REGION_ORC_TRAP_START", 'f_orc_trap_start'); -- 
-
-
 CINEMATICS = {
 	are_playing = nil,
-	wait = function()
+	playAndWait = function( id )
 		CINEMATICS.are_playing = not nil;
-		repeat sleep(30); until CINEMATICS.are_playing ~= nil
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
 	end,
 		
 	end_play = function()
@@ -323,8 +296,7 @@ CINEMATICS = {
 	end,
 	
 	intro = function()
-		StartAdvMapDialog( 1, CINEMATICS.end_play() );
-		CINEMATICS.wait();
+		CINEMATICS.playAndWait( 1 );
 		startThread(Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO2_Arantir_01sound.xdb#xpointer(/Sound)" );
 		sleep(2);
 	end,
@@ -350,8 +322,7 @@ CINEMATICS = {
 			SetObjectRotation( speaker2.name, 100 );
 		end
 		
-		StartAdvMapDialog( 0, CINEMATICS.end_play() );
-		CINEMATICS.wait();
+		CINEMATICS.playAndWait( 0 );
 		startThread(CINEMATICS._returnSpeakers, lead, speaker1, speaker2);
 	end,
 	
@@ -388,8 +359,7 @@ CINEMATICS = {
 			sleep(10);
 			SetObjectRotation(HERO_PLAYER_SEC, 0);
 		end
-		StartAdvMapDialog( 3, CINEMATICS.end_play() );
-		CINEMATICS.wait();		
+		CINEMATICS.playAndWait( 3 );		
 		startThread(CINEMATICS._returnSpeakers, lead, speaker1, speaker2)
 	end,
 	
@@ -422,8 +392,7 @@ CINEMATICS = {
 		end
 		sleep(30);
 		-- MessageBox("/Maps/Scenario/A2C1M4/messagebox_01.txt"); -- Obsolete message same as the dialog below but told from peasant
-		StartAdvMapDialog( 2, CINEMATICS.end_play() ); -- Learn about the Underground passage
-		CINEMATICS.wait();
+		CINEMATICS.playAndWait( 2 );  -- Learn about the Underground passag
 		startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO8_Arantir_01sound.xdb#xpointer(/Sound)" );
 		OpenCircleFog(8, 10, 0, 5, 1); -- OpenCircleFog
 		MoveCamera( 9, 12, GROUND, 60, 3.14/3, 0, 0, 1, 1);
@@ -446,8 +415,7 @@ CINEMATICS = {
 			sleep(10);
 			UnblockGame();
 		end
-		StartAdvMapDialog( 4, CINEMATICS.end_play() );
-		CINEMATICS.wait();
+		CINEMATICS.playAndWait( 4 );
 		startThread(CINEMATICS._returnSpeakers, lead, speaker);
 	end,
 	
@@ -465,7 +433,7 @@ OBJECTIVES = {
 			  findOrcLeader = { "OBJECTIVE_PRI_03", 0 },       -- Find Orc Leader and make a deal
 				destroyLair = { "OBJECTIVE_PRI_04", 1 },       -- Find a way to destroy the Infernal Lair
 		buildFortifications = { "OBJECTIVE_SEC_01", 0 },       -- Build Citadel and Castle defense structures in town
-		   captureGoldMines = { "OBJECTIVE_SEC_02", 1 },       -- Capture and hold all 6 gold mines to get additional 10000 gold bonus per day. If any mine lost - bonus is cancelled until all four mines are captured again.
+		   captureGoldMines = { "OBJECTIVE_SEC_02", 1 },       -- Capture all 6 gold mines to get additional 10000 gold bonus next mission. If any mine lost - bonus is cancelled until all mines are captured again.
 			  destroyPortal = { "OBJECTIVE_SEC_04", 1 },       -- Find and destroy the Demons Portal
 				  orcTavern = { "_", 1 }                       -- control hero hiring on/off based on current day and player affiliation with Orcs
 	},
@@ -480,9 +448,7 @@ OBJECTIVES = {
 		SetGameVar("BONUS_A2C1M4", "0");
 		startThread( f_artifacts_sets );
 		DIFFICULTY[GetDifficulty()]();
-		----------------------------- START MAP SETTINGS ------------------------------------
-		
-		SetObjectEnabled("WIZARD_TRAP_STARTER", nil);
+		SetObjectEnabled('WIZARD_TRAP_STARTER', nil);
 		SetObjectEnabled('CREATURE_HAVEN_PRIEST', nil);
 		SetRegionBlocked('REGION_KEEP_AI_AWAY', not nil, PLAYER_2);
 		SetRegionBlocked('REGION_KEEP_AI_AWAY', not nil, PLAYER_3);
@@ -491,7 +457,6 @@ OBJECTIVES = {
 		SetRegionBlocked('REGION_BLOCK_ORCS_01', 1, PLAYER_2);
 		SetRegionBlocked('REGION_BLOCK_ORCS_02', 1, PLAYER_2);
 		SetRegionBlocked('REGION_BLOCK_ORCS_03', 1, PLAYER_2);
-
 		SetRegionBlocked('REGION_BLOCK_INF_TO_SUBTER', 1, PLAYER_4);
 		SetRegionBlocked('REGION_BLOCK_INF_TO_ORCS', 1, PLAYER_4);
 		SetRegionBlocked('REGION_BLOCK_INF_TO_HAVEN', 1, PLAYER_4);
@@ -520,14 +485,24 @@ OBJECTIVES = {
 		EnableHeroAI(HERO_AI_ORC_TRAP, nil);
 		EnableHeroAI(HERO_AI_ORC_KUJIN, nil);
 		EnableHeroAI(HERO_AI_ORC_GUARD, nil);
-
 		EnableAIHeroHiring(PLAYER_2, 'FINAL_ORC_TOWN', nil);
-
 		DenyAIHeroFlee(HERO_PLAYER_MAIN, 1);
 		DenyAIHeroFlee(HERO_PLAYER_SEC, 1);
-
 		SetHeroesExpCoef( 0.5 );
 		BlockTownGarrisonForAI('TOWN_INFERNO', not nil); -- does not work for QAI
+		Trigger( PLAYER_ADD_HERO_TRIGGER, PLAYER_2, "player_2_hero_check" );
+		startThread( f_road_block_check );
+		Trigger( 	 REGION_ENTER_AND_STOP_TRIGGER, 			 "DIALOG_SCENE_KUJIN", 							'A2C1M4_meetKujin' );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_OBJECTIVE_DESTROY_PORTAL", 	  'f_activate_objective_to_destroy_portal' );
+		Trigger( 			  OBJECT_TOUCH_TRIGGER,					'PORTAL_GUARD_01', 				   'f_destroy_portal_guard_01' );
+		Trigger( 			  OBJECT_TOUCH_TRIGGER,					'PORTAL_GUARD_02', 				   'f_destroy_portal_guard_02' );
+		Trigger( 	 REGION_ENTER_AND_STOP_TRIGGER,				 "REGION_WIZARD_CHAT", 'f_speak_with_erik_about_the_dungeon_route' );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER,			 "REGION_TRAP_SUBTERRAIN",					'f_deploy_enemy_hero_trap' );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER,					"REGION_AUTOSAVE",								  'f_autosave' );
+		Trigger( 	 REGION_ENTER_AND_STOP_TRIGGER,				 "REGION_PRIEST_CHAT",						 'f_speak_with_priest' );
+		Trigger( 	 REGION_ENTER_AND_STOP_TRIGGER,		 "REGION_MIGHTY_TOWN_WARNING",								   'f_warning' );
+		Trigger( 			OBJECT_CAPTURE_TRIGGER,					   "TOWN_INFERNO",								'lairCaptured' );
+		Trigger( 	 REGION_ENTER_AND_STOP_TRIGGER,			  "REGION_ORC_TRAP_START",							'f_orc_trap_start' );
 	end,
 	
 	run = function()
@@ -545,7 +520,7 @@ OBJECTIVES = {
 				return
 			end
 			
-			if GetObjectiveState("OBJECTIVE_PRI_01") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_03") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_SEC_04") == OBJECTIVE_COMPLETED then
+			if GetObjectiveState("OBJECTIVE_PRI_01") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_03") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_04") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_SEC_04") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
 				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
 				sleep(100);
@@ -574,7 +549,7 @@ OBJECTIVES = {
 	_findOrcLeader_lead = nil,           									-- the hero that triggered the quest (required to adjust scene participants)
 	_findOrcLeader_deployDay = 0,        									-- when will the next hero be deployed
 	_findOrcLeader_raider = nil,    										-- current active Stronghold hero
-	_findOrcLeader_wave = 0,           										-- current wave of attacking heroes
+	_findOrcLeader_wave = 0,         										-- current wave of attacking heroes
 	findOrcLeader = function()
 		if OBJECTIVES.state.findOrcLeader[2] == 1 then
 			CINEMATICS.findOrcLeaderIntro(OBJECTIVES._findOrcLeader_lead);
@@ -590,7 +565,7 @@ OBJECTIVES = {
 				OBJECTIVES.state.findOrcLeader[2] = 10;
 			elseif (OBJECTIVES._findOrcLeader_raider == nil or IsHeroAlive( OBJECTIVES._findOrcLeader_raider ) == nil) and OBJECTIVES._findOrcLeader_deployDay < OBJECTIVES.date and OBJECTIVES.state.buildFortifications[2] < 10 then
 				--SetAIHeroAttractor( 'PLAYER_TOWN_01', OBJECTIVES._findOrcLeader_raider, 2 ); - this is replaced by H55c pseudo AI
-				OBJECTIVES._findOrcLeader_raider = deployOrcRaider(OBJECTIVES._findOrcLeader_wave, OBJECTIVES._findOrcLeader_deployDay);
+				OBJECTIVES._findOrcLeader_raider = deployOrcRaider( OBJECTIVES._findOrcLeader_wave, OBJECTIVES.date );
 				OBJECTIVES._findOrcLeader_wave = OBJECTIVES._findOrcLeader_wave + 1;
 				OBJECTIVES._findOrcLeader_deployDay = OBJECTIVES.date + 7;
 			end
@@ -609,13 +584,13 @@ OBJECTIVES = {
 	
 	destroyLair = function()
 		if OBJECTIVES.state.destroyLair[2] == 1 then
-			SetObjectiveState("OBJECTIVE_PRI_04", OBJECTIVE_ACTIVE);
+			SetObjectiveState( "OBJECTIVE_PRI_04", OBJECTIVE_ACTIVE );
 			OBJECTIVES.state.destroyLair[2] = 2;
 		elseif OBJECTIVES.state.destroyLair[2] == 3 then
 			RazeTown("TOWN_INFERNO");
 			MessageBox("/Maps/Scenario/A2C1M4/messagebox_004.txt"); -- Arantir tortures some Infernals and learns, that Mochab went to Flammschreine.
 			startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO5_Arantir_01sound.xdb#xpointer(/Sound)" );
-			SetObjectiveState("OBJECTIVE_PRI_04", OBJECTIVE_COMPLETED);
+			SetObjectiveState( "OBJECTIVE_PRI_04", OBJECTIVE_COMPLETED );
 			if OBJECTIVES.state.destroyPortal[2] < 2 then
 				OBJECTIVES.state.destroyPortal[2] = 2;
 			elseif OBJECTIVES.state.destroyPortal[2] == 10 then
@@ -636,10 +611,10 @@ OBJECTIVES = {
 			SetRegionBlocked( "REGION_BLOCK_AI", not nil, PLAYER_2);
 			SetRegionBlocked( "REGION_BLOCK_AI", not nil, PLAYER_3);
 			if OBJECTIVES._findOrcLeader_raider ~= nil then
-				SetAIHeroAttractor( PLAYER_HERO, OBJECTIVES._findOrcLeader_raider, 0 );
+				SetAIHeroAttractor( "Arantir", OBJECTIVES._findOrcLeader_raider, 0 );
+				H55c_AIRemoveHero( OBJECTIVES._findOrcLeader_raider );
 			end
 			startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO6_Arantir_01sound.xdb#xpointer(/Sound)" );
-			H55c_AIRemoveHero(OBJECTIVES._findOrcLeader_raider);
 			OBJECTIVES.state.buildFortifications[2] = 10;
 		end
 	end,
@@ -665,7 +640,7 @@ OBJECTIVES = {
 				end
 			end
 		elseif OBJECTIVES.state.captureGoldMines[2] == 2 then
-			SetObjectiveState("OBJECTIVE_SEC_02", OBJECTIVE_COMPLETED);
+			SetObjectiveState( "OBJECTIVE_SEC_02", OBJECTIVE_COMPLETED );
 			SetGameVar("BONUS_A2C1M4", "1");
 			MessageBox("/Maps/Scenario/A2C1M4/messagebox_008.txt"); -- MESSAGEBOX - You have captured all gold mines!
 			startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO7_Arantir_01sound.xdb#xpointer(/Sound)" );
@@ -673,7 +648,7 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.captureGoldMines[2] == 3 then
 			for i = 1,6 do
 				if GetObjectOwner('GOLD_MINE_0'..i) ~= PLAYER_1 then
-					SetObjectiveState("OBJECTIVE_SEC_02", OBJECTIVE_ACTIVE);
+					SetObjectiveState( "OBJECTIVE_SEC_02", OBJECTIVE_ACTIVE );
 					OBJECTIVES.state.captureGoldMines[2] = 1;
 				end
 			end

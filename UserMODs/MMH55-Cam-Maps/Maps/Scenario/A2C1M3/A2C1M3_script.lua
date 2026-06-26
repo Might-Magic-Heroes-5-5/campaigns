@@ -467,7 +467,6 @@ function TransformToNecroDwelling( objectName, creatureType, guardType, guardCou
 	end
 end
 
-
 function IsOkPressed()
 	isOkPressed = 1;
 end
@@ -503,19 +502,15 @@ function VampiresWantJoin()
 	MoveCamera( Ornella_x, Ornella_y , GROUND, 50, 1.3, 0, 1, 1, 1);
 	UnblockGame();
 	print("VampiresWantJoin: Game is unblocked");
-	
 	--ShowFlyingSign( "Maps/Scenario/A2C1M3/MessageBox06_plusSkeletons.txt", ORNELLA, PLAYER_1, 7 );
-	
 	SetObjectiveState( "sec1_CaptureNecropolis", OBJECTIVE_ACTIVE );
 	sleep(1);
 	SetObjectiveState( "sec2_JoinNecropolisCreatures", OBJECTIVE_ACTIVE );
 	sleep(1);
 	SetObjectiveProgress( "sec2_JoinNecropolisCreatures", joinedCreaturesCount, PLAYER_1 );
 	Trigger( OBJECT_CAPTURE_TRIGGER, NECROPOLIS, "IsNecropolisCaptured" );
-	
 	startThread( IsCreaturesJoined ); 
 end
-
 
 ------------------------------------------------------------------------
 --     Function Name: IsLichesTouched( heroName ) 
@@ -545,10 +540,6 @@ end
 --     Description: Присоединение личей к армии героя игрока во второй деревне.
 ------------------------------------------------------------------------
 function LichesWantJoin()
-	--MessageBox("Maps/Scenario/A2C1M3/MessageBox03_lichMessage.txt", "IsOkPressed");
-	--StartAdvMapDialog( ADVMAPSCENE_ORNELLA_JOINS_LICHES, "IsOkPressed" );
-	--while isOkPressed == 0 do sleep(1); end
-	--isOkPressed = 0;
 	joinedCreaturesCount = joinedCreaturesCount + 1; --Увеличиваем счетчик собранных кричей Некрополиса на единицу
 	x_lich, y_lich, floor_lich = GetObjectPosition( "not nil_lich" );
 	MoveHeroRealTimeAndReachPoint( heroName_lichesJoin, x_lich, y_lich, GROUND );
@@ -558,7 +549,6 @@ function LichesWantJoin()
 	sleep(3);
 	TransformToNecroDwelling( "LichVillageHouse02", CREATURE_SKELETON, CREATURE_SKELETON_ARCHER, SKELETONS_COUNT - difLevel*5 );
 end
-
 
 ------------------------------------------------------------------------
 --     Function Name: IsNecropolisCaptured(oldOwner, newOwner, heroName) 
