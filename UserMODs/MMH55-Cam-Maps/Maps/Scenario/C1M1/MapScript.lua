@@ -229,7 +229,7 @@ OBJECTIVES = {
 			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] >= 1 and value[2] < 10 then
-					OBJECTIVES[key]();
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
 				end
 			end
 
