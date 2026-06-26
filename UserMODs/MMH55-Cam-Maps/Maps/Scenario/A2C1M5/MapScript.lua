@@ -1,4 +1,21 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
+function f_artifacts_sets()
+	InitAllSetArtifacts( "A2C1M5", "Arantir",  "OrnellaNecro" );
+	LoadHeroAllSetArtifacts( "OrnellaNecro", "A2C1M4" );
+	LoadHeroAllSetArtifacts(      "Arantir", "A2C1M4" );
+	sleep(40);
+	H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
+	H55_CamFixTooManySkills(PLAYER_1,	   "Arantir");
+end
+
+startThread( f_artifacts_sets );
 
 H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_STAFF_OF_VEXINGS,
@@ -7,99 +24,9 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_SKULL_HELMET
 };
 
----------------------------------------------------------------------------------------------------
---------------------------------- CONSTANTS ----------------------------------------------
----------------------------------------------------------------------------------------------------
-
---*-- HEROES SCRIPT NAMES --*--
-HERO_PLAYER = 'Arantir';
-HERO_PLAYER_2 = 'OrnellaNecro';
-HERO_FREE = 'Gles';
-HERO_FREE_2 = 'Effig';
-HERO_FREE_3 = 'Muscip';
-
-HERO_PRISONER = 'RedHeavenHero03';
-
--- HERO_PRISONER_2 = 'Straker';
---RITUAL_STARTS = 0; -------------------------------1.300
-
-HERO_AI_2_ENEMY_HERO_1 = 'RedHeavenHero04';
-HERO_AI_2_ENEMY_HERO_2 = 'RedHeavenHero02';
-HERO_AI_2_ENEMY_HERO_3 = 'RedHeavenHero06';
-HERO_AI_2_ENEMY_HERO_4 = 'RedHeavenHero05';
-HERO_AI_2_ENEMY_HERO_5 = 'RedHeavenHero01';
-
-HERO_AI_3_ENEMY_HERO_1 = 'Jazaz';
-HERO_AI_3_ENEMY_HERO_2 = 'Grok';
-HERO_AI_3_ENEMY_HERO_3 = 'Oddrema';
-HERO_AI_3_ENEMY_HERO_4 = 'Deleb';
-MOCHAB = 'Orlando'; 
-HERO_SOULKEEPER = 'Efion';
-
-HERO_GHOST_OF_FLAMMSCHREIN = "GhostFSLord";
-
---*-- CREATURES SCRIPT NAMES --*--
--- CREATURE_QUEST_DEALER = 'Ghost';
-CREATURE_QUEST_TARGET = 'Assasin';
-CREATURE_INFERNO_1 = 'Ritual_Succubus';
--- CREATURE_SOULKEEPER = 'Soulkeeper';
-CREATURE_FALLEN_PALADIN = 'Paladin';
-CREATURE_FINAL_GIFT = 'Final_gift';
-
-CREATURE_ELEMENTAL_OUT_15 = 'Elemental_Out_15';
-CREATURE_ELEMENTAL_OUT_16 = 'Elemental_Out_16';
-CREATURE_ELEMENTAL_OUT_17 = 'Elemental_Out_17';
-CREATURE_ELEMENTAL_OUT_18 = 'Elemental_Out_18';
-CREATURE_ELEMENTAL_OUT_19 = 'Elemental_Out_19';
-CREATURE_ELEMENTAL_OUT_20 = 'Elemental_Out_20';
-CREATURE_ELEMENTAL_OUT_21 = 'Elemental_Out_21';
-
---*-- OBJECTS SCRIPT NAMES --*--
-OBJECT_EVIL_TOWN = 'Flammschrein';
---OBJECT_ORACLE = 'Oracle';
-OBJECT_ENEMY_TOWN_NORD = 'Merlon';
-OBJECT_ENEMY_TOWN_CENTER = 'Stormdale';
-OBJECT_ENEMY_TOWN_SUD_WEST = 'Chillbury';
-OBJECT_ENEMY_TOWN_OST = 'Vigil';
-OBJECT_HERO_TOWN = 'Nergal-shum';
-OBJECT_TELEPORT_TO_GOLD = 'Teleport_to_gold';
-OBJECT_TELEPORT_TO_HERO = 'Teleport_to_hero';
-OBJECT_TELEPORT_TO_TREES = 'Teleport_to_trees';
-OBJECT_GARRISON_OST = 'Garrison_ost';
-OBJECT_GARRISON_CENTER = 'Garrison_center';
-OBJECT_GARRISON_NORD = 'Garrison_nord';
-OBJECT_GARRISON_SUD_WEST = 'Garrison_sud_west';
-OBJECT_GARRISON_CENTER_NORD = 'Garrison_center_nord';
-OBJECT_GATE_TO_FLAMMSCHREIN = 'Gate_to_Flammschrein';
-OBJECT_FIRE_WALL = 'Fire_wall';
---OBJECT_SEER_QUEST_DEALER = 'Death_knight_seer';
-OBJECT_TOMB = 'Tomb';
-OBJECT_RITUAL_TILE_1 = 'Tile_44_154';
-OBJECT_RITUAL_TILE_2 = 'Tile_65_111';
-OBJECT_RITUAL_TILE_3 = 'Tile_20_12';
-OBJECT_RITUAL_TILE_4 = 'Tile_149_67';
-OBJECT_INFERNO_REMOVED = 'Smoke_1';
-OBJECT_INFERNO_REMOVED_2 = 'Smoke_2';
-OBJECT_INFERNO_REMOVED_3 = 'Smoke_3';
-OBJECT_INFERNO_REMOVED_4 = 'Smoke_4';
-OBJECT_INFERNO_REMOVED_5 = 'Smoke_5';
-OBJECT_INFERNO_REMOVED_6 = 'Smoke_6';
-OBJECT_INFERNO_REMOVED_7 = 'Smoke_7';
-OBJECT_INFERNO_REMOVED_8 = 'Smoke_8';
-OBJECT_INFERNO_REMOVED_9 = 'Smoke_9';
-OBJECT_INFERNO_REMOVED_10 = 'Smoke_10';
-OBJECT_INFERNO_REMOVED_11 = 'Inferno_exit1';
-OBJECT_INFERNO_ALTAR = 'Inferno_altar';
-OBJECT_SMOKE_FOR_ALTAR = 'Smoke_for_move_to_altar';
-OBJECT_SMOKE_FOR_ALTAR_2 = 'Smoke_11';
-OBJECT_FIRE_FOR_ALTAR = 'Fire_for_move_to_altar';
-OBJECT_UNDER_SUCCUBUS = 'Under_succubus';
-OBJECT_UNDER_ASSASSIN = 'Under_assassin';
-OBJECT_PLACE_FOR_SUMMON_GHOST = 'Summon_ghost';
-OBJECT_SULFUR_01 = 'Sulfur1';
-OBJECT_SIGN_01 = 'Sign1';
-OBJECT_SIGN_02 = 'Sign2';
-OBJECT_SIGN_03 = 'Sign3';
+DevastatorName = "";
+NearSoulkeeperName = "";
+AvengerName = "";
 
 function InitTeleportsPairs()
 	TeleportsPairs = {};
@@ -124,37 +51,7 @@ function InitTeleportsPairs()
 	TeleportsPairs[6].Angle = 4.71;
 	TeleportsPairs[7].Angle = 1.57;
 	startThread(CheckTeleportPairOutElementals);
-end;
-
-function TouchTeleportPairIn(heroName, objectName)
-	if GetObjectOwner(heroName) == PLAYER_1 then
-		for i = 1, TeleportsPairs.Count do
-			if TeleportsPairs[i].In == objectName then	
-				if TeleportsPairs[i].Blocked == 1 then
-					local x, y, f = GetObjectPosition(TeleportsPairs[i].Out);
-					OpenCircleFog(x, y, f, 4, 1);
-					MoveCamera(x, y, f, 35, 1, TeleportsPairs[i].Angle, 0, 0, 1);		
-					MessageBox("/Maps/Scenario/A2C1M5/messagebox_027.txt");
-				end;
-			end;
-		end;
-	end;
-end;
-
-function TouchTeleportPairOut(heroName, objectName)
-	if GetObjectOwner(heroName) == PLAYER_1 then
-		for i = 1, TeleportsPairs.Count do
-			if TeleportsPairs[i].Out == objectName then	
-				if TeleportsPairs[i].Blocked == 1 then
-					Trigger(OBJECT_TOUCH_TRIGGER, TeleportsPairs[i].In, nil);
-					Trigger(OBJECT_TOUCH_TRIGGER, TeleportsPairs[i].Out, nil);
-					SetObjectEnabled(TeleportsPairs[i].In, not nil);
-					TeleportsPairs[i].Blocked = 0;
-				end;
-			end;
-		end;
-	end;
-end;
+end
 
 function CheckTeleportPairOutElementals()
 	while 1 do
@@ -166,1808 +63,1006 @@ function CheckTeleportPairOutElementals()
 				else
 					SetObjectEnabled(TeleportsPairs[i].In, not nil);
 					TeleportsPairs[i].Blocked = 0;
-				end;
-			end;
-		end;
+				end
+			end
+		end
 		if count == 0 then
-			break;
-		end;
-		sleep (2);
-	end;
-end;
-
-InitTeleportsPairs();
-
-OBJECT_IN_15 = 'In15';
-OBJECT_IN_16 = 'In16';
-OBJECT_IN_17 = 'In17';
-OBJECT_IN_18 = 'In18';
-OBJECT_IN_19 = 'In19';
-OBJECT_IN_20 = 'In20';
-OBJECT_IN_21 = 'In21';
-OBJECT_OUT_15 = 'Out15';
-OBJECT_OUT_16 = 'Out16';
-OBJECT_OUT_17 = 'Out17';
-OBJECT_OUT_18 = 'Out18';
-OBJECT_OUT_19 = 'Out19';
-OBJECT_OUT_20 = 'Out20';
-OBJECT_OUT_21 = 'Out21';
-
-CARAVAN = "caravan";
-DevastatorName = "";
-NearSoulkeeperName = "";
-AvengerName = "";
-GoToFlammschreinName = "";
-heroInRegionName = "";
-NearToGhostName = "";
-ValeriaInGame = 0; -- Валерия не активна
-
----------------------------------------------------------------------------------------------------
--------------------------------- VARIABLES -------------------------------------------------
----------------------------------------------------------------------------------------------------
-count = 0; -- переменная, обозначающая количество городов RH под управлением игрока.
-count_1 = 0;
-count_2 = 0;
-count_3 = 0;
-count_4 = 0;
-
-PLAYER_GOLD = 0;
-GOLD_BONUS = 10000;
-ALTAR_BROKEN = 0;
----------------------------------------------------------------------------------------------------
-------------------------------- START MAP SETTINGS -----------------------------------
----------------------------------------------------------------------------------------------------
-
-
-SetObjectEnabled(CREATURE_QUEST_TARGET, nil);
-SetObjectEnabled(CREATURE_INFERNO_1, nil);
-
-SetObjectEnabled(CREATURE_FALLEN_PALADIN, nil);
-SetObjectEnabled(OBJECT_TELEPORT_TO_GOLD, nil);
-SetObjectEnabled(OBJECT_TELEPORT_TO_HERO, nil);
-SetObjectEnabled(OBJECT_TELEPORT_TO_TREES, nil);
-SetObjectEnabled(OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-SetObjectEnabled(OBJECT_INFERNO_ALTAR, nil);
-SetObjectEnabled(OBJECT_TOMB, nil);
-
-SetObjectiveState('pri1', OBJECTIVE_ACTIVE, PLAYER_1);
-SetObjectiveState('pri5', OBJECTIVE_ACTIVE, PLAYER_1);
-SetObjectiveState('pri2', OBJECTIVE_ACTIVE, PLAYER_1);
-SetRegionBlocked( "RegionToArantir", not nil );
-
----------------------------------------------------------------------------------------------------
--------------------------------- FUNCTIONS ------------------------------------------------
----------------------------------------------------------------------------------------------------
-
---*-- Artifacts Sets Loading--*--
-function f_artifacts_sets()
-	InitAllSetArtifacts( "A2C1M5", "Arantir",  "OrnellaNecro" );
-	LoadHeroAllSetArtifacts( "OrnellaNecro", "A2C1M4" );
-	LoadHeroAllSetArtifacts(      "Arantir", "A2C1M4" );
-	sleep(40);
-	H55_CamFixTooManySkills(PLAYER_1, "OrnellaNecro");
-	H55_CamFixTooManySkills(PLAYER_1,	   "Arantir");
-end;
-
-startThread( f_artifacts_sets );
-
-------------------------------------------------------------------
---*-- PRIMARY QUESTS CHECK FUNCTIONS --*--
-------------------------------------------------------------------
-
-
------------------------------------------------------------------------
---*-- SECONDARY QUESTS CHECK FUNCTIONS --*--
--------------------------------------------------------------------------------------+
-
-
-------------------------------------------------------------------
---*-- PRIMARY QUESTS --*--
-------------------------------------------------------------------
-
---pri1 и pri5
-function f_check_player_main_hero_death()
-	if (IsHeroAlive(HERO_PLAYER) == nil) then
-	    Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		SetObjectiveState("pri1", OBJECTIVE_FAILED, PLAYER_1);
-		sleep(2);		
-		f_loose();
-	end;
-	if (IsHeroAlive(HERO_PLAYER_2) == nil) then
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		SetObjectiveState("pri5", OBJECTIVE_FAILED, PLAYER_1);
-		sleep(2);		
-		f_loose();		
-	end;
-end;
-
-function f_check_player_main_hero_death_2()
-	print ("CHECK003");
-	if (IsHeroAlive(HERO_PLAYER) == nil) then
-	    Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		SetObjectiveState("pri1", OBJECTIVE_FAILED, PLAYER_1);
-		sleep(2);	
-	end;
-end;
-
-function f_check_Flammschrein_captured()
-	if (GetObjectOwner(OBJECT_EVIL_TOWN) == 1) then
-	    Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, nil);	
-		OpenCircleFog(158, 156, 0, 15, 1);		
-        sleep(4);
-        MoveCamera(158, 156, 0, 90, 1, 0, 0, 0, 1);		
-        sleep(4);
-        PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		sleep(4);
-		Play2DSound( "/Sounds/_(Sound)/Spells/Earthquake.xdb#xpointer(/Sound)" ); ----------------DESTROY_FLAMM_SDN
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		sleep(4);
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-        sleep(4);
-        SetAmbientLight(0, "Default", not nil, 1);		
-		sleep(41);
-		SetObjectiveState("pri2", OBJECTIVE_COMPLETED, PLAYER_1);
-		sleep(5);
-		StartDialogScene("/DialogScenes/A2C1/M5/S1/DialogScene.xdb#xpointer(/DialogScene)", "f_win"); -- выкинуть, заменив на вызов функции. Как ниже, например
-    end;
-end;
-
-function f_check_Flammschrein_captured_2()
-	if (GetObjectOwner(OBJECT_EVIL_TOWN) == 1) then
-	    Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, nil);	
-		OpenCircleFog(158, 156, 0, 15, 1);		
-        sleep(4);
-        MoveCamera(158, 156, 0, 90, 1, 0, 0, 0, 1);		
-        sleep(4);
-        PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		sleep(4);
-		Play2DSound( "/Sounds/_(Sound)/Spells/Earthquake.xdb#xpointer(/Sound)" ); ----------------DESTROY_FLAMM_SDN
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		sleep(4);
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-        sleep(4);
-        SetAmbientLight(0, "Default", not nil, 1);		
-		sleep(41);
-		SetObjectiveState("pri2", OBJECTIVE_COMPLETED, PLAYER_1);
-		sleep(5);
-		StartDialogScene("/DialogScenes/A2C1/M5/S1/DialogScene.xdb#xpointer(/DialogScene)", "f_win"); -- выкинуть, заменив на вызов функции. Как ниже, например
-    end;
-end;
-
---pri3--вставить ролик - общение с оракулом - гарантированно до того как активируется Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, "f_show_message_box_Oracle_001");
-
-function f_check_find_oracle()
-	f_show_message_box_Oracle_speak_009();
-	SetObjectiveState("pri3", OBJECTIVE_COMPLETED, PLAYER_1);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, nil);
-	sleep(2);
-	SetObjectiveState('pri4', OBJECTIVE_ACTIVE, PLAYER_1);
-	sleep(2);
---	startThread(Fail_sec2); ---------------------------!!!!
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, "f_show_message_box_Oracle_001");
-	sleep(2);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "f_check_capture_enemy_castles");
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "f_check_capture_enemy_castles");
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "f_check_capture_enemy_castles");
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "f_check_capture_enemy_castles");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", "f_check_capture_enemy_castles");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", "f_check_capture_enemy_castles");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", "f_check_capture_enemy_castles");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", "f_check_capture_enemy_castles");
-	f_check_capture_enemy_castles();
-end;
-
-function f_check_hero_in_ritual_zone( heroName )
-	if ( IsObjectInRegion( heroName, 'Ritual_1' ) == not nil ) then return not nil end;
-	if ( IsObjectInRegion( heroName, 'Ritual_2' ) == not nil ) then return not nil end;
-	if ( IsObjectInRegion( heroName, 'Ritual_3' ) == not nil ) then return not nil end;
-	if ( IsObjectInRegion( heroName, 'Ritual_4' ) == not nil ) then return not nil end;
-	return nil;
-end;
-
---pri4 -- Вставить ролик - разговор Арантира с призраком Фламмшрайна
-
-function f_check_barrier_touch_new() -- Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_check_barrier_touch_new");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-	BlockGame();
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Flammschrein_Ghost_arrives", "f_speak_with_Flammschrein_ghost");	
-	OpenCircleFog(145, 122, GROUND, 4, 1);
-	sleep(3);
-	MoveCamera(145, 122, 0, 40, 1, 0, 0, 0, 1);
-	sleep(5);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_PLACE_FOR_SUMMON_GHOST, 0, 0, 0, 0, 0 );
-	sleep(5);
-	DeployReserveHero(HERO_GHOST_OF_FLAMMSCHREIN, 145, 123, GROUND);
-	sleep(5);
-	SetObjectRotation(HERO_GHOST_OF_FLAMMSCHREIN, 270);
-	sleep(5);
-	EnableHeroAI(HERO_GHOST_OF_FLAMMSCHREIN, not nil);	
-	MoveHeroRealTime(HERO_GHOST_OF_FLAMMSCHREIN, 139, 128, GROUND);
-	OpenCircleFog(139, 128, GROUND, 4, 1);
-	sleep(2);
-	MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
-	
-	sleep(2); --fix H55
-	startThread(H55_PinGhost);
-end;
-
-function H55_PinGhost()
-	sleep(25);
-	EnableHeroAI(HERO_GHOST_OF_FLAMMSCHREIN, nil);
-end;
-
-x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( HERO_PLAYER );
-x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( HERO_PLAYER_2 );
-
-function f_speak_with_Flammschrein_ghost() -- Запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Flammschrein_Ghost_arrives", "f_speak_with_Flammschrein_ghost");
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Flammschrein_Ghost_arrives", nil);
-	print("trigget_Flammschrein_Ghost_arrives_clear");
-	SetObjectRotation(HERO_GHOST_OF_FLAMMSCHREIN, 270);
-	sleep(1);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_show_message_box_Gate_to_Flammschrein_002_2");
-	sleep(3);
-	SetObjectiveState('pri4', OBJECTIVE_ACTIVE, PLAYER_1);
-	sleep(3);
-	x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( HERO_PLAYER );
-	x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( HERO_PLAYER_2 );
-	SetObjectPosition( HERO_PLAYER, 134, 128, GROUND );
-	SetObjectPosition( HERO_PLAYER_2, 132, 128, GROUND );
-	SetObjectRotation( HERO_PLAYER, 90 );
-	SetObjectRotation( HERO_PLAYER_2, 90 );
-	UnblockGame();	
-	StartAdvMapDialog (0, "f_speak_with_Flammschrein_ghost_continue");   -------------------------------------------------------------------2_advmap_dialog!!
-end;
-
-function f_speak_with_Flammschrein_ghost_continue()
-	print("f_speak_with_Flammschrein_ghost_continue_start");
-
-	BlockGame();
-	print ("Teleport_heroes");
-	sleep(1);
-
-	SetObjectPosition( HERO_PLAYER, x_ara_scene, y_ara_scene, floor_ara_scene );
-	SetObjectPosition( HERO_PLAYER_2, x_orn_scene, y_orn_scene, floor_orn_scene );
-	sleep(4);
-
-	UnblockGame();
-	print( "Game unblocked." );
-	
-	if ALTAR_BROKEN == 0 then
-		print ("detected Altar is not broken");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "f_check_capture_enemy_castles");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "f_check_capture_enemy_castles");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "f_check_capture_enemy_castles");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "f_check_capture_enemy_castles");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", "f_check_capture_enemy_castles");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", "f_check_capture_enemy_castles");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", "f_check_capture_enemy_castles");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", "f_check_capture_enemy_castles");
-		ALTAR_BROKEN = 2;
-		f_check_capture_enemy_castles();
-	end;		
-	if ALTAR_BROKEN == 1 then
-		print ("detected Altar is broken");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "f_check_capture_enemy_castles_altar_broken");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "f_check_capture_enemy_castles_altar_broken");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "f_check_capture_enemy_castles_altar_broken");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "f_check_capture_enemy_castles_altar_broken");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", "f_check_capture_enemy_castles_altar_broken");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", "f_check_capture_enemy_castles_altar_broken");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", "f_check_capture_enemy_castles_altar_broken");
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", "f_check_capture_enemy_castles_altar_broken");
-		f_check_capture_enemy_castles_altar_broken();
-	end;
-
-	f_check_ghost_talk();
-end;
-
-function f_check_capture_enemy_castles()
-	
-	town_counter();
-	
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_NORD) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_CENTER) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_SUD_WEST) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_OST) ~= PLAYER_1 ) then return end;
-	
-	if( IsObjectExists(HERO_PLAYER_2) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE_2) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE_3) == nil ) then return end;
-
-	if ( f_check_hero_in_ritual_zone( HERO_PLAYER_2 ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE_2 ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE_3 ) == nil ) then return end;
-
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", nil);
-	
-	startThread(Start_ritual_scene_1);	
-end;
-
-function Start_ritual_scene_1()		
-	startThread(Orn_dialog);
-end;
-
-function Start_ritual_scene_2()
-	--	BlockGame(); ---------------------------!!!!
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE_2, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE_3, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_PLAYER_2, 0); -- НЕВозвращение героя в таверну
-	print("RITUAL_START_0");
-	OpenCircleFog(44, 154, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(44, 154, 0, 30, 1, 3.14, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_1, 0, 0, 0, 0, 0 )
-	print("0_________________0");
-	if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-		Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague
-	end; ---------------------------------------------1.300		
-	sleep(25);
-	OpenCircleFog(65, 111, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(65, 111, 0, 30, 1, 1.57, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_2, 0, 0, 0, 0, 0 );
-	print("0_________________0");
-	if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-		Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague
-	end; ---------------------------------------------1.300			
-	sleep(25);
-	OpenCircleFog(20, 12, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(20, 12, 0, 30, 1, 1.57, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_3, 0, 0, 0, 0, 0 );
-	print("0_________________0");
-	if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-		Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague
-	end; ---------------------------------------------1.300		
-	sleep(25);
-	OpenCircleFog(149, 67, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(149, 67, 0, 30, 1, 3.925, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_4, 0, 0, 0, 0, 0 );
-	print("0_________________0");
-	if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-		Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague
-	end; ---------------------------------------------1.300				
-	sleep(5);							
-	SetObjectiveVisible('pri5', nil, PLAYER_1);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, nil);
-	sleep(3);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, "f_check_player_main_hero_death_2");
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, "f_check_Flammschrein_captured_2");
-	OpenCircleFog(137, 128, 0, 10, 1);		
-	sleep(5);
-	print ("CHECK001");
-		if (IsHeroAlive(HERO_FREE) == not nil) then	
-			RemoveObject(HERO_FREE);
-		end;
-		if (IsHeroAlive(HERO_FREE_2) == not nil) then	
-			RemoveObject(HERO_FREE_2);
-		end;
-		if (IsHeroAlive(HERO_FREE_3) == not nil) then	
-			RemoveObject(HERO_FREE_3);
-		end;
-		if (IsHeroAlive(HERO_PLAYER_2) == not nil) then	
-			RemoveObject(HERO_PLAYER_2);
-		end;
-	print ("CHECK002");
-		if (IsHeroAlive(HERO_GHOST_OF_FLAMMSCHREIN) == not nil) then
-			RemoveObject(HERO_GHOST_OF_FLAMMSCHREIN);
-		end;
-	if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-		f_show_message_magic_barrier_disappears_022();
-	end; ---------------------------------------------1.300	
-	MoveCamera(137, 128, 0, 30, 1, 4.71, 0, 0, 1);
-	sleep(6);
-	if (IsObjectExists( OBJECT_FIRE_WALL ) == not nil) then
-		if	RITUAL_STARTS ~= 1 then ---------------------------1.300
-			PlayVisualEffect( "/Effects/_(Effect)/Spells/UnholyWord.xdb#xpointer(/Effect)", OBJECT_FIRE_WALL, 0, 0, 0, 6, 0 );
-			sleep(4);
-			Play2DSound( "/Sounds/_(Sound)/Spells/UnholyWord.xdb#xpointer(/Sound)" ); ----------------BARIER
-			end; ---------------------------------------------1.300	
-		end;
-	print ("CHECK003");
-	sleep(45);
-		if (IsObjectExists( OBJECT_FIRE_WALL ) == not nil) then	
-			RemoveObject(OBJECT_FIRE_WALL);
-		end;
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", nil);	
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, nil);
-	SetObjectEnabled(OBJECT_GATE_TO_FLAMMSCHREIN, not nil);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_check_capture_gate_to_Flammschrein");
-	sleep(3);
-	UnblockGame();
-		if GetObjectiveState("pri4") ~= OBJECTIVE_COMPLETED  then	
-			SetObjectiveState("pri4", OBJECTIVE_COMPLETED, PLAYER_1);
-		end;
-	sleep(10);
-	Play2DSound( "/Maps/Scenario/A2C1M5/C1M5_AM3_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO-------1.300
-end;
-
-function f_check_capture_enemy_castles_altar_broken()
-	
-	town_counter_altar_broken();
-	
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_NORD) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_CENTER) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_SUD_WEST) ~= PLAYER_1 ) then return end;
-	if( GetObjectOwner(OBJECT_ENEMY_TOWN_OST) ~= PLAYER_1 ) then return end;
-	
-	if( IsObjectExists(HERO_PLAYER_2) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE_2) == nil ) then return end;
-	if( IsObjectExists(HERO_FREE_3) == nil ) then return end;
-
-	if ( f_check_hero_in_ritual_zone( HERO_PLAYER_2 ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE_2 ) == nil ) then return end;
-	if ( f_check_hero_in_ritual_zone( HERO_FREE_3 ) == nil ) then return end;
-		
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", nil);
-		
-	startThread(Orn_dialog);
-	sleep(5);           -----------------------------------------------------------------------!!!!
-
-	BlockGame();	
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE_2, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_FREE_3, 0); -- НЕВозвращение героя в таверну
-	MakeHeroReturnToTavernAfterDeath(HERO_PLAYER_2, 0); -- НЕВозвращение героя в таверну
-	
-	print("RITUAL_START_1");
-	RITUAL_STARTS = 1; -------------------------------1.300
-	OpenCircleFog(44, 154, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(44, 154, 0, 30, 1, 3.14, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_1, 0, 0, 0, 0, 0 );
-	print("1_________________1");
-	Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague		
-	sleep(25);
-	OpenCircleFog(65, 111, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(65, 111, 0, 30, 1, 1.57, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_2, 0, 0, 0, 0, 0 );
-	print("1_________________1");
-	Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague		
-	sleep(25);
-	OpenCircleFog(20, 12, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(20, 12, 0, 30, 1, 1.57, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_3, 0, 0, 0, 0, 0 );
-	print("1_________________1");
-	Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague		
-	sleep(25);
-	OpenCircleFog(149, 67, 0, 10, 1);		
-	sleep(4);
-	MoveCamera(149, 67, 0, 30, 1, 3.925, 0, 0, 1);		
-	sleep(6);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", OBJECT_RITUAL_TILE_4, 0, 0, 0, 0, 0 );
-	print("1_________________1");
-	Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" ); ----------------SFX_plague		
-	sleep(5);							
-	SetObjectiveVisible('pri5', nil, PLAYER_1);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, nil);
-	sleep(3);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, "f_check_player_main_hero_death_2");
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, "f_check_Flammschrein_captured_2");
-	OpenCircleFog(137, 128, 0, 10, 1);		
-	sleep(5);
-	print ("CHECK0011");
-		if (IsHeroAlive(HERO_FREE) == not nil) then	
-			RemoveObject(HERO_FREE);
-		end;
-		if (IsHeroAlive(HERO_FREE_2) == not nil) then	
-			RemoveObject(HERO_FREE_2);
-		end;
-		if (IsHeroAlive(HERO_FREE_3) == not nil) then	
-			RemoveObject(HERO_FREE_3);
-		end;
-		if (IsHeroAlive(HERO_PLAYER_2) == not nil) then	
-			RemoveObject(HERO_PLAYER_2);
-		end;
-	print ("CHECK0022");
-		if (IsHeroAlive(HERO_GHOST_OF_FLAMMSCHREIN) == not nil) then
-			RemoveObject(HERO_GHOST_OF_FLAMMSCHREIN);
-		end;
-	f_show_message_magic_barrier_disappears_022();
-	MoveCamera(137, 128, 0, 30, 1, 4.71, 0, 0, 1);
-	sleep(3);
-		if (IsObjectExists( OBJECT_FIRE_WALL ) == not nil) then
-			PlayVisualEffect( "/Effects/_(Effect)/Spells/UnholyWord.xdb#xpointer(/Effect)", OBJECT_FIRE_WALL, 0, 0, 0, 6, 0 );
-			sleep(4);
-			Play2DSound( "/Sounds/_(Sound)/Spells/UnholyWord.xdb#xpointer(/Sound)" ); ----------------BARIER
-		end;
-	sleep(45);	
-		if (IsObjectExists( OBJECT_FIRE_WALL ) == not nil) then	
-			RemoveObject(OBJECT_FIRE_WALL);
-		end;
---	Play2DSound( "/Maps/Scenario/A2C1M5/C1M5_AM3_Arantir_01sound.xdb#xpointer(/Sound)" ); ----------------VO ------1.300
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", nil);	
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, nil);
-	
-	SetObjectEnabled(OBJECT_GATE_TO_FLAMMSCHREIN, not nil);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_check_capture_gate_to_Flammschrein");
-	sleep(1);
---	f_StartAdvMapDialog_AM1(); -- Заглушка. Должно быть C1M5_AM3	
-	UnblockGame();
-		if GetObjectiveState("pri4") ~= OBJECTIVE_COMPLETED  then	
-			SetObjectiveState("pri4", OBJECTIVE_COMPLETED, PLAYER_1);
-		end;	
---	startThread(Orn_dialog);
-end;
-
-x_ara, y_ara, floor_ara = 0,0,0
-x_orn, y_orn, floor_orn = 0,0,0
-function Orn_dialog() 
-	f_show_message_box_touch_Ghosts_idle_008(); ------------------------------!!!!!!
-	sleep(2)
-	BlockGame();
-	x_ara, y_ara, floor_ara = GetObjectPosition( HERO_PLAYER );
-	x_orn, y_orn, floor_orn = GetObjectPosition( HERO_PLAYER_2 );
-	SetObjectPosition( HERO_PLAYER, 23, 13, GROUND );
-	SetObjectPosition( HERO_PLAYER_2, 23, 11, GROUND );
-	sleep(1)
-	SetObjectRotation( HERO_PLAYER, 0 );
-	SetObjectRotation( HERO_PLAYER_2, 180 );
-	sleep(2)
-	StartAdvMapDialog (8, "Orn_dialog2");   -------------------------------------------------------------------8_advmap_dialog!!
-end;
-
-function Orn_dialog2()
-	SetObjectPosition( HERO_PLAYER, x_ara, y_ara, floor_ara );
-	SetObjectPosition( HERO_PLAYER_2, x_orn, y_orn, floor_orn );
-	startThread(Start_ritual_scene_2);	
-end;
-
-
---pri6
-function f_pri6() --Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_pri6")
-	BlockGame();
-	DeployReserveHero(MOCHAB, 153, 133, GROUND);
-	OpenCircleFog(153, 133, GROUND, 4, 1);
-	sleep(3);
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mochab_in_town", "f_Mochab_in_town");
-	SetObjectRotation(MOCHAB, 270);
-	MoveCamera(153, 133, 0, 40, 1, 4.71, 0, 0, 1);		
-	sleep(6);
-	f_show_message_meet_Mochab_020();
-	sleep(8);
-	MoveHeroRealTime(MOCHAB, 158, 151, GROUND);
-end;
-
-function f_Mochab_in_town() --Запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mochab_in_town", "f_Mochab_in_town");
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mochab_in_town", nil);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 3, "f_pri6_success");
-	SetObjectiveState('pri6', OBJECTIVE_ACTIVE, PLAYER_1);	
-	SetRegionBlocked("2_block_zone_for_player2", 1, PLAYER_3);
-	SetRegionBlocked("Flammschrein_Ghost_arrives", 1, PLAYER_1);
-	sleep(4);
-	UnblockGame();
-	sleep(2);
-	f_save();
-end;
-
-function f_pri6_success() --Запускается триггером Trigger(PLAYER_REMOVE_HERO_TRIGGER, 3, "f_pri6_success")
-	if (IsHeroAlive(MOCHAB) == nil) then
-	    Trigger(PLAYER_REMOVE_HERO_TRIGGER, 3, nil);
-		SetObjectiveState('pri6', OBJECTIVE_COMPLETED, PLAYER_1);
-	end;
-end;
-
------------------------------------------------------------------------
---*-- SECONDARY QUESTS --*--
------------------------------------------------------------------------
-
---sec2
-function f_check_ghost_talk()
-	print("f_check_ghost_talk_start");
-	BlockGame();
-	--Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_DEALER, nil);
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, nil);
-	print ("Assasins_quest_disable_1");
-    f_show_message_box_Ghosts_quest_003()
-	sleep(3);
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, "f_sec1");
-    SetObjectiveState('sec2', OBJECTIVE_ACTIVE, PLAYER_1);
-	--Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_DEALER, "f_check_ghost_talk2");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", "f_check_ghost_talk2");
-	OpenCircleFog(93, 57, GROUND, 6, 1);		
-	sleep(4);
-	MoveCamera(93, 57, 0, 30, 1, 1.57, 0, 0, 1);	
-	OpenCircleFog(100, 60, GROUND, 6, 1);		
-	sleep(17);
-	MoveCamera(100, 60, 0, 30, 1, 1.57, 0, 0, 1);	
-	OpenCircleFog(122, 120, GROUND, 6, 1);		
-	sleep(17);
-	MoveCamera(122, 120, 0, 30, 1, 1.57, 0, 0, 1);
-	UnblockGame();
-end;
-
-f_check_ghost_talk2_done = 0;
-f_ghost_talk2_msgno = 0;
-function f_check_ghost_talk2()
-	if f_check_ghost_talk2_done ~= 0 then return end;
-	if (IsObjectExists(CREATURE_QUEST_TARGET) == not nil) then
-		print ("Trigger_on");
-		heroesInRegion = table.length(GetObjectsInRegion( '1_block_zone_for_player2', OBJECT_HERO ));
-		sleep(4);
-		if heroesInRegion > 0 then
-			MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
-			sleep(8);
-			if f_ghost_talk2_msgno == 0 then
-				startThread( f_show_message_box_Ghosts_quest_005 );
-				print ("message_chost");	
-			end;
-		end;	
-		return 
-	end;
-	if (IsObjectExists(CREATURE_QUEST_TARGET) ~= not nil) then
-		heroesInRegion = table.length(GetObjectsInRegion( '1_block_zone_for_player2', OBJECT_HERO ));
-		sleep(2);
-			print( "heroesInRegion " .. heroesInRegion )
-		if heroesInRegion > 0 then
-			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", nil );			
-			f_check_ghost_talk2_done = 1;
-			BlockGame();
-			MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
-			Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_GOLD, nil);
-			Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_HERO, nil);
-			Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_TREES, nil);
-			Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TOMB, nil);
-			SetObjectEnabled(OBJECT_TOMB, not nil);
-			SetObjectEnabled(OBJECT_TELEPORT_TO_GOLD, not nil);
-			SetObjectEnabled(OBJECT_TELEPORT_TO_HERO, not nil);
-			SetObjectEnabled(OBJECT_TELEPORT_TO_TREES, not nil);
-			sleep(12);
-			f_show_message_box_Ghosts_quest_006();
-			x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( HERO_PLAYER );
-			x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( HERO_PLAYER_2 );
-			SetObjectPosition( HERO_PLAYER, 134, 128, GROUND );
-			SetObjectPosition( HERO_PLAYER_2, 132, 128, GROUND );
-			SetObjectRotation( HERO_PLAYER, 90 );
-			SetObjectRotation( HERO_PLAYER_2, 90 );
-			UnblockGame();
-			StartAdvMapDialog (2, "f_check_ghost_talk2_continue");   ----------------------------------------------------2_advmap_dialog
-		end;
-	end;
-end;
-
-
-function f_check_ghost_talk2_continue()
-	BlockGame();
-	sleep(3);
-	SetObjectiveState("sec2", OBJECTIVE_COMPLETED, PLAYER_1);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_GOLD, "f_check_portal_gold");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_HERO, "f_check_portal_hero");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_TREES, "f_check_portal_trees");
-	sleep(1);
-	SetObjectPosition( HERO_PLAYER, x_ara_scene, y_ara_scene, floor_ara_scene );
-	SetObjectPosition( HERO_PLAYER_2, x_orn_scene, y_orn_scene, floor_orn_scene );
-	sleep(3);		
-	OpenCircleFog(104, 60, GROUND, 6, 1);		
-	sleep(4);
-	MoveCamera(104, 60, 0, 30, 1, 0, 0, 0, 1);
-	OpenCircleFog(100, 64, GROUND, 6, 1);		
-	sleep(8);
-	MoveCamera(100, 64, 0, 30, 1, 0, 0, 0, 1);
-	OpenCircleFog(97, 60, GROUND, 6, 1);		
-	sleep(8);
-	MoveCamera(97, 60, 0, 30, 1, 0, 0, 0, 1);		
-	UnblockGame();
-end;
-
-function f_CREATURE_QUEST_TARGET_is_alive(hero) -- Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, "f_CREATURE_QUEST_TARGET_is_alive");
-	BlockGame();
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, nil);
-	print ("Assasins_trigger_disable");
-	SetObjectEnabled(CREATURE_QUEST_TARGET, not nil);
-	print ("Assasins_mobs_enable");
-	AvengerName = hero;
-	sleep(4);
-	MakeHeroInteractWithObject( hero, CREATURE_QUEST_TARGET );
-	sleep(10);
-	AvengerName = "";
-	UnblockGame();	
-
-	while (IsObjectExists(CREATURE_QUEST_TARGET) == not nil) do sleep(5); end;
-	f_check_ghost_talk2();
-end;
-
-function f_check_portal_gold()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_HERO, "f_show_message_box_touch_closed_portal_007");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_TREES, "f_show_message_box_touch_closed_portal_007");
-	SetObjectEnabled(OBJECT_TELEPORT_TO_HERO, nil);
-	SetObjectEnabled(OBJECT_TELEPORT_TO_TREES, nil);
-end;
-
-function f_check_portal_hero()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_GOLD, "f_show_message_box_touch_closed_portal_007");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_TREES, "f_show_message_box_touch_closed_portal_007");
-	SetObjectEnabled(OBJECT_TELEPORT_TO_GOLD, nil);
-	SetObjectEnabled(OBJECT_TELEPORT_TO_TREES, nil);
-end;
-
-function f_check_portal_trees()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_HERO, "f_show_message_box_touch_closed_portal_007");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_GOLD, "f_show_message_box_touch_closed_portal_007");
-	SetObjectEnabled(OBJECT_TELEPORT_TO_GOLD, nil);
-	SetObjectEnabled(OBJECT_TELEPORT_TO_HERO, nil);
-end;
-
-function f_sec1(hero)
-	AvengerName = hero;
-	BlockGame();
-	x_ara, y_ara, floor_ara = GetObjectPosition( HERO_PLAYER );
-	sleep(3);
-	SetObjectPosition( HERO_PLAYER, 94, 60, GROUND );
-	SetObjectRotation( HERO_PLAYER, 0 );
-	sleep(2);
-	StartAdvMapDialog ( 3, "f_sec1_continue" );   -------------------------------------------------------------3_advmap_dialog
-end;
-
-function f_sec1_continue()
-	sleep(5);
-	UnblockGame();
-	QuestionBox("/Maps/Scenario/A2C1M5/messagebox_015.txt", "f_report_yes", "f_report_no");
-end;
-
--- Функция выдающая положительный отчет.
-function f_report_yes(hero)
-	f_check_ghost_talk2_done = 1;
-	sleep(5);
-	SetObjectPosition( HERO_PLAYER, x_ara, y_ara, floor_ara );
-
-	BlockGame();
-	OpenCircleFog(16, 140, 0, 6, 1);
-	OpenCircleFog(23, 138, 0, 5, 1);
-	RemoveObject(CREATURE_QUEST_TARGET);
-	RemoveObject(OBJECT_FIRE_FOR_ALTAR);
-	RemoveObject(CREATURE_INFERNO_1);
-	sleep(4);
-	CreateMonster("Succubus_target", CREATURE_INFERNAL_SUCCUBUS , 1, 22, 138, GROUND, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 90);
-	sleep(4);
-	MoveCamera(21, 138, 0, 27, 1, 0, 0, 0, 1);
-	sleep(9);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_UNDER_ASSASSIN, 0, 0, 0, 0, 0 );
-	sleep(3);
-	CreateMonster("Assassin_killer", CREATURE_ASSASSIN, 1, 20, 138, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 90);
-	sleep(6);
-	StartAdvMapDialog (4);   ---------------------------------------------------------------4_advmap_dialog
-	sleep(3);
-	PlayObjectAnimation( "Assassin_killer", "attack00", ONESHOT_STILL );
-	sleep(6);
-	PlayObjectAnimation( "Succubus_target", "death", ONESHOT_STILL );
-	sleep(9);
-	PlayObjectAnimation( "Assassin_killer", "stir02", ONESHOT_STILL );
-	sleep(9);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_UNDER_SUCCUBUS, 0, 0, 0, 0, 0 );
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_UNDER_ASSASSIN, 0, 0, 0, 0, 0 );
-	sleep(3);
-	RemoveObject("Succubus_target");
-	RemoveObject("Assassin_killer");
-    SetObjectiveState('sec1', OBJECTIVE_ACTIVE, PLAYER_1);
-	SetObjectiveState('sec2', OBJECTIVE_FAILED, PLAYER_1);
-	-- Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_DEALER, nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Alarm_succubus", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Fire_hug", nil);	
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", nil);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, "f_ready_destroy_altar");
-	-- Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_DEALER, "f_show_message_sec2_failed_016");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", "f_show_message_sec2_failed_016");
-	AvengerName = "";
-	UnblockGame();
-	startThread(f_check_capture_enemy_castles);  
-end;
-
--- Функция, выдающая отрицательный отчет.
-function f_report_no()
-	sleep(5);
-	SetObjectPosition( HERO_PLAYER, x_ara, y_ara, floor_ara );
-
-	BlockGame();
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, nil);
-	print ("Assasins_quest_disable_3");
-	SetObjectEnabled(CREATURE_QUEST_TARGET, not nil);
-	print ("Assasins_ENABLE_2");
-	sleep(4);
-	MakeHeroInteractWithObject( AvengerName, CREATURE_QUEST_TARGET );
-	sleep(10);
-	AvengerName = "";
-	UnblockGame();
-	
-	f_ghost_talk2_msgno = 1;
-
-	while (IsObjectExists(CREATURE_QUEST_TARGET) == not nil) do sleep(5); end;
-	f_check_ghost_talk2();
-end;
-
-function f_ready_destroy_altar(hero) -- запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, "f_ready_destroy_altar")
-	if ( GetObjectOwner( hero ) == PLAYER_1 ) then 
-		if (GetHeroStat(hero, STAT_SPELL_POWER) <= 9) then
-			f_show_message_not_enough_SP_to_destroy_altar_033() return not nil end;
-		if (GetHeroStat(hero, STAT_SPELL_POWER) >= 10) then	
-			if ALTAR_BROKEN == 0 then
-				ALTAR_BROKEN = 1;				
-				BlockGame();
-				sleep(4);
-				SetObjectPosition(hero, 19, 138, GROUND);	
-				sleep(8);			
-				Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, nil);
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "town_counter_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "town_counter_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "town_counter_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "town_counter_altar_broken");				
-				MoveCamera(23, 138, 0, 35, 1, 4.71, 0, 0, 1);
-				sleep(2);
-				PlayVisualEffect( "/Effects/_(Effect)/Spells/Armageddon.xdb#xpointer(/Effect)", OBJECT_INFERNO_ALTAR, 0, 0, 0, 0, 0 );
-				Play2DSound( "/Sounds/_(Sound)/Spells/Armageddon.xdb#xpointer(/Sound)" ); ----------------DESTROY_ALTAR_SDN
-				sleep(24);
-				RemoveObject(OBJECT_INFERNO_REMOVED);
-				RemoveObject(OBJECT_INFERNO_REMOVED_2);
-				RemoveObject(OBJECT_INFERNO_REMOVED_3);
-				RemoveObject(OBJECT_INFERNO_REMOVED_4);
-				RemoveObject(OBJECT_INFERNO_REMOVED_5);
-				RemoveObject(OBJECT_INFERNO_REMOVED_6);
-				RemoveObject(OBJECT_INFERNO_REMOVED_7);
-				RemoveObject(OBJECT_INFERNO_REMOVED_8);
-				RemoveObject(OBJECT_INFERNO_REMOVED_9);
-				RemoveObject(OBJECT_INFERNO_REMOVED_10);
-				SetObjectPosition(OBJECT_SMOKE_FOR_ALTAR_2, 16, 139, GROUND);
-				Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, "f_show_message_broken_altar_touch_019");
-				UnblockGame();	
-				SetObjectiveState('sec1', OBJECTIVE_COMPLETED, PLAYER_1);
-			end;
-			if ALTAR_BROKEN == 2 then
-				BlockGame();
-				sleep(4);
-				SetObjectPosition(hero, 19, 138, GROUND);	
-				sleep(8);
-				Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, nil);
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "f_check_capture_enemy_castles_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "f_check_capture_enemy_castles_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "f_check_capture_enemy_castles_altar_broken");
-				Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "f_check_capture_enemy_castles_altar_broken");
-				Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_1", "f_check_capture_enemy_castles_altar_broken");
-				Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_2", "f_check_capture_enemy_castles_altar_broken");
-				Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_3", "f_check_capture_enemy_castles_altar_broken");
-				Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Ritual_4", "f_check_capture_enemy_castles_altar_broken");
-				MoveCamera(23, 138, 0, 35, 1, 4.71, 0, 0, 1);
-				sleep(2);
-				PlayVisualEffect( "/Effects/_(Effect)/Spells/Armageddon.xdb#xpointer(/Effect)", OBJECT_INFERNO_ALTAR, 0, 0, 0, 0, 0 );
-				Play2DSound( "/Sounds/_(Sound)/Spells/Armageddon.xdb#xpointer(/Sound)" ); ----------------DESTROY_ALTAR_SDN
-				sleep(24);
-				RemoveObject(OBJECT_INFERNO_REMOVED);
-				RemoveObject(OBJECT_INFERNO_REMOVED_2);
-				RemoveObject(OBJECT_INFERNO_REMOVED_3);
-				RemoveObject(OBJECT_INFERNO_REMOVED_4);
-				RemoveObject(OBJECT_INFERNO_REMOVED_5);
-				RemoveObject(OBJECT_INFERNO_REMOVED_6);
-				RemoveObject(OBJECT_INFERNO_REMOVED_7);
-				RemoveObject(OBJECT_INFERNO_REMOVED_8);
-				RemoveObject(OBJECT_INFERNO_REMOVED_9);
-				RemoveObject(OBJECT_INFERNO_REMOVED_10);
-				SetObjectPosition(OBJECT_SMOKE_FOR_ALTAR_2, 16, 139, GROUND);
-				Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_INFERNO_ALTAR, "f_show_message_broken_altar_touch_019");
-				UnblockGame();	
-				SetObjectiveState('sec1', OBJECTIVE_COMPLETED, PLAYER_1);
-			end;
-		end;			
-	end;			
-end;
-
-function f_succubus(hero) -- запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Alarm_succubus", "f_succubus")
+			break
+		end
+		sleep(20);
+	end
+end
+
+function TouchTeleportPairIn(heroName, objectName)
+	if GetObjectOwner(heroName) == PLAYER_1 then
+		for i = 1, TeleportsPairs.Count do
+			if TeleportsPairs[i].In == objectName then	
+				if TeleportsPairs[i].Blocked == 1 then
+					local x, y, f = GetObjectPosition(TeleportsPairs[i].Out);
+					OpenCircleFog(x, y, f, 4, 1);
+					MoveCamera(x, y, f, 35, 1, TeleportsPairs[i].Angle, 0, 0, 1);		
+					MessageBox("/Maps/Scenario/A2C1M5/messagebox_027.txt");
+				end
+			end
+		end
+	end
+end
+
+function TouchTeleportPairOut(heroName, objectName)
+	if GetObjectOwner(heroName) == PLAYER_1 then
+		for i = 1, TeleportsPairs.Count do
+			if TeleportsPairs[i].Out == objectName then	
+				if TeleportsPairs[i].Blocked == 1 then
+					Trigger(OBJECT_TOUCH_TRIGGER, TeleportsPairs[i].In, nil);
+					Trigger(OBJECT_TOUCH_TRIGGER, TeleportsPairs[i].Out, nil);
+					SetObjectEnabled(TeleportsPairs[i].In, not nil);
+					TeleportsPairs[i].Blocked = 0;
+				end
+			end
+		end
+	end
+end
+
+function visitMagicBarrier(hero)
+	if GetObjectOwner(hero) == PLAYER_1 then
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Gate_to_Flammschrein', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_002.txt')");
+		OBJECTIVES.state.removeMagicBarrier[2] = 1;
+		OBJECTIVES.state.avengeTheGhost[2] = 1;
+	end
+end
+
+function UseTreasurePortal(hero, object)
+	Trigger(OBJECT_TOUCH_TRIGGER, object, nil); 
+	for i, name in { 'Teleport_to_hero', 'Teleport_to_trees', 'Teleport_to_gold' } do
+		if name ~= object then 
+			Trigger(OBJECT_TOUCH_TRIGGER, name, "MessageBox('/Maps/Scenario/A2C1M5/messagebox_007.txt')"); 
+			SetObjectEnabled(name, nil);
+		end
+	end
+end
+
+function meetAssassins(hero)
+	if GetObjectOwner(hero) == PLAYER_1 then
+		AvengerName = hero;
+		OBJECTIVES.state.avengeTheGhost[2] = 3;
+	end
+end
+
+function spareAssassins(hero)
+	OBJECTIVES.state.avengeTheGhost[2] = 9;
+end
+
+function attackAssassins()
+	OBJECTIVES.state.avengeTheGhost[2] = 5;
+end
+
+function returnToGhost()
+	if IsObjectExists('Assasin') == nil then
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", nil );			
+		OBJECTIVES.state.avengeTheGhost[2] = 7;
+	else
+		MessageBox('/Maps/Scenario/A2C1M5/messagebox_005.txt')
+	end
+end
+
+function f_ready_destroy_altar( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		if GetHeroStat(hero, STAT_SPELL_POWER) <= 9 then
+			MessageBox("/Maps/Scenario/A2C1M5/messagebox_033.txt"); -- Message that cannot destroy altar
+		else
+			Trigger( OBJECT_TOUCH_TRIGGER, 'Inferno_altar', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_019.txt')" );
+			OBJECTIVES.destroyPortal_destroyer = hero;
+			OBJECTIVES.state.destroyPortal[2] = 4;
+		end
+	end	
+end
+
+fire_message = 0;
+function SuccubusTurnsToFire(hero)
 	BlockGame();
 	DevastatorName = hero;
-	SetObjectPosition(CREATURE_INFERNO_1, 141, 166, GROUND);
-	SetObjectPosition(OBJECT_FIRE_FOR_ALTAR, 22, 138, GROUND);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Fire_hug", "f_show_message_fire_hug_017");
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", "f_succubus_return");
-	f_show_message_incinerate_fire_028();
+	SetObjectPosition('Ritual_Succubus', 141, 166, GROUND);
+	SetObjectPosition('Fire_for_move_to_altar', 22, 138, GROUND);
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Fire_hug", "HeroBurnsInFire");
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", "SuccubusReturnFromFire");
+	if fire_message == 0 then
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_028.txt");
+		fire_message = 1;
+	end
 	UnblockGame();
-end;
+end
 
-function f_succubus_return(hero) -- запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", "f_succubus_return")
-	if DevastatorName == hero then
-		DevastatorName = "";
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", nil);
-		SetObjectPosition(CREATURE_INFERNO_1, 22, 138, GROUND);
-		SetObjectPosition(OBJECT_FIRE_FOR_ALTAR, 140, 166, GROUND);
-		MoveCamera(22, 138, 0, 35, 1, 4.71, 0, 0, 1);
-		sleep(1);
-		startThread( f_show_message_succubus_return_018 );
-	end;
-end;
-
-x_to_return, y_to_return, floor_to_return = GetObjectPosition( "Arantir" );
-
-function f_meet_paladin( heroName ) -- Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_FALLEN_PALADIN, "f_meet_paladin");
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_FALLEN_PALADIN, "f_show_message_paladin_speak_save_us_025");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Soulkeeper_speaks_go_away", nil);
-	SetRegionBlocked("6_block_zone_for_AI_players", nil, PLAYER_1);
-	if heroName ~= "Arantir" then
-		SetRegionBlocked( "RegionToArantir", nil );
-		local x, y = RegionToPoint( "RegionToArantir" );
-		x_to_return, y_to_return, floor_to_return = GetObjectPosition( "Arantir" );
-		SetObjectRotation( "Arantir", 315 );
-		SetObjectPosition( "Arantir", x, y, GROUND );
-		BlockGame();
-		sleep(2);
-		UnblockGame();
-	end;
-	SetObjectPosition( HERO_PLAYER, 129, 3, GROUND );
-	SetObjectRotation( HERO_PLAYER, 270 );
-	StartAdvMapDialog (5, "ReturnArantirBack");   --------------------------------5_advmap_dialog
-end;
-
-function ReturnArantirBack()
-	if table.length(GetObjectsInRegion( "RegionToArantir", OBJECT_HERO )) > 0 then -- if Arantir is in region he needs to return back
-		SetObjectPosition( "Arantir", x_to_return, y_to_return, floor_to_return );
-	end;
-	sleep(5);
-	OpenCircleFog(169, 67, 0, 12, 1);		
-	sleep(4);
-	MoveCamera(169, 67, 0, 40, 1, 0.935, 0, 0, 1);
-	SetObjectiveState('sec3', OBJECTIVE_ACTIVE, PLAYER_1);
-	startThread( f_sec_3_success );
-end;
-
-function f_sec_3_success()
-	while 1 do
-		if (IsObjectExists(HERO_SOULKEEPER) == nil) then
-			SetObjectPosition(OBJECT_SULFUR_01, 169, 66, GROUND);
-			Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_FALLEN_PALADIN, nil);
-			OpenCircleFog(126, 2, 0, 5, 1);		
-			sleep(2);
-			MoveCamera(126, 2, 0, 30, 1, 2.355, 0, 0, 1);
-			sleep(3);
-			PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", CREATURE_FALLEN_PALADIN, 0, 0, 0, 0, 0 );
-			sleep(3);
-			RemoveObject(CREATURE_FALLEN_PALADIN);
-			sleep(3);
-			CreateMonster("Death_Knight", CREATURE_DEATH_KNIGHT, 15, 126, 2, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 135);
-			SetObjectiveState("sec3", OBJECTIVE_COMPLETED, PLAYER_1);
-			x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( HERO_PLAYER );
-			BlockGame();
-			sleep(5);
-			SetObjectPosition( HERO_PLAYER, 129, 3, GROUND );
-			SetObjectRotation( HERO_PLAYER, 270 );
-			StartAdvMapDialog (6);   --------------------------------6_advmap_dialog
-			sleep(15);
-			UnblockGame();
-			SetDisabledObjectMode( "Death_Knight" , DISABLED_INTERACT );
-			sleep(10);
-			SetObjectPosition( HERO_PLAYER, x_ara_scene, y_ara_scene, floor_ara_scene );
-			break;
-		end;
-		sleep(2);
-	end;			
-end;
-
-function f_Deactivator_for_Soulkeeper_speaks_go_away(hero) -- Запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_Soulkeeper_speaks_go_away", "f_Deactivator_for_Soulkeeper_speaks_go_away");
-	if NearSoulkeeperName == hero then
-		NearSoulkeeperName = "";
-		SetRegionBlocked("6_block_zone_for_AI_players", nil, PLAYER_1);
-	end;
-end;
-
------------------------------------------------------
---*-- WIN/LOOSE FUNCTIONS --*--
------------------------------------------------------
-
---win
-function f_win()
-	Win();
-end;
-
---loose
-function f_loose()	
-	Loose();
-end;
-
------------------------------------------------------
---*-- MISC ACTIONS FUNCTIONS --*--
------------------------------------------------------
-
-function f_check_capture_gate_to_Flammschrein()
-    if (GetObjectOwner(OBJECT_GATE_TO_FLAMMSCHREIN) == 1) then
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-		SetAmbientLight(0, "Daylight", not nil, 10);
-    end;
-end;
-
-function f_save() -- Первоначально запускается функцией function f_Mochab_in_town(). После - триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_save");
--- ВАЖНО! Сейчас к этому моменту у игрока может быть максимум два героя - Арантир и Валерия. Если в очередной раз сюжет перелопатят - надо добавить вариант с другими героями. Фламмшрайн сейчас должен штурмовать только Арантир.	
-	if ( IsObjectInRegion( HERO_PLAYER, 'Stop_for_player' ) == not nil ) then
-		SetRegionBlocked("Flammschrein_Ghost_arrives", nil, PLAYER_1);
-		print ("Flamm_on_Arantir!!!");
-		GoToFlammschreinName = HERO_PLAYER;
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_HERO_PLAYER_Deactivator_for_Flammschrein_Ghost_arrives");
-		f_show_message_Arantir_ready_go_to_Flammschrein_029();
-		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", nil); -----Add_stop message
-		sleep(2);
---		Save("The_Mysteries_of_Flammschrein");
-	end;
-
-	if (IsObjectExists(HERO_PRISONER) == not nil) then	
-		if ( IsObjectInRegion( HERO_PRISONER, 'Stop_for_player' ) == not nil ) then
-			SetRegionBlocked("Flammschrein_Ghost_arrives", 1, PLAYER_1);
-			print ("Flamm_of_warning_Valeria!!!");
-			GoToFlammschreinName = HERO_PRISONER;
-			Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_HERO_PRISONER_Deactivator_for_Flammschrein_Ghost_arrives");
-			f_show_message_Valeria_does_not_wish_go_to_Flammschrein_030();
-		end;
-	end;	
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_save");
---	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", nil); -----Add_stop message
-end;
-
-function f_HERO_PLAYER_Deactivator_for_Flammschrein_Ghost_arrives(hero) -- Запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_HERO_PLAYER_Deactivator_for_Flammschrein_Ghost_arrives");
-	if hero == HERO_PLAYER then
-		SetRegionBlocked("Flammschrein_Ghost_arrives", nil, PLAYER_1);
-		GoToFlammschreinName = "";
-	end;
-end;
-
-function f_HERO_PRISONER_Deactivator_for_Flammschrein_Ghost_arrives(hero) -- Запускается триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_HERO_PRISONER_Deactivator_for_Flammschrein_Ghost_arrives");
-	if hero == HERO_PRISONER then
-		SetRegionBlocked("Flammschrein_Ghost_arrives", nil, PLAYER_1);
-		GoToFlammschreinName = "";
-	end;
-end;
-
-
-
-function f_StartDialogScene_S1()
-	StartDialogScene("/DialogScenes/A2C1/M5/S1/DialogScene.xdb#xpointer(/DialogScene)", "f_win"); -- FINAL DIALOGSCENE
-end;
-
----------------------------------------------------
---*-- CAMERA MOVE FUNCTIONS --*--
----------------------------------------------------
-function f_open_fog_115_81()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_01, nil);
-	OpenCircleFog(115, 81, 0, 3, 1);
-end;
-
-function f_open_fog_123_124()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_02, nil);
-	OpenCircleFog(123, 124, 0, 3, 1);
-end;
-
-function f_open_fog_137_128()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_03, nil);
-	OpenCircleFog(137, 128, 0, 9, 1);
-end;
-
----------------------------------------------------
---*-- MESSAGEBOX FUNCTIONS --*--
----------------------------------------------------
-
-function f_show_message_box_Oracle_001()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_001.txt");
-end;
-
-function f_show_message_box_Oracle_011()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_011.txt");
-end;	
-
-function f_show_message_box_Gate_to_Flammschrein_002()
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, nil);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, nil);
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_002.txt");
-	SetObjectiveState('pri3', OBJECTIVE_ACTIVE, PLAYER_1);
-	sleep(4);
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, "f_check_find_oracle");	
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_show_message_box_Gate_to_Flammschrein_002_2");
-end;
-
-function f_show_message_box_Gate_to_Flammschrein_002_2()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_002.txt");	
-end;
-
-function f_show_message_box_Ghosts_quest_003()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_003.txt");
-end;
-
-function f_show_message_box_Assasin_talk_004()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_004.txt");
-end;
-
-function f_show_message_box_Ghosts_quest_005()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_005.txt");
-end;
-
-function f_show_message_box_Ghosts_quest_006()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_006.txt");
-end;
-
-function f_show_message_box_touch_closed_portal_007()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_007.txt");
-end;
-
-function f_show_message_box_touch_Ghosts_idle_008()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_008.txt");
-end;
-
-function f_show_message_box_Oracle_speak_009()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_009.txt");
-end;
-
-function f_show_message_box_touch_Tomb_010()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_010.txt");
-end;
-
-function f_show_message_hilfe_012()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_012.txt");
-end;
-
-function f_show_message_hilfe_013()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_013.txt");
-end;
-
-function f_show_message_hilfe_014()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_014.txt");
-end;
-
-
-function f_show_message_sec2_failed_016()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_016.txt");
-end;
-
-function f_show_message_fire_hug_017()
+function HeroBurnsInFire()
 	if DevastatorName ~= "" then
 		MessageBox("/Maps/Scenario/A2C1M5/messagebox_017.txt");
-		sleep(1);
+		sleep(10);
 		RemoveObject(DevastatorName);
-	end;
-end;
+	end
+end
 
-function f_show_message_succubus_return_018()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_018.txt");
-end;
+return_fire_message = 0;
+function SuccubusReturnFromFire(hero)
+	if DevastatorName == hero then
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", nil);
+		DevastatorName = "";
+		SetObjectPosition('Ritual_Succubus', 22, 138, GROUND);
+		SetObjectPosition('Fire_for_move_to_altar', 140, 166, GROUND);
+		if return_fire_message == 0 then
+			return_fire_message = 1;
+			startThread( MessageBox, "/Maps/Scenario/A2C1M5/messagebox_018.txt" );
+		end
+	end
+end
 
-function f_show_message_broken_altar_touch_019()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_019.txt");
-end;
+function f_meet_paladin( hero ) -- Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, 'Paladin', "f_meet_paladin");
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Paladin', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_025.txt')");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Soulkeeper_speaks_go_away", nil);
+		OBJECTIVES.state.killPaladinSoulKeeper[2] = 1;
+	end
+end
 
-function f_show_message_meet_Mochab_020()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_020.txt");
-end;
+RITUAL_TILES = {
+	['Tile_44_154'] = {  44, 154, 0, 10, 1,  3.14, 0, 0, 1 },
+	['Tile_65_111'] = {  65, 111, 0, 30, 1,  1.57, 0, 0, 1 },
+	['Tile_20_12']  = {  20,  12, 0, 30, 1,  1.57, 0, 0, 1 },
+	['Tile_149_67'] = { 149,  67, 0, 30, 1, 3.925, 0, 0, 1 },
+}
 
-function f_show_message_old_alchemist_021()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_021.txt");
-end;
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/A2C1/M5/S1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,	
 
-function f_show_message_magic_barrier_disappears_022()
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_022.txt");
-end;
+	performRitual = function()
+		OBJECTIVES.state.OrnellaIsAlive[2] = 10;
+		BlockGame();
+		MakeHeroReturnToTavernAfterDeath('Gles', 0); -- НЕВозвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath('Effig', 0); -- НЕВозвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath('Muscip', 0); -- НЕВозвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath('OrnellaNecro', 0); -- НЕВозвращение героя в таверну
+		for key, value in RITUAL_TILES do
+			OpenCircleFog(value[1], value[2], value[3], value[4], value[5]);		
+			MoveCamera(value[1], value[2], value[3], value[4] + 20, value[5], value[6], value[7], value[8],value[9]);	
+			sleep(40);
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", key, 0, 0, 0, 0, 0 );
+			Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" );
+			sleep(60);
+		end
+		OpenCircleFog(137, 128, 0, 10, 1);
+		for i = 1,4 do
+			local sacrifice = GetObjectsInRegion( "Ritual_"..i, OBJECT_HERO );
+			if table.length(sacrifice) > 0 then RemoveObject(sacrifice[0]); end;
+		end
+		if IsHeroAlive("GhostFSLord") ~= nil then RemoveObject('GhostFSLord'); 	end
+		MoveCamera(137, 128, 0, 30, 1, 4.71, 0, 0, 1);
+		sleep(40);
+		if IsObjectExists( 'Fire_wall' ) ~= nil then
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/UnholyWord.xdb#xpointer(/Effect)", 'Fire_wall', 0, 0, 0, 6, 0 );
+			sleep(4);
+			Play2DSound( "/Sounds/_(Sound)/Spells/UnholyWord.xdb#xpointer(/Sound)" ); ----------------BARIER
+			sleep(40);	
+			RemoveObject('Fire_wall');
+		end
+		sleep(40);
+		Play2DSound( "/Maps/Scenario/A2C1M5/C1M5_AM3_Arantir_01sound.xdb#xpointer(/Sound)" );
+		UnblockGame();
+	end,
+	
+	meetGhost = function()
+		BlockGame();
+		OpenCircleFog(145, 122, GROUND, 4, 1);
+		MoveCamera(145, 122, 0, 40, 1, 0, 0, 0, 1);
+		sleep(25);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Summon_ghost', 0, 0, 0, 0, 0 );
+		sleep(20);
+		DeployReserveHero("GhostFSLord", 145, 123, GROUND);
+		sleep(50);
+		EnableHeroAI("GhostFSLord", not nil);	
+		SetObjectRotation("GhostFSLord", 270);
+		MoveHeroRealTime("GhostFSLord", 139, 128, GROUND);
+		sleep(60);
+		MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
+		sleep(50);
+		SetObjectRotation( "GhostFSLord", 270 );
+		sleep(10);
+		local x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( 'Arantir' );
+		local x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( 'OrnellaNecro' );
+		SetObjectPosition( 'Arantir', 134, 128, GROUND );
+		SetObjectPosition( 'OrnellaNecro', 132, 128, GROUND );
+		SetObjectRotation( 'Arantir', 90 );
+		SetObjectRotation( 'OrnellaNecro', 90 );
+		UnblockGame();
+		CINEMATICS.playAndWait( 0 );
+		BlockGame();
+		sleep(50);
+		EnableHeroAI("GhostFSLord", nil);
+		SetObjectPosition( 'Arantir', x_ara_scene, y_ara_scene, floor_ara_scene );
+		SetObjectPosition( 'OrnellaNecro', x_orn_scene, y_orn_scene, floor_orn_scene );
+		UnblockGame();
+	end,
+	
+	meetPaladin = function()
+		BlockGame();
+		SetRegionBlocked( "RegionToArantir", nil );
+		local x, y = RegionToPoint( "RegionToArantir" );
+		local x_to_return, y_to_return, floor_to_return = GetObjectPosition( "Arantir" );
+		SetObjectRotation( "Arantir", 315 );
+		SetObjectPosition( "Arantir", x, y, GROUND );
+		sleep(20);
+		UnblockGame();
+		CINEMATICS.playAndWait( 5 );
+		BlockGame();
+		if table.length(GetObjectsInRegion( "RegionToArantir", OBJECT_HERO )) > 0 then -- if Arantir is in region he needs to return back
+			SetObjectPosition( "Arantir", x_to_return, y_to_return, floor_to_return );
+		end
+		OpenCircleFog(169, 67, 0, 12, 1);		
+		MoveCamera(169, 67, 0, 40, 1, 0.935, 0, 0, 1);
+		sleep(80);
+		UnblockGame();
+	end,
+	
+	paladinToDeathKnight = function()
+		BlockGame();
+		MoveCamera(126, 2, 0, 30, 1, 2.355, 0, 0, 1);
+		sleep(35);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", 'Paladin', 0, 0, 0, 0, 0 );
+		sleep(35);
+		if IsObjectExists('Paladin') then RemoveObject('Paladin'); end
+		sleep(10);
+		CreateMonster("Death_Knight", CREATURE_DEATH_KNIGHT, 15, 126, 2, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 135);
+		local x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( 'Arantir' );
+		SetObjectPosition( 'Arantir', 129, 3, GROUND );
+		SetObjectRotation( 'Arantir', 270 );
+		CINEMATICS.playAndWait( 6 );
+		sleep(15);
+		sleep(10);
+		SetObjectPosition( 'Arantir', x_ara_scene, y_ara_scene, floor_ara_scene );
+		SetDisabledObjectMode( "Death_Knight" , DISABLED_INTERACT );
+		UnblockGame();
+	end,
+	
+	showAssassins = function()
+		BlockGame();
+		OpenCircleFog(93, 57, GROUND, 6, PLAYER_1);
+		MoveCamera(93, 57, 0, 30, 1, 1.57, 0, 0, 1);
+		sleep(60);
+		OpenCircleFog(100, 60, GROUND, 6, 1);
+		MoveCamera(100, 60, 0, 30, 1, 1.57, 0, 0, 1);	
+		sleep(60);
+		OpenCircleFog(122, 120, GROUND, 6, 1);		
+		MoveCamera(122, 120, 0, 30, 1, 1.57, 0, 0, 1);
+		sleep(60);
+		UnblockGame();
+	end,
+	
+	meetAssassins = function()
+		BlockGame();
+		SetObjectPosition( 'Arantir', 94, 60, GROUND );
+		SetObjectRotation( 'Arantir', 0 );
+		sleep(20);
+		UnblockGame();
+		CINEMATICS.playAndWait( 3 );
+	end,
+	
+	assassinsKillSuccub = function()
+		BlockGame();
+		OpenCircleFog(16, 140, 0, 6, 1);
+		OpenCircleFog(23, 138, 0, 5, 1);
+		if IsObjectExists('Ritual_Succubus') then RemoveObject('Ritual_Succubus'); end
+		if IsObjectExists('Assasin') then RemoveObject('Assasin'); end
+		if IsObjectExists('Fire_for_move_to_altar') then  RemoveObject('Fire_for_move_to_altar'); end
+		sleep(10);
+		CreateMonster("Succubus_target", CREATURE_INFERNAL_SUCCUBUS , 1, 22, 138, GROUND, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 90);
+		sleep(20);
+		MoveCamera(21, 138, 0, 27, 1, 0, 0, 0, 1);
+		sleep(40);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Under_assassin', 0, 0, 0, 0, 0 );
+		sleep(30);
+		CreateMonster("Assassin_killer", CREATURE_ASSASSIN, 1, 20, 138, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 90);
+		sleep(20);
+		CINEMATICS.playAndWait( 4 );
+		PlayObjectAnimation( "Assassin_killer", "attack00", ONESHOT_STILL );
+		sleep(15);
+		PlayObjectAnimation( "Succubus_target", "death", ONESHOT_STILL );
+		sleep(5);
+		PlayObjectAnimation( "Assassin_killer", "stir02", ONESHOT_STILL );
+		sleep(30);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Under_succubus', 0, 0, 0, 0, 0 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Under_assassin', 0, 0, 0, 0, 0 );
+		sleep(20);
+		RemoveObject("Succubus_target");
+		RemoveObject("Assassin_killer");
+		UnblockGame();
+	end,
+	
+	destroyPortal = function()
+		BlockGame();
+		SetObjectPosition(OBJECTIVES.destroyPortal_destroyer, 19, 138, GROUND);	
+		sleep(20);			
+		MoveCamera(23, 138, 0, 35, 1, 4.71, 0, 0, 1);
+		sleep(20);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Armageddon.xdb#xpointer(/Effect)", 'Inferno_altar', 0, 0, 0, 0, 0 );
+		Play2DSound( "/Sounds/_(Sound)/Spells/Armageddon.xdb#xpointer(/Sound)" ); ----------------DESTROY_ALTAR_SDN
+		sleep(170);
+		for i = 1, 10 do
+			pcall(RemoveObject, "Smoke_"..i);
+		end
+		SetObjectPosition('Smoke_11', 16, 139, GROUND);
+		UnblockGame();
+	end,
 
-function f_show_message_soulkeeper_speak_go_away_023(hero) -- Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Soulkeeper_speaks_go_away", "f_show_message_soulkeeper_speak_go_away_023");
+	ghostReward = function()
+		BlockGame();
+		MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
+		sleep(20);
+		local x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( 'Arantir' );
+		local x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( 'OrnellaNecro' );
+		SetObjectPosition( 'Arantir', 134, 128, GROUND );
+		SetObjectPosition( 'OrnellaNecro', 132, 128, GROUND );
+		SetObjectRotation( 'Arantir', 90 );
+		SetObjectRotation( 'OrnellaNecro', 90 );
+		UnblockGame();
+		CINEMATICS.playAndWait( 2 );
+		BlockGame();
+		sleep(20);
+		SetObjectPosition( 'Arantir', x_ara_scene, y_ara_scene, floor_ara_scene );
+		SetObjectPosition( 'OrnellaNecro', x_orn_scene, y_orn_scene, floor_orn_scene );
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_006.txt");	
+		OpenCircleFog(104, 60, GROUND, 6, 1);		
+		MoveCamera(104, 60, 0, 30, 1, 0, 0, 0, 1);
+		sleep(60);
+		OpenCircleFog(100, 64, GROUND, 6, 1);		
+		MoveCamera(100, 64, 0, 30, 1, 0, 0, 0, 1);
+		sleep(60);
+		OpenCircleFog(97, 60, GROUND, 6, 1);		
+		MoveCamera(97, 60, 0, 30, 1, 0, 0, 0, 1);		
+		sleep(60);
+		UnblockGame();
+	end,
+	
+	meetGhostDaughterValeria = function()
+		CINEMATICS.playAndWait( 7 );
+	end,
+	
+	meetMochab = function()
+		BlockGame();
+		if IsObjectExists("Orlando") == nil then DeployReserveHero('Orlando', 153, 133, GROUND); sleep(10); end
+		OpenCircleFog(153, 133, GROUND, 4, 1);
+		MoveCamera(153, 133, 0, 40, 1, 4.71, 0, 0, 0);		
+		startThread(SetAmbientLight, 0, "Daylight", not nil, 10);
+		SetObjectRotation('Orlando', 270 );
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_020.txt");
+		sleep(20);
+		MoveHeroRealTime('Orlando', 158, 151, GROUND);
+		EnableHeroAI("Orlando", nil);
+		UnblockGame();
+	end
+}
+
+function f_save(hero)
+	if hero == 'Arantir' then
+		SetRegionBlocked( "Flammschrein_Ghost_arrives", nil, PLAYER_1 );
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_Deactivator_for_Flammschrein_Ghost_arrives");
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_029.txt");		-- It is Arantir that must advance towards Flammschrein
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", nil);
+		sleep(2);
+	elseif hero == 'RedHeavenHero03' then
+		SetRegionBlocked( "Flammschrein_Ghost_arrives", 1, PLAYER_1 );
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_for_Flammschrein_Ghost_arrives", "f_Deactivator_for_Flammschrein_Ghost_arrives");
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_030.txt"); -- Valeria refuses to attack Flammschrein. It must be Arantir who will do the deed
+	end
+end
+
+function f_Deactivator_for_Flammschrein_Ghost_arrives(hero)
+	if hero == 'Arantir' or hero == 'RedHeavenHero03' then
+		SetRegionBlocked("Flammschrein_Ghost_arrives", nil, PLAYER_1);
+	end
+end
+
+---------------------------------------------------
+--*-- UNUSED MESSAGES --*--
+---------------------------------------------------
+-- MessageBox('/Maps/Scenario/A2C1M5/messagebox_001.txt');	-- related to Oracle figure that is not present in campaign. Likely initial idea by Nival that was scrapped.
+-- MessageBox("/Maps/Scenario/A2C1M5/messagebox_011.txt");	-- related to Oracle figure that is not present in campaign. Likely initial idea by Nival that was scrapped.
+-- MessageBox("/Maps/Scenario/A2C1M5/messagebox_008.txt");
+-- MessageBox("/Maps/Scenario/A2C1M5/messagebox_021.txt");
+
+function f_show_message_soulkeeper_speak_go_away_023(hero)
 	BlockGame();
 	NearSoulkeeperName = hero;
 	SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_1);
 	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Deactivator_Soulkeeper_speaks_go_away", "f_Deactivator_for_Soulkeeper_speaks_go_away");	
 	MessageBox("/Maps/Scenario/A2C1M5/messagebox_023.txt");
 	UnblockGame();
-end;
+end
 
-function f_show_message_paladin_speak_save_us_025() -- Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_FALLEN_PALADIN, "f_show_message_paladin_speak_save_us_025");
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_025.txt");
-end;
+function f_Deactivator_for_Soulkeeper_speaks_go_away(hero)
+	if NearSoulkeeperName == hero then
+		NearSoulkeeperName = "";
+		SetRegionBlocked("6_block_zone_for_AI_players", nil, PLAYER_1);
+	end
+end
 
-function f_show_message_incinerate_fire_028() -- Запускается функцией function f_succubus(hero)
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_028.txt");
-end;
-
-function f_show_message_Arantir_ready_go_to_Flammschrein_029() -- Запускается функцией function f_save(hero)
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_029.txt");
-end;
-
-function f_show_message_Valeria_does_not_wish_go_to_Flammschrein_030() -- Запускается функцией function f_save(hero)
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_030.txt");
-end;
-
-
-
-function f_show_mummy_join_us_032() -- Запускатеся триггером Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mummy_speaks", "f_show_mummy_join_us_032");
-	if (IsObjectExists(CREATURE_FINAL_GIFT) == nil) then
+function mumiesFinalPlead()
+	if IsObjectExists('Final_gift') ~= nil then
 		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mummy_speaks", nil);
-		print("Mummy_nil");
-	else
-		ShowFlyingSign("/Maps/Scenario/A2C1M5/messagebox_032.txt", CREATURE_FINAL_GIFT, PLAYER_1, 9.0);
-	end;	
-end;
+		sleep(50);
+		ShowFlyingSign("/Maps/Scenario/A2C1M5/messagebox_032.txt", 'Final_gift', PLAYER_1, 12.0);
+	end	
+end
 
-function f_show_message_not_enough_SP_to_destroy_altar_033() -- Запускается функцией function f_ready_destroy_altar(hero)
-	MessageBox("/Maps/Scenario/A2C1M5/messagebox_033.txt");
-end;	
-
----------------------------------------------------
---*-- GAMEPLAY FUNCTIONS --*--
----------------------------------------------------
 function SetObjectCreatures( objName, creatureID, newCount )
    local count = GetObjectCreatures( objName, creatureID );
    if count == newCount then
      return
-   end;
+   end
    if count > newCount then
      RemoveObjectCreatures( objName, creatureID, count - newCount );
    else
      AddObjectCreatures( objName, creatureID, newCount - count );
-   end;
-end;
+   end
+end
 
-if GetDifficulty() == DIFFICULTY_EASY then
-	print ("easy");	
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 60 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_BONE_DRAGON, 7);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_WIGHT, 14);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 20);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 12);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 20);	
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_FOOTMAN, 18);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_FOOTMAN, 18);
-	Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, "f_add_creatures_to_prisoner_easy");	
-end;
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	print ("normal");
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 40 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 120 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 430 );	
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 15);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 8);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 15);	
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_FOOTMAN, 18);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_GRIFFIN, 10);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_FOOTMAN, 18);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_GRIFFIN, 10);
-	Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, "f_add_creatures_to_prisoner_normal");
-end;
-if GetDifficulty() == DIFFICULTY_HARD then
-	print ("hard");
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 25 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 90 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 360 );	
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 6);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 8);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_FOOTMAN, 18);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_GRIFFIN, 10);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_PRIEST, 6);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_ARCHER, 30);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_FOOTMAN, 18);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_GRIFFIN, 10);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_PRIEST, 6);
-	Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, "f_add_creatures_to_prisoner_hard");
-end;
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	print ("heroic");
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_DEATH_KNIGHT, 15 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_MUMMY, 70 );
-	SetObjectCreatures( CREATURE_FINAL_GIFT, CREATURE_ZOMBIE, 300 );
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_LICH, 2);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_DEATH_KNIGHT, 1);
-	AddObjectCreatures(OBJECT_HERO_TOWN, CREATURE_MUMMY, 2);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_ARCHER, 15);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_FOOTMAN, 9);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_GRIFFIN, 5);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_PRIEST, 3);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_SUD_WEST, CREATURE_CAVALIER, 2);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_ARCHER, 15);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_FOOTMAN, 9);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_GRIFFIN, 5);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_PRIEST, 3);
-	AddObjectCreatures(OBJECT_ENEMY_TOWN_OST, CREATURE_CAVALIER, 2);
-	AddObjectCreatures("Garrison_sud_west", CREATURE_LONGBOWMAN, 75); ----------add
-	AddObjectCreatures("Garrison_sud_west", CREATURE_VINDICATOR, 55); ----------add
-	AddObjectCreatures("Garrison_sud_west", CREATURE_CHAMPION , 5); ----------add
-	AddObjectCreatures("Garrison_ost", CREATURE_BATTLE_GRIFFIN , 30); ----------add
-	AddObjectCreatures("Garrison_ost", CREATURE_VINDICATOR , 80); ----------add
-	AddObjectCreatures("Garrison_ost", CREATURE_LONGBOWMAN , 60); ----------add
-end;
-
-function f_add_creatures_to_prisoner_easy()
-	if (IsObjectExists(HERO_PRISONER) == not nil) then
-		AddHeroCreatures(HERO_PRISONER, CREATURE_SERAPH, 12);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_CHAMPION, 24);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_ZEALOT, 40);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_VINDICATOR, 112);
+function f_add_creatures_to_prisoner()
+	if IsObjectExists('RedHeavenHero03') == not nil then
+		AddHeroCreatures('RedHeavenHero03', 	CREATURE_SERAPH,  17 -  4 * diff );
+		AddHeroCreatures('RedHeavenHero03',	  CREATURE_CHAMPION,  33 -  8 * diff );
+		AddHeroCreatures('RedHeavenHero03', 	CREATURE_ZEALOT,  61 - 15 * diff );
+		AddHeroCreatures('RedHeavenHero03', CREATURE_VINDICATOR, 130 - 30 * diff );
 		Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, nil);
-	end;
-end;
-
-function f_add_creatures_to_prisoner_normal()
-	if (IsObjectExists(HERO_PRISONER) == not nil) then
-		AddHeroCreatures(HERO_PRISONER, CREATURE_SERAPH, 8);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_CHAMPION, 18);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_ZEALOT, 32);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_VINDICATOR, 96);
-		Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, nil);
-	end;
-end;
-
-function f_add_creatures_to_prisoner_hard()
-	if (IsObjectExists(HERO_PRISONER) == not nil) then
-		AddHeroCreatures(HERO_PRISONER, CREATURE_SERAPH, 4);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_CHAMPION, 8);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_ZEALOT, 12);
-		AddHeroCreatures(HERO_PRISONER, CREATURE_VINDICATOR, 36);
-		Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, nil);
-	end;
-end;
-
-function f_start_west_block()
-	SetRegionBlocked("Start_west_block", 1, PLAYER_2); -- Стартовая временная блокировка у западного города
-end;
-
-function f_start_ost_block()
-	SetRegionBlocked("Start_ost_block", 1, PLAYER_2); -- Стартовая временная блокировка у восточного города
-end;
-
-function f_start_west_block_disabled()
-	SetRegionBlocked("Start_west_block", nil, PLAYER_2); -- Упраздняет блокировку зоны у западного города
-end;
-
-function f_start_ost_block_disabled()
-	SetRegionBlocked("Start_ost_block", nil, PLAYER_2); -- Упраздняет блокировку зоны у восточного города
-end;
+	end
+end
 
 A2C1M5_EVIL_TOWN_REINFORCEMENTS = {
 		--   T7, T6, T5, T4,  T3,  T2
-	 [0] = {  2,  4, 10, 30,  50,  80 },
-	 [1] = {  4,  8, 16, 40,  75, 120 },
-	 [2] = {  6, 12, 23, 50, 100, 160 },
-	 [3] = {  7, 16, 30, 60, 125, 200 },
+	 [1] = {  2,  4, 10, 30,  50,  80 },
+	 [2] = {  4,  8, 16, 40,  75, 120 },
+	 [3] = {  6, 12, 23, 50, 100, 160 },
+	 [4] = {  7, 16, 30, 60, 125, 200 },
 }
 
 function A2C1M5_reinforceEvilTown( game_diff )
-	AddObjectCreatures(OBJECT_EVIL_TOWN,         CREATURE_ARCH_DEMON, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][1]);
-	AddObjectCreatures(OBJECT_EVIL_TOWN,          CREATURE_PIT_SPAWN, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][2]);
-	AddObjectCreatures(OBJECT_EVIL_TOWN,           CREATURE_HELLMARE, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][3]);
-	AddObjectCreatures(OBJECT_EVIL_TOWN,   CREATURE_SUCCUBUS_SEDUCER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][4]);
-	AddObjectCreatures(OBJECT_EVIL_TOWN, CREATURE_FIREBREATHER_HOUND, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][5]);
-	AddObjectCreatures(OBJECT_EVIL_TOWN,      CREATURE_HORNED_LEAPER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][6]);
+	AddObjectCreatures('Flammschrein',         CREATURE_ARCH_DEMON, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][1]);
+	AddObjectCreatures('Flammschrein',          CREATURE_PIT_SPAWN, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][2]);
+	AddObjectCreatures('Flammschrein',           CREATURE_HELLMARE, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][3]);
+	AddObjectCreatures('Flammschrein',   CREATURE_SUCCUBUS_SEDUCER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][4]);
+	AddObjectCreatures('Flammschrein', CREATURE_FIREBREATHER_HOUND, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][5]);
+	AddObjectCreatures('Flammschrein',      CREATURE_HORNED_LEAPER, A2C1M5_EVIL_TOWN_REINFORCEMENTS[game_diff][6]);
 end
 
-function H55_TriggerDaily()
-	if (GetDate( DAY ) == 22) then
-		f_start_west_block_disabled();
-		f_start_ost_block_disabled();
-		print("open");
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 5) then
-		car = CARAVAN..GetDate(DAY);
-		CreateCaravan(car, PLAYER_1, GROUND, 130, 1, GROUND, 136, 14 );
-		sleep(4);
-		SetObjectRotation(car, 180);
-		AddObjectCreatures(car, CREATURE_BONE_DRAGON, 4);
-		AddObjectCreatures(car, CREATURE_WIGHT, 8);
-		AddObjectCreatures(car, CREATURE_LICH, 12);
-		AddObjectCreatures(car, CREATURE_VAMPIRE, 20);
-		AddObjectCreatures(car, CREATURE_MANES, 36);
-		AddObjectCreatures(car, CREATURE_WALKING_DEAD, 60);
-		AddObjectCreatures(car, CREATURE_SKELETON, 80);
-		OpenCircleFog(130, 1, 0, 4, 1);		
-		sleep(4);
-		MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
-		f_random_caravan_message();
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 1) then
-		A2C1M5_reinforceEvilTown(0);
-	end;		
-end;
-
-function H55_SecTriggerDaily()
-	if (GetDate( DAY ) == 15) then
-		f_start_west_block_disabled();
-		f_start_ost_block_disabled();
-		print("open");
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 5) then
-		car = CARAVAN..GetDate(DAY);
-		CreateCaravan(car, PLAYER_1, GROUND, 130, 1, GROUND, 136, 14 );
-		sleep(4);
-		SetObjectRotation(car, 180);
-		AddObjectCreatures(car, CREATURE_BONE_DRAGON, 1);
-		AddObjectCreatures(car, CREATURE_WIGHT, 2);
-		AddObjectCreatures(car, CREATURE_LICH, 3);
-		AddObjectCreatures(car, CREATURE_VAMPIRE, 5);
-		AddObjectCreatures(car, CREATURE_MANES, 9);
-		AddObjectCreatures(car, CREATURE_WALKING_DEAD, 15);
-		AddObjectCreatures(car, CREATURE_SKELETON, 20);
-		OpenCircleFog(130, 1, 0, 4, 1);		
-		sleep(4);
-		MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
-		f_random_caravan_message();
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 1) then
-		A2C1M5_reinforceEvilTown(1);
-	end;		
-end;
-
-function H55_ThrTriggerDaily()
-	if (GetDate( DAY ) == 8) then
-		f_start_west_block_disabled();
-		f_start_ost_block_disabled();
-		print("open");
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 5) then
-		car = CARAVAN..GetDate(DAY);
-		CreateCaravan(car, PLAYER_1, GROUND, 130, 1, GROUND, 136, 14 );
-		sleep(4);
-		SetObjectRotation(car, 180);
-		AddObjectCreatures(car, CREATURE_VAMPIRE, 3);
-		AddObjectCreatures(car, CREATURE_MUMMY, 2);
-		AddObjectCreatures(car, CREATURE_DEATH_KNIGHT, 1);
-		OpenCircleFog(130, 1, 0, 4, 1);		
-		sleep(4);
-		MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
-		f_random_caravan_message();
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 1) then
-		A2C1M5_reinforceEvilTown(2);
-	end;		
-end;
-
-function H55_FrtTriggerDaily()
-	if (GetDate( DAY ) == 2) then
-		f_start_west_block_disabled();
-		f_start_ost_block_disabled();
-		print("open");
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 5) then
-		car = CARAVAN..GetDate(DAY);
-		CreateCaravan(car, PLAYER_1, GROUND, 130, 1, GROUND, 136, 14 );
-		sleep(4);
-		SetObjectRotation(car, 180);
-		AddObjectCreatures(car, CREATURE_LICH, 1);
-		AddObjectCreatures(car, CREATURE_MUMMY, 1);
-		OpenCircleFog(130, 1, 0, 4, 1);		
-		sleep(4);
-		MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
-		f_random_caravan_message();
-	end;
-	if (GetDate( DAY_OF_WEEK ) == 1) then
-		A2C1M5_reinforceEvilTown( 3 );
-	end;		
-end;
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	H55_NewDayTrigger = 1;
-	CreateArtifact("", ARTIFACT_LION_HIDE_CAPE , 138, 7, GROUND);
-end;
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	H55_SecNewDayTrigger = 1;
-end;
-if GetDifficulty() == DIFFICULTY_HARD then
-	H55_ThrNewDayTrigger = 1;
-end;
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	H55_FrtNewDayTrigger = 1;
-end;
-
-function f_random_caravan_message()
-	x = random(3);
-	print( 'random caravan message #', x );
-	if (x == 0) then f_show_message_hilfe_012() end;
-	if (x == 1) then f_show_message_hilfe_013() end;
-	if (x == 2) then f_show_message_hilfe_014() end;
-end;
-
-function f_activate_castle_OBJECT_ENEMY_TOWN_NORD() -- Запускается триггерами Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_OST, "f_activate_castle_OBJECT_ENEMY_TOWN_NORD") или Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_SUD_WEST, "f_activate_castle_OBJECT_ENEMY_TOWN_NORD")
+function f_activate_castle_Merlon()
 	SetRegionBlocked("4_block_zone_for_player2", nil, PLAYER_2);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_OST, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_SUD_WEST, nil);
-	SetRegionBlocked("Temp_block_player2", nil, PLAYER_2);
-	SetRegionBlocked("Temp_block_player2_2", nil, PLAYER_2);
+	Trigger( OBJECT_CAPTURE_TRIGGER, 	  'Garrison_ost', nil );
+	Trigger( OBJECT_CAPTURE_TRIGGER, 'Garrison_sud_west', nil );
+	SetRegionBlocked(   "Temp_block_player2", nil, PLAYER_2 );
+	SetRegionBlocked( "Temp_block_player2_2", nil, PLAYER_2 );
 	print("nord_free");
 end;
 
-function f_activate_castle_OBJECT_ENEMY_TOWN_CENTER() -- Запускается триггерами Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_NORD, "f_activate_castle_OBJECT_ENEMY_TOWN_CENTER") или Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_CENTER_NORD, "f_activate_castle_OBJECT_ENEMY_TOWN_CENTER")
+function f_activate_castle_Stormdale()
 	SetRegionBlocked("3_block_zone_for_player2", nil, PLAYER_2);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_NORD, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_CENTER_NORD, nil);
+	Trigger(OBJECT_CAPTURE_TRIGGER, 'Garrison_nord', nil);
+	Trigger(OBJECT_CAPTURE_TRIGGER, 'Garrison_center_nord', nil);
 	print("center_free");
 end;
 
-function town_counter()
-	count = 0;
-	sleep(2);
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_NORD) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_CENTER) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_SUD_WEST) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_OST) == PLAYER_1 then
-		count = count + 1
-	end;
-	if count == 4 and count_4 == 0 then
-		DeployReserveHero(HERO_AI_3_ENEMY_HERO_4, 18, 140, GROUND);
-		sleep(2);
-		UnreserveHero(HERO_AI_3_ENEMY_HERO_4);
-		count_4 = 1
-	end;
-	if count == 3 and count_3 == 0 then
-		DeployReserveHero(HERO_AI_3_ENEMY_HERO_3, 18, 140, GROUND);
-		sleep(2);
-		UnreserveHero(HERO_AI_3_ENEMY_HERO_3);
-		count_3 = 1
-	end;
-	if count == 2 and count_2 == 0 then
-		DeployReserveHero(HERO_AI_3_ENEMY_HERO_2, 18, 140, GROUND);
-		sleep(2);
-		UnreserveHero(HERO_AI_3_ENEMY_HERO_2);
-		count_2 = 1
-	end;
-	if count == 1 and count_1 == 0 then
-		DeployReserveHero(HERO_AI_3_ENEMY_HERO_1, 18, 140, GROUND);
-		sleep(2);
-		UnreserveHero(HERO_AI_3_ENEMY_HERO_1);
-		count_1 = 1
-	end;
-end;
-
-function town_counter_altar_broken()
-	count = 0
-	sleep(2);
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_NORD) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_CENTER) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_SUD_WEST) == PLAYER_1 then
-		count = count + 1
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_OST) == PLAYER_1 then
-		count = count + 1
-	end;
-	if count == 4 and count_4 == 0 then
-		count_4 = 1
-	end;
-	if count == 3 and count_3 == 0 then
-		count_3 = 1
-	end;
-	if count == 2 and count_2 == 0 then
-		count_2 = 1
-	end;
-	if count == 1 and count_1 == 0 then
-		count_1 = 1
-	end;
-end;
-	
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_NORD, "town_counter");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_CENTER, "town_counter");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_SUD_WEST, "town_counter");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_OST, "town_counter");
-
---*---------------------------------------------------------------------------------------------*--
---*--------------------------- ANIMATIONS AND EFFECTS -------------------------*--
---*---------------------------------------------------------------------------------------------*--
-
----------------------------------------------------------------------------------------------------
---------------------------------------- MAIN --------------------------------------------------
----------------------------------------------------------------------------------------------------
-
 function GameVarBonus()
-	print("GameVarBonus: start");
 	if GetGameVar("BONUS_A2C1M4") =="1" then
 		PLAYER_GOLD = GetPlayerResource(PLAYER_1, GOLD);
-		sleep(2);
-		PLAYER_GOLD_BONUS = PLAYER_GOLD + GOLD_BONUS;
-		sleep(2);
-		SetPlayerResource(PLAYER_1, GOLD, PLAYER_GOLD_BONUS);
-		print( "BONUS_checked_1" );
-	end;
+		SetPlayerResource(PLAYER_1, GOLD, PLAYER_GOLD + 10000);
+	end
 end;
 
-startThread( GameVarBonus );
+function OwnedTowns(player)
+	local count = 0;
+	for i, town in { 'Merlon', 'Stormdale', 'Chillbury', 'Vigil' } do
+		if GetObjectOwner(town) == player then
+			count = count + 1
+		end
+	end
+	return count;
+end
 
-sleep(4);
-SetPlayerStartResources(PLAYER_2, 240, 240, 80, 140, 80, 80, 100000);
-SetPlayerStartResources(PLAYER_3, 80, 80, 30, 45, 30, 30, 40000);
-OpenCircleFog(165, 39, 0, 3, 1);
-UnreserveHero(HERO_FREE);
-UnreserveHero(HERO_FREE_2);
-UnreserveHero(HERO_AI_2_ENEMY_HERO_1); -- Заменить на скриптовое рождение если Ai будет тупить.
-UnreserveHero(HERO_AI_2_ENEMY_HERO_2); -- Заменить на скриптовое рождение если Ai будет тупить.
-UnreserveHero(HERO_AI_2_ENEMY_HERO_3); -- Заменить на скриптовое рождение если Ai будет тупить.
+function IsArantirReadyForRitual()
+	if OwnedTowns(PLAYER_1) < 4 then return end;
+	for i=1,4 do
+		local sacrifice = GetObjectsInRegion( "Ritual_"..i, OBJECT_HERO );
+		if table.length(sacrifice) == 0 or sacrifice[0] == 'RedHeavenHero03' or sacrifice[0] == 'Arantir' then return end;
+	end
+	if ( IsHeroInRitualZone( 'OrnellaNecro' ) == nil ) then return end;
+	return 1;
+end
 
-EnableHeroAI(HERO_SOULKEEPER, nil);
-SetRegionBlocked("1_block_zone_for_player2", 1, PLAYER_2);
-SetRegionBlocked("2_block_zone_for_player2", 1, PLAYER_2);
-SetRegionBlocked("1_block_zone_for_player3", 1, PLAYER_3);
-SetRegionBlocked("2_block_zone_for_player3", 1, PLAYER_3);
-SetRegionBlocked("3_block_zone_for_player3", 1, PLAYER_3);
-SetRegionBlocked("3_block_zone_for_player2", 1, PLAYER_2);
-SetRegionBlocked("4_block_zone_for_player2", 1, PLAYER_2);
-SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_2);
-SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_3);
-SetRegionBlocked("Alarm_succubus", 1, PLAYER_2);
-SetRegionBlocked("Alarm_succubus", 1, PLAYER_3);
-SetRegionBlocked("Stop_for_player", 1, PLAYER_2);
-SetRegionBlocked("Stop_for_player", 1, PLAYER_3);
-SetRegionBlocked("Temp_block_player2", 1, PLAYER_2);
-SetRegionBlocked("Temp_block_player2_2", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_1", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_1", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_2", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_2", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_3", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_3", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_4", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_4", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_5", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_5", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_6", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_6", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_7", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_7", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_8", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_8", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_9", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_9", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_10", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_10", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_11", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_11", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_12", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_12", 1, PLAYER_3);
-SetRegionBlocked("Block_teleport_13", 1, PLAYER_2);
-SetRegionBlocked("Block_teleport_13", 1, PLAYER_3);
-f_start_west_block();
-f_start_ost_block();
-AllowPlayerTavernHero( PLAYER_1, HERO_FREE, 1 );
-AllowPlayerTavernHero( PLAYER_1, HERO_FREE_2, 1 );
-AllowPlayerTavernHero( PLAYER_2, HERO_AI_2_ENEMY_HERO_1, 1 );
-AllowPlayerTavernHero( PLAYER_2, HERO_AI_2_ENEMY_HERO_2, 1 );
-AllowPlayerTavernHero( PLAYER_2, HERO_AI_2_ENEMY_HERO_3, 1 );
-AllowPlayerTavernHero( PLAYER_3, HERO_AI_3_ENEMY_HERO_1, 1 );
-AllowPlayerTavernHero( PLAYER_3, HERO_AI_3_ENEMY_HERO_2, 1 );
-AllowPlayerTavernHero( PLAYER_3, HERO_AI_3_ENEMY_HERO_3, 1 );
-AllowPlayerTavernHero( PLAYER_3, HERO_AI_3_ENEMY_HERO_4, 1 );
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_1, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_2, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_3, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_4, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_5, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_FREE, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_FREE_2, 1); -- Возвращение героя в таверну
-MakeHeroReturnToTavernAfterDeath(HERO_FREE_3, 1); -- Возвращение героя в таверну
-DenyAIHeroFlee(HERO_PLAYER, not nil);
-DenyAIHeroFlee(HERO_PLAYER_2, not nil);
-Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, "f_check_player_main_hero_death");
---Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ORACLE, "f_show_message_box_Oracle_011");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_EVIL_TOWN, "f_check_Flammschrein_captured");
--- Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_DEALER, "f_check_ghost_talk");
-Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_QUEST_TARGET, "f_show_message_box_Assasin_talk_004");
-Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_FALLEN_PALADIN, "f_meet_paladin");
--- Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_SOULKEEPER, "f_show_message_soulkeeper_speak_go_away_023");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Soulkeeper_speaks_go_away", "f_show_message_soulkeeper_speak_go_away_023");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TOMB, "f_show_message_box_touch_Tomb_010");
---Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_show_message_box_Gate_to_Flammschrein_002");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GATE_TO_FLAMMSCHREIN, "f_check_barrier_touch_new");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_GOLD, "f_show_message_box_touch_closed_portal_007");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_HERO, "f_show_message_box_touch_closed_portal_007");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_TREES, "f_show_message_box_touch_closed_portal_007");
+function IsHeroInRitualZone( hero )
+	if ( IsObjectInRegion( hero, 'Ritual_1' ) == not nil ) then return not nil end;
+	if ( IsObjectInRegion( hero, 'Ritual_2' ) == not nil ) then return not nil end;
+	if ( IsObjectInRegion( hero, 'Ritual_3' ) == not nil ) then return not nil end;
+	if ( IsObjectInRegion( hero, 'Ritual_4' ) == not nil ) then return not nil end;
+	return nil;
+end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_pri6");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_OST, "f_activate_castle_OBJECT_ENEMY_TOWN_NORD");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_SUD_WEST, "f_activate_castle_OBJECT_ENEMY_TOWN_NORD");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_NORD, "f_activate_castle_OBJECT_ENEMY_TOWN_CENTER");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_CENTER_NORD, "f_activate_castle_OBJECT_ENEMY_TOWN_CENTER");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Alarm_succubus", "f_succubus");
+FEDEX_DELIVERY = {
+	[1] = { CREATURE_BONE_DRAGON, 4, CREATURE_WIGHT, 8, 		CREATURE_LICH, 12, CREATURE_VAMPIRE, 20, CREATURE_MANES, 36, CREATURE_WALKING_DEAD, 60, CREATURE_SKELETON, 80 }, -- normal
+	[2] = { CREATURE_BONE_DRAGON, 1, CREATURE_WIGHT, 2, 	    CREATURE_LICH,  3, CREATURE_VAMPIRE,  5, CREATURE_MANES,  9, CREATURE_WALKING_DEAD, 15, CREATURE_SKELETON, 20 }, -- hard
+	[3] = { 	CREATURE_VAMPIRE, 3, CREATURE_MUMMY, 2, CREATURE_DEATH_KNIGHT,  1 }, -- heroic
+	[4] = {		   CREATURE_LICH, 1, CREATURE_MUMMY, 1 }, -- impossible
+};
 
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_01, "f_open_fog_115_81");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_02, "f_open_fog_123_124");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_SIGN_03, "f_open_fog_137_128");
-Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mummy_speaks", "f_show_mummy_join_us_032");
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+		CreateArtifact("", ARTIFACT_LION_HIDE_CAPE , 138, 7, GROUND);
+		SetObjectCreatures( 'Final_gift', CREATURE_DEATH_KNIGHT, 60 );
+		SetObjectCreatures( 'Final_gift', CREATURE_MUMMY, 120 );
+		SetObjectCreatures( 'Final_gift', CREATURE_ZOMBIE, 430 );	
+		AddObjectCreatures('Nergal-shum', CREATURE_BONE_DRAGON, 7);
+		AddObjectCreatures('Nergal-shum', CREATURE_WIGHT, 14);
+		AddObjectCreatures('Nergal-shum', CREATURE_LICH, 20);
+		AddObjectCreatures('Nergal-shum', CREATURE_DEATH_KNIGHT, 12);
+		AddObjectCreatures('Nergal-shum', CREATURE_MUMMY, 20);	
+		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 18);
+		AddObjectCreatures('Vigil', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 18);
+		print("Difficulty Level is NORMAL");
+	end,
+	
+	[1] = function()
+		diff = 2;
+		SetObjectCreatures( 'Final_gift', CREATURE_DEATH_KNIGHT, 40 );
+		SetObjectCreatures( 'Final_gift', CREATURE_MUMMY, 120 );
+		SetObjectCreatures( 'Final_gift', CREATURE_ZOMBIE, 430 );	
+		AddObjectCreatures('Nergal-shum', CREATURE_LICH, 15);
+		AddObjectCreatures('Nergal-shum', CREATURE_DEATH_KNIGHT, 8);
+		AddObjectCreatures('Nergal-shum', CREATURE_MUMMY, 15);	
+		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 18);
+		AddObjectCreatures('Chillbury', CREATURE_GRIFFIN, 10);
+		AddObjectCreatures('Vigil', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 18);
+		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 10);
+		print("Difficulty Level is HARD");
+	end,
+	
+	[2] = function()
+		diff = 3;
+		SetObjectCreatures( 'Final_gift', CREATURE_DEATH_KNIGHT, 25 );
+		SetObjectCreatures( 'Final_gift', CREATURE_MUMMY, 90 );
+		SetObjectCreatures( 'Final_gift', CREATURE_ZOMBIE, 360 );	
+		AddObjectCreatures('Nergal-shum', CREATURE_DEATH_KNIGHT, 6);
+		AddObjectCreatures('Nergal-shum', CREATURE_MUMMY, 8);
+		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 18);
+		AddObjectCreatures('Chillbury', CREATURE_GRIFFIN, 10);
+		AddObjectCreatures('Chillbury', CREATURE_PRIEST, 6);
+		AddObjectCreatures('Vigil', CREATURE_ARCHER, 30);
+		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 18);
+		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 10);
+		AddObjectCreatures('Vigil', CREATURE_PRIEST, 6);
+		print("Difficulty Level is HEROIC");
+	end,
+	
+	[3] = function()
+		diff = 4;
+		SetObjectCreatures( 'Final_gift', CREATURE_DEATH_KNIGHT, 15 );
+		SetObjectCreatures( 'Final_gift', CREATURE_MUMMY, 70 );
+		SetObjectCreatures( 'Final_gift', CREATURE_ZOMBIE, 300 );
+		AddObjectCreatures('Nergal-shum', CREATURE_LICH, 2);
+		AddObjectCreatures('Nergal-shum', CREATURE_DEATH_KNIGHT, 1);
+		AddObjectCreatures('Nergal-shum', CREATURE_MUMMY, 2);
+		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 15);
+		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 9);
+		AddObjectCreatures('Chillbury', CREATURE_GRIFFIN, 5);
+		AddObjectCreatures('Chillbury', CREATURE_PRIEST, 3);
+		AddObjectCreatures('Chillbury', CREATURE_CAVALIER, 2);
+		AddObjectCreatures('Vigil', CREATURE_ARCHER, 15);
+		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 9);
+		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 5);
+		AddObjectCreatures('Vigil', CREATURE_PRIEST, 3);
+		AddObjectCreatures('Vigil', CREATURE_CAVALIER, 2);
+		AddObjectCreatures("Garrison_sud_west", CREATURE_LONGBOWMAN, 75);
+		AddObjectCreatures("Garrison_sud_west", CREATURE_VINDICATOR, 55);
+		AddObjectCreatures("Garrison_sud_west", CREATURE_CHAMPION , 5);
+		AddObjectCreatures("Garrison_ost", CREATURE_BATTLE_GRIFFIN , 30);
+		AddObjectCreatures("Garrison_ost", CREATURE_VINDICATOR, 80);
+		AddObjectCreatures("Garrison_ost", CREATURE_LONGBOWMAN, 60);
+		print("Difficulty Level is IMPOSSIBLE");
+	end,
+}
 
+OBJECTIVES = {
+	state = {
+	   ArantirIsAlive 	  	 = { "pri1", 1 },		-- Arantir must survive
+	   captureFlammshrein 	 = { "pri2", 1 },		-- Capture town of Flammschrein
+	   findOracle			 = { "pri3", 0 },		-- 
+	   removeMagicBarrier	 = { "pri4", 0 },		-- Disable the magic barrier on the garrison
+	   OrnellaIsAlive		 = { "pri5", 1 },		-- Ornella must survive
+	   defeatMochab			 = { "pri6", 1 },		-- 
+	   destroyPortal		 = { "sec1", 1 },		--
+	   avengeTheGhost		 = { "sec2", 0 },		-- kill the killers of ghost of Flammschrein
+	   killPaladinSoulKeeper = { "sec3", 0 },   	-- free Paladin ghost by killing the demon Soulkeeper (1-2 active, 10 completed)
+	   eventManager		 	 = {    "_", 1 }, 		-- controls release of reserved heroes
+	},
 
-SetDisabledObjectMode( CREATURE_FALLEN_PALADIN , DISABLED_INTERACT );
-SetDisabledObjectMode( CREATURE_QUEST_TARGET , DISABLED_ATTACK );
-SetDisabledObjectMode( CREATURE_INFERNO_1 , DISABLED_ATTACK );
-SetDisabledObjectMode( CREATURE_FINAL_GIFT , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_TELEPORT_TO_GOLD , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_TELEPORT_TO_HERO , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_TELEPORT_TO_TREES , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_15 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_16 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_17 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_18 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_19 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_20 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_IN_21 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_15 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_16 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_17 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_18 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_19 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_20 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_OUT_21 , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_GATE_TO_FLAMMSCHREIN , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_TOMB , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_INFERNO_ALTAR , DISABLED_INTERACT );
---------------------------------------
-function Main_hero_de()  
-	while 1 do
-		sleep(20);
-		if IsHeroAlive("Arantir") == nil then 
-			Loose();
-			break;
-		end;
-	end;
-end;
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		InitTeleportsPairs();
+		GameVarBonus();
+		SetPlayerStartResources( PLAYER_2, 240, 240, 80, 140, 80, 80, 100000 );
+		SetPlayerStartResources( PLAYER_3,  80,  80, 30,  45, 30, 30,  40000 );
+		OpenCircleFog(165, 39, 0, 3, 1);
+		UnreserveHero('Gles');
+		UnreserveHero('Effig');
+		MakeHeroReturnToTavernAfterDeath( 'Gles', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'Effig', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'Muscip', 1 ); -- Возвращение героя в таверну
+		AllowPlayerTavernHero( PLAYER_1, 'Gles', 1 );
+		AllowPlayerTavernHero( PLAYER_1, 'Effig', 1 );
+		UnreserveHero('RedHeavenHero04'); -- Заменить на скриптовое рождение если Ai будет тупить.
+		UnreserveHero('RedHeavenHero02'); -- Заменить на скриптовое рождение если Ai будет тупить.
+		UnreserveHero('RedHeavenHero06'); -- Заменить на скриптовое рождение если Ai будет тупить.
+		AllowPlayerTavernHero( PLAYER_2, 'RedHeavenHero04', 1 );
+		AllowPlayerTavernHero( PLAYER_2, 'RedHeavenHero02', 1 );
+		AllowPlayerTavernHero( PLAYER_2, 'RedHeavenHero06', 1 );
+		MakeHeroReturnToTavernAfterDeath( 'RedHeavenHero04', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'RedHeavenHero02', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'RedHeavenHero06', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'RedHeavenHero05', 1 ); -- Возвращение героя в таверну
+		MakeHeroReturnToTavernAfterDeath( 'RedHeavenHero01', 1 ); -- Возвращение героя в таверну
+		AllowPlayerTavernHero( PLAYER_3,   'Jazaz', 1 );
+		AllowPlayerTavernHero( PLAYER_3, 	'Grok', 1 );
+		AllowPlayerTavernHero( PLAYER_3, 'Oddrema', 1 );
+		AllowPlayerTavernHero( PLAYER_3,   'Deleb', 1 );
+		DenyAIHeroFlee(	 	 'Arantir', not nil );
+		DenyAIHeroFlee( 'OrnellaNecro', not nil );
+		EnableHeroAI('Efion', nil);
+		SetRegionBlocked("1_block_zone_for_player2", 1, PLAYER_2);
+		SetRegionBlocked("2_block_zone_for_player2", 1, PLAYER_2);
+		SetRegionBlocked("1_block_zone_for_player3", 1, PLAYER_3);
+		SetRegionBlocked("2_block_zone_for_player3", 1, PLAYER_3);
+		SetRegionBlocked("3_block_zone_for_player3", 1, PLAYER_3);
+		SetRegionBlocked("3_block_zone_for_player2", 1, PLAYER_2);
+		SetRegionBlocked("4_block_zone_for_player2", 1, PLAYER_2);
+		SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_2);
+		SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_3);
+		SetRegionBlocked("Alarm_succubus", 1, PLAYER_2);
+		SetRegionBlocked("Alarm_succubus", 1, PLAYER_3);
+		SetRegionBlocked("Stop_for_player", 1, PLAYER_2);
+		SetRegionBlocked("Stop_for_player", 1, PLAYER_3);
+		SetRegionBlocked("Temp_block_player2", 1, PLAYER_2);
+		SetRegionBlocked("Temp_block_player2_2", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_1", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_1", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_2", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_2", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_3", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_3", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_4", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_4", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_5", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_5", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_6", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_6", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_7", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_7", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_8", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_8", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_9", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_9", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_10", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_10", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_11", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_11", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_12", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_12", 1, PLAYER_3);
+		SetRegionBlocked("Block_teleport_13", 1, PLAYER_2);
+		SetRegionBlocked("Block_teleport_13", 1, PLAYER_3);
+		SetRegionBlocked( "Start_west_block", 1, PLAYER_2 ); -- Стартовая временная блокировка у западного города
+		SetRegionBlocked(  "Start_ost_block", 1, PLAYER_2 ); -- Стартовая временная блокировка у восточного города
+		SetDisabledObjectMode( 'Assasin' , DISABLED_ATTACK );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_004.txt')");
+		SetObjectEnabled('Assasin', nil);
+		SetDisabledObjectMode( 'Paladin' , DISABLED_INTERACT );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Paladin', "f_meet_paladin");
+		SetObjectEnabled('Paladin', nil);
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Soulkeeper_speaks_go_away", "f_show_message_soulkeeper_speak_go_away_023");
+		SetDisabledObjectMode( 'Tomb' , DISABLED_INTERACT );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Tomb', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_010.txt')");
+		SetObjectEnabled('Tomb', nil);
+		SetDisabledObjectMode( 'Gate_to_Flammschrein' , DISABLED_INTERACT );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Gate_to_Flammschrein', "visitMagicBarrier");
+		SetObjectEnabled('Gate_to_Flammschrein', nil);
+		SetDisabledObjectMode( 'Teleport_to_gold', DISABLED_INTERACT );
+		SetDisabledObjectMode( 'Teleport_to_hero', DISABLED_INTERACT );
+		SetDisabledObjectMode( 'Teleport_to_trees', DISABLED_INTERACT );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_gold', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_007.txt')");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_hero', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_007.txt')");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_trees', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_007.txt')");
+		SetObjectEnabled('Teleport_to_gold', nil);
+		SetObjectEnabled('Teleport_to_hero', nil);
+		SetObjectEnabled('Teleport_to_trees', nil);
+		Trigger(OBJECT_CAPTURE_TRIGGER,			 'Garrison_ost', 	"f_activate_castle_Merlon" ); -- defeat the bottom (right) garrison unlocks AI access top->bottom map
+		Trigger(OBJECT_CAPTURE_TRIGGER,		'Garrison_sud_west', 	"f_activate_castle_Merlon" ); -- defeat the bottom (left) garrison unlocks AI access top->bottom map
+		Trigger(OBJECT_CAPTURE_TRIGGER, 		'Garrison_nord',  "f_activate_castle_Stormdale" ); -- defeat the top (left) garrison activates AI town Merlon (Top-center)
+		Trigger(OBJECT_CAPTURE_TRIGGER,  'Garrison_center_nord',  "f_activate_castle_Stormdale" ); -- defeat the top (right) garrison activates AI town Merlon (Top-center)
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Alarm_succubus", "SuccubusTurnsToFire");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Sign1', "OpenCircleFog(115, 81, 0, 3, 1)" );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Sign2', "OpenCircleFog(123, 124, 0, 3, 1)" );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Sign3', "OpenCircleFog(137, 128, 0, 9, 1)" );
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Mummy_speaks", "mumiesFinalPlead");
+		SetDisabledObjectMode( 'Ritual_Succubus', DISABLED_ATTACK );
+		SetObjectEnabled('Ritual_Succubus', nil);
+		SetDisabledObjectMode( 'Final_gift', DISABLED_INTERACT );
+		Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, "f_add_creatures_to_prisoner");
+		for i = 15,21 do
+			SetDisabledObjectMode( 'In'..i, DISABLED_INTERACT );   	-- disable portal entries
+			SetDisabledObjectMode( 'Out'..i, DISABLED_INTERACT );	-- disable portal exits
+		end		
+		SetDisabledObjectMode( 'Inferno_altar' , DISABLED_INTERACT );
+		SetObjectEnabled('Inferno_altar', nil);
+		DIFFICULTY[GetDifficulty()]();
+		SetRegionBlocked( "RegionToArantir", not nil ); -- keep it locked for CINEMA purposes (teleporting Arantir there);
+		Trigger(OBJECT_TOUCH_TRIGGER, "prison", "CINEMATICS.meetGhostDaughterValeria");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_save");
+	end,
 
-function Complete_valeria()
-	while 1 do	
-		sleep( 20 );
-		if IsObjectExists( "RedHeavenHero03" ) == not nil then
-			if GetObjectOwner("RedHeavenHero03") == PLAYER_1 then
-				sleep(2);
-				StartAdvMapDialog (7);   --------------------------------7_advmap_dialog
-				break;
-			end;
-		end;
-	end;
-end;
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+			
+			if GetObjectiveState("pri1") == OBJECTIVE_FAILED or GetObjectiveState("pri5") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+			
+			if GetObjectiveState("pri2") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
+				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
+				sleep(100);
+				Win();
+				return
+			end
+		end
+	end,
+		
+	ArantirIsAlive = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.ArantirIsAlive[2] == 1 and IsHeroAlive("Arantir") == nil then
+			SetObjectiveState("pri1", OBJECTIVE_FAILED );
+			OBJECTIVES.state.ArantirIsAlive[2] = 11;
+		end
+	end,
+	
+	captureFlammshrein = function()
+		if OBJECTIVES.state.captureFlammshrein[2] == 1 then
+			SetObjectiveState( 'pri2', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.captureFlammshrein[2] = 2;
+		elseif OBJECTIVES.state.captureFlammshrein[2] == 2 and GetObjectOwner('Flammschrein') == PLAYER_1 then
+			SetObjectiveState( "pri2", OBJECTIVE_COMPLETED );
+			OpenCircleFog(158, 156, 0, 15, 1);		
+			sleep(4);
+			MoveCamera(158, 156, 0, 90, 1, 0, 0, 0, 1);		
+			sleep(4);
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			sleep(4);
+			Play2DSound( "/Sounds/_(Sound)/Spells/Earthquake.xdb#xpointer(/Sound)" ); ----------------DESTROY_FLAMM_SDN
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			sleep(4);
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
+			sleep(4);
+			SetAmbientLight(0, "Default", not nil, 1);		
+			sleep(50);
+			OBJECTIVES.state.captureFlammshrein[2] = 10;
+		end
+	end,
+	
+	removeMagicBarrier = function()
+		if OBJECTIVES.state.removeMagicBarrier[2] == 1 then
+			SetObjectiveState( 'pri4', OBJECTIVE_ACTIVE );
+			CINEMATICS.meetGhost();
+			OBJECTIVES.state.removeMagicBarrier[2] = 3;
+		elseif OBJECTIVES.state.removeMagicBarrier[2] == 3 and IsArantirReadyForRitual() ~= nil then
+			OBJECTIVES.state.OrnellaIsAlive[2] = 10;
+			CINEMATICS.performRitual();
+			SetObjectiveState( "pri4", OBJECTIVE_COMPLETED );
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, '1_block_zone_for_player2', nil);
+			SetObjectEnabled( 'Gate_to_Flammschrein', not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Gate_to_Flammschrein', nil);
+			OBJECTIVES.state.removeMagicBarrier[2] = 10;
+		end
+	end,
+	
+	OrnellaIsAlive = function()
+	-- start of this task is handled by map.xdb
+		if OBJECTIVES.state.OrnellaIsAlive[2] == 1 and IsHeroAlive("OrnellaNecro") == nil then
+			SetObjectiveState( "pri5", OBJECTIVE_FAILED );
+			OBJECTIVES.state.OrnellaIsAlive[2] = 11;
+		elseif OBJECTIVES.state.OrnellaIsAlive[2] == 2 then
+			SetObjectiveVisible( "pri5", nil );
+			OBJECTIVES.state.OrnellaIsAlive[2] = 10;
+		end		
+	end,
 
+	defeatMochab = function()
+		if OBJECTIVES.state.defeatMochab[2] == 1 and GetObjectOwner('Gate_to_Flammschrein') == PLAYER_1 then
+			CINEMATICS.meetMochab();
+			SetObjectiveState( 'pri6', OBJECTIVE_ACTIVE );	
+			OBJECTIVES.state.defeatMochab[2] = 2;
+		elseif OBJECTIVES.state.defeatMochab[2] == 2 and IsHeroAlive('Orlando') == nil then
+			SetObjectiveState( 'pri6', OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.defeatMochab[2] = 10;
+		end
+	end,
+	
+	destroyPortal_destroyer = "Arantir",
+	destroyPortal_spawns = { 'Jazaz', 'Grok', 'Oddrema', 'Deleb' },
+	destroyPortal = function()
+		if OBJECTIVES.state.destroyPortal[2] == 2 then
+			SetObjectiveState('sec1', OBJECTIVE_ACTIVE );
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Alarm_succubus", nil);
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Fire_hug", nil);	
+			Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Post_Alarm_succubus", nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Inferno_altar', "f_ready_destroy_altar");
+			OBJECTIVES.state.destroyPortal[2] = 3;
+		elseif OBJECTIVES.state.destroyPortal[2] == 4 then
+			CINEMATICS.destroyPortal();	
+			SetObjectiveState('sec1', OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.destroyPortal[2] = 10;
+		end
+		
+		local count = OwnedTowns(PLAYER_1);
+		if OBJECTIVES.destroyPortal_spawns[count] ~= nil  then
+			DeployReserveHero(OBJECTIVES.destroyPortal_spawns[count], 18, 140, GROUND);
+			sleep(10);
+			UnreserveHero(OBJECTIVES.destroyPortal_spawns[count]);
+			OBJECTIVES.destroyPortal_spawns[count] = nil;
+		end
+	end,
+	
+	avengeTheGhost = function()
+		if OBJECTIVES.state.avengeTheGhost[2] == 1 then
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', nil);
+			MessageBox("/Maps/Scenario/A2C1M5/messagebox_003.txt");
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', "meetAssassins");
+			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE );
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", "returnToGhost"); -- Ghost killers are still alive;
+			CINEMATICS.showAssassins();
+			OBJECTIVES.state.avengeTheGhost[2] = 2;
+		elseif OBJECTIVES.state.avengeTheGhost[2] == 3 then
+			local x_ara, y_ara, floor_ara = GetObjectPosition( 'Arantir' );
+			CINEMATICS.meetAssassins();
+			QuestionBox("/Maps/Scenario/A2C1M5/messagebox_015.txt", "spareAssassins", "attackAssassins");
+			SetObjectPosition( 'Arantir', x_ara, y_ara, floor_ara );
+			OBJECTIVES.state.avengeTheGhost[2] = 4;
+		elseif OBJECTIVES.state.avengeTheGhost[2] == 5 then
+			BlockGame();
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', nil);
+			SetObjectEnabled('Assasin', not nil);
+			sleep(20);
+			MakeHeroInteractWithObject( AvengerName, 'Assasin' );
+			UnblockGame();
+			OBJECTIVES.state.avengeTheGhost[2] = 6;
+		elseif OBJECTIVES.state.avengeTheGhost[2] == 7 then
+			SetObjectEnabled('Teleport_to_gold', not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_gold', "UseTreasurePortal");
+			SetObjectEnabled('Teleport_to_hero', not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_hero', "UseTreasurePortal");
+			SetObjectEnabled('Teleport_to_trees', not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_trees', "UseTreasurePortal");
+			SetObjectEnabled('Tomb', not nil);
+			Trigger(OBJECT_TOUCH_TRIGGER, 'Tomb', nil);
+			CINEMATICS.ghostReward();
+			SetObjectiveState( "sec2", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.avengeTheGhost[2] = 10;
+		elseif OBJECTIVES.state.avengeTheGhost[2] == 9 then			
+			CINEMATICS.assassinsKillSuccub();
+			OBJECTIVES.state.destroyPortal[2] = 2;
+			SetObjectiveState( 'sec2', OBJECTIVE_FAILED );
+			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "1_block_zone_for_player2", "MessageBox('/Maps/Scenario/A2C1M5/messagebox_016.txt')"); -- ghost is doomed, murderers spared
+			OBJECTIVES.state.avengeTheGhost[2] = 11;
+		end
+	end,
+	
+	killPaladinSoulKeeper = function()
+		if OBJECTIVES.state.killPaladinSoulKeeper[2] == 1 then
+			SetRegionBlocked("6_block_zone_for_AI_players", nil, PLAYER_1);
+			CINEMATICS.meetPaladin();
+			SetObjectiveState( 'sec3', OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.killPaladinSoulKeeper[2] = 2;
+		elseif OBJECTIVES.state.killPaladinSoulKeeper[2] == 2 and IsObjectExists('Efion') == nil then
+			SetObjectiveState( "sec3", OBJECTIVE_COMPLETED );
+			SetObjectPosition( 'Sulfur1', 169, 66, GROUND );	
+			CINEMATICS.paladinToDeathKnight();
+			OBJECTIVES.state.killPaladinSoulKeeper[2] = 10;
+		end
+	end,
+	
+	eventManager_day = 0,
+	eventManager = function()
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			if OBJECTIVES.date >= 29 - 7 * diff then
+				SetRegionBlocked( "Start_west_block", nil, PLAYER_2 ); -- Упраздняет блокировку зоны у западного города
+				SetRegionBlocked(  "Start_ost_block", nil, PLAYER_2 ); -- Упраздняет блокировку зоны у восточного города
+			end
+			
+			if GetDate( DAY_OF_WEEK ) == 1 then
+				A2C1M5_reinforceEvilTown(diff);
+			end
+			
+			if GetDate( DAY_OF_WEEK ) == 5 then
+				local car = "caravan"..GetDate(DAY);
+				CreateCaravan(car, PLAYER_1, GROUND, 130, 1, GROUND, 136, 14 );
+				sleep(10);
+				SetObjectRotation(car, 180);
+				for i = 1, table.length(FEDEX_DELIVERY[diff]), 2 do
+					AddObjectCreatures(car, FEDEX_DELIVERY[diff][i], FEDEX_DELIVERY[diff][i + 1]);
+				end
+				OpenCircleFog(130, 1, 0, 4, 1);		
+				MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
+				sleep(30);
+				MessageBox("/Maps/Scenario/A2C1M5/messagebox_01"..math.random(2,4)..".txt");
+			end
+			OBJECTIVES.eventManager_day = OBJECTIVES.date + 1;
+		end
+	end
+}
 
---------------------------------------MAIN///////
-startThread(Main_hero_de);
-startThread(Complete_valeria);
-print("MAIN: end script isEqual reached");
--------------------------------------
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
 
---*-- END OF FILE --*--
+function a2c1m5_dbg(var)
+	if var == 0 then H55_Speedrun(1); end
+	if var == 1 then SetObjectPosition("Arantir", 132, 128, 0); end
+	if var == 11 then SetObjectPosition("Arantir", 95, 58, 0); end
+	if var == 111 then SetObjectPosition("Arantir", 19, 135, 0); end
+	if var == 1111 then SetObjectPosition("Arantir", 80, 6, 0); end
+	if var == 11111 then SetObjectPosition("Arantir", 137, 152, 0); end
+	if var == 2 then 
+		for i, town in { 'Merlon', 'Stormdale', 'Chillbury', 'Vigil' } do
+			SetObjectOwner(town, 1);
+		end
+	end
+	if var == 22 then 
+		for i = 1,4 do
+			local x,y,z = RegionToPoint( "Ritual_"..i );
+			SetObjectPosition(GetPlayerHeroes(PLAYER_1)[i], x, y, z);
+		end
+	end
+end
