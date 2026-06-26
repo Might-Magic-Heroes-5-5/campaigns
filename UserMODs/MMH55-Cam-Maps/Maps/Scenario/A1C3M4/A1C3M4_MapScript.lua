@@ -108,17 +108,17 @@ end
 
 function addCreatures( hero, factor, set )
 	if set == 0 then
-		AddHeroCreatures( hero,         CREATURE_ASSASSIN, 20*factor);
-		AddHeroCreatures( hero,      CREATURE_BLOOD_WITCH, 15*factor);
-		AddHeroCreatures( hero,    CREATURE_MINOTAUR_KING,  10*factor);
-		AddHeroCreatures( hero,          CREATURE_RAVAGER,  7*factor);
-		AddHeroCreatures( hero,  CREATURE_SHADOW_MISTRESS,  4*factor);
+		AddHeroCreatures( hero,         CREATURE_ASSASSIN, 30*factor);
+		AddHeroCreatures( hero,      CREATURE_BLOOD_WITCH, 20*factor);
+		AddHeroCreatures( hero,    CREATURE_MINOTAUR_KING,  15*factor);
+		AddHeroCreatures( hero,          CREATURE_RAVAGER,  10*factor);
+		AddHeroCreatures( hero,  CREATURE_MATRIARCH,  5*factor);
 	else
-		AddHeroCreatures( hero,          CREATURE_STALKER, 20*factor);
-		AddHeroCreatures( hero,    CREATURE_BLOOD_WITCH_2,  15*factor);
-		AddHeroCreatures( hero, CREATURE_MINOTAUR_CAPTAIN,  10*factor);
-		AddHeroCreatures( hero,      CREATURE_BLACK_RIDER,  7*factor);
-		AddHeroCreatures( hero,        CREATURE_MATRIARCH,  4*factor);
+		AddHeroCreatures( hero,          CREATURE_ASSASSIN, 30*factor);
+		AddHeroCreatures( hero,    CREATURE_BLOOD_WITCH_2,  20*factor);
+		AddHeroCreatures( hero, CREATURE_MINOTAUR_CAPTAIN,  15*factor);
+		AddHeroCreatures( hero,      CREATURE_BLACK_RIDER,  10*factor);
+		AddHeroCreatures( hero,        CREATURE_MATRIARCH,  5*factor);
 	end
 end
 

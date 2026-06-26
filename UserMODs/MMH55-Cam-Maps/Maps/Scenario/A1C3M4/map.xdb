@@ -26724,6 +26724,7 @@
 						<Item>HERO_SKILL_ELEMENTAL_VISION</Item>
 						<Item>HERO_SKILL_MASTER_OF_ICE</Item>
 						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
 						<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
 						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
 					</perkIDs>
@@ -26743,6 +26744,8 @@
 						<Item>SPELL_FORGETFULNESS</Item>
 						<Item>SPELL_BERSERK</Item>
 						<Item>SPELL_RESURRECT</Item>
+						<Item>SPELL_SUMMON_CREATURES</Item>
+						<Item>SPELL_TOWN_PORTAL</Item>
 					</spellIDs>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
@@ -26870,6 +26873,8 @@
 						<Item>SPELL_STONESKIN</Item>
 						<Item>SPELL_BLIND</Item>
 						<Item>SPELL_RESURRECT</Item>
+						<Item>SPELL_SUMMON_CREATURES</Item>
+						<Item>SPELL_TOWN_PORTAL</Item>
 					</spellIDs>
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
@@ -36765,6 +36770,10 @@
 									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>
 							</skills>
 							<perkIDs>
 								<Item>HERO_SKILL_MYSTICISM</Item>
@@ -36778,6 +36787,7 @@
 								<Item>HERO_SKILL_ELEMENTAL_VISION</Item>
 								<Item>HERO_SKILL_ARCHERY</Item>
 								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_CATAPULT</Item>
 							</perkIDs>
 							<spellIDs>
 								<Item>SPELL_MAGIC_FIST</Item>
