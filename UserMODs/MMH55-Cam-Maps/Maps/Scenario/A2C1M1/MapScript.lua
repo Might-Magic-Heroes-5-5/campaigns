@@ -434,13 +434,15 @@ OBJECTIVES = {
 		end
 	end,
 
-	_mendTheKey_visitForge = function()
-		if OBJECTIVES.state.mendTheKey[2] == 2 then
-			OBJECTIVES.state.mendTheKey[2] = 3;
-		elseif OBJECTIVES.state.mendTheKey[2] == 10 then
-			MessageBox("/Maps/Scenario/a2c1m1/forge_message3.txt");  -- admire the forge
-		else
-			MessageBox("/Maps/Scenario/a2c1m1/Forge_last.txt");		 -- not sure about the forge purpose
+	_mendTheKey_visitForge = function(hero)
+		if GetObjectOwner(hero) == PLAYER_1 then
+			if OBJECTIVES.state.mendTheKey[2] == 2 then
+				OBJECTIVES.state.mendTheKey[2] = 3;
+			elseif OBJECTIVES.state.mendTheKey[2] == 10 then
+				MessageBox("/Maps/Scenario/a2c1m1/forge_message3.txt");  -- admire the forge
+			else
+				MessageBox("/Maps/Scenario/a2c1m1/Forge_last.txt");		 -- not sure about the forge purpose
+			end
 		end
 	end,
 
