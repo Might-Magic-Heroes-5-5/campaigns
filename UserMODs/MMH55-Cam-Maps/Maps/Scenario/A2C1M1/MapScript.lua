@@ -13,9 +13,7 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_SKULL_HELMET
 };
 
-PlayerHero = "Ornella"
-necro_towns = {"apelsin", "outpost1", "outpost2"}
-AiHeroes    = {"Aberrar", "Straker"}
+AiHeroes = {"Aberrar", "Straker"};
 
 CINEMATICS = {
 	intro = function()
@@ -40,11 +38,11 @@ CINEMATICS = {
 		SetObjectRotation( "Giovanni", 170 );
 		local x, y = RegionToPoint( 'regionToOrnellaTeleport_1' );
 		SetRegionBlocked( 'regionToOrnellaTeleport_1', nil );
-		SetObjectRotation( PlayerHero, 0 );
-		SetObjectRotation( PlayerHero, 0 );
+		SetObjectRotation( "Ornella", 0 );
+		SetObjectRotation( "Ornella", 0 );
 		sleep(20)
 		UnblockGame();
-		StartAdvMapDialog(1, "RemoveGiovanni");
+		StartAdvMapDialog(1, "RemoveObject('Giovanni')");
 		sleep(20);
 		MessageBox("/Maps/Scenario/A2C1M1/key_lower.txt");
 	end,
@@ -55,10 +53,10 @@ CINEMATICS = {
 		sleep(10);
 		local x, y = RegionToPoint( 'regionToOrnellaTeleport_2' );
 		SetRegionBlocked( 'regionToOrnellaTeleport_2', nil );
-		SetObjectRotation( PlayerHero, 90 );
+		SetObjectRotation( "Ornella", 90 );
 		sleep(20);
 		UnblockGame();
-		StartAdvMapDialog(6, "RemoveGiovanni");
+		StartAdvMapDialog(6, "RemoveObject('Giovanni')");
 		sleep(20);
 		MessageBox("/Maps/Scenario/A2C1M1/key_upper.txt");
 	end,
@@ -67,13 +65,10 @@ CINEMATICS = {
 		BlockGame();
 		sleep( 20 );
 		CreateMonster( "mage", CREATURE_MAGI, 10, 19, 59, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 270 );
-		SetObjectRotation( PlayerHero, 90 );
+		SetObjectRotation( "Ornella", 90 );
 		sleep(20);
 		UnblockGame();
-		StartAdvMapDialog(0);  -------------------------0_adv_map_scene
-		sleep( 10 );
-		RemoveObject( "mage" ) 
-		sleep( 20 );
+		StartAdvMapDialog(0, "RemoveObject('mage')");  -------------------------0_adv_map_scene	
 	end,
 	
 	meetLibrarian2 = function()
@@ -81,13 +76,10 @@ CINEMATICS = {
 		sleep( 20 );
 		CreateMonster( "mage", CREATURE_MAGI, 10, 70, 13, 0, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 180 );
 		sleep( 50 );
-		SetObjectRotation( PlayerHero, 0 );
+		SetObjectRotation( "Ornella", 0 );
 		sleep( 50 );
 		UnblockGame();
-		StartAdvMapDialog (7);  -------------------------0_adv_map_scene
-		sleep( 50 );
-		RemoveObject( "mage" ) 
-		sleep( 20 );
+		StartAdvMapDialog (7, "RemoveObject('mage')" );  -------------------------0_adv_map_scene
 	end,
 	
     throughPortal = function()
@@ -99,7 +91,7 @@ CINEMATICS = {
 		sleep(50);
 		StartAdvMapDialog(3);
 		sleep(10);
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", PlayerHero,  "orn1", 0, 0, 2, 0, 0 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", "Ornella",  "orn1", 0, 0, 2, 0, 0 );
 		PlayVisualEffect(  "/Effects/_(Effect)/Spells/LuckBad.xdb#xpointer(/Effect)",     "Gles", "mage1", 0, 0, 2, 0, 0 );
 		sleep(30);
 		RemoveObject( "Giovanni" );
@@ -110,9 +102,9 @@ CINEMATICS = {
 	end,
 
 	specialTroopsStart = function()
-		local x, y, level = GetObjectPosition(PlayerHero)
+		local x, y, level = GetObjectPosition("Ornella")
 		DeployReserveHero("Giovanni", 28, 19, GROUND);
-		StartAdvMapDialog (2, "RemoveGiovanni" );
+		StartAdvMapDialog (2, "RemoveObject('Giovanni')" );
 		sleep( 20 );
 		OpenCircleFog(77, 5, GROUND, 8, PLAYER_1);
 		MoveCamera(77, 5, GROUND, 30, 3.14/3, 0, 0, 1, 1);
@@ -123,7 +115,7 @@ CINEMATICS = {
 	end,
 
 	specialTroopsFinish = function()
-		local x, y, level = GetObjectPosition(PlayerHero)
+		local x, y, level = GetObjectPosition("Ornella")
 		OpenCircleFog(5, 65, GROUND, 6, PLAYER_1);
 		MoveCamera(5, 65, GROUND, 30, 3.14/3, 0, 0, 1, 1);
 		sleep( 30 );
@@ -134,27 +126,27 @@ CINEMATICS = {
 
 	whichTaskFinish = function()
 		BlockGame();	
-		SetObjectRotation( PlayerHero, 180 )
+		SetObjectRotation( "Ornella", 180 )
 		DeployReserveHero("Giovanni", 75, 9, GROUND);
 		sleep( 10 );
-		StartAdvMapDialog( 5, "RemoveGiovanni" );
+		StartAdvMapDialog( 5, "RemoveObject('Giovanni')" );
 		sleep( 10 );
 		UnblockGame();
 	end,
 	
 	outro = function()
-		StartDialogScene("/DialogScenes/A2C1/M1/S2/DialogScene.xdb#xpointer(/DialogScene)");
+		StartDialogScene("/DialogScenes/A2C1/M1/S2/DialogScene.xdb#xpointer(/DialogScene)", "", "autosave" );
 		sleep(10);
 	end
 }
 
 function TownsSetUp()
-	for i,building in necro_towns do
+	for i = 1, table.length(necro_towns), 2 do
 		for creatureID = 1, CREATURES_COUNT - 1 do 
-			CreatureSetUp = GetObjectCreatures(building, creatureID);
-			if GetObjectCreatures(building, creatureID) > 2 then
-				RemoveObjectCreatures(building, creatureID, CreatureSetUp);
-				AddObjectCreatures(building, creatureID, CreatureSetUp * diff/2);
+			CreatureSetUp = GetObjectCreatures(necro_towns[i], creatureID);
+			if GetObjectCreatures(necro_towns[i], creatureID) > 2 then
+				RemoveObjectCreatures(necro_towns[i], creatureID, CreatureSetUp);
+				AddObjectCreatures(necro_towns[i], creatureID, CreatureSetUp * necro_towns[i+1]);
 			end
 		end
 	end
@@ -167,10 +159,6 @@ function HowToOpenPortal(hero)
 		OBJECTIVES.state.findUpperKeyPart[2] = 1;
 		OBJECTIVES.state.findLowerKeyPart[2] = 1;
 	end
-end
-
-function RemoveGiovanni()
-	RemoveObject( "Giovanni" );
 end
 
 function A2C1M1_saveArtifacts(hero)
@@ -187,23 +175,24 @@ function A2C1M1_saveArtifacts(hero)
 end
 
 function A2C1M1_loadArtifacts(hero)
-	for i = 1, migrateArtifacts_store.n do
-		GiveArtifact(hero, migrateArtifacts_store[i]);
+	if migrateArtifacts_store.n ~= nil then
+		for i = 1, migrateArtifacts_store.n do
+			GiveArtifact(hero, migrateArtifacts_store[i]);
+		end
 	end
 end
 
 function ornella_ex()
-	pexp = GetHeroStat(PlayerHero, STAT_EXPERIENCE);
-	PlayVisualEffect("/Effects/_(Effect)/Spells/Phantom_Out.xdb#xpointer(/Effect)", PlayerHero, 0, 0, GROUND);
+	pexp = GetHeroStat("Ornella", STAT_EXPERIENCE);
+	PlayVisualEffect("/Effects/_(Effect)/Spells/Phantom_Out.xdb#xpointer(/Effect)", "Ornella", 0, 0, GROUND);
 	sleep( 30 );
-	RemoveObject(PlayerHero);
+	RemoveObject("Ornella");
 	sleep( 10 );
 	DeployReserveHero("OrnellaNecro", 53, 84, GROUND);
 	sleep( 20 );
 	GiveHeroSkill("OrnellaNecro", SKILL_NECROMANCY);
 	sleep( 50 );
 	ChangeHeroStat("OrnellaNecro", STAT_EXPERIENCE, pexp);
-	InitAllSetArtifacts( "A2C1M1", "OrnellaNecro" );
 	A2C1M1_loadArtifacts("OrnellaNecro");
 	sleep(20);
 	SaveHeroAllSetArtifactsEquipped("OrnellaNecro", "A2C1M1");
@@ -239,19 +228,19 @@ end
 
 DIFFICULTY = {
 	[0] = function()
-		diff = 2;
+		necro_towns = {"outpost1", 1, "outpost2", 1, "apelsin", 2 }
 		print("Difficulty Level is NORMAL");
 	end,
 	[1] = function()
-		diff = 2;
+		necro_towns = {"outpost1", 1, "outpost2", 1, "apelsin", 2 }
 		print("Difficulty Level is HARD");
 	end,
 	[2] = function()
-		diff = 3;
+		necro_towns = {"outpost1", 1.5, "outpost2", 1.5, "apelsin", 3 }
 		print("Difficulty Level is HEROIC");
 	end,
 	[3] = function()
-		diff = 4;
+		necro_towns = {"outpost1", 2, "outpost2", 2, "apelsin", 4 }
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
 }
@@ -282,10 +271,11 @@ OBJECTIVES = {
 		PlayVisualEffect(        "/Effects/_(Effect)/Towns/Necropolis/NecromancyAmplifier.xdb#xpointer(/Effect)", "", "keeper1_fx1", 83, 19, 0, 0, 0 ); -- upper key part location
 
 		startThread(PlaySceneIfTownCapured);
+		InitAllSetArtifacts( "A2C1M1", "OrnellaNecro" );
 		DIFFICULTY[GetDifficulty()]();
 		TownsSetUp();
 		SetHeroesExpCoef( 0.3 );	
-		MakeHeroNecromancer( PlayerHero, 1 ); 
+		MakeHeroNecromancer( "Ornella", 1 ); 
 		OpenCircleFog(47, 84, GROUND, 10, PLAYER_1);
 		sleep( 30 );
 		
@@ -376,12 +366,12 @@ OBJECTIVES = {
 			MessageBox("/Maps/Scenario/a2c1m1/warning.txt");
 			OBJECTIVES.state.captureNadin[2] = 2;
 		elseif OBJECTIVES.state.captureNadin[2] == 2 and GetObjectOwner("apelsin") == PLAYER_1 then
-			startThread(A2C1M1_saveArtifacts, "Ornella")
+			A2C1M1_saveArtifacts("Ornella")
+			OBJECTIVES.state.isAlive[2] = 2;
 			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
 			CINEMATICS.outro();
-			sleep( 50 );
 			ornella_ex();
-			sleep( 100 );
+			sleep( 400 );
 			OBJECTIVES.state.captureNadin[2] = 10;
 		end
 		
@@ -438,7 +428,7 @@ OBJECTIVES = {
 				sleep( 5 );
 				MessageBox("/Maps/Scenario/a2c1m1/portal_closed.txt");
 				return
-			elseif heroName ~= PlayerHero then
+			elseif heroName ~= "Ornella" then
 				MessageBox( "/Maps/Scenario/A2C1M1/MsgBox_OnlyOrnellaCanPass.txt" );
 			end
 		end
@@ -458,7 +448,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.mendTheKey[2] == 1 and OBJECTIVES.state.findLowerKeyPart[2] == 10 and OBJECTIVES.state.findUpperKeyPart[2] == 10 then
 			BlockGame();
 			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
-			a,b,terrain = GetObjectPosition( PlayerHero )
+			a,b,terrain = GetObjectPosition( "Ornella" )
 			OpenCircleFog(7, 89, GROUND, 8, PLAYER_1);
 			MoveCamera(7, 89, GROUND, 30, 3.14/3, 0, 0, 1, 1);
 			sleep( 60 );
@@ -474,8 +464,8 @@ OBJECTIVES = {
 				OBJECTIVES.state.mendTheKey[2] = 2;
 			else
 				SetPlayerResource(PLAYER_1, ORE, p_ore - 15);
-				SetRegionAutoObjectEnable( "blocker_not_ornella", REGION_AUTOACTION_ON_ENTER, -1, -1, PlayerHero, "portal", 1 );
-				SetRegionAutoObjectEnable( "blocker_not_ornella", REGION_AUTOACTION_ON_EXIT, -1, -1, PlayerHero, "portal", 0 );
+				SetRegionAutoObjectEnable( "blocker_not_ornella", REGION_AUTOACTION_ON_ENTER, -1, -1, "Ornella", "portal", 1 );
+				SetRegionAutoObjectEnable( "blocker_not_ornella", REGION_AUTOACTION_ON_EXIT, -1, -1, "Ornella", "portal", 0 );
 				ShowFlyingSign("/Maps/Scenario/A2C1M1/portal.txt", "forge", 1, 8);
 				SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 				OBJECTIVES.state.mendTheKey[2] = 10;
@@ -485,17 +475,17 @@ OBJECTIVES = {
 	
 	isAlive = function()
 		-- start of this task is handled by A2C1M1.xdb
-		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive(PlayerHero) == nil then
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Ornella") == nil then
 			SetObjectiveState( 'obj5', OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;
-		elseif OBJECTIVES.state.captureNadin[2] == 10 then
-			SetObjectiveState("obj5", OBJECTIVE_COMPLETED);
+		elseif OBJECTIVES.state.isAlive[2] == 2 then
+			SetObjectiveState( 'obj5', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	
 	_specialTroops_visitWhich = function(hero)
-		if hero ~= PlayerHero then
+		if hero ~= "Ornella" then
 			MessageBox("/Maps/Scenario/a2c1m1/orn_need.txt");
 			return
 		elseif OBJECTIVES.state.specialTroops[2] == 2 then
@@ -514,7 +504,7 @@ OBJECTIVES = {
 			OBJECTIVES.state.specialTroops[2] = 2;
 		elseif OBJECTIVES.state.specialTroops[2] == 3 then
 			SetObjectiveState("sobj1", OBJECTIVE_COMPLETED);
-			MarkObjectAsVisited("witch_hut", PlayerHero);
+			MarkObjectAsVisited("witch_hut", "Ornella");
 			CINEMATICS.specialTroopsFinish();
 			OBJECTIVES.state.whichTask[2] = 1;
 			OBJECTIVES.state.specialTroops[2] = 10;
@@ -528,12 +518,12 @@ OBJECTIVES = {
 			OBJECTIVES.state.whichTask[2] = 2;
 		elseif OBJECTIVES.state.whichTask[2] == 3 then
 			local p_mercury = GetPlayerResource(PLAYER_1, MERCURY);
-			if p_mercury < 10 or OBJECTIVES.whichTask_strangeOre == 0 or GetHeroCreatures(PlayerHero, CREATURE_WALKING_DEAD) < 50 then
+			if p_mercury < 10 or OBJECTIVES.whichTask_strangeOre == 0 or GetHeroCreatures("Ornella", CREATURE_WALKING_DEAD) < 50 then
 				MessageBox("/Maps/Scenario/a2c1m1/res_need.txt");
 				OBJECTIVES.state.whichTask[2] = 2;
 			else
 				SetPlayerResource(PLAYER_1, MERCURY, p_mercury - 10);
-				RemoveHeroCreatures(PlayerHero, CREATURE_WALKING_DEAD, 50);
+				RemoveHeroCreatures("Ornella", CREATURE_WALKING_DEAD, 50);
 				SetTownBuildingLimitLevel("outpost1", TOWN_BUILDING_DWELLING_1, 2);
 				SetTownBuildingLimitLevel("outpost1", TOWN_BUILDING_DWELLING_2, 2);
 				SetTownBuildingLimitLevel("outpost1", TOWN_BUILDING_DWELLING_3, 2);
@@ -573,5 +563,8 @@ function a2c1m1_dbg(state)
 		MakeHeroInteractWithObject("Ornella", "forge");
 	elseif state == 3 then
 		SetObjectPosition("Ornella", 38, 58);
+	elseif state == 33 then
+		H55_Speedrun(1);
+		MakeHeroInteractWithObject("Ornella", "Isher");
 	end
 end
