@@ -45,12 +45,12 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -70,42 +70,42 @@
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_2</MaxUpgrade>
 					</Item>
 					<Item>
@@ -472,27 +472,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>43</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>
-						<Count>94</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>
-						<Count>87</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>
-						<Count>92</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>
-						<Count>90</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>44</Count>
+						<Count>150</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -519,19 +519,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>3</Count>
+						<Count>15</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>12</Count>
+						<Count>55</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>12</Count>
+						<Count>55</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>3</Count>
+						<Count>15</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -2686,23 +2686,23 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_AXE_THROWER</Creature>
-						<Count>120</Count>
+						<Count>220</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEFENDER</Creature>
-						<Count>207</Count>
+						<Count>307</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BROWLER</Creature>
-						<Count>90</Count>
+						<Count>140</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FLAME_MAGE</Creature>
-						<Count>40</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLACKBEAR_RIDER</Creature>
-						<Count>105</Count>
+						<Count>155</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -4171,7 +4171,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>53</Count>
+						<Count>111</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -4198,11 +4198,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>67</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>14</Count>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -7957,11 +7957,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>148</Count>
+						<Count>250</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>3</Count>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -9979,31 +9979,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_STOUT_DEFENDER</Creature>
-						<Count>200</Count>
+						<Count>350</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_AXE_THROWER</Creature>
-						<Count>140</Count>
+						<Count>250</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WARLORD</Creature>
-						<Count>30</Count>
+						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FLAME_MAGE</Creature>
-						<Count>70</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_AXE_THROWER</Creature>
-						<Count>140</Count>
+						<Count>250</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STOUT_DEFENDER</Creature>
-						<Count>200</Count>
+						<Count>350</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FIRE_DRAGON</Creature>
-						<Count>10</Count>
+						<Count>20</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -11303,11 +11303,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>52</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>15</Count>
+						<Count>50</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -11890,7 +11890,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>47</Count>
+						<Count>75</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -30771,11 +30771,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>78</Count>
+						<Count>108</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>97</Count>
+						<Count>90</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
@@ -30783,7 +30783,7 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>22</Count>
+						<Count>19</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SERAPH</Creature>
@@ -31001,7 +31001,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>217</Count>
+						<Count>350</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -32596,27 +32596,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>8</Count>
+						<Count>18</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>26</Count>
+						<Count>82</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>27</Count>
+						<Count>84</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>25</Count>
+						<Count>88</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>28</Count>
+						<Count>90</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>8</Count>
+						<Count>18</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -32931,19 +32931,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>13</Count>
+						<Count>43</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>52</Count>
+						<Count>92</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>50</Count>
+						<Count>90</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BATTLE_GRIFFIN</Creature>
-						<Count>14</Count>
+						<Count>44</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -34171,7 +34171,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SERAPH</Creature>
-						<Count>14</Count>
+						<Count>34</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -36095,31 +36095,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>53</Count>
+						<Count>153</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>24</Count>
+						<Count>124</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>25</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>23</Count>
+						<Count>123</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>25</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VINDICATOR</Creature>
-						<Count>24</Count>
+						<Count>124</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LONGBOWMAN</Creature>
-						<Count>53</Count>
+						<Count>153</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -36509,8 +36509,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -36909,7 +36909,7 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -37122,8 +37122,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -37579,8 +37579,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Champion.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>9</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37615,8 +37615,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Champion.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>9</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37651,8 +37651,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Champion.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>9</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37687,8 +37687,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/BattleGriffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>30</Amount2>
+				<Amount>80</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37723,8 +37723,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/BattleGriffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>30</Amount2>
+				<Amount>80</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37759,8 +37759,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/BattleGriffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>30</Amount2>
+				<Amount>80</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37795,8 +37795,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Champion.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>9</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37831,8 +37831,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/BattleGriffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>30</Amount2>
+				<Amount>80</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37867,8 +37867,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Longbowman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>150</Amount>
-				<Amount2>150</Amount2>
+				<Amount>250</Amount>
+				<Amount2>250</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -37903,8 +37903,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Longbowman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>150</Amount>
-				<Amount2>150</Amount2>
+				<Amount>250</Amount>
+				<Amount2>250</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -38635,7 +38635,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>34</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -41524,27 +41524,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Count>99</Count>
+						<Count>198</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>44</Count>
+						<Count>88</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Count>11</Count>
+						<Count>32</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Count>11</Count>
+						<Count>32</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>44</Count>
+						<Count>88</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Count>99</Count>
+						<Count>198</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -42270,23 +42270,23 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Count>333</Count>
+						<Count>666</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>12</Count>
+						<Count>36</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
-						<Count>12</Count>
+						<Count>24</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>12</Count>
+						<Count>36</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Count>333</Count>
+						<Count>666</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -42975,8 +42975,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Longbowman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>150</Amount>
-				<Amount2>150</Amount2>
+				<Amount>250</Amount>
+				<Amount2>250</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -43011,8 +43011,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Renegates/Longbowman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>150</Amount>
-				<Amount2>150</Amount2>
+				<Amount>250</Amount>
+				<Amount2>250</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -44319,20 +44319,20 @@
 				<Experience>0</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>12</Count>
+						<Creature>CREATURE_BALOR</Creature>
+						<Count>18</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>44</Count>
+						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
+						<Count>66</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Count>68</Count>
+						<Count>92</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
-						<Count>7</Count>
+						<Count>11</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -44760,11 +44760,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_FIRE_DRAGON</Creature>
-						<Count>5</Count>
+						<Count>15</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_RUNE_MAGE</Creature>
-						<Count>20</Count>
+						<Count>60</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -44930,11 +44930,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_RUNE_MAGE</Creature>
-						<Count>20</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BLACKBEAR_RIDER</Creature>
-						<Count>30</Count>
+						<Count>150</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -45697,11 +45697,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_BERSERKER</Creature>
-						<Count>40</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_AXE_THROWER</Creature>
-						<Count>90</Count>
+						<Count>150</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -45728,11 +45728,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_BLACKBEAR_RIDER</Creature>
-						<Count>40</Count>
+						<Count>140</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STOUT_DEFENDER</Creature>
-						<Count>100</Count>
+						<Count>300</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -47124,7 +47124,7 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>
-						<Count>1429</Count>
+						<Count>3429</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LANDLORD</Creature>

@@ -6,7 +6,8 @@ doFile("/scripts/campaign_ai.lua");
 while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
-H55_PlayerStatus = {0,1,2,1,1,2,2,2};
+
+H55_PlayerStatus = { 0,1,2,1,1,2,2,2 };
 H55c_AI_CONTROLLED = {
   player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
       state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
@@ -42,26 +43,16 @@ function H55_InitSetArtifacts()
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 	H55_CamFixTooManySkills( PLAYER_1,   "Duncan" );	
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
 --========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
---###################################### BEGIN #########################################################
---CONSTANTS
---Must be filled for each map
-
 RH_RespawnPoints_XYZ_Town = { {121, 22, GROUND, "rtown"} };
 -- {X, Y, FLOOR, RESPAWN TOWN Script name (if needed, if not must be a nil)}
-	
-
 RH_heroes = { "RedHeavenHero01", "RedHeavenHero02"}; -- Pool of Red Haven heroes
-	
 AI_PLAYER = PLAYER_2; -- AI player side
 RH_heroes_must_alive_count = 2; -- Minimum of AI Red Haven heroes who might be at same time on the map
- 
---=======================================================================
-
 RH_RespawnPoints_XYZ_Town.n = table.length( RH_RespawnPoints_XYZ_Town );
 RH_heroes.n = table.length( RH_heroes );
 
@@ -143,43 +134,26 @@ startThread(RH_Respawn);
 
 --###################################### END #########################################################
 --===================================== MAIN SCRIPT BODY =============================================
-PlayerHero1 = "Wulfstan"
-PlayerHero2 = "Duncan"
-EnemyHero = "Laszlo"
-
-StartAdvMapDialog( 0 );
-
-SetRegionBlocked("laszlo_block", not nil, PLAYER_2);
-EnableHeroAI(EnemyHero, nil);
-
 function diffsetup()
 	for creatureID = 1, CREATURES_COUNT-1 do 
-		CreatureSetUp = GetHeroCreatures(EnemyHero, creatureID);
-		if GetHeroCreatures(EnemyHero, creatureID) > 2 then
-			RemoveHeroCreatures(EnemyHero, creatureID, CreatureSetUp);
-			AddHeroCreatures(EnemyHero, creatureID, CreatureSetUp * diff);
-			ChangeHeroStat(EnemyHero, 	   STAT_ATTACK, 4 * diff);
-			ChangeHeroStat(EnemyHero, 	  STAT_DEFENCE, 4 * diff);
-			ChangeHeroStat(EnemyHero, STAT_SPELL_POWER, 2 * diff);
-			ChangeHeroStat(EnemyHero, 	STAT_KNOWLEDGE, 2 * diff);
-			ChangeHeroStat(EnemyHero,  STAT_EXPERIENCE, 260000 * diff);
+		CreatureSetUp = GetHeroCreatures("Laszlo", creatureID);
+		if GetHeroCreatures("Laszlo", creatureID) > 2 then
+			RemoveHeroCreatures("Laszlo", creatureID, CreatureSetUp);
+			AddHeroCreatures("Laszlo", creatureID, CreatureSetUp * diff);
+			ChangeHeroStat("Laszlo", 	   STAT_ATTACK, 4 * diff);
+			ChangeHeroStat("Laszlo", 	  STAT_DEFENCE, 4 * diff);
+			ChangeHeroStat("Laszlo", STAT_SPELL_POWER, 2 * diff);
+			ChangeHeroStat("Laszlo", 	STAT_KNOWLEDGE, 2 * diff);
+			ChangeHeroStat("Laszlo",  STAT_EXPERIENCE, 260000 * diff);
 		end
 	end;
 end;
-
-SetObjectEnabled("portal", nil);
 
 function portal()
 	ShowFlyingSign("/Maps/Scenario/A1C2M5/portal.txt", "portal", 1, 5);
 end;
 
-SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
-SetObjectiveState("obj2", OBJECTIVE_ACTIVE);
-SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
-
 ---------Main Objective 1----------
-
-Trigger (OBJECT_CAPTURE_TRIGGER, "stug_dutchy", "objective1");
 
 function objective1()
 	if GetObjectiveState("obj1") == OBJECTIVE_ACTIVE then
@@ -192,10 +166,8 @@ end;
 
 ---------Main Objective 2----------
 
-Trigger (PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "objective2");
-
 function objective2()
-	if IsHeroAlive(EnemyHero) == nil and GetObjectiveState("obj2") == OBJECTIVE_ACTIVE then
+	if IsHeroAlive("Laszlo") == nil and GetObjectiveState("obj2") == OBJECTIVE_ACTIVE then
 		StartDialogScene("/DialogScenes/A1C2/M5/S1/DialogScene.xdb#xpointer(/DialogScene)", "d_scene", "autosave");
 	end;
 end;
@@ -210,7 +182,7 @@ end;
 
 function objective4()
 	while 1 do
-		if IsHeroAlive(PlayerHero1) == nil or IsHeroAlive(PlayerHero2) == nil then
+		if IsHeroAlive("Wulfstan") == nil or IsHeroAlive("Duncan") == nil then
 			SetObjectiveState("obj4", OBJECTIVE_FAILED);
 			sleep(10);
 			Loose();
@@ -225,10 +197,10 @@ end;
 function win_check()
 	while 1 do
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
-			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
-			sleep(20);
 			SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M5" );
 			SaveHeroAllSetArtifactsEquipped(   "Duncan", "A1C2M5" );
+			sleep(60);
+			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			sleep(100);
 			Win();
 			break;
@@ -239,15 +211,11 @@ end;
 
 ------Laszlo Activation------
 
-Trigger (OBJECT_TOUCH_TRIGGER, "library", "laszlo_ai_enabled");
-Trigger (OBJECT_TOUCH_TRIGGER, "garrison", "laszlo_ai_enabled");
-Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
-
 function laszlo_ai_enabled(hero)
 	print("######### enable Laszlo");
-	H55c_AIAddHero( EnemyHero );
+	H55c_AIAddHero( "Laszlo" );
 	local gain = 1 + GetDifficulty() + 0.25 * GetDate(MONTH);
-	H55c_updateArmy( EnemyHero, gain, H55c_CREATURES.HAVEN );
+	H55c_updateArmy( "Laszlo", gain, H55c_CREATURES.HAVEN );
 	if IsObjectExists("dummy") then
 		RemoveObject("dummy");
 	end
@@ -258,8 +226,6 @@ function laszlo_ai_enabled(hero)
 	Trigger(OBJECT_TOUCH_TRIGGER, "garrison", nil);
 end
 
-H55_NewDayTrigger = 1;
-
 function H55_TriggerDaily()
 	if GetDate(MONTH) == 6 then
 		laszlo_ai_enabled();
@@ -267,6 +233,19 @@ function H55_TriggerDaily()
 	end;
 end;
 
+StartAdvMapDialog( 0 );
+SetRegionBlocked("laszlo_block", not nil, PLAYER_2);
+EnableHeroAI("Laszlo", nil);
+SetObjectEnabled("portal", nil);
+SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
+SetObjectiveState("obj2", OBJECTIVE_ACTIVE);
+SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
+Trigger (OBJECT_CAPTURE_TRIGGER, "stug_dutchy", "objective1");
+Trigger (PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "objective2");
+Trigger (OBJECT_TOUCH_TRIGGER, "library", "laszlo_ai_enabled");
+Trigger (OBJECT_TOUCH_TRIGGER, "garrison", "laszlo_ai_enabled");
+Trigger (OBJECT_TOUCH_TRIGGER, "laszlo_trigger", "laszlo_ai_enabled");
+H55_NewDayTrigger = 1;
 startThread (objective4);
 startThread (win_check);
 Trigger (OBJECT_TOUCH_TRIGGER, "portal", "portal");

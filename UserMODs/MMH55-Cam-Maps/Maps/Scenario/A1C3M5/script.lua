@@ -1,45 +1,39 @@
-H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_DRAGON_SCALE_ARMOR,
-ARTIFACT_DRAGON_SCALE_SHIELD,
-ARTIFACT_DRAGON_BONE_GRAVES,
-ARTIFACT_DRAGON_WING_MANTLE,
-ARTIFACT_DRAGON_TEETH_NECKLACE,
-ARTIFACT_DRAGON_TALON_CROWN,
-ARTIFACT_DRAGON_EYE_RING,
-ARTIFACT_DRAGON_FLAME_TONGUE
-
-};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M5");
 	LoadHeroAllSetArtifacts( "Shadwyn",  "A1C3M4" );
-	LoadHeroAllSetArtifacts(  "Duncan",  "A1C2M5" );
 	sleep(40);
 	H55_CamFixTooManySkills(  PLAYER_1, "Shadwyn" );
-	H55_CamFixTooManySkills(  PLAYER_2,  "Duncan" );
+	H55_CamFixTooManySkills(  PLAYER_2, "Duncan" );
+	H55_CamFixTooManySkills(  PLAYER_1, "Isabell_A1");
 end
 
 startThread(H55_InitSetArtifacts);
 
---========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
---###################################### BEGIN #########################################################
---CONSTANTS
---Must be filled for each map
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_DRAGON_SCALE_ARMOR,
+	ARTIFACT_DRAGON_SCALE_SHIELD,
+	ARTIFACT_DRAGON_BONE_GRAVES,
+	ARTIFACT_DRAGON_WING_MANTLE,
+	ARTIFACT_DRAGON_TEETH_NECKLACE,
+	ARTIFACT_DRAGON_TALON_CROWN,
+	ARTIFACT_DRAGON_EYE_RING,
+	ARTIFACT_DRAGON_FLAME_TONGUE
+};
 
+--========================== RED HAVEN HEROES RESPAWN SCRIPT ===========================================
 RH_RespawnPoints_XYZ_Town = { {121, 22, GROUND, "rtown"} };
 -- {X, Y, FLOOR, RESPAWN TOWN Script name (if needed, if not must be a nil)}
-	
-
 RH_heroes = { "RedHeavenHero01" }; -- Pool of Red Haven heroes
-	
 AI_PLAYER = PLAYER_3; -- AI player side
 RH_heroes_must_alive_count = 1; -- Minimum of AI Red Haven heroes who might be at same time on the map
-
---=======================================================================
-
 RH_RespawnPoints_XYZ_Town.n = table.length( RH_RespawnPoints_XYZ_Town );
 RH_heroes.n = table.length( RH_heroes );
 
@@ -123,29 +117,23 @@ IsAlaricTouchTeleport = 0;
 siege_hero_defeated = 0;
 ALARIC = 'RedHeavenHero03';
 KINGTOLGHAR = 'KingTolghar';
-DUNCAN = 'Duncan';
-SIEGEHERO = 'RedHeavenHero02';
-FREYDA = 'Freyda';
-WULFSTAN = 'Wulfstan';
 SHADWYN = 'Shadwyn';
-ISABELL = 'Isabell_A1'; 
 
--- установка настроек по уровню сложности
 DIFFICULTY = {
 	[0] = function()
 		redhaven_coeff = 1.0;
 		SetKingTolgharArmy(1);
 	end,
 	[1] = function()
-		redhaven_coeff = 1.25;
+		redhaven_coeff = 1.5;
 		SetKingTolgharArmy(2);
 	end,
 	[2] = function()
-		redhaven_coeff = 1.5;
+		redhaven_coeff = 2.0;
 		SetKingTolgharArmy(3);
 	end,
 	[3] = function()
-		redhaven_coeff = 1.5;
+		redhaven_coeff = 2.5;
 		SetKingTolgharArmy(4);
 	end,
 }
@@ -158,6 +146,18 @@ function SetKingTolgharArmy(koef)
 	AddHeroCreatures(KINGTOLGHAR,	   CREATURE_FLAME_MAGE, koef * 50 );
 	AddHeroCreatures(KINGTOLGHAR,		  CREATURE_WARLORD, koef * 30 );
 	AddHeroCreatures(KINGTOLGHAR,	 CREATURE_MAGMA_DRAGON, koef * 20 );
+	AddHeroCreatures('Marder',	CREATURE_INFERNAL_SUCCUBUS, koef * 20 );
+	AddHeroCreatures('Marder',	CREATURE_HORNED_DEMON, koef * 40 );
+	AddHeroCreatures('Marder',	 CREATURE_BALOR, koef * 10 );
+	AddHeroCreatures('Marder',	 CREATURE_ARCHDEVIL, koef * 5 );
+	AddObjectCreatures( "rtown", CREATURE_ZEALOT, 24 * redhaven_coeff );
+	AddObjectCreatures( "rtown", CREATURE_CHAMPION, 16 * redhaven_coeff );
+	AddObjectCreatures( "rtown", CREATURE_SERAPH, 8 * redhaven_coeff );
+	AddHeroCreatures("RedHeavenHero02", CREATURE_SERAPH, 1 * koef);
+	AddHeroCreatures("RedHeavenHero02", CREATURE_CHAMPION, 2 * koef);
+	AddHeroCreatures("RedHeavenHero02", CREATURE_ZEALOT, 3 * koef);
+	AddHeroCreatures("RedHeavenHero02", CREATURE_VINDICATOR, 10 * koef);
+	AddHeroCreatures("RedHeavenHero02", CREATURE_LONGBOWMAN, 15 * koef);
 	sleep(10);
 	ChangeHeroStat( KINGTOLGHAR,      STAT_ATTACK, koef * 3 );
 	ChangeHeroStat( KINGTOLGHAR,     STAT_DEFENCE, koef * 3 );
@@ -167,12 +167,12 @@ function SetKingTolgharArmy(koef)
 	GiveExp(          'Marder', 100000 + 30000 * math.pow(2, koef));
 	GiveExp( 'RedHeavenHero01', 100000 + 30000 * math.pow(2, koef));
 	GiveExp(            ALARIC, 100000 + 40000 * math.pow(2, koef));
-	GiveExp(         SIEGEHERO, 100000 + 40000 * math.pow(2, koef));
+	GiveExp( 'RedHeavenHero02', 100000 + 40000 * math.pow(2, koef));
 end
 
 -- управление эффектами и анимациями катапульты
 function Catapult()
-	while IsHeroAlive( SIEGEHERO ) do
+	while IsHeroAlive( 'RedHeavenHero02' ) do
 		if ( IsObjectVisible( PLAYER_1, 'kotopult' ) ) then
 			PlayObjectAnimation( 'kotopult', 'rangeattack', ONESHOT );
 			sleep( 15 );
@@ -202,7 +202,6 @@ function Catapult()
 	end
 end
 
--- анимации существ для осады
 function Siege( counter )
 	sleep( 10 );
 	while IsObjectExists( 'siege' .. counter ) do
@@ -220,7 +219,7 @@ function Siege( counter )
 end
 
 function RedHavenHeroLost( heroname )
-	if ( heroname == SIEGEHERO ) and ( siege_hero_defeated == 0 ) then
+	if ( heroname == 'RedHeavenHero02' ) and ( siege_hero_defeated == 0 ) then
 		siege_hero_defeated = 1;
 		RazeBuilding( 'kotopult' );
 		sleep( 10 );
@@ -251,7 +250,6 @@ CINEMATICS = {
     end,
 }
 
--- сребатывает после захвата второго гномского гарнизона
 function AlaricEscape( oldowner, newowner, heroname )
 	if newowner == PLAYER_1 then
 		Trigger( OBJECT_TOUCH_TRIGGER, 'portal', 'RemoveOrrin' );
@@ -305,9 +303,9 @@ function RedHavenUpgrade() ---- Кричи хавена (апгрейды) скриптом заменяются на К
 			end
 		end
 		if GetDate( DAY_OF_WEEK ) == 1 then
-			AddObjectCreatures( object, CREATURE_ZEALOT, 6 * redhaven_coeff );
-			AddObjectCreatures( object, CREATURE_CHAMPION, 4 * redhaven_coeff );
-			AddObjectCreatures( object, CREATURE_SERAPH, 2 * redhaven_coeff );
+			AddObjectCreatures( object, CREATURE_ZEALOT, 24 * redhaven_coeff );
+			AddObjectCreatures( object, CREATURE_CHAMPION, 16 * redhaven_coeff );
+			AddObjectCreatures( object, CREATURE_SERAPH, 8 * redhaven_coeff );
 		end
 	end
 end
@@ -353,8 +351,8 @@ OBJECTIVES = {
 		SetRegionBlocked("gate", 1, PLAYER_3); 
 		SetRegionBlocked( 'deploy1', 1, PLAYER_1 );
 		SetRegionBlocked( 'deploy2', 1, PLAYER_1 );
-		EnableHeroAI( SIEGEHERO, nil ); -- перец у котопульты
-		EnableHeroAI( DUNCAN, nil ); -- сидит в замке
+		EnableHeroAI( 'RedHeavenHero02', nil ); -- so hero stays at Horncrest siege
+		EnableHeroAI( 'Duncan', nil ); -- сидит в замке
 		EnableHeroAI( KINGTOLGHAR, nil ); -- сидит в Tor Hrall
 		EnableHeroAI( ALARIC, nil ); -- Аларик, сидит около Tor Hrall
 		EnableAIHeroHiring( PLAYER_2, 'SD', nil );
@@ -371,7 +369,7 @@ OBJECTIVES = {
 			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
-					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+					OBJECTIVES[key]();
 				end
 			end
 			
@@ -382,6 +380,8 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				Save("autosave");
+				sleep(40);
+				CINEMATICS.outro();
 				sleep(100);
 				Win();
 				return
@@ -403,7 +403,6 @@ OBJECTIVES = {
 			OBJECTIVES.state.reachHorncrest[2] = 2;
 		elseif OBJECTIVES.state.reachHorncrest[2] == 2 and OBJECTIVES.date > 7 then
 			SetObjectiveState( 'prim1', OBJECTIVE_FAILED );
-			OBJECTIVES.state.reachHorncrest[2] = 11;
 		elseif OBJECTIVES.state.reachHorncrest[2] == 3 then
 			SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.liftSiege[2] = 1;
@@ -414,17 +413,17 @@ OBJECTIVES = {
 	liftSiege_break = function()
 		while siege_size() > 0 do
 			if GetCurrentPlayer() ~= PLAYER_1 and siege_hero_defeated == 1 and siege_size() <= 6 then
-				EnableHeroAI( DUNCAN, not nil );
+				EnableHeroAI( 'Duncan', not nil );
 				for i = 1, 12 do
 					if IsObjectExists( 'siege' .. i ) then
-						MoveHero( DUNCAN, GetObjectPosition('siege' .. i));
+						MoveHero( 'Duncan', GetObjectPosition('siege' .. i));
 						break;
 					end
 				end
 			end
 			sleep(10);
 		end
-		EnableHeroAI( DUNCAN, nil );
+		EnableHeroAI( 'Duncan', nil );
 	end,
 
 	liftSiege = function()
@@ -435,14 +434,15 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.liftSiege[2] == 2 and siege_size() == 0 and siege_hero_defeated == 1 and GetCurrentPlayer() == PLAYER_1 then
 			H55_NewDayTrigger = 0;
 			CINEMATICS.liftSiege();
-			SetObjectOwner( DUNCAN, PLAYER_1 );
+			SetObjectOwner( 'Duncan', PLAYER_1 );
 			SetObjectOwner( 'SD', 0 );
 			SetObjectOwner( 'SD', 1 );
-			DeployReserveHero( FREYDA, 13, 8, 0 );
-			DeployReserveHero( WULFSTAN, 17, 8, 0 );
-			sleep(10);
+			DeployReserveHero( 'Freyda', 13, 8, 0 );
+			DeployReserveHero( 'Wulfstan', 17, 8, 0 );
+			sleep(30);
 			LoadHeroAllSetArtifacts(   "Freyda", "A1C1M5" );
 			LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M5" );
+			LoadHeroAllSetArtifacts(  "Duncan",  "A1C2M5" );
 			sleep(20);
 			H55_CamFixTooManySkills(PLAYER_1,   "Freyda");
 			H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
@@ -466,7 +466,6 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
 			OBJECTIVES.state.captureTorHrall[2] = 2;
 		elseif OBJECTIVES.state.captureTorHrall[2] == 2 and GetObjectOwner("TorHrall") == PLAYER_1 then
-			CINEMATICS.outro();
 			SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.captureTorHrall[2] = 10;
 		end
@@ -479,8 +478,8 @@ OBJECTIVES = {
 	
 	isAlive = function()
 		if OBJECTIVES.state.isAlive[2] == 1 then
-			if IsHeroAlive(ISABELL) == nil or IsHeroAlive(SHADWYN) == nil or IsHeroAlive(DUNCAN) == nil or 
-			( OBJECTIVES.state.liftSiege[2] == 10 and ( IsHeroAlive(FREYDA) == nil or IsHeroAlive(WULFSTAN) == nil )) then
+			if IsHeroAlive('Isabell_A1') == nil or IsHeroAlive(SHADWYN) == nil or IsHeroAlive('Duncan') == nil or 
+			( OBJECTIVES.state.liftSiege[2] == 10 and ( IsHeroAlive('Freyda') == nil or IsHeroAlive('Wulfstan') == nil )) then
 				SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
 				OBJECTIVES.state.isAlive[2] = 11;
 			end

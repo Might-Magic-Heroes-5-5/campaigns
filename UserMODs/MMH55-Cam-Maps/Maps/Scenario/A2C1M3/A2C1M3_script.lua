@@ -37,37 +37,29 @@ POINT_LIGHTS.n = table.length(POINT_LIGHTS);
 UNDEAD_EFFECTS	= {; grave1={45,56}, tower={14,35}, castle={{6,85},{6,86}}, grave2={45,56}, vamp={38,30}, lich={55,69}, zombie={68,25} };
 UNDEAD_EFFECTS.n = table.length( UNDEAD_EFFECTS );
 
-DAY_TO_OPEN_TELEPORT=35-GetDifficulty()*7;
--- EASY = 35, NORMAL=28, HARD=21, HEROIC=14
+DAY_TO_OPEN_TELEPORT=35-GetDifficulty()*7; -- EASY = 35, NORMAL=28, HARD=21, HEROIC=14
 
 EFFECT_UNDEAD_GLOW = "/Effects/_(Effect)/Towns/Necropolis/UnearthedGrave01.xdb#xpointer(/Effect)";
 EFFECT_PLAGUE = "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)";
 EFFECT_RUINED_TOWER = "/Effects/_(Effect)/Buildings/Dwellings/Necropolis/Ruined_Tower.xdb#xpointer(/Effect)";
-
 VOICEOVER_TOWER_CONVERTED = "/Maps/Scenario/A2C1M3/C1M3_VO5_Ornella_01sound.xdb#xpointer(/Sound)";
 VOICEOVER_MILITARY_POST_CONVERTED = "/Maps/Scenario/A2C1M3/C1M3_VO6_Ornella_01sound.xdb#xpointer(/Sound)";
 VOICEOVER_MEET_LICHES = "/Maps/Scenario/A2C1M3/C1M3_VO4_Lich_01sound.xdb#xpointer(/Sound)";
 VOICEOVER_MISSION_START = "/Maps/Scenario/A2C1M3/C1M3_VO2_Ornella_01sound.xdb#xpointer(/Sound)";
-
 SOUND_EFFECT_PLAGUE = "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)";
-
 HAVEN_TOWNS = {"SouthHavenTown", "EastHavenTown", "WestHavenTown"};
 HAVEN_TOWNS.n = table.length( HAVEN_TOWNS );
 NECROPOLIS = "Necropolis";
-
 ARANTIR = "Arantir";
 ORNELLA = "OrnellaNecro"; 
 ENEMY_HERO_ORLANDO = "Orlando";
-
 ZOMBIE_COUNT = 50;
 WALKING_DEAD_COUNT = 60;
 VAMPIRES_COUNT = 11;
 LICHES_COUNT = 7;
 SKELETONS_COUNT = 40;
 NOSFERATU_COUNT = 14;
-
 ZOMBIE_TAX = 300; -- константа для количества денег, которые каждый ход платят зомби
-
 PATH = "Maps/Scenario/A2C1M3/"
 
 -----------------------------------------------------------
@@ -75,15 +67,12 @@ PATH = "Maps/Scenario/A2C1M3/"
 -----------------------------------------------------------
 ADVMAPSCENE_ORNELLA_JOINS_VAMPIRES = 0;--  После взаимодействия со стеком крестьян, превращающихся в вампиров в первой деревне
 ADVMAPSCENE_ENCOUNTER_WITH_RED_HEAVEN = 1;
-ADVMAPSCENE_ORNELLA_MEETS_ARANTIR = 2;-- После уничтожения армии Red Heaven охраняющей перевал, откуда должен прийти Арантир
-ADVMAPSCENE_END_OF_MISSION = 3; --Сцена про Нелеха убегающего от Орнеллы и Арантира
 ADVMAPSCENE_ORNELLA_JOINS_WRAITHES = 4; -- После выполнения задания "собрать всех кричей некрополиса" (присоединение бонусных wraith'ов)
 ADVMAPSCENE_ORNELLA_MEET_ZOMBIES = 5;--Орнелла встречается с зомби и вампирами в третьей деревне
 
 --------------------------------------------------------------------
 ----------------- VARIABLES ----------------------------------------
 --------------------------------------------------------------------
-
 heroName_lichesJoin = "Arantir";
 firstTownCaptured = 0;
 graveyard1_first_visit = 0;
@@ -103,7 +92,6 @@ return_x, return_y, return_floor = GetObjectPosition( ORNELLA );
 --------------------------------------------------------------------
 ----------------- START MAP SETTINGS -------------------------------
 --------------------------------------------------------------------
-
 --MakeHeroReturnToTavernAfterDeath("Nathaniel", not nil, 0);
 --MakeHeroReturnToTavernAfterDeath("Giar", not nil, 0);
 --MakeHeroReturnToTavernAfterDeath("Glen", not nil, 0);
@@ -141,7 +129,6 @@ TeachHeroSpell( ORNELLA, SPELL_SLOW );
 -- BOSS AI DISABLED
 EnableHeroAI( "Orlando", nil );
 SetHeroRoleMode( "Orlando", HERO_ROLE_MODE_HERMIT );
-
 SetHeroesExpCoef(0.9);
 
 if GetDifficulty() == DIFFICULTY_EASY then
@@ -185,7 +172,6 @@ end
 AddHeroCreatures( ORNELLA, CREATURE_SKELETON_ARCHER, 140-difLevel*25);
 AddHeroCreatures( ORNELLA, CREATURE_ZOMBIE, 50-difLevel*8);
 AddHeroCreatures( ORNELLA, CREATURE_VAMPIRE, 10-difLevel*2);
-
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_SERAPH, 1*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_CHAMPION, 1*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_ZEALOT, 3*difLevel);
@@ -193,7 +179,6 @@ AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_BATTLE_GRIFFIN, 4*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_VINDICATOR, 17*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LONGBOWMAN, 11*difLevel*2);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LANDLORD, 30*difLevel);
-
 SetPlayerStartResource( PLAYER_1, GOLD, 15500 - difLevel*1500 );
 SetPlayerStartResource( PLAYER_1, ORE, 22 - difLevel*3 );
 SetPlayerStartResource( PLAYER_1, WOOD, 22 - difLevel*3 );
@@ -201,7 +186,6 @@ SetPlayerStartResource( PLAYER_1, GEM, 11 - difLevel*2 );
 SetPlayerStartResource( PLAYER_1, CRYSTAL, 9 - difLevel*2 );
 SetPlayerStartResource( PLAYER_1, SULFUR, 9 - difLevel*2 );
 SetPlayerStartResource( PLAYER_1, MERCURY, 16 - difLevel*2 );
-
 DenyAIHeroFlee( ARANTIR, not nil );
 DenyAIHeroFlee( ORNELLA, not nil );
 --------------------------------------------------------------------
@@ -237,7 +221,6 @@ function ResetPointLights()
 		SetObjectFlashlight( "light"..i );
 	end
 end
-
 
 function testLightsIn( delay )
 	for i=1, 8 do
@@ -285,13 +268,6 @@ function startInitialConditions()
 	x,y = GetObjectPosition( ORNELLA );
 	MoveCamera( x, y, GROUND, 50, 1.3, 0, 1, 1, 1);
 end
-
-function ReturnOrnella()
-	if heroWhoAttacksAngels ~= ORNELLA then
-		SetObjectPosition( ORNELLA, return_x, return_y, return_floor );
-	end
-end
-
 ------------------------------------------------------------------------
 --     Function Name: IsZombiesTouched() 
 --     Description: Запускается при взаимодействии игрока с зомби - жителями третьей деревни. В появившемся окне игрока спрашивают,
@@ -712,6 +688,17 @@ function SetHeroNameWhoTouchAngel( heroName )
 end
 
 CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
 	outro = function()
 		SetObjectRotation( ARANTIR, 0 );
 		SetObjectRotation( ORNELLA, 180 );
@@ -720,7 +707,14 @@ CINEMATICS = {
 		SetObjectPosition( ARANTIR, 23, 126, GROUND );
 		SetObjectPosition( ORNELLA, 23, 123, GROUND );
 		sleep(10);
-		StartAdvMapDialog( ADVMAPSCENE_END_OF_MISSION );
+		StartAdvMapDialog( 3 );
+	end,
+	
+	ornellaMeetsArantir = function()
+		CINEMATICS.playAndWait(2);
+		if heroWhoAttacksAngels ~= ORNELLA then
+			SetObjectPosition( ORNELLA, return_x, return_y, return_floor );
+		end
 	end,
 }
 
@@ -746,10 +740,8 @@ OBJECTIVES = {
 		Trigger( OBJECT_TOUCH_TRIGGER, "FootmanTower",       "ReplaceToNecropoisDwelling" );
 		Trigger( OBJECT_TOUCH_TRIGGER,       "Castle",       "ReplaceToNecropoisDwelling" );
 		Trigger( OBJECT_TOUCH_TRIGGER,        "angel",         "SetHeroNameWhoTouchAngel" );
-
 		Trigger( OBJECT_CAPTURE_TRIGGER,  "EastHavenTown", "PlaySceneTownCaptured" );
 		Trigger( OBJECT_CAPTURE_TRIGGER, "SouthHavenTown", "PlaySceneTownCaptured" );
-
 		startThread( H55_InitSetArtifacts );
 		startThread( OpenTeleportForAI );
 		startThread( PlayVoiceoverAndBlockGame, VOICEOVER_MISSION_START );
@@ -808,7 +800,7 @@ OBJECTIVES = {
 			sleep(20);
 			MoveHeroRealTimeAndReachPoint( ARANTIR, 83, 4 );
 			sleep(10);
-			StartAdvMapDialog( ADVMAPSCENE_ORNELLA_MEETS_ARANTIR, "ReturnOrnella" );
+			CINEMATICS.ornellaMeetsArantir();
 			SetPlayerResource( PLAYER_1,    GOLD, GetPlayerResource( PLAYER_1,    GOLD )+40000 );-- Арантир приходит с деньгами и ресурсами. Выдаем их игроку
 			SetPlayerResource( PLAYER_1,     ORE, GetPlayerResource( PLAYER_1,     ORE )+   40 );
 			SetPlayerResource( PLAYER_1,    WOOD, GetPlayerResource( PLAYER_1,    WOOD )+   40 );
