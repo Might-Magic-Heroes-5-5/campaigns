@@ -31,8 +31,6 @@ VOICEOVER_QUROQ_RELEASES_BUTCHERS = "/Maps/Scenario/A2C0M0/C0M1_V010_Butcher_01s
 VOICEOVER_QUROQ_RELEASES_CYCLOPS = "/Maps/Scenario/A2C0M0/C0M1_V011_Cyclops_01sound.xdb#xpointer(/Sound)"; -- После освобождения циклопов
 VOICEOVER_DESTROY_TOWN_COMPLETED = "/DialogScenes/A2C0/M2/S1/C0M2S1_02sound.xdb#xpointer(/Sound)"; -- После уничтожения города
 VOICEOVER_RELEASE_ALL_CREATURES_COMPLETED = "/DialogScenes/A2C0/M2/S1/C0M2S1_02sound.xdb#xpointer(/Sound)";-- Все орки освобождены
-
-
 -- EFFECTS  ----------------------------------------------
 EFFECT_TREE_HIT = "/Effects/_(Effect)/Characters/hits/dendroidsoldier_hit.xdb#xpointer(/Effect)";
 EFFECT_BALLISTA_DEATH = "/Effects/_(Effect)/Characters/WarMachines/Ballista_WildFire/death01.(Effect).xdb#xpointer(/Effect)";
@@ -46,18 +44,12 @@ SOUND_EFFECT_HUT_CRUSH = "/Sounds/_(Sound)/SFX/Seige-Destr/tower-crash.xdb#xpoin
 SOUND_EFFECT_SCREAMS = "/Sounds/_(Sound)/SFX/Screams.xdb#xpointer(/Sound)";
 SOUND_EFFECT_HUT_BURN = "/Sounds/_(Sound)/Buildings/Arena.xdb#xpointer(/Sound)";
 --SOUND_EFFECT_HUT_BURN = "/Sounds/_(Sound)/Buildings/Elemental_conflux.xdb#xpointer(/Sound)";
-
-
-
 -- COMBAT SCRIPT PATH ------------------------------------
 COMBAT_SCRIPT = "/Maps/Scenario/A2C0M0/A2C0M0_CombatVSPeasants.(Script).xdb#xpointer(/Script)";
-
-
 -- OTHER -------------------------------------------------
 LISTENING_DISTANCE = 18; -- расстояние на котором Курок "слышит" вопли своих сородичей, игроку показывают скриптовую сценку про их муки.
 FIRST_COMBAT_PEASANTS_AMOUNT = 80; -- количество в стеке. Стеков четыре. Число надо умножать на 4.
 BUTCHERS_TO_DEPLOY = 30; -- Количество освобождаемых бутчеров
-
 ----------------------------------------------------------------------------------------
 ----------------------------------   VARIABLES   ---------------------------------------
 ----------------------------------------------------------------------------------------
@@ -71,7 +63,6 @@ TouchedBuilding = "fake";
 ----------------------------------------------------------------------------------------
 ------------------------------   INITIAL CONDITIONS   ----------------------------------
 ----------------------------------------------------------------------------------------
-
 DIFFICULTY = {
 	[0] = function()
 		ChangeHeroStat( AI_HERO, STAT_EXPERIENCE, 10000 )
@@ -254,127 +245,144 @@ end
 function ShowCyclopsIfListeningDistanceReached()
 	while Distance( QUROQ, "cyclop" ) > LISTENING_DISTANCE do sleep(5); end
 	if isCyclopsShowed==0 and IsHeroAlive( QUROQ )==not nil then 
-		PlayCyclopScene();
+		CINEMATICS.cyclopFight();
 	end
 end
 
 function ShowGoblinsIfListeningDistanceReached()
 	while Distance( QUROQ, "goblin_gold" ) > LISTENING_DISTANCE do sleep(5); end
 	if isGoblinsShowed==0 and IsHeroAlive( QUROQ )==not nil  then 
-		PlayGoblinsScene();
+		CINEMATICS.goblinFight();
 	end
 end
 
 function ShowButchersIfListeningDistanceReached()
 	while Distance( QUROQ, "prison" ) > LISTENING_DISTANCE do sleep(5); end
 	if isButchersShowed==0 and IsHeroAlive( QUROQ )==not nil then 
-		PlayButcherScene();
+		CINEMATICS.butcherFight();
 	end
 end
 
 function HutOfMagi( heroName, hutName )
 	if GetObjectOwner( heroName ) == PLAYER_1 then
 		if hutName == "HutOfMagi_Cyclops" then
-			startThread( PlayCyclopScene );
+			startThread( CINEMATICS.cyclopFight );
 		elseif hutName == "HutOfMagi_Butchers" then
-			startThread( PlayButcherScene );
+			startThread( CINEMATICS.butcherFight );
 		elseif hutName == "HutOfMagi_Goblins" then
-			startThread( PlayGoblinsScene );
+			startThread( CINEMATICS.goblinFight );
 		end
 		MarkObjectAsVisited( hutName, heroName );
 	end
 end
 
-function PlayCentaursScene()
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", nil );
-	OpenCircleFog( 115, 33, GROUND, 7, PLAYER_1);
-	MoveCamera( 115, 33, GROUND, 17, 0.7, 1.1, 0, 0, 1 );
-	PlayObjectAnimation( "peasant_1", "attack00", IDLE );
-	sleep(3);
-	PlayObjectAnimation( "peasant_2", "attack00", IDLE );
-	sleep(5);
-	PlayObjectAnimation( "centaur", "hit", IDLE );
-	sleep(15);
-	local x,y,z = GetObjectPosition( QUROQ )
-	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end
-
-function PlayGoblinsScene()
-	BlockGame();
-	OpenCircleFog( 129, 127, GROUND, 7, PLAYER_1);
-	MoveCamera( 129, 127, GROUND, 20, 0.7, 0.5, 0, 0, 1 );
-	sleep(10);
-	if isGoblinsShowed == 0 then
-		isGoblinsShowed = 1;
-		PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
+CINEMATICS = {
+	centaurFight = function()
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", nil );
+		BlockGame()
+		OpenCircleFog(115, 33, GROUND, 7, PLAYER_1);
+		MoveCamera( 115, 33, GROUND, 17, 0.7, 1.1, 0, 0, 1 );
 		sleep(10);
-		PlayObjectAnimation("goblin_gold", "attack00", IDLE );
-		SetObjectRotation( "footman_goblin_guard", 90 );
-		sleep(5);
-		PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
+		PlayObjectAnimation( "peasant_1", "attack00", IDLE );
 		sleep(10);
-		PlayObjectAnimation("goblin_ore", "attack00", IDLE );
-		SetObjectRotation( "footman_goblin_guard", -60 );
-		sleep(5);
-		PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
-		sleep(5);
-		PlayObjectAnimation("goblin_left", "death", ONESHOT_STILL );
-		sleep(15);
-		RemoveObject("goblin_left");
-		MessageBox( MSGBOX_GOBLINS_SCENE );
-	end
-	local x,y,z = GetObjectPosition( QUROQ );
-	UnblockGame();
-	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end
-
-function PlayButcherScene()
-	OpenCircleFog( 22, 22, GROUND, 7, PLAYER_1);
-	BlockGame();
-	MoveCamera( 22, 22, GROUND, 23, 0.6, 2.4, 0, 0, 1 );
-	sleep(15);
-	if isButchersShowed == 0 then 
-		isButchersShowed = 1;
-		MessageBox( MSGBOX_BUTCHERS_SCENE );
-	end
-	local x,y,z = GetObjectPosition( QUROQ )
-	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-	UnblockGame();
-end
-
-function PlayCyclopScene()
-	BlockGame();
-	OpenCircleFog( 34, 89, GROUND, 7, PLAYER_1);
-	MoveCamera( 34, 89, GROUND, 15, 0.6, -0.4, 0, 0, 1 );
-	sleep(10);
-	if isCyclopsShowed == 0 then
-		isCyclopsShowed = 1;
-		PlayObjectAnimation("archer1", "rangeattack", ONESHOT );
-		sleep(5);
-		PlayObjectAnimation("archer2", "rangeattack", ONESHOT );
-		sleep(5);
-		PlayObjectAnimation("cyclop", "hit", ONESHOT );
+		PlayObjectAnimation( "peasant_2", "attack00", IDLE );
 		sleep(10);
-		SetObjectRotation( "cyclop", 90 );
-		sleep(1);
-		PlayObjectAnimation("cyclop", "attack00", ONESHOT );
-		sleep(3);
-		PlayVisualEffect( EFFECT_TREE_HIT, "tree" );
-		PlayVisualEffect( EFFECT_BALLISTA_DEATH, "tree" );
-		sleep(5);
-		local tree_x, tree_y, tree_floor = GetObjectPosition( "tree" );
-		RemoveObject( "tree" );
-		sleep(1);
-		SetObjectPosition( "stump", tree_x, tree_y, tree_floor );
-		sleep(5);
-		PlayObjectAnimation("cyclop", "happy", ONESHOT );
-		sleep(15);
-		MessageBox( MSGBOX_CYCLOPS_SCENE );
+		PlayObjectAnimation( "centaur", "hit", IDLE );
+		sleep(60);
+		local x,y,z = GetObjectPosition( QUROQ )
+		MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
+		UnblockGame();
+	end,
+
+	 goblinFight = function()
+		BlockGame();
+		OpenCircleFog( 129, 127, GROUND, 7, PLAYER_1);
+		MoveCamera( 129, 127, GROUND, 20, 0.7, 0.5, 0, 0, 1 );
+		sleep(20);
+		if isGoblinsShowed == 0 then
+			isGoblinsShowed = 1;
+			PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
+			sleep(15);
+			PlayObjectAnimation("goblin_gold", "attack00", IDLE );
+			sleep(15);
+			SetObjectRotation( "footman_goblin_guard", 90 );
+			sleep(10);
+			PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
+			sleep(15);
+			PlayObjectAnimation("goblin_ore", "attack00", IDLE );
+			sleep(15);
+			SetObjectRotation( "footman_goblin_guard", -60 );
+			sleep(10);
+			PlayObjectAnimation("footman_goblin_guard", "attack00", ONESHOT );
+			sleep(15);
+			PlayObjectAnimation("goblin_left", "death", ONESHOT_STILL );
+			sleep(50);
+			RemoveObject("goblin_left");
+			MessageBox( MSGBOX_GOBLINS_SCENE );
+		end
+		sleep(20);
+		local x,y,z = GetObjectPosition( QUROQ );
+		UnblockGame();
+		MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
+	end,
+	
+	butcherFight = function()
+		OpenCircleFog( 22, 22, GROUND, 7, PLAYER_1);
+		BlockGame();
+		MoveCamera( 22, 22, GROUND, 23, 0.6, 2.4, 0, 0, 1 );
+		sleep(60);
+		if isButchersShowed == 0 then 
+			isButchersShowed = 1;
+			MessageBox( MSGBOX_BUTCHERS_SCENE );
+		end
+		local x,y,z = GetObjectPosition( QUROQ )
+		MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
+		UnblockGame();
+	end,
+	
+	cyclopFight = function()
+		BlockGame();
+		OpenCircleFog( 34, 89, GROUND, 7, PLAYER_1);
+		MoveCamera( 34, 89, GROUND, 15, 0.6, -0.4, 0, 0, 1 );
+		sleep(30);
+		if isCyclopsShowed == 0 then
+			isCyclopsShowed = 1;
+			PlayObjectAnimation("archer1", "rangeattack", ONESHOT );
+			PlayObjectAnimation("archer2", "rangeattack", ONESHOT );
+			sleep(18);
+			PlayObjectAnimation("cyclop", "hit", ONESHOT );
+			sleep(50);
+			SetObjectRotation( "cyclop", 90 );
+			sleep(5);
+			PlayObjectAnimation("cyclop", "attack00", ONESHOT );
+			sleep(20);
+			PlayVisualEffect( EFFECT_TREE_HIT, "tree" );
+			PlayVisualEffect( EFFECT_BALLISTA_DEATH, "tree" );
+			sleep(20);
+			local tree_x, tree_y, tree_floor = GetObjectPosition( "tree" );
+			RemoveObject( "tree" );
+			SetObjectPosition( "stump", tree_x, tree_y, tree_floor );
+			PlayObjectAnimation("cyclop", "happy", ONESHOT );
+			sleep(40);
+			MessageBox( MSGBOX_CYCLOPS_SCENE );
+		end
+		local x,y,z = GetObjectPosition( QUROQ )
+		UnblockGame();
+		MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
+	end,
+	
+	showAltarOfSacrifice = function()
+		MessageBox( PATH.."MsgBox_CanSucrificeSkeletons.txt");
+		BlockGame();	
+		local pit_x, pit_y, pit_floor = GetObjectPosition("sacrificial_pit");
+		local hero_x, hero_y, hero_floor = GetObjectPosition( QUROQ );
+		MoveCamera( pit_x, pit_y, pit_floor, 30, 0.7, 0, 0, 0, 1);
+		OpenCircleFog( pit_x, pit_y, pit_floor, 7, PLAYER_1 );
+		sleep(60);
+		MoveCamera( hero_x, hero_y, hero_floor, 35, 0.9, 0, 0, 0, 1 );
+		UnblockGame();
 	end
-	local x,y,z = GetObjectPosition( QUROQ )
-	UnblockGame();
-	MoveCamera( x, y, z, 35, 0.9, 0, 0, 0, 1 );
-end
+}
 
 function IsGoblinsGuardKilled()
 	while IsObjectExists( "goblins_guard" ) == not nil do sleep(2); end
@@ -535,33 +543,25 @@ function JoinCentaurs()
 	CreateDwelling( "centaur_dwelling", TOWN_STRONGHOLD, 2, PLAYER_1, 125, 12, GROUND, 0 );
 	local hero_x, hero_y, hero_floor = GetObjectPosition( QUROQ );
 	MoveCamera( 125, 12, GROUND, 30, 0.7, 0, 0, 0, 1 );
-	sleep(15);
+	sleep(50);
 	MessageBox( PATH.."MsgBox_CanRecruitCentaurs.txt" );
 	MoveCamera( hero_x, hero_y, hero_floor, 35, 0.9, 0, 0, 0, 1 );
 	SetObjectiveState( "prim2_CollectCreatures", OBJECTIVE_ACTIVE );
-	sleep(1);
+	sleep(20);
 	SetObjectiveProgress( "prim2_CollectCreatures", creaturesCollected );
-	sleep(1);
+	sleep(20);
 	TutorialMessageBox( "MsgBox_RagePointsAfterCombat");--must be tutorial
 	startThread( Prim2_CollectAllStrongholdCreatures );
 end
 
 function SacrificePeasants()
-	while IsObjectExists("sucrifice_peasants")==not nil do sleep(1); end
+	while IsObjectExists("sucrifice_peasants")==not nil do sleep(10); end
 	MessageBox( PATH.."MsgBox_CanSucrificePeasantst.txt");
 end
 
 function SacrificeSkeletons()
-	while IsObjectExists("sucrifice_skeleton")==not nil do sleep(1); end
-	MessageBox( PATH.."MsgBox_CanSucrificeSkeletons.txt");
-	BlockGame();	
-	local pit_x, pit_y, pit_floor = GetObjectPosition("sacrificial_pit");
-	local hero_x, hero_y, hero_floor = GetObjectPosition( QUROQ );
-	MoveCamera( pit_x, pit_y, pit_floor, 30, 0.7, 0, 0, 0, 1);
-	OpenCircleFog( pit_x, pit_y, pit_floor, 7, PLAYER_1 );
-	sleep(10);
-	MoveCamera( hero_x, hero_y, hero_floor, 35, 0.9, 0, 0, 0, 1 );
-	UnblockGame();
+	while IsObjectExists("sucrifice_skeleton")==not nil do sleep(10); end
+	CINEMATICS.showAltarOfSacrifice();
 end
 
 function PlayLoopSound( soundName, objectName )
@@ -686,7 +686,7 @@ Trigger( OBJECT_TOUCH_TRIGGER, "prison", "IsPrisonTouched" );
 Trigger( OBJECT_TOUCH_TRIGGER, "west_hut", "IsPeasantHutTouched" );
 Trigger( OBJECT_TOUCH_TRIGGER, "east_hut", "IsPeasantHutTouched" );
 Trigger( OBJECT_TOUCH_TRIGGER, "south_hut", "IsPeasantHutTouched" );
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", "PlayCentaursScene" );
+Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShowCentaur", "CINEMATICS.centaurFight" );
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "centaur_region", "StartCombatVsPeasant" );
 startThread( PlayerWin );
 Trigger( OBJECT_CAPTURE_TRIGGER, "heaven_town", "Prim1_CaptureHeavenTown" );
