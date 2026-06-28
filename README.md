@@ -479,15 +479,15 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Laszlo is now is now more challenging on higher difficulty levels and will agressively attack the player as intended
 
 ### A1C3M1 - Ylaya: The Spy
-- change: Raise level cap from 14 to 20
+- change: Raised level cap from 14 to 20
 - change: Hut of the Magi quest marked units power and reward scale with game difficulty
 
 ### A1C3M2 - Ylaya: The Break
-- change: Raise level cap from 22 to 25
+- change: Raised level cap from 22 to 25
 
 ### A1C3M3 - Ylaya: The Meeting
 - fix: unreachable resource pile near the town towards the north
-- change: Raise level cap from 30 to 32
+- change: Raised level cap from 30 to 32
 - new: Added Memory Mentor
 
 ### A1C3M4 - Ylaya: The Dragons

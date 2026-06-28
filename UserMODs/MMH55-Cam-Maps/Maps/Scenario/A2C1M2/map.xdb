@@ -1124,11 +1124,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_FIRE_ELEMENTAL</Creature>
-						<Count>75</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS_SEDUCER</Creature>
-						<Count>85</Count>
+						<Count>135</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CERBERI</Creature>
@@ -1136,14 +1136,14 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
-						<Count>195</Count>
+						<Count>395</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PIT_SPAWN</Creature>
 						<Count>55</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_DEVIL</Creature>
+						<Creature>CREATURE_ARCHDEVIL</Creature>
 						<Count>35</Count>
 					</Item>
 				</armySlots>
@@ -1254,6 +1254,9 @@
 						<armySlots/>
 						<artifactIDs>
 							<Item>ARTIFACT_TAROT_DECK</Item>
+							<Item>ARTIFACT_CROWN_OF_LEADER</Item>
+							<Item>NECKLACE_OF_BRAVERY</Item>
+                            <Item>LION_HIDE_CAPE</Item>
 						</artifactIDs>
 						<isUntransferable>
 							<Item>1</Item>
@@ -1265,9 +1268,13 @@
 							<Defence>0</Defence>
 							<Spellpower>0</Spellpower>
 							<Knowledge>0</Knowledge>
-							<skills/>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_SORCERY</SkillID>
+								</Item>
+							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_WISDOM</Item>
 							</perkIDs>
 							<spellIDs>
 								<Item>SPELL_PLAGUE</Item>
@@ -1284,7 +1291,7 @@
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>8</OverrideMask>
 						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -48298,7 +48305,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>22</HeroMaxLevel>
+	<HeroMaxLevel>25</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
