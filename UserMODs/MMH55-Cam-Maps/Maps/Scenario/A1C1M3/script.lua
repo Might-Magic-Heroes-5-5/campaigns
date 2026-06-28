@@ -324,7 +324,8 @@ BATTLES = {
 	ShapeShifter = function( heroname, objectname )
 		Trigger( OBJECT_TOUCH_TRIGGER, objectname, nil );
 		PlayVisualEffect( "/Effects/_(Effect)/Characters/Gating.xdb#xpointer(/Effect)", objectname, "eff1", 0, 0, 0, 0, 0 );
-		sleep( 20 );
+		local coef = 1 + 0.5 * (GetDifficulty());
+		sleep( 50 );
 		if objectname == "demon1" then
 			StartCombat( heroname, nil, 3, CREATURE_SUCCUBUS, 9 * coef, CREATURE_SUCCUBUS, 9 * coef, CREATURE_SUCCUBUS, 9 * coef, nil, nil );
 			SetRegionBlocked( 'block1', nil, PLAYER_2 );
