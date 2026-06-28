@@ -34,7 +34,7 @@ function SpawnSuccubus()
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd2", nil );
 	RemoveObject("i2");
 	sleep( 10 );
-	CreateMonster( "m2", CREATURE_INFERNAL_SUCCUBUS, 160, 92, 79, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
+	CreateMonster( "m2", CREATURE_INFERNAL_SUCCUBUS, 100 + diff * 75, 92, 79, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
 	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO7_Arantir_01sound.xdb#xpointer(/Sound)" );
 end
 
@@ -42,25 +42,8 @@ function SpawnPitLords()
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "dd3", nil );
 	RemoveObject("i3");
 	sleep( 10 );
-	CreateMonster( "m3", CREATURE_BALOR, 18, 107, 77, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
+	CreateMonster( "m3", CREATURE_BALOR, 40 + diff * 15, 107, 77, 1, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 270 );
 	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO8_Arantir_01sound.xdb#xpointer(/Sound)" );	
-end
-
-function MageChargesIntoArantirTown()
-	BlockGame();
-	sleep(5);
-	CINEMATICS.meetMage();
-	sleep(30);
-	EnableHeroAI("Nur", not nil);
-	ChangeHeroStat( "Nur", STAT_MOVE_POINTS, 30000 );
-	MoveHeroRealTime( "Nur", GetObjectPosition( "Arantir" ) );
-	sleep(20);
-	UnblockGame();	
-end
-
-function RemoveMage()
-	SetObjectPosition( "Astral", 92, 49, GROUND );
-	Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" );
 end
 
 function meetZombies( hero )
@@ -94,21 +77,39 @@ end
 
 function VisitDeathKnightHut()
 	if GetObjectiveState("Neck") == OBJECTIVE_ACTIVE and GetHeroLevel( "Arantir" ) < 5 then
-		SetObjectPosition( "Arantir", 119, 122, GROUND );
-		SetObjectRotation( "Arantir", 90 );
 		CINEMATICS.notWorthyForDeathKnights();
 	end
 end
 
 CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
 	meetMage = function()
-		StartAdvMapDialog(5); 
-		sleep(2);
+		BlockGame();
+		CINEMATICS.playAndWait(5);
+		sleep(30);
+		ChangeHeroStat( "Nur", STAT_MOVE_POINTS, 30000 );
+		MoveHeroRealTime( "Nur", GetObjectPosition( "Arantir" ) );
+		UnblockGame();	
 	end,
 	
 	interogateMage = function()
 		BlockGame();
-		StartAdvMapDialog (1, "RemoveMage");
+		SetObjectRotation( "Astral", 270 );
+		SetObjectPosition( "Astral", 117, 118, GROUND );
+		sleep(60);
+		CINEMATICS.playAndWait(1);
+		SetObjectPosition( "Astral", 92, 49, GROUND );
+		Play2DSound( "/Maps/Scenario/A2C1M2/C1M2_VO5_Arantir_01sound.xdb#xpointer(/Sound)" );
 		sleep(2);
 		UnblockGame();
 	end,
@@ -119,31 +120,36 @@ CINEMATICS = {
 		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
 		SetObjectPosition( "Arantir", 129, 90, 0 );
 		SetObjectRotation( "Arantir", 90 );
-		StartAdvMapDialog( 3 );
-		sleep(10);
+		sleep(25);
+		CINEMATICS.playAndWait( 3 );
+		sleep(20);
 		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckGood.xdb#xpointer(/Effect)", "Arantir", "ara1", 0, 0, 0, 0, 0 );
-		sleep(8);
 		PlayVisualEffect( "/Effects/_(Effect)/Spells/LuckBad.xdb#xpointer(/Effect)", "mg", "mag1", 0, 0, 0, 0, 0 );
-		sleep(5);
+		sleep(15);
 		pcall(RemoveObject, "mg" );
-		sleep(2);
 		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
 		UnblockGame();
 	end,
 	
 	meetDeathKnights = function()
-		StartAdvMapDialog(0);
-		sleep(2);
+		SetObjectPosition( "Arantir", 119, 122, GROUND );
+		SetObjectRotation( "Arantir", 90 );
+		sleep(60);
+		CINEMATICS.playAndWait(0);
 	end,
 	
 	joinDeathKnights = function()
-		StartAdvMapDialog(7);
-		sleep(2);
+		SetObjectPosition( "Arantir", 119, 122, GROUND );
+		SetObjectRotation( "Arantir", 90 );
+		sleep(60);
+		CINEMATICS.playAndWait(7);
 	end,
 	
 	notWorthyForDeathKnights = function()
-		StartAdvMapDialog(8);
-		sleep(2);
+		SetObjectPosition( "Arantir", 119, 122, GROUND );
+		SetObjectRotation( "Arantir", 90 );
+		sleep(60);
+		CINEMATICS.playAndWait(8);
 	end,
 	
 	meetZombies = function()
@@ -151,11 +157,11 @@ CINEMATICS = {
 		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
 		SetObjectPosition( "Arantir", 29, 112, 0 );
 		SetObjectRotation( "Arantir", 360 );
-		StartAdvMapDialog(6);
-		sleep( 8 );
+		sleep(60);
+		CINEMATICS.playAndWait(6);
 		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
 		OpenCircleFog( 27, 100, 0, 4, PLAYER_1 );
-		sleep( 50 );
+		sleep(50);
 		UnblockGame();
 	end,
 	
@@ -163,17 +169,14 @@ CINEMATICS = {
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "vamp1", nil );
 		BlockGame();
 		hero_x, hero_y, hero_z = GetObjectPosition( "Arantir" );
-		sleep( 4 );
 		SetObjectPosition( "Arantir", 15, 65, 1 );
 		SetObjectRotation( "Arantir", 90 );
-		sleep( 3 );
-		StartAdvMapDialog(2);
-		sleep( 10 );
+		sleep(60);
+		CINEMATICS.playAndWait(2);
 		SetObjectPosition( "Arantir", hero_x, hero_y, hero_z );
-		sleep( 6 );
-		UnblockGame();
 		SetRegionBlocked( "vamp1", nil, PLAYER_2 ); 
 		SetRegionBlocked( "vamp1", nil, PLAYER_3 ); 
+		UnblockGame();
 	end,
 	
 	outro = function()
@@ -185,6 +188,7 @@ CINEMATICS = {
 
 DIFFICULTY = {
 	[0] = function()
+		diff = 1;
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
@@ -193,46 +197,55 @@ DIFFICULTY = {
 		SetRegionBlocked("z3", not nil, PLAYER_3);
 		SetRegionBlocked("z4", not nil, PLAYER_2); 
 		SetRegionBlocked("z4", not nil, PLAYER_3);
+		AddObjectCreatures( "winner",  CREATURE_ARCHDEVIL,  15 );
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  35 );
+		AddHeroCreatures( "Gamor", CREATURE_INFERNAL_SUCCUBUS, 100 );
 		print("Difficulty Level is NORMAL");
 	end,
 	
 	[1] = function()
+		diff = 2;
 		SetRegionBlocked("z1", not nil, PLAYER_2); 
 		SetRegionBlocked("z1", not nil, PLAYER_3);
 		SetRegionBlocked("z2", not nil, PLAYER_2); 
 		SetRegionBlocked("z2", not nil, PLAYER_3);
-		AddHeroCreatures( "Gamor", CREATURE_INFERNAL_SUCCUBUS, 60 );
+		AddHeroCreatures( "Gamor", CREATURE_INFERNAL_SUCCUBUS, 160 );
 		AddHeroCreatures( "Gamor", CREATURE_ARCHDEVIL, 5 );
-		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  25 );
-		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  20 );
-		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  37 );
-		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  10 );
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  50 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  45 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  35 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  67 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  15 );
+		AddObjectCreatures( "winner",     CREATURE_ARCHDEVIL,  25 );
 		print("Difficulty Level is HARD");
 	end,
 	
 	[2] = function()
+		diff = 3;
 		RemoveHeroCreatures("Arantir", CREATURE_SKELETON, 10);
-		AddHeroCreatures( "Nur", CREATURE_IRON_GOLEM, 50);
-		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  20 );
-		AddHeroCreatures( "Gamor",   CREATURE_INFERNAL_SUCCUBUS, 180 );
-		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  50 );
-		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  40 );
-		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  75 );
-		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  20 );
+		AddHeroCreatures( "Astral", CREATURE_IRON_GOLEM, 50);
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  70 );
+		AddHeroCreatures( "Gamor",   CREATURE_INFERNAL_SUCCUBUS, 220 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL,  75 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  85 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI,  135 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  30 );
+		AddObjectCreatures( "winner",     CREATURE_ARCHDEVIL,  33 );
 		print("Difficulty Level is HEROIC");
 	end,
 	
 	[3] = function()
+		diff = 4;
 		RemoveHeroCreatures("Arantir", CREATURE_SKELETON, 20);
-		AddHeroCreatures( "Nur", CREATURE_IRON_GOLEM, 100);
-		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  50 );
+		AddHeroCreatures( "Astral", CREATURE_IRON_GOLEM, 100);
+		AddHeroCreatures( "Gamor", CREATURE_FRIGHTFUL_NIGHTMARE,  100 );
 		AddHeroCreatures( "Gamor",   CREATURE_INFERNAL_SUCCUBUS, 300 );
 		AddHeroCreatures( "Gamor",           CREATURE_ARCHDEVIL,  40 );
-		AddHeroCreatures( "Faiz",            CREATURE_ARCHDEVIL,  40 );
-		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL, 100 );
-		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  80 );
-		AddObjectCreatures( "winner", 		   CREATURE_CERBERI, 150 );
-		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  40 );
+		AddObjectCreatures( "winner",        CREATURE_ARCHDEVIL,  40 );
+		AddObjectCreatures( "winner",   CREATURE_FIRE_ELEMENTAL, 125 );
+		AddObjectCreatures( "winner", CREATURE_SUCCUBUS_SEDUCER,  135 );
+		AddObjectCreatures( "winner", 		   CREATURE_CERBERI, 270 );
+		AddObjectCreatures( "winner", 	     CREATURE_PIT_SPAWN,  45 );
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
 }
@@ -257,13 +270,12 @@ OBJECTIVES = {
 		ChangeHeroStat("Arantir", STAT_MANA_POINTS, 20);
 		SetHeroesExpCoef( 0.6 );
 		DenyAIHeroesFlee( PLAYER_4, 1 );
+		DenyAIHeroesFlee( PLAYER_3, 1 );
 		DenyAIHeroesFlee( PLAYER_2, 1 );
-		DenyAIHeroesFlee( PLAYER_1, 1 );
 		BlockTownGarrisonForAI( "winner", not nil )
-		GiveExp(   "Faiz", 65000 );
-		GiveExp(  "Gamor", 41000 );
+		GiveExp(   "Faiz", 200000);
+		GiveExp(  "Gamor", 200000);
 		GiveExp( "Astral",  1000 );
-		EnableHeroAI(   "Nur", nil );
 		EnableHeroAI( "Gamor", nil );
 		EnableHeroAI(  "Faiz", nil );
 		SetTownBuildingLimitLevel( "t2", TOWN_BUILDING_DWELLING_4, 0 );
@@ -345,12 +357,10 @@ OBJECTIVES = {
 	defeatLocalLeader_armyDay = 8,
 	defeatLocalLeader = function()
 		if OBJECTIVES.state.defeatLocalLeader[2] == 1 then  
-			startThread(MageChargesIntoArantirTown);
+			CINEMATICS.meetMage();
 			OBJECTIVES.state.defeatLocalLeader[2] = 2;
 		elseif OBJECTIVES.state.defeatLocalLeader[2] == 2 and IsHeroAlive("Nur") == nil then
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
-			SetObjectRotation( "Astral", 270 );
-			SetObjectPosition( "Astral", 117, 118, GROUND );
 			CINEMATICS.interogateMage();
 			OBJECTIVES.state.defeatLocalLeader[2] = 3;
 		elseif OBJECTIVES.state.defeatLocalLeader[2] == 3 and IsHeroAlive("Gamor") == nil then
@@ -384,9 +394,8 @@ OBJECTIVES = {
 		end
 		
 		if OBJECTIVES.date >= OBJECTIVES.findCultistsLeader_armyDay then
-			AddObjectCreatures( "winner", 		CREATURE_TITAN,  2 );
-			AddObjectCreatures( "winner", 	CREATURE_ARCH_MAGI, 10 );
-			AddObjectCreatures( "winner",  CREATURE_IRON_GOLEM, 50 );
+			AddObjectCreatures( "winner", 		CREATURE_TITAN,  3 );
+			AddObjectCreatures( "winner", 		CREATURE_ARCHDEVIL,  3 );
 			OBJECTIVES.findCultistsLeader_armyDay = OBJECTIVES.findCultistsLeader_armyDay + 7;
 		end			
 	end,
@@ -415,14 +424,10 @@ OBJECTIVES = {
 	joinDeathKnights = function()
 	-- Lifecycle of this task is handled by map.xdb
 		if OBJECTIVES.state.joinDeathKnights[2] == 1 and GetObjectiveState("Neck") == OBJECTIVE_ACTIVE then
-			SetObjectPosition( "Arantir", 119, 122, GROUND );
-			SetObjectRotation( "Arantir", 90 );
 			CINEMATICS.meetDeathKnights();
 			Trigger(OBJECT_TOUCH_TRIGGER, "Neck_", "VisitDeathKnightHut");
 			OBJECTIVES.state.joinDeathKnights[2] = 2;
 		elseif OBJECTIVES.state.joinDeathKnights[2] == 2 and GetObjectiveState("Neck") == OBJECTIVE_COMPLETED then
-			SetObjectPosition( "Arantir", 119, 122, GROUND );
-			SetObjectRotation( "Arantir", 90 );
 			CINEMATICS.joinDeathKnights();
 			OBJECTIVES.state.joinDeathKnights[2] = 10;
 		end
