@@ -498,10 +498,17 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
-- change: Horncrest army animations on adventure map were too frequent. Siege catapult is now more like siege engine and less like gatling gun.
-- change: Horncrest siege enemy hero Lorenzo level increased
+- change: Horncrest town is nearly fully developped
+- change: Horncrest siege enemy hero Lorenzo power and surounding neutral stacks power scale with difficulty
 - change: Lostdale siege enemy hero Andreas level increased
 - change: King Toulghar level increased and his army is more challenging
+- change: Increased the strength of Inferno garrisons
+- change: Increased the strength of Dwarf garrisons
+- change: Increased the strength of RedHeaven garrison peasants from 10k to 12k
+- change: Increased the strength of units that guard mines from Dwarf and Red units
+- change: Lostdale town receive more reinforcements each week + additional from day 1 based on difficulty
+- change: redesigned Marbas starting army. Its power level also depends on difficulty.
+- new: Removed Tavern from inferno towns; will be exchanged to deploy additional 2 inferno Heroes (need to be added)
 - new: Added Memory Mentor
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
