@@ -120,6 +120,7 @@ SetRegionBlocked("OrnellaRegion", not nil, PLAYER_1);
 SetRegionBlocked( "TeleportBlocker", not nil, PLAYER_2 );
 SetRegionBlocked( "seraph_area_blocker", not nil );
 SetRegionBlocked( "scene_ornella", not nil );
+SetRegionBlocked( "AIBlock", not nil, PLAYER_2 );
 
 -- START SPELLS
 TeachHeroSpell( ORNELLA, SPELL_WEAKNESS );
@@ -132,7 +133,7 @@ SetHeroRoleMode( "Orlando", HERO_ROLE_MODE_HERMIT );
 SetHeroesExpCoef(0.9);
 
 if GetDifficulty() == DIFFICULTY_EASY then
-	difLevel = 2;
+	difLevel = 1;
 	SetTownBuildingLimitLevel( "SouthHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
 	SetTownBuildingLimitLevel( "EastHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
 	SetTownBuildingLimitLevel( "WestHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
@@ -157,21 +158,34 @@ elseif GetDifficulty() == DIFFICULTY_NORMAL then
 	SetTownBuildingLimitLevel( "SouthHavenTown", TOWN_BUILDING_FORT, 2 );
 	SetTownBuildingLimitLevel( "EastHavenTown", TOWN_BUILDING_FORT, 2 );
 	SetTownBuildingLimitLevel( "WestHavenTown", TOWN_BUILDING_FORT, 2 );
+	AddObjectCreatures( "Necropolis", CREATURE_VINDICATOR, 5);
+	AddObjectCreatures( "Necropolis", CREATURE_CHAMPION, 1);
+	AddObjectCreatures( "Necropolis", CREATURE_LANDLORD, 10);
+	AddObjectiveCreatures( "Necropolis", CREATURE_LONGBOWMAN, 7);
 	print ("Difficulty level is NORMAL");
+
 elseif GetDifficulty() == DIFFICULTY_HARD then
 	difLevel = 3;
 	SetTownBuildingLimitLevel( "SouthHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
 	SetTownBuildingLimitLevel( "EastHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
 	SetTownBuildingLimitLevel( "WestHavenTown", TOWN_BUILDING_DWELLING_7, 0 );
+	AddObjectCreatures( "Necropolis", CREATURE_VINDICATOR, 10);
+	AddObjectCreatures( "Necropolis", CREATURE_CHAMPION, 2);
+	AddObjectCreatures( "Necropolis", CREATURE_LANDLORD, 20);
+	AddObjectCreatures( "Necropolis", CREATURE_LONGBOWMAN, 14);
 	print ("Difficulty level is HARD");
 elseif GetDifficulty() == DIFFICULTY_HEROIC then
 	difLevel = 4;
+	AddObjectCreatures( "Necropolis", CREATURE_VINDICATOR, 15);
+	AddObjectCreatures( "Necropolis", CREATURE_CHAMPION, 3);
+	AddObjectCreatures( "Necropolis", CREATURE_LANDLORD, 30);
+	AddObjectCreatures( "Necropolis", CREATURE_LONGBOWMAN, 21);
 	print ("Difficulty level is HEROIC");
 end
 
-AddHeroCreatures( ORNELLA, CREATURE_SKELETON_ARCHER, 140-difLevel*25);
-AddHeroCreatures( ORNELLA, CREATURE_ZOMBIE, 50-difLevel*8);
-AddHeroCreatures( ORNELLA, CREATURE_VAMPIRE, 10-difLevel*2);
+AddHeroCreatures( ORNELLA, CREATURE_SKELETON_ARCHER, 140-difLevel*19);
+AddHeroCreatures( ORNELLA, CREATURE_ZOMBIE, 50-difLevel*6);
+AddHeroCreatures( ORNELLA, CREATURE_VAMPIRE, 10-difLevel*1);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_SERAPH, 1*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_CHAMPION, 1*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_ZEALOT, 3*difLevel);
@@ -179,13 +193,14 @@ AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_BATTLE_GRIFFIN, 4*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_VINDICATOR, 17*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LONGBOWMAN, 11*difLevel*2);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LANDLORD, 30*difLevel);
-SetPlayerStartResource( PLAYER_1, GOLD, 15500 - difLevel*1500 );
+ChangeHeroStat (ENEMY_HERO_ORLANDO, STAT_EXPERIENCE, 123000*difLevel);
+SetPlayerStartResource( PLAYER_1, GOLD, 15500 - difLevel*1000 );
 SetPlayerStartResource( PLAYER_1, ORE, 22 - difLevel*3 );
 SetPlayerStartResource( PLAYER_1, WOOD, 22 - difLevel*3 );
-SetPlayerStartResource( PLAYER_1, GEM, 11 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, CRYSTAL, 9 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, SULFUR, 9 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, MERCURY, 16 - difLevel*2 );
+SetPlayerStartResource( PLAYER_1, GEM, 13 - difLevel*2 );
+SetPlayerStartResource( PLAYER_1, CRYSTAL, 11 - difLevel*2 );
+SetPlayerStartResource( PLAYER_1, SULFUR, 11 - difLevel*2 );
+SetPlayerStartResource( PLAYER_1, MERCURY, 18 - difLevel*2 );
 DenyAIHeroFlee( ARANTIR, not nil );
 DenyAIHeroFlee( ORNELLA, not nil );
 --------------------------------------------------------------------
@@ -721,7 +736,7 @@ CINEMATICS = {
 OBJECTIVES = {
 	state = {
 		meetAranthir 		= { 	   "prim1_MeetArantir", 1 },			-- Ornella must meet Aranthir
-		captureMillfield 	= {    "prim2_CaptureAllTowns", 0 },			-- Capture Millfield town
+		captureMillfield 	= {    "prim2_CaptureAllTowns", 1 },			-- Capture Millfield town
 		ornellaIsAlive  	= { "prim3_OrnellaMustSurvive", 1 },			-- Ornella must survive
 		aranthirIsAlive		= { "prim4_ArantirMustSurvive", 0 },			-- Aranthir must survive
 	},
@@ -812,19 +827,31 @@ OBJECTIVES = {
 			sleep(25);
 			CreatePointLights( 2 );
 			OBJECTIVES.state.aranthirIsAlive[2] = 1;
-			OBJECTIVES.state.captureMillfield[2] = 1;
+			OBJECTIVES.state.captureMillfield[2] = 2;
 			OBJECTIVES.state.meetAranthir[2] = 10;
 		end
 	end,
 	
+	captureMillfield_armyDay = 8,
 	captureMillfield = function()
-		if OBJECTIVES.state.captureMillfield[2] == 1 then
+		if OBJECTIVES.state.captureMillfield[2] == 2 then
 			SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_ACTIVE );
-			OBJECTIVES.state.captureMillfield[2] = 2;
-		elseif OBJECTIVES.state.captureMillfield[2] == 2 and GetObjectOwner("WestHavenTown") == PLAYER_1 then
+			OBJECTIVES.state.captureMillfield[2] = 3;
+		elseif OBJECTIVES.state.captureMillfield[2] == 3 and GetObjectOwner("WestHavenTown") == PLAYER_1 then
 			SetObjectiveState( "prim2_CaptureAllTowns", OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.captureMillfield[2] = 10;
 		end
+		
+		if OBJECTIVES.date >= OBJECTIVES.captureMillfield_armyDay then
+			AddObjectCreatures( "WestHavenTown", CREATURE_SERAPH, 1*difLevel);
+			AddObjectCreatures( "WestHavenTown", CREATURE_CHAMPION, 2*difLevel);
+			AddObjectCreatures( "WestHavenTown", CREATURE_ZEALOT, 3*difLevel);
+			AddObjectCreatures( "WestHavenTown", CREATURE_BATTLE_GRIFFIN, 5*difLevel);
+			AddObjectCreatures( "WestHavenTown", CREATURE_VINDICATOR, 10*difLevel);
+			AddObjectCreatures( "WestHavenTown", CREATURE_LONGBOWMAN, 12*difLevel*2);
+			AddObjectCreatures( "WestHavenTown", CREATURE_LANDLORD, 22*difLevel);
+			OBJECTIVES.captureMillfield_armyDay = OBJECTIVES.captureMillfield_armyDay + 7;
+		end	
 	end,
 	
 	aranthirIsAlive = function()
