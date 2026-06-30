@@ -46851,8 +46851,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -47085,7 +47085,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Haven/RedHeaven07_Orlando.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>34142</Experience>
+						<Experience>0</Experience>
 						<armySlots/>
 						<artifactIDs/>
 						<isUntransferable/>
@@ -55397,6 +55397,36 @@
 				<x>0.65098</x>
 				<y>0.792157</y>
 				<z>0.941176</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>23</x1>
+				<y1>124</y1>
+				<x2>23</x2>
+				<y2>126</y2>
+			</Rect>
+			<Name>AIBlock</Name>
+			<Color>
+				<x>1</x>
+				<y>0</y>
+				<z>0</z>
 			</Color>
 			<EnterAndStopTrigger>
 				<Action>
