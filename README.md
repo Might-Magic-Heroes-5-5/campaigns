@@ -301,7 +301,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
 - fix: Player 2 heroes no longer flee battles
 - change: Reduced amount and power of weekly elven spawns per week due to Elven source magic.
-- change: Elder Druids circle power increased
+- change: Elder Druids circle fight is now more challenging
 - new: Added Memory Mentor
 
 ### C2M4 – Inferno: The Ship
@@ -318,24 +318,24 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
-- changed: Academy heroes tracking is available on all difficulties but their detection range is being reduced.
-- changed: Starting bonus choice
+- changed: Academy heroes tracking works on all difficulties (was heroic and impossible) but their detection range is now shorter on lower difficulties (from 0/0/13/15 to 8/10/12/14).
+- changed: Starting bonus choice set from 20 Skeletons, Breastplate of Eldritch Might, Curse spell to 30 Skeletons, Helm of Chaos, Rupture spell
 
 ### C3M2 – Necropolis: The Attack
 - fix: Certain player movement could make patrols halt and stop at place indefinitely
 - fix: Enemy patrol ships attacking the player hero triggered multiple combats one after another instead of one
 
 ### C3M3 – Necropolis: The Invasion
-- fix: Player is not granted Cloak of Death's Shadow upon any of his heroes visiting Bahiyaa
+- fix: Sometimes player heroes were not granted Cloak of Death's Shadow when visiting Bahiyaa
 - change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description
 - new: Added Memory Mentor
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap sometimes did not trigger which broke the main quest line
-- fix: Renegade upgrade type units does not run away from Isabella. Now they are and Godric receives True upgrade type reinforcements for the final battle
-- change: Godric reinforcement mechanic is now aligned with game difficulty level.
-- change: When Godric sabotage troops take ownership of a player mine the camera will move to the mine location
-- change: Player3 (Academy) heroes are now in Onslaught mode, they will aim to take over player towns at any cost
+- fix: Renegade upgrade type units did not run away from Isabella. Now they are and Godric receives them as True upgrade type reinforcements for the final battle
+- change: Godric reinforcement mechanic now scales with difficulty level.
+- change: When Godric sabotage troops take ownership of a player mine the player camera will showcase the location
+- change: Player3 (Academy) heroes are now in Onslaught mode, they will aim to take over player's towns at any cost
 - new: Added Memory Mentor
 
 ### C4M1 – Dungeon: The Clanlord
@@ -358,7 +358,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C4M5 – Dungeon: Raelag's Offer
 - fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
-- change: Veyer final fight is more challenging and scales with difficulty
+- change: Veyer final fight is more challenging and scales with game difficulty
 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
@@ -383,29 +383,29 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: Nikolay occasionally transferred his army to other heroes due to AI not considering him the main player hero.
-- fix: Player 2 heroes no longer flee from combat and fight till the very end.
-- change: Nikolay hero has better stats and knows more spells and his army gets stronger based on difficulty.
-- new: map ambient light was not changed proplerly as the night draws near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
+- fix: Necropolis player heroes no longer flee from combat and fight till the very end.
+- change: Nikolay hero has better stats, knows more spells and his army scales with game difficulty.
+- new: map ambient light did not changed properly as the night drew near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
 - new: Combat arena light and Skydome reflects the one on the adventure map.
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
 - new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
-- changed: Night counter increases 25% faster at Hard, 50% faster at Heroic and 75% faster at Impossible difficulty
+- changed: Night counter increases faster at higher difficulty levels 0%, 25%, 50% and 75% for impossible.
 
 ### C6M2 - Academy: The Liberation
-- fix: it was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
+- fix: It was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
 - fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 
-- changed: Angel creature stack on Lorekeep island now grows with time passed.
-- new: Lorekeep now has a hero that guards it (was empty before) and his army power is based on game difficulty level.
+- changed: Angel creature stack guarding Lorekeep island from the left side now grows every week.
+- new: Lorekeep now has a hero that guards it (was empty before) and his army power scales with difficulty level.
 - new: Added Memory Mentor
 
 ### C6M3 - Academy: The Triumvirate
 - fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
 - change: First garrison troop strength increased by 30%
 - change: Haven towns are now of higher town level:
-   - Dwellings: T1, T2, T3, T4, T5 built up to non-upgraded level.
-   - Magic Guilds  from none to level 3
-   - Common buildings: Village to Town Hall, +Marketplace, +Blacksmith, Tavern is disabled.
-- change: Markal fights are now more challenging and scale with difficulty and time passed.
+   - Dwellings: T1, T2, T3, T4, T5 built up to level 1 (provide non upgraded units).
+   - Magic Guilds from level 0 to 3
+   - Common buildings: Village is now Town Hall, added Marketplace, added Blacksmith, Taverns cannot be built.
+- change: Markal fights are now more challenging, scale with game difficulty and time passed.
 
 ### C6M4 - Academy: The Alliance
 - fix: archer dwelling (at 150,148) could not transport units via caravan due to terrain block
@@ -413,7 +413,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Isabel army size significantly increased and is based on difficulty
 
 ### C6M5 - Academy: Zehir's Hope
-- new: Added Hill Fort on the map and the player starts with 500000 gold
+- new: Added Hill Fort on the map and the player starts with 500000 gold so he can better strategise the fights.
 - changed: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
 - changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
 
@@ -421,62 +421,62 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Overlapping messages during troop desertion made them unreadable
 - change: level cap increased from 12 to 15
 - change: Freyda starting army increased
-- change: Caldwell and Randell armies are now more challenging
+- change: Caldwell and Randell enemy hero armies are now more challenging on higher difficulties
 
 ### A1C1M2 - Freyda: The Suspicion
-- change: final inferno attack is now more challenging
+- change: final inferno attack is now more challenging on higher difficulties
 
 ### A1C1M3 - Freyda: Duncan
-- new: Teal enemy player now has a layered defense by a triage of heroes and garrisons where Duncan sits at the very core for the mission finale. Their armies sizes depend on game difficulty.
-- fix: Teal enemy player sabotage groups against Freyda was not working as intended. Now town recruits will desert, mines will get stolen, rebel forces will appear on map to block pathing.
+- new: Teal enemy player now has a layered defense by a triage of heroes and garrisons and Duncan sits at the very core if it. Enemy armies are stronger on higher game difficulty.
+- fix: Teal enemy player sabotage groups against Freyda was not working as intended. Now town recruits will desert, mines will get stolen, rebel forces will appear on map to block pathing.The chance to get one mine stolen at the start of the day (5%/6%/8%/10% per owned mine by the player).
 - change: level cap increased from 28 to 30
 - change: Duncan town is now more fortified
-- change: Inferno ambushes are now more challenging based on difficulty
+- change: Inferno ambushes are now more challenging on higher difficulty levels.
 
 ### A1C1M4 - Freyda: Negotiations
 - new: Added Memory Mentor
 
 ### A1C1M5 - Freyda: The Choice
 - new: Added Memory Mentor
-- change: Once you free Duncan (level 1), he will gain exp to reach level 30.
-- change: Buffed the started Freyda's army considering the 80% of the size required to go to Thor Hrall in previous mission (same for all difficulties)
-- change: Red Heaven player hero Lorenzo is deployed at Castlegate, with a role of town defender. His level will depend on game difficulty.
+- change: Once you free Duncan he will gain exp to reach level 30.
+- change: Starting Freyda's army is now stronger considering the 80% of the size required to go to Thor Hrall in previous mission (same for all difficulties)
+- change: Red Heaven player hero Lorenzo is deployed at Castlegate, with a role of town defender. His level depends on game difficulty.
 - change: Red Heaven player hero Andreas level and army power depend on game difficulty. 
 - change: Teal Heaven player heroes Klaus and Rutger levels depend on game difficulty.
-- change: Mission final naval combat is now more challenging.
+- change: Mission final naval combat is now more challenging on higher difficulty levels.
 
 ### A1C2M1 - Wulfstan: The Borderzone
-- change: Reworked map starting bonus options
-- change: Raise level cap from 14 to 20
-- change: Red Heaven onslaught waves have been redesign and challenge scales up with diffculty.
+- change: Starting bonus set from 15 defenders, 5 bears, 5 berserkers to 15 axe throwers, 10 bears, 7 berserkers.
+- change: Raised level cap from 14 to 20
+- change: Red Heaven onslaught waves have been redesigned and are more challenging on higher difficulties.
 
 ### A1C2M2 - Wulfstan: The Ambush
-- change: Enemy hero leading the final attack is now more challenging.
-- change: Lich stack with hidden army at Dungeon entry is now more challenging.
-- change: Raise level cap from 22 to 25.
+- change: Enemy hero leading the final attack is more challenging on higher game difficulty.
+- change: Lich stack with hidden army at Dungeon entry is more challenging on higher game difficulty.
+- change: Raised level cap from 22 to 25.
 - new: Added Memory Mentor
 
 ### A1C2M3 - Wulfstan: The Guerrillas
 - fix: Enemy hero Andreas did not patrol the underground as intended
 - fix: Quest Caravan occasionally did not appear which made the mission unable to complete.
-- fix: Asking the underground dwarves to lure enemy hero Andreas made them also joining him on visit
-- change: Enemy hero Andreas (patrol) is now more challenging and his power scales with difficulty
-- change: Enemy hero Valeria (town guard) is now more challenging and his power scales with difficulty
-- change: Quest Caravan acompanying army is now more challenging on higher difficulties
+- fix: Asking the underground dwarves to lure enemy hero Andreas made them also joining him on visit instead of getting sacrificed.
+- change: Enemy hero Andreas (patrol) is now more challenging on higher difficulty levels.
+- change: Enemy hero Valeria (town guard) is now more challenging on higher difficulty levels.
+- change: Quest Caravan acompanying army is now more challenging on higher difficulty levels.
 - change: Reduced Quest Caravan travel time changed from 4 days to 7/6/5/4 days based on difficulty level
 - new: Added a Hill Fort that is available to the player
 
 ### A1C2M4 - Wulfstan: Two Brothers
 - fix: Enemy hero interacting with scripted creatures invoked player recruiting dialogue instead of invoking a fight
 - fix: Duncan artifacts from mission A1C1M5 were not loaded
-- change: Torhall final siege combat is now more challenging with higher difficulties
-- change: Enemy hero Rolf army is now more challenging with higher difficulties
+- change: Torhall final siege combat is now more challenging on higher difficulty levels.
+- change: Enemy hero Rolf army is now more challenging on higher difficulty levels.
 - change: Replaced Cartographer with Memory Mentor
 
 ### A1C2M5 - Wulfstan: Laszlo
 - fix: Duncan artifacts from previous mission were not loaded
 - fix: Dwarven Treasury could not be entered/attacked.
-- change: Laszlo is now stronger and will agressively attack the player
+- change: Laszlo is now is now more challenging on higher difficulty levels and will agressively attack the player as intended
 
 ### A1C3M1 - Ylaya: The Spy
 - change: Raise level cap from 14 to 20
@@ -486,44 +486,44 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Raise level cap from 22 to 25
 
 ### A1C3M3 - Ylaya: The Meeting
-- fix: unit attack/hit animations on adventure map were too frequent and had stuters
 - fix: unreachable resource pile near the town towards the north
 - change: Raise level cap from 30 to 32
 - new: Added Memory Mentor
 
 ### A1C3M4 - Ylaya: The Dragons
-- change: Soulscar heroes roamed and collected resources, dwellings, mines instead of charging player garrisons or towns but instead 
+- change: Soulscar heroes roamed and collected resources, dwellings, mines instead of charging player garrisons or towns
 - change: Soulscar hero waves consist of 2 heroes that attack together
-- change: Thralsai and his army are now more challenging
+- change: Thralsai and his army are now more challenging on higher difficulty levels.
 
 ### A1C3M5 - Ylaya: The Decoupling
 - fix: Duncan and Wulfstan artifacts from mission A1C2M5 were not loaded
 - change: Horncrest town is nearly fully developped
-- change: Horncrest siege enemy hero Lorenzo power and surounding neutral stacks power scale with difficulty
+- change: Horncrest siege enemy hero Lorenzo power and surounding neutral stacks are now more challenging on higher difficulty levels.
 - change: Lostdale siege enemy hero Andreas level increased
-- change: King Toulghar level increased and his army is more challenging
+- change: Lostdale town receive more reinforcements each week + additional from day 1 based on difficulty
+- change: King Toulghar level increased and his army is now more challenging on higher difficulty levels.
 - change: Increased the strength of Inferno garrisons
 - change: Increased the strength of Dwarf garrisons
-- change: Increased the strength of RedHeaven garrison peasants from 10k to 12k
-- change: Increased the strength of units that guard mines from Dwarf and Red units
-- change: Lostdale town receive more reinforcements each week + additional from day 1 based on difficulty
-- change: redesigned Marbas starting army. Its power level also depends on difficulty.
+- change: Increased the strength of Red Heaven garrison peasants from 10k to 12k
+- change: Increased the strength of Red Heaven units and dwarves that guard mines.
+- change: redesigned Marbas starting army. Its power level is challenging on higher difficulty levels.
 - new: Removed Tavern from inferno towns; will be exchanged to deploy additional 2 inferno Heroes (need to be added)
 - new: Added Memory Mentor
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
 - fix: Removed wandering enemy player hero.
-- changed: Voron Peak defending army is more challenging
+- changed: Voron Peak defending army is more challenging on higher difficulty levels.
 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
 - change: Removed tutorial messages as player has already been introduced to Necromancy in previous missions.
 - change: Reduced amount of defenders (difficulty increase) for troops in the first Necro town.
-- fix: Iluma-Nadin location was not revealed at game start.
+- fix: Iluma-Nadin town was not revealed as primary quest target at game start.
 - fix: Objective buildings (Forge, Which Hut, Portal) triggered messages for the human player when visited by the AI player heroes.
 - fix: Ornella artifacts were not transferred to her Necromancer version at the end of the mission
 
 ### A2C1M2 - The Will of Asha: The Grim Crusade
-- change: enemy heroes Faiz and Gamor armies are more challenging
+- change: enemy heroes Faiz and Gamor armies are now more challenging on higher difficulty levels.
+- change: Raised level cap from 22 to 25
 
 ### A2C1M3 - The Will of Asha: The Bull's Wake
 - change: Removed human player tavern hiring limit ( was 6 ).
@@ -532,41 +532,41 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less than 7 days after he has spawned
 - fix: capturing all Gold mines would not complete the related quest
 - fix: Units from Inferno town could be taken by Inferno onsalught heroes
-- changed: Inferno wave heroes army strength scale with time and difficulty
-- changed: Stronghold wave heroes army strength scale with time and difficulty
+- changed: Inferno wave heroes army are now more challenging on higher difficulty levels and scale with time.
+- changed: Stronghold wave heroes are now more challenging on higher difficulty levels and scale with time.
 
 ### A2C1M5 - The Will of Asha: The Bull's Wake
-- change: Hero level cap removed (was 40)
-- change: Orlando army is now more challenging
+- change: Raised level cap from 40 to 99
+- change: Orlando army is now more challenging on higher difficulty levels and scale with time.
 - change: Enemy Haven towns are now fully built
 
 ### A2C2M2 - To Honour our Fathers: One Khan, One Clan
 - fix: Dungeon pirate heroes sometimes jammed and stopped moving.
 - fix: Stronghold Tribe harassment waves against the player did not work at all
-- change: AI harassment waves changed from 3 to infinite
+- change: AI harassment waves changed from 3 to infinite.
 
 ### A2C2M3 - To Honour our Fathers: Father Sky's Fury
-- fix: towns cannot be razed with catapults due to a bug in code
-- change: Catapult shots cost from 15 to 5/10/15/20 (based on difficulty)
+- fix: Catapult shots were bugged and could not raze towns
+- change: Catapult shot cost from 15 to 5/10/15/20 (based on difficulty)
 
 ### A2C2M4 - To Honour our Fathers: Mother Earth's Wisdom
-- fix: QuestHuts questions are asked before their dialogs are played
-- change: Final combat vs Alastor is now more challenging
+- fix: Quest Huts asked questions before their dialogs were played
+- change: Alastor final fight is now more challenging on higher difficulty
 
 ### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
-- fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would be resolved only if Zehir was carrying the artifact
+- fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would resolve only if Zehir was carrying the artifact
 - change: Zehir skills and stats are now transfered from his last mission Zehir's Hope
-- change: Summoning Ilkhm town will consume Zehir XP and bring him to level 10 as well as scale his stats down
+- change: Summoning Ilkhm town will consume Zehir XP and bring him to level 10 as well as scale down his stats
 
 ### A2C3M2 - Flying to the Rescue: Tearing the Veil
-- fix: After capturing the main Heaven town, not all Heaven heroes ownership was transfered to the player
+- fix: Sometimes not all affiliated heroes/mines/dwellings were transfered to the player when bottom left Heaven town capitulated
 
 ### A2C3M4 - Flying to the Rescue: A Flamboyant Exit
-- fix: Dungeon player heroes werent able to accessthe Subterranean gate (at 69, 152) and thus gain resources and develop as enemy.
-- change: Dungeon player heroes cannot go thorugh the portal anymore.
-- change: Gottai leads the inferno town siege instead of Kujin
+- fix: Dungeon player heroes could not access the Subterranean gate (at 69, 152) and thus gain access to mines and resources.
+- change: Revoked Dungeon player heroes access to portal (76, 126).
+- change: Gottai replaces Kujin in the inferno town siege.
 - change: Talonguard garrisons guards increased to 400k Ims and 1000 ArchDevils. It is up to the player to find a way to the town.
-- change: The two Biara reinforcement groups arrive 1 month earlier for each difficulty level above normal. Reinforcements arrived on months 4 and 5, now they arrive on months 5/4, 4/3, 3,2, 2/1.
+- change: The two Biara reinforcement groups arrive 1 month earlier for each difficulty level above normal. Reinforcements arrived on months 4 and 5, now they arrive on months 5,4/4,3/3,2/ 2,1 based on game difficulty.
 
 ## Dialogue changes
 
