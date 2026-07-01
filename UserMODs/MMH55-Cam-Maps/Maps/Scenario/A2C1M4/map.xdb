@@ -35,7 +35,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>RHAVEN</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -48,23 +48,23 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>20</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>20</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAMPION</Creature>
-						<Count>25</Count>
+						<Count>165</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>20</Count>
+						<Count>125</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ZEALOT</Creature>
-						<Count>20</Count>
+						<Count>125</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -411,17 +411,17 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -436,47 +436,47 @@
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -491,32 +491,32 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -543,7 +543,7 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
-						<Count>300</Count>
+						<Count>200</Count>
 					</Item>
 				</armySlots>
 				<spellIDs>
@@ -800,31 +800,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_WYVERN</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ORCCHIEF_BUTCHER</Creature>
-						<Count>15</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_CYCLOP</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
-						<Count>50</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SHAMAN</Creature>
 						<Count>25</Count>
 					</Item>
 					<Item>
+						<Creature>CREATURE_ORCCHIEF_BUTCHER</Creature>
+						<Count>45</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_CYCLOP</Creature>
+						<Count>15</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
+						<Count>150</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_SHAMAN</Creature>
+						<Count>65</Count>
+					</Item>
+					<Item>
 						<Creature>CREATURE_ORC_WARMONGER</Creature>
-						<Count>50</Count>
+						<Count>80</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GOBLIN_DEFILER</Creature>
-						<Count>100</Count>
+						<Count>200</Count>
 					</Item>
 				</armySlots>
 				<spellIDs>
@@ -5315,7 +5315,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ORCCHIEF_BUTCHER</Creature>
-						<Count>10</Count>
+						<Count>65</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5343,7 +5343,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SHAMAN</Creature>
-						<Count>20</Count>
+						<Count>45</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5371,7 +5371,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ORC_WARRIOR</Creature>
-						<Count>50</Count>
+						<Count>90</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5399,7 +5399,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_GOBLIN_DEFILER</Creature>
-						<Count>100</Count>
+						<Count>200</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5427,7 +5427,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_CENTAUR_MARADEUR</Creature>
-						<Count>30</Count>
+						<Count>150</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5455,7 +5455,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SHAMAN_WITCH</Creature>
-						<Count>20</Count>
+						<Count>40</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5483,11 +5483,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Count>5</Count>
+						<Count>15</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>25</Count>
+						<Count>55</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5515,7 +5515,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>30</Count>
+						<Count>50</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5543,11 +5543,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_CERBERI</Creature>
-						<Count>15</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CERBERI</Creature>
-						<Count>15</Count>
+						<Count>45</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5575,11 +5575,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Count>30</Count>
+						<Count>90</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>10</Count>
+						<Count>30</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5607,15 +5607,15 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_DEMON</Creature>
-						<Count>25</Count>
+						<Count>85</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>10</Count>
+						<Count>35</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMON</Creature>
-						<Count>25</Count>
+						<Count>85</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5643,11 +5643,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-						<Count>10</Count>
+						<Count>25</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>1</Count>
+						<Count>10</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -5800,7 +5800,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>RINFERNO</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -5813,27 +5813,27 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_BALOR</Creature>
-						<Count>20</Count>
+						<Creature>CREATURE_PIT_SPAWN</Creature>
+						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BALOR</Creature>
 						<Count>20</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_BALOR</Creature>
+						<Count>40</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_SUCCUBUS_SEDUCER</Creature>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Count>100</Count>
+						<Count>400</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -5925,10 +5925,10 @@
 				<Name/>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Inferno/Nightmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Shared href="/MapObjects/Inferno/ArchDevil.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>8</Amount2>
+				<Amount>15</Amount>
+				<Amount2>15</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -5967,10 +5967,10 @@
 				<Name/>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Inferno/Frightful_Nightmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Shared href="/MapObjects/Inferno/ArchDevil.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>8</Amount2>
+				<Amount>15</Amount>
+				<Amount2>15</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -6442,7 +6442,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ORC_WARMONGER</Creature>
-						<Count>25</Count>
+						<Count>75</Count>
 					</Item>
 				</armySlots>
 				<CreatureSwapBlockedForAI>true</CreatureSwapBlockedForAI>
@@ -18826,8 +18826,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Balor.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>false</Custom>
-				<Amount>0</Amount>
-				<Amount2>0</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -18868,8 +18868,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Balor.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>false</Custom>
-				<Amount>0</Amount>
-				<Amount2>0</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -54645,9 +54645,9 @@
 							<skills/>
 							<perkIDs/>
 							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
@@ -54737,7 +54737,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>0</Experience>
+						<Experience>200000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_ARCHDEVIL</Creature>
@@ -54765,24 +54765,24 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
+							<Offence>20</Offence>
+							<Defence>15</Defence>
+							<Spellpower>10</Spellpower>
+							<Knowledge>10</Knowledge>
 							<skills/>
 							<perkIDs>
 								<Item>HERO_SKILL_RESISTANCE</Item>
 								<Item>HERO_SKILL_PROTECTION</Item>
 							</perkIDs>
 							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
 						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>

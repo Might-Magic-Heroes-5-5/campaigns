@@ -266,6 +266,9 @@ end
 function H55c_AIRemoveHero(...)
 	local name = arg[1];
 	H55c_AI_print(0, "Removing hero " .. name)
+	if IsHeroAlive(name) == nil then
+		return 
+	end
 	local player = GetObjectOwner(name)
 
 	if H55c_AI_CONTROLLED["player" .. player] ~= nil then
