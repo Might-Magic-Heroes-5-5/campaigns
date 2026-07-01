@@ -413,18 +413,19 @@ OBJECTIVES = {
 			startThread( H55c_ReduceHeroMovementPointsByFactor, "Caravan", caravan_speed )
 			startThread( CINEMATICS.showCaravan );
 			OBJECTIVES.state.captureCaravan[2] = 3;
-		elseif OBJECTIVES.state.captureCaravan[2] == 3 then
-			if IsHeroAlive( "Caravan" ) then
-				pcall( MoveHero, "Caravan", 2, 40, 0 );
-			else
-				SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_COMPLETED );
-				SetPlayerResource( PLAYER_1, GOLD, GetPlayerResource(PLAYER_1, GOLD) + 55000 - diff * 10000 );
-				OBJECTIVES.state.captureCaravan[2] = 10;
-			end
+		elseif OBJECTIVES.state.captureCaravan[2] == 3 and IsHeroAlive( "Caravan" ) == nil then
+			SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_COMPLETED );
+			SetPlayerResource( PLAYER_1, GOLD, GetPlayerResource(PLAYER_1, GOLD) + 55000 - diff * 10000 );
+			OBJECTIVES.state.captureCaravan[2] = 10;
 		elseif OBJECTIVES.state.captureCaravan[2] == 9 then
 			RemoveObject( "Caravan" );
 			SetObjectiveState( "prim3_intercept_caravan", OBJECTIVE_FAILED );
 			OBJECTIVES.state.captureCaravan[2] = 11;
+		end
+		
+		if IsHeroAlive("Caravan") ~= nil and OBJECTIVES.date >= OBJECTIVES.captureCaravan_time then
+			pcall(MoveHero, "Caravan", 2, 40, 0 );
+			OBJECTIVES.captureCaravan_time = OBJECTIVES.date + 1;
 		end
 	end,
 	

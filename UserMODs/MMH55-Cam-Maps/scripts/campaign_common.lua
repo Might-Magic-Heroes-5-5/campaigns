@@ -303,7 +303,7 @@ H55c_CREATURES = {
 }
 
 function H55c_ReduceHeroMovementPointsByFactor(hero, MPFactor)
-	while IsHeroAlive( hero ) ~= nil or MPFactor > 0 do
+	while IsHeroAlive( hero ) ~= nil and MPFactor > 0 do
 		local CurrentPlayer = GetCurrentPlayer();
 		while CurrentPlayer == GetCurrentPlayer() do
 			CurrentPlayer = GetCurrentPlayer();
