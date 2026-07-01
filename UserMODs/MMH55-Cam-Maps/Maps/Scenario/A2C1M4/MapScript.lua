@@ -102,7 +102,7 @@ end
 function FinalTownSetUp()
 	for creatureID = 1, CREATURES_COUNT - 1 do 
 		CreatureSetUp = GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID );
-		if GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID ) > 2 then
+		if GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID ) > 1 then
 			RemoveObjectCreatures( 'FINAL_ORC_TOWN', creatureID, CreatureSetUp );
 			AddObjectCreatures( 'FINAL_ORC_TOWN', creatureID, CreatureSetUp + CreatureSetUp * diff );
 		end
@@ -111,23 +111,75 @@ end
 
 DIFFICULTY = {
 	[0] = function()
-		diff = 2;
+		diff = 1;
 		ChieftainTownTavernActivationDay = 18; -- the coefficient for Chieftain AI army deployment depending on the chosen difficulty level.
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_ARCH_DEMON, 10);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_PIT_SPAWN, 15);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 50);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 100);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 200);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 35);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 15);
 		print("Difficulty Level is NORMAL");
 	end,
 	[1] = function()
 		diff = 2;
-		ChieftainTownTavernActivationDay = 18;
+		ChieftainTownTavernActivationDay = 14;
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_ARCH_DEMON, 20);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_PIT_SPAWN, 30);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 100);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 200);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 400);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 70);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 30);
+		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 50);
+		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 10);
+		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 10);
+		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 5);
+		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 50);
+		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 200);
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,15);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,15);		
 		print("Difficulty Level is HARD");
 	end,
 	[2] = function()
 		diff = 3;
-		ChieftainTownTavernActivationDay = 12;
+		ChieftainTownTavernActivationDay = 9;
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_ARCH_DEMON, 30);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_PIT_SPAWN, 45);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 150);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 300);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 600);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 105);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 45);
+		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 100);
+		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 20);
+		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 20);
+		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 10);
+		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 100);
+		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 400);
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,30);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,30);			
 		print("Difficulty Level is HEROIC");
 	end,
 	[3] = function()
 		diff = 4;
 		ChieftainTownTavernActivationDay = 6;
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_ARCH_DEMON, 40);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_PIT_SPAWN, 60);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 200);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 400);
+		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 800);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 140);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 60);
+		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 150);
+		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 30);
+		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 30);
+		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 15);
+		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 150);
+		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 600);
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,45);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR, 45);			
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
 }
@@ -610,7 +662,7 @@ OBJECTIVES = {
 			MessageBox("/Maps/Scenario/A2C1M4/messagebox_006.txt");
 			SetRegionBlocked( "REGION_BLOCK_AI", not nil, PLAYER_2);
 			SetRegionBlocked( "REGION_BLOCK_AI", not nil, PLAYER_3);
-			if OBJECTIVES._findOrcLeader_raider ~= nil then
+			if OBJECTIVES._findOrcLeader_raider ~= nil and IsHeroAlive(OBJECTIVES._findOrcLeader_raider) ~= nil then
 				SetAIHeroAttractor( "Arantir", OBJECTIVES._findOrcLeader_raider, 0 );
 				H55c_AIRemoveHero( OBJECTIVES._findOrcLeader_raider );
 			end
