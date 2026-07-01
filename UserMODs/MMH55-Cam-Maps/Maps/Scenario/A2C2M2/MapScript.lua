@@ -12,25 +12,6 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_ENDLESS_BAG_OF_GOLD
 };
 
-PlayerHero = "Kujin"
-
-AIHero = "Hero8"
-AIHero1 = "Hero1"
-AIHero2 = "Hero4"
-AIHero3 = "Hero9"
-
-AIHero4 = "Dalom"
-AIHero5 = "Hero6"
-AIHero6 = "Ferigl"
-AIHero7 = "Metlirn"
-
-AIHero8 = "Christian"
-AIHero9 = "Efion"
-AIHero10 = "Nemor"
-AIHero11 = "Egil"
-
-AIHero12 = "Menel"
-
 function startSetArtifactsInit()
 	InitAllSetArtifacts( "A2C2M2", "Kujin" );
 end
@@ -40,29 +21,25 @@ H55c_AI_CONTROLLED = {
   player1 = {          -- Yellow HUMAN player
       state = 0,
 	   heroes = {},
-	  enemies = {},
+	   enemies = {},
   },
   player2 = { 		   -- Orange Tribe
 		state = 1,
-		heroes = {},
 		heroes = {},
 		enemies = {},
   },
   player3 = { 		   -- Brown Tribe
 		state = 1,
 		heroes = {},
-		heroes = {},
 		enemies = {},
   },
   player4 = { 		   -- Green Tribe
 		state = 1,
 		heroes = {},
-		heroes = {},
 		enemies = {},
   },
   player5 = { 		   -- Light Blue Tribe
 		state = 1,
-		heroes = {},
 		heroes = {},
 		enemies = {
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
@@ -76,7 +53,6 @@ H55c_AI_CONTROLLED = {
   player6 = { 		   -- Purple Dungeon Pirates
 		state = 2,
 		heroes = {},
-		heroes = {},
 		enemies = {
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
@@ -88,8 +64,14 @@ H55c_AI_CONTROLLED = {
   }
 }
 
-eheroes = { AIHero4, AIHero5, AIHero6, AIHero7 };
+PIRATE_HEROES = { "Dalom", "Ferigl", "Metlirn" }; -- the three dugeon heroes
 ORC_HARASS_HEROES = { "Hero2", "Hero3", "Hero7" };
+A2C2M2_TRIBE_PHONEBOOK = {
+	[PLAYER_2] = { place = {  32,  24 }, town =  'FirstTown', chief = "Hero8", reserved =     "Efion" },
+	[PLAYER_3] = { place = {  80,  93 }, town = 'SecondTown', chief = "Hero1", reserved = "Christian" },
+	[PLAYER_4] = { place = { 151, 128 }, town =  'ThirdTown', chief = "Hero4", reserved = 	  "Nemor" },
+	[PLAYER_5] = { place = {  99,  43 }, town = 'FourthTown', chief = "Hero9", reserved =      "Egil" },
+}
 
 DIFFICULTY = {
 	[0] = function()
@@ -113,284 +95,176 @@ DIFFICULTY = {
 	end,
 }
 
-function EnemyHeroesSetUp()
-	for i,hero in eheroes do	
-		for creatureID = 1, CREATURES_COUNT - 1 do 
-			CreatureSetUp = GetHeroCreatures( hero, creatureID );
-			if GetHeroCreatures( hero, creatureID ) > 2 then
-				RemoveHeroCreatures( hero, creatureID, CreatureSetUp );
-				AddHeroCreatures( hero, creatureID, CreatureSetUp + ( CreatureSetUp / 100 * 40) * diff );
-			end;
-		end;
-	end;
-end;
+function EnemyHeroSetup(hero, bonus_percent)
+	for creatureID = 1, CREATURES_COUNT - 1 do 
+		CreatureSetUp = GetHeroCreatures( hero, creatureID );
+		if GetHeroCreatures( hero, creatureID ) > 1 then
+			RemoveHeroCreatures( hero, creatureID, CreatureSetUp );
+			AddHeroCreatures( hero, creatureID, CreatureSetUp + ( CreatureSetUp / 100 ) * ( (bonus_percent + 9) * diff ) ); -- adds ( 9 + bonus_percent )*diff % to stack size
+		end
+	end
+end
 
 function GarrisonSetUp()
 	for creatureID = 1, CREATURES_COUNT - 1 do 
 		CreatureSetUp = GetObjectCreatures( "Garrison", creatureID );
-		if GetObjectCreatures( "Garrison", creatureID ) > 2 then
+		if GetObjectCreatures( "Garrison", creatureID ) > 1 then
 			RemoveObjectCreatures( "Garrison", creatureID, CreatureSetUp );
 			AddObjectCreatures( "Garrison", creatureID, CreatureSetUp + ( CreatureSetUp / 100 * 40) * diff );
-		end;
-	end;
-end;
+		end
+	end
+end
 
----------- FIRST OBJECTIVE ----------
-
-function VoiceOver4()
-	Play2DSound( "/Maps/Scenario/A2C2M2/C2M2_VO4_Kujin_01sound.xdb#xpointer(/Sound)" );
-end;
-
----------- OBJECTIVE INIT ----------
-
-function ObjectiveInit( heroName )
-	if heroName == PlayerHero then
-		if IsObjectInRegion( heroName, "FirstChief" ) then
-			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FirstChief", nil );
-			sleep( 8 );
-			StartAdvMapDialog( 0, "SecondObjectiveState" );
-		end;
-		if IsObjectInRegion( heroName, "SecondChief" ) then
-			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "SecondChief", nil );
-			sleep( 8 );
-			StartAdvMapDialog( 2, "ThirdObjectiveState" );
-		end;
-		if IsObjectInRegion( heroName, "ThirdChief" ) then
-			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ThirdChief", nil );
-			sleep( 8 );
-			StartAdvMapDialog( 1, "FourthObjectiveState" );
-		end;
-		if IsObjectInRegion( heroName, "FourthChief" ) then
-			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FourthChief", nil );
-			sleep( 8 );
-			StartAdvMapDialog( 3, "FifthObjectiveState" );
-		end;
-	elseif heroName ~= PlayerHero and GetObjectOwner( heroName ) == PLAYER_1 then	
+function ObjectiveInit( hero )
+	if hero == "Kujin" then
+		for i, region in { "FirstChief", "SecondChief", "ThirdChief", "FourthChief" } do
+			if IsObjectInRegion( hero, region ) then
+				Trigger( REGION_ENTER_AND_STOP_TRIGGER, region, nil );
+				OBJECTIVES.state[region][2] = 3;
+				return
+			end
+		end
+		-- if IsObjectInRegion( hero, "FirstChief" ) then
+			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FirstChief", nil );
+			-- OBJECTIVES.state.FirstChief[2] = 3;
+		-- elseif IsObjectInRegion( hero, "SecondChief" ) then
+			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "SecondChief", nil );
+			-- OBJECTIVES.state.SecondChief[2] = 3;
+		-- elseif IsObjectInRegion( hero, "ThirdChief" ) then
+			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ThirdChief", nil );
+			-- OBJECTIVES.state.ThirdChief[2] = 3;
+		-- elseif IsObjectInRegion( hero, "FourthChief" ) then
+			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FourthChief", nil );
+			-- OBJECTIVES.state.FourthChief[2] = 3;
+		-- end
+	elseif hero ~= "Kujin" and GetObjectOwner( hero ) == PLAYER_1 then	
 		MessageBox( "/Maps/Scenario/a2c2m2/message03.txt" );
-	end;
-end;
+	end
+end
 
----------- SECOND OBJECTIVE ----------
-
-function SecondObjectiveState()
-	local x,y,level = GetObjectPosition( PlayerHero );
-	SetRegionBlocked( "PRB1", nil, PLAYER_1 );
-	SetRegionBlocked( "PRB2", nil, PLAYER_1 );
-	SetObjectiveState( "obj2", OBJECTIVE_COMPLETED );
-	SetObjectiveState( "obj3", OBJECTIVE_ACTIVE );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FirstChief", nil );
-	SetObjectOwner( AIHero, PLAYER_1 );
-	SetObjectEnabled( AIHero, not nil );
-	SetObjectOwner( "FirstTown", PLAYER_1 );
-	OpenCircleFog( 80, 93, GROUND, 10, PLAYER_1 );
-	sleep( 5 );
-	MoveCamera( 80, 93, GROUND, 100, 3.14/3, 0, 1, 1, 1 );
-	sleep( 15 );
-	MoveCamera( x, y, level, 50, 3.14/3, 0, 1, 1, 1 );
-	DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_2, 1 );
-end;	
-
----------- THIRD OBJECTIVE ----------
-
-function ThirdObjectiveState()
-	local x,y,level = GetObjectPosition( PlayerHero );
-	local heroes = GetPlayerHeroes( PLAYER_3 );
-	for i,hero in heroes do
-		if hero ~= AIHero1 and hero ~= AIHero8 then
-			if IsHeroAlive( hero ) then
-				RemoveObject( hero );
-			end;
-		end;
-	end;
-	sleep( 3 );
-	SetRegionBlocked( "PRB3", nil, PLAYER_1 );
-	SetRegionBlocked( "PRB4", nil, PLAYER_1 );
-	SetObjectiveState( "obj3", OBJECTIVE_COMPLETED );
-	SetObjectiveState( "obj4", OBJECTIVE_ACTIVE );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "SecondChief", nil );
-	SetObjectOwner( AIHero1, PLAYER_1 );
-	SetObjectEnabled( AIHero1, not nil );
-	SetObjectOwner( "SecondTown", PLAYER_1 );
-	OpenCircleFog( 151, 128, GROUND, 10, PLAYER_1 );
-	sleep( 5 );
-	MoveCamera( 151, 128, GROUND, 100, 3.14/3, 0, 1, 1, 1 );
-	sleep( 15 );
-	MoveCamera( x, y, level, 50, 3.14/3, 0, 1, 1, 1 );
-	MessageBox( "/Maps/Scenario/a2c2m2/message07.txt" );
-	OpenCircleFog( 25, 77, GROUND, 6, PLAYER_1 );
-	OpenCircleFog( 27, 84, GROUND, 6, PLAYER_1 );
-	DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_3, 1 );
-end;
-
-TemporaryHero = PlayerHero;
-
-function GuardMessage( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then
-		TemporaryHero = heroName;
-		if GetObjectiveState( "obj3" ) == OBJECTIVE_ACTIVE or GetObjectiveState( "obj3" ) == OBJECTIVE_UNKNOWN then
+TemporaryHero = "Kujin";
+function SpeakWithCyclopGuard( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		TemporaryHero = hero;
+		if GetObjectiveState( "obj3" ) ~= OBJECTIVE_COMPLETED then
 			MessageBox( "/Maps/Scenario/a2c2m2/message05.txt" );
 		elseif GetObjectiveState( "obj3" ) == OBJECTIVE_COMPLETED then
 			QuestionBox( "/Maps/Scenario/a2c2m2/message06.txt", "QuestionBoxYes", "QuestionBoxNo" );
 			Trigger( OBJECT_TOUCH_TRIGGER, "Guard", nil );
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function QuestionBoxYes()
 	RemoveObject( "Guard" );
 	AddHeroCreatures( TemporaryHero, CREATURE_CYCLOP_UNTAMED, 3 );
-end;
+end
 
 function QuestionBoxNo()
 	RemoveObject( "Guard" );
-end;
+end
 
----------- FOURTH OBJECTIVE ----------
-
-function FourthObjectiveState()
-	local x,y,level = GetObjectPosition( PlayerHero );
-	local heroes = GetPlayerHeroes( PLAYER_4 );
-	for i,hero in heroes do
-		if hero ~= AIHero2 and hero ~= AIHero10 then
-			if IsHeroAlive( hero ) then
-				RemoveObject( hero );
-			end;
-		end;
-	end;
-	sleep( 3 );
-	SetRegionBlocked( "PRB5", nil, PLAYER_1 );
-	SetRegionBlocked( "PRB6", nil, PLAYER_1 );
-	SetObjectiveState( "obj4", OBJECTIVE_COMPLETED );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ThirdChief", nil );
-	SetObjectOwner( AIHero2, PLAYER_1 );
-	SetObjectEnabled( AIHero2, not nil );
-	SetObjectOwner( "ThirdTown", PLAYER_1 );
-	if GetObjectiveState( "obj5" ) == OBJECTIVE_UNKNOWN then
-		SetObjectiveState( "obj5", OBJECTIVE_ACTIVE );	
-		OpenCircleFog( 99, 43, GROUND, 10, PLAYER_1 );
-		sleep( 5 );
-		MoveCamera( 99, 43, GROUND, 100, 3.14/3, 0, 1, 1, 1 );
-		sleep( 15 );
-		MoveCamera( x, y, level, 50, 3.14/3, 0, 1, 1, 1 );
-	end;
-	DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_4, 1 );
-end;
-
----------- FIFTH OBJECTIVE ----------
-
-function FifthObjectiveState()	
-	local heroes = GetPlayerHeroes( PLAYER_5 );
-	for i,hero in heroes do
-		if hero ~= AIHero3 and hero ~= AIHero11 then
-			if IsHeroAlive( hero ) then
-				RemoveObject( hero );
-			end;
-		end;
-	end;
-	sleep( 3 );
-	SetRegionBlocked( "PRB7", nil, PLAYER_1 );
-	SetRegionBlocked( "PRB8", nil, PLAYER_1 );
-	SetObjectiveState( "obj5", OBJECTIVE_COMPLETED );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FourthChief", nil );
-	SetObjectOwner( AIHero3, PLAYER_1 );
-	SetObjectEnabled( AIHero3, not nil );
-	SetObjectOwner( "FourthTown", PLAYER_1 );
-end;	
-
-function Objective5Activation( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then	
-		if GetObjectiveState( "obj5" ) == OBJECTIVE_UNKNOWN then
-			SetObjectiveState( "obj5", OBJECTIVE_ACTIVE );
-			OpenCircleFog( 99, 43, GROUND, 10, PLAYER_1 );
-			sleep( 5 );
-			MoveCamera( 99, 43, GROUND, 100, 3.14/3, 0, 1, 1, 1 );
-			sleep( 15 );
-			MoveCamera( x, y, level, 50, 3.14/3, 0, 1, 1, 1 );
-		end;
-	end;
-end;
-	
-Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "SeaBlock3", "Objective5Activation" )
-
-function VoiceOver6( heroName )
-	if heroName == AIHero5 then	
+function defeatWave2( hero )
+	if hero == "Hero6" then	
 		Play2DSound( "/Maps/Scenario/A2C2M2/C2M2_VO6_Kujin_01sound.xdb#xpointer(/Sound)" );
-	end;
+	end
 end;
 
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_5, "VoiceOver6" );
-
----------- SIXTH OBJECTIVE ----------
-
-x = 0;
-y = 0;
-level = 0;
-NotKujin = 0;
-
-function StartAdvMapDialog4( heroName )
-	x,y,level = GetObjectPosition( PlayerHero );
-	if GetObjectOwner( heroName ) == PLAYER_1 and heroName == PlayerHero then
-		SetObjectRotation( "OrcishMate", 225 );
-		SetObjectPosition( "OrcishMate", 118, 36, GROUND );
-		StartAdvMapDialog( 4, "RemoveTrigger" );
-	elseif GetObjectOwner( heroName ) == PLAYER_1 and heroName ~= PlayerHero then
-		NotKujin = 1;
-		SetObjectRotation( "OrcishMate", 225 );
-		SetObjectPosition( "OrcishMate", 118, 36, GROUND );
-		SetObjectRotation( PlayerHero, 180 );
-		SetObjectPosition( PlayerHero, 123, 37, GROUND );
-		StartAdvMapDialog( 4, "RemoveTrigger" );
-		print( heroName );
-	end;
-end;
-
-function RemoveTrigger()
-	MessageBox( "/Maps/Scenario/a2c2m2/message02.txt" );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog4", nil );
-	RemoveObject( "OrcishMate" );
-	if NotKujin == 1 then
-		sleep( 4 );
-		SetObjectPosition( PlayerHero, x, y, level );
-	end;
-end;
-
-function AIHeroSetUp(wave, hero)
-	for creatureID = 1, CREATURES_COUNT - 1 do 
-		CreatureSetUp = GetHeroCreatures( hero, creatureID );
-		if GetHeroCreatures( hero, creatureID ) > 2 then
-			RemoveHeroCreatures( hero, creatureID, CreatureSetUp );
-			AddHeroCreatures( hero, creatureID, CreatureSetUp + ( ( CreatureSetUp + wave ) * diff / 100 * 40) * diff );
-		end;
-	end;
-	ChangeHeroStat( hero, STAT_EXPERIENCE, 10000 + 500 * ( diff + wave ) );
-end;
-
----------- PIRATES ----------
+function meetExecutioners( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog4", nil );
+		CINEMATICS.meetExecutioners(hero);
+	end
+end
 
 function EnablePirates()
 	Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "PiratesActivation", nil );
 	OBJECTIVES.state.pirates[2] = 1;
 end
 
-function ShowMessage( heroName )
-	if heroName == PlayerHero then	
-		SetObjectEnabled( AIHero4, not nil );
+function EnterAmbushInBayArea( hero )
+	if hero == "Kujin" then	
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog1", nil );
-		StartAdvMapDialog( 5, "ShowMessageToPlayer" );
-	elseif heroName ~= PlayerHero and GetObjectOwner( heroName ) == PLAYER_1 then
+		StartAdvMapDialog( 5, "MessageBox( '/Maps/Scenario/a2c2m2/message01.txt' )" );
+	elseif hero ~= "Kujin" and GetObjectOwner( hero ) == PLAYER_1 then
 		MessageBox( "/Maps/Scenario/a2c2m2/message08.txt" );
-	end;
-end;
+	end
+end
 
-function ShowMessageToPlayer()
-	MessageBox( "/Maps/Scenario/a2c2m2/message01.txt" );
-end;
+function JoinTribe(player_id)
+	local tribe = A2C2M2_TRIBE_PHONEBOOK[player_id];
+	SetObjectOwner( tribe.chief, PLAYER_1 );
+	SetObjectEnabled( tribe.chief, not nil );
+	SetObjectOwner( tribe.town, PLAYER_1 );
+	sleep(20);
+	local heroes = GetPlayerHeroes( player_id );
+	for i,hero in heroes do
+		if hero ~= tribe.reserved and IsHeroAlive( hero ) then
+			RemoveObject( hero );
+		end
+	end
+	DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes( player_id, 1 );
+end
+
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
+	intro = function()
+
+		sleep(2);
+	end,
+	
+	findNextTribe = function(player_id)
+		BlockGame();
+		local place = A2C2M2_TRIBE_PHONEBOOK[player_id].place;
+		OpenCircleFog( place[1], place[2], GROUND, 10, PLAYER_1 );
+		MoveCamera( place[1], place[2], GROUND, 100, 3.14/3, 0, 1, 1, 1 );
+		sleep( 100 );
+		local x,y,level = GetObjectPosition( "Kujin" );
+		MoveCamera( x, y, level, 50, 3.14/3, 0, 1, 1, 1 );
+		UnblockGame();
+	end,
+	
+	talkChief = function(chief_id)
+		CINEMATICS.playAndWait( chief_id );
+	end,
+	
+	meetExecutioners = function(hero)
+		local x,y,level = GetObjectPosition( "Kujin" );
+		SetObjectRotation( "OrcishMate", 225 );
+		SetObjectPosition( "OrcishMate", 118, 36, GROUND );
+		if hero ~= "Kujin" then
+			SetObjectRotation( "Kujin", 180 );
+			SetObjectPosition( "Kujin", 123, 37, GROUND );
+		end
+		CINEMATICS.playAndWait( 4 );
+		MessageBox( "/Maps/Scenario/a2c2m2/message02.txt" );
+		RemoveObject( "OrcishMate" );
+		if hero ~= "Kujin" then
+			SetObjectPosition( "Kujin", x, y, level );
+		end
+	end,
+}
 
 OBJECTIVES = {
 	state = {
-		  isAlive = { "obj6", 1 }, 	-- Kujin must survive
-		  pirates = {    "_", 0 }, 	-- Pirates are enabled when the first hero leaves for the sea
-		orcHarass = {    "_", 1 }, 	-- AI Player 5 harassment against the human player
+		  gatherClans = { "obj1", 1 }, 	-- Gather all northern clаns
+		  FirstChief  = { "obj2", 1 }, 	-- Speak with Osol-Aih clan
+		  SecondChief = { "obj3", 1 }, 	-- Speak with Baishin-Gal clan
+		  ThirdChief  = { "obj4", 1 }, 	-- Speak with Harakh clan
+		  FourthChief = { "obj5", 1 }, 	-- Speak with Ull-Dash clan
+		  isAlive 	  = { "obj6", 1 }, 	-- Kujin must survive
+		  pirates 	  = {    "_", 0 }, 	-- Pirates are enabled when the first hero leaves for the sea
+		orcHarass 	  = {    "_", 1 }, 	-- AI Player 5 harassment against the human player
 	},
 
     start = function()
@@ -403,79 +277,50 @@ OBJECTIVES = {
 		Trigger(  REGION_ENTER_AND_STOP_TRIGGER, "SecondChief",  "ObjectiveInit" );
 		Trigger(  REGION_ENTER_AND_STOP_TRIGGER,  "ThirdChief",  "ObjectiveInit" );
 		Trigger(  REGION_ENTER_AND_STOP_TRIGGER, "FourthChief",  "ObjectiveInit" );
-		SetObjectEnabled(  AIHero, nil );
-		SetObjectEnabled( AIHero1, nil );
-		SetObjectEnabled( AIHero2, nil );
-		SetObjectEnabled( AIHero3, nil );
-		Trigger( OBJECT_TOUCH_TRIGGER, "Guard", "GuardMessage" );
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog4", "StartAdvMapDialog4" );
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog1",        "ShowMessage" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog4", "meetExecutioners" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog1", "EnterAmbushInBayArea" );
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "PiratesActivation", "EnablePirates" );
+		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_5, "defeatWave2" );
 		DIFFICULTY[GetDifficulty()]();
 		SetHeroesExpCoef( 0.4 );
-		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes (PLAYER_6, not nil);
-		SetObjectiveState( "obj1", OBJECTIVE_ACTIVE );
-		SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );
-		SetObjectiveState( "obj6", OBJECTIVE_ACTIVE );
-		DenyAIHeroFlee(  AIHero4, not nil );
-		DenyAIHeroFlee(  AIHero5, not nil );
-		EnableHeroAI(  AIHero, nil );
-		EnableHeroAI( AIHero1, nil );
-		EnableHeroAI( AIHero2, nil );
-		EnableHeroAI( AIHero3, nil );
-		SetObjectEnabled( AIHero, nil );
-		SetObjectEnabled( AIHero4, nil );
-		EnableHeroAI( AIHero4, nil );
-		EnableHeroAI( AIHero5, nil );
-		EnableHeroAI( AIHero6, nil );
-		EnableHeroAI( AIHero7, nil );
-		SetHeroRoleMode( AIHero6, HERO_ROLE_MODE_HERMIT );
-		SetHeroRoleMode( AIHero7, HERO_ROLE_MODE_HERMIT );
-		EnableHeroAI(  AIHero8, nil );
-		EnableHeroAI(  AIHero9, nil );
-		EnableHeroAI( AIHero10, nil );
-		EnableHeroAI( AIHero11, nil );
-		SetHeroRoleMode( "Hero3", HERO_ROLE_MODE_HERMIT );
-		SetHeroRoleMode( "Hero2", HERO_ROLE_MODE_HERMIT );
+		for player = 2,5 do  											-- setup tribe chiefs and reserved heroes
+			local tribe = A2C2M2_TRIBE_PHONEBOOK[player];
+			EnableHeroAI( tribe.chief, nil );
+			SetObjectEnabled( tribe.chief, nil );
+			EnableHeroAI( tribe.reserved, nil );
+		end
 		SetRegionBlocked( "FirstChiefBlock", not nil, PLAYER_2 );
-		SetRegionBlocked(		"SeaBlock1", not nil, PLAYER_3 );
-		SetRegionBlocked(		"SeaBlock2", not nil, PLAYER_5 );
-		SetRegionBlocked(		"SeaBlock3", not nil, PLAYER_6 );
-		SetRegionBlocked(	  "PortalBlock", not nil, PLAYER_5 );
-		SetRegionBlocked(			 "PRB1", not nil, PLAYER_1 );
-		SetRegionBlocked(			 "PRB2", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB3", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB4", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB5", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB6", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB7", not nil, PLAYER_1 );
-		SetRegionBlocked( 			"PRB8", not nil, PLAYER_1 );	
-		SetObjectEnabled(   "Guard", nil );
-		SetObjectEnabled(  "Victim", nil );
-		SetObjectEnabled( "Victim1", nil );
-		SetObjectEnabled( "Victim2", nil );
-		sleep( 1 );
-		SetDisabledObjectMode(   "Guard", DISABLED_INTERACT );
-		SetDisabledObjectMode(  "Victim",  DISABLED_BLOCKED );
-		SetDisabledObjectMode( "Victim1",  DISABLED_BLOCKED );
-		SetDisabledObjectMode( "Victim2",  DISABLED_BLOCKED );
-		
-		SetMonsterSelectionType( "Victim", 0 );
-		SetMonsterSelectionType( "Victim1", 0 );
-		SetMonsterSelectionType( "Victim2", 0 );
-		
-		PlayObjectAnimation( "Victim", "death", ONESHOT_STILL );
-		PlayObjectAnimation( "Victim1", "death", ONESHOT_STILL );
-		PlayObjectAnimation( "Victim2", "death", ONESHOT_STILL );
-		
-		ChangeHeroStat( AIHero4, STAT_EXPERIENCE, 35000 );
-		ChangeHeroStat( AIHero6, STAT_EXPERIENCE, 20000 );
-		ChangeHeroStat( AIHero7, STAT_EXPERIENCE, 18000 );
-		
-		OverrideObjectTooltipNameAndDescription( "Victim", "-disabled-","" );
-		OverrideObjectTooltipNameAndDescription( "Victim1", "-disabled-","" );
-		OverrideObjectTooltipNameAndDescription( "Victim2", "-disabled-","" );
-		EnemyHeroesSetUp();
+		SetRegionBlocked(		"SeaBlock1", not nil, PLAYER_3 ); 					-- Block bay entry
+		SetRegionBlocked(		"SeaBlock2", not nil, PLAYER_5 ); 					-- block Orc shipyard
+		SetRegionBlocked(		"SeaBlock3", not nil, PLAYER_6 ); 					-- Block pirates from attacking the last tribe
+		SetRegionBlocked(	  "PortalBlock", not nil, PLAYER_5 ); 					-- Block teleport entry
+		for i = 1,8 do -- Block player 1 entries to clans until the questline progress
+			SetRegionBlocked( "PRB"..i, not nil, PLAYER_1 );
+		end
+		Trigger( OBJECT_TOUCH_TRIGGER, "Guard", "SpeakWithCyclopGuard" ); 			-- setup Cyclop guard
+		SetObjectEnabled( "Guard", nil );
+		SetDisabledObjectMode( "Guard", DISABLED_INTERACT );
+		for i, victim in { "Victim", "Victim1", "Victim2" } do 						-- setup victims around the Cyclop guard
+			SetObjectEnabled( victim, nil );
+			sleep(20);
+			SetDisabledObjectMode(victim, DISABLED_BLOCKED );
+			SetMonsterSelectionType( victim, 0 );
+			PlayObjectAnimation( victim, "death", ONESHOT_STILL );
+			OverrideObjectTooltipNameAndDescription( victim, "-disabled-","" ); 	-- does not work in QAI
+		end
+		EnableHeroAI( "Hero6", nil );												-- setup Gork the guardian of the final tribe garrison
+		DenyAIHeroFlee( "Hero6", not nil );
+		EnemyHeroSetup("Hero6", 1);
+		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes (PLAYER_6, not nil);
+		ChangeHeroStat( "Dalom", STAT_EXPERIENCE, 35000 );
+		ChangeHeroStat( "Ferigl", STAT_EXPERIENCE, 20000 );
+		ChangeHeroStat( "Metlirn", STAT_EXPERIENCE, 18000 );
+		for i,hero in PIRATE_HEROES do --setup pirates
+			DenyAIHeroFlee( hero, not nil );
+			EnableHeroAI( hero, nil );
+			SetHeroRoleMode( hero, HERO_ROLE_MODE_HERMIT );
+			EnemyHeroSetup(hero, 1);
+		end
 		GarrisonSetUp();
 	end,
 	
@@ -494,11 +339,9 @@ OBJECTIVES = {
 				return
 			end
 			
-			if GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and GetObjectiveState("obj3") == OBJECTIVE_COMPLETED and GetObjectiveState("obj4") == OBJECTIVE_COMPLETED and GetObjectiveState("obj5") == OBJECTIVE_COMPLETED then
-				startThread( VoiceOver4 );
+			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				startThread( Play2DSound, "/Maps/Scenario/A2C2M2/C2M2_VO4_Kujin_01sound.xdb#xpointer(/Sound)" );
 				SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M2" );
-				SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
-				SetObjectiveState( "obj6", OBJECTIVE_COMPLETED );
 				sleep( 100 );
 				Win();
 				return
@@ -506,10 +349,85 @@ OBJECTIVES = {
 		end
 	end,
 	
+	gatherClans = function()
+		if OBJECTIVES.state.gatherClans[2] == 1 then
+			SetObjectiveState( "obj1", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.gatherClans[2] = 2;
+		elseif OBJECTIVES.state.gatherClans[2] == 2 and OBJECTIVES.state.FirstChief[2] == 10 and OBJECTIVES.state.SecondChief[2] == 10 and OBJECTIVES.state.ThirdChief[2] == 10 and OBJECTIVES.state.FourthChief[2] == 10 then
+			SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.gatherClans[2] = 10;
+		end
+	end,
+	
+	FirstChief = function()
+		if OBJECTIVES.state.FirstChief[2] == 1 then
+			SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );		
+			OBJECTIVES.state.FirstChief[2] = 2;
+		elseif OBJECTIVES.state.FirstChief[2] == 3 then
+			CINEMATICS.talkChief(0);
+			SetRegionBlocked( "PRB1", nil, PLAYER_1 );
+			SetRegionBlocked( "PRB2", nil, PLAYER_1 );
+			SetObjectiveState( "obj2", OBJECTIVE_COMPLETED );
+			JoinTribe(PLAYER_2);
+			OBJECTIVES.state.FirstChief[2] = 10;
+		end
+	end,
+	
+	SecondChief = function()
+		if OBJECTIVES.state.SecondChief[2] == 1 and OBJECTIVES.state.FirstChief[2] == 10 then
+			SetObjectiveState( "obj3", OBJECTIVE_ACTIVE );
+			CINEMATICS.findNextTribe(PLAYER_3);
+			OBJECTIVES.state.SecondChief[2] = 2;
+		elseif OBJECTIVES.state.SecondChief[2] == 3 then
+			CINEMATICS.talkChief(2);
+			JoinTribe(PLAYER_3);
+			SetRegionBlocked( "PRB3", nil, PLAYER_1 );
+			SetRegionBlocked( "PRB4", nil, PLAYER_1 );
+			SetObjectiveState( "obj3", OBJECTIVE_COMPLETED );
+			MessageBox( "/Maps/Scenario/a2c2m2/message07.txt" ); -- Cyclops will recognize you as friend
+			OpenCircleFog( 25, 77, GROUND, 6, PLAYER_1 );
+			OpenCircleFog( 27, 84, GROUND, 6, PLAYER_1 );
+			OBJECTIVES.state.SecondChief[2] = 10;
+		end
+	end,
+	
+	ThirdChief = function()
+		if OBJECTIVES.state.ThirdChief[2] == 1 and OBJECTIVES.state.SecondChief[2] == 10 then
+			SetObjectiveState( "obj4", OBJECTIVE_ACTIVE );
+			CINEMATICS.findNextTribe(PLAYER_4);
+			OBJECTIVES.state.ThirdChief[2] = 2;
+		elseif OBJECTIVES.state.ThirdChief[2] == 3 then
+			CINEMATICS.talkChief(1);
+			JoinTribe(PLAYER_4);
+			SetObjectiveState( "obj4", OBJECTIVE_COMPLETED );
+			SetRegionBlocked( "PRB5", nil, PLAYER_1 );
+			SetRegionBlocked( "PRB6", nil, PLAYER_1 );
+			OBJECTIVES.state.ThirdChief[2] = 10;
+		end
+	end,
+
+	FourthChief = function()
+		if OBJECTIVES.state.FourthChief[2] == 1 and OBJECTIVES.state.ThirdChief[2] == 10 then
+			SetObjectiveState( "obj5", OBJECTIVE_ACTIVE );
+			CINEMATICS.findNextTribe(PLAYER_5);
+			OBJECTIVES.state.FourthChief[2] = 2;
+		elseif OBJECTIVES.state.FourthChief[2] == 3 then
+			CINEMATICS.talkChief(3);
+			JoinTribe(PLAYER_5);
+			SetObjectiveState( "obj5", OBJECTIVE_COMPLETED );
+			SetRegionBlocked( "PRB7", nil, PLAYER_1 );
+			SetRegionBlocked( "PRB8", nil, PLAYER_1 );
+			OBJECTIVES.state.FourthChief[2] = 10;
+		end
+	end,
+	
 	isAlive = function()
-		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive( PlayerHero ) == nil then
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive( "Kujin" ) == nil then
 			SetObjectiveState( "obj6", OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;
+		elseif OBJECTIVES.state.gatherClans[2] == 10 then
+			SetObjectiveState( "obj6", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	
@@ -520,8 +438,8 @@ OBJECTIVES = {
 			OBJECTIVES.state.pirates[2] = 2;
 		elseif OBJECTIVES.state.pirates[2] == 2 and OBJECTIVES.pirates_start <= OBJECTIVES.date then
 			DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes( PLAYER_6, 0 );
-			H55c_AIAddHero(AIHero6);
-			H55c_AIAddHero(AIHero7);
+			H55c_AIAddHero("Ferigl");
+			H55c_AIAddHero("Metlirn");
 			OBJECTIVES.state.pirates[2] = 10;
 		end
 	end,
@@ -540,10 +458,10 @@ OBJECTIVES = {
 			DeployReserveHero( OBJECTIVES.orcHarass_hero, 107, 45, GROUND );
 			sleep(10);
 			SetObjectPosition(OBJECTIVES.orcHarass_hero, 81, 47, 0);
-			AIHeroSetUp( OBJECTIVES.orcHarass_wave + 1, OBJECTIVES.orcHarass_hero );
-			--H55c_AIAddHero( OBJECTIVES.orcHarass_hero );
+			EnemyHeroSetup( OBJECTIVES.orcHarass_hero, OBJECTIVES.orcHarass_wave + 1 );
+			ChangeHeroStat( OBJECTIVES.orcHarass_hero, STAT_EXPERIENCE, 10000 + 500 * ( diff + OBJECTIVES.orcHarass_wave + 1 ) );
 			OBJECTIVES.orcHarass_wave = OBJECTIVES.orcHarass_wave + 1;
-			OBJECTIVES.orcHarass_assaultDay = 7 + math.random(7);
+			OBJECTIVES.orcHarass_assaultDay = OBJECTIVES.date + 5 + math.random(5);
 		end
 	end
 }
@@ -552,15 +470,14 @@ OBJECTIVES = {
 startThread( OBJECTIVES.start )
 startThread( H55c_AI_main )
 
--- sleep(50);
--- pcall(H55_NoFog, 1);
--- H55_Speedrun(1);
--- SetObjectPosition("Kujin", 32, 30);
-
--- function t2()
-	-- SetObjectPosition("Kujin", 79, 83);
--- end
-
--- function t3()
-	-- SetObjectPosition("Kujin", 24, 73);
--- end
+function a2c2m2_dbg(var)
+	if var == 1 then
+		pcall(H55_NoFog, 1);
+		H55_Speedrun(1);
+		SetObjectPosition("Kujin", 32, 30);
+	elseif var == 2 then
+		SetObjectPosition("Kujin", 79, 83);
+	elseif var == 22 then
+		SetObjectPosition("Kujin", 24, 73);
+	end
+end
