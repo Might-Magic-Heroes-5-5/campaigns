@@ -102,7 +102,7 @@ end
 function FinalTownSetUp()
 	for creatureID = 1, CREATURES_COUNT - 1 do 
 		CreatureSetUp = GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID );
-		if GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID ) > 1 then
+		if GetObjectCreatures( 'FINAL_ORC_TOWN', creatureID ) > 2 then
 			RemoveObjectCreatures( 'FINAL_ORC_TOWN', creatureID, CreatureSetUp );
 			AddObjectCreatures( 'FINAL_ORC_TOWN', creatureID, CreatureSetUp + CreatureSetUp * diff );
 		end
@@ -118,8 +118,6 @@ DIFFICULTY = {
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 50);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 100);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 200);
-		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 35);
-		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 15);
 		print("Difficulty Level is NORMAL");
 	end,
 	[1] = function()
@@ -130,36 +128,36 @@ DIFFICULTY = {
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 100);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 200);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 400);
-		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 70);
-		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 30);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 50);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 50);
 		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 50);
 		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 10);
 		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 10);
 		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 5);
 		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 50);
 		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 200);
-        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,15);
-        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,15);		
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,20);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,20);		
 		print("Difficulty Level is HARD");
 	end,
 	[2] = function()
 		diff = 3;
-		ChieftainTownTavernActivationDay = 9;
+		ChieftainTownTavernActivationDay = 8;
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_ARCH_DEMON, 30);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_PIT_SPAWN, 45);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 150);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 300);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 600);
-		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 105);
-		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 45);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 100);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 100);
 		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 100);
 		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 20);
 		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 20);
 		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 10);
 		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 100);
 		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 400);
-        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,30);
-        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,30);			
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,40);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR,40);			
 		print("Difficulty Level is HEROIC");
 	end,
 	[3] = function()
@@ -170,16 +168,16 @@ DIFFICULTY = {
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_SUCCUBUS_SEDUCER, 200);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_HORNED_LEAPER, 400);
 		AddObjectCreatures ("TOWN_INFERNO", CREATURE_QUASIT, 800);
-		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 140);
-		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 60);
+		AddObjectCreatures ("RHAVEN", CREATURE_ZEALOT, 150);
+		AddObjectCreatures ("RHAVEN", CREATURE_CHAMPION, 150);
 		AddObjectCreatures ("RINFERNO", CREATURE_INFERNAL_SUCCUBUS, 150);
 		AddObjectCreatures ("RINFERNO", CREATURE_PIT_SPAWN, 30);
 		AddObjectCreatures ("RINFERNO", CREATURE_BALOR, 30);
 		AddObjectCreatures ("RINFERNO", CREATURE_ARCHDEVIL, 15);
 		AddObjectCreatures ("RINFERNO", CREATURE_SUCCUBUS_SEDUCER, 150);
 		AddObjectCreatures ("RINFERNO", CREATURE_FAMILIAR, 600);
-        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR,45);
-        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR, 45);			
+        AddObjectCreatures ("PORTAL_GUARD_01", CREATURE_BALOR, 60);
+        AddObjectCreatures ("PORTAL_GUARD_02", CREATURE_BALOR, 60);			
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
 }
@@ -191,7 +189,7 @@ function deployOrcRaider(wave, day)
 	DeployReserveHero( hero, 21, 37, GROUND );
 	sleep(10);
 	SetHeroRoleMode( hero, HERO_ROLE_MODE_FREEMAN  );
-	H55c_updateArmy( hero, diff + wave * 0.2, H55c_CREATURES.STRONGHOLD );
+	H55c_updateArmy( hero, diff + wave * 0.25 * OBJECTIVES.date, H55c_CREATURES.STRONGHOLD );
 	ChangeHeroStat( hero, STAT_EXPERIENCE, ( 1000 + day * 100 ) * diff );
 	H55c_AIAddHero( hero );
 	return hero;
@@ -278,16 +276,23 @@ end
 ---------------------------------------------------------------------------------------------------
 function f_deploy_enemy_hero_trap(hero)
 	if GetObjectOwner( hero ) == PLAYER_1 then
+		BlockGame();
 		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "REGION_TRAP_SUBTERRAIN", nil);-- Disable Region Enter Trigger - so trap cannot be launched several times
+		startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO9_Arantir_01sound.xdb#xpointer(/Sound)" );
 		MoveCamera(97, 51, 1, 30, 1, 5.5, 0, 0, 0); -- MoveCamera there
-		sleep(20);
+		PlayVisualEffect("/Effects/_(Effect)/Spells/DimesionDoorEnd.xdb#xpointer(/Effect)", "", "", 97.5, 51.6, -0.8, 0, 1); -- PlayVisualEffect on Hero's location - Dimensional Gate Exit
+		sleep(25);
 		DeployReserveHero('Nymus', 97, 51, 1); -- DeployReserveHero - location - underground passage not far from Trap Region, so player's hero cannot evade the combat.
 		sleep(10);
-		PlayVisualEffect("/Effects/_(Effect)/Spells/DimesionDoorEnd.xdb#xpointer(/Effect)", 'Nymus', 0, 0.5); -- PlayVisualEffect on Hero's location - Dimensional Gate Exit
 		SetAIHeroAttractor(hero, 'Nymus', 2); -- Set attractor on hero, that entered Trap Region - HIGH.
 		H55c_updateArmy('Nymus', diff, H55c_CREATURES.INFERNO );
 		H55c_AIAddHero('Nymus');
-		startThread( Play2DSound, "/Maps/Scenario/A2C1M4/C1M4_VO9_Arantir_01sound.xdb#xpointer(/Sound)" );
+		ChangeHeroStat("Nymus", STAT_ATTACK, 5 * diff);
+		ChangeHeroStat("Nymus", STAT_DEFENCE, 4* diff);
+		ChangeHeroStat("Nymus", STAT_SPELL_POWER, 3 * diff);
+		ChangeHeroStat("Nymus", STAT_KNOWLEDGE, 2* diff);
+		sleep(200);
+		UnblockGame();
 	end
 end
 
@@ -540,7 +545,7 @@ OBJECTIVES = {
 		EnableAIHeroHiring(PLAYER_2, 'FINAL_ORC_TOWN', nil);
 		DenyAIHeroFlee(HERO_PLAYER_MAIN, 1);
 		DenyAIHeroFlee(HERO_PLAYER_SEC, 1);
-		SetHeroesExpCoef( 0.5 );
+		SetHeroesExpCoef( 0.75 );
 		BlockTownGarrisonForAI('TOWN_INFERNO', not nil); -- does not work for QAI
 		Trigger( PLAYER_ADD_HERO_TRIGGER, PLAYER_2, "player_2_hero_check" );
 		startThread( f_road_block_check );
@@ -733,11 +738,11 @@ OBJECTIVES = {
 		if IsObjectExists('Deleb') == nil and OBJECTIVES._destroyPortal_waveSpawnDay <= OBJECTIVES.date then
 			DeployReserveHero('Deleb', 111, 114, 1);
 			sleep( 20 );
-			H55c_updateArmy('Deleb', 1 + 0.01 * diff * OBJECTIVES.date, H55c_CREATURES.INFERNO );
+			H55c_updateArmy('Deleb', 1 + 0.08 * diff * OBJECTIVES.date, H55c_CREATURES.INFERNO ); 
 			startThread( Play2DSound, "/Sounds/_(Sound)/Heroes/Biara/Happy.xdb#xpointer(/Sound)" );
 			ChangeHeroStat( 'Deleb', STAT_EXPERIENCE, ( 1000 + OBJECTIVES.date * 100 ) * diff );
 			H55c_AIAddHero( 'Deleb' );
-			OBJECTIVES._destroyPortal_waveSpawnDay = OBJECTIVES._destroyPortal_waveSpawnDay + 15 - diff;
+			OBJECTIVES._destroyPortal_waveSpawnDay = OBJECTIVES._destroyPortal_waveSpawnDay + 11 - diff;
 		end
 	end,
 }

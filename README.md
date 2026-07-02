@@ -526,7 +526,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Raised level cap from 22 to 25
 
 ### A2C1M3 - The Will of Asha: The Bull's Wake
-- change: Removed human player tavern hiring limit ( was 6 ).
+- change: Removed human player tavern hiring limit ( was 6 )
+- change: Enemy hero Orlando is now more challenging on higher difficulty levels
 
 ### A2C1M4 - The Will of Asha: Beasts and Bones
 - fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less than 7 days after he has spawned
