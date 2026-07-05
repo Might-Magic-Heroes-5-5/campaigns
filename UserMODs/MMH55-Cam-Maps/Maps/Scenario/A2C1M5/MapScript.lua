@@ -518,20 +518,20 @@ end
 
 function f_add_creatures_to_prisoner()
 	if IsObjectExists('RedHeavenHero03') == not nil then
-		AddHeroCreatures('RedHeavenHero03', 	CREATURE_SERAPH,  17 -  4 * diff );
-		AddHeroCreatures('RedHeavenHero03',	  CREATURE_CHAMPION,  33 -  8 * diff );
-		AddHeroCreatures('RedHeavenHero03', 	CREATURE_ZEALOT,  61 - 15 * diff );
-		AddHeroCreatures('RedHeavenHero03', CREATURE_VINDICATOR, 130 - 30 * diff );
+		AddHeroCreatures('RedHeavenHero03', 	CREATURE_SERAPH,  17 -  2 * diff );
+		AddHeroCreatures('RedHeavenHero03',	  CREATURE_CHAMPION,  33 -  3 * diff );
+		AddHeroCreatures('RedHeavenHero03', 	CREATURE_ZEALOT,  61 - 4 * diff );
+		AddHeroCreatures('RedHeavenHero03', CREATURE_VINDICATOR, 130 - 10 * diff );
 		Trigger(PLAYER_ADD_HERO_TRIGGER, PLAYER_1, nil);
 	end
 end
 
 A2C1M5_EVIL_TOWN_REINFORCEMENTS = {
 		--   T7, T6, T5, T4,  T3,  T2
-	 [1] = {  2,  4, 10, 30,  50,  80 },
-	 [2] = {  4,  8, 16, 40,  75, 120 },
-	 [3] = {  6, 12, 23, 50, 100, 160 },
-	 [4] = {  7, 16, 30, 60, 125, 200 },
+	 [1] = {  4,   8, 14, 20,  36,  64 },
+	 [2] = {  7,  14, 25, 35,  56, 112 },
+	 [3] = {  10, 20, 35, 50,  80, 160 },
+	 [4] = {  13, 26, 46, 65, 104, 208 },
 }
 
 function A2C1M5_reinforceEvilTown( game_diff )
@@ -594,11 +594,93 @@ function IsHeroInRitualZone( hero )
 	return nil;
 end
 
+function SetupInfernalWaveHeroes(diff)
+	if diff > 1 then
+		ChangeHeroStat("Jazaz", STAT_EXPERIENCE, 42700);
+		GiveHeroSkill("Jazaz", SKILL_GATING);
+		GiveHeroSkill ("Jazaz", PERK_DEMONIC_FIRE);
+		GiveHeroSkill ("Jazaz", DEMON_FEAT_DEMONIC_RETALIATION);
+		TeachHeroSpell("Jazaz", SPELL_ICE_BOLT);
+		TeachHeroSpell("Jazaz", SPELL_LIGHTNING_BOLT);	
+		TeachHeroSpell("Jazaz", SPELL_STONE_SPIKES);
+		ChangeHeroStat("Grok", STAT_EXPERIENCE, 70500);
+		GiveHeroSkill("Grok", SKILL_GATING);
+		GiveHeroSkill ("Grok", PERK_DEMONIC_FIRE);
+		GiveHeroSkill ("Grok", DEMON_FEAT_DEMONIC_RETALIATION);
+		ChangeHeroStat("Oddrema", STAT_EXPERIENCE, 123000);
+		ChangeHeroStat("Deleb", STAT_EXPERIENCE, 176000);
+	end
+	if diff > 2 then
+		ChangeHeroStat("Jazaz", STAT_EXPERIENCE, 85300);
+		GiveHeroSkill("Jazaz", SKILL_GATING);
+		TeachHeroSpell("Jazaz", SPELL_FROST_RING);
+		TeachHeroSpell("Jazaz", SPELL_CHAIN_LIGHTNING);	
+		TeachHeroSpell("Jazaz", SPELL_METEOR_SHOWER);
+		ChangeHeroStat("Grok", STAT_EXPERIENCE, 147000);
+		GiveHeroSkill("Grok", SKILL_GATING);	
+		ChangeHeroStat("Oddrema", STAT_EXPERIENCE, 253000);	
+		ChangeHeroStat("Deleb", STAT_EXPERIENCE, 363000);
+	end
+	if diff > 3 then
+		ChangeHeroStat("Jazaz", STAT_EXPERIENCE, 176000);
+		GiveHeroSkill("Jazaz", SKILL_GATING);
+		TeachHeroSpell("Jazaz", SPELL_IMPLOSION);
+		TeachHeroSpell("Jazaz", SPELL_DEEP_FREEZE);			
+		ChangeHeroStat("Grok", STAT_EXPERIENCE, 304000);
+		GiveHeroSkill("Grok", SKILL_GATING);		
+		ChangeHeroStat("Oddrema", STAT_EXPERIENCE, 518000);	
+		ChangeHeroStat("Deleb", STAT_EXPERIENCE, 744000);
+		TeachHeroSpell("Deleb", SPELL_IMPLOSION);		
+	end
+	ChangeHeroStat("Jazaz", STAT_ATTACK, 5 * diff);
+	ChangeHeroStat("Jazaz", STAT_DEFENCE, 4 * diff);
+	ChangeHeroStat("Jazaz", STAT_SPELL_POWER, 3 * diff);
+	ChangeHeroStat("Jazaz", STAT_KNOWLEDGE, 2* diff);	
+	ChangeHeroStat("Grok", STAT_ATTACK, 3 * diff);
+	ChangeHeroStat("Grok", STAT_DEFENCE, 2 * diff);
+	ChangeHeroStat("Grok", STAT_SPELL_POWER, 5 * diff);
+	ChangeHeroStat("Grok", STAT_KNOWLEDGE, 4 * diff);
+	ChangeHeroStat("Oddrema", STAT_ATTACK, 3 * diff);
+	ChangeHeroStat("Oddrema", STAT_DEFENCE, 2 * diff);
+	ChangeHeroStat("Oddrema", STAT_SPELL_POWER, 5 * diff);
+	ChangeHeroStat("Oddrema", STAT_KNOWLEDGE, 4 * diff);
+	ChangeHeroStat("Deleb", STAT_ATTACK, 3 * diff);
+	ChangeHeroStat("Deleb", STAT_DEFENCE, 2 * diff);
+	ChangeHeroStat("Deleb", STAT_SPELL_POWER, 5 * diff);
+	ChangeHeroStat("Deleb", STAT_KNOWLEDGE, 4 * diff);
+end
+
+function SetupGarrisions(diff)
+	AddObjectCreatures("Garrison_ost", CREATURE_BATTLE_GRIFFIN , 52 * diff);
+	AddObjectCreatures("Garrison_ost", CREATURE_VINDICATOR, 80 * diff);
+	AddObjectCreatures("Garrison_ost", CREATURE_LONGBOWMAN, 126 * diff);
+	AddObjectCreatures("Garrison_ost", CREATURE_ZEALOT, 26 * diff);	
+	
+	AddObjectCreatures("Garrison_center", CREATURE_VINDICATOR, 80 * diff);
+	AddObjectCreatures("Garrison_center", CREATURE_LONGBOWMAN, 126 * diff);
+	AddObjectCreatures("Garrison_center", CREATURE_CHAMPION, 42 * diff);	
+	AddObjectCreatures("Garrison_center", CREATURE_ZEALOT, 52 * diff);	
+	
+	AddObjectCreatures("Garrison_sud_west", CREATURE_LONGBOWMAN, 75 * diff);
+	AddObjectCreatures("Garrison_sud_west", CREATURE_VINDICATOR, 55 * diff);
+	AddObjectCreatures("Garrison_sud_west", CREATURE_CHAMPION , 15 * diff);
+	AddObjectCreatures("Garrison_sud_west", CREATURE_LANDLORD , 128 * diff);
+	
+	AddObjectCreatures("Garrison_center_nord", CREATURE_BATTLE_GRIFFIN, 32 * diff);
+	AddObjectCreatures("Garrison_center_nord", CREATURE_ZEALOT, 21 * diff);
+	AddObjectCreatures("Garrison_center_nord", CREATURE_VINDICATOR, 72 * diff);
+	AddObjectCreatures("Garrison_center_nord", CREATURE_CHAMPION, 12 * diff);
+
+	AddObjectCreatures("Garrison_nord", CREATURE_SERAPH, 14 * diff);
+	AddObjectCreatures("Garrison_nord", CREATURE_CHAMPION, 28 * diff);
+	AddObjectCreatures("Garrison_nord", CREATURE_BATTLE_GRIFFIN, 74 * diff);
+end
+
 FEDEX_DELIVERY = {
-	[1] = { CREATURE_BONE_DRAGON, 4, CREATURE_WIGHT, 8, 		CREATURE_LICH, 12, CREATURE_VAMPIRE, 20, CREATURE_MANES, 36, CREATURE_WALKING_DEAD, 60, CREATURE_SKELETON, 80 }, -- normal
-	[2] = { CREATURE_BONE_DRAGON, 1, CREATURE_WIGHT, 2, 	    CREATURE_LICH,  3, CREATURE_VAMPIRE,  5, CREATURE_MANES,  9, CREATURE_WALKING_DEAD, 15, CREATURE_SKELETON, 20 }, -- hard
-	[3] = { 	CREATURE_VAMPIRE, 3, CREATURE_MUMMY, 2, CREATURE_DEATH_KNIGHT,  1 }, -- heroic
-	[4] = {		   CREATURE_LICH, 1, CREATURE_MUMMY, 1 }, -- impossible
+	[1] = { CREATURE_BONE_DRAGON, 2, CREATURE_WIGHT, 4, 		CREATURE_LICH, 6, CREATURE_VAMPIRE, 10, CREATURE_MANES, 18, CREATURE_WALKING_DEAD, 32, CREATURE_SKELETON, 50 }, -- normal
+	[2] = { CREATURE_BONE_DRAGON, 1, CREATURE_WIGHT, 2, 	    CREATURE_LICH,  3, CREATURE_VAMPIRE,  5, CREATURE_MANES,  9, CREATURE_WALKING_DEAD, 16, CREATURE_SKELETON, 25 }, -- hard
+	[3] = { 	CREATURE_VAMPIRE, 3, CREATURE_LICH, 2, CREATURE_DEATH_KNIGHT,  1 }, -- heroic
+	[4] = {		   CREATURE_LICH, 1, CREATURE_VAMPIRE, 2 }, -- impossible
 };
 
 DIFFICULTY = {
@@ -634,6 +716,19 @@ DIFFICULTY = {
 		AddObjectCreatures('Vigil', CREATURE_ARCHER, 30);
 		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 18);
 		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 10);
+		AddHeroCreatures("Efion", CREATURE_PIT_SPAWN, 2);
+		AddHeroCreatures("Efion", CREATURE_BALOR, 2);
+		AddHeroCreatures("Efion", CREATURE_PIT_FIEND, 2);
+		GiveExp("RedHeavenHero01", 147000);
+		ChangeHeroStat("RedHeavenHero01", STAT_ATTACK, 5);
+		ChangeHeroStat("RedHeavenHero01", STAT_DEFENCE, 5);	
+		ChangeHeroStat("RedHeavenHero01", STAT_SPELL_POWER, 2);		
+		ChangeHeroStat("RedHeavenHero01", STAT_KNOWLEDGE, 2);			
+		GiveExp("RedHeavenHero05", 147000);
+		ChangeHeroStat("RedHeavenHero05", STAT_ATTACK, 5);
+		ChangeHeroStat("RedHeavenHero05", STAT_DEFENCE, 5);	
+		ChangeHeroStat("RedHeavenHero05", STAT_SPELL_POWER, 2);		
+		ChangeHeroStat("RedHeavenHero05", STAT_KNOWLEDGE, 2);	
 		print("Difficulty Level is HARD");
 	end,
 	
@@ -652,6 +747,19 @@ DIFFICULTY = {
 		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 18);
 		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 10);
 		AddObjectCreatures('Vigil', CREATURE_PRIEST, 6);
+		AddHeroCreatures("Efion", CREATURE_PIT_SPAWN, 4);
+		AddHeroCreatures("Efion", CREATURE_BALOR, 4);
+		AddHeroCreatures("Efion", CREATURE_PIT_FIEND, 4);
+		GiveExp("RedHeavenHero01", 451000);
+		ChangeHeroStat("RedHeavenHero01", STAT_ATTACK, 10);
+		ChangeHeroStat("RedHeavenHero01", STAT_DEFENCE, 10);	
+		ChangeHeroStat("RedHeavenHero01", STAT_SPELL_POWER, 4);		
+		ChangeHeroStat("RedHeavenHero01", STAT_KNOWLEDGE, 4);		
+		GiveExp("RedHeavenHero05", 451000);	
+		ChangeHeroStat("RedHeavenHero05", STAT_ATTACK, 10);
+		ChangeHeroStat("RedHeavenHero05", STAT_DEFENCE, 10);	
+		ChangeHeroStat("RedHeavenHero05", STAT_SPELL_POWER, 4);		
+		ChangeHeroStat("RedHeavenHero05", STAT_KNOWLEDGE, 4);		
 		print("Difficulty Level is HEROIC");
 	end,
 	
@@ -663,22 +771,29 @@ DIFFICULTY = {
 		AddObjectCreatures('Nergal-shum', CREATURE_LICH, 2);
 		AddObjectCreatures('Nergal-shum', CREATURE_DEATH_KNIGHT, 1);
 		AddObjectCreatures('Nergal-shum', CREATURE_MUMMY, 2);
-		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 15);
-		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 9);
-		AddObjectCreatures('Chillbury', CREATURE_GRIFFIN, 5);
-		AddObjectCreatures('Chillbury', CREATURE_PRIEST, 3);
-		AddObjectCreatures('Chillbury', CREATURE_CAVALIER, 2);
-		AddObjectCreatures('Vigil', CREATURE_ARCHER, 15);
-		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 9);
-		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 5);
-		AddObjectCreatures('Vigil', CREATURE_PRIEST, 3);
-		AddObjectCreatures('Vigil', CREATURE_CAVALIER, 2);
-		AddObjectCreatures("Garrison_sud_west", CREATURE_LONGBOWMAN, 75);
-		AddObjectCreatures("Garrison_sud_west", CREATURE_VINDICATOR, 55);
-		AddObjectCreatures("Garrison_sud_west", CREATURE_CHAMPION , 5);
-		AddObjectCreatures("Garrison_ost", CREATURE_BATTLE_GRIFFIN , 30);
-		AddObjectCreatures("Garrison_ost", CREATURE_VINDICATOR, 80);
-		AddObjectCreatures("Garrison_ost", CREATURE_LONGBOWMAN, 60);
+		AddObjectCreatures('Chillbury', CREATURE_ARCHER, 45);
+		AddObjectCreatures('Chillbury', CREATURE_FOOTMAN, 27);
+		AddObjectCreatures('Chillbury', CREATURE_GRIFFIN, 15);
+		AddObjectCreatures('Chillbury', CREATURE_PRIEST, 9);
+		AddObjectCreatures('Chillbury', CREATURE_CAVALIER, 6);
+		AddObjectCreatures('Vigil', CREATURE_ARCHER, 45);
+		AddObjectCreatures('Vigil', CREATURE_FOOTMAN, 27);
+		AddObjectCreatures('Vigil', CREATURE_GRIFFIN, 15);
+		AddObjectCreatures('Vigil', CREATURE_PRIEST, 9);
+		AddObjectCreatures('Vigil', CREATURE_CAVALIER, 6);
+		AddHeroCreatures("Efion", CREATURE_PIT_SPAWN, 6);
+		AddHeroCreatures("Efion", CREATURE_BALOR, 6);
+		AddHeroCreatures("Efion", CREATURE_PIT_FIEND, 6);
+		GiveExp("RedHeavenHero01", 1071000);
+		ChangeHeroStat("RedHeavenHero01", STAT_ATTACK, 15);
+		ChangeHeroStat("RedHeavenHero01", STAT_DEFENCE, 15);	
+		ChangeHeroStat("RedHeavenHero01", STAT_SPELL_POWER, 6);		
+		ChangeHeroStat("RedHeavenHero01", STAT_KNOWLEDGE, 6);			
+		GiveExp("RedHeavenHero05", 1071000);
+		ChangeHeroStat("RedHeavenHero05", STAT_ATTACK, 15);
+		ChangeHeroStat("RedHeavenHero05", STAT_DEFENCE, 15);	
+		ChangeHeroStat("RedHeavenHero05", STAT_SPELL_POWER, 6);		
+		ChangeHeroStat("RedHeavenHero05", STAT_KNOWLEDGE, 6);		
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
 }
@@ -734,56 +849,26 @@ OBJECTIVES = {
 		DenyAIHeroFlee( 'OrnellaNecro', not nil );
 		EnableHeroAI('Efion', nil);
 		SetRegionBlocked("1_block_zone_for_player2", 1, PLAYER_2);
-		SetRegionBlocked("2_block_zone_for_player2", 1, PLAYER_2);
 		SetRegionBlocked("1_block_zone_for_player3", 1, PLAYER_3);
+		SetRegionBlocked("2_block_zone_for_player2", 1, PLAYER_2);
 		SetRegionBlocked("2_block_zone_for_player3", 1, PLAYER_3);
 		SetRegionBlocked("3_block_zone_for_player3", 1, PLAYER_3);
 		SetRegionBlocked("3_block_zone_for_player2", 1, PLAYER_2);
 		SetRegionBlocked("4_block_zone_for_player2", 1, PLAYER_2);
-		SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("1_block_zone_for_AI_players", 1, PLAYER_3);
-		SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("2_block_zone_for_AI_players", 1, PLAYER_3);
-		SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("3_block_zone_for_AI_players", 1, PLAYER_3);
-		SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("4_block_zone_for_AI_players", 1, PLAYER_3);
-		SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("5_block_zone_for_AI_players", 1, PLAYER_3);
-		SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_2);
-		SetRegionBlocked("6_block_zone_for_AI_players", 1, PLAYER_3);
+		for i = 1, 6 do 
+			SetRegionBlocked(i.."_block_zone_for_AI_players", 1, PLAYER_2);
+			SetRegionBlocked(i.."_block_zone_for_AI_players", 1, PLAYER_3);
+		end
 		SetRegionBlocked("Alarm_succubus", 1, PLAYER_2);
 		SetRegionBlocked("Alarm_succubus", 1, PLAYER_3);
 		SetRegionBlocked("Stop_for_player", 1, PLAYER_2);
 		SetRegionBlocked("Stop_for_player", 1, PLAYER_3);
 		SetRegionBlocked("Temp_block_player2", 1, PLAYER_2);
 		SetRegionBlocked("Temp_block_player2_2", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_1", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_1", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_2", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_2", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_3", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_3", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_4", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_4", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_5", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_5", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_6", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_6", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_7", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_7", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_8", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_8", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_9", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_9", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_10", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_10", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_11", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_11", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_12", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_12", 1, PLAYER_3);
-		SetRegionBlocked("Block_teleport_13", 1, PLAYER_2);
-		SetRegionBlocked("Block_teleport_13", 1, PLAYER_3);
+		for i = 1, 13 do
+			SetRegionBlocked("Block_teleport_"..i, 1, PLAYER_2);
+			SetRegionBlocked("Block_teleport_"..i, 1, PLAYER_3);
+		end
 		SetRegionBlocked( "Start_west_block", 1, PLAYER_2 ); -- —тартова€ временна€ блокировка у западного города
 		SetRegionBlocked(  "Start_ost_block", 1, PLAYER_2 ); -- —тартова€ временна€ блокировка у восточного города
 		SetDisabledObjectMode( 'Assasin' , DISABLED_ATTACK );
@@ -831,6 +916,8 @@ OBJECTIVES = {
 		SetRegionBlocked( "RegionToArantir", not nil ); -- keep it locked for CINEMA purposes (teleporting Arantir there);
 		Trigger(OBJECT_TOUCH_TRIGGER, "prison", "CINEMATICS.meetGhostDaughterValeria");
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Stop_for_player", "f_save");
+		SetupGarrisions(diff);
+		SetupInfernalWaveHeroes(diff);
 	end,
 
 	run = function()
@@ -874,19 +961,19 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.captureFlammshrein[2] == 2 and GetObjectOwner('Flammschrein') == PLAYER_1 then
 			SetObjectiveState( "pri2", OBJECTIVE_COMPLETED );
 			OpenCircleFog(158, 156, 0, 15, 1);		
-			sleep(4);
+			sleep(15);
 			MoveCamera(158, 156, 0, 90, 1, 0, 0, 0, 1);		
-			sleep(4);
+			sleep(15);
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-			sleep(4);
+			sleep(15);
 			Play2DSound( "/Sounds/_(Sound)/Spells/Earthquake.xdb#xpointer(/Sound)" ); ----------------DESTROY_FLAMM_SDN
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-			sleep(4);
+			sleep(15);
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
-			sleep(4);
+			sleep(15);
 			SetAmbientLight(0, "Default", not nil, 1);		
 			sleep(50);
 			OBJECTIVES.state.captureFlammshrein[2] = 10;
@@ -948,10 +1035,12 @@ OBJECTIVES = {
 		end
 		
 		local count = OwnedTowns(PLAYER_1);
-		if OBJECTIVES.destroyPortal_spawns[count] ~= nil  then
-			DeployReserveHero(OBJECTIVES.destroyPortal_spawns[count], 18, 140, GROUND);
-			sleep(10);
-			UnreserveHero(OBJECTIVES.destroyPortal_spawns[count]);
+		local hero = OBJECTIVES.destroyPortal_spawns[count];
+		if hero ~= nil  then
+			DeployReserveHero(hero, 18, 140, GROUND);
+			sleep(30);
+			UnreserveHero(hero);
+			SetupInfernalHeroArmy(hero, diff);
 			OBJECTIVES.destroyPortal_spawns[count] = nil;
 		end
 	end,
@@ -1063,6 +1152,16 @@ function a2c1m5_dbg(var)
 		for i = 1,4 do
 			local x,y,z = RegionToPoint( "Ritual_"..i );
 			SetObjectPosition(GetPlayerHeroes(PLAYER_1)[i], x, y, z);
+		end
+	end
+end
+
+function SetupInfernalHeroArmy(hero, coef)
+	for creatureID = 1, CREATURES_COUNT - 1 do 
+		CreatureSetUp = GetObjectCreatures(hero, creatureID);
+		if CreatureSetUp > 1 then
+			RemoveObjectCreatures(hero, creatureID, CreatureSetUp);
+			AddObjectCreatures(hero, creatureID, CreatureSetUp * coef);
 		end
 	end
 end
