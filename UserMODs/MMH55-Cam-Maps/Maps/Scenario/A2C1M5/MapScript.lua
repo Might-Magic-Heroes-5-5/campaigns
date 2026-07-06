@@ -131,7 +131,6 @@ function visitMagicBarrier(hero)
 	if GetObjectOwner(hero) == PLAYER_1 then
 		Trigger(OBJECT_TOUCH_TRIGGER, 'Gate_to_Flammschrein', "MessageBox('/Maps/Scenario/A2C1M5/messagebox_002.txt')");
 		OBJECTIVES.state.removeMagicBarrier[2] = 1;
-		OBJECTIVES.state.avengeTheGhost[2] = 1;
 	end
 end
 
@@ -278,8 +277,7 @@ CINEMATICS = {
 			MoveCamera(value[1], value[2], value[3], value[4] + 20, value[5], value[6], value[7], value[8],value[9]);	
 			sleep(40);
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/Plague.xdb#xpointer(/Effect)", key, 0, 0, 0, 0, 0 );
-			Play2DSound( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" );
-			sleep(60);
+			PlayVoiceoverAndBlockGame( "/Sounds/_(Sound)/Spells/Plague.xdb#xpointer(/Sound)" );
 		end
 		OpenCircleFog(137, 128, 0, 10, 1);
 		for i = 1,4 do
@@ -291,9 +289,7 @@ CINEMATICS = {
 		sleep(40);
 		if IsObjectExists( 'Fire_wall' ) ~= nil then
 			PlayVisualEffect( "/Effects/_(Effect)/Spells/UnholyWord.xdb#xpointer(/Effect)", 'Fire_wall', 0, 0, 0, 6, 0 );
-			sleep(4);
-			Play2DSound( "/Sounds/_(Sound)/Spells/UnholyWord.xdb#xpointer(/Sound)" ); ----------------BARIER
-			sleep(40);	
+			PlayVoiceoverAndBlockGame("/Sounds/_(Sound)/Spells/UnholyWord.xdb#xpointer(/Sound)");
 			RemoveObject('Fire_wall');
 		end
 		sleep(40);
@@ -313,9 +309,12 @@ CINEMATICS = {
 		EnableHeroAI("GhostFSLord", not nil);	
 		SetObjectRotation("GhostFSLord", 270);
 		MoveHeroRealTime("GhostFSLord", 139, 128, GROUND);
-		sleep(60);
+		local x,y,z = GetObjectPosition("GhostFSLord");
+		repeat 
+			sleep(5);
+			x,y,z = GetObjectPosition("GhostFSLord");
+		until x == 139 and y == 128;
 		MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
-		sleep(50);
 		SetObjectRotation( "GhostFSLord", 270 );
 		sleep(50);
 		local x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( 'Arantir' );
@@ -489,7 +488,14 @@ CINEMATICS = {
 		MoveHeroRealTime('Orlando', 158, 151, GROUND);
 		EnableHeroAI("Orlando", nil);
 		UnblockGame();
-	end
+	end,
+	
+	showCaravan = function()
+		OpenCircleFog(130, 1, 0, 4, 1);		
+		MoveCamera(129, 0, 0, 25, 0.55, 0, 0, 0, 1);
+		sleep(30);
+		MessageBox("/Maps/Scenario/A2C1M5/messagebox_01"..math.random(2,4)..".txt");
+	end,
 }
 
 function f_save(hero)
@@ -847,7 +853,7 @@ OBJECTIVES = {
 	   OrnellaIsAlive		 = { "pri5", 1 },		-- Ornella must survive
 	   defeatMochab			 = { "pri6", 1 },		-- 
 	   destroyPortal		 = { "sec1", 1 },		--
-	   avengeTheGhost		 = { "sec2", 0 },		-- kill the killers of ghost of Flammschrein
+	   avengeTheGhost		 = { "sec2", 1 },		-- kill the killers of ghost of Flammschrein
 	   killPaladinSoulKeeper = { "sec3", 0 },   	-- free Paladin ghost by killing the demon Soulkeeper (1-2 active, 10 completed)
 	   eventManager		 	 = {    "_", 1 }, 		-- controls release of reserved heroes
 	},
@@ -1087,7 +1093,7 @@ OBJECTIVES = {
 	end,
 	
 	avengeTheGhost = function()
-		if OBJECTIVES.state.avengeTheGhost[2] == 1 then
+		if OBJECTIVES.state.avengeTheGhost[2] == 1 and OBJECTIVES.state.removeMagicBarrier[2] == 2 then
 			Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', nil);
 			MessageBox("/Maps/Scenario/A2C1M5/messagebox_003.txt");
 			Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', "meetAssassins");
@@ -1146,7 +1152,7 @@ OBJECTIVES = {
 	
 	eventManager_day = 0,
 	eventManager = function()
-		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+		if OBJECTIVES.date >= OBJECTIVES.eventManager_day then
 			if OBJECTIVES.date >= 29 - 7 * diff then
 				SetRegionBlocked( "Start_west_block", nil, PLAYER_2 ); -- ”праздн€ет блокировку зоны у западного города
 				SetRegionBlocked(  "Start_ost_block", nil, PLAYER_2 ); -- ”праздн€ет блокировку зоны у восточного города
@@ -1164,10 +1170,7 @@ OBJECTIVES = {
 				for i = 1, table.length(FEDEX_DELIVERY[diff]), 2 do
 					AddObjectCreatures(car, FEDEX_DELIVERY[diff][i], FEDEX_DELIVERY[diff][i + 1]);
 				end
-				OpenCircleFog(130, 1, 0, 4, 1);		
-				MoveCamera(130, 1, 0, 30, 1, 3.14, 0, 0, 1);
-				sleep(30);
-				MessageBox("/Maps/Scenario/A2C1M5/messagebox_01"..math.random(2,4)..".txt");
+				CINEMATICS.showCaravan();
 			end
 			OBJECTIVES.eventManager_day = OBJECTIVES.date + 1;
 		end
