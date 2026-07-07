@@ -1,10 +1,34 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
+
+H55_PlayerStatus = {0,1,1,1,2,2,2,2};
+H55c_AI_CONTROLLED = {
+  player1 = {				-- player 1player/human so state should be 0 to skip control of the heroes
+	state = 0,				-- 0 human, 1 unmanaged AI, 2 managed AI
+	heroes = {},
+	enemies = {},
+  },
+  player2 = {				-- Blue Haven player
+	state = 1,				-- Enemy to the player but not targeting him directly
+	heroes = {},
+	enemies = {},
+  },
+  player3 = {				-- Red Inferno demon spawn heros
+	state = 2,				-- Leads onslaught against the human player aiming at besiging his newly conquered towns.
+	heroes = {},
+	enemies = {
+		{ priority = 1.0, heroes = 0.1, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+		{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+		{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+    },
+  },
+}
 
 function f_artifacts_sets()
 	InitAllSetArtifacts( "A2C1M5", "Arantir",  "OrnellaNecro" );
@@ -277,7 +301,7 @@ CINEMATICS = {
 		MoveCamera(139, 128, 0, 40, 1, 0.785, 0, 0, 1);
 		sleep(50);
 		SetObjectRotation( "GhostFSLord", 270 );
-		sleep(10);
+		sleep(50);
 		local x_ara_scene, y_ara_scene, floor_ara_scene = GetObjectPosition( 'Arantir' );
 		local x_orn_scene, y_orn_scene, floor_orn_scene = GetObjectPosition( 'OrnellaNecro' );
 		SetObjectPosition( 'Arantir', 134, 128, GROUND );
@@ -1041,6 +1065,7 @@ OBJECTIVES = {
 			sleep(30);
 			UnreserveHero(hero);
 			SetupInfernalHeroArmy(hero, diff);
+			H55c_AIAddHero( hero );
 			OBJECTIVES.destroyPortal_spawns[count] = nil;
 		end
 	end,
@@ -1134,7 +1159,8 @@ OBJECTIVES = {
 }
 
 ------------------- MAIN ------------------------
-startThread(OBJECTIVES.start)
+startThread(OBJECTIVES.start);
+startThread( H55c_AI_main );
 
 function a2c1m5_dbg(var)
 	if var == 0 then H55_Speedrun(1); end
