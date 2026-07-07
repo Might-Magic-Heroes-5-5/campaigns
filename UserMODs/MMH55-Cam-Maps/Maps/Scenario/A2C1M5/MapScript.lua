@@ -250,8 +250,24 @@ CINEMATICS = {
 		sleep(2);
 	end,	
 
+	ArantirTalkToOrnella = function()
+		BlockGame();
+		local x_ara, y_ara, floor_ara = GetObjectPosition( "Arantir" );
+		local x_orn, y_orn, floor_orn = GetObjectPosition( "OrnellaNecro" );
+		SetObjectPosition( "Arantir", 23, 13, GROUND );
+		SetObjectPosition( "OrnellaNecro", 23, 11, GROUND );
+		sleep(10);
+		SetObjectRotation( "Arantir", 0 );
+		SetObjectRotation( "OrnellaNecro", 180 );
+		UnblockGame();
+		CINEMATICS.playAndWait( 8 );
+		SetObjectPosition( "Arantir", x_ara, y_ara, floor_ara );
+		SetObjectPosition( "OrnellaNecro", x_orn, y_orn, floor_orn );
+		UnblockGame();
+	end,
+	
 	performRitual = function()
-		OBJECTIVES.state.OrnellaIsAlive[2] = 10;
+		OBJECTIVES.state.OrnellaIsAlive[2] = 2;
 		BlockGame();
 		MakeHeroReturnToTavernAfterDeath('Gles', 0); -- НЕВозвращение героя в таверну
 		MakeHeroReturnToTavernAfterDeath('Effig', 0); -- НЕВозвращение героя в таверну
@@ -1008,9 +1024,9 @@ OBJECTIVES = {
 		if OBJECTIVES.state.removeMagicBarrier[2] == 1 then
 			SetObjectiveState( 'pri4', OBJECTIVE_ACTIVE );
 			CINEMATICS.meetGhost();
-			OBJECTIVES.state.removeMagicBarrier[2] = 3;
-		elseif OBJECTIVES.state.removeMagicBarrier[2] == 3 and IsArantirReadyForRitual() ~= nil then
-			OBJECTIVES.state.OrnellaIsAlive[2] = 10;
+			OBJECTIVES.state.removeMagicBarrier[2] = 2;
+		elseif OBJECTIVES.state.removeMagicBarrier[2] == 2 and IsArantirReadyForRitual() ~= nil then
+			CINEMATICS.ArantirTalkToOrnella();
 			CINEMATICS.performRitual();
 			SetObjectiveState( "pri4", OBJECTIVE_COMPLETED );
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER, '1_block_zone_for_player2', nil);

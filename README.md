@@ -537,9 +537,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - changed: Stronghold wave heroes are now more challenging on higher difficulty levels and scale with time.
 
 ### A2C1M5 - The Will of Asha: The Bull's Wake
+- fix: Camera angle on Arantir caravan with reinforcements was messed up
 - change: Raised level cap from 40 to 99
 - change: Orlando army is now more challenging on higher difficulty levels and scale with time.
 - change: Enemy Haven towns are now fully built
+- change: Infernal heroes that spawn from the demon portal are now in onlaught mode and will prioritize closest player owned town
 
 ### A2C2M2 - To Honour our Fathers: One Khan, One Clan
 - fix: Dungeon pirate heroes sometimes jammed and stopped moving.
