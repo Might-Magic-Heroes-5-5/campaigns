@@ -543,6 +543,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Enemy Haven towns are now fully built
 - change: Infernal heroes that spawn from the demon portal are now in onlaught mode and will prioritize closest player owned town
 
+### A2C2M1 - To Honour our Fathers: Collecting Skulls
+- change: reduced skulls granted by castle and by goblins on higher difficulties
+- change: reduced army size on some creature stacks on adventure map
+
 ### A2C2M2 - To Honour our Fathers: One Khan, One Clan
 - fix: Dungeon pirate heroes sometimes jammed and stopped moving.
 - fix: Stronghold Tribe harassment waves against the player did not work at all
