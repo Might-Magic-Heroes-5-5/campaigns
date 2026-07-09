@@ -129,7 +129,6 @@ TeachHeroSpell( ORNELLA, SPELL_SLOW );
 
 -- BOSS AI DISABLED
 EnableHeroAI( "Orlando", nil );
-SetHeroRoleMode( "Orlando", HERO_ROLE_MODE_HERMIT );
 SetHeroesExpCoef(0.9);
 
 if GetDifficulty() == DIFFICULTY_EASY then
