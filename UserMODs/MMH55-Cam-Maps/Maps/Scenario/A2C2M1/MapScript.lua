@@ -104,25 +104,25 @@ DIFFICULTY = {
 	end,
 	
 	[2] = function()
+		AddObjectCreatures("m21", CREATURE_BATTLE_GRIFFIN, 13); --Griffins
+		AddObjectCreatures("m24", CREATURE_BATTLE_GRIFFIN, 13); --Griffins
+		AddObjectCreatures("m12", CREATURE_LONGBOWMAN, 50); --Crossbowmans
+		AddObjectCreatures("m19", CREATURE_VINDICATOR, 40); --Vindicators
+		AddObjectCreatures("m16", CREATURE_VINDICATOR, 40); --Vindicators
+		AddObjectCreatures("m15", CREATURE_VINDICATOR, 40); --Vindicators
 		AddObjectCreatures("m21", CREATURE_BATTLE_GRIFFIN, 18); --Griffins
 		AddObjectCreatures("m24", CREATURE_BATTLE_GRIFFIN, 18); --Griffins
-		AddObjectCreatures("m12", CREATURE_LONGBOWMAN, 75); --Crossbowmans
-		AddObjectCreatures("m19", CREATURE_VINDICATOR, 70); --Vindicators
-		AddObjectCreatures("m16", CREATURE_VINDICATOR, 70); --Vindicators
-		AddObjectCreatures("m15", CREATURE_VINDICATOR, 70); --Vindicators
 		ClosestBuildingRadius = 11;
 		diff = 2;
 		print("Difficulty Level is HEROIC");
 	end,
 	
 	[3] = function()
-		AddObjectCreatures("m21", CREATURE_BATTLE_GRIFFIN, 28); --Griffins
-		AddObjectCreatures("m24", CREATURE_BATTLE_GRIFFIN, 28); --Griffins
-		AddObjectCreatures("m12", CREATURE_LONGBOWMAN, 135); --Crossbowmans
-		AddObjectCreatures("m19", CREATURE_VINDICATOR, 100); --Vindicators
-		AddObjectCreatures("m16", CREATURE_VINDICATOR, 100); --Vindicators
-		AddObjectCreatures("m15", CREATURE_VINDICATOR, 100); --Vindicators
 		ClosestBuildingRadius = 13;
+		AddObjectCreatures("m12", CREATURE_LONGBOWMAN, 65); --Crossbowmans
+		AddObjectCreatures("m19", CREATURE_VINDICATOR, 60); --Vindicators
+		AddObjectCreatures("m16", CREATURE_VINDICATOR, 60); --Vindicators
+		AddObjectCreatures("m15", CREATURE_VINDICATOR, 60); --Vindicators
 		diff = 3;
 		print("Difficulty Level is IMPOSSIBLE");
 	end,
@@ -401,7 +401,7 @@ function IsBuildingTouched( heroName, objectName )
 	razedBuildingName = objectName;
 	if objectName == "mpost" then
 		isCastleDestroyed = 1;
-		castleHeadsCount = random(50) + 270-GetDifficulty()*10;
+		castleHeadsCount = random(30) + 70-GetDifficulty()*10;
 		if heroName == "Gottai" then
 			head = head + castleHeadsCount;
 		else
@@ -411,7 +411,7 @@ function IsBuildingTouched( heroName, objectName )
 		ShowFlyingSign( { "/Maps/Scenario/A2C2M1/show_heads_count.txt"; heads_collected = castleHeadsCount }, heroName, PLAYER_1, 4 );	
 	else
 		removeHutFromArray( objectName );
-		hutHeadsCount = random(20) + 150-GetDifficulty()*25;
+		hutHeadsCount = random(20) + 50-GetDifficulty()*10;
 		if heroName == "Gottai" then
 			head = head + hutHeadsCount;
 		else
