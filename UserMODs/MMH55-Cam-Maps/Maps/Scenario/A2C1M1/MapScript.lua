@@ -263,7 +263,11 @@ OBJECTIVES = {
 	
 	prepare = function()
 		OverrideObjectTooltipNameAndDescription ( "forge", "/Maps/Scenario/a2c1m1/tyltip1.txt", "/Maps/Scenario/a2c1m1/tyltip2.txt" );
-		GiveExp( "Isher", 20000 );
+		GiveExp( "Isher", 28700 );
+		ChangeHeroStat("Isher", STAT_ATTACK, 5);
+		ChangeHeroStat("Isher", STAT_DEFENCE, 7);
+		ChangeHeroStat("Isher", STAT_SPELL_POWER, 5);
+		ChangeHeroStat("Isher", STAT_KNOWLEDGE, 3);
 		CINEMATICS.intro();
 		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Dwellings/Necropolis/Ruined_Tower.xdb#xpointer(/Effect)", "",   "keeper_fx", 16, 29, 0, 0, 0 ); -- lower key part location
 		PlayVisualEffect(        "/Effects/_(Effect)/Towns/Necropolis/NecromancyAmplifier.xdb#xpointer(/Effect)", "",  "keeper_fx1", 16, 29, 0, 0, 0 ); -- lower key part location
