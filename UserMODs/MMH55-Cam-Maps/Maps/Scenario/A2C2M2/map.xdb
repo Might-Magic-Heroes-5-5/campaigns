@@ -193,7 +193,6 @@
 					<Item>SPELL_SUMMON_ELEMENTALS</Item>
 					<Item>SPELL_RESURRECT</Item>
 					<Item>SPELL_SUMMON_BOAT</Item>
-					<Item>SPELL_DIMENSION_DOOR</Item>
 					<Item>SPELL_TOWN_PORTAL</Item>
 					<Item>SPELL_ABILITY_DARK_RITUAL</Item>
 					<Item>SPELL_MASS_CURSE</Item>
@@ -458,7 +457,6 @@
 					<Item>SPELL_SUMMON_ELEMENTALS</Item>
 					<Item>SPELL_RESURRECT</Item>
 					<Item>SPELL_SUMMON_BOAT</Item>
-					<Item>SPELL_DIMENSION_DOOR</Item>
 					<Item>SPELL_TOWN_PORTAL</Item>
 					<Item>SPELL_ABILITY_DARK_RITUAL</Item>
 					<Item>SPELL_MASS_CURSE</Item>
@@ -723,7 +721,6 @@
 					<Item>SPELL_SUMMON_ELEMENTALS</Item>
 					<Item>SPELL_RESURRECT</Item>
 					<Item>SPELL_SUMMON_BOAT</Item>
-					<Item>SPELL_DIMENSION_DOOR</Item>
 					<Item>SPELL_TOWN_PORTAL</Item>
 					<Item>SPELL_ABILITY_DARK_RITUAL</Item>
 					<Item>SPELL_MASS_CURSE</Item>
@@ -988,7 +985,6 @@
 					<Item>SPELL_SUMMON_ELEMENTALS</Item>
 					<Item>SPELL_RESURRECT</Item>
 					<Item>SPELL_SUMMON_BOAT</Item>
-					<Item>SPELL_DIMENSION_DOOR</Item>
 					<Item>SPELL_TOWN_PORTAL</Item>
 					<Item>SPELL_ABILITY_DARK_RITUAL</Item>
 					<Item>SPELL_MASS_CURSE</Item>
@@ -1146,15 +1142,15 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_GOBLIN</Creature>
-						<Count>18</Count>
+						<Count>45</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CENTAUR</Creature>
-						<Count>12</Count>
+						<Count>30</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ORC_WARMONGER</Creature>
-						<Count>4</Count>
+						<Count>10</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -43893,7 +43889,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Stronghold/Hero8.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>1000</Experience>
+				<Experience>0</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_GOBLIN_TRAPPER</Creature>
@@ -43959,7 +43955,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Stronghold/Hero1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_3</PlayerID>
-				<Experience>8000</Experience>
+				<Experience>0</Experience>
 				<armySlots/>
 				<artifactIDs/>
 				<isUntransferable/>
@@ -44012,7 +44008,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Stronghold/Hero4.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_4</PlayerID>
-				<Experience>18000</Experience>
+				<Experience>0</Experience>
 				<armySlots/>
 				<artifactIDs/>
 				<isUntransferable/>
@@ -54127,7 +54123,14 @@
 						<Item>HERO_SKILL_ENCOURAGE</Item>
 						<Item>HERO_SKILL_DEFEND_US_ALL</Item>
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+					    <Item>SPELL_WARCRY_RALLING_CRY</Item>
+					    <Item>SPELL_WARCRY_CALL_OF_BLOOD</Item>
+					    <Item>SPELL_WARCRY_WORD_OF_THE_CHIEF</Item>
+					    <Item>SPELL_WARCRY_FEAR_MY_ROAR</Item>
+					    <Item>SPELL_WARCRY_BATTLECRY</Item>
+					    <Item>SPELL_WARCRY_SHOUT_OF_MANY</Item>						
+					</spellIDs>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
 					<AmmoCart>false</AmmoCart>
@@ -63156,7 +63159,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>22</HeroMaxLevel>
+	<HeroMaxLevel>30</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
@@ -63398,8 +63401,15 @@
 							<Defence>0</Defence>
 							<Spellpower>0</Spellpower>
 							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
+						    <skills>
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+								</Item>
+					        </skills>
+					        <perkIDs>
+						        <Item>HERO_SKILL_CATAPULT</Item>
+					        </perkIDs>
 							<spellIDs/>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
@@ -63407,7 +63417,7 @@
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>48</OverrideMask>
 						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -63476,8 +63486,15 @@
 							<Defence>0</Defence>
 							<Spellpower>0</Spellpower>
 							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
+						    <skills>
+						    <Item>
+							    <Mastery>MASTERY_BASIC</Mastery>
+							    <SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+						    </Item>
+					        </skills>
+					        <perkIDs>
+						        <Item>HERO_SKILL_CATAPULT</Item>
+					        </perkIDs>
 							<spellIDs/>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
@@ -63485,7 +63502,7 @@
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>48</OverrideMask>
 						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -63554,8 +63571,15 @@
 							<Defence>0</Defence>
 							<Spellpower>0</Spellpower>
 							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
+						    <skills>
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+								</Item>
+					        </skills>
+					        <perkIDs>
+						        <Item>HERO_SKILL_CATAPULT</Item>
+					        </perkIDs>
 							<spellIDs/>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
@@ -63563,7 +63587,7 @@
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>48</OverrideMask>
 						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -63632,8 +63656,15 @@
 							<Defence>0</Defence>
 							<Spellpower>0</Spellpower>
 							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
+						    <skills>
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+								</Item>
+					        </skills>
+					        <perkIDs>
+						        <Item>HERO_SKILL_CATAPULT</Item>
+					        </perkIDs>
 							<spellIDs/>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
@@ -63641,7 +63672,7 @@
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>48</OverrideMask>
 						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
