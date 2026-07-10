@@ -1,7 +1,8 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
@@ -283,7 +284,6 @@ OBJECTIVES = {
 			SetObjectiveState('sec1', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.findTarrot[2] = 2;
 		elseif OBJECTIVES.state.findTarrot[2] == 2 and HasArtefact("Kujin", ARTIFACT_TAROT_DECK ) then
-			Play2DSound( "/Maps/Scenario/A2C2M4/C2M4_VO6_Kujin_01sound.xdb#xpointer(/Sound)");
 			SetObjectiveState("sec1", OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.findTarrot[2] = 10;			
 		elseif OBJECTIVES.state.findTarrot[2] == 9 then
