@@ -550,7 +550,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A2C2M2 - To Honour our Fathers: One Khan, One Clan
 - fix: Dungeon pirate heroes sometimes jammed and stopped moving.
 - fix: Stronghold Tribe harassment waves against the player did not work at all
-- change: AI harassment waves changed from 3 to infinite.
+- change: AI harassment waves changed from 3 to infinite where each next wave is stronger
+- change: Raised level cap from 22 to 30
+- change: Experience yield increased from 0.45 to 0.7
+- change: Buffed Kujin starting army
+- change: The first three tribe chiefs that join will gain 10/15/20 levels instead of starting at level 1.
+- change: The Cyclops guards count that eventually join Kujin increased from 3 to 12/10/8/6 based on game difficulty.
+- change: Final fight hero Gork gains all warcries and his level scale with game difficulty.
 
 ### A2C2M3 - To Honour our Fathers: Father Sky's Fury
 - fix: Catapult shots were bugged and could not raze towns

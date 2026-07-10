@@ -39,15 +39,15 @@ H55c_AI_CONTROLLED = {
 		enemies = {},
   },
   player5 = { 		   -- Light Blue Tribe
-		state = 1,
+		state = 2,
 		heroes = {},
 		enemies = {
-			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes = 0.7, towns = 1.0, is_enemy = 1 },  -- PLAYER1
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER4
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER5
-			{ priority = 0.3, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER6
+			{ priority = 0.2, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER6
 		}
   },
   player6 = { 		   -- Purple Dungeon Pirates
@@ -58,13 +58,13 @@ H55c_AI_CONTROLLED = {
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER4
-			{ priority = 0.3, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER5
+			{ priority = 0.3, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER5
 			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER6
 		}
   }
 }
 
-PIRATE_HEROES = { "Dalom", "Ferigl", "Metlirn" }; -- the three dugeon heroes
+PIRATE_HEROES = { "Dalom", "Ferigl", "Metlirn" }; -- two dungeon heroes and one sylvan 
 ORC_HARASS_HEROES = { "Hero2", "Hero3", "Hero7" };
 A2C2M2_TRIBE_PHONEBOOK = {
 	[PLAYER_2] = { place = {  32,  24 }, town =  'FirstTown', chief = "Hero8", reserved =     "Efion" },
@@ -81,16 +81,22 @@ DIFFICULTY = {
 	
 	[1] = function()
 		diff = 2;
+		GiveExp("Hero6", 58600);
 		print("Difficulty level is hard.");
 	end,
 	
 	[2] = function()
 		diff = 3;
+		GiveExp("Hero6", 181400);
+		GiveHeroSkill("Hero6", HERO_SKILL_BARBARIAN_LEARNING);				
 		print("Difficulty level is heroic.");
 	end,
 	
 	[3] = function()
 		diff = 4;
+		GiveExp("Hero6", 434400);
+		GiveHeroSkill("Hero6", HERO_SKILL_BARBARIAN_LEARNING);
+		GiveHeroSkill("Hero6", HERO_SKILL_BODYBUILDING);
 		print("Difficulty level is impossible.");
 	end,
 }
@@ -157,7 +163,7 @@ end
 
 function QuestionBoxYes()
 	RemoveObject( "Guard" );
-	AddHeroCreatures( TemporaryHero, CREATURE_CYCLOP_UNTAMED, 3 );
+	AddHeroCreatures( TemporaryHero, CREATURE_CYCLOP_UNTAMED, 14 - 2 * diff );
 end
 
 function QuestionBoxNo()
@@ -166,7 +172,7 @@ end
 
 function defeatWave2( hero )
 	if hero == "Hero6" then	
-		Play2DSound( "/Maps/Scenario/A2C2M2/C2M2_VO6_Kujin_01sound.xdb#xpointer(/Sound)" );
+		PlayVoiceoverAndBlockGame( "/Maps/Scenario/A2C2M2/C2M2_VO6_Kujin_01sound.xdb#xpointer(/Sound)" );
 	end
 end;
 
@@ -282,7 +288,7 @@ OBJECTIVES = {
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "PiratesActivation", "EnablePirates" );
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_5, "defeatWave2" );
 		DIFFICULTY[GetDifficulty()]();
-		SetHeroesExpCoef( 0.4 );
+		SetHeroesExpCoef( 0.75 );
 		for player = 2,5 do  											-- setup tribe chiefs and reserved heroes
 			local tribe = A2C2M2_TRIBE_PHONEBOOK[player];
 			EnableHeroAI( tribe.chief, nil );
@@ -370,6 +376,7 @@ OBJECTIVES = {
 			SetObjectiveState( "obj2", OBJECTIVE_COMPLETED );
 			JoinTribe(PLAYER_2);
 			OBJECTIVES.state.FirstChief[2] = 10;
+			GiveExp("Hero8", 1000);
 		end
 	end,
 	
@@ -388,6 +395,7 @@ OBJECTIVES = {
 			OpenCircleFog( 25, 77, GROUND, 6, PLAYER_1 );
 			OpenCircleFog( 27, 84, GROUND, 6, PLAYER_1 );
 			OBJECTIVES.state.SecondChief[2] = 10;
+			GiveExp("Hero1", 8000);
 		end
 	end,
 	
@@ -403,6 +411,7 @@ OBJECTIVES = {
 			SetRegionBlocked( "PRB5", nil, PLAYER_1 );
 			SetRegionBlocked( "PRB6", nil, PLAYER_1 );
 			OBJECTIVES.state.ThirdChief[2] = 10;
+			GiveExp("Hero4", 18000);
 		end
 	end,
 
@@ -460,6 +469,7 @@ OBJECTIVES = {
 			SetObjectPosition(OBJECTIVES.orcHarass_hero, 81, 47, 0);
 			EnemyHeroSetup( OBJECTIVES.orcHarass_hero, OBJECTIVES.orcHarass_wave + 1 );
 			ChangeHeroStat( OBJECTIVES.orcHarass_hero, STAT_EXPERIENCE, 10000 + 500 * ( diff + OBJECTIVES.orcHarass_wave + 1 ) );
+			H55c_AIAddHero( OBJECTIVES.orcHarass_hero );
 			OBJECTIVES.orcHarass_wave = OBJECTIVES.orcHarass_wave + 1;
 			OBJECTIVES.orcHarass_assaultDay = OBJECTIVES.date + 5 + math.random(5);
 		end
