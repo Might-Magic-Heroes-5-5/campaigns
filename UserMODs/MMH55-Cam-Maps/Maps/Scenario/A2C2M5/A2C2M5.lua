@@ -1,7 +1,9 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -10,380 +12,407 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_ENDLESS_BAG_OF_GOLD
 };
 
-OUR_HERO_GOTAI = "Gottai";
---OUR_HERO_KUJIN = "Kujin";
-ENEMY_HERO_ALARIC = "Alaric";
-ENEMY_WIZARD_HERO = "Tan";
 PATH = "Maps/Scenario/A2C2M5/";
-ACADEMY_TOWNS = {"academy_town_center", "academy_town_west", "academy_town_north"};
 ALL_TOWNS = {"academy_town_center", "academy_town_west", "academy_town_north", "HeavenTown", "MainAcademyTown", "main_orcish_town", "secondary_orcish_town", "necropolis"};
 ALL_TOWNS.n = table.length( ALL_TOWNS );
 DAY_OF_NECROMANTS_OUTCOME = 28;
 
-VOICEOVER_CAPTURE_HEAVEN_TOWN = "/Sounds/_(Sound)/SFX/Screams.xdb#xpointer(/Sound)";
-
-SCENE_ISABELL_TURN_INTO_BIARA = "/DialogScenes/A2C2/M5/S1/DialogScene.xdb#xpointer(/DialogScene)";
-SCENE_GOTAI_CONQUERS_TOWN = "/DialogScenes/A2C2/M5/S2/DialogScene.xdb#xpointer(/DialogScene)";
-SCENE_GOTAI_KILLS_ALARIC = "/DialogScenes/A2C2/M5/S3/DialogScene.xdb#xpointer(/DialogScene)";
-
-
-
-AllowPlayerTavernRace( PLAYER_1, TOWN_INFERNO, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_ACADEMY, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_HEAVEN, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_NECROMANCY, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_PRESERVE, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_FORTRESS, 0 );
-AllowPlayerTavernRace( PLAYER_1, TOWN_DUNGEON, 0 );
-
-AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_INFERNO, 0);
-AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_NECROMANCY, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_STRONGHOLD, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_DUNGEON, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_3, TOWN_ACADEMY, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_3, TOWN_INFERNO, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_3, TOWN_FORTRESS, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_3, TOWN_STRONGHOLD, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_4, TOWN_DUNGEON, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_4, TOWN_INFERNO, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_4, TOWN_FORTRESS, 0 );
-AllowHeroHiringByRaceForAI( PLAYER_4, TOWN_STRONGHOLD, 0 );
-
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_TITAN, 1+3*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_RAKSHASA_RUKH, 1+7*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_MASTER_GENIE, 1+15*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_ARCH_MAGI, 1+25*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_STEEL_GOLEM, 1+40*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_OBSIDIAN_GARGOYLE, 1+70*GetDifficulty());
-AddHeroCreatures( ENEMY_WIZARD_HERO, CREATURE_MASTER_GREMLIN, 1+100*GetDifficulty());
-
-AddHeroCreatures( "Aberrar", CREATURE_SKELETON_ARCHER, 1+10*GetDifficulty());
-AddHeroCreatures( "Aberrar", CREATURE_LICH, 1+1*GetDifficulty());
-AddHeroCreatures( "Aberrar", CREATURE_WALKING_DEAD, 1+3*GetDifficulty());
-AddHeroCreatures( "Aberrar", CREATURE_VAMPIRE, 1+2*GetDifficulty());
-
-AddHeroCreatures( "Maahir", CREATURE_GREMLIN, 1+10*GetDifficulty());
-AddHeroCreatures( "Maahir", CREATURE_IRON_GOLEM, 1+3*GetDifficulty());
-AddHeroCreatures( "Maahir", CREATURE_MAGI, 1+1*GetDifficulty());
-AddHeroCreatures( "Maahir", CREATURE_GENIE, 1+1*GetDifficulty());
-
-AddHeroCreatures( "Sufi", CREATURE_MASTER_GREMLIN, 1+7*GetDifficulty());
-AddHeroCreatures( "Sufi", CREATURE_STEEL_GOLEM, 1+3*GetDifficulty());
-AddHeroCreatures( "Sufi", CREATURE_OBSIDIAN_GARGOYLE, 1+5*GetDifficulty());
-AddHeroCreatures( "Sufi", CREATURE_MAGI, 1+1*GetDifficulty());
-
-AddHeroCreatures( "Orrin", CREATURE_ARCHER, 1+5*GetDifficulty());
-AddHeroCreatures( "Orrin", CREATURE_MILITIAMAN, 1+8*GetDifficulty());
-AddHeroCreatures( "Orrin", CREATURE_FOOTMAN, 1+3*GetDifficulty());
-AddHeroCreatures( "Orrin", CREATURE_GRIFFIN, 1+2*GetDifficulty());
-
-
-EnableHeroAI( "Tan", nil );
-SetHeroRoleMode( "Tan", HERO_ROLE_MODE_HERMIT );
-
-MakeHeroReturnToTavernAfterDeath("Timerkhan", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Sufi", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Razzak", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Nur", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Maahir", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Isher", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Havez", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Faiz", not nil, 0);
-MakeHeroReturnToTavernAfterDeath("Astral", not nil, 0);
-
-SetObjectEnabled( "broken_golem",  nil );
-SetRegionBlocked( "gotai_region", not nil );
-SetDisabledObjectMode( "broken_golem", DISABLED_ATTACK );
---SetObjectEnabled( "MainAcademyTown", nil );
-PlayObjectAnimation( "broken_golem", "stir00", ONESHOT_STILL );
-PlayObjectAnimation( "golem1", "death", ONESHOT_STILL );
-PlayObjectAnimation( "golem2", "death", ONESHOT_STILL );
-PlayObjectAnimation( "golem3", "death", ONESHOT_STILL );
-PlayObjectAnimation( "golem4", "death", ONESHOT_STILL );
-
-DenyAIHeroFlee( OUR_HERO_GOTAI, not nil );
-
-heaven_first_visit = 0;
-golem_first_visit = 0;
-captureTowns_first_complete = 0;
-BrokenGolemsVisit_heroName = "";
-canContinue = 0;
-gotai_x, gotai_y, gotai_floor = GetObjectPosition( "Gottai" );
-gotaiMustBeReturned = 0;
-
-StartDialogScene( SCENE_ISABELL_TURN_INTO_BIARA );
-
-SetObjectiveState( "prim1_CaptureMainAcademyTown", OBJECTIVE_ACTIVE );
-
 function GiveTransferrableArtifacts()
 	InitAllSetArtifacts( "A2C2M5", "Gottai" );
-	--InitAllSetArtifacts( "A2C2M5", OUR_HERO_KUJIN );
     LoadHeroAllSetArtifacts( "Gottai", "A2C2M3" );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1, "Gottai" );
-	--LoadHeroAllSetArtifacts( OUR_HERO_KUJIN, "A2C2M4" );
-end;
-
-function prim2_HeroMustSurvive()
-	while IsHeroAlive( OUR_HERO_GOTAI ) == not nil do sleep(10); end;
-	Loose(PLAYER_1);
-end;
-
-function prim1_CaptureMainAcademyTown_completed( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		Trigger( OBJECT_CAPTURE_TRIGGER, "MainAcademyTown", nil);
-		SetObjectiveState("prim1_CaptureMainAcademyTown", OBJECTIVE_COMPLETED);
-		StartDialogScene( SCENE_GOTAI_CONQUERS_TOWN, "ChahgeGotaiStats" );
-	end;
-end;
-
-function ChahgeGotaiStats()
-	MessageBox( PATH.."MsgBox_GotaiStatsBoosted.txt" );
-	ChangeHeroStat( OUR_HERO_GOTAI, STAT_ATTACK, 15 );
-	ChangeHeroStat( OUR_HERO_GOTAI, STAT_DEFENCE, 15 );
-	ChangeHeroStat( OUR_HERO_GOTAI, STAT_SPELL_POWER, 15 );
-	ChangeHeroStat( OUR_HERO_GOTAI, STAT_KNOWLEDGE, 15 );
-	sleep(20);
-	startThread( DeployAlaric );
-end;
-
-function DeployAlaric()
-	hero_x, hero_y = GetObjectPosition( OUR_HERO_GOTAI );
-	deploy_x = 62;
-	deploy_y = 173;
-	DeployReserveHero( ENEMY_HERO_ALARIC, deploy_x, deploy_y, GROUND );
-	sleep(1);
-	DenyAIHeroFlee( ENEMY_HERO_ALARIC, not nil );
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_SERAPH, 1+6*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_CHAMPION, 1+10*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_ZEALOT, 1+25*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_BATTLE_GRIFFIN, 1+35*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_VINDICATOR, 1+60*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_LONGBOWMAN, 1+150*GetDifficulty());
-	AddHeroCreatures( ENEMY_HERO_ALARIC, CREATURE_LANDLORD, 1+1000*GetDifficulty());
-	OpenCircleFog( deploy_x, deploy_y, GROUND, 10, PLAYER_1 );
-	sleep(1);
-	MoveCamera( deploy_x, deploy_y, GROUND, 31, 1.2, 0, 0, 0, 1);
-	sleep(1);
-	MessageBox( PATH.."MessageBox05_AlaricArrive.txt" );
-	sleep(1);
-	MoveCamera( hero_x, hero_y, GROUND, 31, 1.2, 0, 0, 0, 1 );
-	startThread( IsAlaricDead );
-end;
-
-function IsAlaricDead()
-	SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_ACTIVE );
-	while IsHeroAlive( ENEMY_HERO_ALARIC ) == not nil do sleep(5); end;
-	sleep(1);
-	StartDialogScene( SCENE_GOTAI_KILLS_ALARIC );
-	sleep(1);
-	SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_COMPLETED );
-end;
-
-function IsOkPressed()
-	isOkPressed = 1;
-end;
-
-function PlayerWin()
-	while GetObjectiveState("prim1_CaptureMainAcademyTown") ~= OBJECTIVE_COMPLETED 
-		or GetObjectiveState("prim2_KillAlaric") ~= OBJECTIVE_COMPLETED 
-	do sleep(10); end;
-	SaveHeroAllSetArtifactsEquipped( OUR_HERO_GOTAI, "A2C2M5" );
-	Win(PLAYER_1);
-end;
-
-function sec3_CaptureHeavenTown_completed( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		if oldOwner ~= PLAYER_1 then
-			SetObjectiveState( "sec3_CaptureHeavenTown", OBJECTIVE_COMPLETED );
-			Trigger( OBJECT_CAPTURE_TRIGGER, "HeavenTown", nil );
-			if heaven_first_visit == 0 then
-				heaven_first_visit = 1;
-				GiveArtefact( heroName, ARTIFACT_ENDLESS_BAG_OF_GOLD );
-			end;
-		end;
-	end;
-end;
+end
 
 function IsHeroHasGremlins( heroName )
-	if GetHeroCreatures( heroName, CREATURE_GREMLIN ) > 0 or
-				GetHeroCreatures( heroName, CREATURE_MASTER_GREMLIN ) > 0 or 
-				GetHeroCreatures( heroName, CREATURE_GREMLIN_SABOTEUR ) > 0 
+	if GetHeroCreatures( heroName, CREATURE_GREMLIN ) > 0 or GetHeroCreatures( heroName, CREATURE_MASTER_GREMLIN ) > 0 or GetHeroCreatures( heroName, CREATURE_GREMLIN_SABOTEUR ) > 0 
 		then
 		return not nil;
-	else
-		return nil;
-	end;	
-end;
+	end
+	return nil;
+end
 
-function BrokenGolemsVisit( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then
-		BrokenGolemsVisit_heroName = heroName;
-		if golem_first_visit == 0 then
-			golem_first_visit = 1;
-			sleep(1);
-			MessageBox( PATH.."MessageBox04_GolemsFirstVisit.txt", "CanContinue" );
-			while canContinue == 0 do sleep(1); end;
-			SetObjectiveState( "sec1_RepareGolems", OBJECTIVE_ACTIVE );
-			sleep(1);
-			if IsHeroHasGremlins( heroName ) == not nil	then
-				MessageBox( PATH.."MessageBox02_GolemsRepared.txt", "JoinGolems" );
-			end;
-		else
-			if IsHeroHasGremlins( heroName ) == not nil	then
-				MessageBox( PATH.."MessageBox02_GolemsRepared.txt", "JoinGolems" );
-			else
-				MessageBox(PATH.."MessageBox03_GolemsNeedHelp.txt");
-			end;
-		end;
-	end;
-end;
-
-function CanContinue()
-	canContinue = 1;
-end;
-
-function JoinGolems()
-	Trigger( OBJECT_TOUCH_TRIGGER, "broken_golem", nil );
-	heroName = BrokenGolemsVisit_heroName;
-	SetObjectiveState( "sec1_RepareGolems", OBJECTIVE_COMPLETED );
-	for i=1, 4 do
-		x,y,floor = GetObjectPosition("golem"..i);
-		RemoveObject("golem"..i);
-		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/Start_dust_S.xdb#xpointer(/Effect)", "", "tag1", x, y, 0, floor ); -- ѕыль
-		sleep(1);
-		CreateMonster( "repared_golem"..i, CREATURE_IRON_GOLEM, 400, x,y, floor, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 110 );
-		sleep(1);
-		PlayObjectAnimation( "repared_golem"..i, "happy", ONESHOT );
-	end;
-	PlayObjectAnimation( "broken_golem", "happy", ONESHOT );
-	SetObjectEnabled( "broken_golem", not nil );
-	SetMonsterCourageAndMood( "broken_golem", PLAYER_1, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN );
-	x,y, floor = GetObjectPosition( "broken_golem" );
-	sleep(1);
-	MoveHeroRealTime( heroName, x, y, floor );
-	print("JoinGolems: Golems want to join!");
-end;
-
-function sec2_CaptureAllAcademyTowns_completed()
-	while GetCapturedTowns() < 1 do sleep(5); end;
-	SetObjectiveState( "sec2_CaptureAllAcademyTowns", OBJECTIVE_ACTIVE );	
-	while 1 do
-		while GetCapturedTowns() ~= 3 do sleep(5); end;
-		SetObjectiveState( "sec2_CaptureAllAcademyTowns", OBJECTIVE_COMPLETED );	
-		if captureTowns_first_complete == 0 then
-			captureTowns_first_complete = 1;
-		end;
-		while GetCapturedTowns() == 3 do sleep(5); end;
-		SetObjectiveState( "sec2_CaptureAllAcademyTowns", OBJECTIVE_FAILED );		
-		sleep(5);
-	end;
-end;
-
-function GetCapturedTowns()
-	capturedTowns = 0;
-	for i=1, table.length( ACADEMY_TOWNS ) do 
-		if GetObjectOwner( ACADEMY_TOWNS[i]) == PLAYER_1 then capturedTowns = capturedTowns + 1; end;
-	end;
-	return capturedTowns;
-end;
-
-function H55_TriggerDaily()
-	if GetDate( DAY ) == DAY_OF_NECROMANTS_OUTCOME and GetPlayerState( PLAYER_3 ) == 1 then
-		H55_NewDayTrigger = 0;
-		--Trigger( NEW_DAY_TRIGGER, nil );
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "outcome", "RemoveHero" );
-		MessageBox( PATH.."NecromantsGoAway.txt" );
-		startThread( NecromantsGoAway );
-		print("Necropolis player has been defeated");	
-	end;
-end;
+function BrokenGolemsVisit( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		OBJECTIVES.repairGolems_visitor = hero;
+		if OBJECTIVES.state.repairGolems[2] == 0 then OBJECTIVES.state.repairGolems[2] = 1 end;
+		if OBJECTIVES.state.repairGolems[2] == 2 then OBJECTIVES.state.repairGolems[2] = 3 end;
+	end
+end
 
 function NecromantsGoAway()
+	local NecropolisHeroes = GetPlayerHeroes( PLAYER_3 );
+	for i=1, ALL_TOWNS.n do
+		EnableAIHeroHiring( PLAYER_3, ALL_TOWNS[i], nil );
+	end
+	while table.length( NecropolisHeroes ) ~= 0 do
+		while GetCurrentPlayer() ~= PLAYER_3 do sleep(20); end
 		NecropolisHeroes = GetPlayerHeroes( PLAYER_3 );
-		NecropolisTowns = GetPlayerTownsQuantity( PLAYER_3 );
-		for i=1, ALL_TOWNS.n do
-			EnableAIHeroHiring( PLAYER_3, ALL_TOWNS[i], nil );
-		end;
-		while 1 do
-			NecropolisHeroes = GetPlayerHeroes( PLAYER_3 );
-			NecropolisTowns = GetPlayerTownsQuantity( PLAYER_3 );
-			sleep(1);
-			if NecropolisTowns == 0 and table.length( NecropolisHeroes ) == 0 then
-				break;
-			end;
-			while GetCurrentPlayer() ~= PLAYER_3 do sleep(10); end;
-				NecropolisHeroes = GetPlayerHeroes( PLAYER_3 );
-				NecropolisHeroes.n = table.length( NecropolisHeroes );
-			for i=0, (NecropolisHeroes.n-1) do
-				EnableHeroAI( NecropolisHeroes[i], not nil );
-				pcall (MoveHero, NecropolisHeroes[i], 174, 133, GROUND );
-			end;
-			while GetCurrentPlayer() == PLAYER_3 do sleep(10); end;
-			sleep(5);
-		end;
-end;
+		for i=0, (table.length( NecropolisHeroes ) -1 ) do
+			EnableHeroAI( NecropolisHeroes[i], not nil );
+			pcall (MoveHero, NecropolisHeroes[i], 174, 133, GROUND );
+		end
+		while GetCurrentPlayer() == PLAYER_3 do sleep(20); end
+		sleep(40);
+	end
+end
 
 function RemoveHero( heroName )
 	if GetObjectOwner( heroName ) == PLAYER_3 then
 		RemoveObject( heroName );
-	end;
-end;
+	end
+end
 
-function GetPlayerTownsQuantity( PlayerID )
-	ownedTowns = 0;
-	for i=1, ALL_TOWNS.n do
-		if GetObjectOwner( ALL_TOWNS[i] ) == PlayerID then 
-			ownedTowns = ownedTowns + 1;
-		end;
-	end;
-	return ownedTowns;
-end;
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
+	intro = function()
+		StartDialogScene( "/DialogScenes/A2C2/M5/S1/DialogScene.xdb#xpointer(/DialogScene)" );
+	end,
+	
+	repairGolems = function()
+		BlockGame()
+		for i=1,4 do
+			local x,y,floor = GetObjectPosition("golem"..i);
+			RemoveObject("golem"..i);
+			PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/Start_dust_S.xdb#xpointer(/Effect)", "", "tag1", x, y, 0, floor );
+			repeat sleep(5) until IsObjectExists("golem"..i) == nil;
+			CreateMonster( "repared_golem"..i, CREATURE_IRON_GOLEM, 400, x,y, floor, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 110 );
+			repeat sleep(5) until IsObjectExists("repared_golem"..i) ~= nil;
+			PlayObjectAnimation( "repared_golem"..i, "happy", ONESHOT );
+		end
+		PlayObjectAnimation( "broken_golem", "happy", ONESHOT );
+		sleep(50);
+		UnblockGame();
+	end,
+	
+	talkWithKenji = function()
+		CreateMonster( "scene_goblin", CREATURE_GOBLIN_TRAPPER, 1, 77, 161, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 200 );
+		local x, y, z = GetObjectPosition( "Gottai" );
+		SetObjectPosition( "Gottai", 72, 162 );
+		sleep(60);
+		SetObjectRotation( "Gottai", 100 );
+		CINEMATICS.playAndWait( 0 );
+		RemoveObject("scene_goblin");
+		SetRegionBlocked( "gotai_region", nil );
+		SetObjectPosition( "Gottai", x, y, z );
+	end,
+	
+	captureMainTown = function()
+		StartDialogScene( "/DialogScenes/A2C2/M5/S2/DialogScene.xdb#xpointer(/DialogScene)" );
+	end,
+	
+	outro = function()
+		StartDialogScene( "/DialogScenes/A2C2/M5/S3/DialogScene.xdb#xpointer(/DialogScene)" );
+	end,
+}
 
-function IsSecondaryOrcishTownsCaptured( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		print("IsSecondaryOrcishTownsCaptured: Orcish town is captured!");
-		Trigger( OBJECT_CAPTURE_TRIGGER, "secondary_orcish_town", nil );
-		--Play2DSound( VOICEOVER_CAPTURE_HEAVEN_TOWN );
-		if GetObjectOwner( "HeavenTown" ) ~= PLAYER_1 then
+function SetupEnemyHeroesArmy()
+	AddHeroCreatures(	  "Tan",			 CREATURE_TITAN, 1 +  10 * (diff - 1));
+	AddHeroCreatures( 	  "Tan",	 CREATURE_RAKSHASA_RUKH, 1 +  20 * (diff - 1));
+	AddHeroCreatures( 	  "Tan",	  CREATURE_MASTER_GENIE, 1 +  40 * (diff - 1));
+	AddHeroCreatures( 	  "Tan",		 CREATURE_ARCH_MAGI, 1 +  50 * (diff - 1));
+	AddHeroCreatures( 	  "Tan",	   CREATURE_STEEL_GOLEM, 1 +  70 * (diff - 1));
+	AddHeroCreatures( 	  "Tan", CREATURE_OBSIDIAN_GARGOYLE, 1 + 100 * (diff - 1));
+	AddHeroCreatures( 	  "Tan",	CREATURE_MASTER_GREMLIN, 1 + 200 * (diff - 1));
+	AddHeroCreatures( "Aberrar",   CREATURE_SKELETON_ARCHER, 1 +  10 * (diff - 1));
+	AddHeroCreatures( "Aberrar",			  CREATURE_LICH, 1 +   1 * (diff - 1));
+	AddHeroCreatures( "Aberrar", 	  CREATURE_WALKING_DEAD, 1 +   3 * (diff - 1));
+	AddHeroCreatures( "Aberrar", 		   CREATURE_VAMPIRE, 1 +   2 * (diff - 1));
+	AddHeroCreatures(  "Maahir", 		   CREATURE_GREMLIN, 1 +  10 * (diff - 1));
+	AddHeroCreatures(  "Maahir", 		CREATURE_IRON_GOLEM, 1 +   3 * (diff - 1));
+	AddHeroCreatures(  "Maahir", 			  CREATURE_MAGI, 1 +   1 * (diff - 1));
+	AddHeroCreatures(  "Maahir", 			 CREATURE_GENIE, 1 +   1 * (diff - 1));
+	AddHeroCreatures(    "Sufi", 	CREATURE_MASTER_GREMLIN, 1 +   7 * (diff - 1));
+	AddHeroCreatures(    "Sufi", 	   CREATURE_STEEL_GOLEM, 1 +   3 * (diff - 1));
+	AddHeroCreatures(    "Sufi", CREATURE_OBSIDIAN_GARGOYLE, 1 +   5 * (diff - 1));
+	AddHeroCreatures(    "Sufi", 			  CREATURE_MAGI, 1 +   1 * (diff - 1));
+	AddHeroCreatures(   "Orrin", 			CREATURE_ARCHER, 1 +  15 * (diff - 1));
+	AddHeroCreatures(   "Orrin", 		CREATURE_MILITIAMAN, 1 +  20 * (diff - 1));
+	AddHeroCreatures(   "Orrin", 		   CREATURE_FOOTMAN, 1 +  10 * (diff - 1));
+	AddHeroCreatures(   "Orrin", 		   CREATURE_GRIFFIN, 1 +   7 * (diff - 1));
+end
+
+function SetupGarrisions()
+	AddObjectCreatures("outpost1", 				CREATURE_MAGI, 1 +  50 * diff);
+	AddObjectCreatures("outpost1", 			   CREATURE_TITAN, 1 +   4 * diff);
+	AddObjectCreatures("outpost1", 		 CREATURE_STEEL_GOLEM, 1 +  80 * diff);
+	AddObjectCreatures("outpost1", 	  CREATURE_MASTER_GREMLIN, 1 + 100 * diff);
+	AddObjectCreatures("outpost1", 	  CREATURE_STONE_GARGOYLE, 1 +  90 * diff);
+	AddObjectCreatures("outpost2", CREATURE_OBSIDIAN_GARGOYLE, 1 +  95 * diff);
+	AddObjectCreatures("outpost2",		  CREATURE_IRON_GOLEM, 1 +  85 * diff);
+	AddObjectCreatures("outpost2",		 CREATURE_STEEL_GOLEM, 1 +  80 * diff);
+	AddObjectCreatures("outpost2",	  CREATURE_MASTER_GREMLIN, 1 + 100 * diff);
+	AddObjectCreatures("outpost2",	  CREATURE_STONE_GARGOYLE, 1 +  90 * diff);
+	AddObjectCreatures("outpost2",			   CREATURE_GENIE, 1 +  25 * diff);
+	AddObjectCreatures("outpost3",		   CREATURE_ARCH_MAGI, 1 +  45 * diff);
+	AddObjectCreatures("outpost3",			   CREATURE_TITAN, 1 +   4 * diff);
+	AddObjectCreatures("outpost3",	   CREATURE_RAKSHASA_RUKH, 1 +  12 * diff);
+	AddObjectCreatures("outpost3",			CREATURE_RAKSHASA, 1 +  15 * diff);
+	AddObjectCreatures("outpost3",		CREATURE_MASTER_GENIE, 1 +  20 * diff);
+	AddObjectCreatures("outpost4",	  CREATURE_MASTER_GREMLIN, 1 + 100 * diff);
+	AddObjectCreatures("outpost4",		  CREATURE_STORM_LORD, 1 +   4 * diff);
+	AddObjectCreatures("outpost4",	CREATURE_RAKSHASA_KSHATRI, 1 +  12 * diff);
+	AddObjectCreatures("outpost4",	  CREATURE_OBSIDIAN_GOLEM, 1 +  85 * diff);
+	AddObjectCreatures("outpost4",		CREATURE_DJINN_VIZIER, 1 +  20 * diff);
+end
+
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+	end,
+	
+	[1] = function()
+		diff = 2;
+		GiveExp("Tan", 211000);
+		ChangeHeroStat ("Tan", STAT_ATTACK, 5);
+		ChangeHeroStat ("Tan", STAT_DEFENCE, 5);
+		ChangeHeroStat ("Tan", STAT_SPELL_POWER, 7);
+		ChangeHeroStat ("Tan", STAT_KNOWLEDGE, 7);
+		GiveExp("Alaric", 211000);
+		ChangeHeroStat ("Alaric", STAT_ATTACK, 8);
+		ChangeHeroStat ("Alaric", STAT_DEFENCE, 8);
+		ChangeHeroStat ("Alaric", STAT_SPELL_POWER, 4);
+		ChangeHeroStat ("Alaric", STAT_KNOWLEDGE, 4);
+	end,
+	
+	[2] = function()
+		diff = 3;
+		GiveExp("Tan", 435000);
+		ChangeHeroStat ("Tan", STAT_ATTACK, 5);
+		ChangeHeroStat ("Tan", STAT_DEFENCE, 5);
+		ChangeHeroStat ("Tan", STAT_SPELL_POWER, 7);
+		ChangeHeroStat ("Tan", STAT_KNOWLEDGE, 7);
+		GiveExp("Alaric", 435000);
+		ChangeHeroStat ("Alaric", STAT_ATTACK, 8);
+		ChangeHeroStat ("Alaric", STAT_DEFENCE, 8);
+		ChangeHeroStat ("Alaric", STAT_SPELL_POWER, 4);
+		ChangeHeroStat ("Alaric", STAT_KNOWLEDGE, 4);
+	end,
+	
+	[3] = function()
+		diff = 4;
+		GiveExp("Tan", 894000);	
+		ChangeHeroStat ("Tan", STAT_ATTACK, 5);
+		ChangeHeroStat ("Tan", STAT_DEFENCE, 5);
+		ChangeHeroStat ("Tan", STAT_SPELL_POWER, 7);
+		ChangeHeroStat ("Tan", STAT_KNOWLEDGE, 7);
+		GiveExp("Alaric", 894000);
+		ChangeHeroStat ("Alaric", STAT_ATTACK, 8);
+		ChangeHeroStat ("Alaric", STAT_DEFENCE, 8);
+		ChangeHeroStat ("Alaric", STAT_SPELL_POWER, 4);
+		ChangeHeroStat ("Alaric", STAT_KNOWLEDGE, 4);
+	end,
+}
+
+OBJECTIVES = {
+	state = {
+		 captureMainTown  = { "prim1_CaptureMainAcademyTown", 1 }, 	--Capture the mage city
+		 defeatAlaric 	  = { 			  "prim2_KillAlaric", 1 },  -- Defeat the main enemy hero Alaric
+		 isAlive 		  = { 		"prim2_GotaiMustSurvive", 1 }, 	-- Gottai must survive
+		 captureRiverTown = { 		"sec3_CaptureHeavenTown", 1 },  -- Capture northwest town above the river
+		 repairGolems 	  = { 			 "sec1_RepareGolems", 0 },  -- Bring gremlins to repair the broken golems
+		 eventManager 	  = { 							 "_", 1 },
+	},
+
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		for i, race in  { TOWN_HEAVEN, TOWN_INFERNO, TOWN_PRESERVE, TOWN_ACADEMY, TOWN_NECROMANCY, TOWN_DUNGEON, TOWN_FORTRESS } do
+			AllowPlayerTavernRace( PLAYER_1, race, 0 );
+		end
+		startThread( GiveTransferrableArtifacts );
+		DIFFICULTY[GetDifficulty()]();
+		startThread( SetupGarrisions );
+		startThread( SetupEnemyHeroesArmy );
+		EnableHeroAI( "Tan", nil );
+		AllowHeroHiringByRaceForAI( PLAYER_2, 	 TOWN_INFERNO, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_NECROMANCY, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_2, TOWN_STRONGHOLD, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_2, 	 TOWN_DUNGEON, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_3, 	 TOWN_INFERNO, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_3, 	 TOWN_ACADEMY, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_3, 	TOWN_FORTRESS, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_3, TOWN_STRONGHOLD, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_4, 	 TOWN_INFERNO, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_4,  	 TOWN_DUNGEON, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_4, 	TOWN_FORTRESS, 0 );
+		AllowHeroHiringByRaceForAI( PLAYER_4, TOWN_STRONGHOLD, 0 );
+		MakeHeroReturnToTavernAfterDeath( "Timerkhan", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	   "Sufi", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	 "Razzak", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(		"Nur", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	 "Maahir", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	  "Isher", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	  "Havez", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	   "Faiz", not nil, 0);
+		MakeHeroReturnToTavernAfterDeath(	 "Astral", not nil, 0);
+		SetRegionBlocked( 	   "guardAI", not nil, PLAYER_4 );
+		SetRegionBlocked( "gotai_region", not nil );
+		SetObjectEnabled( "broken_golem", 	  nil );
+		SetDisabledObjectMode( "broken_golem", DISABLED_ATTACK );
+		PlayObjectAnimation( "broken_golem", "stir00", ONESHOT_STILL );
+		PlayObjectAnimation( "golem1", "death", ONESHOT_STILL );
+		PlayObjectAnimation( "golem2", "death", ONESHOT_STILL );
+		PlayObjectAnimation( "golem3", "death", ONESHOT_STILL );
+		PlayObjectAnimation( "golem4", "death", ONESHOT_STILL );
+		DenyAIHeroFlee( "Gottai", not nil );
+		CINEMATICS.intro();
+		Trigger( OBJECT_TOUCH_TRIGGER, "broken_golem", "BrokenGolemsVisit" );
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+			
+			if GetObjectiveState('prim2_GotaiMustSurvive') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+
+			if GetObjectiveState("prim1_CaptureMainAcademyTown") == OBJECTIVE_COMPLETED and  GetObjectiveState("prim2_KillAlaric") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M5" );
+				sleep( 100 );
+				Win();
+				return
+			end
+		end
+	end,
+	
+	captureMainTown = function()
+		if OBJECTIVES.state.captureMainTown[2] == 1 then
+			SetObjectiveState( "prim1_CaptureMainAcademyTown", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.captureMainTown[2] = 2;
+		elseif OBJECTIVES.state.captureMainTown[2] == 2 and GetObjectOwner("MainAcademyTown") == PLAYER_1 then
+			SetObjectiveState( "prim1_CaptureMainAcademyTown", OBJECTIVE_COMPLETED );
+			CINEMATICS.captureMainTown();
+			H55c_Message.show( PATH.."MsgBox_GotaiStatsBoosted.txt" );
+			ChangeHeroStat( "Gottai", STAT_ATTACK, 15 );
+			ChangeHeroStat( "Gottai", STAT_DEFENCE, 15 );
+			ChangeHeroStat( "Gottai", STAT_SPELL_POWER, 15 );
+			ChangeHeroStat( "Gottai", STAT_KNOWLEDGE, 15 );
+			OBJECTIVES.state.captureMainTown[2] = 10;
+		end
+	end,
+	
+	defeatAlaric = function()
+		if OBJECTIVES.state.defeatAlaric[2] == 1 and OBJECTIVES.state.captureMainTown[2] == 10 then
+			DeployReserveHero( "Alaric", 62, 173, GROUND );
+			sleep(10);
+			DenyAIHeroFlee( "Alaric", not nil );
+			AddHeroCreatures( "Alaric", CREATURE_SERAPH, 1+50*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_CHAMPION, 1+125*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_ZEALOT, 1+250*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_BATTLE_GRIFFIN, 1+500*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_VINDICATOR, 1+1000*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_LONGBOWMAN, 1+2000*(diff - 1));
+			AddHeroCreatures( "Alaric", CREATURE_LANDLORD, 1+4000*(diff - 1));
+			H55c_AIAddHero( "Alaric" );
+			OpenCircleFog( 62, 173, GROUND, 10, PLAYER_1 );
+			sleep(10);
+			MoveCamera( 62, 173, GROUND, 31, 1.2, 0, 0, 0, 1);
+			sleep(50);
+			H55c_Message.show( PATH.."MessageBox05_AlaricArrive.txt" );
+			local hero_x, hero_y = GetObjectPosition( "Gottai" );
+			MoveCamera( hero_x, hero_y, GROUND, 31, 1.2, 0, 0, 0, 1 );
+			SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.defeatAlaric[2] = 2;
+		elseif OBJECTIVES.state.defeatAlaric[2] == 2 and IsHeroAlive( "Alaric" ) == nil then
+			CINEMATICS.outro();
+			SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.defeatAlaric[2] = 10;
+		end
+	end,
+	
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive( "Gottai" ) == nil then
+			SetObjectiveState( "prim2_GotaiMustSurvive", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	captureRiverTown = function()
+		if OBJECTIVES.state.captureRiverTown[2] == 1 and GetObjectOwner("secondary_orcish_town") == PLAYER_1 and GetObjectOwner( "HeavenTown" ) ~= PLAYER_1 then
 			SetObjectiveState( "sec3_CaptureHeavenTown", OBJECTIVE_ACTIVE );
-			Trigger( OBJECT_CAPTURE_TRIGGER, "HeavenTown", "sec3_CaptureHeavenTown_completed" );
-			CreateMonster( "scene_goblin", CREATURE_GOBLIN_TRAPPER, 1, 77, 161, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, 200 );
-			sleep(1);
-			if heroName ~= "Gottai" then
-				gotai_x, gotai_y, gotai_floor = GetObjectPosition( "Gottai" );
-				gotaiMustBeReturned = 1;
-				SetObjectPosition( "Gottai", 72, 162 );
-				SetObjectRotation( "Gottai", 100 );
-				sleep(2);
-			end;	
-			StartAdvMapDialog( 0, "RemoveSceneObjects" );	
-		end;
-	end;
-end;
+			CINEMATICS.talkWithKenji();
+			OBJECTIVES.state.captureRiverTown[2] = 2;
+		elseif OBJECTIVES.state.captureRiverTown[2] == 2 and GetObjectOwner( "HeavenTown" ) == PLAYER_1 then
+			SetObjectiveState( "sec3_CaptureHeavenTown", OBJECTIVE_COMPLETED );
+			GiveArtefact( "Gottai", ARTIFACT_ENDLESS_BAG_OF_GOLD );
+			OBJECTIVES.state.captureRiverTown[2] = 10;
+		end
+	end,
+	
+	repairGolems_visitor = "Gottai",
+	repairGolems = function()
+		if OBJECTIVES.state.repairGolems[2] == 1 then
+			H55c_Message.show( PATH.."MessageBox04_GolemsFirstVisit.txt" );
+			SetObjectiveState( "sec1_RepareGolems", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.repairGolems[2] = 3;
+		elseif OBJECTIVES.state.repairGolems[2] == 3 then
+			if IsHeroHasGremlins( OBJECTIVES.repairGolems_visitor ) ~= nil	then
+				Trigger( OBJECT_TOUCH_TRIGGER, "broken_golem", nil );
+				H55c_Message.show( PATH.."MessageBox02_GolemsRepared.txt" );
+				SetObjectiveState( "sec1_RepareGolems", OBJECTIVE_COMPLETED );
+				CINEMATICS.repairGolems();
+				SetObjectEnabled( "broken_golem", not nil );
+				SetMonsterCourageAndMood( "broken_golem", PLAYER_1, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN );
+				local x,y, floor = GetObjectPosition( "broken_golem" );
+				MoveHeroRealTime( OBJECTIVES.repairGolems_visitor, x, y, floor );
+				OBJECTIVES.state.repairGolems[2] = 10;
+			else
+				H55c_Message.show(PATH.."MessageBox03_GolemsNeedHelp.txt");
+				OBJECTIVES.state.repairGolems[2] = 2;
+			end
+		end
+	end,
+		
+	eventManager_day = 1,
+	eventManager = function()
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			if OBJECTIVES.date == DAY_OF_NECROMANTS_OUTCOME and GetPlayerState( PLAYER_3 ) == 1 then
+				Trigger( REGION_ENTER_AND_STOP_TRIGGER, "outcome", "RemoveHero" );
+				MessageBox( PATH.."NecromantsGoAway.txt" );
+				startThread( NecromantsGoAway );
+			end
+			
+			OBJECTIVES.eventManager_day = OBJECTIVES.date;
+		end
+	end,
+}
 
-function RemoveSceneObjects()
-	RemoveObject("scene_goblin");
-	SetRegionBlocked( "gotai_region", nil );
-	if gotaiMustBeReturned == 1 then
-		SetObjectPosition( "Gottai", gotai_x, gotai_y, gotai_floor );
-	end;
-end;
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
+startThread( H55c_AI_main );
 
-function EnableTown()
-	SetObjectEnabled( "MainAcademyTown", not nil);
-	SetRegionBlocked( "main_town", nil, PLAYER_2);
-	SetRegionBlocked( "main_town", nil, PLAYER_3);
-	SetRegionBlocked( "main_town", nil, PLAYER_4);
-end;
-
-startThread( prim2_HeroMustSurvive );
-startThread( PlayerWin );
-startThread( GiveTransferrableArtifacts );
---startThread( sec2_CaptureAllAcademyTowns_completed );
-Trigger( OBJECT_TOUCH_TRIGGER, "broken_golem", "BrokenGolemsVisit" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "MainAcademyTown", "prim1_CaptureMainAcademyTown_completed" );
---Trigger( OBJECT_CAPTURE_TRIGGER, "HeavenTown", "sec3_CaptureHeavenTown_completed" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "secondary_orcish_town", "IsSecondaryOrcishTownsCaptured" );
-H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "NecromantsOutcome" );
+function a2c2m5_dbg(var)
+	if var == 1 then
+		H55_Speedrun(1);
+		SetObjectPosition("Gottai", 75, 160);
+		H55_NoFog(1);
+	elseif var == 11 then
+		SetObjectPosition("Gottai", 21, 120);	
+	elseif var == 111 then
+		SetObjectPosition("Gottai", 12, 68);	
+	elseif var == 2 then
+		AddHeroCreatures("Gottai", CREATURE_MASTER_GREMLIN, 30);
+	end
+end
