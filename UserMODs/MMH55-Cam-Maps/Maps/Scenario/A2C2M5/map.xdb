@@ -1135,7 +1135,7 @@
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -1176,31 +1176,31 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_TITAN</Creature>
-						<Count>26</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
-						<Count>70</Count>
+						<Count>100</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCH_MAGI</Creature>
-						<Count>150</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MASTER_GREMLIN</Creature>
-						<Count>800</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MASTER_GENIE</Creature>
-						<Count>90</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_STEEL_GOLEM</Creature>
 						<Count>300</Count>
 					</Item>
 					<Item>
+						<Creature>CREATURE_MASTER_GREMLIN</Creature>
+						<Count>1000</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>200</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Count>500</Count>
+					</Item>
+					<Item>
 						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
-						<Count>400</Count>
+						<Count>750</Count>
 					</Item>
 				</armySlots>
 				<spellIDs>
@@ -2323,7 +2323,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>outpost1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/H5A2/Forpost.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -2369,7 +2369,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>outpost2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/H5A2/Forpost.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -2419,7 +2419,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>outpost3</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/H5A2/Forpost.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -17568,7 +17568,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>outpost4</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/H5A2/Forpost.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -69390,6 +69390,36 @@
 				</Action>
 			</ExitTrigger>
 		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>161</x1>
+				<y1>15</y1>
+				<x2>161</x2>
+				<y2>15</y2>
+			</Rect>
+			<Name>guardAI</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
 	<UndergroundTerrainFileName href=""/>
@@ -69484,7 +69514,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Haven/Alaric.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>170000</Experience>
+						<Experience>200000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_SERAPH</Creature>
@@ -69520,7 +69550,7 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>27</Offence>
+							<Offence>28</Offence>
 							<Defence>20</Defence>
 							<Spellpower>15</Spellpower>
 							<Knowledge>12</Knowledge>

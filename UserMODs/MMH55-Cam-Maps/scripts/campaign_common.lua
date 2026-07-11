@@ -317,6 +317,20 @@ function H55c_ReduceHeroMovementPointsByFactor(hero, MPFactor)
 	end
 end
 
+H55c_Message = {
+	closed = nil,
+	
+	show = function(message)
+		H55c_Message.closed = nil;
+		MessageBox( message, "H55c_Message.click" );
+		repeat sleep(10) until H55c_Message.closed == 1
+	end,
+	
+	click = function()
+		H55c_Message.closed = 1;
+	end
+}
+
 H55c_Log = {
 	LOG_ARRAY = {},
 	ID = 1,
