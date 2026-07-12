@@ -563,7 +563,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Catapult shot cost from 15 to 20/40/60/80 (based on difficulty)
 - change: Catapult shots required to raze a town from 3 to 5
 - change: Enemy heroes are more experienced on higher difficulties
-- change: Blue player town Sheller and red player town Greystone are considered strongholds and will never be left unguarded.
+- change: Blue player town Sheller and red player town Greystone are considered strongholds and will never be left unguarded
 - change: Heroes guarding Sheller and Greystone will become onslaught heroes if they survive town destruction.
 
 ### A2C2M4 - To Honour our Fathers: Mother Earth's Wisdom
@@ -572,6 +572,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A2C2M5 - To Honour our Fathers: Hunting the Hunter
 - fix: sometimes Alaric did not appear which prevented the questline to move forward
+- fix: Sawmill at 146,4 was inaccessible due to wrong pathing mask
 - change: The army defending mage town is now more challenging on higher difficulty levels
 - change: Alaric and his army are now more challenging on higher difficulty levels
 - change: Alaric will now more agressively chase player heroes and conquer his towns
