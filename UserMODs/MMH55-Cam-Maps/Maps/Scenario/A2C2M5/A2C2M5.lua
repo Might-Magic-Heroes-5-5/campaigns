@@ -12,6 +12,34 @@ H55_RemoveTheseArtifactsFromBanks = {
 	ARTIFACT_ENDLESS_BAG_OF_GOLD
 };
 
+H55c_AI_CONTROLLED = {
+	player1 = {			-- player 1player/human so state should be 0 to skip control of the heroes
+		state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+		heroes = {},
+		enemies = {},
+	},
+	player2 = {			-- Red Haven player
+		state = 2,		-- Alaric to lead the onsalught against all enemies
+		heroes = {},
+		enemies = {
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+			{ priority = 0.2, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER3
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER4
+		}
+	},
+	player3 = {			-- Teal Necro player
+		state = 1,         
+		heroes = {},
+		enemies = {},
+	},
+	player4 = {			-- Orange Academy player
+		state = 1,
+		heroes = {},
+		enemies = {},
+	},
+}
+
 PATH = "Maps/Scenario/A2C2M5/";
 ALL_TOWNS = {"academy_town_center", "academy_town_west", "academy_town_north", "HeavenTown", "MainAcademyTown", "main_orcish_town", "secondary_orcish_town", "necropolis"};
 ALL_TOWNS.n = table.length( ALL_TOWNS );
