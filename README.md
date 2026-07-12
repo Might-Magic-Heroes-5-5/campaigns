@@ -569,6 +569,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Quest Huts asked questions before their dialogs were played
 - change: Alastor final fight is now more challenging on higher difficulty
 
+### A2C2M5 - To Honour our Fathers: Hunting the Hunter
+- fix: sometimes Alaric did not appear which prevented the questline to move forward
+- change: when deplyoed Alaric will be in osnlaught mode chasling all enemies alike.
+
 ### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
 - fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would resolve only if Zehir was carrying the artifact
 - change: Zehir skills and stats are now transfered from his last mission Zehir's Hope
