@@ -528,9 +528,9 @@ end
 CATAPULT = {
 	CHOICE = nil,
 	TARGET_ROSTER = {
-		blue_haven_center_town = { hp = 3, kill = destroyTown,     deathScript = unblockBlueHero },
-		red_haven_east_town    = { hp = 3, kill = destroyTown,     deathScript = nil },
-		red_haven_west_town    = { hp = 3, kill = destroyTown,     deathScript = unblockRedHero },
+		blue_haven_center_town = { hp = 5, kill = destroyTown,     deathScript = unblockBlueHero },
+		red_haven_east_town    = { hp = 5, kill = destroyTown,     deathScript = nil },
+		red_haven_west_town    = { hp = 5, kill = destroyTown,     deathScript = unblockRedHero },
 		windmill               = { hp = 1, kill = destroyWindmill, deathScript = nil },
 		outpost                = { hp = 1, kill = OutpostCrush,    deathScript = nil },
 		peasant_hut7           = { hp = 1, kill = PeasantHutCrush, deathScript = nil },

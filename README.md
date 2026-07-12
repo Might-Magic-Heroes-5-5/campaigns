@@ -559,11 +559,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Final fight hero Gork gains all warcries and his level scale with game difficulty.
 
 ### A2C2M3 - To Honour our Fathers: Father Sky's Fury
-- fix: Catapult shots were bugged and could not raze towns: 3 shots for towns, 1 for smaller targets
+- fix: bug prevented catapult shots to raze towns
 - change: Catapult shot cost from 15 to 20/40/60/80 (based on difficulty)
-- change: enemy heroes are more experienced on higher difficulties
+- change: Catapult shots required to raze a town from 3 to 5
+- change: Enemy heroes are more experienced on higher difficulties
 - change: Blue player town Sheller and red player town Greystone are considered strongholds and will never be left unguarded.
-- change: heroes guarding Sheller and Greystone will become onslaught heroes if they survive town destruction.
+- change: Heroes guarding Sheller and Greystone will become onslaught heroes if they survive town destruction.
 
 ### A2C2M4 - To Honour our Fathers: Mother Earth's Wisdom
 - fix: Quest Huts asked questions before their dialogs were played
@@ -571,7 +572,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A2C2M5 - To Honour our Fathers: Hunting the Hunter
 - fix: sometimes Alaric did not appear which prevented the questline to move forward
-- change: when deplyoed Alaric will be in osnlaught mode chasling all enemies alike.
+- change: The army defending mage town is now more challenging on higher difficulty levels
+- change: Alaric and his army are now more challenging on higher difficulty levels
+- change: Alaric will now more agressively chase player heroes and conquer his towns
 
 ### A2C3M1 - Flying to the Rescue: Dark Ways and Deeds
 - fix: Quest to find and deliver the Dwarven Smithy Hammer artifact would resolve only if Zehir was carrying the artifact
