@@ -1,831 +1,572 @@
+doFile("/scripts/A2_Zehir/A2_Zehir.lua");
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
 
-StartDialogScene("/DialogScenes/A2C3/M1/S1/DialogScene.xdb#xpointer(/DialogScene)"); -- START DIALOGSCENE
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 function f_artifacts_sets()
 	InitAllSetArtifacts( "A2C3M1" );
-end;
+end
 
 startThread( f_artifacts_sets );
+ElvenHeroes = { 'Almegir', 'Dalom', 'Eruina', 'Ferigl', 'Inagost', 'Menel', 'Ohtarig', 'Urunir' }
 
-doFile("/scripts/A2_Zehir/A2_Zehir.lua");
+DIFFICULTY = {
+	[0] = function()
+		diff = 2;
+		UnblockZoneForAIonDate = {  36,  56, nil, nil };
+		SetPlayerStartResources(PLAYER_2, 80, 80, 40, 40, 60, 40, 30000);
+		ChangeHeroStat('Eruina', STAT_EXPERIENCE, 1300);
+		ChangeHeroStat('Ferigl', STAT_EXPERIENCE, 2000);
+		ChangeHeroStat('Inagost', STAT_EXPERIENCE, 2400);	
+		AddHeroCreatures('Zehir', CREATURE_MAGI, 10);
+		AddHeroCreatures('Zehir', CREATURE_GENIE, 10);
+		AddHeroCreatures('Zehir', CREATURE_RAKSHASA, 5);
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_8', "f_ZONE_BLOCK_AI2_8_deactivate_easy");
+		print("Difficulty level is easy.");
+	end,
+	
+	[1] = function()
+		diff = 2;
+		UnblockZoneForAIonDate = {  29,  49,  42, nil };
+		SetPlayerStartResources(PLAYER_2, 120, 120, 60, 60, 90, 60, 60000);
+		ChangeHeroStat('Eruina', STAT_EXPERIENCE, 2600);
+		ChangeHeroStat('Ferigl', STAT_EXPERIENCE, 4000);
+		ChangeHeroStat('Inagost', STAT_EXPERIENCE, 5400);
+		AddHeroCreatures('Zehir', CREATURE_IRON_GOLEM, 21);
+		AddHeroCreatures('Zehir', CREATURE_MAGI, 9);
+		AddHeroCreatures('Zehir', CREATURE_GENIE, 5);	
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'Deactivator_for_ZONE_BLOCK_AI2_8', "f_ZONE_BLOCK_AI2_8_deactivate_normal");
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_3', "f_ZONE_BLOCK_AI2_8_deactivate_normal");
+		Trigger(OBJECT_CAPTURE_TRIGGER, 'Garrison2', "f_ZONE_BLOCK_AI2_8_deactivate_normal");	
+		print("Difficulty level is normal.");
+	end,
+	
+	[2] = function()
+		diff = 3;
+		UnblockZoneForAIonDate = {  22,  49,  35, nil };
+		SetPlayerStartResources(PLAYER_2, 160, 160, 80, 80, 120, 80, 100000);
+		AddObjectCreatures('Sorfail', CREATURE_MINOTAUR , 18);	
+		AddObjectCreatures('Colris', CREATURE_MINOTAUR, 18);
+		AddObjectCreatures('Colris', CREATURE_RIDER, 10);	
+		AddObjectCreatures('Thilgathal', CREATURE_MINOTAUR, 18);
+		AddObjectCreatures('Thilgathal', CREATURE_RIDER, 10);
+		AddObjectCreatures('Thilgathal', CREATURE_HYDRA, 6);
+		ChangeHeroStat('Eruina', STAT_EXPERIENCE, 12400);
+		ChangeHeroStat('Ferigl', STAT_EXPERIENCE, 24320);
+		ChangeHeroStat('Inagost', STAT_EXPERIENCE, 17600);
+		AddHeroCreatures('Zehir', CREATURE_GREMLIN, 38);
+		AddHeroCreatures('Zehir', CREATURE_STONE_GARGOYLE, 19);
+		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_5', "f_ZONE_BLOCK_AI2_8_deactivate_hard");
+		print("Difficulty level is hard.");
+	end,
+		
+	[3] = function()
+		diff = 4;
+		UnblockZoneForAIonDate = {   8,  42,  28,  15 };
+		SetPlayerStartResources(PLAYER_2, 300, 300, 140, 140, 200, 140, 500000);
+		AddObjectCreatures('Sorfail', CREATURE_MINOTAUR , 36);	
+		AddObjectCreatures('Colris', CREATURE_HYDRA, 12);
+		AddObjectCreatures('Colris', CREATURE_MATRON, 4);	
+		AddObjectCreatures('Thilgathal', CREATURE_HYDRA, 12);
+		AddObjectCreatures('Thilgathal', CREATURE_MATRON, 4);
+		AddObjectCreatures('Thilgathal', CREATURE_DEEP_DRAGON, 2);
+		ChangeHeroStat('Eruina', STAT_EXPERIENCE, 40570);
+		ChangeHeroStat('Ferigl', STAT_EXPERIENCE, 28785);
+		ChangeHeroStat('Inagost', STAT_EXPERIENCE, 24320);	
+		AddHeroCreatures('Zehir', CREATURE_MASTER_GENIE, 2);
+		print("Difficulty level is heroic.");
+	end,
+}
 
-SetRegionBlocked( "YlayaSpot", not nil, PLAYER_1 );
-SetObjectEnabled( "Razzak", nil );
-
-function summon_creatures( heroName )
-	if heroName == "Zehir" then
+function f_meetNarxes( hero )
+	if hero == "Zehir" then
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Nraxes", nil );
 		BlockGame();
-		print( "Game blocked" );
-		if GetDifficulty() == DIFFICULTY_EASY then
-			diff = 2;
-			H55_NewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_difficulty_easy");
-		elseif GetDifficulty() == DIFFICULTY_NORMAL then
-			diff = 2;
-			H55_SecNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_difficulty_normal");
-		elseif GetDifficulty() == DIFFICULTY_HARD then
-			diff = 3;
-			H55_ThrNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_difficulty_hard");
-		elseif GetDifficulty() == DIFFICULTY_HEROIC then
-			diff = 4;
-			H55_FrtNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_difficulty_heroic");
-		end;
 		EnableHeroAI( "Razzak", nil );
 		SetObjectRotation( "Razzak", 180 );
 		SetObjectPosition(  "Razzak", 12, 19, GROUND );
 		sleep( 2 );
-		StartAdvMapDialog( 2, "AdvMapDialog4" );
-	end;
-end;
+		StartAdvMapDialog( 2 );
+		SetObjectPosition( "Razzak", 132, 129, GROUND );
+		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_8, 1 );
+		ZehirAbilitiesInit("Zehir");
+		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 70 - 10 * diff, SULFUR, 5, 1500);
+		UnblockGame();
+	end
+end
 
-function AdvMapDialog4()
-	UnblockGame();
-	print( "Game unblocked" );
-	SetObjectPosition( "Razzak", 132, 129, GROUND );
-	DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_8, 1 );
-	ZehirAbilitiesInit("Zehir");
-	if diff == 1 then
-		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 60, SULFUR, 5, 1500);
-		print( "diff == 1" );
-	elseif diff == 2 then
-		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 50, SULFUR, 5, 1500);
-		print( "diff == 2" );
-	elseif diff == 3 then
-		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 40, SULFUR, 5, 1500);
-		print( "diff == 3" );
-	elseif diff == 4 then
-		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 30, SULFUR, 5, 1500);
-		print( "diff == 4" );
-	end;
-end;	
+function f_meetYlaya( heroName )
+	if heroName == 'Zehir' then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'ZONE_MEET_WITH_YLAYA', nil );
+		OBJECTIVES.state.findInfo[2] = 1;
+	end
+end
 	
---startThread( summon_creatures );
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Nraxes", "summon_creatures" );
-
-function difficulty_setup()
-	if diff == 1 then
-		print ("easy");
-		SetPlayerStartResources(PLAYER_2, 80, 80, 40, 40, 60, 40, 30000);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_3, STAT_EXPERIENCE, 1300);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_4, STAT_EXPERIENCE, 2000);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_5, STAT_EXPERIENCE, 2400);	
-		AddHeroCreatures(HERO_PLAYER, CREATURE_MAGI, 10);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_GENIE, 10);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_RAKSHASA, 5);
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_8, "f_ZONE_BLOCK_AI2_8_deactivate_easy");
-	elseif diff == 2 then
-		print ("normal");
-		SetPlayerStartResources(PLAYER_2, 120, 120, 60, 60, 90, 60, 60000);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_3, STAT_EXPERIENCE, 2600);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_4, STAT_EXPERIENCE, 4000);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_5, STAT_EXPERIENCE, 5400);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_IRON_GOLEM, 21);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_MAGI, 9);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_GENIE, 5);	
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, DEACTIVATOR_FOR_ZONE_BLOCK_AI2_8, "f_ZONE_BLOCK_AI2_8_deactivate_normal");
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_3, "f_ZONE_BLOCK_AI2_8_deactivate_normal");
-		Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_2, "f_ZONE_BLOCK_AI2_8_deactivate_normal");	
-	elseif diff == 3 then
-		print ("hard");
-		SetPlayerStartResources(PLAYER_2, 160, 160, 80, 80, 120, 80, 100000);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_1, CREATURE_MINOTAUR , 18);	
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_2, CREATURE_MINOTAUR, 18);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_2, CREATURE_RIDER, 10);	
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_MINOTAUR, 18);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_RIDER, 10);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_HYDRA, 6);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_3, STAT_EXPERIENCE, 12400);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_4, STAT_EXPERIENCE, 24320);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_5, STAT_EXPERIENCE, 17600);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_GREMLIN, 38);
-		AddHeroCreatures(HERO_PLAYER, CREATURE_STONE_GARGOYLE, 19);
-		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_5, "f_ZONE_BLOCK_AI2_8_deactivate_hard");
-	elseif diff == 4 then
-		print ("heroic");
-		SetPlayerStartResources(PLAYER_2, 300, 300, 140, 140, 200, 140, 500000);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_1, CREATURE_MINOTAUR , 36);	
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_2, CREATURE_HYDRA, 12);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_2, CREATURE_MATRON, 4);	
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_HYDRA, 12);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_MATRON, 4);
-		AddObjectCreatures(OBJECT_ENEMY_TOWN_3, CREATURE_DEEP_DRAGON, 2);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_3, STAT_EXPERIENCE, 40570);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_4, STAT_EXPERIENCE, 28785);
-		ChangeHeroStat(HERO_AI_2_ENEMY_HERO_5, STAT_EXPERIENCE, 24320);	
-		AddHeroCreatures(HERO_PLAYER, CREATURE_MASTER_GENIE, 2);
-	end;
-end;
+function AreElvesDefeated()
+	if GetObjectOwner('Sorfail') ~= PLAYER_1 or GetObjectOwner('Colris') ~= PLAYER_1 or GetObjectOwner('Thilgathal') ~= PLAYER_1 then
+		return nil
+	end
 	
----------------------------------------------------------------------------------------------------
---------------------------------- CONSTANTS ----------------------------------------------
----------------------------------------------------------------------------------------------------
+	for i, hero in ElvenHeroes do
+		if IsHeroAlive( hero ) ~= nil then
+			return nil
+		end
+	end
+	return 1
+end
 
-diff = 0;
+function f_meetCannonFodder( hero )
+	if hero == 'Zehir' then
+		QuestionBox( "/Maps/Scenario/A2C3M1/messagebox_002.txt", "f_report_yes", "f_report_no" );
+	else
+		startThread( MessageBox, "/Maps/Scenario/A2C3M1/messagebox_003.txt" );
+	end
+end
 
-HERO_PLAYER = 'Zehir';
-ACADEMY_HERO_1 = 'Astral';
-ACADEMY_HERO_2 = 'Faiz';
-ACADEMY_HERO_3 = 'Havez';
-ACADEMY_HERO_4 = 'Isher';
-ACADEMY_HERO_5 = 'Nur';
-ACADEMY_HERO_6 = 'Razzak';
-ACADEMY_HERO_7 = 'Sufi';
+function f_report_yes()
+	Trigger( OBJECT_TOUCH_TRIGGER, 'Assasin', nil );
+	if OBJECTIVES.state.cannonFodder[2] == 0 then OBJECTIVES.state.cannonFodder[2] = 1; end
+end
 
-HERO_YLAYA = 'Shadwyn';
-
-HERO_AI_2_ENEMY_HERO_1 = 'Almegir';
-HERO_AI_2_ENEMY_HERO_2 = 'Dalom';
-HERO_AI_2_ENEMY_HERO_3 = 'Eruina';
-HERO_AI_2_ENEMY_HERO_4 = 'Ferigl';
-HERO_AI_2_ENEMY_HERO_5 = 'Inagost';
-HERO_AI_2_ENEMY_HERO_6 = 'Menel';
-HERO_AI_2_ENEMY_HERO_7 = 'Ohtarig';
-HERO_AI_2_ENEMY_HERO_8 = 'Urunir';
-
-DWARF_HERO = 'Ottar';
-
-
---*-- CREATURES SCRIPT NAMES --*--
-CREATURE_MENTOR_DJINN = 'Djinn';
-ASSASSIN = 'Assasin';
-
---*-- OBJECTS SCRIPT NAMES --*--
-OBJECT_HOME_TOWN = 'Mutazz';
-OBJECT_GARRISON_1 = 'Garrison1';
-OBJECT_GARRISON_2 = 'Garrison2';
-OBJECT_ENEMY_TOWN_1 = 'Sorfail';
-OBJECT_ENEMY_TOWN_2 = 'Colris';
-OBJECT_ENEMY_TOWN_3 = 'Thilgathal';
-OBJECT_NEAR_YLAYA = 'Near_Ylaya';
-OBJECT_NEAR_ACADEMY_HERO_6 = 'Meet_with_ACADEMY_HERO_6';
-
---*-- ZONES SCRIPT NAMES --*--
-ZONE_MEET_WITH_YLAYA = 'ZONE_MEET_WITH_YLAYA';
-ZONE_DWARF = 'Dwarf';
-ZONE_BLOCK_AI2_1 = 'ZONE_BLOCK_AI2_1';
-ZONE_BLOCK_AI2_2 = 'ZONE_BLOCK_AI2_2';
-ZONE_BLOCK_AI2_3 = 'ZONE_BLOCK_AI2_3';
-ZONE_BLOCK_AI2_4 = 'ZONE_BLOCK_AI2_4';
-ZONE_BLOCK_AI2_5 = 'ZONE_BLOCK_AI2_5';
-ZONE_BLOCK_AI2_6 = 'ZONE_BLOCK_AI2_6';
-ZONE_BLOCK_AI2_7 = 'ZONE_BLOCK_AI2_7';
-ZONE_BLOCK_AI2_8 = 'ZONE_BLOCK_AI2_8';
-DEACTIVATOR_FOR_ZONE_BLOCK_AI2_8 = 'Deactivator_for_ZONE_BLOCK_AI2_8';
-ZONE_BLOCK_ONE_WAY_TELEPORT = 'Zone_Block_One_Way_Teleport';
-ZONE_BLOCK_UPPER_TEMP = 'Block_upper_temp';
-
----------------------------------------------------------------------------------------------------
--------------------------------- VARIABLES -------------------------------------------------
----------------------------------------------------------------------------------------------------
-
-TraitorWait = 0;
-TraitorsCount = 0;
-HeroBringArtifact = 0;
-
-SetObjectEnabled( CREATURE_MENTOR_DJINN, nil );
-SetObjectEnabled( ASSASSIN, nil );
-SetObjectEnabled( OBJECT_GARRISON_1, nil );
-
-SetRegionBlocked( "ZONE_TO_ZEHIR_TELEPORT", not nil );
-
---pri1
-
-function f_pri1_success() 
-	if GetObjectiveState( "pri2" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "pri3" ) == OBJECTIVE_FAILED then
-		SetObjectiveState( "pri1", OBJECTIVE_COMPLETED );
-		StartDialogScene( "/DialogScenes/A2C3/M1/S2/DialogScene.xdb#xpointer(/DialogScene)", "f_win" );
-	end;
-end;
-
-function f_pri1_fail() 
-	if IsHeroAlive( HERO_PLAYER ) == nil and GetObjectOwner( OBJECT_HOME_TOWN ) ~= PLAYER_1 then
-		print( "player looser his hero and town");
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, 1, nil );
-		startThread( f_loose );
-    end;
-end;
-
---pri2
-
-function f_meet_with_Ylaya( heroName )
-	if heroName == HERO_PLAYER then
-		BlockGame();
-		DeployReserveHero( HERO_YLAYA, 4, 40, 1 );
-		sleep( 1 );
-		SetObjectEnabled( HERO_YLAYA, nil );
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_MEET_WITH_YLAYA, nil );
-		SetObjectiveState( "pri3", OBJECTIVE_FAILED );	
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_NEAR_YLAYA, 0, -1, 1, 0, 0 );
-		SetObjectPosition( HERO_YLAYA, 25, 22, 1 );
-		sleep(30);
-		StartAdvMapDialog( 4, "f_meet_with_Ylaya_finish" );
-	end;
-end;	
-	
-function f_meet_with_Ylaya_finish()
-	sleep(5);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", OBJECT_NEAR_YLAYA, 0, -1, 1, 0, 0 );
-	sleep(3);
-	RemoveObject( HERO_YLAYA );
-	SetRegionBlocked( "YlayaSpot", nil, PLAYER_1 );
-	UnblockGame();
-	SetObjectiveState( 'pri2', OBJECTIVE_ACTIVE, PLAYER_1 );
-	sleep(4);
-	Trigger( OBJECTIVE_STATE_CHANGE_TRIGGER, "pri2", "f_pri1_success" );
-end;
-
-function f_check_capture_enemy_castles()
-	local p_count = 0;
-	
-	if IsHeroAlive( HERO_PLAYER ) == nil and GetObjectOwner( OBJECT_HOME_TOWN ) ~= PLAYER_1 then
-		startThread( f_loose );
-	end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_1) == PLAYER_1 then p_count = p_count + 1 end;
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_2) == PLAYER_1 then p_count = p_count + 1 end;	
-	if GetObjectOwner(OBJECT_ENEMY_TOWN_3) == PLAYER_1 then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_1) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_2) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_3) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_4) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_5) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_6) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_7) == nil then p_count = p_count + 1 end;
-	if IsHeroAlive(HERO_AI_2_ENEMY_HERO_8) == nil then p_count = p_count + 1 end;
-	if GetObjectiveState( "pri2" ) == OBJECTIVE_ACTIVE and p_count == 11 then	
-		SetObjectiveState("pri2", OBJECTIVE_COMPLETED);
-		SubObjective2Fail();
-	end;
-end;
-
------------------------------------------------------------------------
---*-- SECONDARY QUESTS START FUNCTIONS --*--
------------------------------------------------------------------------
-
-assassins_live_count = 0;
-assassin_died_count = 0;
-assassin_report_stop = 0;
-combat_result_last = -1;
-assassins_touches = 0;
+function f_report_no( hero )
+	Trigger( OBJECT_TOUCH_TRIGGER, 'Assasin', nil );
+	SetObjectEnabled( 'Assasin', not nil );
+	SetDisabledObjectMode( 'Assasin', DISABLED_DEFAULT );
+	sleep( 10 );
+	MakeHeroInteractWithObject( 'Zehir', 'Assasin' );
+end
 
 function combat_results( c )
 	print("CombatResultsFunc");
 	local we = -1
-	if GetSavedCombatArmyPlayer(c,1) == PLAYER_1 then we = 1 end;
-	if GetSavedCombatArmyPlayer(c,0) == PLAYER_1 then we = 0 end;
-	if we ~= -1 then
-		print("CombatResultsFunc: we=",we);
-		if GetSavedCombatArmyHero(c,we) == HERO_PLAYER then
-			print("CombatResultsFunc: hero found");
-			local stackscount = GetSavedCombatArmyCreaturesCount(c,we);
-			for i = 0,stackscount-1,1 do
-				creature,creaturescount,died = GetSavedCombatArmyCreatureInfo(c,we,i);
-				if creature == CREATURE_ASSASSIN and died > 0 then
-					print("CombatResultsFunc: assassins died = ",died);
-					assassin_died_count = assassin_died_count + died;
-					assassins_live_count = assassins_live_count - died;
-					assassin_rided();
-				end;
-			end;
-		end;
-	end;
-	combat_result_last = c;
-end;
-
-function assassin_rided()
-	if assassin_died_count >= 100 then
-		SetObjectiveState( "sec1", OBJECTIVE_COMPLETED );
-		Trigger( COMBAT_RESULTS_TRIGGER, nil );
-		assassin_report_stop = 1;
-		startThread( voice_over_2 );
-	end;
-end;		
-
-function voice_over_2()
-	Play2DSound( "/Maps/Scenario/A2C3M1/C3M1_VO2_Zehir_01sound.xdb#xpointer(/Sound)" );
-end;	
-	
-function assassin_report()
-	while 1 do
-		
-		if IsObjectExists( ASSASSIN ) == nil and assassins_live_count > 0 and GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN ) < assassins_live_count then
-			while combat_result_last < GetLastSavedCombatIndex() do
-				print( "Waiting for combat result ", GetLastSavedCombatIndex(), " - current is ", combat_result_last );
-				sleep( 1 );
-			end;
-			local count = GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN );
-			if count < assassins_live_count then
-				print("CombatResultsFunc: Zehir still has ", GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN ), " assassins" );
-				Trigger( COMBAT_RESULTS_TRIGGER, nil );
-				RemoveHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN, assassins_live_count );
-				print("CombatResultsFunc: Zehir still has ", GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN ), " assassins", "Died ", assassin_died_count );
-				SetObjectiveState( "sec1", OBJECTIVE_FAILED );
-				StartCombat( HERO_PLAYER, nil, 1, CREATURE_ASSASSIN, assassins_live_count, nil, "assassin_combat_results" );
-				startThread( objects_check_for_assassins );
-				break;
-			else
-				assassins_live_count = count;
-			end;
-		end;
-		if assassin_report_stop == 1 then
-			break;
-		end;
-		if TraitorWait == 1 then
-			Trigger( COMBAT_RESULTS_TRIGGER, nil );
-			break;
-		end;
-	sleep( 1 );
-	end;
-end;
-
-function assassin_join()
-	local assassins_count = GetObjectCreatures( ASSASSIN, CREATURE_ASSASSIN );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN, assassins_count );
-	
-	local touches = assassins_touches;
-	while GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN ) <= 0 do
-		if assassins_touches > touches then return end;
-		sleep(1);
-	end;
-	if assassins_touches > touches then return end;
-	
-	Trigger( OBJECT_TOUCH_TRIGGER, ASSASSIN, nil );
-	SetObjectiveState( 'sec1', OBJECTIVE_ACTIVE, PLAYER_1 );
-	
-	RemoveObject( ASSASSIN );
-	assassins_live_count = assassins_count;
-	Trigger( COMBAT_RESULTS_TRIGGER, "combat_results" );
-	startThread( assassin_report );
-
-end;
+	if GetSavedCombatArmyPlayer(c,1) == PLAYER_1 then we = 1 end
+	if GetSavedCombatArmyPlayer(c,0) == PLAYER_1 then we = 0 end
+	if we ~= -1 and GetSavedCombatArmyHero(c,we) == 'Zehir' then
+		print("CombatResultsFunc: hero found");
+		local stackscount = GetSavedCombatArmyCreaturesCount(c,we);
+		for i = 0,stackscount-1,1 do
+			local creature,creaturescount,died = GetSavedCombatArmyCreatureInfo(c,we,i);
+			if creature == CREATURE_ASSASSIN and died > 0 then
+				print("CombatResultsFunc: assassins died = ",died);
+				OBJECTIVES.cannonFodder_diedCount = OBJECTIVES.cannonFodder_diedCount + died;
+				OBJECTIVES.cannonFodder_liveCount = OBJECTIVES.cannonFodder_liveCount - died;
+				OBJECTIVES.state.cannonFodder[2] = 5;
+			end
+		end
+	end
+	OBJECTIVES.cannonFodder_combatID = c;
+end
 
 function assassin_combat_results( hero, isWinner )
 	if isWinner == not nil then
-		f_show_after_combat_with_killers_011();
+		MessageBox("/Maps/Scenario/A2C3M1/messagebox_011.txt");
 	else
-		f_show_after_combat_with_killers_012();
-	end;
-end;
-
-function objects_check_for_assassins()
+		MessageBox("/Maps/Scenario/A2C3M1/messagebox_012.txt");
+	end
+	--sleep(100);
 	local heroes = GetPlayerHeroes( PLAYER_1 );
-	local amount = 0;
-	local hamount = 0;	
 	for i,hero in heroes do
-		if GetHeroCreatures( hero, CREATURE_STALKER ) > 0 then
-			amount = GetHeroCreatures( hero, CREATURE_STALKER );
-			sleep( 1 );
-			RemoveHeroCreatures( hero, CREATURE_STALKER, amount );
-		end;
-	end;
-	if GetObjectCreatures( OBJECT_HOME_TOWN, CREATURE_STALKER ) > 0 then
-		hamount = GetObjectCreatures( OBJECT_HOME_TOWN, CREATURE_STALKER );
-		sleep( 1 );
-		RemoveObjectCreatures( OBJECT_HOME_TOWN, CREATURE_STALKER, hamount );
-	end;
-end;
-------------------------------------- sub objective1 -----------------------------------
+		pcall( RemoveHeroCreatures, hero, CREATURE_ASSASSIN, 10000 );
+		pcall( RemoveHeroCreatures, hero, CREATURE_STALKER, 10000 );
+	end
+	pcall( RemoveObjectCreatures, 'Mutazz', CREATURE_ASSASSIN, 10000 );
+	pcall( RemoveObjectCreatures, 'Mutazz',  CREATURE_STALKER, 10000 );
+end
 
-AssassinDialogPlayed = 0;
-
-function f_sec1( heroName )
-	if heroName == HERO_PLAYER then
-		assassins_touches = assassins_touches + 1;
-		QuestionBox( "/Maps/Scenario/A2C3M1/messagebox_002.txt", "f_report_yes", "f_report_no" );
-	else
-		startThread( f_show_message_box_go_away_003 );
-	end;
-end;
-
-function f_report_yes()
-	if 	AssassinDialogPlayed == 0 then
-		AssassinDialogPlayed = 1;
-		StartAdvMapDialog( 5, "assassin_join" );
-	elseif AssassinDialogPlayed > 0 then
-		assassin_join();
-	end;
-end;
-
-function f_report_no( heroName )
-	heroName = HERO_PLAYER;
-	Trigger( OBJECT_TOUCH_TRIGGER, ASSASSIN, nil );
-	SetObjectEnabled( ASSASSIN, not nil );
-	SetDisabledObjectMode( ASSASSIN , DISABLED_DEFAULT );
-	sleep( 1 );
-	MakeHeroInteractWithObject( HERO_PLAYER, ASSASSIN );
-end;
-
-function f_player_1_attack_OBJECT_GARRISON_1( hero )
-	local assassins = GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN )
+function f_attackGarrison1( hero )
+	local assassins = GetHeroCreatures( 'Zehir', CREATURE_ASSASSIN );
 	if assassins > 0 then
-		if hero ~= HERO_PLAYER then
-			startThread( f_show_message_box_garrison_go_away_005 );
+		if hero ~= 'Zehir' then
+			startThread( MessageBox, "/Maps/Scenario/A2C3M1/messagebox_005.txt" );
 			return
-		else
-			if TraitorWait == 0 then
-				TraitorWait = 1;
-				BlockGame();
-				startThread( voice_over_3 );
-				sleep(2);
-				TraitorsCount = GetHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN );
-				RemoveHeroCreatures( HERO_PLAYER, CREATURE_ASSASSIN, TraitorsCount );
-				AddObjectCreatures( OBJECT_GARRISON_1, CREATURE_ASSASSIN, TraitorsCount );
-				sleep(2);
-				SetObjectEnabled( OBJECT_GARRISON_1, not nil );
-				Trigger( OBJECT_TOUCH_TRIGGER, OBJECT_GARRISON_1, nil );
-				SetRegionBlocked( ZONE_BLOCK_AI2_5, nil, PLAYER_2 );		
-				sleep(2);
-				UnblockGame();
-				sleep(1);
-				f_show_message_box_garrison_attack_006();
-				if GetObjectiveState( "sec1" ) == OBJECTIVE_ACTIVE then
-					SetObjectiveState( "sec1", OBJECTIVE_FAILED );
-				end;
-				MakeHeroInteractWithObject( HERO_PLAYER, OBJECT_GARRISON_1 );				
-				return
-			end;
-			print( "ERROR!" );
-			return
-		end;
-	end;
-	SetObjectEnabled( OBJECT_GARRISON_1, not nil );
-	Trigger( OBJECT_TOUCH_TRIGGER, OBJECT_GARRISON_1, nil );
-	SetRegionBlocked( ZONE_BLOCK_AI2_5, nil, PLAYER_2 );		
-	sleep(1);
-	MakeHeroInteractWithObject( hero, OBJECT_GARRISON_1 );
-end;
+		end
+		OBJECTIVES.state.cannonFodder[2] = 6;
+		local TraitorsCount = GetHeroCreatures( 'Zehir', CREATURE_ASSASSIN );
+		RemoveHeroCreatures( 'Zehir', CREATURE_ASSASSIN, TraitorsCount );
+		AddObjectCreatures( 'Garrison1', CREATURE_ASSASSIN, TraitorsCount );
+		BlockGame();
+		startThread( Play2DSound, "/Maps/Scenario/A2C3M1/C3M1_VO3_Zehir_01sound.xdb#xpointer(/Sound)" );
+		sleep(50);		
+		UnblockGame();
+		MessageBox("/Maps/Scenario/A2C3M1/messagebox_006.txt");	
+	end
+	SetObjectEnabled( 'Garrison1', not nil );
+	Trigger( OBJECT_TOUCH_TRIGGER, 'Garrison1', nil );
+	SetRegionBlocked( 'ZONE_BLOCK_AI2_5', nil, PLAYER_2 );		
+	sleep(10);
+	MakeHeroInteractWithObject( hero, 'Garrison1' );
+end
 
-function voice_over_3()
-	Play2DSound( "/Maps/Scenario/A2C3M1/C3M1_VO3_Zehir_01sound.xdb#xpointer(/Sound)" );
-end;
-	
-------------------------------------- sub objective2 -----------------------------------
-
-EnableHeroAI( DWARF_HERO, nil );
-SetObjectEnabled( DWARF_HERO, nil );
-
-x_to_return, y_to_return, floor_to_return = GetObjectPosition ( HERO_PLAYER );
-
-f_sec2_start_hero = '';
-function f_sec2_start( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then	
-		if heroName~=HERO_PLAYER then
-			x_to_return, y_to_return, floor_to_return = GetObjectPosition ( HERO_PLAYER );
-			local x, y = RegionToPoint( 'ZONE_TO_ZEHIR_TELEPORT' );
-			SetRegionBlocked( 'ZONE_TO_ZEHIR_TELEPORT', nil );
-			SetObjectRotation( HERO_PLAYER, 200 );
-			SetObjectPosition( HERO_PLAYER, x, y, UNDERGROUND );
-			BlockGame();
-			sleep(2)
-			UnblockGame();
-		end;
-		f_sec2_start_hero = heroName;
-		StartAdvMapDialog( 6, "f_sec2_start_1" );
-	end;
-end;
-
-	
-function f_sec2_start_1()
-	if table.length(GetObjectsInRegion( 'ZONE_TO_ZEHIR_TELEPORT', OBJECT_HERO ))>0 then
-		SetObjectPosition( HERO_PLAYER, x_to_return, y_to_return, floor_to_return );
-	end;
-	if GetObjectiveState( "sec2" ) == OBJECTIVE_UNKNOWN and HasArtefact( f_sec2_start_hero, ARTIFACT_RUNE_OF_FLAME) == nil then
-		OpenCircleFog(84, 115, 1, 5, 1);		
-		sleep(4);
-		MoveCamera(84, 115, 1, 30, 1, 0, 0, 0, 1);
-		sleep(20);
-		SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE, PLAYER_1 );
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_DWARF, "f_check_artifact" );
-		f_check_artifact( f_sec2_start_hero );
-		startThread( f_starter_for_random_message_007_and_008 );
-	elseif GetObjectiveState( "sec2" ) == OBJECTIVE_UNKNOWN and HasArtefact( f_sec2_start_hero, ARTIFACT_RUNE_OF_FLAME) == not nil then
-		SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE, PLAYER_1 );
-		f_check_artifact( f_sec2_start_hero );
-	end;
-end;
-
-messageShown = 0;
-
-function f_check_artifact( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then	
-		if HasArtefact( heroName, ARTIFACT_RUNE_OF_FLAME) then
-			HeroBringArtifact = 1;
-			RemoveArtefact( heroName, ARTIFACT_RUNE_OF_FLAME );			
-			f_show_thanks_010();
-			GiveArtefact( heroName, 40 );
-			sleep( 3 );
-			PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", DWARF_HERO, 0, 0, 0, 0, 0 );
-			sleep( 2 );
-			RemoveObject( DWARF_HERO );			
-			SetObjectiveState( "sec2", OBJECTIVE_COMPLETED );
-			SetGameVar( "BONUS_A2C3M1", "1" );
-		elseif HasArtefact( heroName, ARTIFACT_RUNE_OF_FLAME) == nil and GetObjectiveState( "sec2" ) == OBJECTIVE_ACTIVE and messageShown == 0 then
-			messageShown = 1;
-			startThread( f_show_message_box_Dwarf_speak_hello_001 );
-		end;
-	end;
-end;
-
-function SubObjective2Fail()
-	if GetObjectiveState( "pri2" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "sec2" ) == OBJECTIVE_ACTIVE then
-		HeroBringArtifact = 2;
-		OpenCircleFog(80, 26, 1, 5, 1);		
-		sleep(3);
-		MoveCamera(80, 26, 1, 30, 1, 1.57, 0, 0, 1);		
-		sleep(3);
-		startThread( f_show_message_dwarf_009 );
-		sleep(20);
-		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", DWARF_HERO, 0, 0, 0, 0, 0 );
-		sleep(2);
-		RemoveObject( DWARF_HERO );
-		sleep(10);
-		SetObjectiveState("sec2", OBJECTIVE_FAILED, PLAYER_1);
-	end;
-end;	
+function f_meetDwarfOttar( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
+		OBJECTIVES.findArtifact_visitor = hero;
+		if OBJECTIVES.state.findArtifact[2] == 0 then OBJECTIVES.state.findArtifact[2] = 1 end
+		if OBJECTIVES.state.findArtifact[2] == 2 then OBJECTIVES.state.findArtifact[2] = 3 end
+	end
+end
 	
 function f_starter_for_random_message_007_and_008()
-	sleep( 120 );
-	while 1 do
-		if HeroBringArtifact ~= 0 or 
-		GetObjectiveState( "sec2" ) == OBJECTIVE_FAILED or 
-		GetObjectiveState( "sec2" ) == OBJECTIVE_COMPLETED then
-			break;		
-		else
-			startThread( f_dwarf_random_message_007_or_008 );		
-		end;
-		sleep(120);
-	end;			
-end;
+	repeat
+		sleep(140);
+		startThread( f_dwarf_random_message_007_or_008 );
+	until OBJECTIVES.state.findArtifact[2] == 10 or OBJECTIVES.state.findArtifact[2] == 11;		
+end
 
 function f_dwarf_random_message_007_or_008()
 	x = random(2);
 	print( 'random message #', x );
-	if (x == 0) then f_show_message_dwarf_007(); end;
-	if (x == 1) then f_show_message_dwarf_008(); end;
-end;
-
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, ZONE_DWARF, "f_sec2_start" );
-
------------------------------------------------------
---*-- MISC ACTIONS FUNCTIONS --*--
------------------------------------------------------
-
-function f_win()
-	if GetObjectiveState( "pri2" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "pri1" ) == OBJECTIVE_COMPLETED then	
-		print( "roflmao nop" )
-		SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M1" );
-		sleep(50);
-		Win();
-	end;
-end;
-
-function f_loose()
-	SetObjectiveState( "pri1", OBJECTIVE_FAILED, PLAYER_1 );
-	Loose();
-end;
-
-function f_djinn()
-	-->>
-	Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_MENTOR_DJINN, nil);
-	StartAdvMapDialog( 0, "f_djinn_1" );
-end;
-
-function f_djinn_1()
-	MakeTownMovable( "Mutazz" );
-	OpenCircleFog( 13, 11, GROUND, 10, PLAYER_1 );
-	sleep( 1 );
-	Play2DSound( "/Maps/Scenario/A2C3M1/SummonEarthsound.xdb#xpointer(/Sound)" );
-	sleep( 2 );
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object", 0, 0, 0, 0, 0 );
-	sleep( 4 );
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object1", 0, 0, 0, 0, 0 );
-	sleep( 3 );
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object2", 0, 0, 0, 0, 0 );
-	sleep( 3 );
-	SetObjectPosition( "Mutazz",13, 11, GROUND );
-	SetObjectOwner( "Mutazz", PLAYER_1 );
-	print ("before");
-	local xp = GetHeroStat( "Zehir",  STAT_EXPERIENCE );
-	TakeAwayHeroExpFlying ( "Zehir", xp  - 14701 ); -- Scale hero to level 10
-	sleep(20);
-	local a =  3 - GetHeroStat( "Zehir", 	   STAT_ATTACK );
-	local d =  3 - GetHeroStat( "Zehir", 	  STAT_DEFENCE );
-	local s = 12 - GetHeroStat( "Zehir",  STAT_SPELL_POWER );
-	local k = 10 - GetHeroStat( "Zehir",    STAT_KNOWLEDGE );
-	if HasArtefact( "Zehir", 56, 1 ) then
-		d = d + 1;
-	end
-	ChangeHeroStat( "Zehir", 	  STAT_ATTACK, a );
-	ChangeHeroStat( "Zehir", 	 STAT_DEFENCE, d );
-	ChangeHeroStat( "Zehir", STAT_SPELL_POWER, s );
-	ChangeHeroStat( "Zehir",   STAT_KNOWLEDGE, k );
-	sleep(10);
-	PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", CREATURE_MENTOR_DJINN, 0, 0, 0, 0, 0 );
-	sleep(10);
-	RemoveObject( CREATURE_MENTOR_DJINN );
-end;
-
----------------------------------------------------
---*-- MESSAGEBOX FUNCTIONS --*--
----------------------------------------------------
-
-function f_show_message_box_Dwarf_speak_hello_001()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_001.txt");
-end;
-
-function f_show_message_box_go_away_003()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_003.txt");
-end;
-
-function f_show_message_box_assasin_destroy_004( hero, isWinner )
-	if isWinner == not nil then
-		RemoveObject( ASSASSIN );
-		sleep(2);
-		MessageBox("/Maps/Scenario/A2C3M1/messagebox_004.txt");
-	end;
-end;
-
-function f_show_message_box_garrison_go_away_005()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_005.txt");
-end;
-
-function f_show_message_box_garrison_attack_006()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_006.txt");
-end;
-
-function f_show_message_dwarf_007()
-	ShowFlyingSign("/Maps/Scenario/A2C3M1/messagebox_007.txt", DWARF_HERO, PLAYER_1, 7.0);
-end;
-
-function f_show_message_dwarf_008()
-	ShowFlyingSign("/Maps/Scenario/A2C3M1/messagebox_008.txt", DWARF_HERO, PLAYER_1, 7.0);
-end;
-
-function f_show_message_dwarf_009()
-	ShowFlyingSign("/Maps/Scenario/A2C3M1/messagebox_009.txt", DWARF_HERO, PLAYER_1, 9.0);
-end;
-
-function f_show_thanks_010()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_010.txt");
-end;
-
-function f_show_after_combat_with_killers_011()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_011.txt");
-end;
-
-function f_show_after_combat_with_killers_012()
-	MessageBox("/Maps/Scenario/A2C3M1/messagebox_012.txt");
-end;
-
----------------------------------------------------
---*-- GAMEPLAY FUNCTIONS --*--
----------------------------------------------------
+	if (x == 0) then ShowFlyingSign("/Maps/Scenario/A2C3M1/messagebox_007.txt", 'Ottar', PLAYER_1, 7.0); end
+	if (x == 1) then ShowFlyingSign("/Maps/Scenario/A2C3M1/messagebox_008.txt", 'Ottar', PLAYER_1, 7.0); end
+end
 
 function f_ZONE_BLOCK_AI2_3_deactivate() 
-	SetRegionBlocked(ZONE_BLOCK_AI2_3, nil, PLAYER_2);
-	SetRegionBlocked(ZONE_BLOCK_UPPER_TEMP, nil, PLAYER_2);
+	SetRegionBlocked('ZONE_BLOCK_AI2_3', nil, PLAYER_2);
+	SetRegionBlocked('Block_upper_temp', nil, PLAYER_2);
 	print("f_ZONE_BLOCK_AI2_3_deactivate");
-end;
-
-function f_ZONE_BLOCK_AI2_4_deactivate()
-	SetRegionBlocked(ZONE_BLOCK_AI2_4, nil, PLAYER_2);
-	print("f_ZONE_BLOCK_AI2_4_deactivate");
-end;
-
-function f_ZONE_BLOCK_AI2_6_deactivate()
-	SetRegionBlocked(ZONE_BLOCK_AI2_6, nil, PLAYER_2);
-	print("f_ZONE_BLOCK_AI2_6_deactivate");
-end;
+end
 
 function f_ZONE_BLOCK_AI2_8_deactivate_easy()
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_8, nil);
-	SetRegionBlocked(ZONE_BLOCK_AI2_8, nil, PLAYER_2);
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_8', nil);
+	SetRegionBlocked('ZONE_BLOCK_AI2_8', nil, PLAYER_2);
 	print("f_ZONE_BLOCK_AI2_8_deactivate");
-end;
+end
 
 function f_ZONE_BLOCK_AI2_8_deactivate_normal()
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, DEACTIVATOR_FOR_ZONE_BLOCK_AI2_8, nil);
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_3, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_2, nil);
-	SetRegionBlocked(ZONE_BLOCK_AI2_8, nil, PLAYER_2);
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'Deactivator_for_ZONE_BLOCK_AI2_8', nil);
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_3', nil);
+	Trigger(OBJECT_CAPTURE_TRIGGER, 'Garrison2', nil);
+	SetRegionBlocked('ZONE_BLOCK_AI2_8', nil, PLAYER_2);
 	print("f_ZONE_BLOCK_AI2_8_deactivate");
-end;
+end
 
 function f_ZONE_BLOCK_AI2_8_deactivate_hard()
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, ZONE_BLOCK_AI2_5, nil);
-	SetRegionBlocked(ZONE_BLOCK_AI2_8, nil, PLAYER_2);
+	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, 'ZONE_BLOCK_AI2_5', nil);
+	SetRegionBlocked('ZONE_BLOCK_AI2_8', nil, PLAYER_2);
 	print("f_ZONE_BLOCK_AI2_8_deactivate");
-end;
+end
 
-function f_ZONE_BLOCK_AI2_8_deactivate_heroic()
-	SetRegionBlocked(ZONE_BLOCK_AI2_8, nil, PLAYER_2);
-	print("f_ZONE_BLOCK_AI2_8_deactivate");
-end;
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
+	intro = function()
+		StartDialogScene("/DialogScenes/A2C3/M1/S1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,
+	
+	outro = function()
+		StartDialogScene( "/DialogScenes/A2C3/M1/S2/DialogScene.xdb#xpointer(/DialogScene)" );
+		sleep(2);
+	end,
+	
+	meetDjinn = function()
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Djinn', nil);
+		CINEMATICS.playAndWait( 0 );
+		MakeTownMovable( "Mutazz" );
+		OpenCircleFog( 13, 11, GROUND, 10, PLAYER_1 );
+		sleep( 1 );
+		Play2DSound( "/Maps/Scenario/A2C3M1/SummonEarthsound.xdb#xpointer(/Sound)" );
+		sleep( 2 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object", 0, 0, 0, 0, 0 );
+		sleep( 4 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object1", 0, 0, 0, 0, 0 );
+		sleep( 3 );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/DivineVengeance/FX_DivineVengeance.(Effect).xdb#xpointer(/Effect)", "FX_object2", 0, 0, 0, 0, 0 );
+		sleep( 3 );
+		SetObjectPosition( "Mutazz",13, 11, GROUND );
+		SetObjectOwner( "Mutazz", PLAYER_1 );
+		print ("before");
+		local xp = GetHeroStat( "Zehir",  STAT_EXPERIENCE );
+		TakeAwayHeroExpFlying ( "Zehir", xp  - 14701 ); -- Scale hero to level 10
+		sleep(20);
+		local a =  3 - GetHeroStat( "Zehir", 	   STAT_ATTACK );
+		local d =  3 - GetHeroStat( "Zehir", 	  STAT_DEFENCE );
+		local s = 12 - GetHeroStat( "Zehir",  STAT_SPELL_POWER );
+		local k = 10 - GetHeroStat( "Zehir",    STAT_KNOWLEDGE );
+		if HasArtefact( "Zehir", 56, 1 ) then
+			d = d + 1;
+		end
+		ChangeHeroStat( "Zehir", 	  STAT_ATTACK, a );
+		ChangeHeroStat( "Zehir", 	 STAT_DEFENCE, d );
+		ChangeHeroStat( "Zehir", STAT_SPELL_POWER, s );
+		ChangeHeroStat( "Zehir",   STAT_KNOWLEDGE, k );
+		sleep(10);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Djinn', 0, 0, 0, 0, 0 );
+		sleep(10);
+		RemoveObject( 'Djinn' );
+	end,
+	
+	meetAssassins = function()
+		CINEMATICS.playAndWait( 5 );
+	end,
+	
+	meetYlaya = function()
+		BlockGame();
+		DeployReserveHero( 'Shadwyn', 4, 40, 1 );
+		sleep( 10 );
+		SetObjectEnabled( 'Shadwyn', nil );
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Near_Ylaya', 0, -1, 1, 0, 0 );
+		SetObjectPosition( 'Shadwyn', 25, 22, 1 );
+		sleep(30);
+		CINEMATICS.playAndWait( 4 );
+		sleep(5);
+		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Near_Ylaya', 0, -1, 1, 0, 0 );
+		sleep(10);
+		RemoveObject( 'Shadwyn' );
+		SetRegionBlocked( "YlayaSpot", nil, PLAYER_1 );
+		UnblockGame();
+	end,
+	
+	meetDwarf = function( hero )
+		local x_to_return, y_to_return, floor_to_return = GetObjectPosition ( 'Zehir' );
+		if hero ~= 'Zehir' then
+			local x, y = RegionToPoint( 'ZONE_TO_ZEHIR_TELEPORT' );
+			SetRegionBlocked( 'ZONE_TO_ZEHIR_TELEPORT', nil );
+			SetObjectRotation( 'Zehir', 200 );
+			SetObjectPosition( 'Zehir', x, y, UNDERGROUND );
+			sleep( 20 );
+		end
+		CINEMATICS.playAndWait( 6 );
+		if table.length(GetObjectsInRegion( 'ZONE_TO_ZEHIR_TELEPORT', OBJECT_HERO )) > 0 then
+			SetObjectPosition( 'Zehir', x_to_return, y_to_return, floor_to_return );
+		end
+		if HasArtefact( OBJECTIVES.findArtifact_visitor, ARTIFACT_RUNE_OF_FLAME) == nil then
+			OpenCircleFog(84, 115, 1, 5, 1);		
+			MoveCamera(84, 115, 1, 30, 1, 0, 0, 0, 1);
+			sleep(60);
+			startThread( f_starter_for_random_message_007_and_008 );
+		end
+	end,
+}
 
-function H55_TriggerDaily()
-	if (GetDate( DAY ) == 36) then
-		SetRegionBlocked(ZONE_BLOCK_AI2_3, nil, PLAYER_2);
-		SetRegionBlocked(ZONE_BLOCK_ONE_WAY_TELEPORT, nil, PLAYER_2);
-		print("Teleport_open_for_Ai");
-	end;
-	if (GetDate( DAY ) == 56) then
-		startThread( f_ZONE_BLOCK_AI2_4_deactivate );
-	end;		
-end;
+OBJECTIVES = {
+	state = {
+		 isAlive 	 	= { "pri1", 1 }, 	-- Capture the mage city
+		 defeatElves 	= { "pri2", 1 }, 	-- eliminate dark Elves
+		 findInfo  	 	= { "pri3", 0 }, 	-- find Info on Isabell
+		 cannonFodder	= { "sec1", 0 }, 	-- use assassins as cannon fodder to prevent revolt
+		 findArtifact	= { "sec2", 0 }, 	-- help the Dwarf to find Artifact
+		 eventManager 	= {    "_", 1 }, 	--
+	},
 
-function H55_SecTriggerDaily()
-	if (GetDate( DAY ) == 29) then
-		SetRegionBlocked(ZONE_BLOCK_AI2_3, nil, PLAYER_2);
-		SetRegionBlocked(ZONE_BLOCK_ONE_WAY_TELEPORT, nil, PLAYER_2);
-		print("Teleport_open_for_Ai");
-	end;
-	if (GetDate( DAY ) == 42) then
-		startThread( f_ZONE_BLOCK_AI2_6_deactivate );
-	end;
-	if (GetDate( DAY ) == 49) then
-		startThread( f_ZONE_BLOCK_AI2_4_deactivate );
-	end;		
-end;
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		DIFFICULTY[GetDifficulty()]();
+		SetObjectEnabled( 'Djinn', nil );
+		SetObjectEnabled( 'Assasin', nil );
+		SetObjectEnabled( 'Garrison1', nil );
+		SetRegionBlocked( "ZONE_TO_ZEHIR_TELEPORT", not nil );
+		CINEMATICS.intro();
+		EnableHeroAI( 'Ottar', nil );
+		SetObjectEnabled( 'Ottar', nil );
+		SetRegionBlocked( "YlayaSpot", not nil, PLAYER_1 );
+		SetObjectEnabled( "Razzak", nil );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'Dwarf', "f_meetDwarfOttar" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Nraxes", "f_meetNarxes" );
+		SetRegionBlocked('ZONE_BLOCK_AI2_1', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_2', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_3', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_4', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_5', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_6', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_7', 1, PLAYER_2);
+		SetRegionBlocked('ZONE_BLOCK_AI2_8', 1, PLAYER_2);
+		SetRegionBlocked('Block_upper_temp', 1, PLAYER_2);
+		SetRegionBlocked('Zone_Block_One_Way_Teleport', 1, PLAYER_2);
+		DenyAIHeroFlee('Zehir', not nil);
+		AllowPlayerTavernHero( PLAYER_1, 'Zehir', 1 );
+		MakeHeroReturnToTavernAfterDeath('Zehir', 1, 1 );
+		for i, hero in {'Astral', 'Faiz', 'Havez', 'Isher', 'Nur', 'Sufi' } do
+			MakeHeroReturnToTavernAfterDeath( hero, 1 );
+		end
+		SetDisabledObjectMode( 	 'Djinn', DISABLED_INTERACT );
+		SetDisabledObjectMode( 'Assasin', DISABLED_INTERACT );
+		for i, hero in ElvenHeroes do
+			MakeHeroReturnToTavernAfterDeath(hero, 1);
+		end
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, 'ZONE_MEET_WITH_YLAYA', "f_meetYlaya");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Djinn', "CINEMATICS.meetDjinn");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Assasin', "f_meetCannonFodder");
+		Trigger(OBJECT_CAPTURE_TRIGGER, 'Garrison1', "f_ZONE_BLOCK_AI2_3_deactivate");
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Garrison1', "f_attackGarrison1");
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end
+				end
+			end
+			
+			if GetObjectiveState('pri1') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+	
+			if GetObjectiveState("pri2") == OBJECTIVE_COMPLETED and GetObjectiveState("sec2") ~= OBJECTIVE_ACTIVE then
+				SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M1" );
+				CINEMATICS.outro();
+				sleep( 100 );
+				Win();
+				return
+			end
+		end
+	end,
+	
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive( "Zehir" ) == nil and GetObjectOwner( 'Mutazz' ) ~= PLAYER_1 then
+			SetObjectiveState( "pri1", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	defeatElves = function()
+		if OBJECTIVES.state.defeatElves[2] == 1 and OBJECTIVES.state.findInfo[2] == 11 then
+			SetObjectiveState( 'pri2', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.defeatElves[2] = 2;
+		elseif OBJECTIVES.state.defeatElves[2] == 2 and AreElvesDefeated() ~= nil then	
+			SetObjectiveState( "pri2", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.defeatElves[2] = 10;
+		end
+	end,
+	
+	findInfo = function()
+	-- start of this task is handled by the map.xdb file
+		if OBJECTIVES.state.findInfo[2] == 1 then
+			CINEMATICS.meetYlaya();
+			SetObjectiveState( "pri3", OBJECTIVE_FAILED );
+			OBJECTIVES.state.findInfo[2] = 11;
+		end
+	end,
+	
+	cannonFodder_combatID = -1,
+	cannonFodder_diedCount = 0,
+	cannonFodder_liveCount = 0,
+	cannonFodder = function()
+		if OBJECTIVES.state.cannonFodder[2] == 1 then
+			CINEMATICS.meetAssassins();
+			SetObjectiveState( 'sec1', OBJECTIVE_ACTIVE, PLAYER_1 );
+			local assassins_count = GetObjectCreatures( 'Assasin', CREATURE_ASSASSIN );
+			AddHeroCreatures( 'Zehir', CREATURE_ASSASSIN, assassins_count );
+			RemoveObject( 'Assasin' );
+			OBJECTIVES.cannonFodder_liveCount = assassins_count;
+			Trigger( COMBAT_RESULTS_TRIGGER, "combat_results" );
+			OBJECTIVES.state.cannonFodder[2] = 2;
+		elseif OBJECTIVES.state.cannonFodder[2] == 2 and GetHeroCreatures( 'Zehir', CREATURE_ASSASSIN ) < OBJECTIVES.cannonFodder_liveCount then
+			if OBJECTIVES.cannonFodder_combatID >= GetLastSavedCombatIndex() then
+				local count = GetHeroCreatures( 'Zehir', CREATURE_ASSASSIN );
+				if count < OBJECTIVES.cannonFodder_liveCount then
+					Trigger( COMBAT_RESULTS_TRIGGER, nil );
+					RemoveHeroCreatures( 'Zehir', CREATURE_ASSASSIN, OBJECTIVES.cannonFodder_liveCount );
+					print("CombatResultsFunc: Zehir still has ", GetHeroCreatures( 'Zehir', CREATURE_ASSASSIN ), " assassins", "Died ", OBJECTIVES.cannonFodder_diedCount );
+					StartCombat( 'Zehir', nil, 1, CREATURE_ASSASSIN, OBJECTIVES.cannonFodder_liveCount, nil, "assassin_combat_results" );
+					OBJECTIVES.state.cannonFodder[2] = 6;
+				else
+					OBJECTIVES.cannonFodder_liveCount = count;
+				end
+			end
+		elseif OBJECTIVES.state.cannonFodder[2] == 5 then
+			if OBJECTIVES.cannonFodder_diedCount >= 100 then
+				SetObjectiveState( "sec1", OBJECTIVE_COMPLETED );
+				Trigger( COMBAT_RESULTS_TRIGGER, nil );
+				startThread( Play2DSound, "/Maps/Scenario/A2C3M1/C3M1_VO2_Zehir_01sound.xdb#xpointer(/Sound)" );
+				OBJECTIVES.state.cannonFodder[2] = 10;
+			else
+				OBJECTIVES.state.cannonFodder[2] = 2;
+			end
+		elseif OBJECTIVES.state.cannonFodder[2] == 6 then
+			SetObjectiveState( "sec1", OBJECTIVE_FAILED );
+			OBJECTIVES.state.cannonFodder[2] = 11;
+		end
 
-function H55_ThrTriggerDaily()
-	if (GetDate( DAY ) == 22) then
-		SetRegionBlocked(ZONE_BLOCK_AI2_3, nil, PLAYER_2);
-		SetRegionBlocked(ZONE_BLOCK_ONE_WAY_TELEPORT, nil, PLAYER_2);
-		print("Teleport_open_for_Ai");
-	end;
-	if (GetDate( DAY ) == 35) then
-		startThread( f_ZONE_BLOCK_AI2_6_deactivate );
-	end;
-	if (GetDate( DAY ) == 49) then
-		startThread( f_ZONE_BLOCK_AI2_4_deactivate );
-	end;		
-end;
-
-function H55_FrtTriggerDaily()
-	if (GetDate( DAY ) == 15) then
-		startThread( f_ZONE_BLOCK_AI2_8_deactivate_heroic );
-	end;
-	if (GetDate( DAY ) == 8) then
-		SetRegionBlocked(ZONE_BLOCK_AI2_3, nil, PLAYER_2);
-		SetRegionBlocked(ZONE_BLOCK_ONE_WAY_TELEPORT, nil, PLAYER_2);
-		print("Teleport_open_for_Ai");
-	end;	
-	if (GetDate( DAY ) == 28) then
-		startThread( f_ZONE_BLOCK_AI2_6_deactivate );
-	end;
-	if (GetDate( DAY ) == 42) then
-		startThread( f_ZONE_BLOCK_AI2_4_deactivate );
-	end;		
-end;
-
---ChangeHeroStat("Zehir",STAT_SPELL_POWER,2);
-
-SetRegionBlocked(ZONE_BLOCK_AI2_1, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_2, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_3, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_4, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_5, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_6, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_7, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_AI2_8, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_UPPER_TEMP, 1, PLAYER_2);
-SetRegionBlocked(ZONE_BLOCK_ONE_WAY_TELEPORT, 1, PLAYER_2);
-EnableHeroAI(DWARF_HERO, nil);
-DenyAIHeroFlee(HERO_PLAYER, not nil);
-AllowPlayerTavernHero( PLAYER_1, HERO_PLAYER, 1 );
-MakeHeroReturnToTavernAfterDeath(HERO_PLAYER, 1, 1 );
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_1, 1);
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_2, 1);
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_3, 1);
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_4, 1);
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_5, 1);
---MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_6, 1);
-MakeHeroReturnToTavernAfterDeath(ACADEMY_HERO_7, 1);
-SetDisabledObjectMode( CREATURE_MENTOR_DJINN , DISABLED_INTERACT );
-SetDisabledObjectMode( ASSASSIN , DISABLED_INTERACT );
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_1, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_2, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_3, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_4, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_5, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_6, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_7, 1);
-MakeHeroReturnToTavernAfterDeath(HERO_AI_2_ENEMY_HERO_8, 1);
---SetHeroesExpCoef( 0.5 ); -- Изменение количества получаемого опыта.
-startThread( difficulty_setup );
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "f_pri1_fail" );
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, ZONE_MEET_WITH_YLAYA, "f_meet_with_Ylaya");
-Trigger(OBJECT_TOUCH_TRIGGER, CREATURE_MENTOR_DJINN, "f_djinn");
-Trigger(OBJECT_TOUCH_TRIGGER, ASSASSIN, "f_sec1");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_GARRISON_1, "f_ZONE_BLOCK_AI2_3_deactivate");
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_GARRISON_1, "f_player_1_attack_OBJECT_GARRISON_1");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_1, "f_check_capture_enemy_castles");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_2, "f_check_capture_enemy_castles");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_ENEMY_TOWN_3, "f_check_capture_enemy_castles");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_HOME_TOWN, "f_check_capture_enemy_castles");
-Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "f_check_capture_enemy_castles");
+	end,
+	
+	findArtifact_visitor = "Zehir",
+	findArtifact = function()
+		if OBJECTIVES.state.findArtifact[2] == 1 then
+			CINEMATICS.meetDwarf(OBJECTIVES.findArtifact_visitor);
+			SetObjectiveState( 'sec2', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.findArtifact[2] = 2;
+		elseif OBJECTIVES.state.findArtifact[2] == 3 then
+			if HasArtefact( OBJECTIVES.findArtifact_visitor, ARTIFACT_RUNE_OF_FLAME ) then
+				SetObjectiveState('sec2', OBJECTIVE_COMPLETED );
+				RemoveArtefact( OBJECTIVES.findArtifact_visitor, ARTIFACT_RUNE_OF_FLAME );			
+				MessageBox("/Maps/Scenario/A2C3M1/messagebox_010.txt");
+				GiveArtefact( OBJECTIVES.findArtifact_visitor, 40 );
+				sleep( 10 );
+				PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Ottar', 0, 0, 0, 0, 0 );
+				sleep( 30 );
+				RemoveObject( 'Ottar' );			
+				SetGameVar( "BONUS_A2C3M1", "1" );
+				Trigger( REGION_ENTER_AND_STOP_TRIGGER, 'Dwarf', nil );
+				OBJECTIVES.state.findArtifact[2] = 10;
+			else
+				MessageBox("/Maps/Scenario/A2C3M1/messagebox_001.txt");
+				OBJECTIVES.state.findArtifact[2] = 2;
+			end
+		end
+		
+		if OBJECTIVES.state.defeatElves[2] == 10 then
+			OpenCircleFog(80, 26, 1, 5, 1);		
+			MoveCamera(80, 26, 1, 30, 1, 1.57, 0, 0, 1);		
+			sleep(20);
+			if IsObjectExists( "Ottar" ) then
+				startThread(ShowFlyingSign, "/Maps/Scenario/A2C3M1/messagebox_009.txt", 'Ottar', PLAYER_1, 9.0);
+				PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Ottar', 0, 0, 0, 0, 0 );
+				sleep(20);
+				RemoveObject( 'Ottar' );
+			end
+			SetObjectiveState("sec2", OBJECTIVE_FAILED, PLAYER_1);
+			OBJECTIVES.state.findArtifact[2] = 11;
+		end
+	end,
+	
+	eventManager_day = 1,
+	eventManager = function()
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			if UnblockZoneForAIonDate[1] ~= nil and OBJECTIVES.date >= UnblockZoneForAIonDate[1] then
+				SetRegionBlocked('ZONE_BLOCK_AI2_3', nil, PLAYER_2);
+				SetRegionBlocked('Zone_Block_One_Way_Teleport', nil, PLAYER_2);
+				UnblockZoneForAIonDate[1] = nil;
+				print("Teleport is now open");
+			end
+			if UnblockZoneForAIonDate[2] ~= nil and OBJECTIVES.date >= UnblockZoneForAIonDate[2] then
+				SetRegionBlocked('ZONE_BLOCK_AI2_4', nil, PLAYER_2);
+				UnblockZoneForAIonDate[2] = nil;
+				print("f_ZONE_BLOCK_AI2_4_deactivate");
+			end
+			if UnblockZoneForAIonDate[3] ~= nil and OBJECTIVES.date >= UnblockZoneForAIonDate[3] then
+				SetRegionBlocked('ZONE_BLOCK_AI2_6', nil, PLAYER_2);
+				UnblockZoneForAIonDate[3] = nil;
+				print("f_ZONE_BLOCK_AI2_6_deactivate");
+			end
+			if UnblockZoneForAIonDate[4] ~= nil and OBJECTIVES.date >= UnblockZoneForAIonDate[4] then
+				SetRegionBlocked('ZONE_BLOCK_AI2_8', nil, PLAYER_2);
+				UnblockZoneForAIonDate[4] = nil;
+				print("f_ZONE_BLOCK_AI2_8_deactivate");
+			end			
+			OBJECTIVES.eventManager_day = OBJECTIVES.date;
+		end
+	end,
+}
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
