@@ -728,18 +728,6 @@ function ShowMeHit()
 	sleep(15);
 	PlayObjectAnimation( "damagun_catapult", "rangeattack", ONESHOT );
 	UnblockGame();
-end;
-
-function DestroyCatapultIfCommanderIsDead()
-	Trigger( OBJECT_TOUCH_TRIGGER, "footman_shooter", nil );
-	while IsObjectExists( "footman_shooter" ) ~= nil do sleep(10); end;
-	PlayVisualEffect( EFFECT_DUST, "damagun_catapult" );
-	local x,y,floor = GetObjectPosition( "damagun_catapult" );
-	sleep(10);
-	RemoveObject( "damagun_catapult" );	
-	sleep(1);
-	SetObjectPosition( "damagun_catapult_razed", x, y, floor );
-	PlayObjectAnimation("damagun_catapult_razed", "death", ONESHOT_STILL );
 end
 
 function PlayVoiceOverAboutUnderground(hero)
@@ -983,18 +971,11 @@ OBJECTIVES = {
 		Trigger( OBJECT_TOUCH_TRIGGER, "mermaid", "ELEMENTALS.INFORMATION_FROM_MERMAID" ); -- The mermaid next to the river bank says elementals are fighting to the south
 		Trigger( OBJECT_TOUCH_TRIGGER, "fire_elemental", "ELEMENTALS.COMBAT.START" );
 		Trigger( OBJECT_TOUCH_TRIGGER, "water_elemental", "ELEMENTALS.COMBAT.START" );
-		-- Отключение АИ у героя Рольф
-		--Запретить PLAYER_2 (Rebel Heaven)	нанимать героев фракций dungeon, necromancy, inferno, stronghold
-		AllowHeroHiringByRaceForAI(PLAYER_2, TOWN_DUNGEON, 0);	
-		AllowHeroHiringByRaceForAI(PLAYER_2, TOWN_NECROMANCY, 0);	
-		AllowHeroHiringByRaceForAI(PLAYER_2, TOWN_INFERNO, 0);	
-		AllowHeroHiringByRaceForAI(PLAYER_2, TOWN_STRONGHOLD, 0);	
-
-		--Запретить PLAYER_3 (Red Heaven)	нанимать героев фракций dungeon, necromancy, inferno, stronghold
-		AllowHeroHiringByRaceForAI(PLAYER_3, TOWN_DUNGEON, 0);	
-		AllowHeroHiringByRaceForAI(PLAYER_3, TOWN_NECROMANCY, 0);	
-		AllowHeroHiringByRaceForAI(PLAYER_3, TOWN_INFERNO, 0);
-		AllowHeroHiringByRaceForAI(PLAYER_3, TOWN_STRONGHOLD, 0);		
+		--Запретить PLAYER_2 and 3 нанимать героев фракций dungeon, necromancy, inferno, stronghold
+		for i, town in { TOWN_DUNGEON, TOWN_NECROMANCY, TOWN_INFERNO, TOWN_STRONGHOLD } do
+			AllowHeroHiringByRaceForAI(PLAYER_2, town, 0);	
+			AllowHeroHiringByRaceForAI(PLAYER_3, town, 0);	
+		end
 		MakeHeroReturnToTavernAfterDeath( "RedHeavenHero01", not nil, 0);
 		MakeHeroReturnToTavernAfterDeath( "RedHeavenHero04", not nil, 0);
 		MakeHeroReturnToTavernAfterDeath( "RedHeavenHero05", not nil, 0);
@@ -1005,7 +986,6 @@ OBJECTIVES = {
 		for i=1, table.length( CIVIL_WAR_UNITS ) do
 			SetObjectEnabled( CIVIL_WAR_UNITS[i], nil );
 		end
-		--Play2DSound( VOICEOVER_MISSION_START );
 		DIFFICULTY[GetDifficulty()]();
 		DenyAIHeroFlee( "Gottai", not nil );
 		startThread( GiveTransferrableArtifacts );
@@ -1018,19 +998,10 @@ OBJECTIVES = {
 			Trigger( OBJECT_CAPTURE_TRIGGER, TOWNS[i], "BurnTownWhenConquered" );
 		end
 		-- Configure Catapult triggers
-		Trigger( OBJECT_TOUCH_TRIGGER, "footman_shooter", "DestroyCatapultIfCommanderIsDead" );
 		for key, value in CATAPULT.TARGETS do
 			Trigger( OBJECT_TOUCH_TRIGGER, key, "CATAPULT.OPERATE" );
 		end
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_windmill", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_center_blue_town", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_bridge_blue1", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_bridge_blue2", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_bridge_red", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_red_town_east", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_megamonster", "CATAPULT.OPERATE" );
-		-- Trigger( OBJECT_TOUCH_TRIGGER, "sw_red_town_west", "CATAPULT.OPERATE" );
-		
+
 		Trigger( OBJECT_TOUCH_TRIGGER, "shipyard", "PlayVoiceOverAboutUnderground" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "voiceover_dungeon", "PlayVoiceOverAboutUnderground" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "voiceover_lootzone", "PlayVoiceOverAboutLootZone");
@@ -1130,6 +1101,17 @@ OBJECTIVES = {
 			end
 			OBJECTIVES.state.catapultHarass[2] = OBJECTIVES.state.catapultHarass[2] + 1;
 			OBJECTIVES.catapultHarass_day = OBJECTIVES.catapultHarass_day + 7;
+		end
+
+		if IsObjectExists( "footman_shooter" ) == nil then
+			PlayVisualEffect( EFFECT_DUST, "damagun_catapult" );
+			local x,y,floor = GetObjectPosition( "damagun_catapult" );
+			sleep(10);
+			RemoveObject( "damagun_catapult" );	
+			sleep(1);
+			SetObjectPosition( "damagun_catapult_razed", x, y, floor );
+			PlayObjectAnimation("damagun_catapult_razed", "death", ONESHOT_STILL );
+			OBJECTIVES.state.catapultHarass[2] = 10;
 		end
 	end,
 	
