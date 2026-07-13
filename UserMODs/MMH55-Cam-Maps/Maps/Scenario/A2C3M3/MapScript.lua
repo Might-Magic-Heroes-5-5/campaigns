@@ -1,132 +1,11 @@
-
----------------------------------------------------------------------------------------------------
---------------------------------- TITLE --------------------------------------------------------
----------------------------------------------------------------------------------------------------
---	Creation Date: 16.02.07
--- 	Author: Arseny Adamov
---	Author e-mail: Arseny.Adamov@nival.com
---	Project Name: H5A2
---	Map Name: A2C3M3
---	Script Description: MapScript
----------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------------------
---------------------------------- CONSTANTS ----------------------------------------------
----------------------------------------------------------------------------------------------------
-
---*-- HEROES SCRIPT NAMES --*--
-HERO_PLAYER = 'Zehir';
-WULFSTAN = 'Wulfstan';
-HANGVUL = 'Hangvul';
-HERO_ROLF = 'Rolf';
-ENEMY_HERO1 = 'Bersy';
-ENEMY_HERO2 = 'Egil';
-ENEMY_HERO3 = 'Ottar';
-
---*-- CREATURES SCRIPT NAMES --*--
-
-
---*-- OBJECTS SCRIPT NAMES --*--
-OBJECT_HOME_TOWN = 'Mutazz';
-OBJECT_WULFSTAN_TOWN = 'Kolvard';
-OBJECT_SUB_GATE_EXIT_HOME = 'Sub_gate_exit_home';
-OBJECT_SUB_GATE_EXIT_AI = 'Sub_gate_exit_ai';
-OBJECT_ONE_WAY_TELEPORT_AI = 'One_way_teleport_ai';
-OBJECT_TELEPORT_TO_DRAGON = 'Teleport_to_Dragon';
-
-PATH = "/Maps/Scenario/A2C3M3/";
-
--- Adventure map scenes
-ADVMAPSCENE_MISSION_START = 0;
-ADVMAPSCENE_MEET_ROLF = 1;
-
--- VoiceOvers
-
-VOICEOVER_ZEHIR_APPROACH_EXIT =         "/Maps/Scenario/A2C3M3/C3M3_VO2_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_ZEHIR_GOES_GROUND  =          "/Maps/Scenario/A2C3M3/C3M3_VO3_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_ZEHIR_FINDS_KEY =             "/Maps/Scenario/A2C3M3/C3M3_VO5_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_ZEHIR_APPROACH_BORDER_GUARD = "/Maps/Scenario/A2C3M3/C3M3_VO4_Zehir_01sound.xdb#xpointer(/Sound)";
-
-EFFECT_TOWNPORTAL_END = "/Effects/_(Effect)/Spells/townportal_end.xdb#xpointer(/Effect)";
-
-SCENE_DRAGON_FOUND="";
-
-doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/A2_Zehir/A2_Zehir.lua");
+doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
 
---if GetGameVar( "A2C3M2_ZehirHasGrail" ) == "1" then GiveArtefact( "Zehir", ARTIFACT_GRAAL ); end; -- Выдать игроку грааль, если он оставил его себе в предыдущей миссии
-
-function summon_creatures()
-	if GetDifficulty() == DIFFICULTY_EASY then
-		ZehirCreaturesAdd(CREATURE_RAKSHASA_KSHATRI, 10, MERCURY, 20, 4500);
-	end;
-	if GetDifficulty() == DIFFICULTY_NORMAL then
-		ZehirCreaturesAdd(CREATURE_RAKSHASA_KSHATRI, 8, MERCURY, 20, 4500);
-	end;
-	if GetDifficulty() == DIFFICULTY_HARD then
-		ZehirCreaturesAdd(CREATURE_RAKSHASA_KSHATRI, 6, MERCURY, 20, 4500);
-	end;
-	if GetDifficulty() == DIFFICULTY_HEROIC then
-		ZehirCreaturesAdd(CREATURE_RAKSHASA_KSHATRI, 5, MERCURY, 20, 4500);
-	end;
-	ZehirAbilitiesInit( "Zehir" );
-end;
-
-startThread( summon_creatures );
-
-function move_town()
-	ZehirTownInit("Mutazz");
-	AddTownPoint(27, 48, GROUND, 0, "Checker_place_for_town", 20000, "Get_out")
-end;
-
-startThread( move_town );
----------------------------------------------------------------------------------------------------
-------------------------------- START MAP SETTINGS -----------------------------------
----------------------------------------------------------------------------------------------------
-
---*-- Blocking standard interaction algorythms --*--
---SetObjectEnabled(OBJECT_SUB_GATE_EXIT_HOME, nil);
-SetObjectEnabled(OBJECT_TELEPORT_TO_DRAGON, nil);
-SetObjectEnabled( "BorderGuard", nil );
-
-
-SetPlayerStartResources(PLAYER_2, 200, 200, 50, 100, 50, 50, 900000);
-SetPlayerStartResources(PLAYER_3, 150, 150, 75, 150, 75, 75, 100000);
-
-SetRegionBlocked("Ai_block_zone", 1, PLAYER_2);
-SetRegionBlocked("Ai_block_zone2", 1, PLAYER_2);
-SetRegionBlocked("Ai_block_zone3", 1, PLAYER_2);
-SetRegionBlocked("Ai_block_zone4", 1, PLAYER_2);
-SetRegionBlocked( "teleport_to_wulfstan_town_2", not nil );
-SetRegionBlocked( "Get_out", not nil );
-
-AllowPlayerTavernHero( PLAYER_1, HERO_PLAYER, 1 );
-AllowPlayerTavernHero( PLAYER_1, HERO_ROLF, 0 );
-AllowPlayerTavernHero( PLAYER_2, HERO_ROLF, 0 );
-AllowPlayerTavernHero( PLAYER_3, HERO_ROLF, 0 );
-
-EnableHeroAI( HANGVUL, nil );
-EnableHeroAI( HERO_ROLF, nil );
-
-SetHeroRoleMode( HERO_ROLF, HERO_ROLE_MODE_HERMIT );
-
-SetDisabledObjectMode( OBJECT_SUB_GATE_EXIT_HOME , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_ONE_WAY_TELEPORT_AI , DISABLED_INTERACT );
-SetDisabledObjectMode( OBJECT_TELEPORT_TO_DRAGON , DISABLED_INTERACT );
-SetDisabledObjectMode( "BorderGuard", DISABLED_INTERACT );
-
-AllowPlayerTavernHero( PLAYER_1, HERO_PLAYER, 1 );
-AllowHeroHiringByRaceInTown( OBJECT_HOME_TOWN, -1, 0 );
-AllowHiringOfHeroInTown( OBJECT_HOME_TOWN, HERO_PLAYER, 1 );
-AllowHiringOfHeroInTown( OBJECT_WULFSTAN_TOWN, HERO_PLAYER, 0 );
-
-DenyAIHeroFlee(HERO_PLAYER, not nil);
-DenyAIHeroFlee(WULFSTAN, not nil);
-
-MakeHeroReturnToTavernAfterDeath(HERO_PLAYER, 1, 1 );
-DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes( PLAYER_3, not nil );
-SetPlayerStartResources(PLAYER_3, 100, 100, 100, 100, 100, 100, 100000);
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 function f_artifacts_sets()
 	InitAllSetArtifacts( "A2C3M3", "Zehir" );
@@ -137,220 +16,67 @@ function f_artifacts_sets()
 end
 
 startThread( f_artifacts_sets );
+OBJECT_SUB_GATE_EXIT_AI = 'Sub_gate_exit_ai';
 
-function Z_graal() 
-	if GetGameVar("A2C3M2_ZehirHasGrail") == "1" then
-		GiveArtefact(HERO_PLAYER, ARTIFACT_GRAAL);
-	end;
-end;
-
-startThread( Z_graal );
-
----------------------------------------------------------------------------------------------------
--------------------------------- FUNCTIONS ------------------------------------------------
----------------------------------------------------------------------------------------------------
-
-function f_pri1() --Запускается стартером
-    SetObjectiveState('pri1', OBJECTIVE_ACTIVE, PLAYER_1);
-end;
+function f_init_zehir_abilities()
+	ZehirCreaturesAdd(CREATURE_RAKSHASA_KSHATRI, 12 - diff * 2, MERCURY, 20, 4500);
+	ZehirAbilitiesInit( "Zehir" );
+	ZehirTownInit("Mutazz");
+	AddTownPoint(27, 48, GROUND, 0, "Checker_place_for_town", 20000, "Get_out")
+end
 
 function PlayVoiceoverIfZehirExitUnderground()
-	repeat sleep(1); x,y,floor = GetObjectPosition(HERO_PLAYER); until floor==GROUND;
-	sleep(5);
-	MessageBox("/Maps/Scenario/A2C3M3/message_007.txt", "PlayVoiceOver");
-end;
-
-function PlayVoiceOver()
-	Play2DSound( VOICEOVER_ZEHIR_GOES_GROUND );
-end;
+	local x, y, floor;
+	repeat 
+		sleep(20); 
+		x,y,floor = GetObjectPosition('Zehir'); 
+	until floor == GROUND;
+	MessageBox("/Maps/Scenario/A2C3M3/message_007.txt", "Play2DSound('/Maps/Scenario/A2C3M3/C3M3_VO3_Zehir_01sound.xdb#xpointer(/Sound)')");
+end
 
 function PlayVoiceoverIfZehirHasKey()
-	repeat sleep(1); until HasBorderguardKey( PLAYER_1, RED_KEY )==not nil;
-	sleep(5);
-	Play2DSound( VOICEOVER_ZEHIR_FINDS_KEY );
-end;
+	repeat sleep(20); until HasBorderguardKey( PLAYER_1, RED_KEY )==not nil;
+	Play2DSound( "/Maps/Scenario/A2C3M3/C3M3_VO5_Zehir_01sound.xdb#xpointer(/Sound)" );
+end
 
-function PlayVoiceoverIfZehirNearExit( heroName )
-	if heroName==HERO_PLAYER then
-		Play2DSound( VOICEOVER_ZEHIR_APPROACH_EXIT );
+function PlayVoiceoverIfZehirNearExit( hero )
+	if hero == 'Zehir' then
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Ai_block_zone2", nil );
-	end;
-end;
+		Play2DSound( "/Maps/Scenario/A2C3M3/C3M3_VO2_Zehir_01sound.xdb#xpointer(/Sound)" );
+	end
+end
 
-function PlayVoiceoverIfZehirNearShrine()
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShrineRegion", nil );
-	Play2DSound( VOICEOVER_ZEHIR_APPROACH_BORDER_GUARD );
-end;
+function PlayVoiceoverIfZehirNearShrine( hero )
+	if hero == 'Zehir' then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ShrineRegion", nil );
+		Play2DSound( "/Maps/Scenario/A2C3M3/C3M3_VO4_Zehir_01sound.xdb#xpointer(/Sound)" );
+	end
+end
 
-function f_pri1_success() --Запускается функцией f_win_pre
-    SetObjectiveState("pri1", OBJECTIVE_COMPLETED, PLAYER_1);
-end;
-
-function f_check_fail_hero() --Запускается триггером Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, "f_check_fail_hero") или Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, "f_check_fail_hero") или Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_HOME_TOWN, "f_check_fail_hero");
-	if (IsHeroAlive(HERO_PLAYER) == nil) and ( GetObjectOwner(OBJECT_HOME_TOWN) ~= PLAYER_1 ) then
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, nil);
-		SetObjectiveState("pri2", OBJECTIVE_FAILED, PLAYER_1);
-		SetObjectiveState("pri4", OBJECTIVE_FAILED, PLAYER_1);
-		print ("ready_to_fail");
-		sleep(1);			
-		startThread( f_loose );
-    end;	
-	if	(IsHeroAlive(WULFSTAN) == nil) then
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, nil);
-		SetObjectiveState("pri1", OBJECTIVE_FAILED, PLAYER_1);
-		SetObjectiveState("pri4", OBJECTIVE_FAILED, PLAYER_1);
-		print ("ready_to_fail");
-		sleep(1);		
-		startThread( f_loose );
-	end;	
-	if	(IsHeroAlive(HANGVUL) == nil) then
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, nil);
-		Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-		SetObjectiveState("pri3", OBJECTIVE_FAILED, PLAYER_1);
-		SetObjectiveState("pri4", OBJECTIVE_FAILED, PLAYER_1);
-		print ("ready_to_fail");
-		sleep(1);		
-		startThread( f_loose );
-	end;
-end;
-
---pri2
-function f_pri2() --Запускается стартером
-    SetObjectiveState('pri2', OBJECTIVE_ACTIVE, PLAYER_1);
-end;
-
-function f_pri2_success() --Запускается функцией f_win_pre
-    SetObjectiveState("pri2", OBJECTIVE_COMPLETED, PLAYER_1);
-end;
-
---pri3
-function f_pri3() --Запускается стартером
-    SetObjectiveState('pri3', OBJECTIVE_ACTIVE, PLAYER_1);
-end;
-
-function f_pri3_success() --Запускается функцией f_win_pre
-    SetObjectiveState("pri3", OBJECTIVE_COMPLETED, PLAYER_1);
-end;
-
---pri4
-function f_pri4() --Запускается стартером
-    SetObjectiveState('pri4', OBJECTIVE_ACTIVE, PLAYER_1);
-end;
-
-function f_pri4_success(hero) --Запускается триггером Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_DRAGON, "f_pri4_success");
-	if hero==HERO_PLAYER then
-		if ( GetHeroLevel(HERO_PLAYER) < 25 ) then 
-			f_show_message_008();
-			return not nil 
-		end;
-		print("exp_enough");		
-		if hero == HERO_PLAYER then
-			SetObjectiveState("pri4", OBJECTIVE_COMPLETED, PLAYER_1);
-			f_win_pre();
-			sleep( 2 );
-		elseif hero ~= HERO_PLAYER then
-			sleep( 2 );
-		end;
+function f_AtDwarenDragonGodPortal(hero)
+	if hero == 'Zehir' then
+		OBJECTIVES.state.findDragonGod[2] = 3;
 	else
-		MessageBox(PATH.."MsgBox_OnlyZehirCanEnterGate.txt");
-	end;
-end;
-
-function f_win_pre() --Запускается функцией f_pri4_success
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, nil);
-	Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, nil);
-	f_pri1_success ();
-	f_pri2_success ();	
-	f_pri3_success ();
-	sleep(5);
-	if HasArtefact(HERO_PLAYER, ARTIFACT_GRAAL )==not nil then
-		SetGameVar("A2C3M3_Graal", "1");
-		print ("SetGlobalVar = 1");
-	elseif GetTownBuildingLevel(OBJECT_HOME_TOWN, TOWN_BUILDING_GRAIL)==not nil then
-		SetGameVar("A2C3M3_Graal", "2");
-		print ("SetGlobalVar = 2");
-	end;
-	StartDialogScene("/DialogScenes/A2C3/M3/S1/DialogScene.xdb#xpointer(/DialogScene)", "f_win");	
-end;
-
-function f_win()
-	SaveHeroAllSetArtifactsEquipped( 	"Zehir", "A2C3M3" );
-	SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A2C3M3" );
-	sleep(100);
-	Win();
-end;
-
-function f_loose() --Запускается функциями f_pri1_fail, f_pri2_fail, f_pri3_fail
-	sleep(5);
-	Loose();
-end;
-
-function show_gate_msg_for_hero(hero)
-	if hero == WULFSTAN then
-		startThread( f_show_message_001 );
-	end;
-	if hero == HERO_PLAYER then
-		--sleep(10);
-		--startThread( f_show_message_007 );
-	end;
-	if hero ~= HERO_PLAYER and hero ~= WULFSTAN then
-		startThread( f_show_message_006 );
-	end;
-end;
+		MessageBox("/Maps/Scenario/A2C3M3/MsgBox_OnlyZehirCanEnterGate.txt");
+	end
+end
 
 function f_one_way_teleport_blocked()
-	SetObjectEnabled(OBJECT_ONE_WAY_TELEPORT_AI, nil);
-	startThread( f_show_message_003 );
-	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "About_Block_player_zone", "f_deactivator_one_way_teleport_blocked");
-	Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ONE_WAY_TELEPORT_AI, "f_show_message_003");
+	SetObjectEnabled('One_way_teleport_ai', nil);
+	startThread( MessageBox, "/Maps/Scenario/A2C3M3/message_003.txt" );
+	Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "About_Block_player_zone", "f_deactivator_one_way_teleport_blocked" );
+	Trigger( OBJECT_TOUCH_TRIGGER, 'One_way_teleport_ai', "MessageBox('/Maps/Scenario/A2C3M3/message_003.txt')" );
 end;
 
 function f_deactivator_one_way_teleport_blocked()
 	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "About_Block_player_zone", nil);
-	SetObjectEnabled(OBJECT_ONE_WAY_TELEPORT_AI, not nil);
-end;
+	SetObjectEnabled('One_way_teleport_ai', not nil);
+end
 
-function BlockUndergroundExit( heroName )
-	if heroName == HERO_PLAYER then
-		SetObjectEnabled( OBJECT_SUB_GATE_EXIT_HOME, not nil );
-	else
-		SetObjectEnabled( OBJECT_SUB_GATE_EXIT_HOME, nil );
-	end;
-end;
-
----------------------------------------------------
---*-- CAMERA MOVE FUNCTIONS --*--
----------------------------------------------------
-
-function f_open_fog_start() --Запускается стартером
-	OpenCircleFog(13, 14, 1, 4, 1);
-end;
-
----------------------------------------------------
---*-- MESSAGEBOX FUNCTIONS --*--
----------------------------------------------------
-function f_show_message_001() --Запускается функцией f_check_touch_gate(hero)
-	MessageBox("/Maps/Scenario/A2C3M3/message_001.txt");
-end;
-
-function f_show_message_002() -- Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone2", "f_show_message_002")
+function f_show_message_002()
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone2", nil);
 	MessageBox("/Maps/Scenario/A2C3M3/message_002.txt");
-end;
-
-function f_show_message_003() --Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "About_Block_player_zone", "f_show_message_003") -- ПЕРВОНАЧАЛЬНО! А потом триггером Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_ONE_WAY_TELEPORT_AI, "f_show_message_003"); И функцией f_one_way_teleport_blocked
-	MessageBox("/Maps/Scenario/A2C3M3/message_003.txt");
-end;
-
-function f_show_message_004() --Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Dragon_hall_zone", "f_show_message_004")
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Dragon_hall_zone", nil);
-	OpenCircleFog(16, 78, 1, 4, 1);
-	sleep(2);
-	MoveCamera(16, 78, 1, 30, 1, 3.14, 0, 0, 1);
-	MessageBox("/Maps/Scenario/A2C3M3/message_004.txt");
-end;
+end
 
 function f_show_message_005() --Запускается триггером Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone", "f_show_message_005")
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone", nil);
@@ -358,309 +84,268 @@ function f_show_message_005() --Запускается триггером Trigger(REGION_ENTER_AND_S
 	sleep(2);
 	MoveCamera(77, 67, 1, 30, 1, 0, 0, 0, 1);
 	MessageBox("/Maps/Scenario/A2C3M3/message_005.txt");
-end;
+end
 
-function f_show_message_006() --Запускается функцией f_check_touch_gate(hero)
-	MessageBox("/Maps/Scenario/A2C3M3/message_006.txt");
-end;
-
-function f_show_message_007() --Запускается функцией f_check_touch_gate(hero)
-	MessageBox("/Maps/Scenario/A2C3M3/message_007.txt");
-end;
-
-function f_show_message_008() --Запускается функцией f_pri4_success(hero)
-	MessageBox("/Maps/Scenario/A2C3M3/message_008.txt");
-end;
-
-
-function ShowMessage_ZehirMustFindDragon( heroName )
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Zehir_GateAlert", nil );
-	MessageBox("/Maps/Scenario/A2C3M3/message_007.txt");
-end;
-
-function SubTerrainEntranceInteract( heroName )
-	if heroName==WULFSTAN then
+function SubTerrainEntranceInteract( hero )
+	if hero == 'Wulfstan' then
 		MessageBox("/Maps/Scenario/A2C3M3/message_001.txt");
-	else
-		if heroName~=HERO_PLAYER then
-			MessageBox("/Maps/Scenario/A2C3M3/message_006.txt");
-		end;
-	end;
-end;
----------------------------------------------------
---*-- GAMEPLAY FUNCTIONS --*--
----------------------------------------------------
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	print ("easy");
-	AddHeroCreatures( HERO_PLAYER, CREATURE_ARCH_MAGI, 10 );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_GENIE, 5 );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_RAKSHASA_KSHATRI, 3 );
-end;
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	print ("normal");
-	AddHeroCreatures( HERO_PLAYER, CREATURE_ARCH_MAGI, 7 );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_GENIE, 4 );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_RAKSHASA_KSHATRI, 2 );
-end;
-if GetDifficulty() == DIFFICULTY_HARD then
-	print ("hard");
-	AddHeroCreatures( HERO_PLAYER, CREATURE_ARCH_MAGI, 4 );
-	AddHeroCreatures( HERO_PLAYER, CREATURE_RAKSHASA_KSHATRI, 1 );
-end;
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	print ("heroic");
-end;
-
-function H55_TriggerDaily()
-	difficulty = 0;
-		if (GetDate( DAY ) == 2) then	
-			DeployReserveHero(ENEMY_HERO1, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 3000);
-		end;
-		if (GetDate( DAY ) == 8) then
-			DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 15000);
-		end;
-		if (GetDate( DAY ) == 20) then
-			DeployReserveHero(ENEMY_HERO3, 67, 64, 1);			
-			--Trigger(NEW_DAY_TRIGGER, nil);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 30000);
-			sleep(6);
-			H55_NewDayTrigger = 0;
-			H55_FifNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
-		end;
-end;
-
-function H55_SecTriggerDaily()
-	difficulty = 1;
-		if (GetDate( DAY ) == 2) then	
-			DeployReserveHero(ENEMY_HERO1, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 5000);
-		end;
-		if (GetDate( DAY ) == 8) then
-			DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 20000);
-		end;
-		if (GetDate( DAY ) == 20) then
-			DeployReserveHero(ENEMY_HERO3, 67, 64, 1);			
-			--Trigger(NEW_DAY_TRIGGER, nil);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 50000);
-			sleep(6);
-			H55_SecNewDayTrigger = 0;
-			H55_FifNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
-		end;
-end;
-
-function H55_ThrTriggerDaily()
-	difficulty = 2;
-		if (GetDate( DAY ) == 2) then	
-			DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 30000);
-		end;
-		if (GetDate( DAY ) == 8) then
-			DeployReserveHero(ENEMY_HERO1, 67, 64, 1);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 200000);
-		end;
-		if (GetDate( DAY ) == 20) then
-			DeployReserveHero(ENEMY_HERO2, 67, 64, 1);			
-			--Trigger(NEW_DAY_TRIGGER, nil);
-			sleep(4);
-			ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 300000);
-			sleep(6);
-			H55_ThrNewDayTrigger = 0;
-			H55_FifNewDayTrigger = 1;
-			--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
-		end;
-end;
-
-function H55_FrtTriggerDaily()
-	difficulty = 3;
-	if (GetDate( DAY ) == 2) then	
-		DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-		sleep(4);
-		ChangeHeroStat(ENEMY_HERO2, STAT_EXPERIENCE, 50000);
+	elseif hero ~= 'Zehir' then
+		MessageBox("/Maps/Scenario/A2C3M3/message_006.txt");
 	end
-	if (GetDate( DAY ) == 8) then
-		DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
-		sleep(4);
-		ChangeHeroStat(ENEMY_HERO3, STAT_EXPERIENCE, 70000);
+end
+
+function ShowMessageOnlyZehirCanPass( hero )
+	if hero ~= "Zehir" then
+		MessageBox( "/Maps/Scenario/A2C3M3/MsgBox_OnlyZehirCanEnterGate.txt" );
 	end
-	if (GetDate( DAY ) == 20) then
-		DeployReserveHero(ENEMY_HERO1, 67, 64, 1);			
-		--Trigger(NEW_DAY_TRIGGER, nil);
-		sleep(4);
-		ChangeHeroStat(ENEMY_HERO1, STAT_EXPERIENCE, 400000);
-		sleep(6);
-		H55_FrtNewDayTrigger = 0;
-		H55_FifNewDayTrigger = 1;
-		--Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later");
-	end
-end;
+end
 
-
-
-
-
-function H55_FifTriggerDaily() --Запускается триггером Trigger(NEW_DAY_TRIGGER, "f_born_enemy_heroes_later")
-	if (GetDate( DAY_OF_WEEK ) == 1) and (IsHeroAlive( ENEMY_HERO1 ) ~= not nil) then
-		DeployReserveHero(ENEMY_HERO1, 67, 64, 1);
-	end
-	if (GetDate( DAY_OF_WEEK ) == 3) and (IsHeroAlive( ENEMY_HERO2 ) ~= not nil) then
-		DeployReserveHero(ENEMY_HERO2, 67, 64, 1);
-	end
-	if (GetDate( DAY_OF_WEEK ) == 7) and (IsHeroAlive( ENEMY_HERO3 ) ~= not nil) then
-		DeployReserveHero(ENEMY_HERO3, 67, 64, 1);
-	end
-end;
-
-function DeployRolf()
-	BlockGame();
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "BorderGuard_area", nil );
-	SetObjectPosition( HERO_ROLF, 13, 81, GROUND );
-	sleep(2);
-	StartAdvMapDialog( ADVMAPSCENE_MEET_ROLF );
-	UnblockGame();
-	SetObjectiveState( "pri5", OBJECTIVE_ACTIVE );
-	startThread( prim5_KillRolf_Completed );
-end;
-
-function prim5_KillRolf_Completed()
-	repeat sleep(1); until IsHeroAlive( HERO_ROLF )==nil;
-	SetObjectiveState( "pri5", OBJECTIVE_COMPLETED );
-end;
-
-function ShowMessageWhenZehirExitsUnderground()
-	repeat sleep(1); x,y,floor=GetObjectPosition( HERO_PLAYER ); until floor == GROUND;
-	sleep(5);
-	MessageBox("/Maps/Scenario/A2C3M3/message_007.txt");
-end;
-
-function DeployRolfIfBorderGuardOpened()
-	repeat sleep(1); until IsObjectExists("BorderGuard")==nil;
-	BlockGame();
-	SetObjectPosition( HERO_ROLF, 13, 81, GROUND );
-	sleep(1);
-	StartAdvMapDialog( ADVMAPSCENE_MEET_ROLF );
-	UnblockGame();
-	SetObjectiveState( "pri5", OBJECTIVE_ACTIVE );
-	startThread( prim5_KillRolf_Completed );
-end;
-
-function ShowMessageOnlyZehirCanPass( heroName )
-	if heroName ~= "Zehir" then
-		MessageBox( PATH.."MsgBox_OnlyZehirCanEnterGate.txt" );
-	end;
-end;
-
-function ReturnWulfstanToUnderground()
-	while IsHeroAlive( WULFSTAN )==not nil do
-		repeat 
-			sleep(1); 
-			if IsHeroAlive( WULFSTAN )==not nil then
-				x,y,floor = GetObjectPosition( WULFSTAN );
-			else
-				return
-			end;
-		until floor == GROUND;
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
 		
-		if table.length(GetObjectsInRegion( "teleport_to_wulfstan_town", OBJECT_HERO )) == 0 then
-			reg_x, reg_y = RegionToPoint( "teleport_to_wulfstan_town" );
-		else
-			reg_x, reg_y = RegionToPoint( "teleport_to_wulfstan_town_2" );
-		end;
-		SetObjectPosition( WULFSTAN, reg_x, reg_y, UNDERGROUND );
-		sleep(1);
-		PlayVisualEffect( EFFECT_TOWNPORTAL_END, WULFSTAN );
-	end;
-end;
---*---------------------------------------------------------------------------------------------*--
---*--------------------------- ANIMATIONS AND EFFECTS -------------------------*--
---*---------------------------------------------------------------------------------------------*--
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
 
----------------------------------------------------------------------------------------------------
---------------------------------------- MAIN --------------------------------------------------
----------------------------------------------------------------------------------------------------
+	intro = function()
+		CINEMATICS.playAndWait( 0 );
+	end,
 
---*--- Starting Cutscene  ---*--
-StartAdvMapDialog( ADVMAPSCENE_MISSION_START  );
+	outro = function()
+		StartDialogScene("/DialogScenes/A2C3/M3/S1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,
+	
+	meetRolf = function()
+		BlockGame();
+		SetObjectPosition( 'Rolf', 13, 81, GROUND );
+		CINEMATICS.playAndWait( 1 );
+		UnblockGame();
+	end,
+}
 
---*-- TRIGGERS --*--
-Trigger(PLAYER_REMOVE_HERO_TRIGGER, 1, "f_check_fail_hero");
-Trigger(PLAYER_REMOVE_HERO_TRIGGER, 2, "f_check_fail_hero");
-Trigger(OBJECT_CAPTURE_TRIGGER, OBJECT_HOME_TOWN, "f_check_fail_hero");
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+		AddHeroCreatures( 'Zehir', CREATURE_ARCH_MAGI, 10 );
+		AddHeroCreatures( 'Zehir', CREATURE_GENIE, 5 );
+		AddHeroCreatures( 'Zehir', CREATURE_RAKSHASA_KSHATRI, 3 );
+		print( "normal" );
+	end,
+	
+	[1] = function()
+		diff = 2;
+		AddHeroCreatures( 'Zehir', CREATURE_ARCH_MAGI, 7 );
+		AddHeroCreatures( 'Zehir', CREATURE_GENIE, 4 );
+		AddHeroCreatures( 'Zehir', CREATURE_RAKSHASA_KSHATRI, 2 );
+		print( "hard" );
+	end,
+	
+	[2] = function()
+		diff = 3;
+		AddHeroCreatures( 'Zehir', CREATURE_ARCH_MAGI, 4 );
+		AddHeroCreatures( 'Zehir', CREATURE_RAKSHASA_KSHATRI, 1 );
+		print( "heroic" );
+	end,
+	
+	[3] = function()
+		diff = 4;
+		print( "impossible" );
+	end,
+}
+		
+OBJECTIVES = {
+	state = {
+		isWulfstanAlive = { "pri1", 1 },	-- Wulfstan must stay alive
+		isZehirAlive 	= { "pri2", 1 },	-- Zehir must stay alive
+		isHangvulAlive 	= { "pri3", 1 },	-- Hangvul must stay alive
+		findDragonGod 	= { "pri4", 1 },	-- find the dwarven dragon god of fire
+		defeatRolf 		= { "pri5", 1 },	-- defeat enemy hero Rolf
+		eventManager	= {    "_", 1 },	-- Controls enemy hero deployment
+	},
 
-Trigger(OBJECT_TOUCH_TRIGGER, OBJECT_TELEPORT_TO_DRAGON, "f_pri4_success");
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		if GetGameVar("A2C3M2_ZehirHasGrail") == "1" then
+			GiveArtefact('Zehir', ARTIFACT_GRAAL);
+		end
+		DIFFICULTY[GetDifficulty()]();
+		startThread( f_init_zehir_abilities );
+		SetObjectEnabled('Teleport_to_Dragon', nil);
+		SetDisabledObjectMode( 'Teleport_to_Dragon', DISABLED_INTERACT );
+		Trigger(OBJECT_TOUCH_TRIGGER, 'Teleport_to_Dragon', "f_AtDwarenDragonGodPortal");
+		SetObjectEnabled( "BorderGuard", nil );
+		SetDisabledObjectMode( "BorderGuard", DISABLED_INTERACT );
+		SetPlayerStartResources( PLAYER_2, 200, 200,  50, 100,  50,  50, 900000 );
+		SetPlayerStartResources (PLAYER_3, 100, 100, 100, 100, 100, 100, 100000 );
+		SetRegionBlocked(  "Ai_block_zone", 1, PLAYER_2 );
+		SetRegionBlocked( "Ai_block_zone2", 1, PLAYER_2 );
+		SetRegionBlocked( "Ai_block_zone3", 1, PLAYER_2 );
+		SetRegionBlocked( "Ai_block_zone4", 1, PLAYER_2 );
+		AllowPlayerTavernHero( PLAYER_1, 'Zehir', 1 );
+		AllowPlayerTavernHero( PLAYER_1,  'Rolf', 0 );
+		AllowPlayerTavernHero( PLAYER_2,  'Rolf', 0 );
+		AllowPlayerTavernHero( PLAYER_3,  'Rolf', 0 );
+		EnableHeroAI( 'Rolf', nil );
+		EnableHeroAI( 'Hangvul', nil );
+		SetHeroRoleMode( 'Rolf', HERO_ROLE_MODE_HERMIT );
+		-- Block SubTerrainEntrance for anyone but Zehir
+		SetDisabledObjectMode( 'Sub_gate_exit_home' , DISABLED_INTERACT );
+		Trigger( OBJECT_TOUCH_TRIGGER, 'Sub_gate_exit_home', "SubTerrainEntranceInteract" );
+		SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_ENTER, -1, PLAYER_1, "", 'Sub_gate_exit_home', 0 );
+		SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_EXIT,  -1, PLAYER_1, "", 'Sub_gate_exit_home', 1 );
+		SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_ENTER, -1, PLAYER_1, 'Zehir', 'Sub_gate_exit_home', -1 );
+		SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_EXIT,  -1, PLAYER_1, 'Zehir', 'Sub_gate_exit_home', -1 );
+		SetDisabledObjectMode( 'One_way_teleport_ai' , DISABLED_INTERACT );
+		SetRegionBlocked( "Get_out", not nil ); -- reserve region for Zehir's town
+		AllowHeroHiringByRaceInTown( 'Mutazz', -1, 0 );
+		AllowHiringOfHeroInTown( 'Mutazz', 'Zehir', 1 );
+		AllowHiringOfHeroInTown( 'Kolvard', 'Zehir', 0 );
+		MakeHeroReturnToTavernAfterDeath('Zehir', 1, 1 );
+		DenyAIHeroFlee('Zehir', not nil);
+		DenyAIHeroFlee('Wulfstan', not nil);
+		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes( PLAYER_3, not nil );		
+		CINEMATICS.intro();
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Block_player_zone", "f_one_way_teleport_blocked");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone", "f_show_message_005");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone2", "f_show_message_002");
+		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "ShrineRegion", "PlayVoiceoverIfZehirNearShrine");
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Ai_block_zone2", "PlayVoiceoverIfZehirNearExit" );
+		--Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Dragon_hall_zone", "f_show_message_004");
+		SetRegionAutoObjectEnable( "shrine_blocker", REGION_AUTOACTION_ON_ENTER, -1, PLAYER_1, 'Zehir', "BorderGuard", 1 );
+		SetRegionAutoObjectEnable( "shrine_blocker", REGION_AUTOACTION_ON_EXIT, -1, PLAYER_1, 'Zehir', "BorderGuard", 0 );
+		Trigger( OBJECT_TOUCH_TRIGGER, "BorderGuard", "ShowMessageOnlyZehirCanPass" );
+		startThread( OpenCircleFog, 13, 14, 1, 4, 1 );
+		startThread( PlayVoiceoverIfZehirExitUnderground );
+		startThread( PlayVoiceoverIfZehirHasKey );
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+			
+			if GetObjectiveState("pri1") == OBJECTIVE_FAILED or GetObjectiveState("pri2") == OBJECTIVE_FAILED or GetObjectiveState("pri3") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
 
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Checker", "f_check_teleport_up");
---Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "Unblocker", "f_check_teleport_up_from");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Block_player_zone", "f_one_way_teleport_blocked");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone", "f_show_message_005");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Warning_zone2", "f_show_message_002");
-Trigger(REGION_ENTER_AND_STOP_TRIGGER, "ShrineRegion", "PlayVoiceoverIfZehirNearShrine");
+			if GetObjectiveState("pri4") == OBJECTIVE_COMPLETED then
+				if HasArtefact( 'Zehir', ARTIFACT_GRAAL ) ~= nil then 
+					SetGameVar("A2C3M3_Graal", "1");
+				elseif GetTownBuildingLevel('Mutazz', TOWN_BUILDING_GRAIL) ~= nil then
+					SetGameVar("A2C3M3_Graal", "2");
+				end
+				SaveHeroAllSetArtifactsEquipped( 	"Zehir", "A2C3M3" );
+				SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A2C3M3" );
+				CINEMATICS.outro();
+				sleep(100);
+				Win();
+				return
+			end
+		end
+	end,
+	
+	isWulfstanAlive = function()
+		if OBJECTIVES.state.isWulfstanAlive[2] == 1 then
+			 SetObjectiveState( 'pri1', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.isWulfstanAlive[2] = 2;
+		elseif OBJECTIVES.state.isWulfstanAlive[2] == 2 and IsHeroAlive('Wulfstan') == nil then
+			SetObjectiveState("pri1", OBJECTIVE_FAILED, PLAYER_1);		
+			OBJECTIVES.state.isWulfstanAlive[2] = 11;
+		end
+	end,
+	
+	isZehirAlive = function()
+		if OBJECTIVES.state.isZehirAlive[2] == 1 then
+			SetObjectiveState( 'pri2', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.isZehirAlive[2] = 2;
+		elseif OBJECTIVES.state.isZehirAlive[2] == 2 and IsHeroAlive('Zehir') == nil and GetObjectOwner('Mutazz') ~= PLAYER_1 then
+			SetObjectiveState("pri2", OBJECTIVE_FAILED, PLAYER_1);
+			OBJECTIVES.state.isZehirAlive[2] = 11;
+		end
+	end,
+	
+	isHangvulAlive = function()
+		if OBJECTIVES.state.isHangvulAlive[2] == 1 then
+			SetObjectiveState( 'pri3', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.isHangvulAlive[2] = 2;
+		elseif OBJECTIVES.state.isHangvulAlive[2] == 2 and IsHeroAlive('Hangvul') == nil then
+			SetObjectiveState("pri3", OBJECTIVE_FAILED, PLAYER_1);
+			OBJECTIVES.state.isHangvulAlive[2] = 11;
+		end
+	end,
+	
+	findDragonGod = function()
+		if OBJECTIVES.state.findDragonGod[2] == 1 then
+			SetObjectiveState( 'pri4', OBJECTIVE_ACTIVE, PLAYER_1 );
+			OBJECTIVES.state.findDragonGod[2] = 2;
+		elseif OBJECTIVES.state.findDragonGod[2] == 3 then
+			if GetHeroLevel('Zehir') < 25 then 
+				MessageBox("/Maps/Scenario/A2C3M3/message_008.txt");
+				OBJECTIVES.state.findDragonGod[2] = 2;
+			else
+				SetObjectiveState( "pri4", OBJECTIVE_COMPLETED, PLAYER_1 );
+				OBJECTIVES.state.findDragonGod[2] = 10;
+			end
+		end
+	end,
+	
+	defeatRolf = function()
+		if OBJECTIVES.state.defeatRolf[2] == 1 and IsObjectExists("BorderGuard") == nil then
+			CINEMATICS.meetRolf();
+			SetObjectiveState( "pri5", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.defeatRolf[2] = 2;
+		elseif OBJECTIVES.state.defeatRolf[2] == 2 and IsHeroAlive( 'Rolf' ) == nil then
+			SetObjectiveState( "pri5", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.defeatRolf[2] = 10;
+		end
+	end,
+	
+	eventManager_day = 1,
+	eventManager = function()
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			if OBJECTIVES.state.eventManager[2] == 1 then
+				if OBJECTIVES.date == 2 then
+					DeployReserveHero('Bersy', 67, 64, 1);
+					sleep(20);
+					ChangeHeroStat('Bersy', STAT_EXPERIENCE, diff * 3000 );
+				elseif OBJECTIVES.date == 8 then
+					DeployReserveHero('Egil', 67, 64, 1);
+					sleep(4);
+					ChangeHeroStat('Egil', STAT_EXPERIENCE, diff * 15000 );
+				elseif OBJECTIVES.date >= 20 then
+					DeployReserveHero('Ottar', 67, 64, 1);			
+					sleep(4);
+					ChangeHeroStat('Ottar', STAT_EXPERIENCE, diff * 30000 );
+					sleep(6);
+					OBJECTIVES.state.eventManager[2] = 2;
+				end
+			elseif OBJECTIVES.state.eventManager[2] == 2 then
+				for i, ofender in { { "Bersy", 1 }, { "Egil", 3 }, { "Ottar", 7 }, } do
+					if GetDate( DAY_OF_WEEK ) == ofender[2] and IsHeroAlive( ofender[1] ) == nil then
+						DeployReserveHero( ofender[1], 67, 64, 1);
+					end
+				end
+			end
+			OBJECTIVES.eventManager_day = OBJECTIVES.date;
+		end
+	end,
+}
 
---Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Ai_block_zone2", "BlockGateIfHeroNotZehir" );
-Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Ai_block_zone2", "PlayVoiceoverIfZehirNearExit" );
-Trigger( OBJECT_TOUCH_TRIGGER, OBJECT_SUB_GATE_EXIT_HOME, "SubTerrainEntranceInteract" );
---Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Unblocker", "BlockUndergroundExit" );
---Trigger(REGION_ENTER_AND_STOP_TRIGGER, "Dragon_hall_zone", "f_show_message_004");
-
---Trigger( REGION_ENTER_AND_STOP_TRIGGER, "BorderGuard_area", "DeployRolf" );
-startThread( DeployRolfIfBorderGuardOpened );
---Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Zehir_GateAlert", "ShowMessage_ZehirMustFindDragon");
-
-SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_ENTER, -1, PLAYER_1, "", OBJECT_SUB_GATE_EXIT_HOME, 0 );
-SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_EXIT,  -1, PLAYER_1, "", OBJECT_SUB_GATE_EXIT_HOME, 1 );
-SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_ENTER, -1, PLAYER_1, HERO_PLAYER, OBJECT_SUB_GATE_EXIT_HOME, -1 );
-SetRegionAutoObjectEnable( "check1b", REGION_AUTOACTION_ON_EXIT,  -1, PLAYER_1, HERO_PLAYER, OBJECT_SUB_GATE_EXIT_HOME, -1 );
-
-
-SetRegionAutoObjectEnable( "shrine_blocker", REGION_AUTOACTION_ON_ENTER,  -1, PLAYER_1, HERO_PLAYER, "BorderGuard", 1 );
-SetRegionAutoObjectEnable( "shrine_blocker", REGION_AUTOACTION_ON_EXIT,  -1, PLAYER_1, HERO_PLAYER, "BorderGuard", 0 );
-Trigger( OBJECT_TOUCH_TRIGGER, "BorderGuard", "ShowMessageOnlyZehirCanPass" );
---*-- PRIMARY QUESTS TRIGGERS --*--
-
---*-- SECONDARY QUESTS TRIGGERS --*--
-
---*-- MISC ACTIONS TRIGGERS --*--
-
---*-- GATES TRIGGERS --*--
-
---Starter
-
-if GetDifficulty() == DIFFICULTY_EASY then
-	H55_NewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_easy");
-end;
-if GetDifficulty() == DIFFICULTY_NORMAL then
-	H55_SecNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_normal");
-end;
-if GetDifficulty() == DIFFICULTY_HARD then
-	H55_ThrNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_hard");
-end;
-if GetDifficulty() == DIFFICULTY_HEROIC then
-	H55_FrtNewDayTrigger = 1;
-	--Trigger(NEW_DAY_TRIGGER, "f_difficulty_heroic");
-end;
-
-startThread( f_pri1 );
-startThread( f_pri2 );
-startThread( f_pri3 );
-startThread( f_pri4 );
-startThread( f_open_fog_start );
-startThread( PlayVoiceoverIfZehirExitUnderground );
-startThread( PlayVoiceoverIfZehirHasKey );
-startThread( ReturnWulfstanToUnderground );
---startThread( ShowMessageWhenZehirExitsUnderground );
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
