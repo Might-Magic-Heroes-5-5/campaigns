@@ -93,6 +93,7 @@ function Start_Kujin()
 	ChangeHeroStat( "Gottai", STAT_MOVE_POINTS, 30000 );
 	ChangeHeroStat( "Kujin", STAT_MOVE_POINTS, 30000 );
 	table.inject(OBJECTIVES.isAlive_list, "Gottai" );
+	table.inject(OBJECTIVES.isAlive_list, "Kujin" );
 	MoveHeroRealTime( "Gottai", 146, 51, 1 );
 	sleep( 10 );
 	MoveHeroRealTime( "Kujin", 148, 49, 1 );
@@ -220,7 +221,7 @@ end
 
 function GarrisonSetUp(koef)
     for creatureID = 1, CREATURES_COUNT - 1 do 
-        count = GetObjectCreatures( "inf1", creatureID );
+        local count = GetObjectCreatures( "inf1", creatureID );
         if GetObjectCreatures("inf1", creatureID ) > 2 then
 		   RemoveObjectCreatures("inf1", creatureID, count );
            AddObjectCreatures("inf1", creatureID, count + ( count / 100 * 10) * koef );
