@@ -85,17 +85,7 @@ DIFFICULTY = {
 function f_meetNarxes( hero )
 	if hero == "Zehir" then
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Nraxes", nil );
-		BlockGame();
-		EnableHeroAI( "Razzak", nil );
-		SetObjectRotation( "Razzak", 180 );
-		SetObjectPosition(  "Razzak", 12, 19, GROUND );
-		sleep( 2 );
-		StartAdvMapDialog( 2 );
-		SetObjectPosition( "Razzak", 132, 129, GROUND );
-		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_8, 1 );
-		ZehirAbilitiesInit("Zehir");
-		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 70 - 10 * diff, SULFUR, 5, 1500);
-		UnblockGame();
+		CINEMATICS.meetNarxes();
 	end
 end
 
@@ -306,6 +296,20 @@ CINEMATICS = {
 		PlayVisualEffect( "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)", 'Djinn', 0, 0, 0, 0, 0 );
 		sleep(10);
 		RemoveObject( 'Djinn' );
+	end,
+	
+	meetNarxes = function()
+		BlockGame();
+		EnableHeroAI( "Razzak", nil );
+		SetObjectRotation( "Razzak", 180 );
+		SetObjectPosition(  "Razzak", 12, 19, GROUND );
+		sleep( 20 );
+		CINEMATICS.playAndWait( 2 );
+		SetObjectPosition( "Razzak", 132, 129, GROUND );
+		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes ( PLAYER_8, 1 );
+		ZehirAbilitiesInit("Zehir");
+		ZehirCreaturesAdd( CREATURE_OBSIDIAN_GOLEM, 70 - 10 * diff, SULFUR, 5, 1500);
+		UnblockGame();
 	end,
 	
 	meetAssassins = function()
