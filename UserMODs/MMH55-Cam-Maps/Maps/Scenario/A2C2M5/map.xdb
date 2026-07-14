@@ -1085,8 +1085,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -69612,6 +69612,7 @@
 								<Item>SPELL_STONESKIN</Item>
 								<Item>SPELL_DISPEL</Item>
 								<Item>SPELL_BLOODLUST</Item>
+								<Item>SPELL_EARTHQUAKE</Item>
 							</spellIDs>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
