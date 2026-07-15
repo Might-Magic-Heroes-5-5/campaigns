@@ -7,321 +7,103 @@ while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-ZEHIRTOWN_ENTRANCE_X = 130;
-ZEHIRTOWN_ENTRANCE_Y = 42;
-ADVMAPSCENE_START_COMBAT = 0;
-ADVMAPSCENE_FIRST_CLERIC_JOINED = 2;
-BOSSFIGHT_DEVILS_N = 1+5*GetDifficulty();
-BOSSFIGHT_BALORS_N = 1+7*GetDifficulty();
-BOSSFIGHT_NIGHTMARE_N = 1+10*GetDifficulty();
-BOSSFIGHT_CERBERI_N = 1+40*GetDifficulty();
-BOSSFIGHT_DEMONS_N = 1+60*GetDifficulty();
-BOSSFIGHT_SUCCUBUS_N = 1+20*GetDifficulty();
-BOSSFIGHT_FAMILIAR_N = 1+100*GetDifficulty();
-
-if GetDifficulty() ~= DIFFICULTY_EASY then
-	AddObjectCreatures( "InfernoBoss", CREATURE_ARCHDEVIL, BOSSFIGHT_DEVILS_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_BALOR, BOSSFIGHT_BALORS_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_FRIGHTFUL_NIGHTMARE, BOSSFIGHT_NIGHTMARE_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_CERBERI, BOSSFIGHT_CERBERI_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_HORNED_DEMON, BOSSFIGHT_DEMONS_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_SUCCUBUS, BOSSFIGHT_SUCCUBUS_N );
-	AddObjectCreatures( "InfernoBoss", CREATURE_FAMILIAR, BOSSFIGHT_FAMILIAR_N );
-end;
-
-PATH = "Maps/Scenario/A2C3M2/"; -- Путь к файлам карты
-VOICEOVER_ZEHIR_FOUND_SECOND_CLERIC   = "/Maps/Scenario/A2C3M2/C3M2_VO3_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_ZEHIR_FOUND_THIRD_CLERIC    = "/Maps/Scenario/A2C3M2/C3M2_VO10_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_ZEHIR_COMPLETES_RITE        = "/Maps/Scenario/A2C3M2/C3M2_VO2_Zehir_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_MAIN_INFERNO_TOWN_DESTROYED = "/Maps/Scenario/A2C3M2/C3M2_VO6_Duncan_01sound.xdb#xpointer(/Sound)";
-VOICEOVER_INFERNO_HERO_DEFEATED       = "/Maps/Scenario/A2C3M2/C3M2_VO7_Freyda_01sound.xdb#xpointer(/Sound)";
---VOICEOVER_ZEHIR \Maps\Scenario\A2C3M2\C3M2_VO2_Zehir_01sound.xdb#xpointer(\Sound)
-
--- константы для эффектов
-EFFECT_ARMAGEDDON = "/Effects/_(Effect)/Spells/Armageddon.xdb#xpointer(/Effect)";
-EFFECT_HOLY_WORD = "/Effects/_(Effect)/Spells/HolyWord.xdb#xpointer(/Effect)";
-EFFECT_TELEPORT_START = "/Effects/_(Effect)/Spells/Teleport_Start.xdb#xpointer(/Effect)";
-EFFECT_INFERNO_GATING = "/Effects/_(Effect)/Characters/Gating.xdb#xpointer(/Effect)"
-SOUND_EFFECT_HOLY_WORD = "/Sounds/_(Sound)/Spells/HolyWord_______255.xdb#xpointer(/Sound)";
-SOUND_EFFECT_GATING = "/Sounds/_(Sound)/Spells/SummonOverEnd.xdb#xpointer(/Sound)";
-
--- константы для диалоговых сцен
-SCENE_ZEHIR_COMPLETES_RITE = "/DialogScenes/A2C3/M2/S1/DialogScene.xdb#xpointer(/DialogScene)";
-SCENE_ZEHIR_DUNCAN_FREYDA_DISCUSS = "/DialogScenes/A2C3/M2/S2/DialogScene.xdb#xpointer(/DialogScene)";
-LEVEL1_BORDERS_OPENING_TIME = 21; -- через столько дней после появления Дункана и Фрейды радиус действия АИ будет увеличен до 1-й зоны
-LEVEL2_BORDERS_OPENING_TIME = 42; -- через столько дней после появления Дункана и Фрейды радиус действия АИ будет увеличен до 2-й зоны
-LEVEL3_BORDERS_OPENING_TIME = 84; -- через столько дней после появления Дункана и Фрейды радиус действия АИ будет увеличен до 3-й зоны
-
-RITE_X, RITE_Y = GetObjectPosition( "rite_selection" ); -- координаты места ритуала
-
-print( "MAIN: All constants are defined" );
---------------------------------------------------------------------
------------------ VARIABLES ----------------------------------------
---------------------------------------------------------------------
-SetGameVar( "A2C3M2_ZehirHasGrail", "0");
-SetGameVar( "A2C3M3_Graal", "0");
-
-isZehirReadyCastMegaspell = 0;  -- boolean. Зехир не собрал все компоненты для ритуала = 0, собрал - 1
-dayWhenDuncanAndFreydaDeployed = 0;   -- integer. Переменная для хранения количества дней, прошедших с момента появления Фрейды и Дункана
-clericsCollected = 0; -- integer [1..3]. Увеличивается на 1 каждый раз, как только игрок находит очередного клерика.
-isOkPressed  = 0; -- boolean. При вызове мессаджбокса после нажатия Ok isOkPressed  = 1, Необходима для продолжения выполнения скрипта после мессаджбокса
-isZehirAlreadyLeaveMission = 0;
-isNoPressed = 0;
-isInfernoTownDestroyed = 0;
-infernoBossAlreadyPlaced = 0;
-easterEggCounter=0;
---------------------------------------------------------------------
------------------ INITIAL CONDITIONS -------------------------------
-
 function GiveTransferrableArtifacts()
 	InitAllSetArtifacts( "A2C3M2", "Zehir", "Duncan", "Freyda" );
     LoadHeroAllSetArtifacts( "Zehir", "A2C3M1" );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1, "Zehir");
 end
- -- подключить скрипт перемещения города Зехира и саммона им кричей
 
---стартовые значения ресурсов
-SetPlayerStartResource( PLAYER_1, CRYSTAL, 60 );
-SetPlayerStartResource( PLAYER_1, MERCURY, 20 );
-SetRegionBlocked( "110Region", not nil, PLAYER_1 ); -- Заблокировать регион, в который будет поставлен zealot (ID=110) во время ритуала
-SetRegionBlocked( "10Region", not nil, PLAYER_1); -- Заблокировать регион, в который будет поставлен priest (ID=10) во время ритуала
-SetRegionBlocked( "9Region", not nil, PLAYER_1 ); -- Заблокировать регион, в который будет поставлен cleric (ID=9) во время ритуала
-SetRegionBlocked( "ZehirRegion", not nil, PLAYER_1 ); -- Заблокировать регион, в который будет поставлен Зехир во время ритуала
-SetRegionBlocked( "garrison1", not nil, PLAYER_2 ); 
-SetRegionBlocked( "garrison2", not nil, PLAYER_2 );
-SetRegionBlocked( "level2_border1", not nil, PLAYER_2 ); 
-SetRegionBlocked( "level2_border2", not nil, PLAYER_2 );
-SetRegionBlocked( "level3_border", not nil, PLAYER_2 );
-SetRegionBlocked( "RedHeavenTownBorder", not nil, PLAYER_3 );
-SetRegionBlocked( "landing_zone", not nil, PLAYER_1);
-SetRegionBlocked( "BlockStartRegion1", not nil, PLAYER_1 );
-SetRegionBlocked( "BlockStartRegion2", not nil, PLAYER_1 );
-SetRegionBlocked( "BlockStartRegion3", not nil, PLAYER_1 );
-SetRegionBlocked( "BlockStartRegion4", not nil, PLAYER_1 );
-SetRegionBlocked( "BlockZehirRegion1", not nil, PLAYER_1 );
-SetRegionBlocked( "BlockZehirRegion2", not nil, PLAYER_1 );
-SetObjectEnabled( "main_deamon_town", nil );
-SetObjectEnabled( "secondary_deamon_town", nil );
-SetObjectEnabled( "red_heaven_town", nil );
-SetObjectEnabled( "cleric", nil );
-SetObjectEnabled( "priest", nil );
-SetDisabledObjectMode( "cleric", DISABLED_INTERACT );
-SetDisabledObjectMode( "priest", DISABLED_INTERACT );
-DisableAutoEnterTown( "main_deamon_town", not nil );
-DisableAutoEnterTown( "secondary_deamon_town", not nil );
-EnableHeroAI( "RedHeavenHero03", nil );
-EnableHeroAI( "RedHeavenHero02", nil );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_DUNGEON, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_NECROMANCY, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_STRONGHOLD, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_PRESERVE, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_FORTRESS, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_INFERNO, 0 );
-AllowHeroHiringByRaceInTown( "red_heaven_town", TOWN_ACADEMY, 0 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_7, 0 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_6, 0 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_5, 0 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_4, 0 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_FORT, 1 );
-SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_MAGIC_GUILD, 1 );
-MakeHeroReturnToTavernAfterDeath( "Zehir", 1, 1 );
-SetPlayerHeroesCountNotForHire( PLAYER_1, 2 );
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
+PATH = "Maps/Scenario/A2C3M2/"; -- Путь к файлам карты
+VOICEOVER_ZEHIR_FOUND_SECOND_CLERIC   = "/Maps/Scenario/A2C3M2/C3M2_VO3_Zehir_01sound.xdb#xpointer(/Sound)";
+VOICEOVER_ZEHIR_FOUND_THIRD_CLERIC    = "/Maps/Scenario/A2C3M2/C3M2_VO10_Zehir_01sound.xdb#xpointer(/Sound)";
+VOICEOVER_MAIN_INFERNO_TOWN_DESTROYED = "/Maps/Scenario/A2C3M2/C3M2_VO6_Duncan_01sound.xdb#xpointer(/Sound)";
+VOICEOVER_INFERNO_HERO_DEFEATED       = "/Maps/Scenario/A2C3M2/C3M2_VO7_Freyda_01sound.xdb#xpointer(/Sound)";
+-- MessageBox( PATH.."MsgBox_ZehirGiveGraalFreydaAndDuncan.txt" ); -- unusued message
+
+EFFECT_ARMAGEDDON = "/Effects/_(Effect)/Spells/Armageddon.xdb#xpointer(/Effect)";
+EFFECT_HOLY_WORD = "/Effects/_(Effect)/Spells/HolyWord.xdb#xpointer(/Effect)";
+EFFECT_INFERNO_GATING = "/Effects/_(Effect)/Characters/Gating.xdb#xpointer(/Effect)"
+SOUND_EFFECT_HOLY_WORD = "/Sounds/_(Sound)/Spells/HolyWord_______255.xdb#xpointer(/Sound)";
+SOUND_EFFECT_GATING = "/Sounds/_(Sound)/Spells/SummonOverEnd.xdb#xpointer(/Sound)";
+isOkPressed  = 0;
 
 function ShowReplaceToDeamonCreature( originalCreatureName, deamonCreatureType, quantity )
 	BlockGame();
+	sleep(50);
 	local x,y,floor = GetObjectPosition( originalCreatureName );
 	rotation = 0;
-	if originalCreatureName=="demon_deamon" then
-		rotation = 180;
-	elseif originalCreatureName=="demon_balor" then
-		rotation = 135;
-	elseif originalCreatureName=="demon_devil" then
-		rotation = 315;
-	end;
+	if originalCreatureName == "demon_deamon" then rotation = 180;
+	elseif originalCreatureName=="demon_balor" then rotation = 135;
+	elseif originalCreatureName=="demon_devil" then rotation = 315;
+	end
 	OpenCircleFog( x, y, floor, 5, PLAYER_1 );
-	sleep(2);
 	MoveCamera( x, y, floor, 40, 1, rotation/57, 0, 0, 1 );
-	sleep(10);
+	sleep(15);
 	PlayVisualEffect( EFFECT_INFERNO_GATING, "", "tag", x+0.5, y+0.5, floor );
 	Play2DSound( SOUND_EFFECT_GATING );
-	sleep(5);
+	sleep( GetSoundTimeInSleeps( SOUND_EFFECT_GATING ) / 2.1 );
 	RemoveObject( originalCreatureName );
-	sleep(1);
+	sleep(2);
 	CreateMonster( "deamon", deamonCreatureType, quantity, x, y, floor, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, rotation );
-	sleep(15);
-	UnblockGame();
-end;
-
-------------------------------------------------------------------------
---     Function Name: MoveHeroRealTimeAndReachPoint( heroName, x, y, floor ) 
---     Description: Модифицированная функция MoveHeroRealTime. Герой получает дополнительные move points, чтобы наверняка добежать до цели
-------------------------------------------------------------------------
-function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
-	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
-	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
-	sleep(1);
-	MoveHeroRealTime( heroName, x, y, GROUND );
-end
-
-
-------------------------------------------------------------------------
---     Function Name: StartInitialCombat()
---     Description: Атака вражеского Red Heaven героя в самом начале миссии. 
-------------------------------------------------------------------------
-function StartInitialCombat()
-	local x,y,floor = GetObjectPosition( "Zehir" );
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "InitialCombatResultHandler" );
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "InitialCombatResultHandler" );
-	BlockGame();
-	MoveHeroRealTime( "RedHeavenHero02", x, y, floor );
-	sleep( 40 );
 	UnblockGame();
 end
 
-function ZehirWonInitialCombat()
-	if IsHeroAlive( "Zehir" )==not nil then
-		CreateMonster("tmp_zealot", CREATURE_ZEALOT, 1, 127,40,GROUND,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN,100);
-		BlockGame();
-		sleep(1);
-		UnblockGame();
-		StartAdvMapDialog( ADVMAPSCENE_FIRST_CLERIC_JOINED, "IsOkPressed" );
-		
-		while isOkPressed == 0 do sleep(1); end; -- подождать пока игрок не нажмет Ok
-		isOkPressed = 0;
-		BlockGame();	
-		sleep(1);
-		UnblockGame();
-		RemoveObject( "tmp_zealot" );
-		SetClericOnRitePosition( CREATURE_ZEALOT, "Zehir" );	-- Поставить клерика на место ритуала
-			
-		-- Выдать все задания
-		SetObjectiveState( "Prim1_FindGraal", OBJECTIVE_ACTIVE ); 
-		SetObjectiveState( "prim2_CollectAllClerics", OBJECTIVE_ACTIVE );
-		SetObjectiveState( "prim3_MoveTown", OBJECTIVE_ACTIVE );
-		SetObjectiveState( "prim4_PerformTheRite", OBJECTIVE_ACTIVE );
-		
-		startThread( IsAllClericsCollected ); -- Проверка задания "собрать всех клериков"
-		startThread( IsFlyingTownMoved ); -- Проверка задания "переместить город к месту ритуала"
-		startThread( IsTearOfAshaFound ); -- Проверка задания "найти Tear of Asha"
-	end;
-end;
-
-function ZehirLooseInitialCombat()
-	SetObjectOwner( "ZehirsTown", PLAYER_2 );
-	MoveHeroRealTimeAndReachPoint( "RedHeavenHero02", ZEHIRTOWN_ENTRANCE_X, ZEHIRTOWN_ENTRANCE_Y, GROUND );
-end;
-
-function InitialCombatResultHandler( heroLooser, heroWinner )
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
-	Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, nil );
-	print("InitialCombatResultHandler: Hero looser is", heroLooser );
-	print("InitialCombatResultHandler: Hero winner is", heroWinner );
-	if heroLooser == "Zehir" then
-		startThread( ZehirLooseInitialCombat );
-	else
-		startThread( ZehirWonInitialCombat );
-	end;
-	SetRegionBlocked( "BlockStartRegion1", nil, PLAYER_1 );
-	SetRegionBlocked( "BlockStartRegion2", nil, PLAYER_1 );
-	SetRegionBlocked( "BlockStartRegion3", nil, PLAYER_1 );
-	SetRegionBlocked( "BlockStartRegion4", nil, PLAYER_1 );
-	print("InitialCombatResultHandler: All regions were unblocked for player");
-end;
-
-function IsOkPressed()
-	isOkPressed = 1;
-end;
-
-function IsNoPressed()
-	isNoPressed = 1;
-end;
-
-function IsClericJoined( heroName, objectName )
-	MessageBox( PATH.."MsgBox_ClericGreetings.txt", "IsOkPressed" );
+function IsClericJoined( hero, object )
+	H55c_Message.show( PATH.."MsgBox_ClericGreetings.txt" );
 	
-	while isOkPressed == 0 do sleep(1); end;
-	isOkPressed = 0;
-	
-	if clericsCollected==1 then
+	if OBJECTIVES.getClerics_count == 1 then
 		Play2DSound( VOICEOVER_ZEHIR_FOUND_SECOND_CLERIC );
-	elseif clericsCollected==2 then
+	elseif OBJECTIVES.getClerics_count == 2 then
 		Play2DSound( VOICEOVER_ZEHIR_FOUND_THIRD_CLERIC );
-	end;
+	end
 
-	sleep(1);
-	if objectName == "cleric" then
-		SetClericOnRitePosition( CREATURE_CLERIC, heroName, objectName );
-	else
-		if objectName == "priest" then
-			SetClericOnRitePosition( CREATURE_PRIEST, heroName, objectName );
-		end;
-	end;
-end;
+	if object == "cleric" then
+		SetClericOnRitePosition( CREATURE_CLERIC, hero, object );
+	elseif object == "priest" then
+		SetClericOnRitePosition( CREATURE_PRIEST, hero, object );
+	end
+end
 
 function SetClericOnRitePosition( clericType, heroName, objectName )
 	SetRegionBlocked( clericType.."Region", nil);
-	
+	local RITE_X, RITE_Y = GetObjectPosition( "rite_selection" ); -- координаты места ритуала
 	OpenCircleFog( RITE_X, RITE_Y, GROUND, 8, PLAYER_1 );	
 	MoveCamera( RITE_X, RITE_Y, GROUND, 30, 1, 4, 0, 0, 1 );
-	local hero_x, hero_y, hero_floor = GetObjectPosition( heroName );
-	sleep(8);
-	
-	if clericType == CREATURE_ZEALOT then
-		print("Cleric is zealot");
-		if GetHeroCreatures( "Zehir", CREATURE_ZEALOT ) > 0 then
-			N_Creatures = GetHeroCreatures( "Zehir", clericType );
-			RemoveHeroCreatures( "Zehir", CREATURE_ZEALOT, 10000);
-			print("All clerics are removed");
-		else
-			N_Creatures = 1;
-		end;
-	else
-		N_Creatures = GetObjectCreatures( objectName, clericType );
-		Trigger( OBJECT_TOUCH_TRIGGER, objectName, nil );
-		sleep(1);
-		RemoveObject( objectName );
-	end;
-	
-	local x,y = RegionToPoint( clericType.."Region" );
-	clericName = "cleric"..clericType;
+	RemoveObject( objectName );
+	sleep(20);
 	if clericType == CREATURE_ZEALOT then angle = 225;
 	elseif clericType == CREATURE_CLERIC then angle = 135;
 	elseif clericType == CREATURE_PRIEST then angle = 45;
-	end;
-	CreateMonster( clericName, clericType, N_Creatures, x,y, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, angle );
-	sleep(1);
+	end
+	local x,y = RegionToPoint( clericType.."Region" );
+	local clericName = "cleric"..clericType;
+	CreateMonster( clericName, clericType, 1, x,y, GROUND, MONSTER_MOOD_FRIENDLY, MONSTER_COURAGE_ALWAYS_JOIN, angle );
+	sleep(10);
 	SetObjectEnabled( clericName, nil );
 	SetDisabledObjectMode( clericName, DISABLED_INTERACT );
 	Trigger( OBJECT_TOUCH_TRIGGER, clericName, "IsClericTouched");
 	PlayObjectAnimation( clericName, "happy" ,ONESHOT );
-	sleep(15);
-	
-	MoveCamera( hero_x, hero_y, hero_floor, 70, 1, 4, 0, 0, 1 );
-	clericsCollected = clericsCollected + 1;
-	print( "SetClericOnRitePosition: ", clericsCollected," clerics collected.");
-end;
+	sleep(100);
+	local hero_x, hero_y, hero_floor = GetObjectPosition( heroName );
+	MoveCamera( hero_x, hero_y, hero_floor, 70, 1, 0, 0, 0, 1 );
+	OBJECTIVES.getClerics_count = OBJECTIVES.getClerics_count + 1;
+end
 
-function IsClericTouched( heroName )
-	if heroName == "Zehir" then
-		if clericsCollected < 3 then
-			MessageBox( PATH.."MsgBox_ClericAnswer.txt" );
-		else
-			if HasArtefact( heroName, ARTIFACT_GRAAL ) == nil then
-				MessageBox( PATH.."MsgBox_ClericRequestArtifact.txt" );
-			else
-				if GetObjectiveState( "prim3_MoveTown" ) == nil then
-					MessageBox( PATH.."MsgBox_ClericNeedTown.txt" );
-				else
-					MessageBox( PATH.."MsgBox_ClericAllConditionsCompleted.txt");
-				end;
-			end;
-		end;
-	else
+function IsClericTouched( hero )
+	if hero ~= "Zehir" then
 		MessageBox( PATH.."MsgBox_ClericNeedGotai.txt" );
-	end;
-end;
+	elseif OBJECTIVES.getClerics_count < 3 then
+		MessageBox( PATH.."MsgBox_ClericAnswer.txt" );
+	elseif HasArtefact( hero, ARTIFACT_GRAAL ) == nil then
+		MessageBox( PATH.."MsgBox_ClericRequestArtifact.txt" );
+	elseif GetObjectiveState( "prim3_MoveTown" ) ~= OBJECTIVE_COMPLETED then
+		MessageBox( PATH.."MsgBox_ClericNeedTown.txt" );
+	else
+		MessageBox( PATH.."MsgBox_ClericAllConditionsCompleted.txt");
+	end
+end
 
 function IsAllRequiredElementsCollected( heroName )
 	if heroName ~= "Zehir" then
@@ -329,566 +111,401 @@ function IsAllRequiredElementsCollected( heroName )
 	elseif HasArtefact( "Zehir", ARTIFACT_GRAAL ) == nil then
 		MessageBox( PATH.."MsgBox_ZehirHaveNotGraal.txt" );
 	elseif GetObjectiveState( "prim2_CollectAllClerics" ) ~= OBJECTIVE_COMPLETED then
-		MessageBox( PATH.."MsgBox_NotAllClericsCollected.txt" );
+		MessageBox( PATH.."MsgBox_NotAllOBJECTIVES.getClerics_count.txt" );
 	elseif GetObjectiveState( "prim3_MoveTown" ) ~= OBJECTIVE_COMPLETED then
 		MessageBox( PATH.."MsgBox_TownNotMoved.txt" );
-	elseif infernoBossAlreadyPlaced == 0 then
-		infernoBossAlreadyPlaced=1;
-		startThread( PlaceInfernoBoss );
+	elseif OBJECTIVES.state.performRite[2] == 2 and IsObjectExists( "InfernoBoss" ) ~= nil then
+		OBJECTIVES.state.performRite[2] = 3;
 	elseif IsObjectExists( "InfernoBoss" ) ~= nil then
 		MessageBox( PATH.."InfernoBossNotDefeated.txt" );
 	else
-		Trigger( OBJECT_TOUCH_TRIGGER, "rite_invisible_building", nil );
-		startThread( StartRitualIfInfernoBossDefeated )
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "rite_area", nil );
+		OBJECTIVES.state.performRite[2] = 6;
 	end
 end
 
-function PlaceInfernoBoss()
-	BlockGame();
-	local x, y = RegionToPoint( "ZehirRegion" );
-	PlayVisualEffect( EFFECT_INFERNO_GATING, "", "tag", x+0.5, y+0.5, GROUND );
-	Play2DSound( SOUND_EFFECT_GATING );
-	sleep(5);
-	SetObjectPosition( "InfernoBoss", x, y, GROUND );
-	sleep(1);
-	SetObjectRotation( "InfernoBoss", 315 );
-	SetRegionBlocked("ZehirRegion", nil);
-	--CreateMonster( "inferno_boss", CREATURE_ARCHDEVIL, BOSSFIGHT_DEVILS_N, x, y, GROUND, MONSTER_MOOD_AGGRESSIVE, MONSTER_COURAGE_ALWAYS_FIGHT, 315 );
-	sleep(1);
-	PlayObjectAnimation( "InfernoBoss", "stir00", ONESHOT );
-	sleep(20);
-	MessageBox( PATH.."RitualPlaceBossFight.txt" );
-	startThread( PlayInfernoBossAnimations );
-	startThread( BlockRegionWhenBossDefeated );
-	
---EASY Devils 11,      HEROIC Devils 20 
---     Balors 15,             Balors 27
---  Nightmare 20,		   Nightmare 35
---    Cerberi 40,            Cerberi 100
---     Demons 70,             Demons 175
---   Succubus 30,           Succubus 60 
-
-	UnblockGame();
-end;
-
 function PlayInfernoBossAnimations()
-	while IsObjectExists( "InfernoBoss" )==not nil do
+	while IsObjectExists( "InfernoBoss" ) ~= nil do
 		PlayObjectAnimation( "InfernoBoss", "stir00", ONESHOT );
-		sleep(50);
-		if IsObjectExists( "InfernoBoss" )==not nil then
+		sleep(150);
+		if IsObjectExists( "InfernoBoss" ) ~= nil then
 			PlayObjectAnimation( "InfernoBoss", "happy", ONESHOT );
-		end;
-		sleep(30);
-	end;
-end;
-
-function BlockRegionWhenBossDefeated()
-	repeat sleep(1); until IsObjectExists( "InfernoBoss" )==nil;
-	SetRegionBlocked( "ZehirRegion", not nil );
-	MessageBox( PATH.."MsgBox_GoToTheCenter.txt" );
-end;
-
-function StartRitualIfInfernoBossDefeated()
-	BlockGame();
-	SetRegionBlocked( "ZehirRegion", nil );
-	sleep(5);
-	ChangeHeroStat( "Zehir", STAT_MOVE_POINTS, 100 );
-	MoveHeroRealTimeAndReachPoint( "Zehir", RegionToPoint( "ZehirRegion" ) );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ZehirRegion", "IsZehirReady" );
-	while isZehirReadyCastMegaspell == 0 do sleep(5); end;
-	sleep(1);
-	SetObjectRotation( "Zehir", 315);	
-	sleep(1);
-	PlayObjectAnimation( "cleric"..110, "cast", ONESHOT );
-	PlayObjectAnimation( "cleric"..10, "cast", ONESHOT );
-	PlayObjectAnimation( "cleric"..9, "cast", ONESHOT );
-	sleep(10);
-	local x_r,y_r = RegionToPoint("rite_area" );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'megaboom', x_r,y_r, 7, 0, GROUND );
-	Play2DSound( SOUND_EFFECT_HOLY_WORD );
-	sleep(20);
-	ShowDeamonTransformation();
-	sleep(1);
-	SetObjectiveState( "prim4_PerformTheRite", OBJECTIVE_COMPLETED );
-	sleep(15);
-	UnblockGame();
-	startThread( DeployDuncanAndFreyda );
-end;
-
-function IsZehirReady()
-	isZehirReadyCastMegaspell = 1;
-end;
-
-function IsAllClericsCollected()
-	while  clericsCollected	< 3 do sleep(5) end;
-	SetObjectiveState( "prim2_CollectAllClerics", OBJECTIVE_COMPLETED );
-end;
-
-function IsFlyingTownMoved()
-	repeat
-		town_x = GetObjectPosition("ZehirsTown"); sleep(5);
-	until town_x == 92;
-	SetObjectiveState( "prim3_MoveTown", OBJECTIVE_COMPLETED );
-end;
+		end
+		sleep(150);
+	end
+end
 
 function IsPlayerHeroHasArtifact( player, artifact )
 	currentPlayerHeroes = GetPlayerHeroes( player );
 	for i=0, table.length( currentPlayerHeroes )-1 do
 		if HasArtefact( currentPlayerHeroes[i], artifact ) == not nil then
 			return not nil;
-		end;
-	end;
+		end
+	end
 	return nil;
-end;
+end
 
-checkGraalLostMode = 0;
-function IsTearOfAshaFound()
-	while IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) == nil do sleep(4); end;
+function SetupDemonHero()
+	GiveExp("Grok", 100000 + 250000 * GetDifficulty());
+	AddHeroCreatures("Grok", CREATURE_ARCH_DEMON, 1 + 10 * GetDifficulty() );
+	AddHeroCreatures("Grok", CREATURE_PIT_SPAWN, 1 + 20 * GetDifficulty() );
+	AddHeroCreatures("Grok", CREATURE_HORNED_LEAPER, 1 + 175 * GetDifficulty() );
+	AddHeroCreatures("Grok", CREATURE_SUCCUBUS_SEDUCER, 1 + 50 * GetDifficulty() );
+	AddHeroCreatures("Grok", CREATURE_QUASIT, 1 + 500 * GetDifficulty() );
+	AddHeroCreatures("Grok", CREATURE_NIGHTMARE, 1 + 33 * GetDifficulty() );
+	ChangeHeroStat ("Grok", STAT_ATTACK, 1 + 5 * GetDifficulty());
+	ChangeHeroStat ("Grok", STAT_DEFENCE, 1 + 5 * GetDifficulty());
+	ChangeHeroStat ("Grok", STAT_SPELL_POWER, 1 + 5 * GetDifficulty());
+	ChangeHeroStat ("Grok", STAT_KNOWLEDGE, 1 + 5 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_INFERNAL_SUCCUBUS, 1 + 100 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_SUCCUBUS, 1 + 150 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_SUCCUBUS_SEDUCER, 1 + 100 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_DEMON, 1 + 300 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_FAMILIAR, 1 + 400 * GetDifficulty());
+	AddObjectCreatures("rightGarrison", CREATURE_HELL_HOUND, 1 + 300 * GetDifficulty());	
+	AddObjectCreatures("rightGarrison", CREATURE_PIT_FIEND, 5 + 30 * GetDifficulty());	
+	AddObjectCreatures("leftGarrison", CREATURE_ARCHDEVIL, 1 + 15 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_PIT_SPAWN, 1 + 20 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_BALOR, 1 + 18 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_QUASIT, 1 + 200 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_NIGHTMARE, 1 + 50 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_FRIGHTFUL_NIGHTMARE, 1 + 45 * GetDifficulty());
+	AddObjectCreatures("leftGarrison", CREATURE_SUCCUBUS_SEDUCER, 1 + 50 * GetDifficulty());
+end
 
-	print("IsTearOfAshaFound:  Graal was found!");
-	startThread( CheckGraalLost ); -- запустить проверку, не погиб ли герой с артефактом (если погиб - поражение)
-
-	if HasArtefact( "Zehir", ARTIFACT_GRAAL ) == nil then                            -- Если артефакт нашел не Зехир, то 
-		checkGraalLostMode = 1;
-		SetObjectiveState( "prim6_GiveGraalToZehir", OBJECTIVE_ACTIVE );                -- выдать задание "Передать артефакт Зехиру"
-		while HasArtefact( "Zehir", ARTIFACT_GRAAL ) == nil do sleep(1); end;    -- Как только артефакт окажется у Зехира
-		SetObjectiveState( "prim6_GiveGraalToZehir", OBJECTIVE_COMPLETED );             -- закомплитить задание "Передать артефакт Зехиру"
-	end;
-
-	checkGraalLostMode = 0;
-	sleep(1);
-	RemoveArtefact( "Zehir", ARTIFACT_GRAAL );  -- удалить артефакт, чтобы выдать снова но с параметром untransferable
-	GiveArtefact( "Zehir", ARTIFACT_GRAAL, 1 ); -- запретить Зехиру передавать артефакт другим героям. (Set artifact untransferable)
-
-	SetObjectiveState( "Prim1_FindGraal", OBJECTIVE_COMPLETED ); 
-	checkGraalLostMode = 2;
-end;
-
-function CheckGraalLost()
-	while 1 do
-		-- ждём пока грааль у игрока есть
-		sleep(1);
-		while checkGraalLostMode == 0 or IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) == not nil do sleep(1); end;
-
-		-- если его нет и он не был передан Зехиру, то поражение (игрок потерял грааль)
-
-		if checkGraalLostMode == 1 and GetObjectiveState( "prim6_GiveGraalToZehir" ) ~= OBJECTIVE_COMPLETED then
-			print("IsGraalLost: Player has lost the Graal on road to Zehir :(" );
-			MessageBox( PATH.."HeroLostGraal.txt" );
-			sleep(1);
-			Loose( PLAYER_1 );
-			return
-		end;
-
-		if checkGraalLostMode == 2 and GetObjectiveState( "prim4_PerformTheRite" ) ~= OBJECTIVE_COMPLETED then
-			print("IsGraalLost: Player has lost the Graal before ritual?" );
-			MessageBox( PATH.."HeroLostGraal.txt" );
-			sleep(1);
-			Loose( PLAYER_1 );
-			return
-		end;
-
-		-- грааля нет, возможно задание выполнено
-
-		-- ждём пока грааль у игрока вдруг не появится (на всякий пожарный случай)
-		sleep(1);
-		while IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) ~= not nil do sleep(1); end;
-	end;
-end;
-
-function ShowDeamonTransformation()
-	BlockGame();
-	print("ShowDeamonTransformation: Game blocked");
-	OpenCircleFog( 97, 88, GROUND, 16 , PLAYER_1 );
-	MoveCamera( 88,84,GROUND,70,1,4,0,0,1 );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 97, 97, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 103, 92, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 103, 85, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 89, 91, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 89, 81, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 96, 71, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 81, 82, 10, 0, GROUND );
-	Play2DSound( SOUND_EFFECT_HOLY_WORD );
-	sleep(22);
-	RemoveObject("rock1");
-	RemoveObject("rock2");
-	RemoveObject("rock3");
-	RemoveObject("rock4");
-	RemoveObject("rock5");
-	RemoveObject("rock6");
-	RemoveObject("rock7");
-	RemoveObject("rock8");
-	RemoveObject("rock9");
-	ReplaceDwelling( "daemon_level3_dwelling1", TOWN_INFERNO );
-	ReplaceDwelling( "daemon_level3_dwelling2", TOWN_INFERNO );
-	ReplaceDwelling( "daemon_level2_dwelling1", TOWN_INFERNO );
-	ReplaceDwelling( "daemon_level2_dwelling2", TOWN_INFERNO );
-	ReplaceDwelling( "deamon_military_post1", TOWN_INFERNO );
-	ReplaceDwelling( "deamon_military_post2", TOWN_INFERNO );
-	TransformTown("main_deamon_town", TOWN_INFERNO );
-	sleep(1);
-	Play2DSound( VOICEOVER_ZEHIR_COMPLETES_RITE );
-	BuildInfernoTown();
-	local x,y,floor = GetObjectPosition("RedHeavenHero03");
-	sleep(1);
-	RemoveObject("RedHeavenHero03");
-	sleep(1);
-	DeployReserveHero( "Grok", x, y, floor );
-	sleep(25);
-	OpenCircleFog( 11, 119, GROUND, 12 , PLAYER_1 );
-	MoveCamera( 11,119, GROUND, 70, 1,4,0,0,1 );
-	sleep(5);
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 11, 119, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 18, 114, 10, 0, GROUND );
-	PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 19, 121, 10, 0, GROUND );
-	Play2DSound( SOUND_EFFECT_HOLY_WORD );
-	sleep(22);
-	ReplaceDwelling( "daemon_level3_dwelling1_2", TOWN_INFERNO );
-	ReplaceDwelling( "daemon_level1_dwelling1", TOWN_INFERNO );
-	TransformTown("secondary_deamon_town", TOWN_INFERNO );
-	sleep(2);
-	UpgradeTownBuilding( "secondary_deamon_town", TOWN_BUILDING_TAVERN );
-	UpgradeTownBuilding( "red_heaven_town", TOWN_BUILDING_TAVERN );
-	DisableAutoEnterTown( "main_deamon_town", not nil );
-	DisableAutoEnterTown( "secondary_deamon_town", not nil );
-	startThread( PlayVoiceoverWhenVeyerDefeated );
-	startThread( PlayVoiceoverWhenMainInfernoTownDestroyed );
-	UnblockGame();
-	ShowReplaceToDeamonCreature( "demon_deamon", CREATURE_HORNED_LEAPER, 100 );
-	ShowReplaceToDeamonCreature( "demon_balor", CREATURE_PIT_SPAWN, 15 );
-	ShowReplaceToDeamonCreature( "demon_devil", CREATURE_ARCH_DEMON, 10);
-	print("ShowDeamonTransformation: Game unblocked");
-end;
-
-function BuildInfernoTown()
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_TOWN_HALL );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_BLACKSMITH );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MAGIC_GUILD );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MAGIC_GUILD );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_1 );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_2 );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MARKETPLACE );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_1 );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_2 );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_FORT );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_FORT );
-	UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_TAVERN );
-end;
-
-function RemoveZehirAndHisTown()
-	isZehirAlreadyLeaveMission = 1;
-	Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "ZehirsExit", nil );
-	MakeHeroReturnToTavernAfterDeath( "Zehir", 0, 0 );
-	SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M2" );	
-	sleep(4);
-	RemoveObject( "Zehir" );
+function RemoveZehirAndHisTown(hero)
+	if hero == "Zehir" then
+		MakeHeroReturnToTavernAfterDeath( "Zehir", 0, 0 );
+		SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M2" );	
+		sleep(20);
+		RemoveObject( "Zehir" );
+		CurrentPlayerHeroes = GetPlayerHeroes( PLAYER_1 );
+		for i=0, table.length(CurrentPlayerHeroes)-1 do
+			if CurrentPlayerHeroes[i] ~= "Duncan" and CurrentPlayerHeroes[i] ~= "Freyda" then
+				pcall ( RemoveObject, CurrentPlayerHeroes[i] );
+			end
+		end
 	
-	CurrentPlayerHeroes=GetPlayerHeroes( PLAYER_1 );
-	for i=1, table.length(CurrentPlayerHeroes)-1 do
-		if CurrentPlayerHeroes[i]~="Duncan" and CurrentPlayerHeroes[i]~="Freyda" then
-			RemoveObject( CurrentPlayerHeroes[i] );
-			print("RemoveZehirAndHisTown: hero "..CurrentPlayerHeroes[i].." was removed from map.");
-		end;
-	end;
-	
-	local town_x, town_y = GetObjectPosition( "ZehirsTown" );
-	sleep(1);
-	
-	MoveCamera( town_x, town_y, GROUND, 50, 1,4, 0, 0, 1 );
-	sleep(5);
-	ZehirMoveTownPlayEffect( "ZehirsTown" );
-	sleep(1);
-	RemoveObject( "ZehirsTown" );
-	DisableCameraFollowHeroes( 0, 0, 0 );
-	print( "RemoveZehirAndHisTown: Zehir and his town were removed" );
-end;
+		local town_x, town_y = GetObjectPosition( "ZehirsTown" );
+		MoveCamera( town_x, town_y, GROUND, 50, 1,4, 0, 0, 1 );
+		sleep(20);
+		ZehirMoveTownPlayEffect( "ZehirsTown" );
+		RemoveObject( "ZehirsTown" );
+		DisableCameraFollowHeroes( 0, 0, 0 );
+	end
+end
 
-function DeployDuncanAndFreyda()	
-	local zehir_x, zehir_y = GetObjectPosition( "Zehir" );
-	BlockGame();
-	print("DeployDuncanAndFreyda: Game is blocked");
-	DisableCameraFollowHeroes( 1, 0, 0 );
-	MoveCamera( zehir_x, zehir_y, GROUND, 50, 1,4, 0, 0, 1 );
-	sleep(3);
-	SetObjectPosition( "Zehir", 2, 70, GROUND );
-	sleep(5);
-	DeployReserveHero( "Duncan", 4, 68, GROUND );
-	DeployReserveHero( "Freyda", 5, 70, GROUND );
-	sleep(20);
-	H55_CamFixTooManySkills( PLAYER_1, "Duncan" );
-	H55_CamFixTooManySkills( PLAYER_1, "Freyda" );
-	sleep(1);
-	SetObjectRotation( "Duncan", 90 );
-	SetObjectRotation( "Freyda", 90 );
-	sleep(1);
-	UnreserveHero( "Duncan" );
-	UnreserveHero( "Freyda" );
-	MoveCamera( 2, 70, GROUND, 50, 1,4, 0, 0, 1 );
-	
-	print("DeployDuncanAndFreyda: Duncan and Freyda have been deployed");
-	UnblockGame();	
-	--MessageBox( PATH.."MsgBox_ZehirGiveGraalFreydaAndDuncan.txt", "IsOkPressed" );
-	StartDialogScene( SCENE_ZEHIR_COMPLETES_RITE, "SetDandFMissionPartSettings" );
-end;
+function GiveGrailYes()
+	GiveArtefact( "Duncan", ARTIFACT_GRAAL );
+	isOkPressed = 1;
+end
 
-function SetDandFMissionPartSettings()	
-	QuestionBox( PATH.."MsgBox_GiveGraalZehirOrDuncan.txt", "IsOkPressed", "IsNoPressed" );
-	BlockGame();
-	sleep(3);
-	while isOkPressed == 0 and isNoPressed == 0 do sleep(1); end; 
-	if isOkPressed == 1 then
-		isOkPressed = 0;
-		GiveArtefact( "Duncan", ARTIFACT_GRAAL );
-	else
-		if isNoPressed == 1 then
-			isNoPressed = 0;
-			SetGameVar( "A2C3M2_ZehirHasGrail", "1" );
-		end;
-	end;
-	
-	SetRegionBlocked( "BlockZehirRegion1", nil, PLAYER_1 );
-	SetRegionBlocked( "BlockZehirRegion2", nil, PLAYER_1 );
-	
-	Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "ZehirsExit", "RemoveZehirAndHisTown");	
-	ChangeHeroStat( "Zehir", STAT_MOVE_POINTS, 2000 );
-	sleep(1);
-	MoveHeroRealTime( "Zehir", 1, 69, GROUND );
-	
-	UnblockGame();
-	print( "DeployDuncanAndFreyda: Game is unblocked" );
-	
-	SetObjectiveState( "prim5_CaptureDeamonMainTown", OBJECTIVE_ACTIVE );
-	SetObjectiveState( "sec1_CaptureDeamonSecondaryTown", OBJECTIVE_ACTIVE );
-	SetObjectiveState( "prim7_FreydaMustSurvive", OBJECTIVE_ACTIVE );
-	SetObjectiveState( "DuncanMustSurvive", OBJECTIVE_ACTIVE );
-	startThread( HeroMustSurvive, "Freyda" );
-	startThread( HeroMustSurvive, "Duncan" );
-	
-	Trigger( OBJECT_CAPTURE_TRIGGER, "main_deamon_town", "IsMainDeamonTownCaptured" );
-	Trigger( OBJECT_CAPTURE_TRIGGER, "secondary_deamon_town", "IsSecondaryDeamonTownCaptured" );
-	
-	SetObjectEnabled( "secondary_deamon_town", not nil );
-	SetObjectEnabled( "main_deamon_town", not nil );
-	SetObjectEnabled( "red_heaven_town", not nil );
-	
-	dayWhenDuncanAndFreydaDeployed = GetDate( DAY );
-	
-	H55_NewDayTrigger = 1;
-	--Trigger( NEW_DAY_TRIGGER, "TimeToOpenBordersToAI" );
-	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "RedHeavenTownBorder", "RedHeavenGreatings" );
-	
-	SetObjectOwner( "archer_tower1", PLAYER_3 );
-	SetObjectOwner( "archer_tower2", PLAYER_3 );
-	SetObjectOwner( "footman_tower1", PLAYER_3 );
-	SetObjectOwner( "footman_tower2", PLAYER_3 );
-	SetObjectOwner( "military_post1", PLAYER_3 );
-	SetObjectOwner( "military_post2", PLAYER_3 );
-	SetObjectOwner( "red_heaven_town", PLAYER_3 );
-	SetObjectOwner( "red_heaven_garrison", PLAYER_3 );
-	UpgradeTownBuilding( "red_heaven_town", TOWN_BUILDING_TAVERN );
-	UpgradeTownBuilding( "secondary_deamon_town", TOWN_BUILDING_TAVERN );
-	DenyAIHeroFlee( "Duncan", not nil );
-	DenyAIHeroFlee( "Freyda", not nil );
-	
-	print("DeployDuncanAndFreyda: All heaven dwellings were given to PLAYER_3");
-	
-	RH_heroes = GetObjectsInRegion( "RedHeavenRegion", OBJECT_HERO );
-	if table.length( RH_heroes ) > 0 then
-		for i=0, table.length( RH_heroes )-1 do
-			RemoveObject( RH_heroes[i] );
-		end;
-	end;
-	print("DeployDuncanAndFreyda: All Heroes in RH_region have been removed");
-end;
+function GiveGrailNo()
+	SetGameVar( "A2C3M2_ZehirHasGrail", "1" );
+	isOkPressed = 1;
+end
 
-function HeroMustSurvive( heroName )
-	repeat sleep(20); until IsHeroAlive( heroName )==nil;
-	print( "HeroMustSurvive: ",heroName," is dead!");
-	SetObjectiveState( "prim7_FreydaMustSurvive", OBJECTIVE_FAILED );
-	SetObjectiveState( "DuncanMustSurvive", OBJECTIVE_FAILED );
-	Loose( PLAYER_1 );
-end;
+function IsSecondaryDeamonTownCaptured( oldOwner, newOwner, hero )
+	if newOwner == PLAYER_1 then
+		GiveArtefact( hero, ARTIFACT_CROWN_OF_COURAGE );
+		GiveArtefact( hero, ARTIFACT_LION_HIDE_CAPE );
+		GiveArtefact( hero, ARTIFACT_NECKLACE_OF_BRAVERY );
+		ShowFlyingSign( PATH.."MsgBox_GainOgreSetArtifacts.txt", hero, PLAYER_1, 4 );
+	end
+end
 
-function RedHeavenGreatings( heroName )
-	if GetObjectOwner( heroName )==PLAYER_1 then
+function RedHeavenGreatings( hero )
+	if GetObjectOwner( hero ) == PLAYER_1 then
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "RedHeavenTownBorder", nil );
-		MessageBox( PATH.."MsgBox_RedHeavenJoin.txt","GiveToPlayerAllRedHeavenBuildings");
-	end;
-end;
+		H55c_Message.show( PATH.."MsgBox_RedHeavenJoin.txt" );
+		SetObjectOwner( "archer_tower1", PLAYER_1 );
+		SetObjectOwner( "archer_tower2", PLAYER_1 );
+		SetObjectOwner( "footman_tower1", PLAYER_1 );
+		SetObjectOwner( "footman_tower2", PLAYER_1 );
+		SetObjectOwner( "military_post1", PLAYER_1 );
+		SetObjectOwner( "RH_SawMill", PLAYER_1 );
+		SetObjectOwner( "RH_OrePit", PLAYER_1 );
+		if GetObjectOwner( "military_post2" ) == PLAYER_3 then
+			SetObjectOwner( "military_post2", PLAYER_NONE );
+		end
+		SetObjectOwner( "red_heaven_garrison", PLAYER_1 );
+		SetObjectOwner( "red_heaven_town", PLAYER_1 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_7, 2 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_6, 2 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_5, 2 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_4, 2 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_FORT, 3 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_MAGIC_GUILD, 5 );
+		
+		RH_heroes = GetObjectsInRegion( "RedHeavenRegion", OBJECT_HERO );
+		if table.length( RH_heroes ) > 0 then
+			for i=0, table.length( RH_heroes )-1 do
+				sleep(10);
+				SetObjectOwner( RH_heroes[i], PLAYER_1 );
+			end
+		end
+		
+		RH_mines={'gold_mine_2_1', 'gold_mine_2_2', 'gold_mine_2_3', 'gem_mine_2', 'ore_pit_2', 'sawmill_2', 'alchemist_lab_2', 'crystal_cavern_2', 'sulfur_deposit_2'};
 
-function GiveToPlayerAllRedHeavenBuildings()
-	SetObjectOwner( "archer_tower1", PLAYER_1 );
-	SetObjectOwner( "archer_tower2", PLAYER_1 );
-	SetObjectOwner( "footman_tower1", PLAYER_1 );
-	SetObjectOwner( "footman_tower2", PLAYER_1 );
-	SetObjectOwner( "military_post1", PLAYER_1 );
-	SetObjectOwner( "red_heaven_town", PLAYER_1 );
-	SetObjectOwner( "red_heaven_garrison", PLAYER_1 );
+		for i=1, table.length( RH_mines ) do
+			if GetObjectOwner( RH_mines[i] )==PLAYER_3 then
+				sleep(10);
+				SetObjectOwner( RH_mines[i], PLAYER_1);
+			end
+		end
+	end
+end
+
+DISCO = {
+	hasStarted = 0,
+	ACCESS_COUNTER = 0,
+	Lights = { "green_light", "red_light", "blue_light", "yellow_light", "no_light" },
+	ANIMATIONS = { "happy", "happy", "happy", "hit", "hit", "attack00", "death", "cast", "rangeattack" },
+
+	ENTER = function( hero )
+		if hero == "Zehir" then
+			if DISCO.ACCESS_COUNTER == 1 then
+				SetObjectPosition( hero, 12, 25, UNDERGROUND );
+				startThread( DISCO.START );
+			else
+				DISCO.ACCESS_COUNTER = DISCO.ACCESS_COUNTER+1;
+				print("easterEggCounter = "..DISCO.ACCESS_COUNTER);
+			end
+		end
+	end,
 	
-	SetObjectOwner( "RH_SawMill", PLAYER_1 );
-	SetObjectOwner( "RH_OrePit", PLAYER_1 );
-	
-	if GetObjectOwner( "military_post2" ) == PLAYER_3 then
-		SetObjectOwner( "military_post2", PLAYER_NONE );
-	end;
-	
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_7, 2 );
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_6, 2 );
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_5, 2 );
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_4, 2 );
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_FORT, 3 );
-	SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_MAGIC_GUILD, 5 );
-	
-	print("GiveToPlayerAllRedHeavenBuildings: All buildings owned by PLAYER_1");
-	RH_heroes = GetObjectsInRegion( "RedHeavenRegion", OBJECT_HERO );
-	if table.length( RH_heroes ) > 0 then
-		for i=0, table.length( RH_heroes )-1 do
-			sleep(10);
-			SetObjectOwner( RH_heroes[i], PLAYER_1 );
+	START = function()
+		if DISCO.hasStarted == 1 then
+			return
+		end
+		DISCO.hasStarted = 1;
+		for i = 1,4 do startThread( DISCO.playLights, "discoLight"..i ); end
+		for i= 1,20 do startThread( DISCO.playAnimation, "m"..i ); end
+	end,
+
+	playAnimation = function( dancerName )
+		while IsObjectExists( dancerName ) ~= nil do
+			local anim = DISCO.ANIMATIONS[ random(table.length(DISCO.ANIMATIONS)) + 1 ];
+			PlayObjectAnimation( dancerName, anim, ONESHOT );
+			sleep( random(15)+50 );
 		end;
-	end;
+		print("Object "..dancerName.." doesn't exist");
+	end,
+
+	playLights = function( object )
+		print("DiscoLights for object "..object.. " started");
+		while 1 do
+			SetObjectFlashlight( object, DISCO.Lights[ random( table.length( DISCO.Lights ))+1]);
+			sleep( random(30) );
+			ResetObjectFlashlight( object );
+		end
+	end,
 	
-	RH_mines={'gold_mine_2_1', 'gold_mine_2_2', 'gold_mine_2_3', 'gem_mine_2', 'ore_pit_2', 'sawmill_2', 'alchemist_lab_2', 'crystal_cavern_2', 'sulfur_deposit_2'};
-
-	for i=1, table.length( RH_mines ) do
-		if GetObjectOwner( RH_mines[i] )==PLAYER_3 then
-			sleep(10);
-			SetObjectOwner( RH_mines[i], PLAYER_1);
-		end;
-	end;
-	print("GiveToPlayerAllRedHeavenBuildings: All heroes in RH_heroes region were owned by PLAYER_1");
-end;
-
-function IsMainDeamonTownCaptured( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		isInfernoTownDestroyed = 1;
-		RazeTown("main_deamon_town");
-	end;
-end;
-
-function PlayVoiceoverWhenVeyerDefeated()
-	repeat sleep(1); until IsHeroAlive( "Grok" )==nil;
-	if isInfernoTownDestroyed==0 then
-		Play2DSound( VOICEOVER_INFERNO_HERO_DEFEATED );
-	end;
-end;
-
-function PlayVoiceoverWhenMainInfernoTownDestroyed()
-	repeat sleep(1); until isInfernoTownDestroyed==1;
-	if IsHeroAlive( "Grok" )==not nil then
-		Play2DSound( VOICEOVER_MAIN_INFERNO_TOWN_DESTROYED );
-	end;
-end;
-
-function IsSecondaryDeamonTownCaptured( oldOwner, newOwner, heroName )
-	if newOwner == PLAYER_1 then
-		SetObjectiveState( "sec1_CaptureDeamonSecondaryTown", OBJECTIVE_COMPLETED );
-		RazeTown( "secondary_deamon_town" );
-		sleep(15);
-		--GiveArtefact( heroName, ARTIFACT_OGRE_CLUB );
-		--GiveArtefact( heroName, ARTIFACT_OGRE_SHIELD );
-		GiveArtefact( heroName, ARTIFACT_CROWN_OF_COURAGE );
-		GiveArtefact( heroName, ARTIFACT_LION_HIDE_CAPE );
-		GiveArtefact( heroName, ARTIFACT_NECKLACE_OF_BRAVERY );
-		ShowFlyingSign( PATH.."MsgBox_GainOgreSetArtifacts.txt", heroName, PLAYER_1, 4 );
-	end;
-end;
-
-function H55_TriggerDaily()
-	if GetDate( DAY ) - dayWhenDuncanAndFreydaDeployed == LEVEL1_BORDERS_OPENING_TIME then
-		SetRegionBlocked( "garrison1", nil, PLAYER_2 );
-		SetRegionBlocked( "garrison2", nil, PLAYER_2 );
-		print("TimeToOpenBordersToAI: AI has access to level 1 area");
-	elseif GetDate( DAY ) - dayWhenDuncanAndFreydaDeployed == LEVEL2_BORDERS_OPENING_TIME then
-		SetRegionBlocked( "level2_border1", nil, PLAYER_2 );
-		SetRegionBlocked( "level2_border2", nil, PLAYER_2 );
-		print("TimeToOpenBordersToAI: AI has access to level 2 area");
-	elseif GetDate( DAY ) - dayWhenDuncanAndFreydaDeployed == LEVEL3_BORDERS_OPENING_TIME then
-		SetRegionBlocked( "level3_border", nil, PLAYER_2 );
-		print("TimeToOpenBordersToAI: AI has access to level 3 area");
-	end;
-end;
-
-isDiscoStarted=0;
-Lights = { "green_light", "red_light", "blue_light", "yellow_light", "no_light" };
-DISCO_ARRAY = { "happy", "happy", "happy", "hit", "hit", "attack00", "death", "cast", "rangeattack" };
-
-function StartDisco()
-	startThread( DiscoLights, "discoLight1" );
-	startThread( DiscoLights, "discoLight2" );
-	startThread( DiscoLights, "discoLight3" );
-	startThread( DiscoLights, "discoLight4" );
-	for i=1, 20 do
-		startThread( StartDiscoAnimations, "m"..i );
-	end;
-end;
-
-function StartDiscoAnimations( dancerName )
-	while IsObjectExists( dancerName )==not nil do
-		animationName = DISCO_ARRAY[ random(table.length(DISCO_ARRAY)) + 1 ];
-		PlayObjectAnimation( dancerName, animationName, ONESHOT );
-		sleep( random(15)+20 );
-	end;
-	print("Object "..dancerName.." doesn't exist");
-end;
-
-function DiscoLights( objectName )
-	print("DiscoLights for object "..objectName.. " started");
-	while 1 do
-		SetObjectFlashlight( objectName, Lights[ random( table.length( Lights ))+1]);
-		sleep( random(20) );
-		ResetObjectFlashlight( objectName );
-	end;
-end;
-
-function SetToDisco( heroName )
-	if heroName == "Zehir" then
-		if easterEggCounter == 1 then
-			SetObjectPosition( heroName, 12, 25, UNDERGROUND );
-			if isDiscoStarted==0 then
-				isDiscoStarted=1;
-				startThread( StartDisco );
-			end;
-		else
-			easterEggCounter=easterEggCounter+1;
-			print("easterEggCounter = "..easterEggCounter);
-		end;
-	end;
-end;
-
-function ReturnFromToDisco( heroName )
-	SetObjectPosition( heroName, 119, 36, UNDERGROUND );
-end;
-
-function summon_initialized()
-	StartAdvMapDialog( ADVMAPSCENE_START_COMBAT, "StartInitialCombat" );
-end;
+	EXIT = function( hero )
+		SetObjectPosition( hero, 119, 36, UNDERGROUND );
+	end
+}
 
 DIFFICULTY = {
 	[0] = function()
-		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 20, CRYSTAL, 20, 3000, "summon_initialized" ); 
+		diff = 1;
+		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 20, CRYSTAL, 20, 3000 ); 
 		print( "normal" );
 	end,
 	
 	[1] = function()
-		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 18, CRYSTAL, 20, 3000, "summon_initialized" );
+		diff = 2;
+		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 18, CRYSTAL, 20, 3000 );
 		print( "hard" );
 	end,
 	
 	[2] = function()
-		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 14, CRYSTAL, 20, 3000, "summon_initialized" );
+		diff = 3;
+		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 14, CRYSTAL, 20, 3000 );
 		print( "heroic" );
 	end,
 	
 	[3] = function()
-		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 12, CRYSTAL, 20, 3000, "summon_initialized" );
+		diff = 4;
+		ZehirCreaturesAdd( CREATURE_MASTER_GENIE, 12, CRYSTAL, 20, 3000 );
 		print( "impossible" );
+	end,
+}
+
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
+		
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
+	
+	intro = function()
+		CINEMATICS.playAndWait( 0 ); -- speak with enemy hero
+		local x,y,floor = GetObjectPosition( "Zehir" );
+		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "Loose(PLAYER_1)" );
+		MoveHeroRealTime( "RedHeavenHero02", x, y, floor );
+		repeat sleep( 50 ) until IsHeroAlive( "RedHeavenHero02") == nil;
+		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
+		CreateMonster("tmp_zealot", CREATURE_ZEALOT, 1, 127,40,GROUND,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN,100);
+		sleep(20);
+		CINEMATICS.playAndWait( 2 ); -- speak with the zealot after battle
+		sleep(20);
+		SetClericOnRitePosition( CREATURE_ZEALOT, "Zehir", "tmp_zealot" );	-- Поставить клерика на место ритуала
+		UnblockGame();
+	end,
+	
+	meetCleric = function()
+		BlockGame();
+		CreateMonster("tmp_zealot", CREATURE_ZEALOT, 1, 127,40,GROUND,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN,100);
+		sleep(20);
+		CINEMATICS.playAndWait( 2 );
+		sleep(20);
+		SetClericOnRitePosition( CREATURE_ZEALOT, "Zehir", "tmp_zealot" );	-- Поставить клерика на место ритуала
+		UnblockGame();
+	end,
+	
+	summonInfernoBoss = function()
+		BlockGame();
+		local x, y = RegionToPoint( "ZehirRegion" );
+		PlayVisualEffect( EFFECT_INFERNO_GATING, "", "tag", x+0.5, y+0.5, GROUND );
+		Play2DSound( SOUND_EFFECT_GATING );
+		sleep(15);
+		SetObjectPosition( "InfernoBoss", x, y, GROUND );
+		sleep(1);
+		SetObjectRotation( "InfernoBoss", 315 );
+		SetRegionBlocked( "ZehirRegion", nil );
+		sleep(1);
+		PlayObjectAnimation( "InfernoBoss", "stir00", ONESHOT );
+		sleep(20);
+		MessageBox( PATH.."RitualPlaceBossFight.txt" );
+		startThread( PlayInfernoBossAnimations );
+		UnblockGame();
+	end,
+	
+	startRite = function()
+		BlockGame();
+		local Rx, Ry, Rf =  RegionToPoint( "ZehirRegion" );
+		MoveHeroRealTimeAndReachPoint( "Zehir", Rx, Ry, Rf);
+		while 1 do
+			sleep(10);
+			local x, y, f = GetObjectPosition("Zehir");
+			if x == Rx and y == Ry and z == Rz then
+				break
+			end
+		end
+		SetObjectRotation( "Zehir", 315);
+		sleep(20);
+		PlayObjectAnimation( "cleric"..110, "cast", ONESHOT );
+		PlayObjectAnimation( "cleric"..10, "cast", ONESHOT );
+		PlayObjectAnimation( "cleric"..9, "cast", ONESHOT );
+		sleep(20);
+		local x_r,y_r = RegionToPoint("rite_area" );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'megaboom', x_r,y_r, 7, 0, GROUND );
+		PlayVoiceoverAndBlockGame( SOUND_EFFECT_HOLY_WORD, 3 );
+		UnblockGame();
+	end,
+	
+	demonTransformation = function()
+		BlockGame();
+		OpenCircleFog( 97, 88, GROUND, 16 , PLAYER_1 );
+		MoveCamera( 88,84,GROUND,70,1,4,0,0,1 );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 97, 97, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 103, 92, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 103, 85, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 89, 91, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 89, 81, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 96, 71, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 81, 82, 10, 0, GROUND );
+		Play2DSound( SOUND_EFFECT_HOLY_WORD );
+		sleep( GetSoundTimeInSleeps( SOUND_EFFECT_HOLY_WORD ) / 1.65 );
+		for i = 1, 9 do
+			RemoveObject("rock"..i);
+		end
+		ReplaceDwelling( "daemon_level3_dwelling1", TOWN_INFERNO );
+		ReplaceDwelling( "daemon_level3_dwelling2", TOWN_INFERNO );
+		ReplaceDwelling( "daemon_level2_dwelling1", TOWN_INFERNO );
+		ReplaceDwelling( "daemon_level2_dwelling2", TOWN_INFERNO );
+		ReplaceDwelling( "deamon_military_post1", TOWN_INFERNO );
+		ReplaceDwelling( "deamon_military_post2", TOWN_INFERNO );
+		TransformTown("main_deamon_town", TOWN_INFERNO );
+		sleep(1);
+		Play2DSound( "/Maps/Scenario/A2C3M2/C3M2_VO2_Zehir_01sound.xdb#xpointer(/Sound)" );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_TOWN_HALL );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_BLACKSMITH );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MAGIC_GUILD );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MAGIC_GUILD );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_1 );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_2 );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_MARKETPLACE );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_1 );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_DWELLING_2 );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_FORT );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_FORT );
+		UpgradeTownBuilding( "main_deamon_town", TOWN_BUILDING_TAVERN );
+		local x,y,floor = GetObjectPosition("RedHeavenHero03");
+		sleep(1);
+		RemoveObject("RedHeavenHero03");
+		sleep(1);
+		DeployReserveHero( "Grok", x, y, floor );
+		sleep(35);
+		OpenCircleFog( 11, 119, GROUND, 12 , PLAYER_1 );
+		MoveCamera( 11,119, GROUND, 70, 1,4,0,0,1 );
+		sleep(5);
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 11, 119, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 18, 114, 10, 0, GROUND );
+		PlayVisualEffect( EFFECT_HOLY_WORD, '', 'boom', 19, 121, 10, 0, GROUND );
+		Play2DSound( SOUND_EFFECT_HOLY_WORD );
+		sleep( GetSoundTimeInSleeps( SOUND_EFFECT_HOLY_WORD ) / 1.65 );
+		ReplaceDwelling( "daemon_level3_dwelling1_2", TOWN_INFERNO );
+		ReplaceDwelling( "daemon_level1_dwelling1", TOWN_INFERNO );
+		TransformTown("secondary_deamon_town", TOWN_INFERNO );
+		sleep(30);
+		UpgradeTownBuilding( "secondary_deamon_town", TOWN_BUILDING_TAVERN );
+		UpgradeTownBuilding( "red_heaven_town", TOWN_BUILDING_TAVERN );
+		DisableAutoEnterTown( "main_deamon_town", not nil );
+		DisableAutoEnterTown( "secondary_deamon_town", not nil );
+		ShowReplaceToDeamonCreature( "demon_deamon", CREATURE_HORNED_LEAPER, 50 + 50 * diff );
+		ShowReplaceToDeamonCreature( "demon_balor", CREATURE_PIT_SPAWN, 5 + 10 * diff );
+		ShowReplaceToDeamonCreature( "demon_devil", CREATURE_ARCH_DEMON, 6 + 4 * diff);
+		UnblockGame();
+	end,
+	
+	zehirMeetsDuncanAndFreyda = function()
+		BlockGame();
+		DisableCameraFollowHeroes( 1, 0, 0 );
+		local zehir_x, zehir_y = GetObjectPosition( "Zehir" );
+		MoveCamera( zehir_x, zehir_y, GROUND, 50, 1,4, 0, 0, 1 );
+		SetObjectPosition( "Zehir", 2, 70, GROUND );
+		sleep(20);
+		MoveCamera( 2, 70, GROUND, 50, 1,4, 0, 0, 1 );
+		UnblockGame();	
+		StartDialogScene( "/DialogScenes/A2C3/M2/S1/DialogScene.xdb#xpointer(/DialogScene)" );
+		QuestionBox( PATH.."MsgBox_GiveGraalZehirOrDuncan.txt", "GiveGrailYes", "GiveGrailNo" );
+		while isOkPressed == 0 do sleep(10); end; 
+		BlockGame();
+		MoveHeroRealTimeAndReachPoint("Zehir", 1, 69, GROUND );
+		UnblockGame();	
 	end,
 }
 
 OBJECTIVES = {
 	state = {
-		isZehirAlive = { "obj1", 1 },	-- Zehir must stay alive
+		findGrail				= {					"Prim1_FindGraal", 1 },	-- find the Grail
+		getClerics				= { 		"prim2_CollectAllClerics", 1 },	-- find enough clerics for the rite
+		moveTown				= {					 "prim3_MoveTown", 1 },	-- move the town next to rite location
+		performRite				= {			   "prim4_PerformTheRite", 1 },	-- perform the rite
+		killHeroAndDestroyTown	= { 	"prim5_CaptureDeamonMainTown", 1 },	-- Capture main inferno town
+		giveGrail				= { 		 "prim6_GiveGraalToZehir", 1 },	-- Zehir must have the grail
+		isFreydaAlive			= { 		"prim7_FreydaMustSurvive", 1 },	-- Freyda must survive
+		isDuncanAlive			= { 			  "DuncanMustSurvive", 1 },	-- Duncan must survive
+		isZehirAlive			= { 		 "Prim9_ZehirMustSurvive", 1 },	-- Zehir must survive
+		captureSecDemonTown		= { "sec1_CaptureDeamonSecondaryTown", 1 },	-- Capture and destroy the secondary demon town
+		eventManager			= { 							  "_", 1 }, --
 	},
 
     start = function()
@@ -897,17 +514,66 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
+		SetGameVar( "A2C3M2_ZehirHasGrail", "0");
+		SetGameVar( "A2C3M3_Graal", "0");
 		BlockGame();
 		GiveTransferrableArtifacts();
-		Trigger( OBJECT_TOUCH_TRIGGER, "rite_invisible_building", "IsAllRequiredElementsCollected" );
-		Trigger( OBJECT_TOUCH_TRIGGER, "cleric", "IsClericJoined" )
-		Trigger( OBJECT_TOUCH_TRIGGER, "priest", "IsClericJoined" )
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_exit", "ReturnFromToDisco" );  	-- Set Easter egg start
-		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_enter", "SetToDisco" );			-- Set Easter egg finish
 		ZehirAbilitiesInit("Zehir");
 		ZehirTownInit("ZehirsTown");
 		AddTownPoint(92, 127, GROUND, 0, "summon_town_area", 15000, "landing_zone");
+		SetRegionBlocked( "landing_zone", not nil, PLAYER_1);
 		DIFFICULTY[GetDifficulty()]();
+		if GetDifficulty() ~= DIFFICULTY_EASY then
+			AddObjectCreatures( "InfernoBoss", CREATURE_ARCHDEVIL, 1+20*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_BALOR, 1+30*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_FRIGHTFUL_NIGHTMARE, 1+40*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_CERBERI,  1+100*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_HORNED_DEMON, 1+150*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_SUCCUBUS, 1+70*GetDifficulty() );
+			AddObjectCreatures( "InfernoBoss", CREATURE_FAMILIAR, 1+300*GetDifficulty() );
+		end
+		CINEMATICS.intro();
+		SetPlayerStartResource( PLAYER_1, CRYSTAL, 60 );
+		SetPlayerStartResource( PLAYER_1, MERCURY, 20 );
+		SetRegionBlocked( "garrison1", not nil, PLAYER_2 ); 
+		SetRegionBlocked( "garrison2", not nil, PLAYER_2 );
+		SetRegionBlocked( "level2_border1", not nil, PLAYER_2 ); 
+		SetRegionBlocked( "level2_border2", not nil, PLAYER_2 );
+		SetRegionBlocked( "level3_border", not nil, PLAYER_2 );
+		SetRegionBlocked( "RedHeavenTownBorder", not nil, PLAYER_3 );
+		SetObjectEnabled( "main_deamon_town", nil );
+		DisableAutoEnterTown( "main_deamon_town", not nil );
+		SetObjectEnabled( "secondary_deamon_town", nil );
+		DisableAutoEnterTown( "secondary_deamon_town", not nil );
+		EnableHeroAI( "RedHeavenHero03", nil );
+		EnableHeroAI( "RedHeavenHero02", nil );
+		for i, tavern_hero_race in { TOWN_DUNGEON, TOWN_NECROMANCY, TOWN_STRONGHOLD, TOWN_PRESERVE, TOWN_FORTRESS, TOWN_INFERNO, TOWN_ACADEMY } do
+			AllowHeroHiringByRaceInTown( "red_heaven_town", tavern_hero_race, 0 );
+		end
+		DenyAIHeroesFlee( PLAYER_2, not nil );
+		DenyAIHeroesFlee( PLAYER_3, not nil );
+		SetObjectEnabled( "red_heaven_town", nil );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_7, 0 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_6, 0 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_5, 0 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_4, 0 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_FORT, 1 );
+		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_MAGIC_GUILD, 1 );
+		SetPlayerHeroesCountNotForHire( PLAYER_1, 2 );
+		-- Prepare rite locations and cleric triggers
+		for i, rite_region in { "110Region", "10Region", "9Region", "ZehirRegion" } do
+			SetRegionBlocked( rite_region, not nil, PLAYER_1 );
+		end
+		for i, rite_priest in { "cleric", "priest" } do 
+			SetObjectEnabled( rite_priest, nil );
+			SetDisabledObjectMode( rite_priest, DISABLED_INTERACT );
+			Trigger( OBJECT_TOUCH_TRIGGER, rite_priest, "IsClericJoined" )
+		end
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "rite_area", "IsAllRequiredElementsCollected" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_enter", "DISCO.ENTER" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_exit", "DISCO.EXIT" );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "ZehirsExit", "RemoveZehirAndHisTown");
+		sleep( 10 ); -- required for PCs with faster CPUs in order to not break meetCleric() cinematics.
 		UnblockGame();
 	end,
 	
@@ -921,36 +587,228 @@ OBJECTIVES = {
 				end
 			end
 			
-			if GetObjectiveState("Prim9_ZehirMustSurvive") == OBJECTIVE_FAILED then
-				Loose();
+			if GetObjectiveState("Prim1_FindGraal") == OBJECTIVE_FAILED or GetObjectiveState("Prim9_ZehirMustSurvive") == OBJECTIVE_FAILED or GetObjectiveState("prim7_FreydaMustSurvive") == OBJECTIVE_FAILED or GetObjectiveState("DuncanMustSurvive") == OBJECTIVE_FAILED then
+				Loose( PLAYER_1 );
 				return
 			end
 
-			if isInfernoTownDestroyed==1 and IsHeroAlive( "Grok" ) == nil then
-				--StartDialogScene( SCENE_ZEHIR_DUNCAN_FREYDA_DISCUSS );
+			if GetObjectiveState("prim5_CaptureDeamonMainTown") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Freyda", "A2C3M2");
 				SaveHeroAllSetArtifactsEquipped( "Duncan", "A2C3M2");
-				SetObjectiveState( "prim5_CaptureDeamonMainTown", OBJECTIVE_COMPLETED );
-				sleep(200);
+				sleep( 200 );
 				Win();
 				return
 			end
 		end
 	end,
 	
+	findGrail = function()
+		if OBJECTIVES.state.findGrail[2] == 1 then
+			--CINEMATICS.meetCleric();
+			SetObjectiveState( "Prim1_FindGraal", OBJECTIVE_ACTIVE ); 
+			OBJECTIVES.state.findGrail[2] = 2;
+		elseif OBJECTIVES.state.findGrail[2] == 2 and IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) then
+			OBJECTIVES.state.findGrail[2] = 3;
+		elseif OBJECTIVES.state.findGrail[2] == 3 then
+			if HasArtefact( "Zehir", ARTIFACT_GRAAL ) then
+				SetObjectiveState( "Prim1_FindGraal", OBJECTIVE_COMPLETED ); 
+				OBJECTIVES.state.findGrail[2] = 10;
+			elseif IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) == nil then
+				MessageBox( PATH.."HeroLostGraal.txt" );
+				SetObjectiveState( "Prim1_FindGraal", OBJECTIVE_FAILED ); 
+				OBJECTIVES.state.findGrail[2] = 11;
+			end
+		end
+	end,	
+	
+	getClerics_count = 0,
+	getClerics = function()
+		if OBJECTIVES.state.getClerics[2] == 1 then
+			SetObjectiveState( "prim2_CollectAllClerics", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.getClerics[2] = 2;
+		elseif OBJECTIVES.state.getClerics[2] == 2 and OBJECTIVES.getClerics_count >= 3 then
+			SetObjectiveState( "prim2_CollectAllClerics", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.getClerics[2] = 10;
+		end
+	end,	
+	
+	moveTown = function()
+		if OBJECTIVES.state.moveTown[2] == 1 then
+			SetObjectiveState( "prim3_MoveTown", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.moveTown[2] = 2;
+		elseif OBJECTIVES.state.moveTown[2] == 2 and GetObjectPosition("ZehirsTown") == 92 then
+			SetObjectiveState( "prim3_MoveTown", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.moveTown[2] = 10;
+		end
+	end,	
+	
+	performRite = function()
+		if OBJECTIVES.state.performRite[2] == 1 then
+			SetObjectiveState( "prim4_PerformTheRite", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.performRite[2] = 2;
+		elseif OBJECTIVES.state.performRite[2] == 3 then
+			CINEMATICS.summonInfernoBoss();
+			OBJECTIVES.state.performRite[2] = 4;
+		elseif OBJECTIVES.state.performRite[2] == 4 and IsObjectExists( "InfernoBoss" ) == nil then
+			MessageBox( PATH.."MsgBox_GoToTheCenter.txt" );
+			OBJECTIVES.state.performRite[2] = 5;
+		elseif OBJECTIVES.state.performRite[2] == 6 then
+			CINEMATICS.startRite();
+			OBJECTIVES.state.performRite[2] = 7;
+		elseif OBJECTIVES.state.performRite[2] == 7 then
+			CINEMATICS.demonTransformation();
+			SetupDemonHero();
+			SetObjectiveState( "prim4_PerformTheRite", OBJECTIVE_COMPLETED );
+			sleep(15);
+			DeployReserveHero( "Duncan", 4, 68, GROUND );
+			DeployReserveHero( "Freyda", 5, 70, GROUND );
+			sleep(20);
+			H55_CamFixTooManySkills( PLAYER_1, "Duncan" );
+			H55_CamFixTooManySkills( PLAYER_1, "Freyda" );
+			sleep(1);
+			SetObjectRotation( "Duncan", 90 );
+			SetObjectRotation( "Freyda", 90 );
+			sleep(1);
+			UnreserveHero( "Duncan" );
+			UnreserveHero( "Freyda" );
+			CINEMATICS.zehirMeetsDuncanAndFreyda();
+			Trigger( OBJECT_CAPTURE_TRIGGER, "secondary_deamon_town", "IsSecondaryDeamonTownCaptured" );
+			SetObjectEnabled( "secondary_deamon_town", not nil );
+			SetObjectEnabled( "main_deamon_town", not nil );
+			SetObjectEnabled( "red_heaven_town", not nil );
+			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "RedHeavenTownBorder", "RedHeavenGreatings" );
+			SetObjectOwner( "archer_tower1", PLAYER_3 );
+			SetObjectOwner( "archer_tower2", PLAYER_3 );
+			SetObjectOwner( "footman_tower1", PLAYER_3 );
+			SetObjectOwner( "footman_tower2", PLAYER_3 );
+			SetObjectOwner( "military_post1", PLAYER_3 );
+			SetObjectOwner( "military_post2", PLAYER_3 );
+			SetObjectOwner( "red_heaven_town", PLAYER_3 );
+			SetObjectOwner( "red_heaven_garrison", PLAYER_3 );
+			UpgradeTownBuilding( "red_heaven_town", TOWN_BUILDING_TAVERN );
+			UpgradeTownBuilding( "secondary_deamon_town", TOWN_BUILDING_TAVERN );
+			RH_heroes = GetObjectsInRegion( "RedHeavenRegion", OBJECT_HERO );
+			if table.length( RH_heroes ) > 0 then
+				for i=0, table.length( RH_heroes )-1 do
+					RemoveObject( RH_heroes[i] );
+				end
+			end
+			OBJECTIVES.state.performRite[2] = 10;
+		end
+	end,
+	
+	killHeroAndDestroyTown = function()
+		if OBJECTIVES.state.killHeroAndDestroyTown[2] == 1 and OBJECTIVES.state.performRite[2] == 10 then
+			SetObjectiveState( "prim5_CaptureDeamonMainTown", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.killHeroAndDestroyTown[2] = 2;
+		elseif OBJECTIVES.state.killHeroAndDestroyTown[2] == 2 then
+			if GetObjectOwner("main_deamon_town") == PLAYER_1 then
+				Play2DSound( VOICEOVER_MAIN_INFERNO_TOWN_DESTROYED );
+				OBJECTIVES.state.killHeroAndDestroyTown[2] = 3;
+			elseif IsHeroAlive("Grok") == nil then
+				Play2DSound( VOICEOVER_INFERNO_HERO_DEFEATED );
+				OBJECTIVES.state.killHeroAndDestroyTown[2] = 3;
+			end
+		elseif OBJECTIVES.state.killHeroAndDestroyTown[2] == 3 and GetObjectOwner("main_deamon_town") == PLAYER_1 and IsHeroAlive("Grok") == nil then
+			SetObjectiveState( "prim5_CaptureDeamonMainTown", OBJECTIVE_COMPLETED );
+			RazeTown("main_deamon_town");
+			OBJECTIVES.state.killHeroAndDestroyTown[2] = 10;
+		end
+	end,
+	
+	captureSecDemonTown = function()
+		if OBJECTIVES.state.captureSecDemonTown[2] == 1  and OBJECTIVES.state.performRite[2] == 10 then
+			SetObjectiveState( "sec1_CaptureDeamonSecondaryTown", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.captureSecDemonTown[2] = 2;
+		elseif OBJECTIVES.state.captureSecDemonTown[2] == 2 and GetObjectOwner("secondary_deamon_town") == PLAYER_1 then
+			SetObjectiveState( "sec1_CaptureDeamonSecondaryTown", OBJECTIVE_COMPLETED );
+			RazeTown( "secondary_deamon_town" );
+			OBJECTIVES.state.captureSecDemonTown[2] = 10;
+		end
+	end,
+	
+	giveGrail = function()
+		if OBJECTIVES.state.giveGrail[2] == 1 and IsPlayerHeroHasArtifact( PLAYER_1, ARTIFACT_GRAAL ) and HasArtefact( "Zehir", ARTIFACT_GRAAL ) == nil then
+			SetObjectiveState( "prim6_GiveGraalToZehir", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.giveGrail[2] = 2;
+		elseif OBJECTIVES.state.giveGrail[2] == 2 and HasArtefact( "Zehir", ARTIFACT_GRAAL ) then
+			RemoveArtefact( "Zehir", ARTIFACT_GRAAL );  -- удалить артефакт, чтобы выдать снова но с параметром untransferable
+			sleep(10);
+			GiveArtefact( "Zehir", ARTIFACT_GRAAL, 1 ); -- запретить Зехиру передавать артефакт другим героям. (Set artifact untransferable)
+			SetObjectiveState( "prim6_GiveGraalToZehir", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.giveGrail[2] = 10;
+		end
+	end,
+	
+	isFreydaAlive = function()
+		if OBJECTIVES.state.isFreydaAlive[2] == 1 and OBJECTIVES.state.performRite[2] == 10 then
+			SetObjectiveState( "prim7_FreydaMustSurvive", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.isFreydaAlive[2] = 2;
+		elseif OBJECTIVES.state.isFreydaAlive[2] == 2 and IsHeroAlive("Freyda") == nil then
+			SetObjectiveState( "prim7_FreydaMustSurvive", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isFreydaAlive[2] = 11;
+		end
+	end,
+	
+	isDuncanAlive = function()
+		if OBJECTIVES.state.isDuncanAlive[2] == 1  and OBJECTIVES.state.performRite[2] == 10 then
+			SetObjectiveState( "DuncanMustSurvive", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.isDuncanAlive[2] = 2;
+		elseif OBJECTIVES.state.isDuncanAlive[2] == 2 and IsHeroAlive("Duncan") == nil then
+			SetObjectiveState( "DuncanMustSurvive", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isDuncanAlive[2] = 11;
+		end
+	end,
+
 	isZehirAlive = function()
 	-- start of task is handled by map.xdb file
 		if OBJECTIVES.state.isZehirAlive[2] == 1 then
-			if IsHeroAlive( "Zehir" ) == nil then
-				SetObjectiveState( "Prim9_ZehirMustSurvive", OBJECTIVE_FAILED );
-				OBJECTIVES.state.isZehirAlive = 11;
-			elseif isZehirAlreadyLeaveMission == 1 then
+			if OBJECTIVES.state.performRite[2] >= 6 then
 				SetObjectiveState( "Prim9_ZehirMustSurvive", OBJECTIVE_COMPLETED );
-				OBJECTIVES.state.isZehirAlive = 10;
+				OBJECTIVES.state.isZehirAlive[2] = 10;
+			elseif IsHeroAlive( "Zehir" ) == nil then
+				SetObjectiveState( "Prim9_ZehirMustSurvive", OBJECTIVE_FAILED );
+				OBJECTIVES.state.isZehirAlive[2] = 11;
 			end
+		end
+	end,
+	
+	eventManager_DuncanFreydaDeployment = 0,
+	eventManager = function()
+		if OBJECTIVES.state.eventManager[2] == 1 and OBJECTIVES.state.performRite[2] == 10 then
+			OBJECTIVES.eventManager_DuncanFreydaDeployment = OBJECTIVES.date;
+			OBJECTIVES.state.eventManager[2] = 2;
+		elseif OBJECTIVES.state.eventManager[2] == 2 and OBJECTIVES.date - OBJECTIVES.eventManager_DuncanFreydaDeployment >= 21 then
+			SetRegionBlocked( "garrison1", nil, PLAYER_2 );
+			SetRegionBlocked( "garrison2", nil, PLAYER_2 );
+			print("TimeToOpenBordersToAI: AI has access to level 1 area");
+			OBJECTIVES.state.eventManager[2] = 3;
+		elseif OBJECTIVES.state.eventManager[2] == 3 and OBJECTIVES.date - OBJECTIVES.eventManager_DuncanFreydaDeployment >= 42 then
+			SetRegionBlocked( "level2_border1", nil, PLAYER_2 );
+			SetRegionBlocked( "level2_border2", nil, PLAYER_2 );
+			print("TimeToOpenBordersToAI: AI has access to level 2 area");
+			OBJECTIVES.state.eventManager[2] = 4;
+		elseif OBJECTIVES.state.eventManager[2] == 4 and OBJECTIVES.date - OBJECTIVES.eventManager_DuncanFreydaDeployment >= 84 then
+			SetRegionBlocked( "level3_border", nil, PLAYER_2 );
+			print("TimeToOpenBordersToAI: AI has access to level 3 area");
+			OBJECTIVES.state.eventManager[2] = 10;
 		end
 	end,
 }
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
+
+function a2c3m2_dbg( var )
+	H55_Speedrun(1);
+	if var == 1 then
+		IsClericJoined("Zehir", "cleric");
+		IsClericJoined("Zehir", "priest");
+		GiveArtefact("Zehir", 53);
+		SetObjectPosition("Zehir", 98, 118, 0 );
+	elseif var == 2 then
+		MakeTownMovable("ZehirsTown");
+		OBJECTIVES.state.performRite[2] = 7;
+		OBJECTIVES.state.moveTown[2] = 10;
+	end
+end
