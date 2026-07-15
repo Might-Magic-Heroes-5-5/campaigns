@@ -5,7 +5,7 @@ PATH = "Maps/Scenario/A2C3M2/";
 isTimeToSummonDeamons = 0;
 isDeamonsAlreadySummoned = 0;
 	
-while combatStarted() == nil do sleep(1); end;
+while combatStarted() == nil do sleep(20); end;
 print("Combat is started...");
 	
 enemyUnitsCount = table.length(GetAttackerCreatures());
@@ -48,20 +48,20 @@ function IsJoinedCreature( creatureName )
 end;
 
 function TimeToSummonDeamons()
-	while table.length(GetAttackerCreatures()) == enemyUnitsCount do sleep(1); end;
+	while table.length(GetAttackerCreatures()) == enemyUnitsCount do sleep(20); end;
 	isTimeToSummonDeamons = 1;
 	print("Enemy hero has lost creature");
 end;
 
 function SummonDeamons()
 	combatSetPause( 1 );
-	SummonCreature( ATTACKER, CREATURE_QUASIT, 50, 1, 1, nil);
+	SummonCreature( ATTACKER, CREATURE_QUASIT, 150 + 350 * GetDifficulty(), 1, 1, nil);
 	sleep(10);
-	SummonCreature( ATTACKER, CREATURE_HORNED_LEAPER, 45, 1, 3, nil );
+	SummonCreature( ATTACKER, CREATURE_HORNED_LEAPER, 100 + 300 * GetDifficulty(), 1, 3, nil );
 	sleep(10);
-	SummonCreature( ATTACKER, CREATURE_FIREBREATHER_HOUND, 15, 1 ,5, nil );
+	SummonCreature( ATTACKER, CREATURE_FIREBREATHER_HOUND, 50 + 250 * GetDifficulty(), 1 ,5, nil );
 	sleep(10);
-	SummonCreature( ATTACKER, CREATURE_SUCCUBUS_SEDUCER, 10, 1 ,7, nil );
+	SummonCreature( ATTACKER, CREATURE_SUCCUBUS_SEDUCER, 30 + 40 * GetDifficulty(), 1 ,7, nil );
 	sleep(10);
 	
 	attackerCreatures = GetAttackerCreatures();
@@ -77,7 +77,7 @@ function SummonDeamons()
 				AddCreature( DEFENDER, creatureType, creatureNumber, creature_x, creature_y );
 		end;
 	end;
-	sleep(5);
+	sleep(10);
 	defenderCreatures = GetDefenderCreatures();
 	for i=0, table.length( defenderCreatures )-1 do
 		playAnimation( defenderCreatures[i], "happy", ONESHOT );

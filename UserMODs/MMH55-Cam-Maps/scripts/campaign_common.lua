@@ -180,6 +180,13 @@ function GetExpToLevel( j )
 	return sum;
 end
 
+function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
+	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
+	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
+	sleep(10);
+	MoveHeroRealTime( heroName, x, y, GROUND );
+end
+
 function remove_element(element_name,array_name)
 	local j=1 --индекс временного массива
 	local a={}
@@ -209,10 +216,14 @@ function IsAnyHeroPlayerHasArtifact( playerID, artifID )
 	return nil
 end
 
-function PlayVoiceoverAndBlockGame( voiceoverName )
+function PlayVoiceoverAndBlockGame( voiceoverName, ... )
+	local ratio = arg[1];
+	if ratio == nil then
+		ratio = 1;
+	end
 	BlockGame();
 	Play2DSound( voiceoverName );
-	sleep( GetSoundTimeInSleeps( voiceoverName ) )
+	sleep( GetSoundTimeInSleeps( voiceoverName ) / ratio )
 	UnblockGame();
 end
 
