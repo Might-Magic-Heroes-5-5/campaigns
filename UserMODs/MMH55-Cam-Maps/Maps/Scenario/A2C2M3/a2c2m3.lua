@@ -354,13 +354,6 @@ function StartDemonScene( hero )
 	end
 end
 
-function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
-	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
-	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
-	sleep(1);
-	MoveHeroRealTime( heroName, x, y, GROUND );
-end
-
 function destroyTown( town )
 	Play2DSound( "/Maps/Scenario/A2C2M1/Siege_WallCrash02sound.xdb#xpointer(/Sound)" );
 	RazeTown( town );

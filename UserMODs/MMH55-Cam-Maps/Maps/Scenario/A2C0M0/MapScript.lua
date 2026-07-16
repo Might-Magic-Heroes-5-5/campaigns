@@ -1,6 +1,9 @@
-----------------------------------------------------------------------------------------
-----------------------------------   CONSTANTS   ---------------------------------------
-----------------------------------------------------------------------------------------
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep()
+end
 
 loopSoundsLocks = 0
 function LockLoopSounds() loopSoundsLocks = loopSoundsLocks + 1; end
@@ -213,13 +216,6 @@ function WantBurnHut()
 	SetPlayerResource( PLAYER_1, GOLD, ( GetPlayerResource(PLAYER_1, GOLD)+2500 ), QUROQ );
 	sleep(5);
 	ChangeHeroStat( QUROQ, STAT_EXPERIENCE, 2000 );
-end
-
-function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
-	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
-	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
-	sleep(1);
-	MoveHeroRealTime( heroName, x, y, GROUND );
 end
 
 function Distance( object1, object2, x, y )

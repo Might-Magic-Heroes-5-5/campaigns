@@ -217,13 +217,6 @@ function SetLight( level, time )
 	SetAmbientLight( GROUND, "fog_light_level"..level, not nil, time);
 end
 
-function MoveHeroRealTimeAndReachPoint( heroName, x, y, floor )
-	moveCost = CalcHeroMoveCost( heroName, x, y, GROUND );
-	ChangeHeroStat( heroName, STAT_MOVE_POINTS, moveCost );
-	sleep(10);
-	MoveHeroRealTime( heroName, x, y, GROUND );
-end
-
 function SetPointLights( level )
 	for i=1, POINT_LIGHTS.n do
 		SetObjectFlashlight("light"..i, "undead_light"..level);
