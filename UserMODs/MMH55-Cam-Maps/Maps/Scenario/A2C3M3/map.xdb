@@ -411,7 +411,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>HangvulHide</Name>
 				<CombatScript/>
 				<pointLights>
 					<Item>
@@ -89641,7 +89641,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Dwarves/Bersy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>3201</Experience>
+						<Experience>1210000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_DEFENDER</Creature>
@@ -89657,29 +89657,88 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>3</Defence>
-							<Spellpower>3</Spellpower>
-							<Knowledge>2</Knowledge>
+							<Offence>11</Offence>
+							<Defence>8</Defence>
+							<Spellpower>11</Spellpower>
+							<Knowledge>8</Knowledge>
 							<skills>
 								<Item>
 									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_OFFENCE</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_TACTICS</Item>
+								<Item>HERO_SKILL_TAP_RUNES</Item>
+								<Item>HERO_SKILL_RUNIC_ATTUNEMENT</Item>							
 								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_TACTICS</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>								
+								<Item>HERO_SKILL_PRAYER</Item>
+								<Item>HERO_SKILL_EMPATHY</Item>
+								<Item>HERO_SKILL_FAST_AND_FURIOUS</Item>								
+								<Item>HERO_SKILL_ANCIENT_SMITHY</Item>
+								<Item>HERO_SKILL_SUN_FIRE</Item>								
+								<Item>HERO_SKILL_FIRST_AID</Item>						
+								<Item>HERO_SKILL_EVASION</Item>
+								<Item>HERO_SKILL_PROTECTION</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>	
+								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
 							</perkIDs>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<spellIDs>
+								<Item>SPELL_FORGETFULNESS</Item>
+								<Item>SPELL_PLAGUE</Item>
+								<Item>SPELL_BERSERK</Item>
+								<Item>SPELL_SLOW</Item>
+								<Item>SPELL_SORROW</Item>
+								<Item>SPELL_WEAKNESS</Item>
+								<Item>SPELL_VAMPIRISM</Item>
+								<Item>SPELL_DISRUPTING_RAY</Item>
+								<Item>SPELL_CURSE</Item>
+								<Item>SPELL_TOWN_PORTAL</Item>
+								<Item>SPELL_SUMMON_CREATURES</Item>
+						        <Item>SPELL_RUNE_OF_CHARGE</Item>								
+						        <Item>SPELL_RUNE_OF_BERSERKING</Item>
+						        <Item>SPELL_RUNE_OF_MAGIC_CONTROL</Item>
+						        <Item>SPELL_RUNE_OF_EXORCISM</Item>
+						        <Item>SPELL_RUNE_OF_ELEMENTAL_IMMUNITY</Item>
+						        <Item>SPELL_RUNE_OF_STUNNING</Item>
+						        <Item>SPELL_RUNE_OF_BATTLERAGE</Item>
+						        <Item>SPELL_RUNE_OF_ETHEREALNESS</Item>
+						        <Item>SPELL_RUNE_OF_REVIVE</Item>
+						        <Item>SPELL_RUNE_OF_DRAGONFORM</Item>									
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
 						<OverrideMask>32</OverrideMask>
-						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -89711,7 +89770,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Dwarves/Egil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>17501</Experience>
+						<Experience>1210000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_DEFENDER</Creature>
@@ -89723,39 +89782,80 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>2</Offence>
-							<Defence>5</Defence>
-							<Spellpower>4</Spellpower>
-							<Knowledge>4</Knowledge>
+							<Offence>3</Offence>
+							<Defence>6</Defence>
+							<Spellpower>17</Spellpower>
+							<Knowledge>13</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_RUNELORE</SkillID>
 								</Item>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_OFFENCE</SkillID>
 								</Item>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_DEFENCE</SkillID>
-								</Item>							
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SORCERY</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_INVOCATION</SkillID>
+								</Item>									
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_TOUGHNESS</Item>
-								<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+								<Item>HERO_SKILL_TAP_RUNES</Item>
+								<Item>HERO_SKILL_RUNIC_ATTUNEMENT</Item>
 								<Item>HERO_SKILL_ARCHERY</Item>
-								<Item>HERO_SKILL_REFRESH_RUNE</Item>
-								<Item>HERO_SKILL_FINE_RUNE</Item>
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_RETRIBUTION</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>
+								<Item>HERO_SKILL_EVASION</Item>	
+								<Item>HERO_SKILL_SET_AFIRE</Item>
+								<Item>HERO_SKILL_DEADLY_COLD</Item>	
+								<Item>HERO_SKILL_ELVEN_LUCK</Item>
+								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_ELEMENTAL_OVERKILL</Item>	
+								<Item>HERO_SKILL_EMPOWERED_SPELLS</Item>
+								<Item>HERO_SKILL_ELITE_CASTERS</Item>	
+								<Item>HERO_SKILL_INSIGHTS</Item>								
 							</perkIDs>
 							<spellIDs>
-								<Item>SPELL_MAGIC_ARROW</Item>
 								<Item>SPELL_LIGHTNING_BOLT</Item>
 								<Item>SPELL_STONE_SPIKES</Item>
 								<Item>SPELL_FIREBALL</Item>
 								<Item>SPELL_FROST_RING</Item>
 								<Item>SPELL_CHAIN_LIGHTNING</Item>
 								<Item>SPELL_METEOR_SHOWER</Item>
+						        <Item>SPELL_TOWN_PORTAL</Item>
+						        <Item>SPELL_SUMMON_CREATURES</Item>	
+								<Item>SPELL_ARMAGEDDON</Item>
+						        <Item>SPELL_DEEP_FREEZE</Item>
+						        <Item>SPELL_ICE_BOLT</Item>	
+								<Item>SPELL_IMPLOSION</Item>								
+						        <Item>SPELL_RUNE_OF_CHARGE</Item>								
+						        <Item>SPELL_RUNE_OF_BERSERKING</Item>
+						        <Item>SPELL_RUNE_OF_MAGIC_CONTROL</Item>
+						        <Item>SPELL_RUNE_OF_EXORCISM</Item>
+						        <Item>SPELL_RUNE_OF_ELEMENTAL_IMMUNITY</Item>
+						        <Item>SPELL_RUNE_OF_STUNNING</Item>
+						        <Item>SPELL_RUNE_OF_BATTLERAGE</Item>
+						        <Item>SPELL_RUNE_OF_ETHEREALNESS</Item>
+						        <Item>SPELL_RUNE_OF_REVIVE</Item>
+						        <Item>SPELL_RUNE_OF_DRAGONFORM</Item>	
 							</spellIDs>
 							<Ballista>true</Ballista>
 							<FirstAidTent>true</FirstAidTent>
@@ -89764,7 +89864,7 @@
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
 						<OverrideMask>48</OverrideMask>
-						<PrimarySkillMastery>MASTERY_ADVANCED</PrimarySkillMastery>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -89796,7 +89896,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Dwarves/Ottar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>97950</Experience>
+						<Experience>1210000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_DEFENDER</Creature>
@@ -89812,9 +89912,9 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>3</Offence>
-							<Defence>9</Defence>
-							<Spellpower>6</Spellpower>
+							<Offence>12</Offence>
+							<Defence>17</Defence>
+							<Spellpower>7</Spellpower>
 							<Knowledge>7</Knowledge>
 							<skills>
 								<Item>
@@ -89829,16 +89929,34 @@
 									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>								
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_TOUGHNESS</Item>
-								<Item>HERO_SKILL_OFFENSIVE_FORMATION</Item>
-								<Item>HERO_SKILL_DEFENSIVE_FORMATION</Item>
-								<Item>HERO_SKILL_REFRESH_RUNE</Item>
-								<Item>HERO_SKILL_ARCHERY</Item>
-								<Item>HERO_SKILL_MASTER_OF_BLESSING</Item>
+								<Item>HERO_SKILL_RUNIC_ATTUNEMENT</Item>							
 								<Item>HERO_SKILL_FRENZY</Item>
-								<Item>HERO_SKILL_FINE_RUNE</Item>
+								<Item>HERO_SKILL_WILDFIRE</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>								
+								<Item>HERO_SKILL_EMPATHY</Item>
+								<Item>HERO_SKILL_TRIPLE_BALLISTA</Item>																
+								<Item>HERO_SKILL_BALLISTA</Item>						
+								<Item>HERO_SKILL_EVASION</Item>
+								<Item>HERO_SKILL_PROTECTION</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>								
 								<Item>HERO_SKILL_MASTER_OF_ABJURATION</Item>
 								<Item>HERO_SKILL_MASTER_OF_WRATH</Item>
 								<Item>HERO_SKILL_EVASION</Item>
@@ -89846,17 +89964,30 @@
 							<spellIDs>
 								<Item>SPELL_DISPEL</Item>
 								<Item>SPELL_DEFLECT_ARROWS</Item>
-								<Item>SPELL_TELEPORT</Item>
 								<Item>SPELL_REGENERATION</Item>
 								<Item>SPELL_DIVINE_VENGEANCE</Item>
 								<Item>SPELL_BLESS</Item>
 								<Item>SPELL_HASTE</Item>
 								<Item>SPELL_STONESKIN</Item>
+								<Item>SPELL_CELESTIAL_SHIELD</Item>
+								<Item>SPELL_RESURRECT</Item>
+								<Item>SPELL_BLOODLUST</Item>
+								<Item>SPELL_BLIND</Item>
+						        <Item>SPELL_RUNE_OF_CHARGE</Item>								
+						        <Item>SPELL_RUNE_OF_BERSERKING</Item>
+						        <Item>SPELL_RUNE_OF_MAGIC_CONTROL</Item>
+						        <Item>SPELL_RUNE_OF_EXORCISM</Item>
+						        <Item>SPELL_RUNE_OF_ELEMENTAL_IMMUNITY</Item>
+						        <Item>SPELL_RUNE_OF_STUNNING</Item>
+						        <Item>SPELL_RUNE_OF_BATTLERAGE</Item>
+						        <Item>SPELL_RUNE_OF_ETHEREALNESS</Item>
+						        <Item>SPELL_RUNE_OF_REVIVE</Item>
+						        <Item>SPELL_RUNE_OF_DRAGONFORM</Item>								
 								<Item>SPELL_TOWN_PORTAL</Item>
 							</spellIDs>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 							<TalismanLevel>0</TalismanLevel>
 						</Editable>
