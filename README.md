@@ -585,6 +585,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A2C3M2 - Flying to the Rescue: Tearing the Veil
 - fix: Sometimes not all affiliated heroes/mines/dwellings were transfered to the player when bottom left Heaven town capitulated
 
+### A2C3M3 - Flying to the Rescue: Summoning the Dragon
+- change: Enemy onslaught heroes are more experienced, come in variety of class flavours and their army strength now depend on game difficulty
+- change: Starting on week 3, enemy town gets weekly reinforcements that depend on game difficulty
+
 ### A2C3M4 - Flying to the Rescue: A Flamboyant Exit
 - fix: Dungeon player heroes could not access the Subterranean gate (at 69, 152) and thus gain access to mines and resources.
 - change: Revoked Dungeon player heroes access to portal (76, 126).
