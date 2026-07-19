@@ -237,7 +237,7 @@ function H55c_updateArmy(hero, gain, list, ...)
 		if new_count > 0 then
 			AddHeroCreatures( hero, list[i], new_count );
 		end
-		if new_count > count + 2 and count > 0 then
+		if count > 0 then
 			RemoveHeroCreatures( hero, list[i], count );
 		end
 	end

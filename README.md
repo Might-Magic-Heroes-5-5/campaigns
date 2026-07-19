@@ -503,10 +503,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Lostdale town receive more reinforcements each week + additional from day 1 based on difficulty
 - change: King Toulghar level increased and his army is now more challenging on higher difficulty levels.
 - change: Increased the strength of Inferno garrisons
+- change: Inferno towns now have heroes serving as protectors who will guard the towns at all cost.
+- change: Inferno enemy will spawn Marbason the first day of the week after Horncrest has been conquered by the player. Marbas will start an osnalught against the player and if defeated he will respawn on the following week to continue to do so. The attacks will stop once the Inferno player is fully defeated.
 - change: Increased the strength of Dwarf garrisons
 - change: Increased the strength of Red Heaven garrison peasants from 10k to 12k
 - change: Increased the strength of Red Heaven units and dwarves that guard mines.
-- change: redesigned Marbas starting army. Its power level is challenging on higher difficulty levels.
 - new: Removed Tavern from inferno towns; will be exchanged to deploy additional 2 inferno Heroes (need to be added)
 - new: Added Memory Mentor
 

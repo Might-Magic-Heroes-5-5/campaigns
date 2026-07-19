@@ -1,10 +1,45 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
+
+H55c_AI_CONTROLLED = {
+	player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
+		state = 0,       -- 0 human, 1 unmanaged AI, 2 managed AI
+		heroes = {},
+		enemies = {},
+	},
+	player2 = { 		   -- Duncan allied army
+		state = 1,
+		heroes = {},
+		enemies = {},
+	},
+	player3 = { 		   -- Red Haven player.
+		state = 1,
+		heroes = {},
+		enemies = {},
+	},
+	player4 = { 		   -- Inferno AI player
+		state = 2,         -- Leads onslaught against player town.
+		heroes = {},
+		enemies = {
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+			{ priority = 0.5, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER3
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER4
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER5
+		},
+	},
+	player5 = { 		   -- King Tolghar dwarven army
+		state = 1,
+		heroes = {},
+		enemies = {},
+	},
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M5");
@@ -113,61 +148,56 @@ end
 
 startThread(RH_Respawn);
 --===================================== MAIN SCRIPT BODY =============================================
-IsAlaricTouchTeleport = 0;
-siege_hero_defeated = 0;
 ALARIC = 'RedHeavenHero03';
-KINGTOLGHAR = 'KingTolghar';
-SHADWYN = 'Shadwyn';
 
 DIFFICULTY = {
 	[0] = function()
+		diff = 1;
 		redhaven_coeff = 1.0;
-		SetKingTolgharArmy(1);
+		inferno_coef = 1;
 	end,
 	[1] = function()
+		diff = 2;
 		redhaven_coeff = 1.5;
-		SetKingTolgharArmy(2);
+		inferno_coef = 1.5;
 	end,
 	[2] = function()
+		diff = 3;
 		redhaven_coeff = 2.0;
-		SetKingTolgharArmy(3);
+		inferno_coef = 2.0;
 	end,
 	[3] = function()
+		diff = 4;
 		redhaven_coeff = 2.5;
-		SetKingTolgharArmy(4);
+		inferno_coef = 2.5;
 	end,
 }
 
-function SetKingTolgharArmy(koef)
-	AddHeroCreatures(KINGTOLGHAR,  CREATURE_STOUT_DEFENDER, koef * 350 );
-	AddHeroCreatures(KINGTOLGHAR, 	  CREATURE_AXE_THROWER, koef * 230 );
-	AddHeroCreatures(KINGTOLGHAR, CREATURE_BLACKBEAR_RIDER, koef * 130 );
-	AddHeroCreatures(KINGTOLGHAR,		CREATURE_BERSERKER, koef * 85 );
-	AddHeroCreatures(KINGTOLGHAR,	   CREATURE_FLAME_MAGE, koef * 50 );
-	AddHeroCreatures(KINGTOLGHAR,		  CREATURE_WARLORD, koef * 30 );
-	AddHeroCreatures(KINGTOLGHAR,	 CREATURE_MAGMA_DRAGON, koef * 20 );
-	AddHeroCreatures('Marder',	CREATURE_INFERNAL_SUCCUBUS, koef * 20 );
-	AddHeroCreatures('Marder',	CREATURE_HORNED_DEMON, koef * 40 );
-	AddHeroCreatures('Marder',	 CREATURE_BALOR, koef * 10 );
-	AddHeroCreatures('Marder',	 CREATURE_ARCHDEVIL, koef * 5 );
-	AddObjectCreatures( "rtown", CREATURE_ZEALOT, 24 * redhaven_coeff );
-	AddObjectCreatures( "rtown", CREATURE_CHAMPION, 16 * redhaven_coeff );
-	AddObjectCreatures( "rtown", CREATURE_SERAPH, 8 * redhaven_coeff );
-	AddHeroCreatures("RedHeavenHero02", CREATURE_SERAPH, 1 * koef);
-	AddHeroCreatures("RedHeavenHero02", CREATURE_CHAMPION, 2 * koef);
-	AddHeroCreatures("RedHeavenHero02", CREATURE_ZEALOT, 3 * koef);
-	AddHeroCreatures("RedHeavenHero02", CREATURE_VINDICATOR, 10 * koef);
-	AddHeroCreatures("RedHeavenHero02", CREATURE_LONGBOWMAN, 15 * koef);
+function SetupEnemyArmies()
+	AddHeroCreatures('KingTolghar',  CREATURE_STOUT_DEFENDER, diff * 350 );
+	AddHeroCreatures('KingTolghar',		CREATURE_AXE_THROWER, diff * 230 );
+	AddHeroCreatures('KingTolghar', CREATURE_BLACKBEAR_RIDER, diff * 130 );
+	AddHeroCreatures('KingTolghar',		  CREATURE_BERSERKER, diff * 85 );
+	AddHeroCreatures('KingTolghar',		 CREATURE_FLAME_MAGE, diff * 50 );
+	AddHeroCreatures('KingTolghar',			CREATURE_WARLORD, diff * 30 );
+	AddHeroCreatures('KingTolghar',	   CREATURE_MAGMA_DRAGON, diff * 20 );
+	AddObjectCreatures( "rtown",			 CREATURE_ZEALOT, 24 * redhaven_coeff );
+	AddObjectCreatures( "rtown",		   CREATURE_CHAMPION, 16 * redhaven_coeff );
+	AddObjectCreatures( "rtown",			 CREATURE_SERAPH, 8 * redhaven_coeff );
+	AddHeroCreatures("RedHeavenHero02",		 CREATURE_SERAPH, 1 * diff);
+	AddHeroCreatures("RedHeavenHero02",	   CREATURE_CHAMPION, 2 * diff);
+	AddHeroCreatures("RedHeavenHero02",		 CREATURE_ZEALOT, 3 * diff);
+	AddHeroCreatures("RedHeavenHero02",	 CREATURE_VINDICATOR, 10 * diff);
+	AddHeroCreatures("RedHeavenHero02",	 CREATURE_LONGBOWMAN, 15 * diff);
 	sleep(10);
-	ChangeHeroStat( KINGTOLGHAR,      STAT_ATTACK, koef * 3 );
-	ChangeHeroStat( KINGTOLGHAR,     STAT_DEFENCE, koef * 3 );
-	ChangeHeroStat( KINGTOLGHAR, STAT_SPELL_POWER, koef * 3 );
-	ChangeHeroStat( KINGTOLGHAR,   STAT_KNOWLEDGE, koef * 3 );
-	GiveExp(       KINGTOLGHAR, 100000 + 40000 * math.pow(2, koef));
-	GiveExp(          'Marder', 100000 + 30000 * math.pow(2, koef));
-	GiveExp( 'RedHeavenHero01', 100000 + 30000 * math.pow(2, koef));
-	GiveExp(            ALARIC, 100000 + 40000 * math.pow(2, koef));
-	GiveExp( 'RedHeavenHero02', 100000 + 40000 * math.pow(2, koef));
+	ChangeHeroStat( 'KingTolghar',      STAT_ATTACK, diff * 3 );
+	ChangeHeroStat( 'KingTolghar',     STAT_DEFENCE, diff * 3 );
+	ChangeHeroStat( 'KingTolghar', STAT_SPELL_POWER, diff * 3 );
+	ChangeHeroStat( 'KingTolghar',   STAT_KNOWLEDGE, diff * 3 );
+	GiveExp(     'KingTolghar', 100000 + 40000 * math.pow(2, diff));
+	GiveExp( 'RedHeavenHero01', 100000 + 30000 * math.pow(2, diff));
+	GiveExp(            ALARIC, 100000 + 40000 * math.pow(2, diff));
+	GiveExp( 'RedHeavenHero02', 100000 + 40000 * math.pow(2, diff));
 end
 
 -- управление эффектами и анимациями катапульты
@@ -200,6 +230,10 @@ function Catapult()
 		end
 		sleep( 400 + random(100) );
 	end
+	RazeBuilding( 'kotopult' );
+	sleep( 10 );
+	PlayObjectAnimation( 'kotopult', 'death', ONESHOT_STILL );
+	StopVisualEffects( "townfire" );
 end
 
 function Siege( counter )
@@ -215,16 +249,6 @@ function Siege( counter )
 			end
 		end
 		sleep( 200 + random( 100 ) );
-	end
-end
-
-function RedHavenHeroLost( heroname )
-	if ( heroname == 'RedHeavenHero02' ) and ( siege_hero_defeated == 0 ) then
-		siege_hero_defeated = 1;
-		RazeBuilding( 'kotopult' );
-		sleep( 10 );
-		PlayObjectAnimation( 'kotopult', 'death', ONESHOT_STILL );
-		StopVisualEffects( "townfire" );
 	end
 end
 
@@ -252,13 +276,13 @@ CINEMATICS = {
 
 function AlaricEscape( oldowner, newowner, heroname )
 	if newowner == PLAYER_1 then
-		Trigger( OBJECT_TOUCH_TRIGGER, 'portal', 'RemoveOrrin' );
+		Trigger( OBJECT_TOUCH_TRIGGER, 'portal', 'RemoveAlaric' );
 		DisableCameraFollowHeroes( 0, 0, 1 ); -- не двигать камеру за Андреем
 		OpenCircleFog( 82, 101, 0, 10, PLAYER_1 );
 		sleep(1);
 		MoveCamera( 82, 101, GROUND, 40, 1.3, 0, 1, 1 ,1); -- переместить камеру
 		sleep(20);
-		while IsAlaricTouchTeleport == 0 do
+		while IsHeroAlive( ALARIC ) ~= nil do
 			EnableHeroAI( ALARIC, not nil );			
 			MoveHeroRealTime( ALARIC, 75, 97, 0 );
 			sleep(2);
@@ -269,9 +293,8 @@ function AlaricEscape( oldowner, newowner, heroname )
 end
 
 -- удаление Аларика после телепорта
-function RemoveOrrin( heroname )
+function RemoveAlaric( heroname )
 	if heroname == ALARIC then
-		IsAlaricTouchTeleport = 1;
 		sleep( 7 );
 		RemoveObject( ALARIC );
 		sleep( 1 );
@@ -282,43 +305,11 @@ function RemoveOrrin( heroname )
 	end
 end
 
-function RedHavenUpgrade() ---- Кричи хавена (апгрейды) скриптом заменяются на Красный апгрейд
-	object = "rtown";
-	heroes = GetPlayerHeroes( PLAYER_3 );
-	for j, hero in heroes do
-		for i = 1, 7 do
-			num = GetHeroCreatures( hero, 2 * i );
-			if num > 0 then
-				AddHeroCreatures( hero, 105 + i, num );
-				RemoveHeroCreatures( hero, 2 * i, num );
-			end
-		end
-	end
-	if GetObjectOwner( object ) == PLAYER_3 then
-		for i = 1, 7 do
-			num = GetObjectCreatures( object, 2 * i );
-			if num > 0 then
-				AddObjectCreatures( object, 105 + i, num );
-				RemoveObjectCreatures( object, 2 * i, num );
-			end
-		end
-		if GetDate( DAY_OF_WEEK ) == 1 then
-			AddObjectCreatures( object, CREATURE_ZEALOT, 24 * redhaven_coeff );
-			AddObjectCreatures( object, CREATURE_CHAMPION, 16 * redhaven_coeff );
-			AddObjectCreatures( object, CREATURE_SERAPH, 8 * redhaven_coeff );
-		end
-	end
-end
-
 -- PLAYER_1 = HUMAN
 -- PLAYER_2 = ALLY (SD CAPITAL)
 -- PLAYER_3 = RED HAVEN
 -- PLAYER_4 = INFERNO
 -- PLAYER_5 = DWARF
-
-function H55_TriggerDaily()
-	RedHavenUpgrade();
-end
 
 OBJECTIVES = {
 	state = {
@@ -327,6 +318,7 @@ OBJECTIVES = {
 		captureTorHrall	= { "prim3", 0 }, 	-- Capture TorHrall town
 		isAlive			= { "prim4", 1 }, 	-- Capture TorHrall town
 		demonRaids		= {  "sec1", 0 }, 	-- Stop the demon raids
+		eventManager	= {  "_", 1 }, 	-- Heaven enemy reinforcements
 	},
 
     start = function()
@@ -335,32 +327,34 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
+		SetRegionBlocked("gate", 1, PLAYER_3); 
+		SetRegionBlocked( 'deploy1', 1, PLAYER_1 );
+		SetRegionBlocked( 'deploy2', 1, PLAYER_1 );
 		SetObjectEnabled('treasury', nil );
 		SetObjectEnabled(  'prison', nil );
-		Trigger( OBJECT_TOUCH_TRIGGER, "treasury", "TouchTreasury" ); -- сокровищница
-		Trigger( OBJECT_TOUCH_TRIGGER,   "prison",   "TouchPrison" ); -- тюрьма
-		H55_NewDayTrigger = 1;
-		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, "RedHavenHeroLost" ); -- потеря героя red haven
-		Trigger( OBJECT_CAPTURE_TRIGGER, "garrison1", "AlaricEscape" ); -- потеря героя гномов-врагов
+		Trigger(   OBJECT_TOUCH_TRIGGER,  "treasury", "TouchTreasury" ); -- сокровищница
+		Trigger(   OBJECT_TOUCH_TRIGGER,    "prison",   "TouchPrison" ); -- тюрьма
+		Trigger( OBJECT_CAPTURE_TRIGGER, "garrison1",  "AlaricEscape" ); -- потеря героя гномов-врагов
 		startThread( Catapult ); -- катапульта и эффекты осады
 		for i = 1, 12 do
 			startThread( Siege, i ); -- анимации осаждающих кричей
 		end
-		CINEMATICS.intro();
-		startThread(DIFFICULTY[GetDifficulty()]);
-		SetRegionBlocked("gate", 1, PLAYER_3); 
-		SetRegionBlocked( 'deploy1', 1, PLAYER_1 );
-		SetRegionBlocked( 'deploy2', 1, PLAYER_1 );
-		EnableHeroAI( 'RedHeavenHero02', nil ); -- so hero stays at Horncrest siege
-		EnableHeroAI( 'Duncan', nil ); -- сидит в замке
-		EnableHeroAI( KINGTOLGHAR, nil ); -- сидит в Tor Hrall
-		EnableHeroAI( ALARIC, nil ); -- Аларик, сидит около Tor Hrall
-		EnableAIHeroHiring( PLAYER_2, 'SD', nil );
-		FireWorks();
 		for i = PLAYER_3, PLAYER_5 do -- уменьшить приоритет нейтрального города и заблокировать гномскую сокровищницу для всех врагов
 			SetAIPlayerAttractor( 'dungeon_town', i, -1 );
 			SetRegionBlocked( 'treasury', 1, i );
 		end
+		CINEMATICS.intro();
+		DIFFICULTY[GetDifficulty()]();
+		SetupEnemyArmies();
+		EnableAIHeroHiring( PLAYER_2, 'SD', nil );
+		FireWorks();
+		EnableHeroAI( 'RedHeavenHero02', nil ); -- so hero stays at Horncrest siege
+		EnableHeroAI(		   'Duncan', nil ); -- сидит в замке
+		EnableHeroAI(	  'KingTolghar', nil ); -- сидит в Tor Hrall
+		EnableHeroAI(			 ALARIC, nil ); -- Аларик, сидит около Tor Hrall
+		EnableHeroAI(			"Jazaz", nil ); -- make inferno town guardian sit still
+		EnableHeroAI(			"Nymus", nil ); -- make inferno town guardian sit still
+		EnableHeroAI(			"Efion", nil ); -- make inferno town guardian sit still
 	end,
 	
 	run = function()
@@ -369,7 +363,7 @@ OBJECTIVES = {
 			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
 			for key, value in OBJECTIVES.state do
 				if value[2] > 0 and value[2] < 10 then
-					OBJECTIVES[key]();
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
 				end
 			end
 			
@@ -412,7 +406,7 @@ OBJECTIVES = {
 	
 	liftSiege_break = function()
 		while siege_size() > 0 do
-			if GetCurrentPlayer() ~= PLAYER_1 and siege_hero_defeated == 1 and siege_size() <= 6 then
+			if GetCurrentPlayer() ~= PLAYER_1 and IsHeroAlive("RedHeavenHero02") == nil and siege_size() <= 6 then
 				EnableHeroAI( 'Duncan', not nil );
 				for i = 1, 12 do
 					if IsObjectExists( 'siege' .. i ) then
@@ -431,8 +425,7 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
 			startThread( OBJECTIVES.liftSiege_break );
 			OBJECTIVES.state.liftSiege[2] = 2;
-		elseif OBJECTIVES.state.liftSiege[2] == 2 and siege_size() == 0 and siege_hero_defeated == 1 and GetCurrentPlayer() == PLAYER_1 then
-			H55_NewDayTrigger = 0;
+		elseif OBJECTIVES.state.liftSiege[2] == 2 and siege_size() == 0 and IsHeroAlive("RedHeavenHero02") == nil and GetCurrentPlayer() == PLAYER_1 then
 			CINEMATICS.liftSiege();
 			SetObjectOwner( 'Duncan', PLAYER_1 );
 			SetObjectOwner( 'SD', 0 );
@@ -442,17 +435,16 @@ OBJECTIVES = {
 			sleep(30);
 			LoadHeroAllSetArtifacts(   "Freyda", "A1C1M5" );
 			LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M5" );
-			LoadHeroAllSetArtifacts(  "Duncan",  "A1C2M5" );
+			LoadHeroAllSetArtifacts(   "Duncan", "A1C2M5" );
 			sleep(20);
-			H55_CamFixTooManySkills(PLAYER_1,   "Freyda");
-			H55_CamFixTooManySkills(PLAYER_1, "Wulfstan");
+			H55_CamFixTooManySkills( PLAYER_1,   "Freyda" );
+			H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 			SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );
 			SetRegionBlocked( 'deploy1', nil, PLAYER_1 );
 			SetRegionBlocked( 'deploy2', nil, PLAYER_1 );
 			SetRegionBlocked("gate", nil, PLAYER_3);
 			sleep(5);
 			SetAIPlayerAttractor( 'SD', PLAYER_3, 1 );
-			SetAIPlayerAttractor( 'SD', PLAYER_4, 1 );
 			OBJECTIVES.state.captureTorHrall[2] = 1;
 			OBJECTIVES.state.demonRaids[2] = 1;
 			OBJECTIVES.state.liftSiege[2] = 10;
@@ -478,7 +470,7 @@ OBJECTIVES = {
 	
 	isAlive = function()
 		if OBJECTIVES.state.isAlive[2] == 1 then
-			if IsHeroAlive('Isabell_A1') == nil or IsHeroAlive(SHADWYN) == nil or IsHeroAlive('Duncan') == nil or 
+			if IsHeroAlive('Isabell_A1') == nil or IsHeroAlive('Shadwyn') == nil or IsHeroAlive('Duncan') == nil or 
 			( OBJECTIVES.state.liftSiege[2] == 10 and ( IsHeroAlive('Freyda') == nil or IsHeroAlive('Wulfstan') == nil )) then
 				SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
 				OBJECTIVES.state.isAlive[2] = 11;
@@ -486,16 +478,78 @@ OBJECTIVES = {
 		end
 	end,
 	
+	demonRaids_TownReinforcementDay = 8, 
 	demonRaids = function()
 		if OBJECTIVES.state.demonRaids[2] == 1 then
 			SetObjectiveState('sec1', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.demonRaids[2] = 2;
-		elseif OBJECTIVES.state.demonRaids[2] == 2 and owned_demon_towns() == 3 then
-			SetObjectiveState('sec1', OBJECTIVE_COMPLETED);
-			OBJECTIVES.state.demonRaids[2] = 10;
+		elseif OBJECTIVES.state.demonRaids[2] == 2 then
+			if IsHeroAlive("Marder") == nil and GetDate( DAY_OF_WEEK ) == 1 and owned_demon_towns() < 3 then
+				DeployReserveHero( "Marder", 78, 26, 1 );
+				sleep(20);
+				H55c_AIAddHero( "Marder" );
+				local gain = 1 + GetDifficulty() + 0.25 * GetDate( MONTH );
+				H55c_updateArmy( "Marder", gain, H55c_CREATURES.INFERNO );
+			elseif owned_demon_towns() == 3 then
+				SetObjectiveState('sec1', OBJECTIVE_COMPLETED);
+				OBJECTIVES.state.demonRaids[2] = 10;
+			end
+		end
+		
+		if OBJECTIVES.date > OBJECTIVES.demonRaids_TownReinforcementDay then
+			for i, town in { "inferno1", "inferno2", "inferno3" } do
+				if GetObjectOwner( town ) == PLAYER_4 then
+					A1C3M5_reinforce_inferno_town( town );
+				end
+			end
+			 OBJECTIVES.demonRaids_TownReinforcementDay = OBJECTIVES.demonRaids_TownReinforcementDay + 7;
 		end
 	end,
+	
+	eventManager_day = 1,
+	eventManager = function() ---- Кричи хавена (апгрейды) скриптом заменяются на Красный апгрейд
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			local heroes = GetPlayerHeroes( PLAYER_3 );
+			for j, hero in heroes do
+				for i = 1, 7 do
+					num = GetHeroCreatures( hero, 2 * i );
+					if num > 0 then
+						AddHeroCreatures( hero, 105 + i, num );
+						RemoveHeroCreatures( hero, 2 * i, num );
+					end
+				end
+			end
+			if GetObjectOwner( "rtown" ) == PLAYER_3 then
+				for i = 1, 7 do
+					num = GetObjectCreatures( "rtown", 2 * i );
+					if num > 0 then
+						AddObjectCreatures( "rtown", 105 + i, num );
+						RemoveObjectCreatures( "rtown", 2 * i, num );
+					end
+				end
+				if GetDate( DAY_OF_WEEK ) == 1 then
+					AddObjectCreatures( "rtown", CREATURE_ZEALOT, 24 * redhaven_coeff );
+					AddObjectCreatures( "rtown", CREATURE_CHAMPION, 16 * redhaven_coeff );
+					AddObjectCreatures( "rtown", CREATURE_SERAPH, 8 * redhaven_coeff );
+				end
+			end
+			OBJECTIVES.eventManager_day = OBJECTIVES.date;
+		end
+	end
 }
+
+A1C3M5_INFERNO_TOWN_REINFORCEMENTS = {
+	["inferno1"] = { 	  CREATURE_IMP,	 CREATURE_HORNED_DEMON,			   CREATURE_CERBERI, CREATURE_INFERNAL_SUCCUBUS, CREATURE_FRIGHTFUL_NIGHTMARE,	   CREATURE_BALOR,	CREATURE_ARCHDEVIL },
+	["inferno2"] = { CREATURE_FAMILIAR,			CREATURE_DEMON, 		CREATURE_HELL_HOUND,		  CREATURE_SUCCUBUS,		   CREATURE_NIGHTMARE, CREATURE_PIT_FIEND,		CREATURE_DEVIL },
+	["inferno3"] = {   CREATURE_QUASIT, CREATURE_HORNED_LEAPER, CREATURE_FIREBREATHER_HOUND,  CREATURE_SUCCUBUS_SEDUCER, 			CREATURE_HELLMARE, CREATURE_PIT_SPAWN, CREATURE_ARCH_DEMON },
+	["size"]	 = {                15,                     10,                           6,                          4,                            3,                  2,                   1 },
+}
+
+function A1C3M5_reinforce_inferno_town(town)
+	for i, unit in A1C3M5_INFERNO_TOWN_REINFORCEMENTS[town] do
+		AddObjectCreatures(town, unit, A1C3M5_INFERNO_TOWN_REINFORCEMENTS.size[i] * inferno_coef );
+	end
+end
 
 function siege_size()
 	local cnt = 0;
@@ -539,7 +593,8 @@ function FireWorks()
 end
 
 ------------------- MAIN ------------------------
-startThread(OBJECTIVES.start)
+startThread( OBJECTIVES.start );
+startThread( H55c_AI_main );
 
 function a1c3m5_dbg(s)
 	if s == 1 then
