@@ -99,8 +99,6 @@ OBJECTIVES = {
     deafeated_waves = 0;
     dang_array = {"Dalom", "Almegir", "Eruina", "Menel", "Inagost", "Ferigl", "Segref"};
     dif = SetMissionDifficulty();
-	DenyAIHeroesFlee(PLAYER_2, not nil);
-	DenyAIHeroesFlee(PLAYER_3, not nil);
     CINEMATICS.intro();
   end,
 

@@ -266,6 +266,15 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - **new:** new campaign feature
 - ** Onslaught mode** - refers to heroes with primary and only priority task to charge at enemy towns and/or heroes based on scenario narrative
 
+# Campaign
+
+### Global
+- campaigns are now chained, completing Vanilla unlocks HoF, completing HoF unlocks ToE
+- added widescreen support for **Dialogues**, **Cutscenes**, **Loading Screens**  (credit Mооnst@r)
+- fixed some quests "rewarded" the hero with -100 experience instead of half-to-next-hero-level
+- fixed some missions randomly cause the player actions to not get response due to campaign scripts deadlock
+- AI heroes will no longer run away from combat
+
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
@@ -416,6 +425,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added Hill Fort on the map and the player starts with 500000 gold so he can better strategise the fights.
 - changed: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
 - changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
+- changed: Increased Magic Wall health from 500 to 750
 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
@@ -700,6 +710,9 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### C6M4 – Academy: The Alliance
 - scene(meet Raelag): camera is now showing Godric, Findan and Zehir while talking instead of the sky above them
 - scene(outro): added missing scene after Isabel is defeated
+
+### C6M5 – Academy: Zehir's Hope
+- scene(outro): added original Vanilla cinematic after mission ends where Godric and corrupted Isabel return to the destroyed castle.
 
 ### A1C1M1 - Freyda: Rebels
 - scene(intro): Alaric speech animation

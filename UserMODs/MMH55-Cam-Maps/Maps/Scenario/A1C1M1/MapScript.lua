@@ -1,14 +1,19 @@
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
-ARTIFACT_DWARVEN_MITHRAL_GREAVES,
-ARTIFACT_DWARVEN_MITHRAL_HELMET,
-ARTIFACT_DWARVEN_MITHRAL_SHIELD
-
-};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
+
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
+	ARTIFACT_DWARVEN_MITHRAL_GREAVES,
+	ARTIFACT_DWARVEN_MITHRAL_HELMET,
+	ARTIFACT_DWARVEN_MITHRAL_SHIELD
+};
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M1");
@@ -22,7 +27,7 @@ AddHeroCreatures = function( hero, creature, num )
 		AddHeroCreaturesOld( hero, creature, num );
 	end;
 end;
---Save("autosave");
+
 StartDialogScene("/DialogScenes/A1C1/INTRO/I1/DialogScene.xdb#xpointer(/DialogScene)");
 StartDialogScene("/DialogScenes/A1C1/M1/S1/DialogScene.xdb#xpointer(/DialogScene)");
 for a = 0,6 do --- Current state of things 0

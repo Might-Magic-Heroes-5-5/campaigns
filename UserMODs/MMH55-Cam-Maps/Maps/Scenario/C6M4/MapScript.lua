@@ -1,5 +1,12 @@
-H55_PlayerStatus = {0,1,1,1,1,2,2,2};
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
+H55_PlayerStatus = {0,1,1,1,1,2,2,2};
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M4");

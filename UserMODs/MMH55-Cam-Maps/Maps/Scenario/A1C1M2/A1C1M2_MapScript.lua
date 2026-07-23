@@ -1,14 +1,19 @@
-H55_PlayerStatus = {0,1,1,2,2,2,2,2};
-H55_RemoveTheseArtifactsFromBanks = {
-
-ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
-ARTIFACT_DWARVEN_MITHRAL_GREAVES,
-ARTIFACT_DWARVEN_MITHRAL_HELMET,
-ARTIFACT_DWARVEN_MITHRAL_SHIELD
-
-};
-
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
+
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
+
+H55_RemoveTheseArtifactsFromBanks = {
+	ARTIFACT_DWARVEN_MITHRAL_CUIRASS,
+	ARTIFACT_DWARVEN_MITHRAL_GREAVES,
+	ARTIFACT_DWARVEN_MITHRAL_HELMET,
+	ARTIFACT_DWARVEN_MITHRAL_SHIELD
+};
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M2");

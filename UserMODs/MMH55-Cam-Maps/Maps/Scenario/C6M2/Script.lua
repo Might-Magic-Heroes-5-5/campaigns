@@ -1,4 +1,10 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT or not InitAllSetArtifacts do
+    sleep()
+end
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M2");
