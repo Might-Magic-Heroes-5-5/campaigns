@@ -142,7 +142,6 @@ OBJECTIVES = {
 	prepare = function()
 		DeployReserveHero("Gillion", 34, 28, GROUND);
 		EnableHeroAI("Gillion", nil);
-		DenyAIHeroesFlee(PLAYER_2, not nil);
 		EnableAIHeroHiring(PLAYER_2, "Town1", nil);
 		SetRegionBlocked("blockAI", not nil, PLAYER_2);
 		SetRegionBlocked("BorderBlockAI",not nil,PLAYER_2);

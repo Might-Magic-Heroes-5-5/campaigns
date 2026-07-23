@@ -269,9 +269,6 @@ OBJECTIVES = {
 	prepare = function()
 		ChangeHeroStat("Arantir", STAT_MANA_POINTS, 20);
 		SetHeroesExpCoef( 0.6 );
-		DenyAIHeroesFlee( PLAYER_4, 1 );
-		DenyAIHeroesFlee( PLAYER_3, 1 );
-		DenyAIHeroesFlee( PLAYER_2, 1 );
 		BlockTownGarrisonForAI( "winner", not nil )
 		GiveExp(   "Faiz", 200000);
 		GiveExp(  "Gamor", 200000);

@@ -550,8 +550,6 @@ OBJECTIVES = {
 		for i, tavern_hero_race in { TOWN_DUNGEON, TOWN_NECROMANCY, TOWN_STRONGHOLD, TOWN_PRESERVE, TOWN_FORTRESS, TOWN_INFERNO, TOWN_ACADEMY } do
 			AllowHeroHiringByRaceInTown( "red_heaven_town", tavern_hero_race, 0 );
 		end
-		DenyAIHeroesFlee( PLAYER_2, not nil );
-		DenyAIHeroesFlee( PLAYER_3, not nil );
 		SetObjectEnabled( "red_heaven_town", nil );
 		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_7, 0 );
 		SetTownBuildingLimitLevel( "red_heaven_town", TOWN_BUILDING_DWELLING_6, 0 );

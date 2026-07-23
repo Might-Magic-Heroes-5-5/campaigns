@@ -361,3 +361,10 @@ H55c_Log = {
 		end
 	end,
 }
+
+----------- Start of mission commands -----------
+
+H55_AICheatMode = 0;
+for i=2,8 do
+	pcall( DenyAIHeroesFlee, i, not nil );
+end
