@@ -1,374 +1,293 @@
-isMageTown1Converted = 0;
-isMageTown2Converted = 0;
-MageTownsCapturedByPlayer  = 0;
+doFile("/scripts/campaign_common.lua");
 
-PlayerHero = "Hero4"
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep()
+end
 
-EnemyHero = "RedHeavenHero02"
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
 
-StartDialogScene("/DialogScenes/A2Single/SM5/S1/DialogScene.xdb#xpointer(/DialogScene)");
-
-played = 0;
-diff = 0;
-count = 0;
-TownToConvert = "";
-firstTimeMageTownsCaptured = 0;
-
-function DiffSetup()
-	if GetDifficulty() == DIFFICULTY_EASY then
-		diff = 1;
-		print ("easy");
-		sleep( 2 );
-	elseif GetDifficulty() == DIFFICULTY_NORMAL then
-		diff = 2;
-		print ("normal");
-		sleep( 2 );
-	elseif GetDifficulty() == DIFFICULTY_HARD then
-		diff = 3;
-		print ("Hard");
-		sleep( 2 );
-	elseif GetDifficulty() == DIFFICULTY_HEROIC then
-		diff = 4;
-		print ("Impossible");
-		sleep( 2 );
-	end;
-	print("DiffSetup initialized");
-end;
-
-function MissionStartUp()
-	AllTownsSetUp();
-	HeroesSetUp();
-	BlockTownGarrisonForAI( "MageTown1", not nil )
-	BlockTownGarrisonForAI( "MageTown", not nil );
-	BlockTownGarrisonForAI( "htown", not nil );
-	SetPlayerStartResource(PLAYER_1, WOOD, 0);
-	SetPlayerStartResource(PLAYER_1, ORE, 0);
-	SetPlayerStartResource(PLAYER_1, MERCURY, 0);
-	SetPlayerStartResource(PLAYER_1, SULFUR, 0);
-	SetPlayerStartResource(PLAYER_1, CRYSTAL, 0);
-	SetPlayerStartResource(PLAYER_1, GEM, 0);
-	SetPlayerStartResource(PLAYER_1, GOLD, 0);
-	SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
-	SetObjectiveState("obj5", OBJECTIVE_ACTIVE);
-	OpenCircleFog(21, 20, GROUND, 10, PLAYER_1);
-	SetRegionBlocked("AiBlock", not nil, PLAYER_2);
-	SetRegionBlocked("AiBlock1", not nil, PLAYER_2);
-	SetRegionBlocked("AiBlock2", not nil, PLAYER_2);
-	SetRegionBlocked("AiBlock3", not nil, PLAYER_3);
-	--SetObjectEnabled("Hut", nil);
-	--SetObjectEnabled("Hut1", nil);
-	print("MissionStartUp initialized");
-end;
-
-heroes = { PlayerHero, EnemyHero }
-
+outpost_heroes = { "RedHeavenHero02" }
 function HeroesSetUp()
-	for i,hero in heroes do
+	for i,hero in outpost_heroes do
 		print( hero );
 		for creatureID = 1, CREATURES_COUNT - 1 do 
-			CreatureSetUp = GetHeroCreatures( hero, creatureID );
-			if GetHeroCreatures( hero, creatureID) > 2 then
+			local CreatureSetUp = GetHeroCreatures( hero, creatureID );
+			if GetHeroCreatures( hero, creatureID) > 1 then
 				RemoveHeroCreatures( hero, creatureID, CreatureSetUp );
 				AddHeroCreatures( hero, creatureID, CreatureSetUp + (CreatureSetUp / 100 * 40) * diff );
-			end;
-		end;
-	end;
-end;
+			end
+		end
+	end
+end
 
----------- Army Setup ----------
-
-towns = {"htown", "MageTown1", "MageTown"};
-
+outpost_towns = {"htown", "MageTown1", "MageTown"};
 function AllTownsSetUp()
-	for i,town in towns do
+	for i,town in outpost_towns do
 		print( town );
 		for creatureID = 1, CREATURES_COUNT - 1 do 
-			CreatureSetUp = GetObjectCreatures( town, creatureID );
+			local CreatureSetUp = GetObjectCreatures( town, creatureID );
 			if GetObjectCreatures( town, creatureID ) > 2 then
 				RemoveObjectCreatures( town, creatureID, CreatureSetUp );
 				AddObjectCreatures( town, creatureID, CreatureSetUp + (CreatureSetUp / 100 * 40) * diff );
 				print( creatureID );
-			end;
-		end;
-	end;
-end;
-
----------- Shipyard Setup ----------
+			end
+		end
+	end
+end
 
 function guide_message()
-	local x
-	local y
-	local level
-	x,y,level = GetObjectPosition( PlayerHero );
-	OpenCircleFog(12, 120, GROUND, 5, PLAYER_1);
-	sleep( 2 );
-	MoveCamera(12, 120, GROUND, 25, 3.14/3, 0, 1, 1, 1);
-	sleep( 5 );
-	MessageBox("/Maps/SingleMissions/a2s5/message02.txt");
-	sleep( 15 );
-	MoveCamera(x, y, level, 25, 3.14/3, 0, 1, 1, 1);
 	Trigger( OBJECT_TOUCH_TRIGGER, "shipyard", nil );
-end;
+	local x, y, z = GetObjectPosition( "Hero4" );
+	OpenCircleFog(12, 120, GROUND, 5, PLAYER_1);
+	MoveCamera(12, 120, GROUND, 25, 3.14/3, 0, 1, 1, 1);
+	sleep( 60 );
+	MessageBox("/Maps/SingleMissions/a2s5/message02.txt");
+	sleep( 20 );
+	MoveCamera(x, y, z, 25, 3.14/3, 0, 1, 1, 1);
+end
 
-Trigger( OBJECT_TOUCH_TRIGGER, "shipyard", "guide_message" );
-
----------- Objective 1 ----------
-
-function FirstObjective( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then
-		--MessageBox();
-		Trigger( OBJECT_TOUCH_TRIGGER, "OrcishTown", nil );
-		--SetObjectOwner( "OrcishTown", PLAYER_1 );
-		SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
-		startThread( VoiceOver1 );
-		if GetObjectiveState( "Sec1_CaptureMageTowns" ) == OBJECTIVE_UNKNOWN then
-			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
-		end;
-	end;
-end;
-
-function VoiceOver1()
-	Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO2_Kunyak_01sound.xdb#xpointer(/Sound)" );
-end;
-
----------- Objective 2 ----------
-
-function Convert()
-	TransformTown( TownToConvert, TOWN_STRONGHOLD );
-end;
-
----------- Objective 3 ----------
-
-function ThirdObjective( heroName )
-	if GetObjectOwner( heroName ) == PLAYER_1 then
-		SetObjectiveState("obj3", OBJECTIVE_COMPLETED);
+function openPrison( hero )
+	if GetObjectOwner(hero) == PLAYER_1 then
 		Trigger(OBJECT_TOUCH_TRIGGER, "prison", nil);
-		StartAdvMapDialog( 0 );
-	end;
-end;
+		OBJECTIVES.state.releaseHero[2] = 3;
+	end
+end
 
-
-function vo4( heroName )
-	if heroName == PlayerHero then
-		SetObjectiveState("obj3", OBJECTIVE_ACTIVE);
-		Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO4_Kunyak_01sound.xdb#xpointer(/Sound)" );
+function findPrison( hero )
+	if GetObjectOwner(hero) == PLAYER_1 then
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion4", nil );
-	end;
-end;
+		OBJECTIVES.state.releaseHero[2] = 1;
+	end
+end
 
-Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion4", "vo4" );
+function BurnHut( hero, object )
+	if GetObjectOwner(hero) == PLAYER_1 and IsObjectExists( object ) == not nil then
+		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/Start_dust_S.xdb#xpointer(/Effect)", object, 0, 0, 0, GROUND ); 
+		PlayVisualEffect( "/Effects/_(Effect)/Characters/Heroes/DemonLord/Path/Level_2b.xdb#xpointer(/Effect)", object, 0, 0, 0, GROUND ); 
+		RazeBuilding( object );
+	end
+end
 
----------- Objective 4 ----------
+A2S5_MAGE_TOWNS = {
+	["MageTown"]  = { coverted = nil },
+	["MageTown1"] = { coverted = nil },
+}
 
-function WhirlpoolRemove()
-	while 1 do
-		if GetObjectOwner("MageTown1") == PLAYER_1 and GetObjectOwner("MageTown") == PLAYER_1 then	
-			RemoveObject("Whirlpool");
-			RemoveObject("WhirlpoolFx");
-			SetRegionBlocked("AiBlock", nil, PLAYER_2);
-			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
-			break;
-		end;
-	sleep( 2 );
-	end;
-end;
+function ConvertTown( oldOwner, newOwner, heroName, object )
+	if newOwner == PLAYER_1 and A2S5_MAGE_TOWNS[object].coverted == nil then
+		A2S5_MAGE_TOWNS[object].coverted = 1;
+		TransformTown( object, TOWN_STRONGHOLD );
+	end
+end
 
-function FourthObjective()
-	if IsHeroAlive( EnemyHero ) == nil and GetObjectOwner( "htown" ) == PLAYER_1 then
-		if played == 0 then
-			played = 1;
-			StartDialogScene( "/DialogScenes/A2Single/SM5/S2/DialogScene.xdb#xpointer(/DialogScene)", "WinCondition" );
-		end;
-	end;
-end;
-
----------- Objective 5 ----------
-
-function FifthObjective()
-	while IsHeroAlive( PlayerHero ) == not nil do sleep(5); end;
-	SetObjectiveState("obj5", OBJECTIVE_FAILED);
-	Loose();
-end;
-
-
----------- Objective 5 ----------
-
-function WinCondition()
-	SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
-	startThread( VoiceOver6 );
-	--Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, nil);
-	Trigger(OBJECT_CAPTURE_TRIGGER, "htown", nil);
-	sleep( 3 );
-	Win();
-end;
-
-function VoiceOver6()
-	Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO6_Kunyak_01sound.xdb#xpointer(/Sound)" );
-end;
-
--------------------------------
-
-function BurnHut( ObjectName )
-	if IsObjectExists( ObjectName ) == not nil then
-		PlayVisualEffect( "/Effects/_(Effect)/Buildings/Capture/Start_dust_S.xdb#xpointer(/Effect)", ObjectName, 0, 0, 0, GROUND ); 
-		PlayVisualEffect( "/Effects/_(Effect)/Characters/Heroes/DemonLord/Path/Level_2b.xdb#xpointer(/Effect)", ObjectName, 0, 0, 0, GROUND ); 
-		RazeBuilding( ObjectName );
-	end;
-end;
-
-function Sec1_IsMageTownsCaptured()
-	print("Sec1_IsMageTownsCaptured: function started...");
-	SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
-	sleep(1);
-	while 1 do
-		while GetObjectOwner("MageTown") ~= PLAYER_1 or GetObjectOwner("MageTown1") ~= PLAYER_1 do sleep(5); end;
-		SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_COMPLETED );
-		if firstTimeMageTownsCaptured == 0 then
-			hero_x, hero_y = GetObjectPosition( PlayerHero );
-			firstTimeMageTownsCaptured = 1;
-			OpenCircleFog(80, 82, GROUND, 8, PLAYER_1);
-			MoveCamera(80, 82, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0);
-			sleep( 25 );
-			MoveCamera(hero_x, hero_y, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0);
-		end;
-		while GetObjectOwner("MageTown") == PLAYER_1 and GetObjectOwner("MageTown1") == PLAYER_1 do sleep(5); end;
-		SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
-		sleep(5);
-	end;
-end;
-
-MageTowns = 0;
-InProcess = 0;
-VoiceOverP3 = 0;
-VoiceOverP9 = 0;
-
-function ConvertTown1( oldOwner, newOwner, heroName, objectName )
-	print("ConvertTown1: function started...");
-	if newOwner == PLAYER_1 then
-		if GetObjectiveState( "Sec1_CaptureMageTowns" ) == OBJECTIVE_UNKNOWN then
-			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
-			sleep(1);
-		end;
-		if GetObjectOwner("MageTown")==PLAYER_1 and GetObjectOwner("MageTown1")==PLAYER_1 and GetObjectiveState( "Sec1_CaptureMageTowns" ) ~= OBJECTIVE_COMPLETED then
-			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_COMPLETED );
-		--	Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown", nil );
-			if firstTimeMageTownsCaptured == 0 then
-				ShowRocksDisappear( heroName );
-			end;
-		end;
-		if isMageTown1Converted == 0 then
-			if GetObjectOwner( heroName ) == PLAYER_1 then
-				MageTowns = MageTowns + 1;
-				isMageTown1Converted = 1;
-				TownToConvert = objectName;
-				Convert();
-				VoiceOverPlayOp();
-			end;
-		end;
-	end;
-end;
-
-
-function ShowRocksDisappear( heroName )
-	firstTimeMageTownsCaptured = 1;
-	hero_x, hero_y = GetObjectPosition( heroName );
-	OpenCircleFog(80, 82, GROUND, 8, PLAYER_1);
-	MoveCamera(80, 82, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0);
-	sleep( 25 );
-	MoveCamera(hero_x, hero_y, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0);
-end;
-
-function VoiceOverPlayOp()
-	if MageTowns == 1 and VoiceOverP3 == 0 then
-		VoiceOverP3 = 1;
-		startThread( VoiceOver3 );
-	elseif MageTowns == 2 and VoiceOverP9 == 0 then
-		VoiceOverP9 = 1;
-		startThread( VoiceOver9 );
-	end;
-end;	
-
-function VoiceOver3()
-	local snd = "/Maps/SingleMissions/A2S5/SM5_VO3_Kunyak_01sound.xdb#xpointer(/Sound)"
-	local numSleeps = GetSoundTimeInSleeps(snd);
-	while InProcess > 0 do sleep( 1 ); end		
-	if 	InProcess == 0 then
-		InProcess = 1;	
-		Play2DSound( snd );
-		sleep( numSleeps + 2 );
-		InProcess = 0;
-	end;		
-end;
-
-function VoiceOver9()
-	local snd = "/Maps/SingleMissions/A2S5/SM5_VO9_Batu_01sound.xdb#xpointer(/Sound)"
-	local numSleeps = GetSoundTimeInSleeps(snd);
-	while InProcess > 0 do sleep( 1 ); end		
-	if 	InProcess == 0 then
-		InProcess = 1;	
-		Play2DSound( snd );
-		sleep( numSleeps + 2 );
-		InProcess = 0;
-	end;		
-end;
-
---function VoiceOver9()
---	Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO9_Batu_01sound.xdb#xpointer(/Sound)" );
---end;
-
---function VoiceOver3()
---	Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO3_Kunyak_01sound.xdb#xpointer(/Sound)" );
---end;
-
-function ConvertTown2( oldOwner, newOwner, heroName, objectName )
-	print("ConvertTown2: function started...");
-	if newOwner == PLAYER_1 then
-		if GetObjectiveState( "Sec1_CaptureMageTowns" ) == OBJECTIVE_UNKNOWN then
-			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
-			sleep(1);
-		end;
-		if GetObjectOwner("MageTown")==PLAYER_1 and GetObjectOwner("MageTown1")==PLAYER_1 and GetObjectiveState( "Sec1_CaptureMageTowns" ) ~= OBJECTIVE_COMPLETED then
-			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_COMPLETED );
-		--	Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown1", nil );
-			if firstTimeMageTownsCaptured == 0 then
-				ShowRocksDisappear( heroName );
-			end;
-		end;
-		if isMageTown2Converted == 0 then
-			if GetObjectOwner( heroName ) == PLAYER_1 then
-				MageTowns = MageTowns + 1;
-				isMageTown2Converted = 1;
-				TownToConvert = objectName;
-				Convert();
-				VoiceOverPlayOp();
-			end;
-		end;
-	end;
-end;
-
-
-
-function VoiceOver10( heroName )
-	if heroName == PlayerHero then	
+function VoiceOver10( hero )
+	if hero == "Hero4" then	
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion10", nil);
 		Play2DSound( "/Maps/SingleMissions/A2S5/SM5_VO10_Batu_01sound.xdb#xpointer(/Sound)" );
-		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion10",  nil);
-	end;
-end;
+	end
+end
 
+function GetMageTownsCaptured()
+	local count = 0;
+	for i, town in { "MageTown", "MageTown1" } do
+		if GetObjectOwner(town) == PLAYER_1 then
+			count = count + 1;
+		end
+	end
+	return count
+end
 
-Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion10",  "VoiceOver10");
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+		print ("normal");
+	end,
 
----------- exec line ----------
-DiffSetup();
-MissionStartUp();
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "FourthObjective" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "htown", "FourthObjective" );
---Trigger( OBJECTIVE_STATE_CHANGE_TRIGGER, "obj4", "WinCondition" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown", "ConvertTown1" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown1", "ConvertTown2" );
-Trigger( OBJECT_TOUCH_TRIGGER, "OrcishTown", "FirstObjective" );
---Trigger( OBJECT_TOUCH_TRIGGER, "Hut", "BurnHut" );
---Trigger( OBJECT_TOUCH_TRIGGER, "Hut1", "BurnHut" );
-Trigger( OBJECT_TOUCH_TRIGGER, "prison", "ThirdObjective");
-startThread( WhirlpoolRemove );
-startThread( FifthObjective );
+	[1] = function()
+		diff = 2;
+		print ("hard");
+	end,
+
+	[2] = function()
+		diff = 3;
+		print ("heroic");
+	end,
+
+	[3] = function()
+		diff = 4;
+		print ("impossible");
+	end,
+}
+
+CINEMATICS = {
+	intro = function()
+		StartDialogScene( "/DialogScenes/A2Single/SM5/S1/DialogScene.xdb#xpointer(/DialogScene)" );
+		sleep( 2 );
+	end,
+
+	releaseHero = function()
+		StartAdvMapDialog( 0 );
+	end,
+
+	showRocksDisappear = function()
+		local hero_x, hero_y = GetObjectPosition( "Hero4" );
+		OpenCircleFog( 80, 82, GROUND, 8, PLAYER_1 );
+		MoveCamera( 80, 82, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0 );
+		sleep( 20 );
+		pcall(RemoveObject, "Whirlpool");
+		pcall(RemoveObject, "WhirlpoolFx");
+		sleep( 60 );
+		MoveCamera( hero_x, hero_y, GROUND, 25, 3.14/3, 0, 1, 1, 1, 0 );
+	end,
+
+	outro = function()
+		StartDialogScene( "/DialogScenes/A2Single/SM5/S2/DialogScene.xdb#xpointer(/DialogScene)" );
+		sleep( 2 );
+	end,
+}
+
+OBJECTIVES = {
+	date = 0,
+	state = {
+		escapeToIslands = { 					'obj1', 1 },
+		releaseHero 	   = { 					'obj3', 0 },
+		defeatFalconArmy   = { 					'obj4', 1 },
+		isAlive 		   = { 					'obj5', 1 },
+		captureTowns	   = { 'Sec1_CaptureMageTowns', 1 },
+	},
+
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+	prepare = function()
+		CINEMATICS.intro();
+		DIFFICULTY[GetDifficulty()]();
+		AllTownsSetUp();
+		HeroesSetUp();
+		EnableAIHeroHiring(PLAYER_2, "htown", nil);
+		SetHeroRoleMode( 'RedHeavenHero02', HERO_ROLE_MODE_HERMIT );
+		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
+		OpenCircleFog( 21, 20, GROUND, 10, PLAYER_1 ); -- show Orc town
+		SetRegionBlocked(  "AiBlock", not nil, PLAYER_2 );
+		SetRegionBlocked( "AiBlock1", not nil, PLAYER_2 );
+		SetRegionBlocked( "AiBlock2", not nil, PLAYER_2 );
+		SetRegionBlocked( "AiBlock3", not nil, PLAYER_3 );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion10",  "VoiceOver10" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "shipyard", "guide_message" );
+		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "VoiceOverRegion4", "findPrison" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "prison", "openPrison" );
+		Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown", "ConvertTown" );
+		Trigger( OBJECT_CAPTURE_TRIGGER, "MageTown1", "ConvertTown" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "Hut", "BurnHut" );
+		Trigger( OBJECT_TOUCH_TRIGGER, "Hut1", "BurnHut" );
+	end,
+
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+
+			if GetObjectiveState("obj5") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+
+			if GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep( 100 );
+				Win();
+				return
+			end
+		end
+	end,
+
+	escapeToIslands = function()
+		if OBJECTIVES.state.escapeToIslands[2] == 1 then
+			SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.escapeToIslands[2] = 2;
+		elseif OBJECTIVES.state.escapeToIslands[2] == 2 and GetObjectOwner( "OrcishTown" ) == PLAYER_1 then
+			SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
+			startThread( Play2DSound, "/Maps/SingleMissions/A2S5/SM5_VO2_Kunyak_01sound.xdb#xpointer(/Sound)" );
+			OBJECTIVES.state.escapeToIslands[2] = 10;
+		end
+	end,
+
+	releaseHero = function()
+		if OBJECTIVES.state.releaseHero[2] == 1 then
+			SetObjectiveState("obj3", OBJECTIVE_ACTIVE);
+			startThread( Play2DSound, "/Maps/SingleMissions/A2S5/SM5_VO4_Kunyak_01sound.xdb#xpointer(/Sound)" );
+			OBJECTIVES.state.releaseHero[2] = 2;
+		elseif OBJECTIVES.state.releaseHero[2] == 3 then
+			SetObjectiveState("obj3", OBJECTIVE_COMPLETED);
+			CINEMATICS.releaseHero();
+			OBJECTIVES.state.releaseHero[2] = 10;
+		end
+	end,
+
+	defeatFalconArmy = function()
+		if OBJECTIVES.state.defeatFalconArmy[2] == 1 and OBJECTIVES.state.captureTowns[2] == 10 then
+			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.defeatFalconArmy[2] = 2;
+		elseif OBJECTIVES.state.defeatFalconArmy[2] == 2 and IsHeroAlive( "RedHeavenHero02" ) == nil and GetObjectOwner( "htown" ) == PLAYER_1 then
+			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
+			PlayVoiceoverAndBlockGame( "/Maps/SingleMissions/A2S5/SM5_VO6_Kunyak_01sound.xdb#xpointer(/Sound)" );
+			OBJECTIVES.state.defeatFalconArmy[2] = 10;
+		end
+	end,
+
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 then
+			SetObjectiveState("obj5", OBJECTIVE_ACTIVE);
+			OBJECTIVES.state.isAlive[2] = 2;
+		elseif OBJECTIVES.state.isAlive[2] == 2 and IsHeroAlive( "Hero4" ) == nil then
+			SetObjectiveState("obj5", OBJECTIVE_FAILED);
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+
+	captureTowns_plays = { 0, 0 },
+	captureTowns = function()
+		if OBJECTIVES.state.captureTowns[2] == 1 and (GetObjectOwner( "OrcishTown" ) == PLAYER_1 or GetMageTownsCaptured() > 0) then
+			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.captureTowns[2] = 2;
+		elseif OBJECTIVES.state.captureTowns[2] == 2 and GetMageTownsCaptured() == 2 then
+			SetObjectiveState( "Sec1_CaptureMageTowns", OBJECTIVE_COMPLETED );
+			SetRegionBlocked("AiBlock", nil, PLAYER_2);
+			CINEMATICS.showRocksDisappear();
+			OBJECTIVES.state.captureTowns[2] = 10;
+		end
+		
+		if GetMageTownsCaptured() == 1 and OBJECTIVES.captureTowns_plays[1] == 0 then
+			OBJECTIVES.captureTowns_plays[1] = 1; 
+			startThread (Play2DSound, "/Maps/SingleMissions/A2S5/SM5_VO3_Kunyak_01sound.xdb#xpointer(/Sound)" );
+		elseif GetMageTownsCaptured() == 2 and OBJECTIVES.captureTowns_plays[2] == 0 then
+			OBJECTIVES.captureTowns_plays[2] = 1;
+			startThread (Play2DSound, "/Maps/SingleMissions/A2S5/SM5_VO9_Batu_01sound.xdb#xpointer(/Sound)" );
+		end
+	end
+}
+
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );
+
+function a2s5_dbg(var)
+	if var == 1 then
+		SetObjectOwner("OrcishTown", PLAYER_1);
+	elseif var == 11 then
+		SetObjectOwner("MageTown", PLAYER_1);
+	elseif var == 111 then
+		SetObjectOwner("MageTown1", PLAYER_1);
+	elseif var == 2 then
+		SetObjectPosition("Hero4", 21, 10, GROUND);
+	elseif var == 22 then
+		SetObjectPosition("Hero4", 80, 40, GROUND);
+	end
+end

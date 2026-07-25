@@ -51,7 +51,7 @@ function H55c_AI_crash()
 	H55c_AI_error_stamp = H55c_AI_error;
 	print("AI error: " .. H55c_AI_error);
 	sleep(1000);
-	startThread(H55c_AI_main);
+	__threads[H55c_AI_UpdateTargetWeight] = nil; -- required to fix an issue with StartThreadOnce not cleaning funcs that crash from the threadlist.
 end
 
 function H55c_AI_print(mode, message)
@@ -130,7 +130,8 @@ function H55c_AI_FindHeroTarget(name, hero, tries_left, threshold)
 	local idx, value = H55c_AI_MostImportantTarget(hero, threshold)
 	local choice = H55c_AI_SetHeroTarget(name, hero, idx)
 	if choice == 0 then
-		choice = H55c_AI_FindHeroTarget(name, hero, tries_left-1, value)
+		hero.weights[idx] = math.huge;
+		choice = H55c_AI_FindHeroTarget(name, hero, tries_left-1, 0)
 	end
 	return choice
 end
@@ -276,9 +277,16 @@ function H55c_AIRemoveHero(...)
 			H55c_AI_CONTROLLED["player" .. player].heroes[name] = nil
 		end
 	end
-	EnableHeroAI(name, not nil);
+	pcall(H55c_AIResetMovement, name);
 end
-  
+
+function H55c_AIResetMovement(name)
+	EnableHeroAI(name, not nil);
+	sleep(10);
+	local x,y,z = GetObjectPosition(name);
+	MoveHero(name, x, y, z);
+end
+
 function H55c_AIStats()
 	print( "last updated on day ", H55c_AI_last_run_day, " during player ", H55c_AI_run_during_player_turn," turn." );
 	print( H55c_AI_crash_counter," AI crashes so far. Last crash type at ", H55c_AI_error_stamp );

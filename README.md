@@ -747,3 +747,40 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 
 ### A2C1M4 - The Will of Asha: Beasts and Bones
 - scene(orc trap): Scene heroes were not returned to their original map locations
+
+# SINGLE SCENARIO MAPS
+- AI players visiting H55 interactable objects showed flying messages to the human player on many single scenario maps.
+### The Union (A1S3)
+    - fix(outro): dialog participants were not facing each other
+### New Enemies (A1SM1)
+    - fix(outro): dialog participants were not facing each other
+### In Search for Power (A1SM2)
+    - change: Instant travel spell is no longer available on this map.
+### Iron Throne (A1SM4)
+### Temptation (A1SM5)
+    - change: Instant travel spell is no longer available on this map.
+### Maahir's Gambit (SL1)
+    - change: Instant travel spell is no longer available on this map.
+### An Island of One's Own(SL2)
+    - fix: Onslaught heroes were sailing in sea aimlessly, now they will try to conquer the town closest to them and settle there.
+    - fix(cinematics): camera was not properly showing the onslaught arrivals 
+### A Tear of Ossir (SL3)
+    - fix: Signs were broken and mission could not be completed
+    - fix(cinematics): Sign 6 dialog camera was not showing conversation participants but was looking at the sky.
+### Defiance (SM2)
+    - change: Nadaur is in onslaught mode, meaning  he will assault player heroes and towns until defeated.
+### Diplomat (SM3)
+    - change: Instant travel spell is no longer available on this map.
+### The Days of Fire (A2S2)
+    - fix: Removed Unicorn Horn Bow and Treeborn Quiver from vault rewards as they are part of a questline
+### Hate Breeds Hate (A2S3)
+    - fix: Removed Tome of Destruction from vault rewards as they are part of a questline
+    - fix: Fortress Military Outpost was not interactable which prevented its related secondary quest from completion
+### Agrael's Trial (A2S4)
+    - change: Inferno assault behavior now scales with difficulty, with higher difficulties making enemy heroes more likely to actively hunt player heroes and towns.
+    - fix: The Witch curse is correctly consumed by the next successful assault wave instead of being cleared when no new hero was deployed.
+### Battle of Cry Freedom (A2S5)
+  - fix: cinematics after defeating the Academy did not show the opening of the sea path
+  - fix: increasing game difficulty also increased human player starting army
+  - fix: Haven AI player spawned additional heroes which messed up the town defense army and the main hero army distribution.
+  - change: returned back plunder effect when capturing Peasant hut dwellings

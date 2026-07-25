@@ -1,69 +1,112 @@
+doFile("/scripts/campaign_common.lua");
 
-print("Start_A1SM1.....by Dmitry_B.");
-StartDialogScene( "/DialogScenes/A1Single/SM1/S1/DialogScene.xdb#xpointer(/DialogScene)" );
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep()
+end
 
--------------------------------------------Easy_Mod
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
 
-function Diff_easy()
-	slozhnost = GetDifficulty(); 
-	if ( GetDate(MONTH) == 1 ) and ( GetDate(WEEK) == 1 ) and (GetDate(DAY_OF_WEEK) == 1 ) and slozhnost == DIFFICULTY_EASY then 
-		print("Closed"); 
-		SetRegionBlocked("bl1", 1, PLAYER_2);
-		SetRegionBlocked("bl2", 1, PLAYER_2);
-		SetRegionBlocked("bl3", 1, PLAYER_2);
-	end;
-	if ( GetDate(MONTH) == 2 ) and ( GetDate(WEEK) == 1 ) and (GetDate(DAY_OF_WEEK) == 1 ) and slozhnost == DIFFICULTY_EASY then 
-		print("Open_all");
-		SetRegionBlocked("bl1", nil, PLAYER_2);
-		SetRegionBlocked("bl2", nil, PLAYER_2);
-		SetRegionBlocked("bl3", nil, PLAYER_2);
-	end;
-	print('difficulty = ',slozhnost);
-end;
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
 
----------------------------------Герои погибают
+	intro = function()
+		StartDialogScene( "/DialogScenes/A1Single/SM1/S1/DialogScene.xdb#xpointer(/DialogScene)" );
+		sleep(2);
+	end,
+	
+	outro = function()
+		SetObjectPosition( "Giovanni", 67, 118, 0 );
+		SetObjectPosition( "Ornella", 71, 118, 0 );
+		SetObjectRotation( "Giovanni", 90 );
+		SetObjectRotation( "Ornella", 270 );
+		sleep( 20 );
+		CINEMATICS.playAndWait( 0 );
+	end
+}
 
-function DoWin()
-  Win();
-end;
+OBJECTIVES = {
+	date = 0,
+	state = {
+		captureTowns = { "prim1", 1 },
+		isAlive		 = { "prim2", 1 },
+		eventManager = {	 "_", 1 },
+	},
 
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
 
----------------------------------Герои погибают
+	prepare = function()
+		CINEMATICS.intro();
+		slozhnost = GetDifficulty(); 
+		if slozhnost == DIFFICULTY_EASY then 
+			print("Closed"); 
+			SetRegionBlocked("bl1", 1, PLAYER_2);
+			SetRegionBlocked("bl2", 1, PLAYER_2);
+			SetRegionBlocked("bl3", 1, PLAYER_2);
+		end
+	end,
 
-function Objective2_defead()  
-	while 1 do
-		sleep(10);
-		if IsHeroAlive("Giovanni") == nil or IsHeroAlive("Ornella") == nil then
-			SetObjectiveState('prim2',OBJECTIVE_FAILED);
-			sleep(15);
-			Loose();
-			break;
-		end;
-	end;
-end;
-
-
------------------------------------Победа
-
-function Towns()
-	while 1 do
-		if (GetObjectOwner("Town1") == PLAYER_1) and (GetObjectOwner("Town2") == PLAYER_1) and (GetObjectOwner("Town3") == PLAYER_1)then
+	run = function()
+		while true do
 			sleep(10);
-			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
-			sleep(5);			
-			SetObjectPosition( "Giovanni", 67, 118, 0 );
-			SetObjectPosition( "Ornella", 71, 118, 0 );
-			sleep( 5 );
-			StartAdvMapDialog( 0, "DoWin" );
---			StartAdvMapDialog( 1, "DoWin" );
-			return
-		end;
-		sleep();
-	end;
-end;
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
 
--------------------------------////MAIN
-startThread( Diff_easy );
- 
-startThread( Objective2_defead );
-startThread( Towns );
+			if GetObjectiveState("prim2") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+
+			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep(100);
+				Win( PLAYER_1 );
+				return
+			end
+		end
+	end,
+	
+	captureTowns = function()
+		if OBJECTIVES.state.captureTowns[2] == 1 and GetObjectOwner("Town1") == PLAYER_1 and GetObjectOwner("Town2") == PLAYER_1 and GetObjectOwner("Town3") == PLAYER_1 then
+			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
+		end
+	end,
+	
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 and ( IsHeroAlive("Giovanni") == nil or IsHeroAlive("Ornella") == nil ) then
+			SetObjectiveState( 'prim2', OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	eventManager_day = 0,
+	eventManager = function()
+		if OBJECTIVES.date > OBJECTIVES.eventManager_day then
+			if OBJECTIVES.date == 29 and slozhnost == DIFFICULTY_EASY then 
+				print("Open_all");
+				SetRegionBlocked("bl1", nil, PLAYER_2);
+				SetRegionBlocked("bl2", nil, PLAYER_2);
+				SetRegionBlocked("bl3", nil, PLAYER_2);
+				OBJECTIVES.state.eventManager[2] = 10;
+			end
+			OBJECTIVES.eventManager_day = OBJECTIVES.date;
+		end
+	end
+}
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)

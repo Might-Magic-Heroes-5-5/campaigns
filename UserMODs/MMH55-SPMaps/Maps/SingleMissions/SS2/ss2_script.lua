@@ -1,125 +1,121 @@
-----//SS2_script
---print("ss2start!!!!.................................");
-StartDialogScene("/DialogScenes/Single/SS2/R1/DialogScene.xdb#xpointer(/DialogScene)")  ----Сцена стартовая
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep();
+end
 
 H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 
-DeployReserveHero("Maeve", 83, 73, 0);
-sleep(10);
-RemoveHeroCreatures("Maeve", CREATURE_ARCHANGEL, 9);
-
-SetRegionBlocked("border", 1, PLAYER_2);
-SetRegionBlocked("M1", 1, PLAYER_2);
-SetRegionBlocked("M2", 1, PLAYER_2);
-SetRegionBlocked("M3", 1, PLAYER_2);
-
-Oddrema = "Oddrema";  
-Maeve = "Maeve";  --Miraya
-
---------------
-function PObjective1() 
-	while 1 do	
-		if (GetObjectOwner("Falconhill") == PLAYER_1) and IsHeroAlive("Maeve") == nil then
-			print("Falcon dinasty pipez.................................");
-			SetObjectiveState('Prim1',OBJECTIVE_COMPLETED);
-			return
-		end;
-	sleep(10);
-	end;
-end;
-
-function PObjective2()  --loose
-	while 1 do
-		sleep(10);
-		if IsHeroAlive("Oddrema") == nil then
-			print("Oddrema.................................");
-			SetObjectiveState('Prim2',OBJECTIVE_FAILED);
-			Loose();
-			break;
-		end;
-	end;
-end;
-
---function PObjective3()
---	while 1 do	
---		sleep( 10 );	
---		if IsHeroAlive("Maeve") == nil then
---			print("Miraua dead.................................");
---			SetObjectiveState('Prim3',OBJECTIVE_COMPLETED);
---			break;
---		end;
---	end;
---end;
-
---------------------------Maeve_ressurect
-function H55_TriggerDaily()
-	if (GetObjectOwner("Falconhill") ~= PLAYER_1) and GetObjectiveState('Prim1', PLAYER_1) ~= OBJECTIVE_COMPLETED and IsHeroAlive("Maeve") == nil then 
-		DeployReserveHero("Maeve", 75, 70, 0);
-		SetRegionBlocked("border", nil, PLAYER_2); -----------регион границы разблокан!
---		SetObjectiveState('Prim3',OBJECTIVE_ACTIVE);
+CINEMATICS = {
+	intro = function()
+		StartDialogScene("/DialogScenes/Single/SS2/R1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep(2);
-		MoveHero( "Maeve", 83, 79, 0 );
-		--		startThread(PObjective3);
-	end;
-end;
+	end,
+	
+	captureTown = function()
+		StartDialogScene("/DialogScenes/Single/SS2/R3A1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,
+	
+	defeatElain = function()
+		StartDialogScene("/DialogScenes/Single/SS2/R2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,
+	
+	outro = function()
+		StartDialogScene("/DialogScenes/Single/SS2/R3A2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
+	end,
+}
 
---------------------------------Winns
+OBJECTIVES = {
+	state = {
+		  defeatFalcon = { "Prim1", 0 },	-- defeat FalconEmpire
+		  isAlive	   = { "Prim2", 0 },	-- Jezbeth must survive
+		  eventManager = { 	   "_", 1 },	-- Resurrect Maeve
+	},
 
-function CheckVictory ()
-	while 1 do	
-		if GetObjectiveState ('Prim1') == OBJECTIVE_COMPLETED then
-			sleep(4);
-			--SetObjectiveState('Prim2',OBJECTIVE_COMPLETED);
-			StartDialogScene("/DialogScenes/Single/SS2/R3A2/DialogScene.xdb#xpointer(/DialogScene)")  ----Сцена финальная 
-			sleep(30);
-			Win ();
-			H55_NewDayTrigger = 0;
-			sleep(4);
-			break;
-		end;
-		sleep(4);
-	end;
-end;
-----------------------------------///Новые сцены
+    start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+	
+	prepare = function()
+		CINEMATICS.intro();
+		DeployReserveHero("Maeve", 83, 73, 0);
+		sleep(10);
+		RemoveHeroCreatures("Maeve", CREATURE_ARCHANGEL, 9);
+		SetRegionBlocked("border", 1, PLAYER_2);
+		SetRegionBlocked("M1", 1, PLAYER_2);
+		SetRegionBlocked("M2", 1, PLAYER_2);
+		SetRegionBlocked("M3", 1, PLAYER_2); 
+		sleep(20);
+		H55_NewDayTrigger = 1;
+		sleep(20);
+	end,
+	
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+			
+			if GetObjectiveState('Prim2') == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
 
-function CaptureFH()
-	while 1 do
-		sleep(6);
-		if (GetObjectOwner("Falconhill") == PLAYER_1) and IsHeroAlive("Maeve") == not nil then 
-			StartDialogScene("/DialogScenes/Single/SS2/R3A1/DialogScene.xdb#xpointer(/DialogScene)")  ----Замок взят но аигерой ещё жив 
-			break;
-		end;
-	end;
-end;
+			if GetObjectiveState('Prim1', PLAYER_1) == OBJECTIVE_COMPLETED then 
+				CINEMATICS.outro();
+				sleep(30);
+				Win(PLAYER_1);
+				return
+			end
+		end
+	end,
+	
+	defeatFalcon = function()
+		if OBJECTIVES.state.defeatFalcon[2] == 1 then
+			if GetObjectOwner("Falconhill") == PLAYER_1 and IsHeroAlive("Maeve") ~= nil then 
+				CINEMATICS.captureTown();
+				OBJECTIVES.state.defeatFalcon[2] = 2;
+			elseif IsHeroAlive("Maeve") == nil and GetObjectOwner("Falconhill") ~= PLAYER_1 then
+				CINEMATICS.defeatElain();
+				OBJECTIVES.state.defeatFalcon[2] = 2;
+			elseif IsHeroAlive("Maeve") == nil and GetObjectOwner("Falconhill") == PLAYER_1 then
+				OBJECTIVES.state.defeatFalcon[2] = 2;
+			end
+		elseif OBJECTIVES.state.defeatFalcon[2] == 2 and GetObjectOwner("Falconhill") == PLAYER_1 and IsHeroAlive("Maeve") == nil then
+			SetObjectiveState('Prim1',OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.defeatFalcon[2] = 10;
+		end
+	end,
+	
+	isAlive = function()
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Oddrema") == nil then
+			SetObjectiveState('Prim2', OBJECTIVE_FAILED);
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+	
+	eventManager_day = 1,
+	eventManager = function()
+		if OBJECTIVES.date >= OBJECTIVES.eventManager_day then
+			if GetObjectOwner("Falconhill") ~= PLAYER_1 and GetObjectiveState('Prim1', PLAYER_1) ~= OBJECTIVE_COMPLETED and IsHeroAlive("Maeve") == nil then 
+				DeployReserveHero("Maeve", 75, 70, 0);
+				SetRegionBlocked("border", nil, PLAYER_2);
+				sleep(20);
+				MoveHero( "Maeve", 83, 79, 0 );
+			end
+			OBJECTIVES.eventManager_day = OBJECTIVES.date + 1;
+		end
+	end,
+}
 
-function Kill_AIfirst()
-	while 1 do
-		sleep(6);
-		if (GetObjectOwner("Falconhill") ~= PLAYER_1) and IsHeroAlive("Maeve") == nil then 
-			StartDialogScene("/DialogScenes/Single/SS2/R2/DialogScene.xdb#xpointer(/DialogScene)")  ----AI убит первый раз 
-			break;
-		end;
-	end;
-end;
-
-function Won_scene ()
-	if (GetObjectOwner("Falconhill") == PLAYER_1) and GetObjectiveState('Prim1', PLAYER_1) == OBJECTIVE_COMPLETED and IsHeroAlive("Maeve") == nil then 
-		StartDialogScene("/DialogScenes/Single/SS2/R3A2/DialogScene.xdb#xpointer(/DialogScene)")  ----Сцена финальная 
-		sleep(30);
-		Win ();
-	end;
-end;
---------------------------------//Main
---startThread(Ress);
-
-startThread(PObjective1);
-startThread(PObjective2);
-sleep(20);
---startThread(PObjective3);
-startThread(CheckVictory);
-H55_NewDayTrigger = 1;
------------------------
-startThread(CaptureFH);
-startThread(Won_scene);
-sleep(20);
-startThread(Kill_AIfirst); ----------------------------!!!!
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start )
