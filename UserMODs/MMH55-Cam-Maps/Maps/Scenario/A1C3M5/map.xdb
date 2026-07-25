@@ -36494,7 +36494,7 @@
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36504,7 +36504,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SHIPYARD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36519,7 +36519,7 @@
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36549,12 +36549,12 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36569,7 +36569,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36584,7 +36584,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36594,7 +36594,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -36602,36 +36602,7 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_IMP</Creature>
-						<Count>30</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Count>15</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_CERBERI</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>8</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-						<Count>6</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BALOR</Creature>
-						<Count>3</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ARCHDEVIL</Creature>
-						<Count>2</Count>
-					</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_0AB15ABA-DD4A-4BCD-A0B7-83E5256BFE44">
@@ -36648,7 +36619,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_4</PlayerID>
-						<Experience>0</Experience>
+						<Experience>492000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_IMP</Creature>
@@ -36662,18 +36633,62 @@
 							<BiographyFileRef href=""/>
 							<Offence>0</Offence>
 							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Spellpower>25</Spellpower>
+							<Knowledge>12</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
+								</Item>								
+							</skills>
+							<perkIDs>
+								<Item>HERO_SKILL_MASTER_OF_BLESSING</Item>
+								<Item>HERO_SKILL_MASTER_OF_WRATH</Item>							
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_TACTICS</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>								
+								<Item>HERO_SKILL_LUCKY_STRIKE</Item>						
+								<Item>HERO_SKILL_EVASION</Item>
+								<Item>HERO_SKILL_PROTECTION</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>	
+								<Item>HERO_SKILL_MASTER_OF_ABJURATION</Item>								
+							</perkIDs>
+                            <spellIDs>							
+								<Item>SPELL_DISPEL</Item>
+								<Item>SPELL_DEFLECT_ARROWS</Item>
+								<Item>SPELL_REGENERATION</Item>
+								<Item>SPELL_DIVINE_VENGEANCE</Item>
+								<Item>SPELL_BLESS</Item>
+								<Item>SPELL_HASTE</Item>	
+								<Item>SPELL_CELESTIAL_SHIELD</Item>
+								<Item>SPELL_STONESKIN</Item>
+								<Item>SPELL_RESURRECT</Item>	
+								<Item>SPELL_BLOODLUST</Item>
+								<Item>SPELL_MAGIC_ARROW</Item>								
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<OverrideMask>32</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -36968,22 +36983,22 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_4</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SHIPYARD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36998,7 +37013,7 @@
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37018,22 +37033,22 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37048,32 +37063,32 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -37081,36 +37096,7 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-						<Item>
-							<Creature>CREATURE_QUASIT</Creature>
-							<Count>30</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_HORNED_LEAPER</Creature>
-							<Count>15</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
-							<Count>10</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_SUCCUBUS_SEDUCER</Creature>
-							<Count>8</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_HELLMARE</Creature>
-							<Count>6</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_PIT_SPAWN</Creature>
-							<Count>3</Count>
-						</Item>
-						<Item>
-							<Creature>CREATURE_ARCH_DEMON</Creature>
-							<Count>2</Count>
-						</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_0AB15ABA-DD4A-4BCD-A0B7-83E5256BFE45">
@@ -37127,7 +37113,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Efion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_4</PlayerID>
-						<Experience>0</Experience>
+						<Experience>492000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_QUASIT</Creature>
@@ -37139,20 +37125,61 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Offence>5</Offence>
+							<Defence>10</Defence>
+							<Spellpower>25</Spellpower>
+							<Knowledge>15</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_NECROMANCY</SkillID>
+								</Item>									
+							</skills>
+					        <perkIDs>
+						        <Item>HERO_SKILL_ARCHERY</Item>
+						        <Item>HERO_SKILL_FRENZY</Item>
+						        <Item>HERO_SKILL_TOUGHNESS</Item>				
+						        <Item>HERO_SKILL_EVASION</Item>
+						        <Item>HERO_SKILL_PROTECTION</Item>
+						        <Item>HERO_SKILL_DEATH_SCREAM</Item>
+						        <Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+						        <Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>				
+						        <Item>HERO_SKILL_INSIGHTS</Item>
+						        <Item>HERO_SKILL_RESISTANCE</Item>									
+					        </perkIDs>
+                            <spellIDs>
+							    <Item>SPELL_FORGETFULNESS</Item>
+							    <Item>SPELL_SPELL_BERSERK</Item>
+							    <Item>SPELL_SLOW</Item>
+							    <Item>SPELL_SORROW</Item>	
+							    <Item>SPELL_WEAKNESS</Item>
+							    <Item>SPELL_VAMPIRISM</Item>
+							    <Item>SPELL_DISRUPTING_RAY</Item>
+							    <Item>SPELL_CURSE</Item>								
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<OverrideMask>32</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -37245,12 +37272,12 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_4</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37260,7 +37287,7 @@
 					</Item>
 					<Item>
 						<Type>TB_SHIPYARD</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37275,7 +37302,7 @@
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37290,27 +37317,27 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -37325,32 +37352,32 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -37358,36 +37385,7 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_FAMILIAR</Creature>
-						<Count>30</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DEMON</Creature>
-						<Count>15</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>8</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_NIGHTMARE</Creature>
-						<Count>6</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>3</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DEVIL</Creature>
-						<Count>2</Count>
-					</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_0AB15ABA-DD4A-4BCD-A0B7-83E5256BFE46">
@@ -37404,7 +37402,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_4</PlayerID>
-						<Experience>0</Experience>
+						<Experience>492000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_FAMILIAR</Creature>
@@ -37416,20 +37414,61 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Offence>25</Offence>
+							<Defence>15</Defence>
+							<Spellpower>5</Spellpower>
+							<Knowledge>10</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>								
+							</skills>
+					        <perkIDs>
+						            <Item>HERO_SKILL_ARCHERY</Item>
+						            <Item>HERO_SKILL_FRENZY</Item>
+						            <Item>HERO_SKILL_TOUGHNESS</Item>				
+						            <Item>HERO_SKILL_EVASION</Item>
+						            <Item>HERO_SKILL_PROTECTION</Item>
+						            <Item>HERO_SKILL_FIRST_AID</Item>
+						            <Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+						            <Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>				
+						            <Item>HERO_SKILL_MASTER_OF_MIND</Item>
+						            <Item>HERO_SKILL_FAST_AND_FURIOUS</Item>									
+					        </perkIDs>
+                            <spellIDs>
+							        <Item>SPELL_FORGETFULNESS</Item>
+							        <Item>SPELL_SPELL_BERSERK</Item>
+							        <Item>SPELL_SLOW</Item>
+							        <Item>SPELL_SORROW</Item>	
+							        <Item>SPELL_WEAKNESS</Item>
+							        <Item>SPELL_VAMPIRISM</Item>
+							        <Item>SPELL_DISRUPTING_RAY</Item>
+							        <Item>SPELL_CURSE</Item>							
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<OverrideMask>56</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -44569,15 +44608,15 @@
 					<Knowledge>0</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_OFFENCE</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
 						</Item>
 					</skills>
@@ -44611,8 +44650,8 @@
 					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
-				<OverrideMask>0</OverrideMask>
-				<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+				<OverrideMask>32</OverrideMask>
+				<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
 						<FunctionName/>
@@ -54028,7 +54067,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_4</PlayerID>
-						<Experience>0</Experience>
+						<Experience>846000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_BALOR</Creature>
@@ -54052,20 +54091,79 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
-							<skills/>
-							<perkIDs/>
-							<spellIDs/>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Offence>15</Offence>
+							<Defence>15</Defence>
+							<Spellpower>10</Spellpower>
+							<Knowledge>10</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_LIGHT_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_SUMMONING_MAGIC</SkillID>
+								</Item>							
+							</skills>
+							<perkIDs>
+								<Item>HERO_SKILL_EXPERT_TRAINER</Item>
+								<Item>HERO_SKILL_OFFENSIVE_FORMATION</Item>
+								<Item>HERO_SKILL_DEFENSIVE_FORMATION</Item>
+								<Item>HERO_SKILL_FIRE_PROTECTION</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_STUNNING_BLOW</Item>
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_MAGIC_CUSHION</Item>
+								<Item>HERO_SKILL_FOG_VEIL</Item>
+								<Item>HERO_SKILL_DEATH_TO_NONEXISTENT</Item>
+								<Item>HERO_SKILL_EVASION</Item>
+							    <Item>HERO_SKILL_ANCIENT_SMITHY</Item>
+							</perkIDs>
+							<spellIDs>
+								<Item>SPELL_DISPEL</Item>
+								<Item>SPELL_FORGETFULNESS</Item>
+								<Item>SPELL_PLAGUE</Item>
+								<Item>SPELL_SLOW</Item>
+								<Item>SPELL_WEAKNESS</Item>
+								<Item>SPELL_BLESS</Item>
+								<Item>SPELL_HASTE</Item>
+								<Item>SPELL_STONESKIN</Item>
+								<Item>SPELL_DISRUPTING_RAY</Item>
+								<Item>SPELL_CURSE</Item>
+								<Item>SPELL_MAGIC_ARROW</Item>
+								<Item>SPELL_FIREBALL</Item>
+								<Item>SPELL_ICE_BOLT</Item>	
+								<Item>SPELL_LIGHTNING_BOLT</Item>
+								<Item>SPELL_STONE_SPIKES</Item>
+								<Item>SPELL_BLOODLUST</Item>
+								<Item>SPELL_LAND_MINE</Item>
+								<Item>SPELL_MAGIC_FIST</Item>		
+								<Item>SPELL_WASP_SWARM</Item>
+								<Item>SPELL_ARCANE_CRYSTAL</Item>									
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
-						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+						<OverrideMask>32</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
