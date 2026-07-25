@@ -154,22 +154,22 @@ DIFFICULTY = {
 	[0] = function()
 		diff = 1;
 		redhaven_coeff = 1.0;
-		inferno_coef = 1;
+        infernotown_coef = 1.25;
 	end,
 	[1] = function()
 		diff = 2;
-		redhaven_coeff = 1.5;
-		inferno_coef = 1.5;
+		redhaven_coeff = 1.75;
+        infernotown_coef = 2.50;
 	end,
 	[2] = function()
 		diff = 3;
-		redhaven_coeff = 2.0;
-		inferno_coef = 2.0;
+		redhaven_coeff = 2.50;
+        infernotown_coef = 3.75;
 	end,
 	[3] = function()
 		diff = 4;
-		redhaven_coeff = 2.5;
-		inferno_coef = 2.5;
+		redhaven_coeff = 3.25;
+        infernotown_coef = 5;
 	end,
 }
 
@@ -189,15 +189,72 @@ function SetupEnemyArmies()
 	AddHeroCreatures("RedHeavenHero02",		 CREATURE_ZEALOT, 3 * diff);
 	AddHeroCreatures("RedHeavenHero02",	 CREATURE_VINDICATOR, 10 * diff);
 	AddHeroCreatures("RedHeavenHero02",	 CREATURE_LONGBOWMAN, 15 * diff);
+	AddObjectCreatures( "inferno3",	CREATURE_QUASIT, 40 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_FIRE_ELEMENTAL, 13 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_FIREBREATHER_HOUND, 17 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_SUCCUBUS_SEDUCER, 13 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_HELLMARE, 10 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_PIT_SPAWN, 5 * infernotown_coef );
+	AddObjectCreatures( "inferno3",	CREATURE_ARCH_DEMON, 3 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_FAMILIAR, 60 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_FIRE_ELEMENTAL, 16 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_HELL_HOUND, 20 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_SUCCUBUS, 16 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_NIGHTMARE, 12 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_PIT_FIEND, 6 * infernotown_coef );
+	AddObjectCreatures( "inferno2",	CREATURE_DEVIL, 4 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_IMP, 60 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_FIRE_ELEMENTAL, 16 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_CERBERI, 20 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_INFERNAL_SUCCUBUS, 16 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_FRIGHTFUL_NIGHTMARE, 12 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_BALOR, 6 * infernotown_coef );
+	AddObjectCreatures( "inferno1",	CREATURE_ARCHDEVIL, 4 * infernotown_coef );
 	sleep(10);
 	ChangeHeroStat( 'KingTolghar',      STAT_ATTACK, diff * 3 );
 	ChangeHeroStat( 'KingTolghar',     STAT_DEFENCE, diff * 3 );
 	ChangeHeroStat( 'KingTolghar', STAT_SPELL_POWER, diff * 3 );
 	ChangeHeroStat( 'KingTolghar',   STAT_KNOWLEDGE, diff * 3 );
+	ChangeHeroStat( 'Efion',      STAT_ATTACK, diff * 2 );
+	ChangeHeroStat( 'Efion',     STAT_DEFENCE, diff * 2 );
+	ChangeHeroStat( 'Efion', STAT_SPELL_POWER, diff * 2 );
+	ChangeHeroStat( 'Efion',   STAT_KNOWLEDGE, diff * 2 );	
+	ChangeHeroStat( 'Jazaz',      STAT_ATTACK, diff * 2 );
+	ChangeHeroStat( 'Jazaz',     STAT_DEFENCE, diff * 2 );
+	ChangeHeroStat( 'Jazaz', STAT_SPELL_POWER, diff * 2 );
+	ChangeHeroStat( 'Jazaz',   STAT_KNOWLEDGE, diff * 2 );	
+	ChangeHeroStat( 'Nymus', STAT_SPELL_POWER, diff * 2 );
+	ChangeHeroStat( 'Nymus',   STAT_KNOWLEDGE, diff * 2 );	
 	GiveExp(     'KingTolghar', 100000 + 40000 * math.pow(2, diff));
-	GiveExp( 'RedHeavenHero01', 100000 + 30000 * math.pow(2, diff));
+	GiveExp( 'RedHeavenHero01', 100000 + 40000 * math.pow(2, diff));
 	GiveExp(            ALARIC, 100000 + 40000 * math.pow(2, diff));
 	GiveExp( 'RedHeavenHero02', 100000 + 40000 * math.pow(2, diff));
+	
+	diff = GetDifficulty() + 1;
+	if diff > 1 then
+	    GiveHeroSkill("Efion", NECROMANCER_FEAT_CHILLING_STEEL);
+		GiveHeroSkill("Jazaz", PERK_BALLISTA);
+		GiveHeroSkill("Nymus", PERK_INTELLIGENCE);		
+	end
+	if diff > 2 then   
+	    GiveHeroSkill("Efion", KNIGHT_FEAT_RETRIBUTION);
+	    GiveHeroSkill("Efion", WARLOCK_FEAT_ELITE_CASTERS);
+	    GiveHeroSkill("Jazaz", KNIGHT_FEAT_RETRIBUTION);
+	    GiveHeroSkill("Jazaz", NECROMANCER_FEAT_LAST_AID);	
+	    GiveHeroSkill("Nymus", RANGER_FEAT_ELVEN_LUCK);
+	    GiveHeroSkill("Nymus", PERK_RESISTANCE);		
+	end
+    if diff > 3 then
+	    GiveHeroSkill("Efion", HERO_SKILL_SHRUG_DARKNESS);
+	    GiveHeroSkill("Efion", RANGER_FEAT_ELVEN_LUCK);
+		GiveHeroSkill("Efion", PERK_LUCKY_STRIKE);
+	    GiveHeroSkill("Jazaz", HERO_SKILL_EMPATHY);
+	    GiveHeroSkill("Jazaz", PERK_PRAYER);
+		GiveHeroSkill("Jazaz", HERO_SKILL_STUNNING_BLOW);
+	    GiveHeroSkill("Nymus", DEMON_FEAT_CRITICAL_GATING);
+	    GiveHeroSkill("Nymus", DEMON_FEAT_QUICK_GATING);
+		GiveHeroSkill("Nymus", HERO_SKILL_QUICKNESS_OF_MIND);		
+	end
 end
 
 -- управление эффектами и анимациями катапульты
@@ -230,10 +287,6 @@ function Catapult()
 		end
 		sleep( 400 + random(100) );
 	end
-	RazeBuilding( 'kotopult' );
-	sleep( 10 );
-	PlayObjectAnimation( 'kotopult', 'death', ONESHOT_STILL );
-	StopVisualEffects( "townfire" );
 end
 
 function Siege( counter )
@@ -249,6 +302,15 @@ function Siege( counter )
 			end
 		end
 		sleep( 200 + random( 100 ) );
+	end
+end
+
+function RedHavenHeroLost( heroname )
+	if  heroname == 'RedHeavenHero02' then
+		RazeBuilding( 'kotopult' );
+		sleep( 10 );
+		PlayObjectAnimation( 'kotopult', 'death', ONESHOT_STILL );
+		StopVisualEffects( "townfire" );
 	end
 end
 
@@ -347,6 +409,7 @@ OBJECTIVES = {
 		DIFFICULTY[GetDifficulty()]();
 		SetupEnemyArmies();
 		EnableAIHeroHiring( PLAYER_2, 'SD', nil );
+		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, "RedHavenHeroLost" );
 		FireWorks();
 		EnableHeroAI( 'RedHeavenHero02', nil ); -- so hero stays at Horncrest siege
 		EnableHeroAI(		   'Duncan', nil ); -- сидит в замке
@@ -403,27 +466,10 @@ OBJECTIVES = {
 			OBJECTIVES.state.reachHorncrest[2] = 10;
 		end
 	end,
-	
-	liftSiege_break = function()
-		while siege_size() > 0 do
-			if GetCurrentPlayer() ~= PLAYER_1 and IsHeroAlive("RedHeavenHero02") == nil and siege_size() <= 6 then
-				EnableHeroAI( 'Duncan', not nil );
-				for i = 1, 12 do
-					if IsObjectExists( 'siege' .. i ) then
-						MoveHero( 'Duncan', GetObjectPosition('siege' .. i));
-						break;
-					end
-				end
-			end
-			sleep(10);
-		end
-		EnableHeroAI( 'Duncan', nil );
-	end,
 
 	liftSiege = function()
 		if OBJECTIVES.state.liftSiege[2] == 1 then
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
-			startThread( OBJECTIVES.liftSiege_break );
 			OBJECTIVES.state.liftSiege[2] = 2;
 		elseif OBJECTIVES.state.liftSiege[2] == 2 and siege_size() == 0 and IsHeroAlive("RedHeavenHero02") == nil and GetCurrentPlayer() == PLAYER_1 then
 			CINEMATICS.liftSiege();
@@ -439,6 +485,7 @@ OBJECTIVES = {
 			sleep(20);
 			H55_CamFixTooManySkills( PLAYER_1,   "Freyda" );
 			H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
+			H55_CamFixTooManySkills( PLAYER_1, "Duncan" );
 			SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );
 			SetRegionBlocked( 'deploy1', nil, PLAYER_1 );
 			SetRegionBlocked( 'deploy2', nil, PLAYER_1 );
@@ -490,6 +537,18 @@ OBJECTIVES = {
 				H55c_AIAddHero( "Marder" );
 				local gain = 1 + GetDifficulty() + 0.25 * GetDate( MONTH );
 				H55c_updateArmy( "Marder", gain, H55c_CREATURES.INFERNO );
+				if diff > 1 then
+					GiveHeroSkill("Marder", SKILL_GATING);		
+				end
+				if diff > 2 then   
+					GiveHeroSkill("Marder", SKILL_GATING);
+					GiveHeroSkill("Marder", PERK_DEMONIC_FIRE);
+				end
+				if diff > 3 then
+					GiveHeroSkill("Marder", SKILL_GATING);
+					GiveHeroSkill("Marder", DEMON_FEAT_DEMONIC_RETALIATION);
+					GiveHeroSkill("Marder", DEMON_FEAT_GATING_MASTERY);		
+				end
 			elseif owned_demon_towns() == 3 then
 				SetObjectiveState('sec1', OBJECTIVE_COMPLETED);
 				OBJECTIVES.state.demonRaids[2] = 10;
@@ -539,15 +598,15 @@ OBJECTIVES = {
 }
 
 A1C3M5_INFERNO_TOWN_REINFORCEMENTS = {
-	["inferno1"] = { 	  CREATURE_IMP,	 CREATURE_HORNED_DEMON,			   CREATURE_CERBERI, CREATURE_INFERNAL_SUCCUBUS, CREATURE_FRIGHTFUL_NIGHTMARE,	   CREATURE_BALOR,	CREATURE_ARCHDEVIL },
-	["inferno2"] = { CREATURE_FAMILIAR,			CREATURE_DEMON, 		CREATURE_HELL_HOUND,		  CREATURE_SUCCUBUS,		   CREATURE_NIGHTMARE, CREATURE_PIT_FIEND,		CREATURE_DEVIL },
-	["inferno3"] = {   CREATURE_QUASIT, CREATURE_HORNED_LEAPER, CREATURE_FIREBREATHER_HOUND,  CREATURE_SUCCUBUS_SEDUCER, 			CREATURE_HELLMARE, CREATURE_PIT_SPAWN, CREATURE_ARCH_DEMON },
-	["size"]	 = {                15,                     10,                           6,                          4,                            3,                  2,                   1 },
+	["inferno1"] = { 	  CREATURE_IMP,	CREATURE_FIRE_ELEMENTAL,		    CREATURE_CERBERI, CREATURE_INFERNAL_SUCCUBUS, CREATURE_FRIGHTFUL_NIGHTMARE,	    CREATURE_BALOR,	 CREATURE_ARCHDEVIL },
+	["inferno2"] = { CREATURE_FAMILIAR,	CREATURE_FIRE_ELEMENTAL, 		 CREATURE_HELL_HOUND,		   CREATURE_SUCCUBUS,		    CREATURE_NIGHTMARE, CREATURE_PIT_FIEND,	   	 CREATURE_DEVIL },
+	["inferno3"] = {   CREATURE_QUASIT, CREATURE_FIRE_ELEMENTAL, CREATURE_FIREBREATHER_HOUND,  CREATURE_SUCCUBUS_SEDUCER, 			 CREATURE_HELLMARE, CREATURE_PIT_SPAWN, CREATURE_ARCH_DEMON },
+	["size"]	 = {               48,                       15,                          24,                         15,                           10,                  5,                   3 },
 }
 
 function A1C3M5_reinforce_inferno_town(town)
 	for i, unit in A1C3M5_INFERNO_TOWN_REINFORCEMENTS[town] do
-		AddObjectCreatures(town, unit, A1C3M5_INFERNO_TOWN_REINFORCEMENTS.size[i] * inferno_coef );
+		AddObjectCreatures(town, unit, A1C3M5_INFERNO_TOWN_REINFORCEMENTS.size[i] * infernotown_coef );
 	end
 end
 
