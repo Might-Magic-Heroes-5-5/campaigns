@@ -1,7 +1,9 @@
 $game_dirs = @(
+  "UserMODs\MMH55-Cam-Cutscenes",
   "UserMODs\MMH55-Cam-Maps",
   "UserMODs\MMH55-Cam-Texts-EN",
   "UserMODs\MMH55-SPMaps",
+  "UserMODs\MMH55-SPMaps-Dialogs-EN",
   "UserMODs\MMH55-SPMaps-Texts-EN"
 )
 

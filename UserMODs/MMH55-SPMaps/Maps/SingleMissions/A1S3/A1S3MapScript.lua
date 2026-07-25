@@ -1,105 +1,147 @@
-MAIN_HERO = "Veyer";
-TownsCaptured = 0;
-capturedtowns = {};
-capturedtowns["HavenTown"] = 0;
-capturedtowns["SylvanTown"] = 0;
-capturedtowns["AcademyTown"] = 0;
+doFile("/scripts/campaign_common.lua");
+
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep()
+end
+
 H55_PlayerStatus = {0,1,1,1,2,2,2,2};
 
-StartAdvMapDialog( 0 );
-SetObjectEnabled("gate",nil);
+function A1S3_captured_towns( player )
+	local towns = 0;
+	for i, town in { "HavenTown", "SylvanTown", "AcademyTown" } do
+		if GetObjectOwner(town) == player then
+			towns = towns + 1;
+		end
+	end
+	return towns;
+end
 
--- проверяется уровень скилла Gating у главного героя
-function CheckSkill()
-	--while not HasHeroSkill( MAIN_HERO, DEMON_FEAT_ABSOLUTE_GATING ) do
-	while GetHeroSkillMastery( MAIN_HERO, SKILL_GATING ) < 3 do
-		sleep( 3 );
-	end;
-	--SetObjectEnabled( "gate", 1 );
-	SetObjectiveState( "GainGating", OBJECTIVE_COMPLETED );
-	sleep(10);
-	SetObjectiveState( "ReachPortal", OBJECTIVE_ACTIVE );
-	sleep(10);
-	OpenCircleFog(168,160,GROUND,10,PLAYER_1);
-	sleep(2);
-	MoveCamera(168,160,GROUND,30,0.6,0,0,0);
-end;
+function A1S3_visitPortal( heroName )
+	if heroName == "Veyer" then
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "sovereign", nil );
+		OBJECTIVES.state.reachPortal[2] = 4;
+		OBJECTIVES.state.isAlive[2] = 2;
+	end
+end
 
--- вызывается при захвате нового замка - выдача очередного артефакта главному (!) герою
-function gainArtifact( oldOwner, newOwner, heroName, objectName )
-	if newOwner == PLAYER_1 and capturedtowns[ objectName ] == 0 then
-		capturedtowns[ objectName ] = 1;
-		TownsCaptured = TownsCaptured + 1;
-		local x,y = GetObjectPosition(MAIN_HERO);
-		if heroName ~= MAIN_HERO and GetHeroTown( MAIN_HERO ) == nil then
-			MoveCamera( x,y, GROUND, 50,1.2,0);
-		end;
-		if TownsCaptured == 1 then
-			GiveArtefact( MAIN_HERO, ARTIFACT_NIGHTMARISH_RING, 1 );
-			if GetHeroTown( MAIN_HERO ) == nil then
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveNightmrshRing.txt", MAIN_HERO, PLAYER_1, 5 );
-			else
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveNightmrshRing.txt", heroName, PLAYER_1, 5 );
-			end;
-		elseif TownsCaptured == 2 then
-			GiveArtefact( MAIN_HERO, ARTIFACT_URGASH_01, 1 );
-			if GetHeroTown( MAIN_HERO ) == nil then			
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveShklsOfWar.txt", MAIN_HERO, PLAYER_1, 5 );
-			else
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveShklsOfWar.txt", heroName, PLAYER_1, 5 );
-			end;
-		elseif TownsCaptured == 3 then
-			GiveArtefact( MAIN_HERO, ARTIFACT_PEDANT_OF_MASTERY, 1 );
-			if GetHeroTown( MAIN_HERO ) == nil then
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_havePedantOfMastery.txt", MAIN_HERO,PLAYER_1, 5 );
-			else
-				ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_havePedantOfMastery.txt", heroName, PLAYER_1, 5 );
-			end;
-			SetObjectiveState( "SeizeArtifacts", OBJECTIVE_COMPLETED );
-		end;
-	end;
-end;
+function A1S3_conquerTown( oldOwner, newOwner, hero, object )
+	if newOwner == PLAYER_1 then
+		Trigger( OBJECT_CAPTURE_TRIGGER, object, nil );
+		OBJECTIVES.SeizeArtifacts_conqueror = hero;
+	end
+end
 
-function HeroMustSurvive( heroName )
-	if heroName == MAIN_HERO then
-		SetObjectiveState("HeroMustSurvive",OBJECTIVE_FAILED);
-		sleep(10);
-		Loose(PLAYER_1);
-	end;
-end;
-
-function winMission( heroName )
-	if heroName == MAIN_HERO then
-		SetObjectiveState( "ReachPortal", OBJECTIVE_COMPLETED );
-		sleep(10);
-		SetObjectiveState("HeroMustSurvive", OBJECTIVE_COMPLETED);
-		sleep(10);
-		Win(PLAYER_1);
-	end;
-end;
-
--- при трогании гарнизона проверяется кто трогает
-function Gate( heroname )
-	if heroname == MAIN_HERO then
-		if ( GetObjectiveState( "GainGating" ) == OBJECTIVE_COMPLETED ) and
-			( GetObjectiveState( "SeizeArtifacts" ) == OBJECTIVE_COMPLETED ) then
-			SetObjectEnabled( "gate", not nil );
-		else
-			MessageBox( "/Maps/SingleMissions/A1S3/Gate.txt" );
-			--SetObjectEnabled( "gate", nil );
-		end;
-	else
+function A1S3_visitGate( hero )
+	if hero ~= "Veyer" then
 		MessageBox( "/Maps/SingleMissions/A1S3/NotHero.txt" );
-		--SetObjectEnabled( "gate", nil );
-	end;
-end;
+	else
+		MessageBox( "/Maps/SingleMissions/A1S3/Gate.txt" );
+	end
+end
+
+OBJECTIVES = {
+	date = 0,
+	state = {
+		masterGating 	= { 	 "GainGating", 1 },
+		reachPortal 	= { 	"ReachPortal", 1 },
+		isAlive 		= { "HeroMustSurvive", 1 },
+		SeizeArtifacts  = {  "SeizeArtifacts", 1 },
+	},
+
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+	prepare = function()
+		StartAdvMapDialog( 0 );
+		SetObjectEnabled( "gate", nil );
+		Trigger( OBJECT_TOUCH_TRIGGER, "gate", "A1S3_visitGate" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "sovereign", "A1S3_visitPortal");
+		Trigger( OBJECT_CAPTURE_TRIGGER, "HavenTown", "A1S3_conquerTown");
+		Trigger( OBJECT_CAPTURE_TRIGGER, "SylvanTown", "A1S3_conquerTown");
+		Trigger( OBJECT_CAPTURE_TRIGGER, "AcademyTown", "A1S3_conquerTown");
+	end,
+
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+
+			if GetObjectiveState("HeroMustSurvive") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+
+			if GetObjectiveState("HeroMustSurvive") == OBJECTIVE_COMPLETED and GetObjectiveState("ReachPortal") == OBJECTIVE_COMPLETED then
+				sleep(100);
+				Win( PLAYER_1 );
+				return
+			end
+		end
+	end,
+
+	masterGating = function()
+	-- objectve start is controlled by the map.xdb file
+		if OBJECTIVES.state.masterGating[2] == 1 and GetHeroSkillMastery( "Veyer", SKILL_GATING ) == 3 then
+			SetObjectiveState( "GainGating", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.masterGating[2] = 10;
+		end
+	end,
+
+	reachPortal = function()
+		if OBJECTIVES.state.reachPortal[2] == 1 and OBJECTIVES.state.masterGating[2] == 10 then
+			SetObjectiveState( "ReachPortal", OBJECTIVE_ACTIVE );
+			OpenCircleFog(168,160,GROUND,10,PLAYER_1);
+			MoveCamera(168,160,GROUND,30,0.6,0,0,0);
+			sleep(100);
+			OBJECTIVES.state.reachPortal[2] = 2;
+		elseif OBJECTIVES.state.reachPortal[2] == 2 and OBJECTIVES.state.SeizeArtifacts[2] == 10 then
+			Trigger( OBJECT_TOUCH_TRIGGER, "gate", nil );
+			SetObjectEnabled( "gate", not nil );
+			OBJECTIVES.state.reachPortal[2] = 3;
+		elseif OBJECTIVES.state.reachPortal[2] == 4 then
+			SetObjectiveState( "ReachPortal", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.reachPortal[2] = 10;
+		end
+	end,
 	
-----------------
-startThread( CheckSkill );
-Trigger( REGION_ENTER_AND_STOP_TRIGGER, "sovereign", "winMission")
-Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "HeroMustSurvive" );
---Trigger( OBJECT_TOUCH_TRIGGER, "WitchHut01", "giveHeroGating" );
-Trigger( OBJECT_TOUCH_TRIGGER, "gate", "Gate" );
-Trigger( OBJECT_CAPTURE_TRIGGER, "HavenTown", "gainArtifact");
-Trigger( OBJECT_CAPTURE_TRIGGER, "SylvanTown", "gainArtifact");
-Trigger( OBJECT_CAPTURE_TRIGGER, "AcademyTown", "gainArtifact");
+	isAlive = function()
+	-- objectve start is controlled by the map.xdb file
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Veyer") == nil then
+			SetObjectiveState( "HeroMustSurvive", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		elseif OBJECTIVES.state.isAlive[2] == 2 then
+			SetObjectiveState( "HeroMustSurvive", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.isAlive[2] = 10;
+		end
+	end,
+	
+	SeizeArtifacts_conqueror = "Veyer",
+	SeizeArtifacts = function()
+	-- objectve start is controlled by the map.xdb file
+		if OBJECTIVES.state.SeizeArtifacts[2] == 1 and A1S3_captured_towns( PLAYER_1 ) >= 1 then
+			GiveArtefact( "Veyer", ARTIFACT_NIGHTMARISH_RING, 1 );
+			ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveNightmrshRing.txt", OBJECTIVES.SeizeArtifacts_conqueror, PLAYER_1, 10 );
+			OBJECTIVES.state.SeizeArtifacts[2] = 2;
+		elseif OBJECTIVES.state.SeizeArtifacts[2] == 2 and A1S3_captured_towns( PLAYER_1 ) >= 2 then
+			GiveArtefact( "Veyer", ARTIFACT_URGASH_01, 1 );
+			ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_haveShklsOfWar.txt", OBJECTIVES.SeizeArtifacts_conqueror, PLAYER_1, 10 );
+			OBJECTIVES.state.SeizeArtifacts[2] = 3;
+		elseif OBJECTIVES.state.SeizeArtifacts[2] == 3 and A1S3_captured_towns( PLAYER_1 ) >= 3 then
+			GiveArtefact( "Veyer", ARTIFACT_PEDANT_OF_MASTERY, 1 );
+			ShowFlyingSign( "Maps/SingleMissions/A1S3/FlyingMessage_havePedantOfMastery.txt", OBJECTIVES.SeizeArtifacts_conqueror, PLAYER_1, 10 );
+			SetObjectiveState( "SeizeArtifacts", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.SeizeArtifacts[2] = 10;
+		end
+	end,
+}
+
+------------------- MAIN ------------------------
+startThread( OBJECTIVES.start );

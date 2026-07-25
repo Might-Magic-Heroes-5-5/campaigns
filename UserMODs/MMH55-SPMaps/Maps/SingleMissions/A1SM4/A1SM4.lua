@@ -1,62 +1,113 @@
-StartAdvMapDialog( 0 );
+doFile("/scripts/campaign_common.lua");
 
---SetObjectiveState( "obj1", OBJECTIVE_ACTIVE );
---SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );
---SetObjectiveState( "obj3", OBJECTIVE_ACTIVE );
-PlayerHero = "KingTolghar"
+-- loop gatekeeps code execution until vars and funcs are loaded
+while not COMBAT do
+    sleep()
+end
+
 H55_PlayerStatus = {0,2,1,2,1,2,2,2};
 
---
-function objective2()
-	while 1 do
-		if GetObjectOwner( "capital" ) == PLAYER_1 then
-			SetObjectiveState( "obj2", OBJECTIVE_COMPLETED );
-			startThread (re_objective2);
-			break;
-		end;
-	sleep( 3 );
-	end;
-end;
+CINEMATICS = {
+	are_playing = nil,
+	playAndWait = function( id )
+		CINEMATICS.are_playing = not nil;
+		StartAdvMapDialog( id, CINEMATICS.end_play() );
+		repeat sleep(30); until CINEMATICS.are_playing == nil;
+	end,
 
-function re_objective2()
-	while 1 do
-		if GetObjectOwner( "capital" ) ~= PLAYER_1 then
-			SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );
-			startThread( objective2 );
-			break;
-		end;
-	sleep( 2 );
-	end;
-end;
+	end_play = function()
+		CINEMATICS.are_playing = nil;
+	end,
 
-function objective3()
-	while 1 do 
-		if IsHeroAlive(PlayerHero) == nil then
-			SetObjectiveState("obj3", OBJECTIVE_FAILED);
-			sleep( 3 );
-			Loose();
-		end;
-	sleep( 3 );
-	end;
-end;	
-
-Trigger (OBJECTIVE_STATE_CHANGE_TRIGGER, "obj1", "wincheck");
-Trigger (OBJECTIVE_STATE_CHANGE_TRIGGER, "obj2", "wincheck");
-
-function wincheck()
-	if GetObjectiveState( "obj1" ) == OBJECTIVE_COMPLETED and GetObjectiveState( "obj2" ) == OBJECTIVE_COMPLETED then
+	intro = function()
+		CINEMATICS.playAndWait( 0 );
+		sleep(2);
+	end,
+	
+	outro = function()
+		SetObjectPosition( "KingTolghar", 80, 92, 1 );
 		CreateMonster( "fake", CREATURE_BEAR_RIDER, 1, 85, 92, 1, 0, 0, 270 );
-		SetObjectPosition( PlayerHero, 80, 92, 1 );
-		SetObjectRotation( PlayerHero, 90);
-		sleep( 5 );
-		StartAdvMapDialog( 1, "DoWin" );
-	end;
-end;
+		sleep( 10 );
+		SetObjectRotation( "KingTolghar", 90);
+		CINEMATICS.playAndWait( 1 );
+	end,
+}
 
-function DoWin()
-  SetObjectiveState( "obj3", OBJECTIVE_COMPLETED );
-  Win();
-end;
+OBJECTIVES = {
+	date = 0,
+	state = {
+		defeatClans   = { "obj1", 0 }, -- Defeat the other Dwarven clans
+		occupyCapital = { "obj2", 1 }, -- Occupy and hold the capital
+		isAlive		  = { "obj3", 1 }, -- King Tolghar must survive
+	},
 
-startThread( objective2 );
-startThread( objective3 );
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+    end,
+
+	prepare = function()
+		CINEMATICS.intro();
+	end,
+
+	run = function()
+		while true do
+			sleep(10);
+			OBJECTIVES.date = GetDate(ABSOLUTE_DAY);
+			for key, value in OBJECTIVES.state do
+				if value[2] > 0 and value[2] < 10 then
+					if pcall(OBJECTIVES[key]) == nil then print(key) end;
+				end
+			end
+
+			if GetObjectiveState("obj3") == OBJECTIVE_FAILED then
+				Loose();
+				return
+			end
+
+			if GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				CINEMATICS.outro();
+				sleep( 50 );
+				Win( PLAYER_1 );
+				return
+			end
+		end
+	end,
+	
+	defeatClans = function()
+	-- lifeycle of this task is controlled by the map.xdb file
+	end,
+
+	occupyCapital = function()
+	-- start of this task is handled by the map.xdb file
+		if OBJECTIVES.state.occupyCapital[2] == 1 and GetObjectOwner("capital") == PLAYER_1 then
+			SetObjectiveState( "obj2", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.occupyCapital[2] = 2;
+		elseif OBJECTIVES.state.occupyCapital[2] == 2 and GetObjectOwner("capital") ~= PLAYER_1 then
+			SetObjectiveState( "obj2", OBJECTIVE_ACTIVE );
+			OBJECTIVES.state.occupyCapital[2] = 1;
+		end
+	end,
+
+	isAlive = function()
+	-- start of this task is handled by the map.xdb file
+		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("KingTolghar") == nil then
+			SetObjectiveState( "obj3", OBJECTIVE_FAILED );
+			OBJECTIVES.state.isAlive[2] = 11;
+		end
+	end,
+}
+
+------------------- MAIN ------------------------
+startThread(OBJECTIVES.start)
+
+function a1sm4_dbg(var)
+	if var == 1 then
+		H55_Speedrun(1);
+		SetObjectOwner( "capital", 1 );
+	elseif var == 2 then
+		SetObjectPosition("KingTolghar", 155, 85);
+	elseif var == 22 then
+		SetObjectPosition("KingTolghar", 34, 131);
+	end
+end
