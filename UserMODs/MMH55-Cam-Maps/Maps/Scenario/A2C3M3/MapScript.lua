@@ -306,13 +306,13 @@ OBJECTIVES = {
 		end
 		
 		if OBJECTIVES.date >= OBJECTIVES.findDragonGod_armyDay then	
-			AddObjectCreatures( "HangvulHide", CREATURE_LAVA_DRAGON, 6*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_THUNDER_THANE, 12*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_FLAME_KEEPER, 18*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_BATTLE_RAGER, 30*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_WHITE_BEAR_RIDER, 42*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_HARPOONER, 84*diff);
-			AddObjectCreatures( "HangvulHide", CREATURE_STONE_DEFENDER, 108*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_LAVA_DRAGON, 9*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_THUNDER_THANE, 18*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_FLAME_KEEPER, 27*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_BATTLE_RAGER, 45*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_WHITE_BEAR_RIDER, 63*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_HARPOONER, 126*diff);
+			AddObjectCreatures( "HangvulHide", CREATURE_STONE_DEFENDER, 144*diff);
 			OBJECTIVES.findDragonGod_armyDay = OBJECTIVES.findDragonGod_armyDay + 7;			
 		end
 	end,
