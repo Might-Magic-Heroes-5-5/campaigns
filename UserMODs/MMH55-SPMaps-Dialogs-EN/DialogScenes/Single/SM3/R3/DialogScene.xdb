@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Sand/SmallSpecialArena_Sand.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet/>
+	<Music href="/Sounds/_(Music)/Seige-Battle/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>30</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R3_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>-1.1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>-1.4</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>-0.8</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>-0.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>-1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.5.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>-0.6</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Marksman.6.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Royal_Griffin.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>0.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Royal_Griffin.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>1.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Royal_Griffin.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Priest.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>3</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Priest.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>3</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Swordsman.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Swordsman.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Swordsman.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1.3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Swordsman.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Footman.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Footman.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Footman.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Footman.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Stone_Gargoyle.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>1.7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Stone_Gargoyle.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>4</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Rakshasa_Rukh.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Genie.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Genie.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>1.5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Steel_Golem.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Steel_Golem.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Steel_Golem.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Steel_Golem.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Steel_Golem.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.3.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.4.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.5.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.6.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.7.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="MasterGremlin.8.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Titan.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R3_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneGodric-2-0.txt"/>
+			<sound href="SM3_D3_L1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R3_G.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>capture</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Marksman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Priest.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Priest.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Swordsman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Swordsman.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Swordsman.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Swordsman.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Royal_Griffin.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Royal_Griffin.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Royal_Griffin.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Rakshasa_Rukh.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Footman.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Marksman.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Steel_Golem.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Steel_Golem.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Steel_Golem.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Steel_Golem.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Steel_Golem.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Titan.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.2.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.3.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.4.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.5.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.6.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.7.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="MasterGremlin.8.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Genie.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Genie.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Stone_Gargoyle.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Stone_Gargoyle.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Sandmount5x5_2.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount10x10_3.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Sandmount10x10_3.1.xdb#xpointer(/AdvMapStatic)"/>
+		<Item href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_C83C295D-63A9-4C6B-ABAD-5EE6E5ADA7BD">
+			<AdvMapStatic>
+				<Pos>
+					<x>39</x>
+					<y>4</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/Sandmount8x8_2.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_D067C070-6F4E-4724-B688-47ADCDE1FF6F">
+			<AdvMapStatic>
+				<Pos>
+					<x>33</x>
+					<y>5</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_20C7F475-DFA1-43FE-AEC4-9E8FF7E9AE9E">
+			<AdvMapStatic>
+				<Pos>
+					<x>29</x>
+					<y>5</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_8D850474-5AAC-42F7-B4FF-E7A760B8A0B8">
+			<AdvMapStatic>
+				<Pos>
+					<x>58</x>
+					<y>7</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_FC118ABB-0CD2-4511-A818-6D209CF0B820">
+			<AdvMapStatic>
+				<Pos>
+					<x>63</x>
+					<y>8</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_127EBFFF-A96B-48B1-BE7B-FA7A6BC65106">
+			<AdvMapStatic>
+				<Pos>
+					<x>64</x>
+					<y>17</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_21585E36-944E-4D0A-85FA-94119FC22BF4">
+			<AdvMapStatic>
+				<Pos>
+					<x>64</x>
+					<y>24</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/sandmount10x10_1.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_49C431B7-598D-486C-8F65-568F05BF7A86">
+			<AdvMapStatic>
+				<Pos>
+					<x>47</x>
+					<y>6</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sand/Sandmountains/Sandmount8x8_2.xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>60</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

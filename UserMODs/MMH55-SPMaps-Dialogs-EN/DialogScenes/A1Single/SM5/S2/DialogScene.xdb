@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Campaign/Necropolis.xdb#xpointer(/Music)"/>
+	<MusicVolume>15</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="DialogScene-Zehir-0.1.txt"/>
+			<sound/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760">
+				<AdvMapHero>
+					<Pos>
+						<x>24</x>
+						<y>38</y>
+						<z>0</z>
+					</Pos>
+					<Rot>1.89213</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Academy/Zehir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_1</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+					</Textures>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="st_st_n.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>4</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Buildings/StarAxis.xdb#xpointer(/Sound)"/>
+					<Duration>0</Duration>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Modes/Ghost/Posses.(Effect).xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>83</x>
+						<y>97</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Towns/Necropolis/DragonGraveyard.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>81</x>
+						<y>99</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Towns/Necropolis/DragonGraveyard.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>85</x>
+						<y>95</y>
+						<z>18</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>cast</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-0.txt"/>
+			<sound href="SM5S2_01.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="svset.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>spneutral</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-1.txt"/>
+			<sound href="SM5S2_02.xdb#xpointer(/Sound)"/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_41463BFA-95D9-4BBD-B817-F4EE0D92F420">
+				<AdvMapHero>
+					<Pos>
+						<x>42</x>
+						<y>49</y>
+						<z>0</z>
+					</Pos>
+					<Rot>5.17479</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Academy/Cyrus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_1</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+					</Textures>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-2.txt"/>
+			<sound href="SM5S2_03.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="z2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName>sporator</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-3.txt"/>
+			<sound href="SM5S2_04.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_41463BFA-95D9-4BBD-B817-F4EE0D92F420)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#n:inline(AdvMapHero)" id="item_2649C65D-C725-4D78-9C1B-A28DBD46492B">
+						<AdvMapHero>
+							<Pos>
+								<x>39</x>
+								<y>59</y>
+								<z>0</z>
+							</Pos>
+							<Rot>5.49161</Rot>
+							<Floor>1</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/Necropolis/Berein.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+							<PlayerID>PLAYER_1</PlayerID>
+							<Experience>0</Experience>
+							<armySlots/>
+							<artifactIDs/>
+							<isUntransferable/>
+							<Editable>
+								<NameFileRef href=""/>
+								<BiographyFileRef href=""/>
+								<Offence>0</Offence>
+								<Defence>0</Defence>
+								<Spellpower>0</Spellpower>
+								<Knowledge>0</Knowledge>
+								<skills/>
+								<perkIDs/>
+								<spellIDs/>
+								<Ballista>false</Ballista>
+								<FirstAidTent>false</FirstAidTent>
+								<AmmoCart>false</AmmoCart>
+								<FavoriteEnemies/>
+							</Editable>
+							<OverrideMask>0</OverrideMask>
+							<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+							<LossTrigger>
+								<Action>
+									<FunctionName/>
+								</Action>
+							</LossTrigger>
+							<AllowQuickCombat>true</AllowQuickCombat>
+							<Textures>
+								<Icon128x128/>
+								<Icon64x64/>
+							</Textures>
+						</AdvMapHero>
+					</heroLink>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName>buff</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+				<Item>
+					<heroLink href="#xpointer(id(item_41463BFA-95D9-4BBD-B817-F4EE0D92F420)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName>rangeattack</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-4.txt"/>
+			<sound href="SM5S2_05.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="z4.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>spneutral</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-5.txt"/>
+			<sound href="SM5S2_06.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_41463BFA-95D9-4BBD-B817-F4EE0D92F420)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-6.txt"/>
+			<sound href="SM5S2_07.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r8.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>-2</AnimationDelay>
+					<AnimName>move</AnimName>
+					<MovePoints>
+						<Item>
+							<x>43</x>
+							<y>50</y>
+						</Item>
+					</MovePoints>
+					<FinalAngle>-50</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+				<Item>
+					<heroLink href="#xpointer(id(item_41463BFA-95D9-4BBD-B817-F4EE0D92F420)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>move</AnimName>
+					<MovePoints>
+						<Item>
+							<x>51</x>
+							<y>66</y>
+						</Item>
+					</MovePoints>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-7.txt"/>
+			<sound href="SM5S2_08.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r9.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>-2.5</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/AnimateDead.xdb#xpointer(/Sound)"/>
+					<Duration>0</Duration>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>-2.5</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/AnimateDead.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>85</x>
+						<y>99</y>
+						<z>20</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>spneutral</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName>happy</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-8.txt"/>
+			<sound href="SM5S2_09.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r10.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-9.txt"/>
+			<sound href="SM5S2_10.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r11.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>spneutral</AnimName>
+					<MovePoints/>
+					<FinalAngle>-30</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>3.6</AnimationDelay>
+					<AnimName>move</AnimName>
+					<MovePoints>
+						<Item>
+							<x>41</x>
+							<y>48</y>
+						</Item>
+					</MovePoints>
+					<FinalAngle>-30</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Zehir-10.txt"/>
+			<sound href="SM5S2_11.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="r12.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>5.5</AnimationDelay>
+					<AnimName>rangeattack</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+		<Item>
+			<text href="DialogScene-Markal-12.1.txt"/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="m2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>4</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/Armageddon.xdb#xpointer(/Sound)"/>
+					<Duration>0</Duration>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>1.7</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/Implosion.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>83</x>
+						<y>97</y>
+						<z>20</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName>cast</AnimName>
+					<MovePoints/>
+					<FinalAngle>0</FinalAngle>
+					<MovementSpeed>0</MovementSpeed>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>0</MusicVolumePercent>
+			<MusicFadeOutDuration>0</MusicFadeOutDuration>
+			<MusicOverride>
+				<Music/>
+				<StartTime>0</StartTime>
+				<TimeShift>0</TimeShift>
+			</MusicOverride>
+			<AdditionalCameras/>
+			<Anim3DSoundVolumeCustom>0</Anim3DSoundVolumeCustom>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#xpointer(id(item_ACE613C2-7AF3-4AEC-8935-5EB3ED181760)/AdvMapHero)"/>
+		<Item href="#xpointer(id(item_2649C65D-C725-4D78-9C1B-A28DBD46492B)/AdvMapHero)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_FDE53E4A-26CB-45DE-B6CF-97548018CCDF">
+			<AdvMapStatic>
+				<Pos>
+					<x>41</x>
+					<y>44</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Lava/FireDots/FireDot02.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_5C3B37D4-BEB8-4821-B4B7-3D736CE25767">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>49</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.46759</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Lava/FireDots/FireDot02.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_EF1E71C1-E980-42D2-93F0-4EE536AEB6E3">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>45</y>
+					<z>0</z>
+				</Pos>
+				<Rot>5.49161</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Lava/FireDots/FireDot02.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#xpointer(id(item_41463BFA-95D9-4BBD-B817-F4EE0D92F420)/AdvMapHero)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.05</CameraShiftZ>
+	<Anim3DSoundVolume>50</Anim3DSoundVolume>
+</DialogScene>

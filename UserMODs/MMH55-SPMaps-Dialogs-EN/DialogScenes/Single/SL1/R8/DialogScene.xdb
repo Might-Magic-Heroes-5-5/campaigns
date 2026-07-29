@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Sand_Academy/SmallSpecialArena_Sand_Academy.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Academy.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AdvMap-Heroes/Zehir.xdb#xpointer(/Music)"/>
+	<MusicVolume>35</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_2A24B4BD-CA48-4776-B374-85CED389AFDA">
+				<AdvMapHero>
+					<Pos>
+						<x>37</x>
+						<y>36.7</y>
+						<z>0</z>
+					</Pos>
+					<Rot>4.71239</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Academy/Maahir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_1</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href="name.txt"/>
+						<BiographyFileRef href="bio.txt"/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R1b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Arch Magi-1.txt"/>
+			<sound href="SL1_D8_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_8DF70F28-00EC-45B8-8C0C-ECD42D55B16E">
+				<AdvMapMonster>
+					<Pos>
+						<x>37</x>
+						<y>35</y>
+						<z>0</z>
+					</Pos>
+					<Rot>4.71239</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Academy/Arch_Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href="DialogScene-Arch Magi-name-1.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R1d1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>0</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>4.4</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Academy/ArchMagi/ArchMagi_rangeattack.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_2A24B4BD-CA48-4776-B374-85CED389AFDA)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R1d12.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Dgum-3.txt"/>
+			<sound href="SL1_D8_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_2A24B4BD-CA48-4776-B374-85CED389AFDA)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R1d4.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Heroes-CS/Wisard/happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_2A24B4BD-CA48-4776-B374-85CED389AFDA)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R1d45.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>7</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>2</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Academy/RakshasaRukh/Happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#n:inline(AdvMapMonster)" id="item_4DE2ACD9-AF6B-4BF5-BC43-C139B5E8B384">
+						<AdvMapMonster>
+							<Pos>
+								<x>38.5189</x>
+								<y>37.7426</y>
+								<z>0</z>
+							</Pos>
+							<Rot>4.71239</Rot>
+							<Floor>0</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/Academy/Rakshasa_Rukh.xdb#xpointer(/AdvMapMonsterShared)"/>
+							<Custom>false</Custom>
+							<Amount>0</Amount>
+							<Amount2>0</Amount2>
+							<AttackType>ATTACK_ANY</AttackType>
+							<MoveType>MOVE_ANY</MoveType>
+							<DoesNotGrow>false</DoesNotGrow>
+							<MessageFileRef href=""/>
+							<Script/>
+							<Resources>
+								<Wood>0</Wood>
+								<Ore>0</Ore>
+								<Mercury>0</Mercury>
+								<Crystal>0</Crystal>
+								<Sulfur>0</Sulfur>
+								<Gem>0</Gem>
+								<Gold>0</Gold>
+							</Resources>
+							<ArtifactID>ARTIFACT_NONE</ArtifactID>
+							<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+							<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+							<AllowQuickCombat>true</AllowQuickCombat>
+						</AdvMapMonster>
+					</monsterLink>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#n:inline(AdvMapMonster)" id="item_E3D81865-DDA3-409D-A068-BE0F552B3612">
+						<AdvMapMonster>
+							<Pos>
+								<x>38.3572</x>
+								<y>34.2054</y>
+								<z>0</z>
+							</Pos>
+							<Rot>4.71239</Rot>
+							<Floor>0</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/Academy/Rakshasa_Rukh.xdb#xpointer(/AdvMapMonsterShared)"/>
+							<Custom>false</Custom>
+							<Amount>0</Amount>
+							<Amount2>0</Amount2>
+							<AttackType>ATTACK_ANY</AttackType>
+							<MoveType>MOVE_ANY</MoveType>
+							<DoesNotGrow>false</DoesNotGrow>
+							<MessageFileRef href=""/>
+							<Script/>
+							<Resources>
+								<Wood>0</Wood>
+								<Ore>0</Ore>
+								<Mercury>0</Mercury>
+								<Crystal>0</Crystal>
+								<Sulfur>0</Sulfur>
+								<Gem>0</Gem>
+								<Gold>0</Gold>
+							</Resources>
+							<ArtifactID>ARTIFACT_NONE</ArtifactID>
+							<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+							<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+							<AllowQuickCombat>true</AllowQuickCombat>
+						</AdvMapMonster>
+					</monsterLink>
+					<AnimationIndex>5</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#xpointer(id(item_4DE2ACD9-AF6B-4BF5-BC43-C139B5E8B384)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_E3D81865-DDA3-409D-A068-BE0F552B3612)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_8DF70F28-00EC-45B8-8C0C-ECD42D55B16E)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_2A24B4BD-CA48-4776-B374-85CED389AFDA)/AdvMapHero)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>1</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

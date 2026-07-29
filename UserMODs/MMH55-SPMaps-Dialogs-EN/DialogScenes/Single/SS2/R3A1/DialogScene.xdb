@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Haven/SmallSpecialArena_Grass_Haven.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Lava.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Tavern-Themes/Inferno.xdb#xpointer(/Music)"/>
+	<MusicVolume>50</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Day_light_AdvMap01(EugeneTest) (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SS2R3b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>8</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>1</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>4</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/FireBallHit.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/MeteorShower.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>1</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/MeteorShower.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/MeteorShower.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Spells/MeteorShower.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<sound/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>87</x>
+						<y>75</y>
+						<z>12</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>3</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>95</x>
+						<y>69</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>93</x>
+						<y>83</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>4</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/FireBallHit.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>93</x>
+						<y>89</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>1</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/MeteorShower.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>87</x>
+						<y>75</y>
+						<z>12</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>2</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/MeteorShower.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>95</x>
+						<y>69</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/MeteorShower.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>93</x>
+						<y>83</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+				<Item>
+					<Delay>3</Delay>
+					<Effect href="/Effects/_(Effect)/Spells/MeteorShower.xdb#xpointer(/Effect)"/>
+					<Pos>
+						<x>93</x>
+						<y>89</y>
+						<z>5</z>
+					</Pos>
+				</Item>
+			</CustomEffects>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Archangel.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Archangel.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Cleric.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Paladin.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Paladin.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>-7</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneBiara-1-0.txt"/>
+			<sound href="SS2_D3_L1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SS2R3d1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>11</ActorAnimationIndex>
+			<AnimName>stir00</AnimName>
+			<AnimationDelay>10</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SS2R3d2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneHorned Demons-3-0.txt"/>
+			<sound href="SS2_D3_L2.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Horned_Demon.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Horned Demons-name-3-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SS2R3d22.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>attack00</AnimName>
+			<AnimationDelay>3</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SS2R3e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>2</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Inferno/ArchDevil/Happy.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Devil.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Devil.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Agrael.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Horned_Demon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Devil.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Devil.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Cleric.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archangel.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Archangel.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Paladin.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Paladin.1.xdb#xpointer(/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>50</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Grass_Haven/SmallSpecialArena_Grass_Haven.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/heaven.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AI-Themes/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>45</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/RampartArena.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R1_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>11</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#n:inline(AdvMapMonster)" id="item_5C5C0C1A-34E4-4F06-9D96-47471E5A3AF4">
+						<AdvMapMonster>
+							<Pos>
+								<x>32</x>
+								<y>38</y>
+								<z>0</z>
+							</Pos>
+							<Rot>4.71239</Rot>
+							<Floor>0</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/Haven/Peasant.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+							<Custom>false</Custom>
+							<Amount>0</Amount>
+							<Amount2>0</Amount2>
+							<AttackType>ATTACK_ANY</AttackType>
+							<MoveType>MOVE_ANY</MoveType>
+							<DoesNotGrow>false</DoesNotGrow>
+							<MessageFileRef href=""/>
+							<Script/>
+							<Resources>
+								<Wood>0</Wood>
+								<Ore>0</Ore>
+								<Mercury>0</Mercury>
+								<Crystal>0</Crystal>
+								<Sulfur>0</Sulfur>
+								<Gem>0</Gem>
+								<Gold>0</Gold>
+							</Resources>
+							<ArtifactID>ARTIFACT_NONE</ArtifactID>
+							<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+							<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+							<AllowQuickCombat>true</AllowQuickCombat>
+						</AdvMapMonster>
+					</monsterLink>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>1</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#n:inline(AdvMapMonster)" id="item_BE22D266-A351-4A16-8BBE-D04A996F2D42">
+						<AdvMapMonster>
+							<Pos>
+								<x>30</x>
+								<y>39</y>
+								<z>0</z>
+							</Pos>
+							<Rot>6.12637</Rot>
+							<Floor>0</Floor>
+							<Name/>
+							<CombatScript/>
+							<pointLights/>
+							<Shared href="/MapObjects/Haven/Peasant.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+							<Custom>false</Custom>
+							<Amount>0</Amount>
+							<Amount2>0</Amount2>
+							<AttackType>ATTACK_ANY</AttackType>
+							<MoveType>MOVE_ANY</MoveType>
+							<DoesNotGrow>false</DoesNotGrow>
+							<MessageFileRef href=""/>
+							<Script/>
+							<Resources>
+								<Wood>0</Wood>
+								<Ore>0</Ore>
+								<Mercury>0</Mercury>
+								<Crystal>0</Crystal>
+								<Sulfur>0</Sulfur>
+								<Gem>0</Gem>
+								<Gold>0</Gold>
+							</Resources>
+							<ArtifactID>ARTIFACT_NONE</ArtifactID>
+							<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+							<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+							<AllowQuickCombat>true</AllowQuickCombat>
+						</AdvMapMonster>
+					</monsterLink>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#xpointer(id(item_5C5C0C1A-34E4-4F06-9D96-47471E5A3AF4)/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>3</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#xpointer(id(item_BE22D266-A351-4A16-8BBE-D04A996F2D42)/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>4</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneGodric-1-0.txt"/>
+			<sound href="SM3_D1_L1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R1_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>11</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneClerics-2-0.txt"/>
+			<sound href="SM3_D1_L2.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Clerics-name-2-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R1_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>3</ActorAnimationIndex>
+			<AnimName>idle00</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#xpointer(id(item_5C5C0C1A-34E4-4F06-9D96-47471E5A3AF4)/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>0</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="#xpointer(id(item_5C5C0C1A-34E4-4F06-9D96-47471E5A3AF4)/AdvMapMonster)"/>
+					<AnimationIndex>6</AnimationIndex>
+					<AnimationDelay>2</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneGodric-3-0.txt"/>
+			<sound href="SM3_D1_L3.xdb#xpointer(/Sound)"/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R1_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName>call</AnimName>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>1</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Knight/call.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="#n:inline(AdvMapDwelling)" id="item_1A6FFF34-D228-4284-AF21-1CD72207BE1E">
+			<AdvMapDwelling>
+				<Pos>
+					<x>32</x>
+					<y>41</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0.199783</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Haven/PeasantHut.(AdvMapDwellingShared).xdb#xpointer(/AdvMapDwellingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<RandomCreatures>false</RandomCreatures>
+				<creaturesEnabled/>
+				<RndSource>RND_NONE</RndSource>
+				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+				<LinkToTown/>
+			</AdvMapDwelling>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_87E1E716-7FE8-4CE3-BE9A-A0951F51CE11">
+			<AdvMapStatic>
+				<Pos>
+					<x>30</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Grass/Misc/Haystock_01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#xpointer(id(item_5C5C0C1A-34E4-4F06-9D96-47471E5A3AF4)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_BE22D266-A351-4A16-8BBE-D04A996F2D42)/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>70</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>
