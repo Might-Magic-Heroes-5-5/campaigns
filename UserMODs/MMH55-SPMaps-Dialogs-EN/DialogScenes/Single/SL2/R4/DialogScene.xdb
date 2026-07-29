@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt_Necropolis/SmallSpecialArena_Dirt_Necropolis.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Necropolis.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/AI-Themes/Necropolis.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/Dirt_Siege.(AmbientLight).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_D4027D2D-644E-4344-986A-6986E353E01C">
+				<AdvMapHero>
+					<Pos>
+						<x>37</x>
+						<y>37</y>
+						<z>0</z>
+					</Pos>
+					<Rot>4.71239</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Effig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_1</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>6</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Vampires-1.txt"/>
+			<sound href="SL2_D4_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_20FF2C45-9BF6-4C96-B3DE-642E1FBB8A5C">
+				<AdvMapMonster>
+					<Pos>
+						<x>37</x>
+						<y>35</y>
+						<z>0</z>
+					</Pos>
+					<Rot>5.0711</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Vampire.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href="DialogScene-Vampires-name-1.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4d1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0.1</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Necropolis/VampireLord/attack00.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_D4027D2D-644E-4344-986A-6986E353E01C)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4d12.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Effig-3.txt"/>
+			<sound href="SL2_D4_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_D4027D2D-644E-4344-986A-6986E353E01C)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4d2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Vampires-5.txt"/>
+			<sound href="SL2_D4_L3.1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#xpointer(id(item_20FF2C45-9BF6-4C96-B3DE-642E1FBB8A5C)/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Vampires-name-5.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4d3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>attack01</AnimName>
+			<AnimationDelay>6</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>6</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Necropolis/VampireLord/attack01.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_D4027D2D-644E-4344-986A-6986E353E01C)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL2R4e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#xpointer(id(item_20FF2C45-9BF6-4C96-B3DE-642E1FBB8A5C)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_D4027D2D-644E-4344-986A-6986E353E01C)/AdvMapHero)"/>
+		<Item href="#n:inline(AdvMapDwelling)" id="item_6D8C9B57-392C-455F-ACDD-44232F34C684">
+			<AdvMapDwelling>
+				<Pos>
+					<x>48</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>1.49403</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Necropolis/Necropolis_Military_Post.(AdvMapDwellingShared).xdb#xpointer(/AdvMapDwellingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<RandomCreatures>false</RandomCreatures>
+				<creaturesEnabled/>
+				<RndSource>RND_NONE</RndSource>
+				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+				<LinkToTown/>
+			</AdvMapDwelling>
+		</Item>
+		<Item href="#n:inline(AdvMapDwelling)" id="item_E2FBD76E-B6DD-4002-8D78-DF88F1AD3DB7">
+			<AdvMapDwelling>
+				<Pos>
+					<x>48</x>
+					<y>33</y>
+					<z>0</z>
+				</Pos>
+				<Rot>1.52084</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Necropolis/Necropolis_Military_Post.(AdvMapDwellingShared).xdb#xpointer(/AdvMapDwellingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<RandomCreatures>false</RandomCreatures>
+				<creaturesEnabled/>
+				<RndSource>RND_NONE</RndSource>
+				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
+				<LinkToTown/>
+			</AdvMapDwelling>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_999C0B5A-8359-4F4D-8C31-935A019DFF62">
+			<AdvMapMonster>
+				<Pos>
+					<x>40</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.71239</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Necropolis/Zombie.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_919BE1AA-D2B7-423E-836B-C7878F030808">
+			<AdvMapMonster>
+				<Pos>
+					<x>40</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.71239</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Necropolis/Zombie.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapMonster)" id="item_E7404E99-40EC-4D0B-9B8F-6DBF753B5647">
+			<AdvMapMonster>
+				<Pos>
+					<x>44</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Haven/Swordsman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Custom>false</Custom>
+				<Amount>0</Amount>
+				<Amount2>0</Amount2>
+				<AttackType>ATTACK_ANY</AttackType>
+				<MoveType>MOVE_ANY</MoveType>
+				<DoesNotGrow>false</DoesNotGrow>
+				<MessageFileRef href=""/>
+				<Script/>
+				<Resources>
+					<Wood>0</Wood>
+					<Ore>0</Ore>
+					<Mercury>0</Mercury>
+					<Crystal>0</Crystal>
+					<Sulfur>0</Sulfur>
+					<Gem>0</Gem>
+					<Gold>0</Gold>
+				</Resources>
+				<ArtifactID>ARTIFACT_NONE</ArtifactID>
+				<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+				<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+				<AllowQuickCombat>true</AllowQuickCombat>
+			</AdvMapMonster>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_EEF9901E-4C00-45E9-8460-10ED137D6BBE">
+			<AdvMapStatic>
+				<Pos>
+					<x>37</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_9AB1D090-7A62-45CC-80BA-4A964F43CEB5">
+			<AdvMapStatic>
+				<Pos>
+					<x>37</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_7D90C1A0-9885-477E-8705-EC12D56C552A">
+			<AdvMapStatic>
+				<Pos>
+					<x>37</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_6DD65C18-A2ED-4BAB-A4D0-68647ECC26F0">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_E0794CDC-05BD-40C8-9C93-9F3DF86E7ADF">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>35</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_55AF4FF8-F2D8-4677-8A53-4EA6C596BD20">
+			<AdvMapStatic>
+				<Pos>
+					<x>38</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_9B7D6CD2-CA1E-486C-A2ED-66C12B17CC48">
+			<AdvMapStatic>
+				<Pos>
+					<x>37</x>
+					<y>33</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_7E965DB9-5975-42BB-976E-208E1B2209F0">
+			<AdvMapStatic>
+				<Pos>
+					<x>36</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_CDF4A1BE-C38D-48F1-8C67-BE72B130A941">
+			<AdvMapStatic>
+				<Pos>
+					<x>36</x>
+					<y>35</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0D8F8303-48B5-48E4-9C7B-45C817A93795">
+			<AdvMapStatic>
+				<Pos>
+					<x>36</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_A5FB6CC5-BF7C-4118-A0FA-3E64074760FB">
+			<AdvMapStatic>
+				<Pos>
+					<x>36</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_69224D61-9E92-496A-ADFF-9B3D4ED45DA3">
+			<AdvMapStatic>
+				<Pos>
+					<x>36</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Dirt/Misc/SwampHaze2x2.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>1</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

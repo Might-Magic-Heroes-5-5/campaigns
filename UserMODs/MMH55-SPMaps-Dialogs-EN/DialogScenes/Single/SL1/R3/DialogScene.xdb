@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Lava/SmallSpecialArena_Lava.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Lava.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Win-Battle/Academy.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/InfernoArena (2).xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Astral.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R3b.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneAstral-1-0.txt"/>
+			<sound href="SL1_D3_L1.xdb#xpointer(/Sound)"/>
+			<heroLink href="Astral.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R3d.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>happy</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Astral.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL1R3e.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>true</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>1</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Astral.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Crown_of_magi.xdb#xpointer(/AdvMapArtifact)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>1</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

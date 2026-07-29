@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Towns/Necropolis.(Music).xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_99C0938B-CE85-45C9-97AD-3AD7FF32B960">
+				<AdvMapHero>
+					<Pos>
+						<x>29.5316</x>
+						<y>37.9591</y>
+						<z>0</z>
+					</Pos>
+					<Rot>5.49161</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_6</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SXL1_R9_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Demiliches-1.txt"/>
+			<sound href="SXL1_D9_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_534CBAD6-DC0F-4BD6-9295-19E4FD82A0B0">
+				<AdvMapMonster>
+					<Pos>
+						<x>27.4273</x>
+						<y>38.3742</y>
+						<z>0</z>
+					</Pos>
+					<Rot>0.468604</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Demilich.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href="DialogScene-Demiliches-name-1.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SXL1_R9_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>6</ActorAnimationIndex>
+			<AnimName>rangeattack</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Aberrar-2.txt"/>
+			<sound href="SXL1_D9_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="#xpointer(id(item_99C0938B-CE85-45C9-97AD-3AD7FF32B960)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SXL1_R9_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>rangeattack</AnimName>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#n:inline(AdvMapBuilding)" id="item_FEB59D99-8D06-4394-A182-DABA0479F682">
+			<AdvMapBuilding>
+				<Pos>
+					<x>28</x>
+					<y>40</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Monolith_Two_Way.(AdvMapBuildingShared).xdb#xpointer(/AdvMapBuildingShared)"/>
+				<PlayerID>PLAYER_NONE</PlayerID>
+				<CaptureTrigger>
+					<Action>
+						<FunctionName/>
+					</Action>
+				</CaptureTrigger>
+				<GroupID>0</GroupID>
+				<showCameras/>
+			</AdvMapBuilding>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_89A5B368-453C-4937-8322-85313ED8765E">
+			<AdvMapStatic>
+				<Pos>
+					<x>30</x>
+					<y>40</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/TESTS/Dungeon/Crystals/Crystal04.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_314C28FA-634F-43BE-81CF-E5EFA90EFF86">
+			<AdvMapStatic>
+				<Pos>
+					<x>27</x>
+					<y>40</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/TESTS/Dungeon/Crystals/Crystal01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_8A88BAAB-C71E-40A6-8F47-9921CF082384">
+			<AdvMapStatic>
+				<Pos>
+					<x>26</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite06.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_67680039-371C-4454-BD22-6D50AC67B80F">
+			<AdvMapStatic>
+				<Pos>
+					<x>32</x>
+					<y>41</y>
+					<z>0</z>
+				</Pos>
+				<Rot>2.94181</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite06.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_D7561B46-C1CC-457B-94C4-89D2116EC3A1">
+			<AdvMapStatic>
+				<Pos>
+					<x>34</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>4.71239</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite06.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_3F979410-A9D8-4EFF-8927-892EE44548DE">
+			<AdvMapStatic>
+				<Pos>
+					<x>30</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_EBDDD222-F25C-46D5-B404-E17F4347D686">
+			<AdvMapStatic>
+				<Pos>
+					<x>26</x>
+					<y>39</y>
+					<z>0</z>
+				</Pos>
+				<Rot>3.92768</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_517E9718-67F1-416E-AC9D-F19D0B96851C">
+			<AdvMapStatic>
+				<Pos>
+					<x>25</x>
+					<y>40</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite10.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_58DEA22C-1031-4CFA-835D-6BDD8BB148E7">
+			<AdvMapStatic>
+				<Pos>
+					<x>27</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite11.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0B04F768-5432-40F5-A73C-B0CF6AE79B60">
+			<AdvMapStatic>
+				<Pos>
+					<x>29</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite11.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_39050AB7-8D80-4002-BA37-6A185DBAEF43">
+			<AdvMapStatic>
+				<Pos>
+					<x>33</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite11.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_B4BC6CD3-F557-4254-9CFC-969F727D1BF1">
+			<AdvMapStatic>
+				<Pos>
+					<x>32</x>
+					<y>40</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite11.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_94AF7E49-3264-4936-9A26-DE7E020249C2">
+			<AdvMapStatic>
+				<Pos>
+					<x>24</x>
+					<y>38</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite11.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_F9158E68-CE33-4582-A30D-FF049AEB2B4F">
+			<AdvMapStatic>
+				<Pos>
+					<x>23</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_60AFA087-0F56-4DFC-A1F7-EF08AB1E6A78">
+			<AdvMapStatic>
+				<Pos>
+					<x>24</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>1.5708</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_20A86F8B-51BD-4720-B0AD-E719F2761402">
+			<AdvMapStatic>
+				<Pos>
+					<x>33</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_0FE06450-3FA9-45F9-810B-CE10CB2841D1">
+			<AdvMapStatic>
+				<Pos>
+					<x>24</x>
+					<y>35</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_689AFF5F-25C1-4E4D-A94E-28A6651436DA">
+			<AdvMapStatic>
+				<Pos>
+					<x>25</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_ED4E56CB-84BA-4232-928C-58A579A56D28">
+			<AdvMapStatic>
+				<Pos>
+					<x>24</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_F3054779-E455-4ED8-898C-EC9B0E78E02D">
+			<AdvMapStatic>
+				<Pos>
+					<x>25</x>
+					<y>41</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite07.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_51A99EA7-7277-4D32-B05C-DA32B4A887F0">
+			<AdvMapStatic>
+				<Pos>
+					<x>24</x>
+					<y>39</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologmite01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_EFE70273-66A5-401B-AAE8-34B44989A268">
+			<AdvMapStatic>
+				<Pos>
+					<x>25</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologmite01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_E821BA8F-ED05-4C43-A3A7-0AFEBBDD1977">
+			<AdvMapStatic>
+				<Pos>
+					<x>31</x>
+					<y>42</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologmite01.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#xpointer(id(item_534CBAD6-DC0F-4BD6-9295-19E4FD82A0B0)/AdvMapMonster)"/>
+		<Item href="#xpointer(id(item_99C0938B-CE85-45C9-97AD-3AD7FF32B960)/AdvMapHero)"/>
+		<Item href="#n:inline(AdvMapStatic)" id="item_400C4681-562B-4F23-970D-44536EC19438">
+			<AdvMapStatic>
+				<Pos>
+					<x>22</x>
+					<y>37</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologmite02.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_8A4318AA-DA45-44CE-83F7-8BE1968124D2">
+			<AdvMapStatic>
+				<Pos>
+					<x>28</x>
+					<y>45</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite09.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+		<Item href="#n:inline(AdvMapStatic)" id="item_31B761BB-59DB-4817-B5DE-14FB7EC54A3A">
+			<AdvMapStatic>
+				<Pos>
+					<x>31</x>
+					<y>46</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Subterra/Stoloktites/Stologtite09.(AdvMapStaticShared).xdb#xpointer(/AdvMapStaticShared)"/>
+				<IsRemovable>false</IsRemovable>
+			</AdvMapStatic>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>40</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

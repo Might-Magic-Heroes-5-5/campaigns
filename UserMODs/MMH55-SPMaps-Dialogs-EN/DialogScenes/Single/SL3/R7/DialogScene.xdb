@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra_Dungeon/SmallSpecialArenas_Subterra_Dungeon.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Towns/Sylvan.(Music).xdb#xpointer(/Music)"/>
+	<MusicVolume>50</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="DialogScene-Wood Elves-0.1.txt"/>
+			<sound/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_66BB6653-AD6F-4CEA-A0FA-9D4C883788B8">
+				<AdvMapMonster>
+					<Pos>
+						<x>32</x>
+						<y>37</y>
+						<z>0</z>
+					</Pos>
+					<Rot>0</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Preserve/Wood_Elf.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href="DialogScene-Wood Elves-name-0.1.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL3R7_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>7</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Wood Elves-0.txt"/>
+			<sound href="SL3_D7_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#xpointer(id(item_66BB6653-AD6F-4CEA-A0FA-9D4C883788B8)/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Wood Elves-name-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL3R7_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Ossir-2.txt"/>
+			<sound href="SL3_D7_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_C42A361E-3164-4ACD-838B-67635DC32FF0">
+				<AdvMapHero>
+					<Pos>
+						<x>32</x>
+						<y>35</y>
+						<z>0</z>
+					</Pos>
+					<Rot>3.29841</Rot>
+					<Floor>1</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Preserve/Ossir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_3</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href="name.txt"/>
+						<BiographyFileRef href="bio.txt"/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL3R7_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>1</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>1</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
+			<AnimationDelay>5</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Ossir-3.txt"/>
+			<sound/>
+			<heroLink href="#xpointer(id(item_C42A361E-3164-4ACD-838B-67635DC32FF0)/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SL3R7_4.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#xpointer(id(item_C42A361E-3164-4ACD-838B-67635DC32FF0)/AdvMapHero)"/>
+		<Item href="#xpointer(id(item_66BB6653-AD6F-4CEA-A0FA-9D4C883788B8)/AdvMapMonster)"/>
+		<Item href="#n:inline(AdvMapSign)" id="item_FC965A62-B54D-4100-BFBD-FC953ABCAECB">
+			<AdvMapSign>
+				<Pos>
+					<x>23</x>
+					<y>36</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Sign.(AdvMapSignShared).xdb#xpointer(/AdvMapSignShared)"/>
+				<MessageFileRef href=""/>
+			</AdvMapSign>
+		</Item>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>70</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

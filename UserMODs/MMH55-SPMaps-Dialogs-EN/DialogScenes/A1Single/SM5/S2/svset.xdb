@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DSceneCameraSet>
+	<StartCamera href="sv1.xdb#xpointer(/DSceneCamera)"/>
+	<StartCameraDiff>
+		<x>49</x>
+		<y>77</y>
+		<z>0</z>
+	</StartCameraDiff>
+	<StartCorrectionRot>1.89213</StartCorrectionRot>
+	<FinishCamera href="sv2.xdb#xpointer(/DSceneCamera)"/>
+	<FinishCameraDiff>
+		<x>49</x>
+		<y>77</y>
+		<z>0</z>
+	</FinishCameraDiff>
+	<FinishCorrectionRot>1.89213</FinishCorrectionRot>
+	<NameFileRef href="svset-name.txt"/>
+	<UniformCameraMovement>0</UniformCameraMovement>
+	<IgnoreYawDiff>0</IgnoreYawDiff>
+	<Direction>1</Direction>
+	<Circles>0</Circles>
+</DSceneCameraSet>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Dirt1/SmallSpecialArena_Dirt1.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/TerrainAmbients/Dirt.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Towns/Necropolis.(Music).xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/RampartArena.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href="DialogScene-Demiliches-0.txt"/>
+			<sound href="SXL1_D6_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="#n:inline(AdvMapMonster)" id="item_BCB70E71-EAB9-42C2-9034-036BAA404DC0">
+				<AdvMapMonster>
+					<Pos>
+						<x>35.4835</x>
+						<y>36.1358</y>
+						<z>0</z>
+					</Pos>
+					<Rot>1.5708</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Demilich.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+					<Custom>false</Custom>
+					<Amount>0</Amount>
+					<Amount2>0</Amount2>
+					<AttackType>ATTACK_ANY</AttackType>
+					<MoveType>MOVE_ANY</MoveType>
+					<DoesNotGrow>false</DoesNotGrow>
+					<MessageFileRef href=""/>
+					<Script/>
+					<Resources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</Resources>
+					<ArtifactID>ARTIFACT_NONE</ArtifactID>
+					<Mood>MONSTER_MOOD_AGGRESSIVE</Mood>
+					<Courage>MONSTER_COURAGE_CAN_FLEE_JOIN</Courage>
+					<AllowQuickCombat>true</AllowQuickCombat>
+				</AdvMapMonster>
+			</monsterLink>
+			<MonsterCustomName href="DialogScene-Demiliches-name-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SXL1_R6_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>cast</AnimName>
+			<AnimationDelay>1</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogScene-Aberrar-1.txt"/>
+			<sound href="SXL1_D6_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="#n:inline(AdvMapHero)" id="item_1F9F9950-A887-4C87-BE88-A484897E1B1E">
+				<AdvMapHero>
+					<Pos>
+						<x>36</x>
+						<y>34</y>
+						<z>0</z>
+					</Pos>
+					<Rot>2.35002</Rot>
+					<Floor>0</Floor>
+					<Name/>
+					<CombatScript/>
+					<pointLights/>
+					<Shared href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+					<PlayerID>PLAYER_6</PlayerID>
+					<Experience>0</Experience>
+					<armySlots/>
+					<artifactIDs/>
+					<isUntransferable/>
+					<Editable>
+						<NameFileRef href=""/>
+						<BiographyFileRef href=""/>
+						<Offence>0</Offence>
+						<Defence>0</Defence>
+						<Spellpower>0</Spellpower>
+						<Knowledge>0</Knowledge>
+						<skills/>
+						<perkIDs/>
+						<spellIDs/>
+						<Ballista>false</Ballista>
+						<FirstAidTent>false</FirstAidTent>
+						<AmmoCart>false</AmmoCart>
+						<FavoriteEnemies/>
+					</Editable>
+					<OverrideMask>0</OverrideMask>
+					<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+					<LossTrigger>
+						<Action>
+							<FunctionName/>
+						</Action>
+					</LossTrigger>
+					<AllowQuickCombat>true</AllowQuickCombat>
+					<Textures>
+						<Icon128x128/>
+						<Icon64x64/>
+						<RoundedFace/>
+						<LeftFace/>
+						<RightFace/>
+					</Textures>
+					<PresetPrice>0</PresetPrice>
+				</AdvMapHero>
+			</heroLink>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SXL1_R6_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>5</ActorAnimationIndex>
+			<AnimName>rangeattack</AnimName>
+			<AnimationDelay>7</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="#n:inline(AdvMapTent)" id="item_5258E8E7-1528-4954-AE12-BFB75A91DCA5">
+			<AdvMapTent>
+				<Pos>
+					<x>33</x>
+					<y>34</y>
+					<z>0</z>
+				</Pos>
+				<Rot>2.0332</Rot>
+				<Floor>0</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Keymaster_Tent_1.(AdvMapTentShared).xdb#xpointer(/AdvMapTentShared)"/>
+			</AdvMapTent>
+		</Item>
+		<Item href="#xpointer(id(item_1F9F9950-A887-4C87-BE88-A484897E1B1E)/AdvMapHero)"/>
+		<Item href="#xpointer(id(item_BCB70E71-EAB9-42C2-9034-036BAA404DC0)/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>40</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>

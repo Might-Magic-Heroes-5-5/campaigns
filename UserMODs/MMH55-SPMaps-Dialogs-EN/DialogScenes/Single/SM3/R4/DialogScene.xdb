@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DialogScene>
+	<Map href="/Maps/SmallSpecialArenas/SmallSpecialArena_Subterra/SmallSpecialArenas_Subterra.xdb#xpointer(/AdvMapDesc)"/>
+	<SoundSet href="/Sounds/_(Ambient)/Towns/Dungeon.xdb#xpointer(/AmbientSoundSet)"/>
+	<Music href="/Sounds/_(Music)/Tavern-Themes/Haven.xdb#xpointer(/Music)"/>
+	<MusicVolume>40</MusicVolume>
+	<CustomSceneAmbientLight href="/Lights/_(AmbientLight)/Scenes/dungeon.xdb#xpointer(/AmbientLight)"/>
+	<sentences>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R4_1.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Black_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Black_Dragon.1.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-5</AnimationDelay>
+					<AnimName/>
+				</Item>
+				<Item>
+					<heroLink/>
+					<monsterLink href="Black_Dragon.2.xdb#xpointer(/AdvMapMonster)"/>
+					<AnimationIndex>1</AnimationIndex>
+					<AnimationDelay>-5</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R4_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>5</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>3</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Knight/advmap_move_loop.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href=""/>
+			<sound/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R4_2_2.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>2</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Heroes/Knight/advmap_move_end.xdb#xpointer(/Sound)"/>
+				</Item>
+				<Item>
+					<Delay>0</Delay>
+					<sound href="/Sounds/_(Sound)/Creatures/Haven/Marksman/move.xdb#xpointer(/Sound)"/>
+				</Item>
+			</CustomSounds>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneClerics-2-0.txt"/>
+			<sound href="SM3_D4_L1.xdb#xpointer(/Sound)"/>
+			<heroLink/>
+			<monsterLink href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+			<MonsterCustomName href="DialogScene-Clerics-name-2-0.txt"/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R4_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>0</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>-1</ActorAnimationIndex>
+			<AnimName/>
+			<AnimationDelay>0</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations/>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+		<Item>
+			<text href="DialogSceneGodric-3-0.txt"/>
+			<sound href="SM3_D4_L2.xdb#xpointer(/Sound)"/>
+			<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+			<monsterLink/>
+			<MonsterCustomName href=""/>
+			<cameraSet/>
+			<NewCameraSet href="/Dialogs/CameraSet/SM3_R4_3.xdb#xpointer(/DSceneCameraSet)"/>
+			<StopAmbient>false</StopAmbient>
+			<StopMusic>false</StopMusic>
+			<DynamicCamera>true</DynamicCamera>
+			<duration>3</duration>
+			<soundDuration>0</soundDuration>
+			<CustomAmbientLight/>
+			<ActorAnimationIndex>2</ActorAnimationIndex>
+			<AnimName>capture</AnimName>
+			<AnimationDelay>2</AnimationDelay>
+			<CustomSounds/>
+			<CustomEffects/>
+			<CustomAnimations>
+				<Item>
+					<heroLink href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+					<monsterLink/>
+					<AnimationIndex>0</AnimationIndex>
+					<AnimationDelay>7</AnimationDelay>
+					<AnimName/>
+				</Item>
+			</CustomAnimations>
+			<MusicVolumePercent>100</MusicVolumePercent>
+			<MusicFadeOutDuration>500</MusicFadeOutDuration>
+		</Item>
+	</sentences>
+	<objects>
+		<Item href="Dragon_Utopia.xdb#xpointer(/AdvMapBuilding)"/>
+		<Item href="Godrik_ds.xdb#xpointer(/AdvMapHero)"/>
+		<Item href="Cleric.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="pendant_of_mastery.xdb#xpointer(/AdvMapArtifact)"/>
+		<Item href="pendant_of_mastery.1.xdb#xpointer(/AdvMapArtifact)"/>
+		<Item href="Black_Dragon.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Black_Dragon.1.xdb#xpointer(/AdvMapMonster)"/>
+		<Item href="Black_Dragon.2.xdb#xpointer(/AdvMapMonster)"/>
+	</objects>
+	<ModelsLOD/>
+	<CameraShiftZ>0.1</CameraShiftZ>
+	<Anim3DSoundVolume>80</Anim3DSoundVolume>
+	<Name href="DialogName.txt"/>
+</DialogScene>
