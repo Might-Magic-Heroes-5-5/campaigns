@@ -274,6 +274,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fixed some quests "rewarded" the hero with -100 experience instead of half-to-next-hero-level
 - fixed some missions randomly cause the player actions to not get response due to campaign scripts deadlock
 - AI heroes will no longer run away from combat
+- Enemy heroes serving specific purpose (defender of town, onslaught hero attacking the payer etc..) are now crafted with skills and perks in a way to create specific challenges for the player
 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
@@ -606,7 +607,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Revoked Dungeon player heroes access to portal (76, 126).
 - change: Gottai replaces Kujin in the inferno town siege.
 - change: Talonguard garrisons guards increased to 400k Ims and 1000 ArchDevils. It is up to the player to find a way to the town.
-- change: The two Biara reinforcement groups arrive 1 month earlier for each difficulty level above normal. Reinforcements arrived on months 4 and 5, now they arrive on months 5,4/4,3/3,2/ 2,1 based on game difficulty.
+- change: Biara reinforcement groups now arrive 1 month earlier for each difficulty level above normal. Arrival time changed from months 4 and 5 to months 4,5/3,4/2,3/1,2 based on game difficulty.
+- change: Siege led by Ylaya is now more challenging on normal difficulty.
+- change: Adventure map guards for locations (keymasters, dwarven treasuries, gold mines etc..) related to questline progression are now more powerful based on difficulty.
+- change: Inferno portal guardian heroes (Nymus, Marbas, Deleb) level and army now scale with difficulty.
 
 ## Dialogue changes
 
