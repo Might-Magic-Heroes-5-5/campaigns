@@ -1323,38 +1323,38 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
@@ -1474,7 +1474,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>haven_south_east</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -1486,8 +1486,20 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_ARCHER</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_MARKSMAN</Creature>
+						<Count>500</Count>
+					</Item>	
+					<Item>
+						<Creature>CREATURE_SWORDSMAN</Creature>
+						<Count>340</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
+						<Count>180</Count>
+					</Item>
+					<Item>	
+					    <Creature>CREATURE_CLERIC</Creature>
+						<Count>120</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -1503,7 +1515,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>haven_north_east</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -1516,11 +1528,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SKELETON_ARCHER</Creature>
-						<Count>50</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>20</Count>
+						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
+						<Count>50</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -1536,7 +1548,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>haven_south_west</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -1548,8 +1560,20 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_ARCHER</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_MARKSMAN</Creature>
+						<Count>300</Count>
+					</Item>	
+					<Item>
+						<Creature>CREATURE_SWORDSMAN</Creature>
+						<Count>200</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
+						<Count>120</Count>
+					</Item>
+					<Item>	
+					    <Creature>CREATURE_CLERIC</Creature>
+						<Count>80</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -1565,7 +1589,7 @@
 				</Pos>
 				<Rot>6.51683e-007</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>haven_central</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -1576,13 +1600,21 @@
 					</Action>
 				</CaptureTrigger>
 				<armySlots>
+				    <Item>
+						<Creature>CREATURE_MARKSMAN</Creature>
+						<Count>200</Count>
+					</Item>	
 					<Item>
-						<Creature>CREATURE_SKELETON_ARCHER</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_SWORDSMAN</Creature>
+						<Count>140</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>20</Count>
+						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
+						<Count>60</Count>
+					</Item>
+					<Item>	
+					    <Creature>CREATURE_CLERIC</Creature>
+						<Count>40</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -9294,7 +9326,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name>border</Name>
+				<Name>haven_north_west1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -9307,11 +9339,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Count>100</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -36310,7 +36342,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>necro_south_west</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -36323,7 +36355,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SKELETON_ARCHER</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -36339,7 +36371,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>necro_south_east</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -36352,7 +36384,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SKELETON_ARCHER</Creature>
-						<Count>50</Count>
+						<Count>100</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -57377,7 +57409,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>haven_north_west2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -57390,19 +57422,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Count>100</Count>
+						<Count>200</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Count>30</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_CLERIC</Creature>
-						<Count>25</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
-						<Count>10</Count>
+						<Count>20</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
