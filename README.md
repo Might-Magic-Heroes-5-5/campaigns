@@ -420,6 +420,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: archer dwelling (at 150,148) could not transport units via caravan due to terrain block
 - new: Added Memory Mentor
 - change: Isabel army size significantly increased and is based on difficulty
+- change: All enemy garrisons are significantly stronger
 
 ### C6M5 - Academy: Zehir's Hope
 - new: Added Hill Fort on the map and the player starts with 500000 gold so he can better strategise the fights.
