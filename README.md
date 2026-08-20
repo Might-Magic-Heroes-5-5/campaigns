@@ -778,6 +778,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - change: Instant travel spell is no longer available on this map.
 ### The Days of Fire (A2S2)
     - fix: Removed Unicorn Horn Bow and Treeborn Quiver from vault rewards as they are part of a questline
+	- fix(cinematics): Treant T-posing instead of having a dead posture in the intro scene
 ### Hate Breeds Hate (A2S3)
     - fix: Removed Tome of Destruction from vault rewards as they are part of a questline
     - fix: Fortress Military Outpost was not interactable which prevented its related secondary quest from completion
