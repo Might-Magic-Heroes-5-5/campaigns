@@ -279,6 +279,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C1M1 – Haven: The Queen
 - fix: Vanilla tutorial is available and updated for 5.5
 - fix: on a very rare occasion due to racing conditions mission would not complete
+- change: garrison army strength scales with game difficulty
 
 ### C1M2 – Haven: Rebellion
 - fix: Vanilla tutorial is available and updated for 5.5
@@ -301,7 +302,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: added Memory Mentor
 - new: increased grail spawn locations from 3 to 11
 - change: "Protect Dunmor" quest - Siege attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
-- change: "Protect Dunmor" quest - Siege attacks will stop, on normal and hard difficulies - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
+- change: "Protect Dunmor" quest - Siege attacks will stop, on normal and hard difficulties - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
 - change: level cap increased from 32 to 35
 
 ### C2M1 – Inferno: The Betrayal

@@ -238,7 +238,7 @@ OBJECTIVES = {
 				sleep(10);
 				CINEMATICS.outro();
 				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M1");
-				sleep(5)
+				sleep(100)
 				Win();
 				return
 			end
@@ -275,6 +275,10 @@ OBJECTIVES = {
         Trigger( OBJECT_TOUCH_TRIGGER, "zastava", nil );
         CINEMATICS.showGarrison();
         SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
+		AddObjectCreatures("zastava", CREATURE_PEASANT, 1 + 18 * GetDifficulty());
+		AddObjectCreatures("zastava", CREATURE_MILITIAMAN, 1 + 18 * GetDifficulty());
+		AddObjectCreatures("zastava", CREATURE_FOOTMAN, 1 + 13 * GetDifficulty());
+		AddObjectCreatures("zastava", CREATURE_PEASANT, 1 + 18 * GetDifficulty());		
       end
       if GetObjectOwner("zastava") == PLAYER_1 then
         SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
