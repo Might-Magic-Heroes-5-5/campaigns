@@ -228,9 +228,12 @@ OBJECTIVES = {
 		strongbowCaptureDay = 0;
       
 		if __difficulty >= DIFFICULTY_NORMAL then
-			AddObjectCreatures( 'Tradeville',     CREATURE_ARCHER, 1 + ( __difficulty - 1 ) * 30 );
-			AddObjectCreatures( 'Tradeville',    CREATURE_FOOTMAN, 1 + ( __difficulty - 1 ) * 20 );
-			AddObjectCreatures( 'Tradeville', CREATURE_MILITIAMAN, 1 + ( __difficulty - 1 ) * 60 );
+			AddObjectCreatures( 'Tradeville',     CREATURE_ARCHER, 1 + ( __difficulty - 1 ) * 300 );
+			AddObjectCreatures( 'Tradeville',    CREATURE_FOOTMAN, 1 + ( __difficulty - 1 ) * 225 );
+			AddObjectCreatures( 'Tradeville', CREATURE_MILITIAMAN, 1 + ( __difficulty - 1 ) * 375 );
+			AddObjectCreatures( 'Tradeville', CREATURE_PEASANT, 1 + ( __difficulty - 1 ) * 450 );			
+			AddObjectCreatures( 'Hant',    CREATURE_FOOTMAN, 1 + ( __difficulty - 1 ) * 3 );
+			AddObjectCreatures( 'Hant', CREATURE_PEASANT, 1 + ( __difficulty - 1 ) * 30 );
 		end
 
 		Trigger( OBJECT_TOUCH_TRIGGER,  "tower",  "CINEMATICS.showTown" );
