@@ -171,14 +171,14 @@ BATTLES = {
 			local coeff = coeffs[ __difficulty + 1 ];
 			local weeks = GetDate( WEEK ) + GetDate( MONTH ) * 4;
 			print( 'weeks passed = ', weeks );
-			local archers = 52 + coeff * 20 * weeks;
-			local zombies = 39 + coeff * 15 * weeks;
-			local ghosts = 25 + coeff * 9 * weeks;
-			local lichs = 10 + coeff * 3 * weeks;
-			local wraiths = 5 + coeff * 2 * weeks;
+			local archers = 52 + coeff * 50 * weeks;
+			local zombies = 39 + coeff * 35 * weeks;
+			local ghosts = 25 + coeff * 22 * weeks;
+			local lichs = 10 + coeff * 9 * weeks;
+			local wraiths = 5 + coeff * 4 * weeks;
 			print( 'army: '..archers..' '..zombies..' '..ghosts..' '..lichs..' '..wraiths);
 			StartCombat( heroname, nil, 5, CREATURE_ZOMBIE, zombies, CREATURE_SKELETON_ARCHER, archers,
-			CREATURE_GHOST, ghosts, CREATURE_WRAITH, wraiths, CREATURE_LICH, lichs, nil, 'BATTLES.crypt.finish' );
+			CREATURE_GHOST, ghosts, CREATURE_WRAITH, wraiths, CREATURE_DEMILICH, lichs, nil, 'BATTLES.crypt.finish' );
 		end,
     
 		finish = function(heroname, is_won)
@@ -237,8 +237,8 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M4");
-				CINEMATICS.outro();
 				Save("scene2");
+				CINEMATICS.outro();
 				sleep(20);
 				Win();
 				return
