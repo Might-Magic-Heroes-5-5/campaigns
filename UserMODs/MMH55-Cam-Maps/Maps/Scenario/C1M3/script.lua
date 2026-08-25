@@ -40,11 +40,11 @@ H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_BOOTS_OF_LEVITATION};
 
 function SetInfernoArmy( heroname, strength, week, diff )
 	local factor = {};
-	factor[CREATURE_BALOR] = 0.6;
-	factor[CREATURE_SUCCUBUS] = 3.5;
-	factor[CREATURE_HELL_HOUND] = 6.2;
+	factor[CREATURE_BALOR] = 0.75;
+	factor[CREATURE_SUCCUBUS] = 4;
+	factor[CREATURE_HELL_HOUND] = 7;
 	factor[CREATURE_DEMON] = 8.5;
-	factor[CREATURE_IMP] = 8.0;
+	factor[CREATURE_IMP] = 10.0;
 	local total = 0;
 	local coeff = 0;
 	local crap = diff
@@ -331,15 +331,25 @@ OBJECTIVES = {
 		if OBJECTIVES.state.clearScouts[2] == 10 and OBJECTIVES.state.upgradeTrainingGrounds[2] == 10 then
 			SetObjectPos(ENEMY_HERO_NAME, 118, 92, 0);
 			sleep(5);
-			player_army_strength = CalcArmy( OUR_HERO_NAME )
+			local player_army_strength = CalcArmy( OUR_HERO_NAME )
 			print( "player str = " .. player_army_strength );
-			strcoeff = strcoeff_table[__difficulty + 1]
+			local strcoeff = strcoeff_table[__difficulty + 1]
 			player_army_strength = player_army_strength * strcoeff;
 			print( "str with difficulty = ", player_army_strength );
-			SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength, GetDate(WEEK), __difficulty );
+			local week = GetDate(WEEK) + 4 * ( GetDate(MONTH) - 1 );
+			SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength, week, __difficulty );
 			H55c_AIAddHero(ENEMY_HERO_NAME);
 			CINEMATICS.showEnemy();
 			OBJECTIVES.state.defeatEnemyHero[2] = 10;
+			if __difficulty > 0 then
+	            GiveHeroSkill("Calid", SKILL_WAR_MACHINES);
+	        end
+	        if __difficulty > 1 then
+				GiveHeroSkill("Calid", SKILL_WAR_MACHINES);
+	        end
+	        if __difficulty > 2 then 
+				GiveHeroSkill("Calid", SKILL_WAR_MACHINES);
+	        end
 		end
 	end,
 
@@ -372,4 +382,21 @@ function c1m3_debug()
 			sleep(5)
 		end
 	end
+end
+
+function c1m3_sim(weeks)
+	SetObjectPos(ENEMY_HERO_NAME, 29, 22, 0);
+	sleep(5);
+	local player_army_strength = CalcArmy( OUR_HERO_NAME )
+	print( "player str = " .. player_army_strength );
+	local strcoeff = strcoeff_table[__difficulty + 1]
+	player_army_strength = player_army_strength * strcoeff;
+	print( "str with difficulty = ", player_army_strength );
+	local week = GetDate(WEEK) + 4 * ( GetDate(MONTH) - 1 );
+	if weeks ~= 0 then
+		week = weeks;
+	end
+	print("generate army for week "..week.." and difficulty "..__difficulty);
+	SetInfernoArmy( ENEMY_HERO_NAME, player_army_strength, week, __difficulty );
+	EnableHeroAI(ENEMY_HERO_NAME, nil);
 end
