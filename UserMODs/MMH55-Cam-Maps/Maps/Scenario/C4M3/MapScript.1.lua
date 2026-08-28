@@ -124,6 +124,7 @@ OBJECTIVES = {
 				Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
 				Save("quicksave");
 				CINEMATICS.outro();
+				sleep(100);
 				Win();
 				return
 			end

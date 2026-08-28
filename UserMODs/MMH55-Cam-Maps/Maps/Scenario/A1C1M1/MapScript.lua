@@ -736,7 +736,7 @@ end;
 function Winer () ---- Обработчик победы
 	if obj_count == 3 then
 		SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M1");
-		sleep (30);
+		sleep (100);
 		Win()
 	end;
 end;

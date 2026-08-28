@@ -141,10 +141,9 @@ OBJECTIVES = {
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and GetObjectiveState("obj3") == OBJECTIVE_COMPLETED then
 				Save("Scene_17");
 				sleep(20);
+				SaveHeroAllSetArtifactsEquipped("Zehir", "C6M2");
 				CINEMATICS.outro();
 				sleep(100);
-				SaveHeroAllSetArtifactsEquipped("Zehir", "C6M2");
-				sleep(40);
 				Win();
 				return
 			end

@@ -331,7 +331,7 @@ function WinLoose()
 		if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped("Raelag","C4M1");
 			--GiveExp( "Raelag", 500 ); ---addexp!!!
-			sleep(10);
+			sleep(100);
 			Win();
 			return
 		end;

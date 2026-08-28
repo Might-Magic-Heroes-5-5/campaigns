@@ -329,7 +329,7 @@ OBJECTIVES = {
 				sleep( 60 );
 				Save("autosave");
 				CINEMATICS.outro();
-				sleep( 40 );
+				sleep( 100 );
 				Win();
 				return
 			end

@@ -484,7 +484,7 @@ function escape()
 	sleep(5);
 	StartDialogScene("/DialogScenes/A1C1/M4/S3/DialogScene.xdb#xpointer(/DialogScene)");
 	SetObjectiveState("obj5", OBJECTIVE_COMPLETED);
-	sleep(10);
+	sleep(100);
 	Win();
 end;
 
