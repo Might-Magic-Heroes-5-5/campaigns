@@ -91,10 +91,9 @@ end;
 function WinLoose()
 	while 1 do
 		if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-			StartDialogScene("/DialogScenes/C3/M4/D1/DialogScene.xdb#xpointer(/DialogScene)"); ----//Start final dialog
-			--GiveExp( "Berein", 500 ); ---addexp!!!
 			SaveHeroAllSetArtifactsEquipped("Berein", "C3M4");
-			sleep(30);
+			StartDialogScene("/DialogScenes/C3/M4/D1/DialogScene.xdb#xpointer(/DialogScene)"); ----//Start final dialog
+			sleep(100);
 			Win();
 			return
 		end;

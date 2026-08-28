@@ -97,11 +97,11 @@ function f_check_Flammschrein_captured()
 		OpenCircleFog(158, 156, 0, 15, 1);
         sleep(2);
         MoveCamera(158, 156, 0, 90, 1, 0, 0, 0, 1);
-        sleep(2);
+        sleep(10);
         PlayVisualEffect( "/Effects/_(Effect)/Spells/Earthquake.xdb#xpointer(/Effect)", "Flammschrein", 0, 0, 0, 0, 0 );
         sleep(16);
         SetAmbientLight(0, "Default", not nil, 1);
-		sleep(4);		
+		sleep(50);		
 		Win();
 end;
 

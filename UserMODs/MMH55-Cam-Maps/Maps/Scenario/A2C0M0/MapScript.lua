@@ -606,7 +606,8 @@ function PlayerWin()
 	until GetObjectiveState("prim1_CaptureTown")==OBJECTIVE_COMPLETED and GetObjectiveState("prim2_CollectCreatures")==OBJECTIVE_COMPLETED;
 	LockLoopSounds();
 	StartDialogScene( "/DialogScenes/A2C0/M1/S2/DialogScene.xdb#xpointer(/DialogScene)", "UnlockLoopSounds" );
-	print("All objectives completed");	
+	print("All objectives completed");
+	sleep(100);
 	Win( PLAYER_1 );
 end
 

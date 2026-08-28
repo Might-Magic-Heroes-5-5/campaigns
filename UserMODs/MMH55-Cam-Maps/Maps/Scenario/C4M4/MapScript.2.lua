@@ -65,9 +65,7 @@ function key()
 	sleep(20);
 	StartDialogScene('/DialogScenes/C4/M4/R4/DialogScene.xdb#xpointer(/DialogScene)');
 	SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
-	sleep(5);
-	--LevelUpHero("Raelag");
-	sleep(10);
+	sleep(100);
 	Win();
 end;
 
