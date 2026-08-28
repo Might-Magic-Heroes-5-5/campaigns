@@ -290,7 +290,7 @@ OBJECTIVES = {
 				sleep(10);
 				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
 				SaveHeroAllSetArtifactsEquipped(OUR_HERO_NAME, "C1M3");
-				sleep(20);
+				sleep(80);
 				Win();
 				return
 			end

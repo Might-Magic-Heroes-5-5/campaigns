@@ -882,9 +882,8 @@ function combatResult( heroName, result )
 	if result ~= nil then
 		print("you won!");
 		SaveHeroAllSetArtifactsEquipped( "Freyda", "A1C1M2" );
-		sleep(20);
 		StartDialogScene("/DialogScenes/A1C1/M2/S3/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep(40);
+		sleep(100);
 		Win(PLAYER_1);
 	end;
 end;

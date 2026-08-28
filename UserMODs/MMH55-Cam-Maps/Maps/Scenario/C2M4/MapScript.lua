@@ -313,7 +313,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped("Agrael", "C2M4");
 				sleep(5);
 				CINEMATICS.outro();
-				sleep(10);
+				sleep(100);
 				Win();
 				return
 			end

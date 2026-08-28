@@ -256,6 +256,7 @@ OBJECTIVES = {
 				sleep(40);
 				Save("scene3" );
 				CINEMATICS.outro();
+				sleep(100);
 				Win();
 				return
 			end

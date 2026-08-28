@@ -297,7 +297,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M3");
 				sleep(10);
 				CINEMATICS.outro();
-				sleep(5);
+				sleep(100);
 				Win(PLAYER_1);
 			end
 		end

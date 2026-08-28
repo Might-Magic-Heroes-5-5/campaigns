@@ -258,11 +258,11 @@ OBJECTIVES = {
 			end
       
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-				CINEMATICS.outro();
-				sleep(1);
-				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C1M2");
-				sleep(5);
+				CINEMATICS.outro();
+				sleep(20);
+				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
+				sleep(100);
 				Win();
 				return
 			end
