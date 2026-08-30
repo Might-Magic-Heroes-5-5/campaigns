@@ -12,21 +12,25 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Inferno/Agrael.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_2</PlayerID>
-	<Experience>60000</Experience>
+	<Experience>200000</Experience>
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_ARCHDEVIL</Creature>
-			<Count>5</Count>
+			<Count>3</Count>
 		</Item>
+		<Item>
+			<Creature>CREATURE_BALOR</Creature>
+			<Count>5</Count>
+		</Item>		
 	</armySlots>
 	<artifactIDs/>
 	<isUntransferable/>
 	<Editable>
 		<NameFileRef href=""/>
 		<BiographyFileRef href=""/>
-		<Offence>8</Offence>
-		<Defence>4</Defence>
-		<Spellpower>6</Spellpower>
+		<Offence>10</Offence>
+		<Defence>7</Defence>
+		<Spellpower>10</Spellpower>
 		<Knowledge>7</Knowledge>
 		<skills>
 			<Item>
@@ -34,7 +38,7 @@
 				<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_EXPERT</Mastery>
+				<Mastery>MASTERY_ADVANCED</Mastery>
 				<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
 			</Item>
 			<Item>
@@ -42,27 +46,41 @@
 				<SkillID>HERO_SKILL_LOGISTICS</SkillID>
 			</Item>
 			<Item>
-				<Mastery>MASTERY_EXPERT</Mastery>
+				<Mastery>MASTERY_ADVANCED</Mastery>
 				<SkillID>HERO_SKILL_OFFENCE</SkillID>
 			</Item>
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_DEFENCE</SkillID>
+			</Item>	
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
+			</Item>			
 		</skills>
 		<perkIDs>
 			<Item>HERO_SKILL_TACTICS</Item>
-			<Item>HERO_SKILL_SUN_FIRE</Item>
+			<Item>HERO_SKILL_MASTER_OF_QUAKES</Item>
 			<Item>HERO_SKILL_FIRST_AID</Item>
 			<Item>HERO_SKILL_PATHFINDING</Item>
 			<Item>HERO_SKILL_SCOUTING</Item>
-			<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
 			<Item>HERO_SKILL_BALLISTA</Item>
-			<Item>HERO_SKILL_CRITICAL_STRIKE</Item>
 			<Item>HERO_SKILL_DEMONIC_FIRE</Item>
-			<Item>HERO_SKILL_MASTER_OF_ICE</Item>
+			<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
 		</perkIDs>
 		<spellIDs>
-			<Item>SPELL_CURSE</Item>
-			<Item>SPELL_CELESTIAL_SHIELD</Item>
+			<Item>SPELL_FIREBALL</Item>
+			<Item>SPELL_FROST_RING</Item>
 			<Item>SPELL_HASTE</Item>
 			<Item>SPELL_BLOODLUST</Item>
+			<Item>SPELL_CURSE</Item>
+			<Item>SPELL_STONE_SPIKES</Item>
+			<Item>SPELL_WASP_SWARM</Item>
+			<Item>SPELL_EARTHQUAKE</Item>
+			<Item>SPELL_ANTI_MAGIC</Item>
+			<Item>SPELL_FIREWALL</Item>
+			<Item>SPELL_DISRUPTING_RAY</Item>
+			<Item>SPELL_SLOW</Item>			
 		</spellIDs>
 		<Ballista>true</Ballista>
 		<FirstAidTent>false</FirstAidTent>
@@ -70,7 +88,7 @@
 		<FavoriteEnemies/>
 	</Editable>
 	<OverrideMask>32</OverrideMask>
-	<PrimarySkillMastery>MASTERY_ADVANCED</PrimarySkillMastery>
+	<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 	<LossTrigger>
 		<Action>
 			<FunctionName/>

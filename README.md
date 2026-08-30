@@ -298,11 +298,16 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C1M5 – Haven: The Fall of the King
 - fix: Tutorial is available and updated for 5.5
-- fix: Siege enemy heroes are now in Onslaught mode as they wandered around instead of attacking the castle.
-- new: added Memory Mentor
-- new: increased grail spawn locations from 3 to 11
+- fix: Siege enemy heroes are now in Onslaught mode as they were often wandering around instead of going for player's town.
 - change: "Protect Dunmor" quest - Siege attacks against Dunmor will continue inifinitely (previously were only up to 3) and will stop only when the condition for that has triggered.
+- change: Agrael and siege heroes build, stats, skills and army depend and increase with game difficulty
+- change: reworked Godric starting level and army
+- change: The guardian of Isabel's prison gain more Pit Lords based on game difficulty
+- change: Dunmor defending army is now stronger and gets even more so on higher game difficulty levels
 - change: "Protect Dunmor" quest - Siege attacks will stop, on normal and hard difficulties - when the Grail is built, on Heroic and Impossible difficulties - when Godric has left.
+- change: The garrison blocking the path to Nicolay is now stronger and scales with game difficulty
+- new: added Memory Mentor
+- new: increased possible grail spawn locations from 3 to 11
 - change: level cap increased from 32 to 35
 
 ### C2M1 – Inferno: The Betrayal

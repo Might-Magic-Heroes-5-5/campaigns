@@ -16,19 +16,19 @@
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_MARKSMAN</Creature>
-			<Count>62</Count>
+			<Count>100</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_SWORDSMAN</Creature>
-			<Count>39</Count>
+			<Count>75</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-			<Count>20</Count>
+			<Count>40</Count>
 		</Item>
 		<Item>
 			<Creature>CREATURE_CAVALIER</Creature>
-			<Count>10</Count>
+			<Count>15</Count>
 		</Item>
 	</armySlots>
 	<artifactIDs/>
@@ -47,13 +47,15 @@
 			</Item>
 		</skills>
 		<perkIDs>
-			<Item>HERO_SKILL_DEFENSIVE_FORMATION</Item>
+			<Item>HERO_SKILL_TOUGHNESS</Item>
 			<Item>HERO_SKILL_PRAYER</Item>
 			<Item>HERO_SKILL_EVASION</Item>
 		</perkIDs>
-		<spellIDs/>
+		<spellIDs>	
+			<Item>SPELL_REGENERATION</Item>		
+		</spellIDs>
 		<Ballista>false</Ballista>
-		<FirstAidTent>false</FirstAidTent>
+		<FirstAidTent>true</FirstAidTent>
 		<AmmoCart>false</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>

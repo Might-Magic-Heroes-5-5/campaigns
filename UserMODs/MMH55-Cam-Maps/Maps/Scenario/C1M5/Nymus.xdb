@@ -12,7 +12,7 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_2</PlayerID>
-	<Experience>0</Experience>
+	<Experience>116000</Experience>
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_IMP</Creature>
@@ -31,29 +31,50 @@
 		<skills>
 			<Item>
 				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_OFFENCE</SkillID>
+				<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
 			</Item>
 			<Item>
 				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_LOGISTICS</SkillID>
+				<SkillID>HERO_SKILL_DEFENCE</SkillID>
 			</Item>
+			<Item>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_SHATTER_SUMMONING_MAGIC</SkillID>
+			</Item>	
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+			</Item>	
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_OFFENCE</SkillID>
+			</Item>				
 		</skills>
 		<perkIDs>
-			<Item>HERO_SKILL_PATHFINDING</Item>
+			<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+			<Item>HERO_SKILL_FIRE_AFFINITY</Item>
+			<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
+			<Item>HERO_SKILL_TOUGHNESS</Item>
 			<Item>HERO_SKILL_FRENZY</Item>
+			<Item>HERO_SKILL_CORRUPT_SUMMONING</Item>			
 		</perkIDs>
 		<spellIDs>
+			<Item>SPELL_CURSE</Item>
 			<Item>SPELL_SLOW</Item>
-			<Item>SPELL_MAGIC_FIST</Item>
-			<Item>SPELL_DISRUPTING_RAY</Item>
+			<Item>SPELL_LIGHTNING_BOLT</Item>
+			<Item>SPELL_STONE_SPIKES</Item>
+			<Item>SPELL_HASTE</Item>
+			<Item>SPELL_BLESS</Item>
+			<Item>SPELL_LAND_MINE</Item>
+			<Item>SPELL_MAGIC_FIST</Item>			
 		</spellIDs>
 		<Ballista>true</Ballista>
-		<FirstAidTent>false</FirstAidTent>
-		<AmmoCart>false</AmmoCart>
+		<FirstAidTent>true</FirstAidTent>
+		<AmmoCart>true</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
 	<OverrideMask>64</OverrideMask>
-	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+	<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 	<LossTrigger>
 		<Action>
 			<FunctionName/>
