@@ -33,49 +33,49 @@ startThread(H55_InitSetArtifacts);
 CINEMATICS = {
 	intro = function()
 		StartDialogScene("/DialogScenes/C1/M5/D1/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 		OpenCircleFog( 26, 109, 0, 7, PLAYER_1 );
 	end,
   
 	searchForGrail = function()
 		StartDialogScene("/DialogScenes/C1/M5/D4A/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 	
 	rescueIsabell = function()
 		StartDialogScene("/DialogScenes/C1/M5/D3/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 
 	defeatAgrael = function()
 		StartDialogScene("/DialogScenes/C1/M5/D4/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 	
 	grailConstructed = function()
 		StartDialogScene("/DialogScenes/C1/M5/R1/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 	
 	sendGodricOnMission = function()
 		StartDialogScene("/DialogScenes/C1/M5/D5/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 		OpenCircleFog( 129, 15, 0, 6, PLAYER_1 );
 	end,
 	
 	godricLeaves = function()
 		StartDialogScene("/DialogScenes/C1/M5/R2/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 	
 	isabellJoinNikolai = function()
 		StartDialogScene("/DialogScenes/C1/M5/R3/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 
 	outro = function()
 		StartCutScene("/Maps/Cutscenes/C1M5/_.(AnimScene).xdb#xpointer(/AnimScene)");
-		sleep( 2 );
+		sleep( 10 );
 	end,
 
 	GodrickLearnsIsabellPrisonLocation = function()
@@ -92,10 +92,10 @@ C1M5_ASSAULT_ARMY = {
 		local pos = random( 2 ) + 1;
 		local name = assault_hero_names[hero_id];
 		DeployReserveHero( name, portals[pos][1], portals[pos][2], GROUND );
-		sleep(3);
+		sleep(20);
 		print(name,"(",hero_id,") deployed");
 		H55c_AIAddHero(name);
-		sleep(3);
+		sleep(10);
 		local time = (GetDate(MONTH)*4  - 4) + GetDate(WEEK);
 		C1M5_ASSAULT_ARMY[name](time);
 	end,
@@ -103,7 +103,7 @@ C1M5_ASSAULT_ARMY = {
 	addUnit = function(hero, unit, count)
 		if count < 1 then return end
 		pcall(AddHeroCreatures(hero, unit, count ));
-		sleep(2);
+		sleep(10);
 	end,
 
 	Nymus = function(num)
@@ -131,11 +131,11 @@ C1M5_ASSAULT_ARMY = {
 	end,
 	
 	Agrael = function(num)
-		C1M5_ASSAULT_ARMY.addUnit("Agrael",		   CREATURE_HELL_HOUND, 600 );
-		C1M5_ASSAULT_ARMY.addUnit("Agrael",		 CREATURE_HORNED_DEMON, 1000 );
-		C1M5_ASSAULT_ARMY.addUnit("Agrael",			CREATURE_ARCHDEVIL, 50 );
-		C1M5_ASSAULT_ARMY.addUnit("Agrael",				CREATURE_BALOR, 120 );
-		C1M5_ASSAULT_ARMY.addUnit("Agrael",	CREATURE_INFERNAL_SUCCUBUS, 200 );
+		C1M5_ASSAULT_ARMY.addUnit("Agrael",		   CREATURE_HELL_HOUND, 1600 );
+		C1M5_ASSAULT_ARMY.addUnit("Agrael",		 CREATURE_HORNED_DEMON, 3000 );
+		C1M5_ASSAULT_ARMY.addUnit("Agrael",			CREATURE_ARCHDEVIL, 250 );
+		C1M5_ASSAULT_ARMY.addUnit("Agrael",				CREATURE_BALOR, 420 );
+		C1M5_ASSAULT_ARMY.addUnit("Agrael",	CREATURE_INFERNAL_SUCCUBUS, 1000 );
 	end,
 }
 
@@ -192,7 +192,7 @@ OBJECTIVES = {
 
 	prepare = function()
 	-- set difficulty
-		factor_by_diffculty = { 0.35, 0.7, 1.0, 1.00 }
+		factor_by_diffculty = { 0.5, 1.0, 1.5, 2.0 }
 		easyfactor = factor_by_diffculty[__difficulty + 1]
 
 		crap = __difficulty - 1;
@@ -211,18 +211,201 @@ OBJECTIVES = {
 		Trigger( OBJECT_TOUCH_TRIGGER, "Prison", "OBJECTIVES._RescueIsabell" );
 
 	-- set player resource
-		SetPlayerStartResource( PLAYER_1,    WOOD, 10 );
-		SetPlayerStartResource( PLAYER_1,     ORE, 10 );
-		SetPlayerStartResource( PLAYER_1,     GEM,  5 );
-		SetPlayerStartResource( PLAYER_1, CRYSTAL,  5 );
-		SetPlayerStartResource( PLAYER_1, MERCURY,  5 );
-		SetPlayerStartResource( PLAYER_1,  SULFUR,  5 );
-		SetPlayerStartResource( PLAYER_1,    GOLD, 7000 - crap * 2000 );
+	    SetPlayerStartResources(PLAYER_1, 10, 10,  5,  5,  5,  5, 7000);
+		GiveExp("Godric", 32100);
 
-	-- set enemy exp
-		GiveExp( 'Jazaz', 50000 + crap * 35000 );
-		GiveExp( 'Efion', 50000 + crap * 35000 );
-		GiveExp( 'Nymus', 50000 + crap * 35000 );
+	-- set ai army stats
+		ChangeHeroStat("Efion", STAT_ATTACK, 6);
+		ChangeHeroStat("Efion", STAT_DEFENCE, 4);
+		ChangeHeroStat("Efion", STAT_SPELL_POWER, 11);
+		ChangeHeroStat("Efion", STAT_KNOWLEDGE, 1);
+		ChangeHeroStat("Nymus", STAT_ATTACK, 9);
+		ChangeHeroStat("Nymus", STAT_DEFENCE, 4);
+		ChangeHeroStat("Nymus", STAT_SPELL_POWER, 7);
+		ChangeHeroStat("Nymus", STAT_KNOWLEDGE, 2);
+		ChangeHeroStat("Jazaz", STAT_ATTACK, 10);
+		ChangeHeroStat("Jazaz", STAT_DEFENCE, 6);
+		ChangeHeroStat("Jazaz", STAT_SPELL_POWER, 4);
+		ChangeHeroStat("Jazaz", STAT_KNOWLEDGE, 2);
+		
+		local koef = GetDifficulty() + 1;
+		ChangeHeroStat("Agrael", STAT_SPELL_POWER, 2 * koef);
+		ChangeHeroStat("Agrael", STAT_DEFENCE, 2 * koef);
+		ChangeHeroStat("Agrael", STAT_KNOWLEDGE, 2 * koef);
+		ChangeHeroStat("Agrael", STAT_ATTACK, 2 * koef);
+		AddObjectCreatures("Dummar", CREATURE_FRIGHTFUL_NIGHTMARE, 1 * koef);
+		AddObjectCreatures("Dummar", CREATURE_SUCCUBUS, 5 * koef);	
+		AddObjectCreatures("Dummar", CREATURE_IMP, 15 * koef);	
+		AddObjectCreatures("PrisonGuardian", CREATURE_BALOR, 4 * koef);		 		
+		if koef > 1 then
+		    GiveHeroSkill("Efion", SKILL_GATING);
+		    GiveHeroSkill("Efion", PERK_DEMONIC_FIRE);
+		    GiveHeroSkill("Efion", SKILL_LEARNING);
+			GiveHeroSkill("Efion", PERK_MASTER_OF_CURSES);
+			GiveHeroSkill("Efion", SKILL_SORCERY);
+			GiveHeroSkill("Efion", PERK_MYSTICISM);
+			TeachHeroSpell("Efion", SPELL_FORGETFULNESS);
+			TeachHeroSpell("Efion", SPELL_PLAGUE);
+			TeachHeroSpell("Efion", SPELL_WEAKNESS);
+			TeachHeroSpell("Efion", SPELL_DISRUPTING_RAY);
+			TeachHeroSpell("Efion", SPELL_DISPEL);
+			TeachHeroSpell("Efion", SPELL_STONESKIN);
+			TeachHeroSpell("Efion", SPELL_BLOODLUST);
+			TeachHeroSpell("Efion", SPELL_EARTHQUAKE);
+		    ChangeHeroStat("Efion", STAT_ATTACK, 2);
+		    ChangeHeroStat("Efion", STAT_DEFENCE, 1);
+		    ChangeHeroStat("Efion", STAT_KNOWLEDGE, 1);			
+		    GiveHeroSkill("Nymus", SKILL_GATING);
+		    GiveHeroSkill("Nymus", DEMON_FEAT_QUICK_GATING);
+		    GiveHeroSkill("Nymus", SKILL_LEARNING);
+			GiveHeroSkill("Nymus", PERK_MASTER_OF_MIND);
+			GiveHeroSkill("Nymus", SKILL_LUCK);
+			GiveHeroSkill("Nymus", PERK_LUCKY_STRIKE);
+			TeachHeroSpell("Nymus", SPELL_FORGETFULNESS);
+			TeachHeroSpell("Nymus", SPELL_PLAGUE);
+			TeachHeroSpell("Nymus", SPELL_WEAKNESS);
+			TeachHeroSpell("Nymus", SPELL_DISRUPTING_RAY);
+			TeachHeroSpell("Nymus", SPELL_DISPEL);
+			TeachHeroSpell("Nymus", SPELL_STONESKIN);
+			TeachHeroSpell("Nymus", SPELL_BLOODLUST);
+			TeachHeroSpell("Nymus", SPELL_EARTHQUAKE);
+			TeachHeroSpell("Nymus", SPELL_WASP_SWARM);			
+		    ChangeHeroStat("Nymus", STAT_SPELL_POWER, 2);
+		    ChangeHeroStat("Nymus", STAT_DEFENCE, 1);
+		    ChangeHeroStat("Nymus", STAT_KNOWLEDGE, 1);	
+		    GiveHeroSkill("Jazaz", SKILL_GATING);
+		    GiveHeroSkill("Jazaz", PERK_DEMONIC_FIRE);
+		    GiveHeroSkill("Jazaz", SKILL_LEARNING);
+			GiveHeroSkill("Jazaz", PERK_MASTER_OF_MIND);
+			GiveHeroSkill("Jazaz", SKILL_WAR_MACHINES);
+			GiveHeroSkill("Jazaz", WIZARD_FEAT_WILDFIRE);
+			TeachHeroSpell("Jazaz", SPELL_FORGETFULNESS);
+			TeachHeroSpell("Jazaz", SPELL_PLAGUE);
+			TeachHeroSpell("Jazaz", SPELL_WEAKNESS);
+			TeachHeroSpell("Jazaz", SPELL_DISRUPTING_RAY);
+			TeachHeroSpell("Jazaz", SPELL_DISPEL);
+			TeachHeroSpell("Jazaz", SPELL_STONESKIN);
+			TeachHeroSpell("Jazaz", SPELL_BLOODLUST);
+			TeachHeroSpell("Jazaz", SPELL_EARTHQUAKE);
+		    ChangeHeroStat("Jazaz", STAT_SPELL_POWER, 2);
+		    ChangeHeroStat("Jazaz", STAT_DEFENCE, 1);
+		    ChangeHeroStat("Jazaz", STAT_KNOWLEDGE, 1);
+		    GiveHeroSkill("Agrael", SKILL_LEARNING);
+		    GiveHeroSkill("Agrael", SKILL_OFFENCE);	
+			AddObjectCreatures("garrison", CREATURE_INFERNAL_SUCCUBUS, 100); 
+            AddObjectCreatures("garrison", CREATURE_FRIGHTFUL_NIGHTMARE, 60); 			
+            AddObjectCreatures("garrison", CREATURE_BALOR, 40);  
+            AddObjectCreatures("garrison", CREATURE_ARCHDEVIL, 20); 			
+		end
+		if koef > 2 then
+		    GiveHeroSkill("Efion", SKILL_GATING);
+		    GiveHeroSkill("Efion", DEMON_FEAT_DEMONIC_RETALIATION);
+		    GiveHeroSkill("Efion", SKILL_LEARNING);
+			GiveHeroSkill("Efion", SKILL_DARK_MAGIC);
+			GiveHeroSkill("Efion", SKILL_NECROMANCY);
+			GiveHeroSkill("Efion", NECROMANCER_FEAT_CHILLING_BONES);			
+			GiveHeroSkill("Efion", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);	
+			GiveHeroSkill("Efion", KNIGHT_FEAT_ANCIENT_SMITHY);
+			TeachHeroSpell("Efion", SPELL_CHAIN_LIGHTNING);
+			TeachHeroSpell("Efion", SPELL_FROST_RING);
+			TeachHeroSpell("Efion", SPELL_TELEPORT);
+			TeachHeroSpell("Efion", SPELL_ANIMATE_DEAD);			
+		    ChangeHeroStat("Efion", STAT_ATTACK, 3);
+		    ChangeHeroStat("Efion", STAT_DEFENCE, 2);
+		    ChangeHeroStat("Efion", STAT_KNOWLEDGE, 1);	
+		    GiveHeroSkill("Nymus", SKILL_GATING);
+		    GiveHeroSkill("Nymus", DEMON_FEAT_CRITICAL_GATING);
+		    GiveHeroSkill("Nymus", SKILL_LEARNING);
+			GiveHeroSkill("Nymus", SKILL_DARK_MAGIC);
+			GiveHeroSkill("Nymus", SKILL_SUMMONING_MAGIC);
+			GiveHeroSkill("Nymus", RANGER_FEAT_FOG_VEIL);
+			GiveHeroSkill("Nymus", HERO_SKILL_SHATTER_SUMMONING_MAGIC	);	
+			GiveHeroSkill("Nymus", PERK_MASTER_OF_ANIMATION);			
+			TeachHeroSpell("Nymus", SPELL_SUMMON_ELEMENTALS);
+			TeachHeroSpell("Nymus", SPELL_ANTI_MAGIC);
+			TeachHeroSpell("Nymus", SPELL_TELEPORT);
+			TeachHeroSpell("Nymus", SPELL_ANIMATE_DEAD);
+		    ChangeHeroStat("Nymus", STAT_ATTACK, 3);
+		    ChangeHeroStat("Nymus", STAT_DEFENCE, 2);
+		    ChangeHeroStat("Nymus", STAT_KNOWLEDGE, 1);		
+		    GiveHeroSkill("Jazaz", SKILL_GATING);
+		    GiveHeroSkill("Jazaz", DEMON_FEAT_DEMONIC_RETALIATION);
+		    GiveHeroSkill("Jazaz", SKILL_LEARNING);
+			GiveHeroSkill("Jazaz", SKILL_DARK_MAGIC);
+			GiveHeroSkill("Jazaz", NECROMANCER_FEAT_LAST_AID);
+			GiveHeroSkill("Jazaz", PERK_EXPERT_TRAINER);			
+			GiveHeroSkill("Jazaz", HERO_SKILL_SHATTER_LIGHT_MAGIC);	
+			GiveHeroSkill("Jazaz", RANGER_FEAT_STORM_WIND);
+			TeachHeroSpell("Jazaz", SPELL_REGENERATION);
+			TeachHeroSpell("Jazaz", SPELL_DEFLECT_ARROWS);
+			TeachHeroSpell("Jazaz", SPELL_TELEPORT);
+			TeachHeroSpell("Jazaz", SPELL_ANIMATE_DEAD);			
+		    ChangeHeroStat("Jazaz", STAT_SPELL_POWER, 3);
+		    ChangeHeroStat("Jazaz", STAT_DEFENCE, 2);
+		    ChangeHeroStat("Jazaz", STAT_KNOWLEDGE, 1);				
+		    GiveHeroSkill("Agrael", SKILL_LEARNING);
+		    GiveHeroSkill("Agrael", SKILL_SUMMONING_MAGIC);	
+			AddObjectCreatures("garrison", CREATURE_INFERNAL_SUCCUBUS, 100); 
+            AddObjectCreatures("garrison", CREATURE_FRIGHTFUL_NIGHTMARE, 60); 			
+            AddObjectCreatures("garrison", CREATURE_BALOR, 40);  
+            AddObjectCreatures("garrison", CREATURE_ARCHDEVIL, 20);			
+		end
+		if koef > 3 then
+			GiveHeroSkill("Efion", SKILL_GATING);
+		    GiveHeroSkill("Efion", DEMON_FEAT_GATING_MASTERY);
+		    GiveHeroSkill("Efion", SKILL_LEARNING);
+			GiveHeroSkill("Efion", SKILL_DARK_MAGIC);
+			GiveHeroSkill("Efion", SKILL_DESTRUCTIVE_MAGIC);			
+			GiveHeroSkill("Efion", PERK_DEATH_SCREAM);
+			GiveHeroSkill("Efion", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);	
+			GiveHeroSkill("Efion", RANGER_FEAT_SUN_FIRE);
+			GiveHeroSkill("Efion", SKILL_DEFENCE);		
+			TeachHeroSpell("Efion", SPELL_UNHOLY_WORD);
+			TeachHeroSpell("Efion", SPELL_VAMPIRISM);
+			TeachHeroSpell("Efion", SPELL_METEOR_SHOWER);
+			TeachHeroSpell("Efion", SPELL_DEEP_FREEZE);		
+		    ChangeHeroStat("Efion", STAT_ATTACK, 4);
+		    ChangeHeroStat("Efion", STAT_DEFENCE, 3);
+		    ChangeHeroStat("Efion", STAT_KNOWLEDGE, 2);		
+		    GiveHeroSkill("Nymus", SKILL_LUCK);
+		    GiveHeroSkill("Nymus", RANGER_FEAT_ELVEN_LUCK);
+		    GiveHeroSkill("Nymus", SKILL_LEARNING);
+			GiveHeroSkill("Nymus", SKILL_OFFENCE);
+			GiveHeroSkill("Nymus", SKILL_DEFENCE);
+			GiveHeroSkill("Nymus", PERK_MASTER_OF_ANIMATION);
+			GiveHeroSkill("Nymus", PERK_ARCHERY);
+			GiveHeroSkill("Nymus", PERK_EVASION);
+			GiveHeroSkill("Nymus", HERO_SKILL_DEATH_TO_NONEXISTENT);			
+			TeachHeroSpell("Nymus", SPELL_UNHOLY_WORD);
+			TeachHeroSpell("Nymus", SPELL_VAMPIRISM);
+			TeachHeroSpell("Nymus", SPELL_FIREWALL);
+			TeachHeroSpell("Nymus", SPELL_SUMMON_HIVE);
+		    ChangeHeroStat("Nymus", STAT_SPELL_POWER, 4);
+		    ChangeHeroStat("Nymus", STAT_DEFENCE, 3);
+		    ChangeHeroStat("Nymus", STAT_KNOWLEDGE, 2);	
+			GiveHeroSkill("Jazaz", SKILL_GATING);
+		    GiveHeroSkill("Jazaz", DEMON_FEAT_GATING_MASTERY);
+		    GiveHeroSkill("Jazaz", SKILL_LEARNING);
+			GiveHeroSkill("Jazaz", SKILL_LIGHT_MAGIC);
+			GiveHeroSkill("Jazaz", SKILL_OFFENCE);			
+			GiveHeroSkill("Jazaz", NECROMANCER_FEAT_DEATH_TREAD);
+			GiveHeroSkill("Jazaz", HERO_SKILL_SHATTER_LIGHT_MAGIC);	
+			GiveHeroSkill("Jazaz", DEMON_FEAT_FIRE_PROTECTION);
+			GiveHeroSkill("Jazaz", SKILL_DEFENCE);		
+			TeachHeroSpell("Jazaz", SPELL_UNHOLY_WORD);
+			TeachHeroSpell("Jazaz", SPELL_VAMPIRISM);
+			TeachHeroSpell("Jazaz", SPELL_RESURRECT);
+			TeachHeroSpell("Jazaz", SPELL_BLIND);		
+		    ChangeHeroStat("Jazaz", STAT_ATTACK, 4);
+		    ChangeHeroStat("Jazaz", STAT_SPELL_POWER, 3);
+		    ChangeHeroStat("Jazaz", STAT_KNOWLEDGE, 2);				
+		    GiveHeroSkill("Agrael", SKILL_LEARNING);
+		    GiveHeroSkill("Agrael", SKILL_DEFENCE);	
+			AddObjectCreatures("garrison", CREATURE_INFERNAL_SUCCUBUS, 100); 
+            AddObjectCreatures("garrison", CREATURE_FRIGHTFUL_NIGHTMARE, 60); 			
+            AddObjectCreatures("garrison", CREATURE_BALOR, 40);  
+            AddObjectCreatures("garrison", CREATURE_ARCHDEVIL, 20);			
+		end
 
 		SetRegionBlocked( 'AIblock', 1, PLAYER_2 );
 		for i = 1, 3 do
@@ -277,8 +460,8 @@ OBJECTIVES = {
 			OBJECTIVES.state.rescueIsabell[2] = 3;
 		elseif OBJECTIVES.state.rescueIsabell[2] == 4 then
 			CINEMATICS.rescueIsabell();
-			sleep(1);
-			GiveExp( 'Godric', 2000 );
+			sleep(10);
+			GiveExp( 'Godric', 5000 );
 			SetRegionBlocked( 'AIblock', nil, PLAYER_2 );
 			LoadHeroAllSetArtifacts( "Isabell", "C1M4" );
 			sleep(40); -- wait artifacts to get loaded
@@ -304,15 +487,23 @@ OBJECTIVES = {
 			OBJECTIVES.state.protectDunmor[2] = 2;
 		elseif OBJECTIVES.state.protectDunmor[2] == 2 and IsHeroAlive("Isabell") ~= nil then
 			DeployReserveHero( 'Agrael', 120, 55, 0 );
-			sleep(2);
+			sleep(20);
 			H55c_AIAddHero('Agrael');
 			SetHeroLootable( 'Agrael', nil );
 			SetHeroRoleMode( 'Agrael', HERO_ROLE_MODE_HERMIT );
-			sleep(5);
-			if __difficulty <= DIFFICULTY_NORMAL then
-				RemoveHeroCreatures( 'Agrael',        CREATURE_DEVIL,  5 );
-				RemoveHeroCreatures( 'Agrael', CREATURE_HORNED_DEMON, 20 );
+			sleep(10);
+			local GD = GetDifficulty() + 1; 
+            if GD > 1 then
+			    AddHeroCreatures("Agrael", CREATURE_FRIGHTFUL_NIGHTMARE, 10);
 			end
+			if GD > 2 then
+			    AddHeroCreatures("Agrael", CREATURE_INFERNAL_SUCCUBUS, 20);
+                AddHeroCreatures("Agrael", CREATURE_CERBERI, 40);
+			end	
+			if GD > 3 then
+            AddHeroCreatures("Agrael", CREATURE_IMP, 80);
+            AddHeroCreatures("Agrael", CREATURE_HORNED_DEMON, 60);
+			end				
 			OBJECTIVES.state.protectDunmor[2] = 3;
 		elseif OBJECTIVES.state.protectDunmor[2] == 3 and IsHeroAlive("Agrael") == nil then
 			CINEMATICS.defeatAgrael();
@@ -348,10 +539,10 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.buildGrail[2] == 2 then
 			if GetTownBuildingLevel( "Dummar", TOWN_BUILDING_GRAIL ) == 1 then
 				CINEMATICS.grailConstructed();
-				GiveExp( 'Isabell', 10000 );
+				GiveExp( 'Isabell', 20000 );
 				if IsObjectExists( 'Godric') then
-					sleep( 1 );
-					GiveExp( 'Godric', 2000 );
+					sleep( 10 );
+					GiveExp( 'Godric', 10000 );
 				end
 				SetObjectiveState( "prim3", OBJECTIVE_COMPLETED );
 				OBJECTIVES.state.buildGrail[2] = 10;
@@ -375,9 +566,9 @@ OBJECTIVES = {
 			CINEMATICS.sendGodricOnMission();
 			SetObjectiveState('prim4', OBJECTIVE_ACTIVE);
 			Trigger( REGION_ENTER_AND_STOP_TRIGGER, "exit", "OBJECTIVES._IsGodricAtExit" );
-			local balors     = (2 - crap) * 6;
-			local nightmares = (2 - crap) * 8;
-			local succubus   = (2 - crap) * 12;
+			local balors     = (2 - crap) * 15;
+			local nightmares = (2 - crap) * 25;
+			local succubus   = (2 - crap) * 40;
 			if balors > 0 then		RemoveObjectCreatures( 'garrison', CREATURE_BALOR, balors ); end
 			if nightmares > 0 then 	RemoveObjectCreatures( 'garrison', CREATURE_NIGHTMARE, nightmares ); end
 			if succubus > 0 then	RemoveObjectCreatures( 'garrison', CREATURE_INFERNAL_SUCCUBUS, succubus ); end

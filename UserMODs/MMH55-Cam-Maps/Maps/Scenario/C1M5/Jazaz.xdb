@@ -12,7 +12,7 @@
 	<pointLights/>
 	<Shared href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	<PlayerID>PLAYER_2</PlayerID>
-	<Experience>0</Experience>
+	<Experience>116000</Experience>
 	<armySlots>
 		<Item>
 			<Creature>CREATURE_IMP</Creature>
@@ -35,20 +35,41 @@
 			</Item>
 			<Item>
 				<Mastery>MASTERY_ADVANCED</Mastery>
-				<SkillID>HERO_SKILL_DEFENCE</SkillID>
+				<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
 			</Item>
+			<Item>
+				<Mastery>MASTERY_BASIC</Mastery>
+				<SkillID>HERO_SKILL_SHATTER_LIGHT_MAGIC</SkillID>
+			</Item>	
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+			</Item>	
+			<Item>
+				<Mastery>MASTERY_ADVANCED</Mastery>
+				<SkillID>HERO_SKILL_OFFENCE</SkillID>
+			</Item>				
 		</skills>
 		<perkIDs>
-			<Item>HERO_SKILL_DEMONIC_RETALIATION</Item>
-			<Item>HERO_SKILL_CATAPULT</Item>
+			<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+			<Item>HERO_SKILL_GUARDIAN_ANGEL</Item>
+			<Item>HERO_SKILL_MASTER_OF_WRATH</Item>
+			<Item>HERO_SKILL_TOUGHNESS</Item>
+			<Item>HERO_SKILL_FRENZY</Item>
+			<Item>HERO_SKILL_TRIPLE_BALLISTA</Item>			
 		</perkIDs>
 		<spellIDs>
 			<Item>SPELL_CURSE</Item>
-			<Item>SPELL_BLIND</Item>
-			<Item>SPELL_WEAKNESS</Item>
+			<Item>SPELL_SLOW</Item>
+			<Item>SPELL_LIGHTNING_BOLT</Item>
+			<Item>SPELL_STONE_SPIKES</Item>
+			<Item>SPELL_HASTE</Item>
+			<Item>SPELL_BLESS</Item>
+			<Item>SPELL_LAND_MINE</Item>
+			<Item>SPELL_MAGIC_FIST</Item>			
 		</spellIDs>
-		<Ballista>false</Ballista>
-		<FirstAidTent>false</FirstAidTent>
+		<Ballista>true</Ballista>
+		<FirstAidTent>true</FirstAidTent>
 		<AmmoCart>true</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
