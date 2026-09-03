@@ -311,7 +311,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: level cap increased from 32 to 35
 
 ### C2M1 – Inferno: The Betrayal
-- change: Final fight vs Erasiel is more challenging
+- change: Final fight vs Erasiel are more challenging on higher difficulties
+
+### C2M2 – Inferno: The Betrayal
+- change: Final fights vs Stephan and Veyer are now more challenging on higher difficulties
 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
@@ -768,6 +771,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### In Search for Power (A1SM2)
     - change: Instant travel spell is no longer available on this map.
 ### Iron Throne (A1SM4)
+	- none
 ### Temptation (A1SM5)
     - change: Instant travel spell is no longer available on this map.
 ### Maahir's Gambit (SL1)
@@ -782,6 +786,17 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - change: Nadaur is in onslaught mode, meaning  he will assault player heroes and towns until defeated.
 ### Diplomat (SM3)
     - change: Instant travel spell is no longer available on this map.
+### Dragon Knight (SM5)
+	- fix: Red quest demands were different then the one presented to the player.
+	- change: Vittorio start the game with Ballista
+	- change: Instant travel spell is no longer avialable on this map.
+### Hot Pursuit (SM6)
+	- fix: Siege inferno stacks in front of the Sylvan town remained even if the message said the Inferno siege forces are now gone.
+	- fix: Cinematics used Agrael hero model but it is Grok that is in play
+### Falcon's Last Flight (SS2)
+	- fix: Jezbeth and Maeve occasionally T-posing in cinematics
+### Refugee (SXL1)
+	- fix: cinematics where Yrbeth appears next to the Dragonteeth artifact sometimes did not complete and blocked the game.
 ### The Days of Fire (A2S2)
     - fix: Removed Unicorn Horn Bow and Treeborn Quiver from vault rewards as they are part of a questline
 	- fix(cinematics): Treant T-posing instead of having a dead posture in the intro scene
