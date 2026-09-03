@@ -7,6 +7,8 @@ while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
+H55_PlayerStatus = {0,1,1,2,2,2,2,2};
+
 function f_artifacts_sets()
 	InitAllSetArtifacts( "A2C3M3", "Zehir" );
 	LoadHeroAllSetArtifacts( "Zehir", "A2C3M2" );
