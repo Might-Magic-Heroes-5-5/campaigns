@@ -19,12 +19,12 @@ ENEMY_HERO_NAME = "Godric";
 function EngageHero( heroname )
 	while IsHeroAlive( ENEMY_HERO_NAME ) do
 		while GetCurrentPlayer() ~= PLAYER_2 or not ((GetDate(DAY_OF_WEEK) == 1) or (GetDate(DAY_OF_WEEK) == 3) or (GetDate(DAY_OF_WEEK) == 5) or (GetDate(DAY_OF_WEEK) == 7)) do
-			sleep( 1 );
+			sleep( 10 );
 		end
 		MoveHero( ENEMY_HERO_NAME, GetObjectPosition( heroname ) );
 		EnableHeroAI("Godric", not nil)
 		while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep( 1 );
+			sleep( 10 );
 		end
 	end
 end
@@ -111,7 +111,7 @@ function TriggerPlayer()
 		CurrentPlayer = GetCurrentPlayer();
 		while CurrentPlayer == GetCurrentPlayer() do
 			CurrentPlayer = GetCurrentPlayer();
-			sleep(2);
+			sleep(5);
 		end;
 		print("Player triggered");
 		if CurrentPlayer == PLAYER_1 then
@@ -141,33 +141,34 @@ end
 CINEMATICS = {
   intro = function()
   	StartDialogScene("/DialogScenes/C2/M1/D1/DialogScene.xdb#xpointer(/DialogScene)");
-  	sleep( 2 );
+  	sleep( 5 );
   end,
   
   subPassage = function()
 	StartDialogScene("/DialogScenes/C2/M1/R1/DialogScene.xdb#xpointer(/DialogScene)");
-    sleep( 2 );
+    sleep( 5 );
   end,
   
   marderSpeech = function()
 	StartDialogScene("/DialogScenes/C2/M1/R2/DialogScene.xdb#xpointer(/DialogScene)");
-    sleep( 2 );
+    sleep( 5 );
   end,
   
   outro = function()
 	StartDialogScene("/DialogScenes/C2/M1/D2/DialogScene.xdb#xpointer(/DialogScene)");
-	sleep( 2 );
+	sleep( 5 );
   end,
 }
 
 function SetMarderArmy(koef)
-	AddHeroCreatures("Marder",    CREATURE_ARCHDEVIL,  1 * koef );
-	AddHeroCreatures("Marder",        CREATURE_BALOR,  2 * koef );
-	AddHeroCreatures("Marder",     CREATURE_SUCCUBUS,  3 * koef );
-	AddHeroCreatures("Marder", 	 CREATURE_HELL_HOUND,  7 * koef );
-	AddHeroCreatures("Marder", CREATURE_HORNED_DEMON, 10 * koef );
-	AddHeroCreatures("Marder", 			CREATURE_IMP, 12 * koef );
-	GiveExp("Marder", 5000 * koef);
+	AddHeroCreatures("Marder",    CREATURE_ARCHDEVIL,  2 * koef );
+	AddHeroCreatures("Marder",        CREATURE_BALOR,  3 * koef );
+	AddHeroCreatures("Marder",     CREATURE_SUCCUBUS,  6 * koef );
+	AddHeroCreatures("Marder", 	 CREATURE_HELL_HOUND,  15 * koef );
+	AddHeroCreatures("Marder", CREATURE_HORNED_DEMON, 20 * koef );
+	AddHeroCreatures("Marder", 			CREATURE_IMP, 30 * koef );
+	GiveExp("Marder", 7000);
+	GiveExp("Marder", 6775 * koef);
 end
 
 DIFFICULTY = {
@@ -198,13 +199,7 @@ OBJECTIVES = {
 
   prepare = function()
     -- Prepare Player 1
-    SetPlayerResource(1, 0, 0);
-    SetPlayerResource(1, 1, 0);
-    SetPlayerResource(1, 2, 0);
-    SetPlayerResource(1, 3, 0);
-    SetPlayerResource(1, 4, 0);
-    SetPlayerResource(1, 5, 0);
-    SetPlayerResource(1, 6, 0);
+    SetPlayerStartResources(PLAYER_1, 0, 0,  0,  0,  0,  0, 0);
 	
     -- Prepare Player 2 heroes
 	EnableHeroAI("Brem",nil);
@@ -248,7 +243,7 @@ OBJECTIVES = {
 	
 			if GetObjectiveState( "prim1") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(20);
 				Win();
 				return
 			end
@@ -261,10 +256,10 @@ OBJECTIVES = {
 	 if OBJECTIVES.state.routeToSheogath[2] == 1 and (GetDate(DAY_OF_WEEK) == 3 ) then
 		SetObjectPosition("Godric", 6, 90, 0);
 		MoveCamera(6, 90, 0, 50, 1);
-		sleep(6);
+		sleep(10);
 		EnableHeroAI("Godric",not nil);
 		EnableHeroAI("Brem",not nil);
-		sleep(2);
+		sleep(10);
 		startThread( EngageHero, OUR_HERO_NAME );
 		startThread(SetMPFactorForGodric);
 		OBJECTIVES.state.routeToSheogath[2] = 2
@@ -274,6 +269,7 @@ OBJECTIVES = {
 		cx,cy,cl,h = GetHeroCoord("Agrael");
 		ChangeHeroStat( "Agrael", STAT_MOVE_POINTS, -30000 );
 		BlockGame();
+		sleep(20);
 		ChangeHeroStat( "Marder", STAT_MOVE_POINTS, 30000 );
 		MoveHeroRealTime( "Marder", 12, 9, GROUND );
 		sleep(20);
@@ -287,7 +283,7 @@ OBJECTIVES = {
 	
     if IsHeroAlive("Marder") == nil then	
 		SaveHeroAllSetArtifactsEquipped("Agrael", "C2M1");
-		sleep(4);
+		sleep(10);
 		Save("Save");
 		sleep(20);
 		SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
@@ -299,7 +295,7 @@ OBJECTIVES = {
     -- start of this task is handled by C2M1.xdb
 	if IsHeroAlive("Agrael") == nil then
 		SetObjectiveState('prim2',OBJECTIVE_FAILED);
-		sleep(2);
+		sleep(10);
 		OBJECTIVES.state.routeToSheogath[2] = 10;
 	end
   end
