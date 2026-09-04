@@ -311,6 +311,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: level cap increased from 32 to 35
 
 ### C2M1 – Inferno: The Betrayal
+- change: Level cap increased from 12 to 15
 - change: Final fight vs Erasiel are more challenging on higher difficulties
 
 ### C2M2 – Inferno: The Betrayal
