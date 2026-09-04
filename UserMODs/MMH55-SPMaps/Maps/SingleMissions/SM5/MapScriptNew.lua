@@ -107,3 +107,4 @@ SetObjectEnabled("blue", nil);
 SetObjectEnabled("green", nil);
 SetObjectiveState('HeroSurvive', OBJECTIVE_ACTIVE);
 SetObjectiveState('PlayerWin', OBJECTIVE_ACTIVE);
+GiveHeroWarMachine("Christian", WAR_MACHINE_BALLISTA);
