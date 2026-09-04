@@ -312,6 +312,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C2M1 – Inferno: The Betrayal
 - change: Final fight vs Erasiel is more challenging
+- change: Level cap increased from 12 to 15
+- change: Final fight vs Erasiel are more challenging on higher difficulties
+
+### C2M2 – Inferno: The Betrayal
+- change: Final fights vs Stephan and Veyer are now more challenging on higher difficulties
 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
