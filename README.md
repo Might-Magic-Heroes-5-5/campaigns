@@ -324,8 +324,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
 - fix: Player 2 heroes no longer flee battles
-- change: Reduced amount and power of weekly elven spawns per week due to Elven source magic.
+- change: Elven source magic now spawns between 5 and 7 stacks, where 3 stacks are ancient treants, the formula is:
+	- druids : GetDate(DAY) - 10;
+	- treants: (GetDate(DAY) - 10)/2;
+- change: Increased the strength of monster stacks from druid magic source weekly on impossible game difficulty
 - change: Elder Druids circle fight is now more challenging
+- change: Removed Inferno town build restrictions. Town can be fully built.
+- change: Ynthil has been developed further and can recruit any unupgraded units. Gilraen will recruit and upgrade those once he's enabled to move freely at the start of 2nd month.
+- change: Gilraen skills, spells and army are now more challenging based on game difficulty
 - new: Added Memory Mentor
 
 ### C2M4 – Inferno: The Ship
