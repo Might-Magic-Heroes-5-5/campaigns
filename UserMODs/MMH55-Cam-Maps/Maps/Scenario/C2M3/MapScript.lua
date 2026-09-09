@@ -18,60 +18,31 @@ H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 DIFFICULTY = {
 	[0] = function()
 		print("Difficulty Level is EASY");
-		OBJECTIVES.DaysToGillionActivation = 42;
+		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 20);
-		AddHeroCreatures('Agrael', CREATURE_FAMILIAR, 60);
 		AddHeroCreatures('Agrael', CREATURE_HELL_HOUND, 20);
-		SetTownBuildingLimitLevel("InfernoTown", TOWN_BUILDING_FORT,3);
-		SetTownBuildingLimitLevel("Town2", TOWN_BUILDING_FORT,1);
-		SetPlayerStartResource(PLAYER_1,WOOD,30);
-		SetPlayerStartResource(PLAYER_1,ORE,30);
-		SetPlayerStartResource(PLAYER_1,GEM,15);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,15);
-		SetPlayerStartResource(PLAYER_1,MERCURY,15);
-		SetPlayerStartResource(PLAYER_1,SULFUR,15);
-		SetPlayerStartResource(PLAYER_1,GOLD,20000);
+        SetPlayerStartResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
 	end,
 	
 	[1] = function()
 		print("Difficulty Level is NORMAL");
-		OBJECTIVES.DaysToGillionActivation = 35;
+		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 15);
 		AddHeroCreatures('Agrael', CREATURE_FAMILIAR, 30);
-		SetTownBuildingLimitLevel("Town2",TOWN_BUILDING_FORT,2);
-		SetTownBuildingLimitLevel("InfernoTown",TOWN_BUILDING_FORT,2);
-		SetPlayerStartResource(PLAYER_1,WOOD,30);
-		SetPlayerStartResource(PLAYER_1,ORE,30);
-		SetPlayerStartResource(PLAYER_1,GEM,15);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,15);
-		SetPlayerStartResource(PLAYER_1,MERCURY,15);
-		SetPlayerStartResource(PLAYER_1,SULFUR,15);
-		SetPlayerStartResource(PLAYER_1,GOLD,20000);
+        SetPlayerStartResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
 	end,
 	
 	[2] = function()
 		print("Difficulty Level is HARD");
 		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 4);
-		SetPlayerStartResource(PLAYER_1,WOOD,15);
-		SetPlayerStartResource(PLAYER_1,ORE,15);
-		SetPlayerStartResource(PLAYER_1,GEM,10);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,10);
-		SetPlayerStartResource(PLAYER_1,MERCURY,10);
-		SetPlayerStartResource(PLAYER_1,SULFUR,10);
-		SetPlayerStartResource(PLAYER_1,GOLD,8000);
+        SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);		
 	end,
 	
 	[3] = function()
 		print("Difficulty Level is HEROIC");
-		OBJECTIVES.DaysToGillionActivation = 21;
-		SetPlayerStartResource(PLAYER_1,WOOD,10);
-		SetPlayerStartResource(PLAYER_1,ORE,10);
-		SetPlayerStartResource(PLAYER_1,GEM,5);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,5);
-		SetPlayerStartResource(PLAYER_1,MERCURY,5);
-		SetPlayerStartResource(PLAYER_1,SULFUR,5);
-		SetPlayerStartResource(PLAYER_1,GOLD,5000);
+		OBJECTIVES.DaysToGillionActivation = 28;
+		SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
 	end,
 }
 
@@ -115,8 +86,8 @@ CINEMATICS = {
 BATTLES = {
 	destroySource = {
 		start = function(hero)
-			local n = 4*GetDate(MONTH)+GetDate(WEEK)+GetDifficulty()*2;
-			StartCombat(hero,nil,5,CREATURE_DRUID_ELDER,n,CREATURE_DRUID_ELDER,n,CREATURE_TREANT_GUARDIAN,n,CREATURE_DRUID_ELDER,n,CREATURE_DRUID_ELDER,n,"/Maps/Scenario/C2M3/BattleVSDruids.xdb#xpointer(/Script)",'BATTLES.destroySource.finish')
+			local n = GetDate(DAY) - 10 ;
+			StartCombat(hero,nil,7,CREATURE_DRUID_ELDER,n,CREATURE_DRUID_ELDER,n,CREATURE_TREANT_GUARDIAN,n/2,CREATURE_TREANT_GUARDIAN,n/2,CREATURE_TREANT_GUARDIAN,n/2,CREATURE_DRUID_ELDER,n,CREATURE_DRUID_ELDER,n,"/Maps/Scenario/C2M3/BattleVSDruids.xdb#xpointer(/Script)",'BATTLES.destroySource.finish')
 		end, 
 
 		finish = function(name, result)
@@ -230,17 +201,58 @@ OBJECTIVES = {
 	-- end of this task is handled by C2M3.xdb
 		if OBJECTIVES.state.defeatGillion[2] == 1 then
 			Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Gilraen", "OBJECTIVES._defeatGillion_activator" );
-			DeployReserveHero("Gillion", 115, 95, GROUND);
+			DeployReserveHero("Gillion", 116, 95, GROUND);
 			EnableHeroAI("Gillion", nil);
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
 			local army_diff = GetDifficulty() + 1;
-			AddHeroCreatures("Gillion",   CREATURE_BLADE_JUGGLER, army_diff * 30 ); 
-			AddHeroCreatures("Gillion",       CREATURE_GRAND_ELF, army_diff * 20 ); 
-			AddHeroCreatures("Gillion",           CREATURE_DRUID, army_diff * 20 );  
-			AddHeroCreatures("Gillion",       CREATURE_GRAND_ELF, army_diff * 20 ); 
-			AddHeroCreatures("Gillion",   CREATURE_BLADE_JUGGLER, army_diff * 30 ); 
-			AddHeroCreatures("Gillion", CREATURE_TREANT_GUARDIAN, army_diff * 10 ); 
-			AddHeroCreatures("Gillion",     CREATURE_GOLD_DRAGON, army_diff *  5 );
+                AddHeroCreatures("Gillion", CREATURE_DRUID, 17);
+                AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 32);
+                AddHeroCreatures("Gillion", CREATURE_UNICORN, 15);
+                AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 1);
+                AddHeroCreatures("Gillion", CREATURE_TREANT, 4);                      
+            if army_diff > 1 then
+                GiveHeroSkill("Gillion", SKILL_DEFENCE);
+			    GiveHeroSkill("Gillion", PERK_EVASION);
+				ChangeHeroStat("Gillion", STAT_ATTACK, 1);
+				ChangeHeroStat("Gillion", STAT_DEFENCE, 1);
+				ChangeHeroStat("Gillion", STAT_SPELL_POWER, 1);
+				ChangeHeroStat("Gillion", STAT_KNOWLEDGE, 1);
+				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 8100);
+                AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
+                AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
+               AddHeroCreatures("Gillion", CREATURE_TREANT, 6);				
+            end
+       		if army_diff > 2 then
+				GiveHeroSkill("Gillion", SKILL_WAR_MACHINES);
+				GiveHeroSkill("Gillion", SKILL_WAR_MACHINES);
+				GiveHeroSkill("Gillion", PERK_FIRST_AID);
+				ChangeHeroStat("Gillion", STAT_ATTACK, 2);
+				ChangeHeroStat("Gillion", STAT_DEFENCE, 2);
+				ChangeHeroStat("Gillion", STAT_SPELL_POWER, 2);
+				ChangeHeroStat("Gillion", STAT_KNOWLEDGE, 2);
+				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 11800);
+				AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
+                AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
+                AddHeroCreatures("Gillion", CREATURE_TREANT, 10);
+                AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 4);				
+		    end
+            if army_diff > 3 then
+			    GiveHeroWarMachine("Gillion", WAR_MACHINE_BALLISTA);
+			    GiveHeroSkill("Gillion", SKILL_WAR_MACHINES);
+				GiveHeroSkill("Gillion", PERK_BALLISTA);
+			    GiveHeroSkill("Gillion", SKILL_LUCK);
+				ChangeHeroStat("Gillion", STAT_ATTACK, 3);
+				ChangeHeroStat("Gillion", STAT_DEFENCE, 3);
+				ChangeHeroStat("Gillion", STAT_SPELL_POWER, 3);
+				ChangeHeroStat("Gillion", STAT_KNOWLEDGE, 3);
+				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 16900);
+                AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
+                AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
+                AddHeroCreatures("Gillion", CREATURE_TREANT, 10);
+                AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 5);
+                                                
+		    end
+						
 			OBJECTIVES.DaysToGillionActivation = GetDate(ABSOLUTE_DAY) + OBJECTIVES.DaysToGillionActivation
 			OBJECTIVES.state.defeatGillion[2] = 2;
 		elseif OBJECTIVES.state.defeatGillion[2] == 2 and (OBJECTIVES.DaysToGillionActivation <= GetDate(ABSOLUTE_DAY) or OBJECTIVES.gilraenAcitve == 1) then
@@ -305,9 +317,9 @@ function CreaturesSpawn(num)
 	--GenerateMonsters(monsterTypeID, countGroupsMin, countGroupsMax, countInGroupMin, countInGroupMax)
 	local num = OBJECTIVES.destroySource_power;
 	if GetDifficulty() == DIFFICULTY_HEROIC then 
-		GenerateMonsters(		CREATURE_SPRITE,  6, 10, 15*num, 30*num);
-		GenerateMonsters(	CREATURE_WAR_DANCER,  4,  8,  9*num, 15*num);
-		GenerateMonsters(	 CREATURE_GRAND_ELF,  2,  4,  5*num, 8*num);
+		GenerateMonsters(		CREATURE_SPRITE,  6, 10, 20*num, 30*num);
+		GenerateMonsters(	CREATURE_WAR_DANCER,  4,  8,  15*num, 20*num);
+		GenerateMonsters(	 CREATURE_GRAND_ELF,  2,  4,  10*num, 15*num);
 		print("Druids have spawned monsters. Difficulty is HEROIC");
 	elseif GetDifficulty() == DIFFICULTY_HARD then 
 		GenerateMonsters(		CREATURE_SPRITE,  6,  9, 10*num, 20*num);
