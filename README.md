@@ -324,8 +324,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
 - fix: Player 2 heroes no longer flee battles
-- change: Elven source magic now spawns between 5 and 7 stacks, where 3 stacks are ancient treants, the formula is:
-	- druids : GetDate(DAY) - 10;
+- change: Elven magic spawn count from 4 to random 5-7 stacks, where ancient treant stacks are up from 1 to 3, the stack size formula is:
+	- druids: GetDate(DAY) - 10;
 	- treants: (GetDate(DAY) - 10)/2;
 - change: Increased the strength of monster stacks from druid magic source weekly on impossible game difficulty
 - change: Elder Druids circle fight is now more challenging
@@ -335,11 +335,16 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added Memory Mentor
 
 ### C2M4 – Inferno: The Ship
-- fix: Erewell stopped being reinforced after week 4.
-- change: Erewell town is fully developed and reinforcements are now more challenging on higher difficulties
-- change: Mines around Erewell are owned by the Preserve player at the start of the game.
-- change: Preserve heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
-- change: Inferno hero Erasiel stats and army are now more challenging
+- fix: Erewel stopped being reinforced after week 4
+- change: Increased the quantity of various stacks throughout the map that will join the player
+- change: Mines around Erewel are owned by the enemy Sylvan player at the start of the game
+- change: Erewel town is fully developed and reinforcements are now more challenging on higher difficulties
+- change: Garnissons are more chalenging on higher difficulties
+- change: Aglan, Giladan and Hallin enemy towns are better developed (scale with difficulty)
+- change: Enemy Sylvan heroes (Dirael, Wyngaal, Alaron) stats and starting army are now more challenging
+- change: Dirael and Wyngaal will respawn and be more agressive towards the player on higher difficulty levels
+- change: Inferno enemy hero Erasiel stats and army are now more challenging
+- change: Bone Dragons stack size defending the underground garnission scale with difficulty
 - new: Added Memory Mentor
 
 ### C2M5 – Inferno: Agrael's Decision
