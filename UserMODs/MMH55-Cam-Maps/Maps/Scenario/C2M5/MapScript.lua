@@ -18,13 +18,7 @@ startThread(H55_InitSetArtifacts);
 StartDialogScene("/DialogScenes/C2/M5/R1/DialogScene.xdb#xpointer(/DialogScene)");
 
 SetWarfogBehaviour(1,0);
-SetPlayerStartResource(PLAYER_1,WOOD,5);
-SetPlayerStartResource(PLAYER_1,ORE,5);
-SetPlayerStartResource(PLAYER_1,SULFUR,0);
-SetPlayerStartResource(PLAYER_1,GEM,0);
-SetPlayerStartResource(PLAYER_1,MERCURY,0);
-SetPlayerStartResource(PLAYER_1,CRYSTAL,0);
-SetPlayerStartResource(PLAYER_1,GOLD,500);
+SetPlayerStartResources(PLAYER_1, 5, 5, 0, 0, 0, 0, 500);
 OpenCircleFog(27,15,0,16,PLAYER_1);
 
 function AgraelComeToTieru()
@@ -71,27 +65,37 @@ end
 function SetFinalCombat()
 	local diff = GetDifficulty();
 	if diff == 0 then
-		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 44 );
-                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 44 );
-                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 44);
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 14 );
+        AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 14 );
+        AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 14);
 	end
 
 	if diff == 1 then
-		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 79 );
-                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 79 );
-                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 79);
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 59 );
+        AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 59 );
+        AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 59);
+        AddObjectCreatures("cartographer_guard", CREATURE_RAINBOW_DRAGON, 3);	
+        AddObjectCreatures("cartographer_guard", CREATURE_WAR_UNICORN, 15);		
+        AddObjectCreatures("cartographer_guard", CREATURE_ANGER_TREANT, 15);			
 	end
 
 	if diff == 2 then
-		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 114 );
-                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 114);
-                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 114);
+		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 104 );
+        AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 104);
+        AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 104);
+        AddObjectCreatures("cartographer_guard", CREATURE_RAINBOW_DRAGON, 6);	
+        AddObjectCreatures("cartographer_guard", CREATURE_WAR_UNICORN, 30);		
+        AddObjectCreatures("cartographer_guard", CREATURE_ANGER_TREANT, 30);		
+		
 	end
 
 	if diff == 3 then
 		AddObjectCreatures("tieru_guards", CREATURE_GOLD_DRAGON, 149 );
-                AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 149 );
-                AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 149 );
+        AddObjectCreatures("tieru_guards", CREATURE_RAINBOW_DRAGON, 149 );
+        AddObjectCreatures("tieru_guards", CREATURE_GREEN_DRAGON, 149 );
+        AddObjectCreatures("cartographer_guard", CREATURE_RAINBOW_DRAGON, 9);	
+        AddObjectCreatures("cartographer_guard", CREATURE_WAR_UNICORN, 45);		
+        AddObjectCreatures("cartographer_guard", CREATURE_ANGER_TREANT, 45);		
 	end
 end
 

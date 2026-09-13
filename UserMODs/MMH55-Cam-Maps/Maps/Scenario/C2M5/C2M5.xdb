@@ -36482,7 +36482,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Preserve/Alt_upgrade/Rainbow_Dragon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>15</Amount>
+				<Amount>6</Amount>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -36504,12 +36504,12 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WAR_UNICORN</Creature>
-						<Amount>100</Amount>
+						<Amount>55</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ANGER_TREANT</Creature>
-						<Amount>75</Amount>
+						<Amount>30</Amount>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -38306,11 +38306,11 @@
 		<Item href="#n:inline(AdvMapBuilding)" id="item_202E0EED-9152-4DF4-9DFB-70A2BBCEBF9D">
 			<AdvMapBuilding>
 				<Pos>
-					<x>142</x>
-					<y>109</y>
+					<x>141</x>
+					<y>106</y>
 					<z>0</z>
 				</Pos>
-				<Rot>0</Rot>
+				<Rot>3.14159</Rot>
 				<Floor>0</Floor>
 				<Name/>
 				<CombatScript/>
