@@ -151,7 +151,7 @@ function aggro()
 	end;
 end;
 
-A2S3_RIDERS = { "Brand", "Svea", "Helmar", "Karli" };
+A2S3_RIDERS = { "Brand", "Vegeyr", "Ottar", "Skeggy" };
 A2S3_RIDERS.current = 1;
 A2S3_ENEMY_TOWNS = {
 	["f_town"]  = {  17, 112, 1 },
@@ -517,7 +517,7 @@ OBJECTIVES = {
 			if OBJECTIVES.date >= OBJECTIVES.eventManager_riderActivation and IsHeroAlive(EnemyHero2) == nil then
 				EnemyHero2 = A2S3_RIDERS[A2S3_RIDERS.current];
 				for town, coords in A2S3_ENEMY_TOWNS do
-					if GetObjectOwner(town) == PLAYER_1 then
+					if GetObjectOwner(town) == PLAYER_2 then
 						DeployReserveHero(EnemyHero2, coords[1], coords[2], coords[3]);
 						ride_target();
 						A2S3_RIDERS.current = math.mod(A2S3_RIDERS.current, 4) + 1;
