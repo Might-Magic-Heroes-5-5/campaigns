@@ -355,7 +355,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
 - changed: Academy heroes tracking works on all difficulties (was heroic and impossible) but their detection range is now shorter on lower difficulties (from 0/0/13/15 to 8/10/12/14).
-- change: level cap increased from 12 to 35 so Godric can be imported from previous missions
+- change: Level cap increased from 12 to 35 so Godric can be imported from previous missions
 - change: Mardigo has Expert Light skill and his army is more challenging on higher difficulties
 - change: Starting bonus choice set from 20 Skeletons, Breastplate of Eldritch Might, Curse spell to 30 Skeletons, Helm of Chaos, Rupture spell
 - change: defeating the Hydra stack will grant Vampire Lords instead of Vampires
@@ -363,6 +363,16 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C3M2 – Necropolis: The Attack
 - fix: Certain player movement could make patrols halt and stop at place indefinitely
 - fix: Enemy patrol ships attacking the player hero triggered multiple combats one after another instead of one
+- fix: Patrol heroes sometimes merged their armies in one big entity
+- change: Patrol heroes unupgraded units become alternative upgraded units
+- change: Reworked Razaak stats to be "similar" in his class to 5.5 mod
+- change: Nur/Astral + sea patrols receive more units, stats, skills, perks and spells depending the difficulty
+- change: Patrol heroes share similar skills/perks but each one has unique "specialization" based on difficulty
+  - Razaak - spec in war machines, golems and speed
+  - Jhora - Light magic and survivability
+  - Faiz - Enemy control mind and counterspell
+  - Nathir - destro spells + Irresistible Magic skill
+- change: Level cap increased from 24 to 35 so Godric can be imported from previous missions
 
 ### C3M3 – Necropolis: The Invasion
 - fix: Sometimes player heroes were not granted Cloak of Death's Shadow when visiting Bahiyaa
