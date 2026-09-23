@@ -7500,26 +7500,22 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Isher.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>42000</Experience>
+				<Experience>34100</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
-						<Count>20</Count>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Count>60</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_STONE_GARGOYLE</Creature>
-						<Count>35</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_GREMLIN</Creature>
+						<Creature>CREATURE_GREMLIN_SABOTEUR	</Creature>
 						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_MAGI</Creature>
+						<Creature>CREATURE_COMBAT_MAGE</Creature>
 						<Count>12</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RAKSHASA</Creature>
+						<Creature>CREATURE_RAKSHASA_KSHATRI	</Creature>
 						<Count>5</Count>
 					</Item>
 					<Item>
@@ -7535,13 +7531,13 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 					<Offence>3</Offence>
-					<Defence>2</Defence>
+					<Defence>4</Defence>
 					<Spellpower>7</Spellpower>
-					<Knowledge>9</Knowledge>
+					<Knowledge>7</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_ADVANCED</Mastery>
-							<SkillID>HERO_SKILL_SORCERY</SkillID>
+							<SkillID>HERO_SKILL_LUCK</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_ADVANCED</Mastery>
@@ -7549,7 +7545,7 @@
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+							<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
@@ -7558,9 +7554,9 @@
 					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_TOUGHNESS</Item>
-						<Item>HERO_SKILL_MAGIC_BOND</Item>
-						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
-						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_FIRST_AID</Item>
+						<Item>HERO_SKILL_BALLISTA</Item>
 						<Item>HERO_SKILL_ACADEMY_AWARD</Item>
 					</perkIDs>
 					<spellIDs>
@@ -7575,7 +7571,7 @@
 						<Item>SPELL_LAND_MINE</Item>
 						<Item>SPELL_STONESKIN</Item>
 					</spellIDs>
-					<Ballista>false</Ballista>
+					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
@@ -12737,7 +12733,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Academy/Astral.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>68500</Experience>
+						<Experience>167000</Experience>
 						<armySlots/>
 						<artifactIDs/>
 						<isUntransferable/>
@@ -14328,14 +14324,14 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Faiz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>35000</Experience>
+				<Experience>34100</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCH_MAGI</Creature>
 						<Count>18</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RAKSHASA</Creature>
+						<Creature>CREATURE_RAKSHASA_KSHATRI</Creature>
 						<Count>8</Count>
 					</Item>
 					<Item>
@@ -14343,11 +14339,11 @@
 						<Count>2</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
+						<Creature>CREATURE_OBSIDIAN_GOLEM</Creature>
 						<Count>80</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_STONE_GARGOYLE</Creature>
+						<Creature>CREATURE_MARBLE_GARGOYLE</Creature>
 						<Count>43</Count>
 					</Item>
 				</armySlots>
@@ -14379,8 +14375,8 @@
 						</Item>
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_MAGIC_BOND</Item>
-						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
+						<Item>HERO_SKILL_MAGIC_MIRROR</Item>
+						<Item>HERO_SKILL_COUNTERSPELL</Item>
 						<Item>HERO_SKILL_UNSUMMON</Item>
 						<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
 						<Item>HERO_SKILL_ACADEMY_AWARD</Item>
@@ -14395,9 +14391,9 @@
 						<Item>SPELL_HOLY_WORD</Item>
 						<Item>SPELL_BLESS</Item>
 					</spellIDs>
-					<Ballista>false</Ballista>
-					<FirstAidTent>false</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
+					<Ballista>true</Ballista>
+					<FirstAidTent>true</FirstAidTent>
+					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
 				<OverrideMask>32</OverrideMask>
@@ -14424,18 +14420,18 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Sufi.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>35000</Experience>
+				<Experience>34100</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_GREMLIN</Creature>
+						<Creature>CREATURE_GREMLIN_SABOTEUR</Creature>
 						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RAKSHASA</Creature>
+						<Creature>CREATURE_RAKSHASA_KSHATRI</Creature>
 						<Count>10</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_GENIE</Creature>
+						<Creature>CREATURE_DJINN_VIZIER</Creature>
 						<Count>16</Count>
 					</Item>
 					<Item>
@@ -14448,10 +14444,10 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>2</Offence>
+					<Offence>1</Offence>
 					<Defence>2</Defence>
-					<Spellpower>6</Spellpower>
-					<Knowledge>9</Knowledge>
+					<Spellpower>8</Spellpower>
+					<Knowledge>8</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_ADVANCED</Mastery>
@@ -14474,7 +14470,7 @@
 						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
 						<Item>HERO_SKILL_UNSUMMON</Item>
 						<Item>HERO_SKILL_MAGIC_BOND</Item>
-						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
+						<Item>HERO_SKILL_INSIGHTS</Item>
 						<Item>HERO_SKILL_ACADEMY_AWARD</Item>
 					</perkIDs>
 					<spellIDs>
@@ -14485,9 +14481,9 @@
 						<Item>SPELL_CURSE</Item>
 						<Item>SPELL_HASTE</Item>
 					</spellIDs>
-					<Ballista>false</Ballista>
+					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
+					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
 				<OverrideMask>48</OverrideMask>
@@ -14514,14 +14510,14 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Nur.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>35000</Experience>
+				<Experience>34100</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
 						<Count>58</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_MAGI</Creature>
+						<Creature>CREATURE_COMBAT_MAGE</Creature>
 						<Count>14</Count>
 					</Item>
 					<Item>
@@ -14529,7 +14525,7 @@
 						<Count>10</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_GREMLIN</Creature>
+						<Creature>CREATURE_GREMLIN_SABOTEUR</Creature>
 						<Count>80</Count>
 					</Item>
 				</armySlots>
@@ -14540,8 +14536,8 @@
 					<BiographyFileRef href=""/>
 					<Offence>2</Offence>
 					<Defence>2</Defence>
-					<Spellpower>6</Spellpower>
-					<Knowledge>9</Knowledge>
+					<Spellpower>9</Spellpower>
+					<Knowledge>6</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_ADVANCED</Mastery>
@@ -14563,9 +14559,9 @@
 					<perkIDs>
 						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
 						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
-						<Item>HERO_SKILL_MAGIC_BOND</Item>
-						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
-						<Item>HERO_SKILL_ACADEMY_AWARD</Item>
+						<Item>HERO_SKILL_INSIGHTS</Item>
+						<Item>HERO_SKILL_ELITE_CASTERS</Item>
+						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
 					</perkIDs>
 					<spellIDs>
 						<Item>SPELL_WASP_SWARM</Item>
@@ -14575,9 +14571,9 @@
 						<Item>SPELL_LAND_MINE</Item>
 						<Item>SPELL_SLOW</Item>
 					</spellIDs>
-					<Ballista>false</Ballista>
-					<FirstAidTent>false</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
+					<Ballista>true</Ballista>
+					<FirstAidTent>true</FirstAidTent>
+					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
 				<OverrideMask>32</OverrideMask>
@@ -28909,7 +28905,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>24</HeroMaxLevel>
+	<HeroMaxLevel>35</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
@@ -30238,7 +30234,6 @@
 	<isUntransferable/>
 	<AvailableHeroes>
 		<Item href="/MapObjects/Haven/Ving.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Sovereign.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Tamika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Pelt.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -30251,7 +30246,6 @@
 		<Item href="/MapObjects/Necropolis/Effig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Mardigo.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Axel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Aberrar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	</AvailableHeroes>
 	<MapRumours>
