@@ -1,15 +1,44 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
 while not COMBAT or not InitAllSetArtifacts do
     sleep()
 end
 
+C3M3_PLAYER3_CUSTOM_TARGETS = {
+	{ "lorekeep", 5.0 },
+}
+
+H55c_AI_CONTROLLED = {
+	player1 = {
+		state = 0,       -- 0 human
+		heroes = {},
+		enemies = {},
+	},
+   
+	player2 = { 		     -- Academy AI player
+		state = 1,
+		heroes = {},
+		enemies = {}
+	},
+   
+	player3 = { 		     -- Sylvan AI player
+		state = 2,
+		heroes = {},
+		enemies = {
+			{ priority = 1.0, heroes = 0.1, towns = 0.9, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+		}
+	}
+}
+
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M3");
     LoadHeroAllSetArtifacts(  "Berein", "C3M2" );
-    -- LoadHeroAllSetArtifacts( "Isabell", "C1M5" );
+	LoadHeroAllSetArtifacts( "Isabell", "C1M5" );
 	sleep(40); -- wait for artifacts to load
 	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );
 	H55_CamFixTooManySkills( PLAYER_1, "Isabell" );
@@ -18,19 +47,10 @@ end;
 startThread(H55_InitSetArtifacts);
 H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_STAFF_OF_VEXINGS,ARTIFACT_RING_OF_DEATH,ARTIFACT_CLOAK_OF_MOURNING,ARTIFACT_NECROMANCER_PENDANT};
 
-CyrusName = "Cyrus";
-ElvenHero = "Nadaur";
-		
 DIFFICULTY = {
 	[0] = function()
 		factor = 1;
-		SetPlayerStartResource(PLAYER_1,ORE,20);
-		SetPlayerStartResource(PLAYER_1,WOOD,20);
-		SetPlayerStartResource(PLAYER_1,SULFUR,10);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,10);
-		SetPlayerStartResource(PLAYER_1,MERCURY,10);
-		SetPlayerStartResource(PLAYER_1,GEM,10);
-		SetPlayerStartResource(PLAYER_1,GOLD,20000);
+		SetPlayerStartResources( PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);		
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_4,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_6,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_5,0);
@@ -65,14 +85,8 @@ DIFFICULTY = {
 	end,
 	
 	[1] = function()
-		factor = 1;
-		SetPlayerStartResource(PLAYER_1,ORE,15);
-		SetPlayerStartResource(PLAYER_1,WOOD,15);
-		SetPlayerStartResource(PLAYER_1,SULFUR,6);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,6);
-		SetPlayerStartResource(PLAYER_1,MERCURY,6);
-		SetPlayerStartResource(PLAYER_1,GEM,6);
-		SetPlayerStartResource(PLAYER_1,GOLD,15000);
+		factor = 2;
+		SetPlayerStartResources( PLAYER_1, 15, 15, 6, 6, 6, 6, 15000);		
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_6,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_7,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_MAGIC_GUILD,3);
@@ -104,43 +118,194 @@ DIFFICULTY = {
 	end,
 	
 	[2] = function()
-		SetPlayerStartResource(PLAYER_1,ORE,10);
-		SetPlayerStartResource(PLAYER_1,WOOD,10);
-		SetPlayerStartResource(PLAYER_1,SULFUR,2);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,2);
-		SetPlayerStartResource(PLAYER_1,MERCURY,2);
-		SetPlayerStartResource(PLAYER_1,GEM,2);
-		SetPlayerStartResource(PLAYER_1,GOLD,8000);
-		factor = 2;
+		factor = 3;
+		SetPlayerStartResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
+		DeployReserveHero( "Astral", 130, 162, GROUND );
 		CreateMonster("skeleton_archer",CREATURE_SKELETON_ARCHER,120,117,16,0); --mausoleum
 		CreateMonster("vampire",CREATURE_VAMPIRE,22,138,10,0); --lighthouse
 		CreateMonster("demilich",CREATURE_DEMILICH,20,91,114,0); --Redwood observatory
 		CreateMonster("vampire_lord",CREATURE_VAMPIRE_LORD,30,95,71,0); --shrine
-		TeachHeroSpell("Maahir",SPELL_PHANTOM);
-		TeachHeroSpell("Maahir",SPELL_RESURRECT);
-		TeachHeroSpell("Sufi",SPELL_CONJURE_PHOENIX);
 		print("Difficulty level is hard. Factor = ", factor);
 	end,
 	
 	[3] = function()
-		factor = 3;
-		SetPlayerStartResource(PLAYER_1,ORE,10);
-		SetPlayerStartResource(PLAYER_1,WOOD,10);
-		SetPlayerStartResource(PLAYER_1,SULFUR,2);
-		SetPlayerStartResource(PLAYER_1,CRYSTAL,2);
-		SetPlayerStartResource(PLAYER_1,MERCURY,2);
-		SetPlayerStartResource(PLAYER_1,GEM,2);
-		SetPlayerStartResource(PLAYER_1,GOLD,8000);
-		TeachHeroSpell("Razzak",SPELL_PHANTOM );
-		TeachHeroSpell("Razzak",SPELL_RESURRECT);
-		TeachHeroSpell("Maahir",SPELL_PHANTOM);
-		TeachHeroSpell("Maahir",SPELL_RESURRECT);
-		TeachHeroSpell("Sufi",SPELL_PHANTOM );
-		TeachHeroSpell("Sufi",SPELL_CONJURE_PHOENIX);
-		TeachHeroSpell("Havez",SPELL_PHANTOM );
+		factor = 4;
+		SetPlayerStartResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
+        DeployReserveHero( "Astral", 130, 162, GROUND );	
+        DeployReserveHero( "Tan", 128, 162, GROUND );		
 		print("Difficulty level is heroic. Factor = ", factor);
 	end,
 }
+
+function C3M3_SetEnemyArmy( koef )
+	print("setup heroes");
+	ChangeHeroStat("Havez", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	ChangeHeroStat("Havez", 	 STAT_DEFENCE, GetDifficulty() * 3 );
+	ChangeHeroStat("Havez", STAT_SPELL_POWER, GetDifficulty() * 2 );
+	ChangeHeroStat("Havez",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+
+	ChangeHeroStat("Sufi", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	ChangeHeroStat("Sufi", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	ChangeHeroStat("Sufi", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	ChangeHeroStat("Sufi",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+
+	ChangeHeroStat("Maahir", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	ChangeHeroStat("Maahir", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	ChangeHeroStat("Maahir", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	ChangeHeroStat("Maahir",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+
+	ChangeHeroStat("Razzak", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	ChangeHeroStat("Razzak", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	ChangeHeroStat("Razzak", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	ChangeHeroStat("Razzak",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 	
+	
+	ChangeHeroStat("Nadaur", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	ChangeHeroStat("Nadaur", 	 STAT_DEFENCE, GetDifficulty() * 3 );
+	ChangeHeroStat("Nadaur", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	ChangeHeroStat("Nadaur",   STAT_KNOWLEDGE, GetDifficulty() * 2 ); 	
+	
+	if koef > 1 then
+		GiveExp("Nadaur", 143000);
+		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		GiveHeroSkill("Nadaur", KNIGHT_FEAT_PARIAH);	
+		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
+		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
+		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		GiveHeroSkill("Nadaur", PERK_BALLISTA);	
+		TeachHeroSpell("Nadaur", SPELL_LIGHTNING_BOLT);
+		TeachHeroSpell("Nadaur", SPELL_STONE_SPIKES);
+		TeachHeroSpell("Nadaur", SPELL_FIREBALL);
+		AddHeroCreatures("Nadaur", CREATURE_SPRITE, 250);
+		AddHeroCreatures("Nadaur", CREATURE_WAR_UNICORN, 15);	
+		
+		GiveExp("Havez", 143000);
+		GiveHeroSkill("Havez", SKILL_ARTIFICIER);
+		GiveHeroSkill("Havez", SKILL_DEFENCE);	
+		GiveHeroSkill("Havez", SKILL_LUCK);
+		GiveHeroSkill("Havez", WIZARD_FEAT_ARTIFICIAL_GLORY);
+		GiveHeroSkill("Havez", PERK_EVASION);
+		GiveHeroSkill("Havez", PERK_LUCKY_STRIKE);		
+		
+		GiveExp("Sufi", 143000);
+		GiveHeroSkill("Sufi", SKILL_OFFENCE);
+		GiveHeroSkill("Sufi", SKILL_DEFENCE);	
+		GiveHeroSkill("Sufi", SKILL_LUCK);
+		GiveHeroSkill("Sufi", PERK_TOUGHNESS);
+		GiveHeroSkill("Sufi", PERK_FRENZY);
+		GiveHeroSkill("Sufi", PERK_RESISTANCE);	
+
+		GiveExp("Maahir", 143000);
+		GiveHeroSkill("Maahir", SKILL_OFFENCE);
+		GiveHeroSkill("Maahir", SKILL_DEFENCE);	
+		GiveHeroSkill("Maahir", SKILL_LUCK);
+		GiveHeroSkill("Maahir", PERK_TOUGHNESS);
+		GiveHeroSkill("Maahir", PERK_FRENZY);
+		GiveHeroSkill("Maahir", WARLOCK_FEAT_CHAOTIC_SPELLS);		
+		
+		GiveExp("Razzak", 143000);
+		GiveHeroSkill("Razzak", SKILL_TRAINING);
+		GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);	
+		GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_SUMMONING_MAGIC);
+		GiveHeroSkill("Razzak", DEMON_FEAT_CRITICAL_STRIKE); --> Martial arts
+		GiveHeroSkill("Razzak", KNIGHT_FEAT_ANCIENT_SMITHY); --> Fiery wrath
+		GiveHeroSkill("Razzak", RANGER_FEAT_FOG_VEIL);	
+	end
+	
+	if koef > 2 then
+		GiveExp("Nadaur", 247000);	
+		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);	
+		GiveHeroSkill("Nadaur", PERK_MASTER_OF_ICE);
+		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		GiveHeroSkill("Nadaur", HERO_SKILL_BARBARIAN_ANCIENT_SMITHY); --> Scorched earth
+		GiveHeroSkill("Nadaur", PERK_FIRST_AID);
+		TeachHeroSpell("Nadaur", SPELL_CHAIN_LIGHTNING);
+		TeachHeroSpell("Nadaur", SPELL_FROST_RING);	
+
+		AddHeroCreatures("Nadaur", CREATURE_GRAND_ELF, 50);
+		AddHeroCreatures("Nadaur", CREATURE_TREANT_GUARDIAN, 25);
+
+		GiveExp("Havez", 247000);
+		GiveHeroSkill("Havez", WARLOCK_FEAT_FAST_AND_FURIOUS); --> Aura of swifness 
+		GiveHeroSkill("Havez", WIZARD_FEAT_WILDFIRE);	
+		GiveHeroSkill("Havez", NECROMANCER_FEAT_LAST_AID);
+		GiveHeroSkill("Havez", PERK_TOUGHNESS);
+		GiveHeroSkill("Havez", NECROMANCER_FEAT_TWILIGHT);
+		GiveHeroSkill("Havez", RANGER_FEAT_ELVEN_LUCK);		
+		
+		GiveExp("Sufi", 247000);
+		GiveHeroSkill("Sufi", DEMON_FEAT_EXPLODING_CORPSES); --> Cult master
+		GiveHeroSkill("Sufi", HERO_SKILL_DWARVEN_LUCK);	--> Warrior's luck
+		GiveHeroSkill("Sufi", PERK_ARCHERY);
+		GiveHeroSkill("Sufi", PERK_EVASION);
+		GiveHeroSkill("Sufi", WIZARD_FEAT_COUNTERSPELL);
+		GiveHeroSkill("Sufi", WARLOCK_FEAT_ELEMENTAL_OVERKILL);	--> Exorcism 	
+		
+		GiveExp("Maahir", 247000);
+		GiveHeroSkill("Maahir", KNIGHT_FEAT_PARIAH);
+		GiveHeroSkill("Maahir", DEMON_FEAT_WEAKENING_STRIKE);	
+		GiveHeroSkill("Maahir", NECROMANCER_FEAT_DEAD_LUCK);
+		GiveHeroSkill("Maahir", PERK_ARCHERY);
+		GiveHeroSkill("Maahir", PERK_EVASION);
+		GiveHeroSkill("Maahir", PERK_RESISTANCE);	
+		
+		GiveExp("Razzak", 247000);
+		GiveHeroSkill("Razzak", HERO_SKILL_DEATH_TO_NONEXISTENT); --> Back to the void
+		GiveHeroSkill("Razzak", RANGER_FEAT_SUN_FIRE); --> Mana burst 
+		GiveHeroSkill("Razzak", PERK_EXPERT_TRAINER); --> Armor spikes
+		GiveHeroSkill("Razzak", WIZARD_FEAT_SUPRESS_LIGHT); 
+		GiveHeroSkill("Razzak", HERO_SKILL_DEFENSIVE_FORMATION);
+		GiveHeroSkill("Razzak", PERK_MASTER_OF_ANIMATION);		
+    end
+
+    if koef > 3 then
+		GiveExp("Nadaur", 620000);	
+		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		GiveHeroSkill("Nadaur", RANGER_FEAT_ABSOLUTE_LUCK);	
+		GiveHeroSkill("Nadaur", NECROMANCER_FEAT_DEADLY_COLD);
+		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		GiveHeroSkill("Nadaur", KNIGHT_FEAT_TRIPLE_BALLISTA); 
+		GiveHeroSkill("Nadaur", PERK_FIRST_AID);
+		TeachHeroSpell("Nadaur", SPELL_DEEP_FREEZE);
+		TeachHeroSpell("Nadaur", SPELL_METEOR_SHOWER);		
+		
+		AddHeroCreatures("Nadaur", CREATURE_DRUID_ELDER, 30);
+		AddHeroCreatures("Nadaur", CREATURE_GOLD_DRAGON, 10);
+
+		GiveExp("Havez", 420000);
+		GiveHeroSkill("Havez", WIZARD_FEAT_MARCH_OF_THE_MACHINES);
+		GiveHeroSkill("Havez", KNIGHT_FEAT_TRIPLE_BALLISTA);	
+		GiveHeroSkill("Havez", KNIGHT_FEAT_GUARDIAN_ANGEL);
+		GiveHeroSkill("Havez", PERK_RESISTANCE);
+		GiveHeroSkill("Havez", HERO_SKILL_DWARVEN_LUCK);
+		GiveHeroSkill("Havez", PERK_PROTECTION);
+
+		GiveExp("Sufi", 420000);
+		GiveHeroSkill("Sufi", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
+		GiveHeroSkill("Sufi", WIZARD_FEAT_UNSUMMON);	
+		GiveHeroSkill("Sufi", RANGER_FEAT_ELVEN_LUCK);
+		GiveHeroSkill("Sufi", HERO_SKILL_DISTRACT);
+		GiveHeroSkill("Sufi", PERK_PROTECTION);
+		GiveHeroSkill("Sufi", NECROMANCER_FEAT_SPELLPROOF_BONES); --> Forge master	
+		
+		GiveExp("Maahir", 420000);
+		GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);
+		GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);	
+		GiveHeroSkill("Maahir", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
+		GiveHeroSkill("Maahir", RANGER_FEAT_SOIL_BURN);
+		GiveHeroSkill("Maahir", WIZARD_FEAT_ACADEMY_AWARD);
+		GiveHeroSkill("Maahir", PERK_PROTECTION);
+
+		GiveExp("Razzak", 247000);
+		GiveHeroSkill("Razzak", HERO_SKILL_DETAIN_SUMMONING);
+		GiveHeroSkill("Razzak", HERO_SKILL_STUNNING_BLOW); 
+		GiveHeroSkill("Razzak", WIZARD_FEAT_ACADEMY_AWARD); 
+		GiveHeroSkill("Razzak", WIZARD_FEAT_UNSUMMON); 
+		GiveHeroSkill("Razzak", HERO_SKILL_WEAKEN_SUMMONING);
+		GiveHeroSkill("Razzak", KNIGHT_FEAT_GUARDIAN_ANGEL);	
+    end
+-- GiveHeroSkill("Nadaur", HERO_SKILL_STRONG_RUNE);	--> Twisted avenger 
+end
 
 CINEMATICS = {
 	intro = function()
@@ -213,7 +378,7 @@ OBJECTIVES = {
 		isAlive           = { "prim5", 1 }, --  are Markal and Isabell still alive?
 		convertTowns      = {  "sec1", 1 }, --  Convert Academy towns to Necropolis
 		assembleSkeletons = {  "sec2", 1 }, --  Markal to collect 1000 skeletons
-		assembleDragons   = {  "sec3", 0 }, --  Markal to collect bone dragons
+		assembleDragons   = {  "sec3", 0 }, --  Markal to collect 20 bone dragons
 		-- giveStaff         = {  "sec4", 0 }, --  Player has Staff of Vexings but not in Markal.
 		convinceElves     = {  "sec5", 1 }, --  Kill the Elven hero
 		-- giveCloak         = {  "sec6", 0 }, --  Player has Cloak of Mourning but not in Markal.
@@ -255,15 +420,15 @@ OBJECTIVES = {
 		SetRegionBlocked("teleport",1,PLAYER_2);
 		SetRegionBlocked("teleport",1,PLAYER_3);
 		SetObjectEnabled("El_Safir_teleport",nil);
-		SetObjectEnabled(CyrusName,nil);
+		SetObjectEnabled("Cyrus",nil);
 		EnableHeroAI("Razzak",nil);
 		EnableHeroAI("Maahir",nil);
 		CINEMATICS.intro()
 		startThread(DIFFICULTY[GetDifficulty()]);
 		
 		---Disable AI of quest heroes---
-		EnableHeroAI(CyrusName, nil);
-		EnableHeroAI(ElvenHero, nil);
+		EnableHeroAI("Cyrus", nil);
+		EnableHeroAI("Nadaur", nil);
 		startThread(EnableAIForRazzakAndTimerkhan);
 		
 		-- Setup special interactions for Academy Towns --
@@ -295,9 +460,9 @@ OBJECTIVES = {
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M3");
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M3");
-				sleep(10);
+				sleep(40);
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(40);
 				Win(PLAYER_1);
 			end
 		end
@@ -333,9 +498,9 @@ OBJECTIVES = {
 			BlockGame();
 			OpenRegionFog(PLAYER_1, "CyrusRegion");
 			OpenRegionFog(PLAYER_1, "teleport");
-			ChangeHeroStat(CyrusName, STAT_MOVE_POINTS, 4000);
+			ChangeHeroStat("Cyrus", STAT_MOVE_POINTS, 4000);
 			sleep(10);
-			MoveHeroRealTime(CyrusName, 145, 152);
+			MoveHeroRealTime("Cyrus", 145, 152);
 			OBJECTIVES.state.ringInMarkal[2] = 2;
 		elseif OBJECTIVES.state.ringInMarkal[2] == 3 then
 			Trigger(OBJECT_TOUCH_TRIGGER, "cyrus_teleport", "port_check", nil);
@@ -467,27 +632,14 @@ OBJECTIVES = {
 		-- end
 	-- end,
 	
-	convinceElves_day = 0,
 	convinceElves = function()
 		if OBJECTIVES.state.convinceElves[2] == 1
-		and (GetObjectOwner('Town1') == PLAYER_1 or GetObjectOwner('Town2') == PLAYER_1 or IsObjectVisible( PLAYER_1, ElvenHero ) ~= nil) then
+		and (GetObjectOwner('Town1') == PLAYER_1 or GetObjectOwner('Town2') == PLAYER_1 or IsObjectVisible( PLAYER_1, "Nadaur" ) ~= nil) then
 			SetObjectiveState("sec5", OBJECTIVE_ACTIVE); --при установке состояния задания в OBJECTIVE_ACTIVE оно автоматически становится видимым игроку
 			CINEMATICS.convinceElvesStart();
-			EnableHeroAI(ElvenHero, not nil);
+			H55c_AIAddHero("Nadaur", C3M3_PLAYER3_CUSTOM_TARGETS);
 			OBJECTIVES.state.convinceElves[2] = 2;
-		elseif OBJECTIVES.state.convinceElves[2] == 2 then
-			convinceElves_day = GetDate( DAY );
-			OBJECTIVES.state.convinceElves[2] = 3;
-		elseif OBJECTIVES.state.convinceElves[2] == 3 then
-			if IsHeroAlive(ElvenHero) == nil then
-				OBJECTIVES.state.convinceElves[2] = 4;
-			elseif ((convinceElves_day + 1) == GetDate( DAY )) and IsObjectExists(ElvenHero) ~= nil and CanMoveHero(ElvenHero,110,23,0) then
-				MoveHero(ElvenHero,110,23,0);
-				OBJECTIVES.state.convinceElves[2] = 2;
-			else
-				OBJECTIVES.state.convinceElves[2] = 2;
-			end
-		elseif OBJECTIVES.state.convinceElves[2] == 4 then
+		elseif OBJECTIVES.state.convinceElves[2] == 2 and IsHeroAlive("Nadaur") == nil then
 			print("Elven Hero is dead");
 			SetObjectiveState("sec5", OBJECTIVE_COMPLETED);
 			sleep(10);
@@ -561,6 +713,44 @@ function EnableAIForRazzakAndTimerkhan()
 		end
 	else
 		print("hero Maahir is dead");
+	end
+		while GetDate(DAY) ~= 78 do
+		sleep(15);
+	end
+	if IsHeroAlive("Astral") ~= nil then
+		EnableHeroAI("Astral",not nil);
+		AddHeroCreatures("Astral",CREATURE_MASTER_GREMLIN,factor*350);
+		AddHeroCreatures("Astral",CREATURE_GENIE,factor*40);
+		AddHeroCreatures("Astral",CREATURE_ARCH_MAGI,factor*80);
+		AddHeroCreatures("Astral",CREATURE_TITAN,factor*12);
+		AddHeroCreatures("Astral",CREATURE_OBSIDIAN_GARGOYLE,factor*250);
+		AddHeroCreatures("Astral",CREATURE_STEEL_GOLEM,factor*200);
+		AddHeroCreatures("Astral",CREATURE_RAKSHASA,factor*33);
+		print("AI has been enabled for hero Astral.");
+		if GetObjectOwner("Town1") == PLAYER_1 then
+			SetAIHeroAttractor ("Town1","Astral",2);
+		end
+	else
+		print("hero Astral is dead");
+	end
+	while GetDate(DAY) ~= 99 do
+		sleep(15);
+	end
+	if IsHeroAlive("Tan") ~= nil then
+		EnableHeroAI("Tan",not nil);
+		AddHeroCreatures("Tan",CREATURE_MASTER_GREMLIN,factor*450);
+		AddHeroCreatures("Tan",CREATURE_GENIE,factor*50);
+		AddHeroCreatures("Tan",CREATURE_ARCH_MAGI,factor*100);
+		AddHeroCreatures("Tan",CREATURE_TITAN,factor*16);
+		AddHeroCreatures("Tan",CREATURE_OBSIDIAN_GARGOYLE,factor*300);
+		AddHeroCreatures("Tan",CREATURE_STEEL_GOLEM,factor*250);
+		AddHeroCreatures("Tan",CREATURE_RAKSHASA,factor*40);
+		print("AI has been enabled for hero Tan.");
+		if GetObjectOwner("Town1") == PLAYER_1 then
+			SetAIHeroAttractor ("Town1","Tan",2);
+		end
+	else
+		print("hero Tan is dead");
 	end
 end
 
@@ -653,3 +843,4 @@ end
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
+startThread( H55c_AI_main )
