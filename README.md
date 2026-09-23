@@ -311,7 +311,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: level cap increased from 32 to 35
 
 ### C2M1 – Inferno: The Betrayal
-- change: Level cap increased from 12 to 15
+- change: Level cap increased from 12 to 35 so Godric can be imported from previous missions
 - change: Final fight vs Erasiel is more challenging on higher difficulties
 
 ### C2M2 – Inferno: The Betrayal
@@ -355,7 +355,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
 - changed: Academy heroes tracking works on all difficulties (was heroic and impossible) but their detection range is now shorter on lower difficulties (from 0/0/13/15 to 8/10/12/14).
-- changed: Starting bonus choice set from 20 Skeletons, Breastplate of Eldritch Might, Curse spell to 30 Skeletons, Helm of Chaos, Rupture spell
+- change: level cap increased from 12 to 35 so Godric can be imported from previous missions
+- change: Mardigo has Expert Light skill and his army is more challenging on higher difficulties
+- change: Starting bonus choice set from 20 Skeletons, Breastplate of Eldritch Might, Curse spell to 30 Skeletons, Helm of Chaos, Rupture spell
+- change: defeating the Hydra stack will grant Vampire Lords instead of Vampires
 
 ### C3M2 – Necropolis: The Attack
 - fix: Certain player movement could make patrols halt and stop at place indefinitely

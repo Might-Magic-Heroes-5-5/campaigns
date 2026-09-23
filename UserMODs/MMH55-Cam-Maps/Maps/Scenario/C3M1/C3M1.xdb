@@ -35134,14 +35134,18 @@
 					<NameFileRef href="name-3.txt"/>
 					<BiographyFileRef href=""/>
 					<Offence>3</Offence>
-					<Defence>5</Defence>
+					<Defence>4</Defence>
 					<Spellpower>2</Spellpower>
-					<Knowledge>2</Knowledge>
+					<Knowledge>3</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_TOUGHNESS</Item>
@@ -35194,8 +35198,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Arch_Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>4</Amount>
-				<Amount2>8</Amount2>
+				<Amount>3</Amount>
+				<Amount2>3</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38756,8 +38760,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>8</Amount2>
+				<Amount>6</Amount>
+				<Amount2>6</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38785,25 +38789,25 @@
 					<Item>
 						<Creature>CREATURE_GREMLIN</Creature>
 						<Amount>30</Amount>
-						<Amount2>39</Amount2>
+						<Amount2>30</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STONE_GARGOYLE</Creature>
 						<Amount>22</Amount>
-						<Amount2>30</Amount2>
+						<Amount2>22</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_STEEL_GOLEM</Creature>
-						<Amount>5</Amount>
+						<Amount>10</Amount>
 						<Amount2>10</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_OBSIDIAN_GOLEM</Creature>
 						<CustomAmount>true</CustomAmount>
-						<Amount>5</Amount>
+						<Amount>10</Amount>
 						<Amount2>10</Amount2>
 					</Item>
 				</AdditionalStacks>
@@ -47910,7 +47914,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>12</HeroMaxLevel>
+	<HeroMaxLevel>35</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
