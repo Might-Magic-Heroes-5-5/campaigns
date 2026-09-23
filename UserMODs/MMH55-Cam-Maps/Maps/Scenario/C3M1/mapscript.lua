@@ -75,8 +75,9 @@ CINEMATICS = {
 	end,
 	
 	outro = function()
+        sleep( 20 );	
 		StartDialogScene("/DialogScenes/C3/M1/D2/DialogScene.xdb#xpointer(/DialogScene)", nil, "AgreementWithNecromant");
-		sleep( 2 );
+		sleep( 20 );
 	end,
 }
 
@@ -95,26 +96,38 @@ DIFFICULTY = {
 		CreateMonster("skeleton_archer",CREATURE_SKELETON_ARCHER,100,32,67,0);
 		CreateMonster("demilich",CREATURE_DEMILICH,12,57,33,0);
 		CreateMonster("vampire_lord",CREATURE_VAMPIRE_LORD,16,45,61,1);
+		GiveExp("Mardigo", 200);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PALADIN,4);
+		AddHeroCreatures(REBEL_HERO,CREATURE_GRIFFIN,15);
+		AddHeroCreatures(REBEL_HERO,CREATURE_MARKSMAN,30);
+		AddHeroCreatures(REBEL_HERO,CREATURE_ARCHER,35);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PEASANT,110);
+		AddHeroCreatures(REBEL_HERO,CREATURE_MILITIAMAN,90);		
 		INTERCEPT_RADIUS = 10;
 		print("Difficulty level is hard.");
 	end,
 	
 	[2] = function()
-		AddHeroCreatures(REBEL_HERO,CREATURE_GRIFFIN,6);
-		AddHeroCreatures(REBEL_HERO,CREATURE_MARKSMAN,12);
-		AddHeroCreatures(REBEL_HERO,CREATURE_PEASANT,80);
-		AddHeroCreatures(REBEL_HERO,CREATURE_MILITIAMAN,50);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PALADIN,8);
+		AddHeroCreatures(REBEL_HERO,CREATURE_GRIFFIN,30);
+		AddHeroCreatures(REBEL_HERO,CREATURE_MARKSMAN,60);
+		AddHeroCreatures(REBEL_HERO,CREATURE_ARCHER,70);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PEASANT,220);
+		AddHeroCreatures(REBEL_HERO,CREATURE_MILITIAMAN,180);
+		GiveExp("Mardigo", 2700);		
 		INTERCEPT_RADIUS = 12;
 		print("Difficulty level is heroic.");
 	end,
 	
 	[3] = function()
-		AddHeroCreatures(REBEL_HERO,CREATURE_PALADIN,3);
-		AddHeroCreatures(REBEL_HERO,CREATURE_GRIFFIN,10);
-		AddHeroCreatures(REBEL_HERO,CREATURE_MARKSMAN,15);
-		AddHeroCreatures(REBEL_HERO,CREATURE_ARCHER,20);
-		AddHeroCreatures(REBEL_HERO,CREATURE_PEASANT,80);
-		AddHeroCreatures(REBEL_HERO,CREATURE_MILITIAMAN,100);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PALADIN,12);
+		AddHeroCreatures(REBEL_HERO,CREATURE_GRIFFIN,45);
+		AddHeroCreatures(REBEL_HERO,CREATURE_FOOTMAN,75);		
+		AddHeroCreatures(REBEL_HERO,CREATURE_MARKSMAN,90);
+		AddHeroCreatures(REBEL_HERO,CREATURE_ARCHER,105);
+		AddHeroCreatures(REBEL_HERO,CREATURE_PEASANT,330);
+		AddHeroCreatures(REBEL_HERO,CREATURE_MILITIAMAN,270);
+		GiveExp("Mardigo", 8600);		
 		INTERCEPT_RADIUS = 14;
 		print("Difficulty level is impossible.");
 	end,
@@ -314,27 +327,9 @@ OBJECTIVES = {
 		EnableHeroAI('Almegir',nil);
 		EnableHeroAI('Dalom',nil);
 
-		SetPlayerResource(PLAYER_1,WOOD,10);
-		SetPlayerResource(PLAYER_1,ORE,10);
-		SetPlayerResource(PLAYER_1,GEM,5);
-		SetPlayerResource(PLAYER_1,CRYSTAL,5);
-		SetPlayerResource(PLAYER_1,MERCURY,5);
-		SetPlayerResource(PLAYER_1,SULFUR,5);
-		SetPlayerResource(PLAYER_1,GOLD,500);
-		SetPlayerResource(PLAYER_3,WOOD,0);
-		SetPlayerResource(PLAYER_3,ORE,0);
-		SetPlayerResource(PLAYER_3,GEM,0);
-		SetPlayerResource(PLAYER_3,CRYSTAL,0);
-		SetPlayerResource(PLAYER_3,MERCURY,0);
-		SetPlayerResource(PLAYER_3,SULFUR,0);
-		SetPlayerResource(PLAYER_3,GOLD,0);
-		SetPlayerResource(PLAYER_2,WOOD,0);
-		SetPlayerResource(PLAYER_2,ORE,0);
-		SetPlayerResource(PLAYER_2,GEM,0);
-		SetPlayerResource(PLAYER_2,CRYSTAL,0);
-		SetPlayerResource(PLAYER_2,MERCURY,0);
-		SetPlayerResource(PLAYER_2,SULFUR,0);
-		SetPlayerResource(PLAYER_2,GOLD,0);
+        SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 500);
+        SetPlayerStartResources(PLAYER_3, 0, 0, 0, 0, 0, 0, 0);		
+        SetPlayerStartResources(PLAYER_3, 0, 0, 0, 0, 0, 0, 0);
 		startThread(DIFFICULTY[GetDifficulty()]);
 		startThread(dungeon_town_captured);
 		startThread(hydra);
@@ -364,7 +359,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M1");
 				sleep(50);
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end
@@ -467,7 +462,7 @@ function hydra()
 	while 1 do
 		sleep(10);
 		if (Exists("hidraliska") == nil) then
-			AddHeroCreatures("Berein",CREATURE_VAMPIRE,8);
+			AddHeroCreatures("Berein",CREATURE_VAMPIRE_LORD,8);
 			MessageBox("/Maps/Scenario/C3M1/VampitesFinding.txt");
 			break;
 		end
