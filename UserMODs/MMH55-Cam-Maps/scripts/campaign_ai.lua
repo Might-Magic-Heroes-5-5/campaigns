@@ -45,6 +45,21 @@ H55c_AI_run_during_player_turn = "Not yet run";
 --    }
 --  }
 --}
+--
+-- A managed hero can optionally receive a custom target list:
+--
+-- custom_targets = {
+--   { "Town_Name",     3.0 },
+--   { "Hero_Name",     2.0 },
+--   { "Gold_Mine_01",  1.5 },
+--   { "Quest_Object",  4.0 },
+-- }
+--
+-- H55c_AIAddHero("Hero_Name", custom_targets)
+--
+-- The number is an object-specific attractor, equivalent to the heroes/towns
+-- values in H55c_AI_CONTROLLED. The target owner's priority is still read from
+-- ai.enemies[owner]. A value <= 0 disables that named target.
 
 function H55c_AI_crash()
 	H55c_AI_crash_counter = H55c_AI_crash_counter + 1;
@@ -136,6 +151,53 @@ function H55c_AI_FindHeroTarget(name, hero, tries_left, threshold)
 	return choice
 end
 
+function H55c_AI_GetMoveCost(name, target)
+	local x, y, z = GetObjectPosition(target);
+	local cost = 99999999;
+	local p_cost = pcall(CalcHeroMoveCost, name, x, y, z);
+
+	if p_cost == nil or p_cost[1] < 0 then
+		local h55_cost = pcall(H55_GetDistance, name, target);
+		if h55_cost ~= nil and h55_cost[1] > 0 then
+			cost = h55_cost[1] * 100;
+		end
+	else
+		cost = p_cost[1];
+	end
+
+	return cost;
+end
+
+function H55c_AI_GetCustomTargetWeight(hero, target)
+	if hero.custom_targets == nil then
+		return nil;
+	end
+
+	for _, entry in hero.custom_targets do
+		if entry[1] == target then
+			return entry[2] or 1.0;
+		end
+	end
+
+	return nil;
+end
+
+function H55c_AI_GetCustomTargetType(target)
+	for _, town in H55c_AI_lists.towns do
+		if town == target then
+			return "towns";
+		end
+	end
+
+	for _, hero in H55c_AI_lists.heroes do
+		if hero == target then
+			return "heroes";
+		end
+	end
+
+	return "others";
+end
+
 function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 	H55c_AI_error = "H55c_AI_AddHeroTargets";
 	errorHook(H55c_AI_crash);
@@ -144,7 +206,10 @@ function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 		if IsHeroAlive(name) == nil then
 			return
 		end
-		if ttype == "heroes" and IsHeroAlive(item) == nil then
+		local custom_weight = H55c_AI_GetCustomTargetWeight(hero, item);
+		if custom_weight ~= nil then
+			H55c_AI_print(2, "Skipping automatic duplicate: " .. item);
+		elseif ttype == "heroes" and IsHeroAlive(item) == nil then
 			H55c_AI_print(2, "Skipping, hero is dead: " .. item);
 		else
 			H55c_AI_print(2, name .. " item: " .. num .. " - " .. item)
@@ -153,17 +218,7 @@ function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 			if owner_status ~= nil and place_status ~= nil then
 				local owner = owner_status[1];
 				if owner ~= player and ai.enemies[owner] and ai.enemies[owner].is_enemy == 1 then
-					local x, y, z = place_status[1], place_status[2], place_status[3];
-					local cost = 99999999;
-					local p_cost = pcall(CalcHeroMoveCost,name,x,y,z);
-					if p_cost == nil or p_cost[1] < 0 then
-						local h55_cost = pcall(H55_GetDistance, name, item);
-						if h55_cost ~= nil and h55_cost[1] > 0 then
-							cost = h55_cost[1]*100;
-						end
-					else
-						cost = p_cost[1];
-					end
+					local cost = H55c_AI_GetMoveCost(name, item);
 					local priority  = ai.enemies[owner].priority;
 					local attractor = ai.enemies[owner][ttype];
 					local result    = cost/(attractor*attractor);       -- adjust cost based on importance of the target type
@@ -175,6 +230,68 @@ function H55c_AI_AddHeroTargets(name, hero, player, list, ttype, ai)
 					H55c_AI_print(2, "Skipping: " .. item);
 				end
 			end
+		end
+	end
+end
+
+function H55c_AI_AddCustomTargets(name, hero, player, ai)
+	H55c_AI_error = "H55c_AI_AddCustomTargets";
+	errorHook(H55c_AI_crash);
+
+	if hero.custom_targets == nil then
+		return
+	end
+
+	H55c_AI_print(1, "Adding custom targets for hero " .. name);
+
+	for _, entry in hero.custom_targets do
+		if IsHeroAlive(name) == nil then
+			return
+		end
+
+		local target = entry[1];
+		local custom_weight = entry[2] or 1.0;
+		local ttype = H55c_AI_GetCustomTargetType(target);
+
+		if custom_weight > 0 then
+			local place_status = pcall(GetObjectPosition, target);
+			local target_valid = place_status ~= nil;
+			local owner_priority = 1.0;
+
+			if ttype == "heroes" and IsHeroAlive(target) == nil then
+				target_valid = nil;
+			end
+
+			local owner_status = pcall(GetObjectOwner, target);
+			if owner_status ~= nil then
+				local owner = owner_status[1];
+
+				if owner == player then
+					target_valid = nil;
+				elseif ai.enemies[owner] ~= nil then
+					if ai.enemies[owner].is_enemy ~= 1 then
+						target_valid = nil;
+					else
+						owner_priority = ai.enemies[owner].priority or 1.0;
+					end
+				end
+			end
+
+			if target_valid ~= nil then
+				local cost = H55c_AI_GetMoveCost(name, target);
+				local result = cost / (custom_weight * custom_weight);
+				result = result / owner_priority;
+
+				H55_Insert(hero.weights, result);
+				H55_Insert(hero.targets, target);
+				H55_Insert(hero.types, ttype);
+
+				H55c_AI_print(2, "Custom target: " .. target .. " | weight: " .. custom_weight .. " | owner priority: " .. owner_priority .. " | result: " .. result);
+			else
+				H55c_AI_print(2, "Skipping invalid custom target: " .. target);
+			end
+		else
+			H55c_AI_print(2, "Custom target disabled: " .. target);
 		end
 	end
 end
@@ -205,7 +322,7 @@ function H55c_AI_UpdateTargetWeight(player)
 			-- make a list of hero targets and choose one
 			H55c_AI_AddHeroTargets(name, hero, player, H55c_AI_lists.heroes, "heroes", ai )
 			H55c_AI_AddHeroTargets(name, hero, player, H55c_AI_lists.towns ,  "towns", ai )
-			--H55c_AI_AddHeroTargets(name, hero, player, H55c_AI_lists.others, "others", ai )
+			H55c_AI_AddCustomTargets(name, hero, player, ai )
 			hero.current_target = H55c_AI_FindHeroTarget(name, hero, 10, 0);
 		end
 	end
@@ -251,15 +368,16 @@ end
 
 function H55c_AIAddHero(...)
 	local name = arg[1];
+	local custom_targets = arg[2] or {};
 	H55c_AI_print(0, "Adding hero "..name);
 	local player = GetObjectOwner(name)
 	H55c_AI_CONTROLLED["player" .. player].heroes[name] = {
 		weights = {},
 		targets = {},
 		types   = {},
+		custom_targets = custom_targets,
 		current_target = "Roam"
 	}
-  --H55c_AI_lists.others = others
 	EnableHeroAI(  name, not nil);
 	DenyAIHeroFlee(name, not nil);
 end
