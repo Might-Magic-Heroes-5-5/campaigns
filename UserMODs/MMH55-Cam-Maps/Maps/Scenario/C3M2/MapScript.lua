@@ -38,7 +38,172 @@ function C3M2_SetHikmArmy( koef )
 	ChangeHeroStat("Astral", 	 STAT_DEFENCE, koef * 2 );
 	ChangeHeroStat("Astral", STAT_SPELL_POWER, koef * 3 );
 	ChangeHeroStat("Astral",   STAT_KNOWLEDGE, koef * 3 ); 
-	GiveExp( "Astral", 1 + 29000 * math.pow(2, koef - 1));
+	
+	ChangeHeroStat("Isher", 	  STAT_ATTACK, koef * 1 );
+	ChangeHeroStat("Isher", 	 STAT_DEFENCE, koef * 1 );
+	ChangeHeroStat("Isher", STAT_SPELL_POWER, koef * 1 );
+	ChangeHeroStat("Isher",   STAT_KNOWLEDGE, koef * 1 );	
+
+	ChangeHeroStat("Sufi", 	  STAT_ATTACK, koef * 1 );
+	ChangeHeroStat("Sufi", 	 STAT_DEFENCE, koef * 1 );
+	ChangeHeroStat("Sufi", STAT_SPELL_POWER, koef * 1 );
+	ChangeHeroStat("Sufi",   STAT_KNOWLEDGE, koef * 1 );	
+	
+	ChangeHeroStat("Nur", 	  STAT_ATTACK, koef * 1 );
+	ChangeHeroStat("Nur", 	 STAT_DEFENCE, koef * 1 );
+	ChangeHeroStat("Nur", STAT_SPELL_POWER, koef * 1 );
+	ChangeHeroStat("Nur",   STAT_KNOWLEDGE, koef * 1 );	
+	ChangeHeroStat("Faiz", 	  STAT_ATTACK, koef * 1 );
+	ChangeHeroStat("Faiz", 	 STAT_DEFENCE, koef * 1 );
+	ChangeHeroStat("Faiz", STAT_SPELL_POWER, koef * 1 );
+	ChangeHeroStat("Faiz",   STAT_KNOWLEDGE, koef * 1 );		
+	
+	if koef > 1 then
+	GiveHeroSkill("Astral", SKILL_DARK_MAGIC);
+	GiveHeroSkill("Astral", SKILL_LEARNING);
+	GiveHeroSkill("Astral", SKILL_INVOCATION);	
+    TeachHeroSpell("Astral",SPELL_SORROW);	
+    TeachHeroSpell("Astral",SPELL_TELEPORT);
+    TeachHeroSpell("Astral",SPELL_FROST_RING);
+    TeachHeroSpell("Astral",SPELL_CHAIN_LIGHTNING);
+    TeachHeroSpell("Astral",SPELL_BLADE_BARRIER);	
+    TeachHeroSpell("Astral",SPELL_ANTI_MAGIC);	
+
+    GiveExp("Nur", 14100);	
+	AddHeroCreatures("Nur", CREATURE_OBSIDIAN_GARGOYLE, GetDifficulty() * 15);	
+	AddHeroCreatures("Nur", CREATURE_GREMLIN_SABOTEUR, GetDifficulty() * 25);	
+	AddHeroCreatures("Nur", CREATURE_COMBAT_MAGE, GetDifficulty() * 7);	
+	AddHeroCreatures("Nur", CREATURE_MASTER_GENIE, GetDifficulty() * 5);	
+	GiveHeroSkill("Nur", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Nur", SKILL_INVOCATION);	
+    TeachHeroSpell("Nur",SPELL_SORROW);	
+    TeachHeroSpell("Nur",SPELL_TELEPORT);
+    TeachHeroSpell("Nur",SPELL_FROST_RING);
+    TeachHeroSpell("Nur",SPELL_CHAIN_LIGHTNING);
+    TeachHeroSpell("Nur",SPELL_MASS_DISPEL);	
+    TeachHeroSpell("Nur",SPELL_MASS_DEFLECT_ARROWS);
+	
+    GiveExp("Sufi", 14100);	
+	AddHeroCreatures("Sufi", CREATURE_STEEL_GOLEM, GetDifficulty() * 17);	
+	AddHeroCreatures("Sufi", CREATURE_GREMLIN_SABOTEUR, GetDifficulty() * 25);	
+	AddHeroCreatures("Sufi", CREATURE_RAKSHASA_KSHATRI, GetDifficulty() * 3);	
+	AddHeroCreatures("Sufi", CREATURE_DJINN_VIZIER, GetDifficulty() * 5);	
+	GiveHeroSkill("Sufi", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Sufi", PERK_MAGIC_MIRROR);
+    TeachHeroSpell("Sufi",SPELL_SORROW);	
+    TeachHeroSpell("Sufi",SPELL_TELEPORT);
+    TeachHeroSpell("Sufi",SPELL_BLADE_BARRIER);	
+    TeachHeroSpell("Sufi",SPELL_ANTI_MAGIC);	
+    TeachHeroSpell("Sufi",SPELL_MASS_DISPEL);	
+    TeachHeroSpell("Sufi",SPELL_MASS_DEFLECT_ARROWS);	
+	
+    GiveExp("Faiz", 14100);	
+	AddHeroCreatures("Faiz", CREATURE_OBSIDIAN_GOLEM, GetDifficulty() * 10);
+	AddHeroCreatures("Faiz", CREATURE_MARBLE_GARGOYLE, GetDifficulty() * 15);		
+	AddHeroCreatures("Faiz", CREATURE_ARCH_MAGI, GetDifficulty() * 7);	
+	AddHeroCreatures("Faiz", CREATURE_RAKSHASA_KSHATRI, GetDifficulty() * 3);	
+	AddHeroCreatures("Faiz", CREATURE_TITAN, GetDifficulty() * 1);	
+	GiveHeroSkill("Faiz", SKILL_LIGHT_MAGIC);	
+	GiveHeroSkill("Faiz", SKILL_LUCK);	
+    TeachHeroSpell("Faiz",SPELL_SORROW);	
+    TeachHeroSpell("Faiz",SPELL_TELEPORT);
+    TeachHeroSpell("Faiz",SPELL_BLADE_BARRIER);	
+    TeachHeroSpell("Faiz",SPELL_ANTI_MAGIC);	
+    TeachHeroSpell("Faiz",SPELL_MASS_DISPEL);	
+    TeachHeroSpell("Faiz",SPELL_MASS_DEFLECT_ARROWS);	
+	
+    GiveExp("Isher", 14100);	
+	AddHeroCreatures("Isher", CREATURE_STEEL_GOLEM, GetDifficulty() * 20);	
+	AddHeroCreatures("Isher", CREATURE_GREMLIN_SABOTEUR, GetDifficulty() * 25);	
+	AddHeroCreatures("Isher", CREATURE_COMBAT_MAGE, GetDifficulty() * 7);	
+	AddHeroCreatures("Isher", CREATURE_RAKSHASA_KSHATRI, GetDifficulty() * 3);	
+	AddHeroCreatures("Isher", CREATURE_TITAN, GetDifficulty() * 1);		
+	GiveHeroSkill("Isher", SKILL_LEADERSHIP);
+	GiveHeroSkill("Isher", HERO_SKILL_RUNIC_MACHINES);	
+    TeachHeroSpell("Isher",SPELL_MASS_DISPEL);	
+    TeachHeroSpell("Isher",SPELL_MASS_DEFLECT_ARROWS);	
+	
+	end
+	if koef > 2 then	
+	GiveHeroSkill("Astral", SKILL_DARK_MAGIC);	
+	GiveHeroSkill("Astral", SKILL_LEARNING);
+	GiveHeroSkill("Astral", SKILL_INVOCATION);	
+    TeachHeroSpell("Astral",SPELL_METEOR_SHOWER);	
+    TeachHeroSpell("Astral",SPELL_DEEP_FREEZE);
+    TeachHeroSpell("Astral",SPELL_SUMMON_HIVE);
+    TeachHeroSpell("Astral",SPELL_FIREWALL);
+    TeachHeroSpell("Astral",SPELL_VAMPIRISM);	
+	
+    GiveExp("Nur", 20300);	
+	GiveHeroSkill("Nur", SKILL_LIGHT_MAGIC);	
+	GiveHeroSkill("Nur", DEMON_FEAT_EXPLODING_CORPSES);	
+    TeachHeroSpell("Nur",SPELL_METEOR_SHOWER);	
+    TeachHeroSpell("Nur",SPELL_DEEP_FREEZE);
+    TeachHeroSpell("Nur",SPELL_VAMPIRISM);	
+    TeachHeroSpell("Nur",SPELL_DIVINE_VENGEANCE);
+    TeachHeroSpell("Nur",SPELL_BLIND);	
+	
+    GiveExp("Sufi", 20300);	
+	GiveHeroSkill("Sufi", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Sufi", RANGER_FEAT_LAST_STAND);	
+    TeachHeroSpell("Sufi",SPELL_SUMMON_HIVE);
+    TeachHeroSpell("Sufi",SPELL_FIREWALL);
+    TeachHeroSpell("Sufi",SPELL_VAMPIRISM);
+    TeachHeroSpell("Sufi",SPELL_DIVINE_VENGEANCE);
+    TeachHeroSpell("Sufi",SPELL_BLIND);	
+		
+    GiveExp("Faiz", 20300);	
+	GiveHeroSkill("Faiz", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Faiz", WARLOCK_FEAT_CHAOTIC_SPELLS);	
+    TeachHeroSpell("Faiz",SPELL_SUMMON_HIVE);
+    TeachHeroSpell("Faiz",SPELL_FIREWALL);
+    TeachHeroSpell("Faiz",SPELL_VAMPIRISM);
+    TeachHeroSpell("Faiz",SPELL_DIVINE_VENGEANCE);
+    TeachHeroSpell("Faiz",SPELL_BLIND);		
+	
+    GiveExp("Isher", 20300);
+	GiveHeroSkill("Isher", SKILL_LEADERSHIP);
+	GiveHeroSkill("Isher", WARLOCK_FEAT_FAST_AND_FURIOUS);	
+    TeachHeroSpell("Isher",SPELL_DIVINE_VENGEANCE);
+    TeachHeroSpell("Isher",SPELL_RESURRECT);		
+	end
+	if koef > 3 then
+	GiveHeroSkill("Astral", SKILL_DARK_MAGIC);
+	GiveHeroSkill("Astral", SKILL_LEARNING);	
+	GiveHeroSkill("Astral", SKILL_INVOCATION);	
+    TeachHeroSpell("Astral",SPELL_PHANTOM);	
+    TeachHeroSpell("Astral",SPELL_BERSERK);
+    TeachHeroSpell("Astral",SPELL_IMPLOSION);
+    TeachHeroSpell("Astral",SPELL_ARMAGEDDON);
+    TeachHeroSpell("Astral",SPELL_CONJURE_PHOENIX);	
+	
+	GiveExp("Nur", 29100);	
+	GiveHeroSkill("Nur", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Nur", HERO_SKILL_DISTRACT);	
+    TeachHeroSpell("Nur",SPELL_PHANTOM);	
+    TeachHeroSpell("Nur",SPELL_IMPLOSION);
+    TeachHeroSpell("Nur",SPELL_ARMAGEDDON);		
+	
+    GiveExp("Sufi", 29100);	
+	GiveHeroSkill("Sufi", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Sufi", KNIGHT_FEAT_GUARDIAN_ANGEL);	
+    TeachHeroSpell("Sufi",SPELL_PHANTOM);	
+    TeachHeroSpell("Sufi",SPELL_CELESTIAL_SHIELD);	
+    TeachHeroSpell("Sufi",SPELL_CONJURE_PHOENIX);		
+
+    GiveExp("Faiz", 29100);
+	GiveHeroSkill("Faiz", SKILL_LIGHT_MAGIC);
+	GiveHeroSkill("Faiz", RANGER_FEAT_LAST_STAND);
+    TeachHeroSpell("Faiz",SPELL_PHANTOM);	
+    TeachHeroSpell("Faiz",SPELL_CELESTIAL_SHIELD);
+    TeachHeroSpell("Faiz",SPELL_RESURRECT);	
+    TeachHeroSpell("Faiz",SPELL_CONJURE_PHOENIX);		
+	
+    GiveExp("Isher", 29100);	
+	GiveHeroSkill("Isher", SKILL_LEADERSHIP);	
+	GiveHeroSkill("Isher", WIZARD_FEAT_MARCH_OF_THE_MACHINES);	
+    TeachHeroSpell("Isher",SPELL_CELESTIAL_SHIELD);		
+	end	
 end
 
 DIFFICULTY = {
@@ -50,10 +215,6 @@ DIFFICULTY = {
 		CreateMonster("ewe_liches",CREATURE_LICH,25,50,27,0); --
 		CreateMonster("wights",CREATURE_GHOST,52,81,116,0); --Ruined Tower
 		CreateMonster("shadow_dragons",CREATURE_SHADOW_DRAGON,10,108,99,0); --Near lorekeep
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_MAGIC_GUILD,2);
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_DWELLING_7,0);
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_DWELLING_6,0);
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_FORT,1);
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,60);
 		AddHeroCreatures("Berein",CREATURE_LICH,8);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,10);
@@ -70,9 +231,6 @@ DIFFICULTY = {
 		CreateMonster("ewe_liches",CREATURE_LICH,25,50,27,0); --
 		CreateMonster("wights",CREATURE_GHOST,52,81,116,0); --Ruined Tower
 		CreateMonster("shadow_dragons",CREATURE_SHADOW_DRAGON,10,108,99,0); --Near lorekeep
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_MAGIC_GUILD,3);
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_DWELLING_7,0);
-		SetTownBuildingLimitLevel("Hikm",TOWN_BUILDING_FORT,2);
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,40);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,6);
 		SetPlayerStartResources( PLAYER_1, 20, 20, 5, 5, 5, 4, 6000);
@@ -85,7 +243,6 @@ DIFFICULTY = {
 		CreateMonster("skeleton_archers",CREATURE_SKELETON_ARCHER,120,94,21,0); --magic well
 		CreateMonster("vampires",CREATURE_VAMPIRE,22,18,16,0); --Arena
 		CreateMonster("wights",CREATURE_GHOST,52,81,116,0); --Ruined Tower
-		TeachHeroSpell("Nur",SPELL_PHANTOM);
 		SetPlayerStartResources( PLAYER_1, 12, 12, 3, 3, 3, 2, 2500 );
 		C3M2_SetHikmArmy(3);
 		DifficultyFactor = 2;
@@ -149,8 +306,9 @@ CINEMATICS = {
     end,
 	 
     outro = function()
+	    sleep( 30 );
 		StartDialogScene("/DialogScenes/C3/M2/D2/DialogScene.xdb#xpointer(/DialogScene)", nil, "FirstDifficulties");
-		sleep( 2 );
+		sleep( 20 );
     end,
 }
 
@@ -173,6 +331,10 @@ OBJECTIVES = {
 		EnableHeroAI("Faiz",nil);
 		EnableHeroAI("Nur",nil);
 		EnableHeroAI("Sufi",nil);
+		SetHeroRoleMode( 'Isher', HERO_ROLE_MODE_HERMIT );		
+		SetHeroRoleMode( 'Faiz', HERO_ROLE_MODE_HERMIT );	
+		SetHeroRoleMode( 'Nur', HERO_ROLE_MODE_HERMIT );	
+		SetHeroRoleMode( 'Sufi', HERO_ROLE_MODE_HERMIT );			
 		SetRegionBlocked("block1",1,PLAYER_2);
 		SetRegionBlocked("block2",1,PLAYER_2);
 		SetRegionBlocked("block3",1,PLAYER_2);
@@ -272,7 +434,6 @@ OBJECTIVES = {
 	  
 		if (GetObjectOwner("Hikm") == PLAYER_1) then
 			SaveHeroAllSetArtifactsEquipped("Berein", "C3M2");
-			-- SaveHeroAllSetArtifactsEquipped("Godric", "C3M2");
 			sleep(20);
 			if GetObjectiveState("prim2") == OBJECTIVE_UNKNOWN then
 				SetObjectiveState("prim2",OBJECTIVE_ACTIVE);
