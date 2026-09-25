@@ -376,7 +376,14 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C3M3 – Necropolis: The Invasion
 - fix: Sometimes player heroes were not granted Cloak of Death's Shadow when visiting Bahiyaa
+- change: Level cap increased from 32 to 40.
 - change: Cloak of Death's Shadow and Staff of the Netherworld are given only when Markal visits Ziyad and Bahiyaa instead of any player hero. That is reflected in quests description
+- change: Lorekeep build level is now unrestricted
+- change: Newpost magic guild limit increased from 3 to 5
+- change: Removed the tavern in Al-Safir to prevent enemy from hiring heroes in that town
+- change: The 3 garrisons outside Al-Safir are more chalenging on higher difficulties. Moreover, in the 1st garrison, the unupgraded units become upgraded, while in the 2nd, the units become alternative upgrade
+- change: More heroes will be available to the Academy player on higher difficulty levels (heroic +1, impossible +2).
+- change: Sylvan player hero Talanar and Academy player heroes get more stats, skills and army based on game difficulty
 - new: Added Memory Mentor
 
 ### C3M5 – Necropolis: Lord of Heresh
