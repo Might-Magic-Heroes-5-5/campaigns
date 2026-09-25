@@ -31,11 +31,11 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_GENIE</Creature>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
 						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RAKSHASA</Creature>
+						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
 						<Count>40</Count>
 					</Item>
 					<Item>
@@ -72,7 +72,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>first_garrison</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -84,19 +84,19 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_GREMLIN</Creature>
+						<Creature>CREATURE_MASTER_GREMLIN</Creature>
 						<Count>200</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
 						<Count>150</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_STONE_GARGOYLE</Creature>
+						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
 						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_MAGI</Creature>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
 						<Count>25</Count>
 					</Item>
 				</armySlots>
@@ -2677,7 +2677,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>second_garrison</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -2689,19 +2689,19 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_MASTER_GREMLIN</Creature>
+						<Creature>CREATURE_GREMLIN_SABOTEUR</Creature>
 						<Count>250</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Creature>CREATURE_OBSIDIAN_GOLEM</Creature>
 						<Count>200</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
+						<Creature>CREATURE_MARBLE_GARGOYLE</Creature>
 						<Count>120</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Creature>CREATURE_COMBAT_MAGE</Creature>
 						<Count>50</Count>
 					</Item>
 				</armySlots>
@@ -10862,7 +10862,7 @@
 					<Item>
 						<Type>TB_TAVERN</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -35439,7 +35439,7 @@
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
@@ -49515,7 +49515,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>Razzak</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Razzak.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -49619,7 +49619,7 @@
 		<Item href="#n:inline(AdvMapHero)" id="item_03FB272A-A946-4E2B-8BAC-C6F96383FC12">
 			<AdvMapHero>
 				<Pos>
-					<x>131</x>
+					<x>139</x>
 					<y>161</y>
 					<z>0</z>
 				</Pos>
@@ -50926,7 +50926,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>35</HeroMaxLevel>
+	<HeroMaxLevel>40</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
@@ -50977,7 +50977,10 @@
 			<CaptureAbility>0</CaptureAbility>
 			<StartHero/>
 			<HeroInTown>false</HeroInTown>
-			<ReserveHeroes/>
+			<ReserveHeroes>
+				<Item href="Astral.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Tan.xdb#xpointer(/AdvMapHero)"/>			
+			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
 					<FunctionName/>
@@ -52478,7 +52481,6 @@
 		<Item href="/MapObjects/Academy/Isher.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Effig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Straker.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Astral.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Nur.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Razzak.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -52491,7 +52493,6 @@
 		<Item href="/MapObjects/Academy/Sufi.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Ving.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Havez.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Tan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Faiz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
