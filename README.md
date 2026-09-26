@@ -386,6 +386,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Sylvan player hero Talanar and Academy player heroes get more stats, skills and army based on game difficulty
 - new: Added Memory Mentor
 
+### C3M4 – Necropolis: The Regicide
+- change: Level cap increased from 40 to 41
+- change: Cyrus skills reworked, he will gain more of them as well as his army will be more challenging on higher game difficulty
+- new: Added Hill Fort
+
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap sometimes did not trigger which broke the main quest line
 - fix: Renegade upgrade type units did not run away from Isabella. Now they are and Godric receives them as True upgrade type reinforcements for the final battle
