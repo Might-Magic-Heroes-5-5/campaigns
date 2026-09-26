@@ -21,41 +21,51 @@ Cyrus = "Cyrus";  --Cayrus!!!
 Berein = "Berein";
 EnableHeroAI("Cyrus",nil);
 
-SetPlayerResource(1, 0, 0);
-SetPlayerResource(1, 1, 0);
-SetPlayerResource(1, 2, 0);
-SetPlayerResource(1, 3, 0);
-SetPlayerResource(1, 4, 0);
-SetPlayerResource(1, 5, 0);
-SetPlayerResource(1, 6, 1);
+SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0);	
 
-local army_diff = GetDifficulty() + 1;
-ChangeHeroStat("Cyrus", STAT_EXPERIENCE, 140000);        
-                        ChangeHeroStat("Cyrus", STAT_ATTACK, 3 * army_diff);
-						ChangeHeroStat("Cyrus", STAT_DEFENCE, 3 * army_diff);
-						ChangeHeroStat("Cyrus", STAT_SPELL_POWER, 4 * army_diff);
-						ChangeHeroStat("Cyrus", STAT_KNOWLEDGE, 4 * army_diff);
+local army_diff = GetDifficulty() + 1;      
+ChangeHeroStat("Cyrus", STAT_ATTACK, 3 * army_diff);
+ChangeHeroStat("Cyrus", STAT_DEFENCE, 3 * army_diff);
+ChangeHeroStat("Cyrus", STAT_SPELL_POWER, 4 * army_diff);
+ChangeHeroStat("Cyrus", STAT_KNOWLEDGE, 4 * army_diff);
+if army_diff > 1 then
+    GiveExp("Cyrus", 363000);
+    AddHeroCreatures("Cyrus", CREATURE_MASTER_GREMLIN, 117* GetDifficulty());   
+    AddHeroCreatures("Cyrus", CREATURE_OBSIDIAN_GARGOYLE, 25* GetDifficulty());   
+    AddHeroCreatures("Cyrus", CREATURE_STEEL_GOLEM, 80* GetDifficulty());   
+    AddHeroCreatures("Cyrus", CREATURE_ARCH_MAGI, 20* GetDifficulty());    
+    AddHeroCreatures("Cyrus", CREATURE_MASTER_GENIE, 15* GetDifficulty()); 
+    AddHeroCreatures("Cyrus", CREATURE_RAKSHASA_KSHATRI, 10* GetDifficulty());
+    AddHeroCreatures("Cyrus", CREATURE_TITAN, 5 * GetDifficulty()); 	
+end
+if army_diff > 2 then
+    GiveExp("Cyrus", 744000);
+end   
+if army_diff > 3 then
+    GiveExp("Cyrus", 1550000);
+
+end 						
 ----------------------------------//Titans
 function mob1()
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "100", nil );
 MessageBox ("/Maps/Scenario/C3M4/Message/C3M4_1.txt");
-CreateMob(1,CREATURE_TITAN,4,66,90,1,2,1);
+CreateMob(1,CREATURE_TITAN, 10,66,90,1,2,1);
 end;
 
 function mob2()	
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "200", nil );
-CreateMob(2,CREATURE_TITAN,6,117,92,1,2,1);
+CreateMob(2,CREATURE_TITAN, 20,117,92,1,2,1);
 end;
 
 function mob3()
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "300", nil );
-CreateMob(3,CREATURE_TITAN,10,38,20,1,2,1);
+CreateMob(3,CREATURE_TITAN,30,38,20,1,2,1);
 end;
 
 function mob4()
 Trigger( REGION_ENTER_AND_STOP_TRIGGER, "400", nil );
-CreateMob(3,CREATURE_TITAN,12,63,71,1,2,1);
-CreateMob(3,CREATURE_TITAN,55,63,64,1,2,1);
+CreateMob(3,CREATURE_TITAN,40,63,71,1,2,1);
+CreateMob(3,CREATURE_TITAN,100,63,64,1,2,1);
 end;
 
 --------------------------------//Start first dialog
@@ -91,9 +101,10 @@ end;
 function WinLoose()
 	while 1 do
 		if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-			SaveHeroAllSetArtifactsEquipped("Berein", "C3M4");
 			StartDialogScene("/DialogScenes/C3/M4/D1/DialogScene.xdb#xpointer(/DialogScene)"); ----//Start final dialog
-			sleep(100);
+			--GiveExp( "Berein", 500 ); ---addexp!!!
+			SaveHeroAllSetArtifactsEquipped("Berein", "C3M4");
+			sleep(30);
 			Win();
 			return
 		end;

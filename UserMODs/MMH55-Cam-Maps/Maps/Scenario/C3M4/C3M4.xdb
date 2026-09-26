@@ -8358,12 +8358,12 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name>Tan</Name>
+				<Name/>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Cyrus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>0</Experience>
+				<Experience>343000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_TITAN</Creature>
@@ -8401,14 +8401,14 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>4</Offence>
-					<Defence>5</Defence>
-					<Spellpower>12</Spellpower>
-					<Knowledge>8</Knowledge>
+					<Offence>3</Offence>
+					<Defence>3</Defence>
+					<Spellpower>13</Spellpower>
+					<Knowledge>14</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_ADVANCED</Mastery>
-							<SkillID>HERO_SKILL_SORCERY</SkillID>
+							<SkillID>HERO_SKILL_ARTIFICIER</SkillID>
 						</Item>					
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
@@ -8416,7 +8416,7 @@
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
+							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
@@ -8426,41 +8426,35 @@
 							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_LUCK</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
+						</Item>	
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SORCERY</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
-						<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>					
-						<Item>HERO_SKILL_MYSTICISM</Item>
 						<Item>HERO_SKILL_MAGIC_MIRROR</Item>
-						<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
-						<Item>HERO_SKILL_MASTER_OF_QUAKES</Item>
-						<Item>HERO_SKILL_TOUGHNESS</Item>
-						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_ABSOLUTE_WIZARDY</Item>
 						<Item>HERO_SKILL_DEAD_LUCK</Item>
 						<Item>HERO_SKILL_CHAOTIC_SPELLS</Item>
 						<Item>HERO_SKILL_LUCKY_SPELLS</Item>
+						<Item>HERO_SKILL_TOUGHNESS</Item>
+						<Item>HERO_SKILL_EVASION</Item>															
+						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+						<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>					
+						<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
 					</perkIDs>
-					<spellIDs>
-						<Item>SPELL_FIREWALL</Item>
-						<Item>SPELL_LIGHTNING_BOLT</Item>
-						<Item>SPELL_STONE_SPIKES</Item>
-						<Item>SPELL_ICE_BOLT</Item>
-						<Item>SPELL_SUMMON_ELEMENTALS</Item>
-						<Item>SPELL_FIREBALL</Item>
-						<Item>SPELL_BERSERK</Item>
-						<Item>SPELL_BLIND</Item>
-						<Item>SPELL_CHAIN_LIGHTNING</Item>
-						<Item>SPELL_CELESTIAL_SHIELD</Item>
-						<Item>SPELL_HASTE</Item>
-						<Item>SPELL_LAND_MINE</Item>
-						<Item>SPELL_SLOW</Item>
-					</spellIDs>
+					<spellIDs/>
 					<Ballista>false</Ballista>
-					<FirstAidTent>false</FirstAidTent>
+					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
-				<OverrideMask>16</OverrideMask>
+				<OverrideMask>56</OverrideMask>
 				<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
@@ -20606,7 +20600,7 @@
 			<AdvMapMonster ObjectRecordID="-1">
 				<Pos>
 					<x>101</x>
-					<y>78</y>
+					<y>77</y>
 					<z>0</z>
 				</Pos>
 				<Rot>6.28319</Rot>
@@ -20645,22 +20639,6 @@
 					</Item>
 				</AdditionalStacks>
 			</AdvMapMonster>
-		</Item>
-		<Item href="#n:inline(AdvMapShrine)" id="item_9E30DABF-B9ED-4646-82CF-A9DE1D096211">
-			<AdvMapShrine ObjectRecordID="-1">
-				<Pos>
-					<x>100</x>
-					<y>79</y>
-					<z>0</z>
-				</Pos>
-				<Rot>0</Rot>
-				<Floor>1</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Shrine_Of_Magic_2.(AdvMapShrineShared).xdb#xpointer(/AdvMapShrineShared)"/>
-				<SpellID>SPELL_NONE</SpellID>
-			</AdvMapShrine>
 		</Item>
 		<Item href="#n:inline(AdvMapMonster)" id="item_50CD19E9-3780-4500-BFEA-75BD6A69624E">
 			<AdvMapMonster ObjectRecordID="-1">
@@ -21682,6 +21660,27 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 			</AdvMapMonster>
 		</Item>
+		<Item href="#n:inline(AdvMapHillFort)" id="item_DD4401C5-38A2-41DF-A8A0-7AC44355B849">
+			<AdvMapHillFort>
+				<Pos>
+					<x>101</x>
+					<y>79</y>
+					<z>0</z>
+				</Pos>
+				<Rot>0</Rot>
+				<Floor>1</Floor>
+				<Name/>
+				<CombatScript/>
+				<pointLights/>
+				<Shared href="/MapObjects/Hill_Fort.(AdvMapHillFortShared).xdb#xpointer(/AdvMapHillFortShared)"/>
+				<CreaturesUpgradesFilter>
+					<ForbiddenBasicUpgradeTiers/>
+					<ForbiddenAlterUpgradeTiers/>
+					<NotUpgradeable/>
+					<ForbiddenUpgrades/>
+				</CreaturesUpgradesFilter>
+			</AdvMapHillFort>
+		</Item>
 	</objects>
 	<Resources>
 		<PointLights/>
@@ -21852,7 +21851,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>40</HeroMaxLevel>
+	<HeroMaxLevel>41</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
