@@ -18,7 +18,7 @@ H55c_AI_CONTROLLED = {
 	   heroes = {},
 	  enemies = {},
   },
-  player3 = { 		   -- Orange Academy Inferno AI player
+  player3 = { 		   -- Orange Academy AI player
       state = 2,       -- AI player with specific purpose so control set to 2.
 	   heroes = {},
   	enemies = {
@@ -32,8 +32,8 @@ H55c_AI_CONTROLLED = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C3M5");
     LoadHeroAllSetArtifacts(  "Berein", "C3M4" );
-    -- LoadHeroAllSetArtifacts( "Isabell", "C3M2" );
-    -- LoadAndBindHeroAllSetArtifacts( "Godric", "C3M4" );
+    LoadHeroAllSetArtifacts( "Isabell", "C3M3" );
+    -- LoadAndBindHeroAllSetArtifacts( "Godric", "C3M2" );
 	GiveArtefact( "Berein", ARTIFACT_RING_OF_DEATH );
 	sleep(40);
 	H55_CamFixTooManySkills( PLAYER_1,  "Berein" );
@@ -74,8 +74,9 @@ CINEMATICS = {
     end,
 	
 	armyDeserters = function()
+		sleep( 10 );	
 		StartDialogScene("/DialogScenes/C3/M5/R4/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
     end,
 	
 	captureDaughter = function()
@@ -94,8 +95,9 @@ CINEMATICS = {
     end,
 	
 	outro = function()
+		sleep( 20 );	
 		StartDialogScene("/DialogScenes/C3/M5/D3/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep( 2 );
+		sleep( 10 );
     end,
 	
 	showCapturedfMine = function(mine)
@@ -110,55 +112,73 @@ DIFFICULTY = {
 		SetGameVar("C3M5_Difficulty","normal");
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,30);
 		AddHeroCreatures("Berein",CREATURE_MANES,8);
-		SetPlayerStartResource(1,WOOD,20);
-		SetPlayerStartResource(1,ORE,20);
-		SetPlayerStartResource(1,SULFUR,5);
-		SetPlayerStartResource(1,MERCURY,5);
-		SetPlayerStartResource(1,CRYSTAL,5);
-		SetPlayerStartResource(1,GEM,5);
-		SetPlayerStartResource(1,GOLD,30000);
-		print("Difficulty level is easy");
+        SetPlayerStartResources( PLAYER_1, 20, 20, 5, 5, 5, 5, 30000);		
+		print("Difficulty level is normal");
 	end,
 	
 	[1] = function()
 		SetGameVar("C3M5_Difficulty","hard");
-		SetPlayerStartResource(1,WOOD,16);
-		SetPlayerStartResource(1,ORE,15);
-		SetPlayerStartResource(1,SULFUR,3);
-		SetPlayerStartResource(1,MERCURY,3);
-		SetPlayerStartResource(1,CRYSTAL,3);
-		SetPlayerStartResource(1,GEM,3);
-		SetPlayerStartResource(1,GOLD,25000);
+        SetPlayerStartResources( PLAYER_1, 16, 16, 3, 3, 3, 3, 25000);			
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,15);
 		AddHeroCreatures("Berein",CREATURE_MANES,5);
-		print("Difficulty level is normal");
+		print("Difficulty level is hard");
 	end,
 	
 	[2] = function()
 		SetGameVar("C3M5_Difficulty","heroic");
-		SetPlayerStartResource(1,WOOD,12);
-		SetPlayerStartResource(1,ORE,10);
-		SetPlayerStartResource(1,SULFUR,1);
-		SetPlayerStartResource(1,MERCURY,1);
-		SetPlayerStartResource(1,CRYSTAL,1);
-		SetPlayerStartResource(1,GEM,1);
-		SetPlayerStartResource(1,GOLD,20000);
-		print("Difficulty level is hard");
+		LoadHeroAllSetArtifacts( "Godric", "C1M5" );
+        SetPlayerStartResources( PLAYER_1, 12, 10, 1, 1, 1, 1, 20000);		
+		print("Difficulty level is heroic");
 	end,
 	
 	[3] = function()
 		SetGameVar("C3M5_Difficulty","impossible");
-		SetPlayerStartResource(1,WOOD,10);
-		SetPlayerStartResource(1,ORE,8);
-		SetPlayerStartResource(1,SULFUR,1);
-		SetPlayerStartResource(1,MERCURY,1);
-		SetPlayerStartResource(1,CRYSTAL,1);
-		SetPlayerStartResource(1,GEM,1);
-		SetPlayerStartResource(1,GOLD,15000);
-		print("Difficulty level is heroic");
+		LoadHeroAllSetArtifacts( "Godric", "C1M5" );
+        SetPlayerStartResources( PLAYER_1, 10, 8, 1, 1, 1, 1, 15000);		
+		print("Difficulty level is impossible");
 		START_TIME_PRESSING_MONTH = 4;
 	end,
 }
+
+local koef = GetDifficulty() + 1
+if koef > 1 then
+    AddObjectCreatures("rakshasa", CREATURE_RAKSHASA, 25 * GetDifficulty());
+	
+    AddObjectCreatures("wood", CREATURE_MASTER_GREMLIN, 50 * GetDifficulty());
+    AddObjectCreatures("wood", CREATURE_OBSIDIAN_GARGOYLE, 35 * GetDifficulty());
+    AddObjectCreatures("wood", CREATURE_STEEL_GOLEM, 25 * GetDifficulty());
+	
+    AddObjectCreatures("ore", CREATURE_MASTER_GREMLIN, 50 * GetDifficulty());
+    AddObjectCreatures("ore", CREATURE_OBSIDIAN_GARGOYLE, 35 * GetDifficulty());
+    AddObjectCreatures("ore", CREATURE_STEEL_GOLEM, 25 * GetDifficulty());	
+	
+    AddObjectCreatures("sulfur", CREATURE_ARCH_MAGI, 15 * GetDifficulty());
+    AddObjectCreatures("sulfur", CREATURE_MASTER_GENIE, 10 * GetDifficulty());
+	
+    AddObjectCreatures("gems", CREATURE_ARCH_MAGI, 15 * GetDifficulty());
+    AddObjectCreatures("gems", CREATURE_MASTER_GENIE, 10 * GetDifficulty());
+	
+    AddObjectCreatures("mercury", CREATURE_ARCH_MAGI, 15 * GetDifficulty());
+    AddObjectCreatures("mercury", CREATURE_MASTER_GENIE, 10 * GetDifficulty());
+	
+    AddObjectCreatures("cristall", CREATURE_ARCH_MAGI, 15 * GetDifficulty());
+    AddObjectCreatures("cristall", CREATURE_MASTER_GENIE, 10 * GetDifficulty());
+
+    AddObjectCreatures("Hikm", CREATURE_MASTER_GREMLIN, 200 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_OBSIDIAN_GARGOYLE, 100 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_STEEL_GOLEM, 75 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_ARCH_MAGI, 50 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_MASTER_GENIE, 35 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_RAKSHASA_RUKH, 20 * GetDifficulty());	
+    AddObjectCreatures("Hikm", CREATURE_STORM_LORD, 10 * GetDifficulty());		
+end
+if koef > 2 then
+    AddObjectCreatures("rakshasa", CREATURE_RAKSHASA_RUKH, 35 * koef);
+end
+if koef > 3 then
+    AddObjectCreatures("rakshasa", CREATURE_RAKSHASA_KSHATRI, 35 * koef);
+end
+
 
 OBJECTIVES = {
 	state = {
@@ -168,7 +188,7 @@ OBJECTIVES = {
 		captureHikm         = { "prim4", 0 }, -- Capture Hikm town
 		isAlive             = { "prim5", 1 }, -- Markal and Isabell must survive
 		timePressure        = {  "TimePressing", 1 }, -- Complete the mission in one month.
-		deployAcademyHeroes = {  "deployAcademyHeroes", 1 }, -- Complete the mission in one month.
+		deployAcademyHeroes = {  "deployAcademyHeroes", 1 }, 
 	},
 
     start = function()
@@ -212,7 +232,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M5");
 				sleep(20);
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end
@@ -339,12 +359,29 @@ OBJECTIVES = {
 			H55c_AIAddHero('Razzak');
 			startThread(RazzakIsDead);
 			OBJECTIVES.state.deployAcademyHeroes[2] = 2;
+			local diff = GetDifficulty() + 1
+			if diff > 1 then
+			    AddHeroCreatures("Razzak", CREATURE_MAGI, 16 * GetDifficulty());	
+                AddHeroCreatures("Razzak", CREATURE_RAKSHASA, 6 * GetDifficulty());	
+                AddHeroCreatures("Razzak", CREATURE_MASTER_GENIE, 5 * GetDifficulty());	
+                AddHeroCreatures("Razzak", CREATURE_STEEL_GOLEM, 50 * GetDifficulty());	
+                AddHeroCreatures("Razzak", CREATURE_GREMLIN, 90 * GetDifficulty());	
+			end			
 		elseif OBJECTIVES.state.deployAcademyHeroes[2] == 2 and OBJECTIVES.state.captureDaughter[2] == 10 then
 			DeployReserveHero("Maahir",88,20,0);
 			sleep(2);
 			SetAIPlayerAttractor("Necorrum",PLAYER_3,2); -- Necorrum is Lorekeep
 			H55c_AIAddHero('Maahir');
 			OBJECTIVES.state.deployAcademyHeroes[2] = 10;
+			local koef = GetDifficulty() + 1
+			if koef > 1 then
+			    AddHeroCreatures("Maahir", CREATURE_MASTER_GREMLIN, 140 * GetDifficulty());	
+                AddHeroCreatures("Maahir", CREATURE_STEEL_GOLEM, 120 * GetDifficulty());	
+                AddHeroCreatures("Maahir", CREATURE_ARCH_MAGI, 24 * GetDifficulty());	
+                AddHeroCreatures("Maahir", CREATURE_OBSIDIAN_GARGOYLE, 90 * GetDifficulty());	
+                AddHeroCreatures("Maahir", CREATURE_RAKSHASA_RUKH, 12 * GetDifficulty());	
+                AddHeroCreatures("Maahir", CREATURE_TITAN, 5 * GetDifficulty());
+			end
 		end
 	end
 }
@@ -359,7 +396,7 @@ end
 BATTLES = {
   ambushByAngels = {
     start = function(hero)
-      StartCombat("Berein",nil,3,CREATURE_ARCHANGEL,12,CREATURE_ANGEL,10,CREATURE_ANGEL,10,nil,"BATTLES.ambushByAngels.finish");
+      StartCombat("Berein",nil,3,CREATURE_ARCHANGEL,12 * (GetDifficulty()+1),CREATURE_ANGEL,10 * (GetDifficulty()+1),CREATURE_ANGEL,10 * (GetDifficulty()+1),nil,"BATTLES.ambushByAngels.finish");
     end,
 
     finish = function(hero, result)
@@ -442,16 +479,16 @@ function desentir()
 			end
 			if GetDifficulty() == 2 then
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
-				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17")  + 1); -- Paladins
+				SetGameVar("C3M5_creatures17",GetGameVar("C3M5_creatures17")  + 1); -- Paladins
 				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 2); -- Inquisitors
-				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")   + 10); -- Squires
-				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")    + 7); -- Marksman
+				SetGameVar("C3M5_creatures5",GetGameVar("C3M5_creatures5")   + 10); -- Squires
+				SetGameVar("C3M5_creatures8",GetGameVar("C3M5_creatures8")    + 7); -- Marksman
 			elseif GetDifficulty() == 3 then
 				SetGameVar("C3M5_creatures19",GetGameVar("C3M5_creatures19")  + 1); -- Angel
-				SetGameVar("C3M5_creatures16",GetGameVar("C3M5_creatures17")  + 2); -- Paladins
+				SetGameVar("C3M5_creatures17",GetGameVar("C3M5_creatures17")  + 2); -- Paladins
 				SetGameVar("C3M5_creatures14",GetGameVar("C3M5_creatures14")  + 3); -- Inquisitors
-				SetGameVar("C3M5_creatures4",GetGameVar("C3M5_creatures5")   + 11); -- Squires
-				SetGameVar("C3M5_creatures7",GetGameVar("C3M5_creatures8")    + 8); -- Marksman
+				SetGameVar("C3M5_creatures5",GetGameVar("C3M5_creatures5")   + 15); -- Squires
+				SetGameVar("C3M5_creatures8",GetGameVar("C3M5_creatures8")    + 10); -- Marksman
 			end
 			desentir_day = GetDate(ABSOLUTE_DAY);
 		end
@@ -460,20 +497,20 @@ end
 
 function CaptureCavern()
 	local Caverns = {"ore","wood","sulfur","cristall","gems","mercury"};
-	local CavernArmyList = {  CREATURE_PEASANT, 200,
-						   CREATURE_MILITIAMAN, 150,
-							  CREATURE_FOOTMAN,  60,
-							CREATURE_SWORDSMAN,  45,
-							   CREATURE_ARCHER,  70,
-							 CREATURE_MARKSMAN,  55,
-							  CREATURE_GRIFFIN,  32,
-						CREATURE_ROYAL_GRIFFIN,  26,
-							   CREATURE_PRIEST,  12,
-							   CREATURE_CLERIC,  10,
-							 CREATURE_CAVALIER,   8,
-							  CREATURE_PALADIN,   7,
-								CREATURE_ANGEL,   5,
-							CREATURE_ARCHANGEL,   4};
+	local CavernArmyList = {  CREATURE_PEASANT, 200 * (GetDifficulty()+1),
+						   CREATURE_MILITIAMAN, 150 * (GetDifficulty()+1),
+							  CREATURE_FOOTMAN,  60 * (GetDifficulty()+1),
+							CREATURE_SWORDSMAN,  45 * (GetDifficulty()+1),
+							   CREATURE_ARCHER,  70 * (GetDifficulty()+1),
+							 CREATURE_MARKSMAN,  55 * (GetDifficulty()+1),
+							  CREATURE_GRIFFIN,  32 * (GetDifficulty()+1),
+						CREATURE_ROYAL_GRIFFIN,  26 * (GetDifficulty()+1),
+							   CREATURE_PRIEST,  12 * (GetDifficulty()+1),
+							   CREATURE_CLERIC,  10 * (GetDifficulty()+1),
+							 CREATURE_CAVALIER,   8 * (GetDifficulty()+1),
+							  CREATURE_PALADIN,   7 * (GetDifficulty()+1),
+								CREATURE_ANGEL,   5 * (GetDifficulty()+1),
+							CREATURE_ARCHANGEL,   4 * (GetDifficulty()+1)};
 	local canvern_day = GetDate(DAY);
 	while 1 do
 		sleep(25);
