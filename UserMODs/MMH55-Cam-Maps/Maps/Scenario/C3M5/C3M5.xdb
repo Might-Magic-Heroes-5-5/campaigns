@@ -48,7 +48,20 @@
 						<FunctionName/>
 					</Action>
 				</CaptureTrigger>
-				<armySlots/>
+				<armySlots>
+					<Item>
+						<Creature>CREATURE_MASTER_GREMLIN</Creature>
+						<Count>50</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
+						<Count>35</Count>
+					</Item>					
+					<Item>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Count>25</Count>
+					</Item>
+				</armySlots>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapMine)" id="id05db5787-500c-4f9a-8f13-a7551d4d1254">
@@ -70,7 +83,16 @@
 						<FunctionName/>
 					</Action>
 				</CaptureTrigger>
-				<armySlots/>
+				<armySlots>
+					<Item>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Count>15</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>10</Count>
+					</Item>
+				</armySlots>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapTown)" id="id46859a3d-4e1e-4405-a4d5-984d918c66c5">
@@ -3014,11 +3036,15 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MASTER_GREMLIN</Creature>
-						<Count>45</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
-						<Count>30</Count>
+						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
+						<Count>35</Count>
+					</Item>					
+					<Item>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -3628,8 +3654,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Rakshasa.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>44</Amount>
-				<Amount2>46</Amount2>
+				<Amount>54</Amount>
+				<Amount2>54</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -4938,7 +4964,7 @@
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
-						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -4948,32 +4974,32 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -4983,25 +5009,33 @@
 				</Editable>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_ARCH_MAGI</Creature>
-						<Count>120</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_STORM_LORD</Creature>
-						<Count>20</Count>
-					</Item>
-					<Item>
 						<Creature>CREATURE_MASTER_GREMLIN</Creature>
-						<Count>500</Count>
+						<Count>200</Count>
+					</Item>	
+					<Item>
+						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
+						<Count>100</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
-						<Count>40</Count>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Count>75</Count>
+					</Item>					
+					<Item>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MASTER_GENIE</Creature>
-						<Count>60</Count>
+						<Count>35</Count>
+					</Item>					
+					<Item>
+						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
+						<Count>20</Count>
 					</Item>
+					<Item>
+						<Creature>CREATURE_STORM_LORD</Creature>
+						<Count>10</Count>
+					</Item>			
 				</armySlots>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
@@ -5857,16 +5891,12 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_ANGEL</Creature>
-						<Count>2</Count>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Count>15</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_ARCHER</Creature>
-						<Count>32</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_FOOTMAN</Creature>
-						<Count>40</Count>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>10</Count>
 					</Item>
 				</armySlots>
 			</AdvMapMine>
@@ -8504,7 +8534,16 @@
 						<FunctionName/>
 					</Action>
 				</CaptureTrigger>
-				<armySlots/>
+				<armySlots>
+					<Item>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Count>15</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>10</Count>
+					</Item>
+				</armySlots>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_4D3E5A99-C4D2-43EF-90FD-7697831410BF">
@@ -12159,7 +12198,16 @@
 						<FunctionName/>
 					</Action>
 				</CaptureTrigger>
-				<armySlots/>
+				<armySlots>
+					<Item>
+						<Creature>CREATURE_ARCH_MAGI</Creature>
+						<Count>15</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_MASTER_GENIE</Creature>
+						<Count>10</Count>
+					</Item>
+				</armySlots>
 			</AdvMapMine>
 		</Item>
 		<Item href="#n:inline(AdvMapStatic)" id="item_C70D194B-CB10-41EF-B909-DFB05CA3D485">

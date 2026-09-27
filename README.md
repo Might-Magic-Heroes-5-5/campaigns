@@ -394,9 +394,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap sometimes did not trigger which broke the main quest line
 - fix: Renegade upgrade type units did not run away from Isabella. Now they are and Godric receives them as True upgrade type reinforcements for the final battle
-- change: Godric reinforcement mechanic now scales with difficulty level.
+- change: The ambush is more challenging based on game difficulty
+- change: Godric gain his artifacts saved in C1M5 for heroic and impossible difficulty 
+- change: Godric reinforcement mechanic now scales with difficulty level
 - change: When Godric sabotage troops take ownership of a player mine the player camera will showcase the location
-- change: Player3 (Academy) heroes are now in Onslaught mode, they will aim to take over player's towns at any cost
+- change: Godric sabotage troops count is more challenging based on game difficulty
+- change: Player3 (Academy) heroes are now in Onslaught mode. They are more challenging on higher difficulty levels and will storm player's towns at any cost
+- change: All mines are now guarded from start
 - new: Added Memory Mentor
 
 ### C4M1 – Dungeon: The Clanlord
