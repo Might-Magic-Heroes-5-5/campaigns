@@ -179,7 +179,7 @@ OBJECTIVES = {
 	captureSylvanTowns = function()
 	-- end of this task is handled by C2M3.xdb
 		if OBJECTIVES.state.captureSylvanTowns[2] == 1 then
-			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
+			SetObjectiveState( 'prim1', OBJECTIVE_ACTIVE );
 			OBJECTIVES.state.captureSylvanTowns[2] = 2;
 		elseif OBJECTIVES.state.captureSylvanTowns[2] == 2 and (GetObjectOwner("Town1") == PLAYER_1 or GetObjectOwner("Town2") == PLAYER_1 or GetObjectOwner("Town3") == PLAYER_1 ) then
 			CINEMATICS.captureSylvanTown();
@@ -202,14 +202,15 @@ OBJECTIVES = {
 		if OBJECTIVES.state.defeatGillion[2] == 1 then
 			Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "Gilraen", "OBJECTIVES._defeatGillion_activator" );
 			DeployReserveHero("Gillion", 116, 95, GROUND);
+			sleep(20);
 			EnableHeroAI("Gillion", nil);
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
 			local army_diff = GetDifficulty() + 1;
-                AddHeroCreatures("Gillion", CREATURE_DRUID, 17);
-                AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 32);
-                AddHeroCreatures("Gillion", CREATURE_UNICORN, 15);
-                AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 1);
-                AddHeroCreatures("Gillion", CREATURE_TREANT, 4);                      
+			AddHeroCreatures("Gillion", CREATURE_DRUID, 17);
+			AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 32);
+			AddHeroCreatures("Gillion", CREATURE_UNICORN, 15);
+			AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 1);
+			AddHeroCreatures("Gillion", CREATURE_TREANT, 4);
             if army_diff > 1 then
                 GiveHeroSkill("Gillion", SKILL_DEFENCE);
 			    GiveHeroSkill("Gillion", PERK_EVASION);
@@ -250,9 +251,7 @@ OBJECTIVES = {
                 AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
                 AddHeroCreatures("Gillion", CREATURE_TREANT, 10);
                 AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 5);
-                                                
 		    end
-						
 			OBJECTIVES.DaysToGillionActivation = GetDate(ABSOLUTE_DAY) + OBJECTIVES.DaysToGillionActivation
 			OBJECTIVES.state.defeatGillion[2] = 2;
 		elseif OBJECTIVES.state.defeatGillion[2] == 2 and (OBJECTIVES.DaysToGillionActivation <= GetDate(ABSOLUTE_DAY) or OBJECTIVES.gilraenAcitve == 1) then
