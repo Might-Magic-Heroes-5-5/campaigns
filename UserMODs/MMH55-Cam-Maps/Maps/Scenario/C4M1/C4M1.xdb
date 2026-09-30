@@ -18719,7 +18719,7 @@
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -70644,7 +70644,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>15</Count>
+						<Count>20</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -70696,23 +70696,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>5</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SCOUT</Creature>
-						<Count>6</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HYDRA</Creature>
 						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_RAVAGER</Creature>
-						<Count>8</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR</Creature>
-						<Count>2</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -70724,7 +70708,10 @@
 					<Defence>2</Defence>
 					<Spellpower>4</Spellpower>
 					<Knowledge>4</Knowledge>
-					<skills/>
+					<skills>
+						<Mastery>MASTERY_ADVANCED</Mastery>
+						<SkillID>HERO_SKILL_LEARNING</SkillID>					
+					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_INTELLIGENCE</Item>
 					</perkIDs>
@@ -70771,22 +70758,6 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_WITCH</Creature>
-						<Count>39</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HYDRA</Creature>
 						<Count>1</Count>
 					</Item>
 				</armySlots>
@@ -70839,22 +70810,6 @@
 				<PlayerID>PLAYER_5</PlayerID>
 				<Experience>0</Experience>
 				<armySlots>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR</Creature>
-						<Count>1</Count>
-					</Item>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
 						<Count>1</Count>
@@ -70913,19 +70868,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>25</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_WITCH</Creature>
-						<Count>45</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR</Creature>
-						<Count>28</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>12</Count>
+						<Count>1</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -70982,22 +70925,6 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HYDRA</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR_KING</Creature>
 						<Count>1</Count>
 					</Item>
 				</armySlots>
@@ -76609,14 +76536,6 @@
 						<Creature>CREATURE_ASSASSIN</Creature>
 						<Count>1</Count>
 					</Item>
-					<Item>
-						<Creature>CREATURE_WITCH</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_EARTH_ELEMENTAL</Creature>
-						<Count>1</Count>
-					</Item>
 				</armySlots>
 				<artifactIDs/>
 				<isUntransferable/>
@@ -78823,7 +78742,7 @@
 				<Shared href="/MapObjects/Inferno/Horned_Leaper.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>15</Amount>
-				<Amount2>22</Amount2>
+				<Amount2>15</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -78845,8 +78764,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>23</Amount>
-						<Amount2>32</Amount2>
+						<Amount>21</Amount>
+						<Amount2>21</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -81205,7 +81124,7 @@
 				<Shared href="/MapObjects/Inferno/Horned_Demon.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>13</Amount>
-				<Amount2>20</Amount2>
+				<Amount2>13</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -81227,8 +81146,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
-						<Amount>15</Amount>
-						<Amount2>21</Amount2>
+						<Amount>17</Amount>
+						<Amount2>17</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -81460,23 +81379,7 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>25</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HYDRA</Creature>
-						<Count>5</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MINOTAUR</Creature>
-						<Count>18</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Count>26</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>15</Count>
+						<Count>1</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -81690,7 +81593,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>14</HeroMaxLevel>
+	<HeroMaxLevel>18</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
