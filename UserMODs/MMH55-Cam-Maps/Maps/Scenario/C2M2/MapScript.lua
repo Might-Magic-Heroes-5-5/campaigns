@@ -25,7 +25,7 @@ DIFFICULTY = {
 		AddHeroCreatures("Agrael",CREATURE_HORNED_DEMON,20);
 		AddHeroCreatures("Agrael",CREATURE_HELL_HOUND,15);
 		AddHeroCreatures("Agrael",CREATURE_NIGHTMARE,8);
-		startThread(RemoveVeyerMP(2));
+		startThread(RemoveVeyerMP, 2);
 	end,
 	
 	[1] = function()
@@ -39,7 +39,7 @@ DIFFICULTY = {
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 2);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 5);
 		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 12);		
-		startThread(RemoveVeyerMP(3));		
+		startThread(RemoveVeyerMP, 3);		
 	end,
 	
 	[2] = function()
@@ -49,7 +49,7 @@ DIFFICULTY = {
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 4);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 10);
 		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 24);		
-		startThread(RemoveVeyerMP(4));	
+		startThread(RemoveVeyerMP, 4);	
 	end,
 	
 	[3] = function()
