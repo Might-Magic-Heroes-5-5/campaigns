@@ -16,12 +16,12 @@ koef = GetDifficulty();
 --Save("Scene 10: Appearance of Realag")
 
 Raelag = "Raelag"
-Urunir = "Urunir"
-Almegir = "Almegir"
-Inagost = "Inagost"
-Ohtarig = "Ohtarig"
-Menel   = "Menel"
-Ferigl = "Ferigl"
+Urunir = "Urunir" --> Yrwanna
+Almegir = "Almegir" --> Yrbeth
+Inagost = "Inagost" --> Sinitar
+Ohtarig = "Ohtarig" --> Vayshan
+Menel   = "Menel" --> Kythra
+Ferigl = "Ferigl" --> Sorgal
 Eruina = "Eruina"
 
 Heroes = {"Raelag", "Urunir", "Almegir", "Inagost", "Ohtarig", "Menel", "Ferigl", "Eruina"}
@@ -31,13 +31,40 @@ timer=nil
 heroname = "Raelag"
 
 ----------------------------------
-ChangeHeroStat("Eruina", STAT_EXPERIENCE, 15000);
-ChangeHeroStat("Urunir", STAT_EXPERIENCE, 16000);
-ChangeHeroStat("Almegir", STAT_EXPERIENCE, 16000);
-ChangeHeroStat("Inagost", STAT_EXPERIENCE, 15000);
-ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 16000);
-ChangeHeroStat("Menel", STAT_EXPERIENCE, 16000);
-ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 15000);
+ChangeHeroStat("Eruina", STAT_EXPERIENCE, 20600);
+ChangeHeroStat("Urunir", STAT_EXPERIENCE, 14700);
+ChangeHeroStat("Almegir", STAT_EXPERIENCE, 20600);
+ChangeHeroStat("Inagost", STAT_EXPERIENCE, 14700);
+ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 20600);
+ChangeHeroStat("Menel", STAT_EXPERIENCE, 14700);
+ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 14700);
+if koef > 0 then
+ChangeHeroStat("Eruina", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Urunir", STAT_EXPERIENCE, 5900);
+ChangeHeroStat("Almegir", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Inagost", STAT_EXPERIENCE, 5900);
+ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Menel", STAT_EXPERIENCE, 5900);
+ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 5900);
+end
+if koef > 1 then
+ChangeHeroStat("Eruina", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Urunir", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Almegir", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Inagost", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Menel", STAT_EXPERIENCE, 8100);
+ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 8100);
+end
+if koef > 2 then
+ChangeHeroStat("Eruina", STAT_EXPERIENCE, 16900);
+ChangeHeroStat("Urunir", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Almegir", STAT_EXPERIENCE, 16900);
+ChangeHeroStat("Inagost", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 16900);
+ChangeHeroStat("Menel", STAT_EXPERIENCE, 11800);
+ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 11800);
+end
 ---------------------------------
 
 function H55_TriggerDaily()
@@ -76,12 +103,17 @@ function H55_TriggerDaily()
 		sleep(8);
 		startThread(Moveheroes1);
 		SetObjectiveState('prim1',OBJECTIVE_COMPLETED);
-		ChangeHeroStat("Raelag", STAT_LUCK, 1);  -------Повышаем мораль за комплит задания
+		ChangeHeroStat("Raelag", STAT_LUCK, 1);  ------- Boosting morale for completing the mission.
+        ChangeHeroStat("Raelag", STAT_MORALE, 1);		
+        ChangeHeroStat("Raelag", STAT_KNOWLEDGE, 1); -->Vanilla hardcoded 
+        if koef > 2 then
+		ChangeHeroStat("Raelag", STAT_LUCK, 1);
+		end
 		SetObjectiveState('prim2',OBJECTIVE_ACTIVE); ---Выдаём задание 2
 	end;
 end;
 
-------------------------------------Герои телепортятся в подземку
+------------------------------------The characters teleport into the underground.
 function Moveheroes1()
 sleep(3);
 print ('Prepare');
@@ -90,11 +122,13 @@ print("Go!!!.................................");
 sleep(3);
 SetObjectOwner("first",PLAYER_NONE);
 startThread(Goto);
+startThread(Finalcombat); ----------натравливаем двух последних героев	
+timer=GetDate(ABSOLUTE_DAY) + 10   ----таймер старта драки
 end;
 
 function Goto()
 	while 1 do	
-		sleep( 2 );	
+		sleep( 10 );	
 		if IsPlayerHeroesInRegion(1, "Level") == not nil then
 			OpenRegionFog (1, "Arena");
 			OpenRegionFog (1, "Dragon");
@@ -116,13 +150,13 @@ function Moveheroes2()
 		sleep(10);
 		if IsHeroAlive("Eruina") == not nil then
 			SetObjectPosition("Eruina", 98, 67, 1);
-			AddHeroCreatures("Eruina", 		CREATURE_ASSASSIN, 30 + koef * 10 );
-			AddHeroCreatures("Eruina",	 CREATURE_BLOOD_WITCH,  1 + koef *  8 );
-			AddHeroCreatures("Eruina", CREATURE_MINOTAUR_KING,  1 + koef *  7 );
-			AddHeroCreatures("Eruina", 		   CREATURE_RIDER,  1 + koef *  5 );
-			AddHeroCreatures("Eruina", 		 CREATURE_RAVAGER,  1 + koef *  8 );
-			AddHeroCreatures("Eruina", 	       CREATURE_HYDRA,  1 + koef *  3 );
-			AddHeroCreatures("Eruina", 	 CREATURE_CHAOS_HYDRA,  1 + koef *  3 );
+			AddHeroCreatures("Eruina", 		CREATURE_ASSASSIN,  25 + koef * 25 );
+			AddHeroCreatures("Eruina",	 CREATURE_BLOOD_WITCH,  26 + koef *  15 );
+			AddHeroCreatures("Eruina",      CREATURE_MINOTAUR,  18 + koef *  10 );
+			AddHeroCreatures("Eruina", 		   CREATURE_RIDER,  12 + koef *  7 );
+			AddHeroCreatures("Eruina", 		 CREATURE_RAVAGER,  10 + koef *  6 );
+			AddHeroCreatures("Eruina", 	       CREATURE_HYDRA,  5 + koef *  5 );
+			AddHeroCreatures("Eruina", 	 CREATURE_CHAOS_HYDRA,  4 + koef *  4 );
 			sleep(10);
 			SetObjectOwner("second",PLAYER_NONE);
 			break;
@@ -135,9 +169,11 @@ function Moveheroes3()
 		sleep(11);
 		if IsHeroAlive("Urunir") == not nil then
 			SetObjectPosition("Urunir", 98, 58, 1);
-			AddHeroCreatures("Urunir", CREATURE_SCOUT, 5);
-			AddHeroCreatures("Urunir", CREATURE_RAVAGER, 2);
-			AddHeroCreatures("Urunir", CREATURE_MATRON, 3);
+			AddHeroCreatures("Urunir", CREATURE_ASSASSIN, 20 + koef * 10);
+			AddHeroCreatures("Urunir", CREATURE_RAVAGER, 8 + koef * 3);
+			AddHeroCreatures("Urunir", CREATURE_MATRON, 3 + koef * 1);
+			AddHeroCreatures("Urunir", CREATURE_HYDRA, 1 + koef * 2);
+			AddHeroCreatures("Urunir", CREATURE_MINOTAUR, 5 + koef * 5);		
 			sleep(10);
 			SetObjectOwner("third",PLAYER_NONE);
 			break;
@@ -150,12 +186,12 @@ function Moveheroes4()
 		sleep(13);
 		if IsHeroAlive("Almegir") == not nil then
 			SetObjectPosition("Almegir", 95, 54, 1);
-			AddHeroCreatures("Almegir", 	 CREATURE_ASSASSIN, 1 + koef * 22 );
-			AddHeroCreatures("Almegir",   CREATURE_BLOOD_WITCH, 1 + koef *  8 );
-			AddHeroCreatures("Almegir", CREATURE_MINOTAUR_KING, 1 + koef *  9 );
-			AddHeroCreatures("Almegir",			CREATURE_RIDER, 1 + koef *  5 );
-			AddHeroCreatures("Almegir",			CREATURE_HYDRA, 1 + koef *  3 );
-			AddHeroCreatures("Almegir",		   CREATURE_MATRON, 2 + koef *  2 );
+			AddHeroCreatures("Almegir", 	 CREATURE_ASSASSIN, 25 + koef * 20 );
+			AddHeroCreatures("Almegir",   CREATURE_BLOOD_WITCH, 35 + koef *  15 );
+			AddHeroCreatures("Almegir", CREATURE_MINOTAUR_KING, 15 + koef *  6 );
+			AddHeroCreatures("Almegir",			CREATURE_RIDER, 7 + koef *  4 );
+			AddHeroCreatures("Almegir",			CREATURE_HYDRA, 4 + koef *  3 );
+			AddHeroCreatures("Almegir",		   CREATURE_MATRON, 3 + koef *  2 );
 			sleep(10);
 			SetObjectOwner("fourth",PLAYER_NONE);
 			break;
@@ -168,9 +204,10 @@ function Moveheroes5()
 		sleep(14);
 		if IsHeroAlive("Inagost") == not nil then
 			SetObjectPosition("Inagost", 86, 54, 1);
-			AddHeroCreatures("Inagost", CREATURE_ASSASSIN, 12);
-			AddHeroCreatures("Inagost", CREATURE_MINOTAUR_KING, 2);
-			AddHeroCreatures("Inagost", CREATURE_BLOOD_WITCH, 3);
+			AddHeroCreatures("Inagost", CREATURE_ASSASSIN, 12 + koef * 4);
+			AddHeroCreatures("Inagost", CREATURE_MINOTAUR_KING, 3 + koef * 2);
+			AddHeroCreatures("Inagost", CREATURE_MINOTAUR, 3 + koef * 2);			
+			AddHeroCreatures("Inagost", CREATURE_BLOOD_WITCH, 4 + koef * 3);
 			sleep(10);
 			SetObjectOwner("fifth",PLAYER_NONE);
 			break;
@@ -183,11 +220,11 @@ function Moveheroes6()
 		sleep(15);
 		if IsHeroAlive("Ohtarig") == not nil then
 			SetObjectPosition("Ohtarig", 83, 59, 1);
-			AddHeroCreatures("Ohtarig",		 CREATURE_ASSASSIN, 1 + koef * 16 );
-			AddHeroCreatures("Ohtarig",   		CREATURE_WITCH, 1 + koef *  8 );
-			AddHeroCreatures("Ohtarig",   CREATURE_BLOOD_WITCH, 1 + koef * 13 );
-			AddHeroCreatures("Ohtarig", CREATURE_MINOTAUR_KING, 1 + koef *  6 );
-			AddHeroCreatures("Ohtarig", 	  CREATURE_RAVAGER, 1 + koef *  4 );
+			AddHeroCreatures("Ohtarig",		 CREATURE_ASSASSIN, 37 + koef * 25 );
+			AddHeroCreatures("Ohtarig",   		CREATURE_WITCH, 35 + koef *  15 );
+			AddHeroCreatures("Ohtarig",   CREATURE_BLOOD_WITCH, 15 + koef * 15 );
+			AddHeroCreatures("Ohtarig", CREATURE_MINOTAUR, 15 + koef *  10 );
+			AddHeroCreatures("Ohtarig", 	  CREATURE_RAVAGER, 7 + koef *  4 );
 			AddHeroCreatures("Ohtarig",		CREATURE_MATRIARCH, 1 + koef *  1 );
 			sleep(10);
 			SetObjectOwner("sixth",PLAYER_NONE);
@@ -201,9 +238,10 @@ function Moveheroes7()
 		sleep(16);
 		if IsHeroAlive("Menel") == not nil then
 			SetObjectPosition("Menel", 83, 68, 1);
-			AddHeroCreatures("Menel", CREATURE_HYDRA, 2);
-			AddHeroCreatures("Menel", CREATURE_MINOTAUR_KING, 2);
-			AddHeroCreatures("Menel", CREATURE_BLOOD_WITCH, 3);
+			AddHeroCreatures("Menel", CREATURE_HYDRA, 3 + koef * 1);
+			AddHeroCreatures("Menel", CREATURE_MINOTAUR_KING, 7 + koef * 3);
+			AddHeroCreatures("Menel", CREATURE_BLOOD_WITCH, 10 + koef * 4);
+			AddHeroCreatures("Menel", CREATURE_ASSASSIN, 15 + 5 * koef);			
 			sleep(10);
 			SetObjectOwner("seventh",PLAYER_NONE);
 			break;
@@ -216,16 +254,13 @@ function Moveheroes8()
 		sleep(16);
 		if IsHeroAlive("Ferigl") == not nil then
 			SetObjectPosition("Ferigl", 86, 71, 1);
-			AddHeroCreatures("Ferigl", CREATURE_HYDRA, 4);
-			AddHeroCreatures("Ferigl", CREATURE_MINOTAUR_KING, 2);
-			AddHeroCreatures("Ferigl", CREATURE_BLOOD_WITCH, 3);
-			AddHeroCreatures("Ferigl", CREATURE_ASSASSIN, 3);
+			AddHeroCreatures("Ferigl", CREATURE_HYDRA, 4 + koef * 1);
+			AddHeroCreatures("Ferigl", CREATURE_MINOTAUR_KING, 2 + koef * 2);
+			AddHeroCreatures("Ferigl", CREATURE_BLOOD_WITCH, 4 + koef * 3);
+			AddHeroCreatures("Ferigl", CREATURE_ASSASSIN, 3 + koef *4);
 			sleep(10);
 			SetObjectOwner("Eighth",PLAYER_NONE);
 			sleep(10);
-			timer=GetDate(ABSOLUTE_DAY)+10   ----таймер старта драки
-			startThread(Finalcombat); ----------натравливаем двух последних героев
-			startThread(fight);
 			break;
 		end;
 	end;
@@ -330,8 +365,8 @@ function WinLoose()
 	while 1 do
 		if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped("Raelag","C4M1");
-			--GiveExp( "Raelag", 500 ); ---addexp!!!
-			sleep(100);
+			GiveExp( "Raelag", 500 ); ---addexp!!!
+			sleep(10);
 			Win();
 			return
 		end;
@@ -342,7 +377,7 @@ function WinLoose()
 		sleep();
 	end;
 end;
-------------------------------Драконы сваливают домой и открывют проход
+------------------------------The dragons head back home and open the passage.
 function Dooropen()
 	while 1 do
 		sleep(10);
@@ -357,13 +392,14 @@ end;
 
 function Finalcombat()
 	while 1 do
-		sleep(4);
-		if GetDate(ABSOLUTE_DAY)==timer then
+		sleep(10);
+		if GetDate(ABSOLUTE_DAY)== timer then
 			print ('Start_special_action....');
---			EnableDynamicBattleMode(1);  ---------------------Динамический бой включаем!
+			EnableDynamicBattleMode(1);  --------------------- Engaging dynamic combat!
 			startThread(EngageHero1);
 			startThread(EngageHero2);
-			sleep(1);
+			startThread(EngageHero3);			
+			sleep(10);
 			break;
 		end;
 	end;
@@ -406,18 +442,17 @@ function fightkill()
 		startThread(fighter);
 		H55_NewDayTrigger = 0;
 		H55_SecNewDayTrigger = 1;
-		--Trigger( NEW_DAY_TRIGGER, "fight" );
 	end;
 end;
 
 function EngageHero1()
 	while IsHeroAlive ("Eruina") do
 		while GetCurrentPlayer() ~= PLAYER_2 do
-			sleep( 1 );
+			sleep( 10 );
 		end;
 		MoveHero( "Eruina", GetObjectPosition( heroname ) );
 			while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep( 1 );
+			sleep( 10 );
 		end;
 	end;
 end;
@@ -425,20 +460,30 @@ end;
 function EngageHero2()
 	while IsHeroAlive ("Ohtarig") do
 		while GetCurrentPlayer() ~= PLAYER_6 do
-			sleep( 1 );
+			sleep( 10 );
 		end;
 		MoveHero( "Ohtarig", GetObjectPosition( heroname ) );
 			while GetCurrentPlayer() ~= PLAYER_1 do
-			sleep( 1 );
+			sleep( 10 );
 		end;
 	end;
 end;
---------------------------------Запускаем
+
+function EngageHero3()
+	while IsHeroAlive ("Almegir") do
+		while GetCurrentPlayer() ~= PLAYER_5 do
+			sleep( 10 );
+		end;
+		MoveHero( "Almegir", GetObjectPosition( heroname ) );
+			while GetCurrentPlayer() ~= PLAYER_1 do
+			sleep( 10 );
+		end;
+	end;
+end;
+--------------------------------S
 StartDialogScene("/DialogScenes/C4/M1/D1/DialogScene.xdb#xpointer(/DialogScene)", "", "Save2")  ----Сцена стартовая
---Save("Save2")
 DestroyTownBuildingToLevel("first",TOWN_BUILDING_SPECIAL_4,0,0);
 H55_NewDayTrigger = 1;
---Trigger( NEW_DAY_TRIGGER, "messagesC2_C3",nil );
 
 
 startThread(Prim2_complit);

@@ -404,7 +404,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Added Memory Mentor
 
 ### C4M1 – Dungeon: The Clanlord
-- change: Improved army power of some contestants (Erina, Vayshan,Yrbeth)
+- change: Level cap raised from 14 to 18
+- change: Improved army power of some contestants (Erina, Vayshan,Yrbeth). They also scale based on difficulty.
+- change: When Raelag win the competition and take the ring he also gains 500 xp.
 
 ### C4M2 – Dungeon: The Expansion
 - fix: Removed an undeground Vampire lords stack as it could not be attacked nor it guarded any treasures
