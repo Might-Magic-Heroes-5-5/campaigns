@@ -87,7 +87,7 @@ DIFFICULTY = {
 	[0] = function()
 		ai_alert = 1;
 		mine_capture_prob = 5; -- удельная вероятность захвата шахты
-		SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
+		H55c_SetCampaignResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
 		SetPlayerStartResources(PLAYER_2, 10, 10,  5,  5,  5,  5,  5000);
 		rebels_quantities_coeff = 0.05;
 		A1C1M3_SetPlayer2Army(1);
@@ -96,7 +96,7 @@ DIFFICULTY = {
 	[1] = function()
 		ai_alert = 1;
 		mine_capture_prob = 6; 											-- удельная вероятность захвата шахты
-		SetPlayerStartResources(PLAYER_1, 15, 15,  5,  5,  5,  5, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 15, 15,  5,  5,  5,  5, 10000);
 		SetPlayerStartResources(PLAYER_2, 15, 15, 10, 10, 10, 10, 10000);
 		rebels_quantities_coeff = 0.1; 								-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(2);
@@ -105,7 +105,7 @@ DIFFICULTY = {
 	[2] = function()
 		ai_alert = 2;
 		mine_capture_prob = 8; 											-- удельная вероятность захвата шахты
-		SetPlayerStartResources(PLAYER_1, 10, 10,  5,  5,  5,  5,  8000);
+		H55c_SetCampaignResources(PLAYER_1, 10, 10,  5,  5,  5,  5,  8000);
 		SetPlayerStartResources(PLAYER_2, 30, 30, 15, 15, 15, 15, 20000);
 		rebels_quantities_coeff = 0.15;									-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(3);
@@ -114,7 +114,7 @@ DIFFICULTY = {
 	[3] = function()
 		ai_alert = 2;
 		mine_capture_prob = 10;											-- удельная вероятность захвата шахты
-		SetPlayerStartResources(PLAYER_1,  5,  5,  5,  5,  5,  5,  6000);
+		H55c_SetCampaignResources(PLAYER_1,  5,  5,  5,  5,  5,  5,  6000);
 		SetPlayerStartResources(PLAYER_2, 45, 45, 25, 25, 25, 25, 40000);
 		rebels_quantities_coeff = 0.2;									-- коэффициент на кол-во кричей, генерящихся рандомно
 		A1C1M3_SetPlayer2Army(4);

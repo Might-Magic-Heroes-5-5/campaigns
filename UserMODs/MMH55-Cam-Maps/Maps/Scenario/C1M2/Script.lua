@@ -224,7 +224,7 @@ OBJECTIVES = {
     end,
     
     prepare = function()
-		SetPlayerStartResources( PLAYER_1, 5, 0, 0, 0, 0, 0, 2000 );
+		H55c_SetCampaignResources( PLAYER_1, 5, 0, 0, 0, 0, 0, 2000 );
 		strongbowCaptureDay = 0;
       
 		if __difficulty >= DIFFICULTY_NORMAL then

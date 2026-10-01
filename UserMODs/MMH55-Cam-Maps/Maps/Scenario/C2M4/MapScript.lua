@@ -546,7 +546,7 @@ OBJECTIVES = {
 			SetRegionBlocked("gate"..i,1,2);
 			SetRegionBlocked("gate_u"..i,1,3);
 		end
-		SetPlayerStartResources(PLAYER_1, 10, 10, 2, 2, 2, 2, 20000);
+		H55c_SetCampaignResources(PLAYER_1, 10, 10, 2, 2, 2, 2, 20000);
 		DIFFICULTY[GetDifficulty()]();
 		Trigger(OBJECT_TOUCH_TRIGGER, "dragons", "DialogBeforeCombatVSdragons", nil);
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER,"Dragons", "OBJECTIVES._dragons_active");

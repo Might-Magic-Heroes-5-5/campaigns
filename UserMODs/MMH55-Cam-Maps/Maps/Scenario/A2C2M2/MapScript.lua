@@ -130,19 +130,6 @@ function ObjectiveInit( hero )
 				return
 			end
 		end
-		-- if IsObjectInRegion( hero, "FirstChief" ) then
-			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FirstChief", nil );
-			-- OBJECTIVES.state.FirstChief[2] = 3;
-		-- elseif IsObjectInRegion( hero, "SecondChief" ) then
-			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "SecondChief", nil );
-			-- OBJECTIVES.state.SecondChief[2] = 3;
-		-- elseif IsObjectInRegion( hero, "ThirdChief" ) then
-			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "ThirdChief", nil );
-			-- OBJECTIVES.state.ThirdChief[2] = 3;
-		-- elseif IsObjectInRegion( hero, "FourthChief" ) then
-			-- Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FourthChief", nil );
-			-- OBJECTIVES.state.FourthChief[2] = 3;
-		-- end
 	elseif hero ~= "Kujin" and GetObjectOwner( hero ) == PLAYER_1 then	
 		MessageBox( "/Maps/Scenario/a2c2m2/message03.txt" );
 	end
@@ -279,10 +266,10 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
-		Trigger(  REGION_ENTER_AND_STOP_TRIGGER,  "FirstChief",  "ObjectiveInit" );
-		Trigger(  REGION_ENTER_AND_STOP_TRIGGER, "SecondChief",  "ObjectiveInit" );
-		Trigger(  REGION_ENTER_AND_STOP_TRIGGER,  "ThirdChief",  "ObjectiveInit" );
-		Trigger(  REGION_ENTER_AND_STOP_TRIGGER, "FourthChief",  "ObjectiveInit" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,  "FirstChief",  "ObjectiveInit" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "SecondChief",  "ObjectiveInit" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER,  "ThirdChief",  "ObjectiveInit" );
+		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "FourthChief",  "ObjectiveInit" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog4", "meetExecutioners" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "AdvMapDialog1", "EnterAmbushInBayArea" );
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "PiratesActivation", "EnablePirates" );

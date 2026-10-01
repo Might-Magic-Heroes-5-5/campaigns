@@ -171,7 +171,7 @@ OBJECTIVES = {
     end,
 
     prepare = function()
-		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 500 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 500 );
 		CINEMATICS.intro();
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "zone","Ambush" );
 		startThread(DIFFICULTY[GetDifficulty()]);

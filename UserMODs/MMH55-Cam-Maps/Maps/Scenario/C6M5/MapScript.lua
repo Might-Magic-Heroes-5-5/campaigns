@@ -251,7 +251,7 @@ OBJECTIVES = {
     end,
 
 	prepare = function()
-		SetPlayerStartResource( PLAYER_1, GOLD, 500000 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 500000 );
 		SetObjectEnabled("bcitadel", nil);
 		Trigger(OBJECT_CAPTURE_TRIGGER,    "town1", "TownCounter");
 		Trigger(OBJECT_CAPTURE_TRIGGER,    "town2", "TownCounter");

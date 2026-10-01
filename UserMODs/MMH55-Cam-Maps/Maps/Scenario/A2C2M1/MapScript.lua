@@ -544,7 +544,7 @@ OBJECTIVES = {
 		sleep(10);
 		STARTING_WARRIORS = GetHeroCreatures("Gottai", CREATURE_ORC_WARRIOR);
 		SetRegionBlocked( "sobj2_region", not nil, PLAYER_2 );
-		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
 		DoNotGiveTurnToPlayerAIIfNoTownsAndActiveHeroes(PLAYER_3, 1);
 		Trigger( COMBAT_RESULTS_TRIGGER, "IsFirstCombatFinished" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "GateEntranceWest", "PlaySObjectiveScene" );

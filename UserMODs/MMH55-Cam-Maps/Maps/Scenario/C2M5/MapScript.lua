@@ -18,7 +18,7 @@ startThread(H55_InitSetArtifacts);
 StartDialogScene("/DialogScenes/C2/M5/R1/DialogScene.xdb#xpointer(/DialogScene)");
 
 SetWarfogBehaviour(1,0);
-SetPlayerStartResources(PLAYER_1, 5, 5, 0, 0, 0, 0, 500);
+H55c_SetCampaignResources(PLAYER_1, 5, 5, 0, 0, 0, 0, 500);
 OpenCircleFog(27,15,0,16,PLAYER_1);
 
 function AgraelComeToTieru()
