@@ -50,7 +50,7 @@ H55_RemoveTheseArtifactsFromBanks = {ARTIFACT_STAFF_OF_VEXINGS,ARTIFACT_RING_OF_
 DIFFICULTY = {
 	[0] = function()
 		factor = 1;
-		SetPlayerStartResources( PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);		
+		H55c_SetCampaignResources( PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);		
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_4,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_6,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_5,0);
@@ -86,7 +86,7 @@ DIFFICULTY = {
 	
 	[1] = function()
 		factor = 2;
-		SetPlayerStartResources( PLAYER_1, 15, 15, 6, 6, 6, 6, 15000);		
+		H55c_SetCampaignResources( PLAYER_1, 15, 15, 6, 6, 6, 6, 15000);		
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_6,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_DWELLING_7,0);
 		SetTownBuildingLimitLevel("Town1",TOWN_BUILDING_MAGIC_GUILD,3);
@@ -119,7 +119,7 @@ DIFFICULTY = {
 	
 	[2] = function()
 		factor = 3;
-		SetPlayerStartResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
+		H55c_SetCampaignResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
 		DeployReserveHero( "Astral", 132, 162, GROUND );
 		EnableHeroAI("Astral",nil);		
 		CreateMonster("skeleton_archer",CREATURE_SKELETON_ARCHER,120,117,16,0); --mausoleum
@@ -131,7 +131,7 @@ DIFFICULTY = {
 	
 	[3] = function()
 		factor = 4;
-		SetPlayerStartResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
+		H55c_SetCampaignResources( PLAYER_1, 10, 10, 2, 2, 2, 2, 8000);	
         DeployReserveHero( "Astral", 125, 161, GROUND );	
         DeployReserveHero( "Tan", 132, 162, GROUND );
 		EnableHeroAI("Astral",nil);
@@ -468,11 +468,6 @@ OBJECTIVES = {
 		EnableHeroAI("Maahir",nil);
 		CINEMATICS.intro()
 		startThread(DIFFICULTY[GetDifficulty()]);
-		sleep(20); -- wait for initial resources setup
-		if GetPlayerSelectedCampaignBonusIndex(PLAYER_1) == 2 then
-			print("Player selected campaign bonus");
-			SetPlayerResource(PLAYER_1, GOLD, GetPlayerResource(PLAYER_1, GOLD) + 3200);
-		end
 		---Disable AI of quest heroes---
 		EnableHeroAI("Cyrus", nil);
 		EnableHeroAI("Nadaur", nil);

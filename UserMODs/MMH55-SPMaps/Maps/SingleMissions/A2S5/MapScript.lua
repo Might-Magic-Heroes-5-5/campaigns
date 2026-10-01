@@ -169,7 +169,7 @@ OBJECTIVES = {
 		HeroesSetUp();
 		EnableAIHeroHiring(PLAYER_2, "htown", nil);
 		SetHeroRoleMode( 'RedHeavenHero02', HERO_ROLE_MODE_HERMIT );
-		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
 		OpenCircleFog( 21, 20, GROUND, 10, PLAYER_1 ); -- show Orc town
 		SetRegionBlocked(  "AiBlock", not nil, PLAYER_2 );
 		SetRegionBlocked( "AiBlock1", not nil, PLAYER_2 );

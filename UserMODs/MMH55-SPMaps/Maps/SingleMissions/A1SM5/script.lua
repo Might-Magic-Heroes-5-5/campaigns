@@ -52,7 +52,7 @@ Trigger( OBJECT_TOUCH_TRIGGER, "tele1", "ChangeLight" );
 Trigger( OBJECT_TOUCH_TRIGGER, "tele2", "ChangeLight" );
 Trigger( OBJECT_TOUCH_TRIGGER, "tele3", "ChangeLight" );
 Trigger( OBJECT_TOUCH_TRIGGER, "tele4", "MeetMarkal" );
-SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
+H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 
 function a1sm5_dbg( var )
 	if var == 1 then

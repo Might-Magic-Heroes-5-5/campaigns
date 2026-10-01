@@ -306,17 +306,16 @@ OBJECTIVES = {
 			sleep(50); -- Wait Biara to be deployed before adding units
 			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(dif/4));
-                       GiveHeroSkill("Biara", PERK_MASTER_OF_FIRE);
-                       GiveHeroSkill("Biara", PERK_MASTER_OF_ICE);
-                       GiveHeroSkill("Biara", HERO_SKILL_SET_AFIRE);
-                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
-                       GiveHeroSkill("Biara", SKILL_OFFENCE);
-                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
-                       GiveHeroSkill("Biara", PERK_DEATH_SCREAM);
-                       GiveHeroSkill("Biara", NECROMANCER_FEAT_CHILLING_STEEL);
-                       GiveHeroSkill("Biara", SKILL_NECROMANCY);
-                       GiveHeroSkill("Biara", HERO_SKILL_SHRUG_DARKNESS);
-
+			GiveHeroSkill("Biara", PERK_MASTER_OF_FIRE);
+			GiveHeroSkill("Biara", PERK_MASTER_OF_ICE);
+			GiveHeroSkill("Biara", HERO_SKILL_SET_AFIRE);
+			GiveHeroSkill("Biara", SKILL_NECROMANCY);
+			GiveHeroSkill("Biara", SKILL_OFFENCE);
+			GiveHeroSkill("Biara", SKILL_NECROMANCY);
+			GiveHeroSkill("Biara", PERK_DEATH_SCREAM);
+			GiveHeroSkill("Biara", NECROMANCER_FEAT_CHILLING_STEEL);
+			GiveHeroSkill("Biara", SKILL_NECROMANCY);
+			GiveHeroSkill("Biara", HERO_SKILL_SHRUG_DARKNESS);
 			AddHeroCreatures("Biara", CREATURE_IMP, dif * 30);
 			AddHeroCreatures("Biara", CREATURE_HORNED_LEAPER, dif * 20);
 			AddHeroCreatures("Biara", CREATURE_CERBERI, dif * 15);

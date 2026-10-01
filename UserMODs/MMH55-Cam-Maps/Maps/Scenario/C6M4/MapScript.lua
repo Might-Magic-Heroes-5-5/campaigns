@@ -17,15 +17,13 @@ function H55_InitSetArtifacts()
 	H55_CamFixTooManySkills( PLAYER_1, "Zehir" );
 	H55_CamFixTooManySkills( PLAYER_1, "Godric");
 	H55_CamFixTooManySkills( PLAYER_1,  "Heam" );
-
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
 function DeployDungeonArmy()
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "deploy", nil);
 	OBJECTIVES.state.meetDungeon[2] = 1;
-	
 end
 	
 function RaelagTalks(nameHero)

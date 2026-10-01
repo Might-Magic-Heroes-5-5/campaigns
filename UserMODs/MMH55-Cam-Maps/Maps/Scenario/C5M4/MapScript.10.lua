@@ -182,7 +182,7 @@ OBJECTIVES = {
 
     prepare = function()
 		startThread( H55_InitSetArtifacts );
-		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
 		CINEMATICS.intro();
 		startThread( DIFFICULTY[GetDifficulty()] );
 		Trigger( OBJECT_TOUCH_TRIGGER, 				'Armor', 'CollectArtifact' );

@@ -20,7 +20,7 @@ startThread(H55_InitSetArtifacts);
 DIFFICULTY = {
 	[0] = function()
 		print("Difficulty level is normal");
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 10, 10, 0, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 10, 10, 0, 10000);
 		AddHeroCreatures("Agrael",CREATURE_FAMILIAR,30);
 		AddHeroCreatures("Agrael",CREATURE_HORNED_DEMON,20);
 		AddHeroCreatures("Agrael",CREATURE_HELL_HOUND,15);
@@ -30,7 +30,7 @@ DIFFICULTY = {
 	
 	[1] = function()
 		print("Difficulty level is hard");
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 5, 10, 0, 8000);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 5, 10, 0, 8000);
 		AddHeroCreatures("Agrael",CREATURE_FAMILIAR,20);
 		AddHeroCreatures("Agrael",CREATURE_HORNED_DEMON,15);
 		AddHeroCreatures("Agrael",CREATURE_HELL_HOUND,10);
@@ -44,7 +44,7 @@ DIFFICULTY = {
 	
 	[2] = function()
 		print("Difficulty level is heroic");
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 5, 5, 0, 6000);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 5, 5, 0, 6000);
 		AddHeroCreatures("Mardigo", CREATURE_ARCHANGEL, 2);
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 4);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 10);
@@ -54,7 +54,7 @@ DIFFICULTY = {
 	
 	[3] = function()
 		print("Difficulty level is impossible");
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 5, 0, 4000);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 5, 0, 4000);
 		AddHeroCreatures("Mardigo", CREATURE_ARCHANGEL, 3);
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 6);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 15);
