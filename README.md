@@ -481,7 +481,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: All enemy garrisons are significantly stronger
 
 ### C6M5 - Academy: Zehir's Hope
-- new: Added Hill Fort on the map and the player starts with 500000 gold so he can better strategise the fights.
+- new: Added Hill Fort on the map and the player starts with 500000 gold so he can swap army alternative upgrades.
 - changed: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
 - changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
 - changed: Increased Magic Wall health from 500 to 750

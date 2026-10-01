@@ -315,7 +315,7 @@ OBJECTIVES = {
 
 	prepare = function()
 		startThread(H55_InitSetArtifacts);
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 		EnableHeroAI("RedHeavenHero03", nil);
 		EnableHeroAI("RedHeavenHero02", nil); --специальный герой в горе(хозяин Медной горы), надобный токмо ради того, чтобы player2 не мог быть уничтожен игроком и корован мог ходить
 		DIFFICULTY[GetDifficulty()]();

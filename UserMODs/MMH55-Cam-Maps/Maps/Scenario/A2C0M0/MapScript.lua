@@ -133,7 +133,7 @@ AddHeroCreatures( AI_HERO, CREATURE_BATTLE_GRIFFIN, 35*diff);
 AddHeroCreatures( AI_HERO,       CREATURE_CHAMPION, 10*diff);
 AddHeroCreatures( AI_HERO,         CREATURE_SERAPH,  4*diff);
 OverrideObjectTooltipNameAndDescription( "prison", "", PATH.."Tooltip_Prison.txt");
-SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 1000+1000*(4-diff));
+H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 1000+1000*(4-diff));
 
 function PlayStartVoiceover()
 	UnlockLoopSounds();

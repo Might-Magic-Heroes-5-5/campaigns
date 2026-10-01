@@ -218,7 +218,7 @@ DIFFICULTY = {
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,60);
 		AddHeroCreatures("Berein",CREATURE_LICH,8);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,10);
-		SetPlayerStartResources( PLAYER_1, 30, 30, 10, 10, 10, 10, 12000);
+		H55c_SetCampaignResources( PLAYER_1, 30, 30, 10, 10, 10, 10, 12000);
 		C3M2_SetHikmArmy(1);
 		DifficultyFactor = 3;
 		print("Difficulty level is easy.");
@@ -233,7 +233,7 @@ DIFFICULTY = {
 		CreateMonster("shadow_dragons",CREATURE_SHADOW_DRAGON,10,108,99,0); --Near lorekeep
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,40);
 		AddHeroCreatures("Godric",CREATURE_GRIFFIN,6);
-		SetPlayerStartResources( PLAYER_1, 20, 20, 5, 5, 5, 4, 6000);
+		H55c_SetCampaignResources( PLAYER_1, 20, 20, 5, 5, 5, 4, 6000);
 		C3M2_SetHikmArmy(2);
 		DifficultyFactor = 3;
 		print("Difficulty level is normal.");
@@ -243,7 +243,7 @@ DIFFICULTY = {
 		CreateMonster("skeleton_archers",CREATURE_SKELETON_ARCHER,120,94,21,0); --magic well
 		CreateMonster("vampires",CREATURE_VAMPIRE,22,18,16,0); --Arena
 		CreateMonster("wights",CREATURE_GHOST,52,81,116,0); --Ruined Tower
-		SetPlayerStartResources( PLAYER_1, 12, 12, 3, 3, 3, 2, 2500 );
+		H55c_SetCampaignResources( PLAYER_1, 12, 12, 3, 3, 3, 2, 2500 );
 		C3M2_SetHikmArmy(3);
 		DifficultyFactor = 2;
 		print("Difficulty level is hard.");
@@ -252,8 +252,7 @@ DIFFICULTY = {
 	[3] = function()
 		TeachHeroSpell("Nur",SPELL_RESURRECT);
 		TeachHeroSpell("Nur",SPELL_PHANTOM );
-		print("Set Resource");
-		SetPlayerStartResources( PLAYER_1, 10, 10, 3, 3, 3, 2, 2000 );
+		H55c_SetCampaignResources( PLAYER_1, 10, 10, 3, 3, 3, 2, 2000 );
 		C3M2_SetHikmArmy(4);
 		DifficultyFactor = 2;
 		print("Difficulty level is heroic.");

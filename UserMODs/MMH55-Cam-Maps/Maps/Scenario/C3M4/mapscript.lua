@@ -21,7 +21,7 @@ Cyrus = "Cyrus";  --Cayrus!!!
 Berein = "Berein";
 EnableHeroAI("Cyrus",nil);
 
-SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0);	
+H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0);	
 
 local army_diff = GetDifficulty() + 1;      
 ChangeHeroStat("Cyrus", STAT_ATTACK, 3 * army_diff);

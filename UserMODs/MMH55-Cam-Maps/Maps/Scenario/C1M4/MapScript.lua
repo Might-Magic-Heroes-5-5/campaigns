@@ -210,13 +210,7 @@ OBJECTIVES = {
     end,
 
     prepare = function()
-      SetPlayerResource(PLAYER_1,   WOOD,0);
-      SetPlayerResource(PLAYER_1,    ORE,0);
-      SetPlayerResource(PLAYER_1,    GEM,0);
-      SetPlayerResource(PLAYER_1,CRYSTAL,0);
-      SetPlayerResource(PLAYER_1,MERCURY,0);
-      SetPlayerResource(PLAYER_1, SULFUR,0);
-      SetPlayerResource(PLAYER_1,   GOLD,0);
+	  H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0 );
       ally_hero_on_site = 0;
       CINEMATICS.intro()
       OpenCircleFog( 34, 161, 0, 8, PLAYER_1 );

@@ -210,8 +210,7 @@ OBJECTIVES = {
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, "OBJECTIVES._CountEnemyDefeats" );
 		Trigger( OBJECT_TOUCH_TRIGGER, "Prison", "OBJECTIVES._RescueIsabell" );
 
-	-- set player resource
-	    SetPlayerStartResources(PLAYER_1, 10, 10,  5,  5,  5,  5, 7000);
+		H55c_SetCampaignResources( PLAYER_1, 10, 10, 5, 5, 5, 5, 7000 );
 		GiveExp("Godric", 32100);
 
 	-- set ai army stats

@@ -41,16 +41,8 @@ Veyer = "Veyer"
 
 ChangeHeroStat("Jazaz", STAT_EXPERIENCE, 75000);
 ChangeHeroStat("Efion", STAT_EXPERIENCE, 75000);
-
-SetPlayerResource(1, 0, 0);
-SetPlayerResource(1, 1, 0);
-SetPlayerResource(1, 2, 0);
-SetPlayerResource(1, 3, 0);
-SetPlayerResource(1, 4, 0);
-SetPlayerResource(1, 5, 0);
-SetPlayerResource(1, 6, 1000);
+H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 1000 );
 --OpenRegionFog (1, "PALAEDRA");
-
 
 function Start_Dialog()
 StartDialogScene("/DialogScenes/C4/M5/R1/DialogScene.xdb#xpointer(/DialogScene)") 
@@ -153,64 +145,64 @@ function PrepareVeyerCombat()
     ChangeHeroStat( "Veyer",     STAT_DEFENCE, koef * 5 );
     ChangeHeroStat( "Veyer", STAT_SPELL_POWER, koef * 5 );
     
-        if koef > 1 then
-                GiveHeroSkill( "Veyer", PERK_BALLISTA );
-                GiveHeroSkill( "Veyer", SKILL_LEARNING );
-                AddHeroCreatures( "Veyer", CREATURE_IMP, 300 );
-                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 250 );
-                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
-                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL,  20 );
-                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 100);
-        end
+	if koef > 1 then
+		GiveHeroSkill( "Veyer", PERK_BALLISTA );
+		GiveHeroSkill( "Veyer", SKILL_LEARNING );
+		AddHeroCreatures( "Veyer", CREATURE_IMP, 300 );
+		AddHeroCreatures( "Veyer", CREATURE_CERBERI, 250 );
+		AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
+		AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL,  20 );
+		AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 100);
+	end
 	if koef > 2 then
 		TeachHeroSpell( "Veyer",   SPELL_BERSERK );	
 		TeachHeroSpell( "Veyer", SPELL_VAMPIRISM );
-                GiveHeroSkill( "Veyer", SKILL_LEARNING );
-                GiveHeroSkill( "Veyer", SKILL_LEARNING );
-                GiveHeroSkill( "Veyer", PERK_FIRST_AID );
-                AddHeroCreatures( "Veyer", CREATURE_IMP, 200 );
-                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 200 );
-                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
-                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
-                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
-        end
-        if koef > 3 then
-                GiveHeroSkill( "Veyer", HERO_SKILL_QUICKNESS_OF_MIND );
-                GiveHeroSkill( "Veyer", PERK_EAGLE_EYE );
-                GiveHeroSkill( "Veyer", NECROMANCER_FEAT_LAST_AID );
-                GiveHeroSkill( "Veyer", PERK_TOUGHNESS );
-               AddHeroCreatures( "Veyer", CREATURE_IMP, 100 );
-                AddHeroCreatures( "Veyer", CREATURE_CERBERI, 150 );
-                AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 40);
-                AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
-                AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
+		GiveHeroSkill( "Veyer", SKILL_LEARNING );
+		GiveHeroSkill( "Veyer", SKILL_LEARNING );
+		GiveHeroSkill( "Veyer", PERK_FIRST_AID );
+		AddHeroCreatures( "Veyer", CREATURE_IMP, 200 );
+		AddHeroCreatures( "Veyer", CREATURE_CERBERI, 200 );
+		AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 50);
+		AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
+		AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
+	end
+	if koef > 3 then
+		GiveHeroSkill( "Veyer", HERO_SKILL_QUICKNESS_OF_MIND );
+		GiveHeroSkill( "Veyer", PERK_EAGLE_EYE );
+		GiveHeroSkill( "Veyer", NECROMANCER_FEAT_LAST_AID );
+		GiveHeroSkill( "Veyer", PERK_TOUGHNESS );
+		AddHeroCreatures( "Veyer", CREATURE_IMP, 100 );
+		AddHeroCreatures( "Veyer", CREATURE_CERBERI, 150 );
+		AddHeroCreatures( "Veyer", CREATURE_FRIGHTFUL_NIGHTMARE, 40);
+		AddHeroCreatures( "Veyer", CREATURE_ARCHDEVIL, 15 );
+		AddHeroCreatures( "Veyer",CREATURE_FIRE_ELEMENTAL, 50);
 	end
 end
 
 function PObjective34()
-sleep(2);
-BlockGame();
-sleep(2);
-DeployReserveHero( "Veyer", 4, 31, GROUND );
-DeployReserveHero( "Isabell", 4, 24, GROUND );
-DeployReserveHero( "Berein", 3, 23, GROUND );
---EnableHeroAI("Veyer",nil);
-EnableHeroAI("Isabell",nil);
-EnableHeroAI("Berein",nil);   
-sleep(6);
-PrepareVeyerCombat();
-MoveHeroRealTime( "Isabell", 5, 25, GROUND );
-MoveHeroRealTime( "Berein", 4, 23, GROUND );
-sleep(2);
-SetObjectiveState('prim3',OBJECTIVE_ACTIVE); 
-SetObjectiveState('prim4',OBJECTIVE_ACTIVE);
-sleep(1);
-UnblockGame();
-sleep(2);
-startThread(PObjective3_4complete);
-startThread(PObjective3_4defead);
-ChangeHeroStat("Raelag", STAT_MOVE_POINTS, 12000);
-end;
+	sleep(2);
+	BlockGame();
+	sleep(2);
+	DeployReserveHero( "Veyer", 4, 31, GROUND );
+	DeployReserveHero( "Isabell", 4, 24, GROUND );
+	DeployReserveHero( "Berein", 3, 23, GROUND );
+	--EnableHeroAI("Veyer",nil);
+	EnableHeroAI("Isabell",nil);
+	EnableHeroAI("Berein",nil);   
+	sleep(6);
+	PrepareVeyerCombat();
+	MoveHeroRealTime( "Isabell", 5, 25, GROUND );
+	MoveHeroRealTime( "Berein", 4, 23, GROUND );
+	sleep(2);
+	SetObjectiveState('prim3',OBJECTIVE_ACTIVE); 
+	SetObjectiveState('prim4',OBJECTIVE_ACTIVE);
+	sleep(1);
+	UnblockGame();
+	sleep(2);
+	startThread(PObjective3_4complete);
+	startThread(PObjective3_4defead);
+	ChangeHeroStat("Raelag", STAT_MOVE_POINTS, 12000);
+end
 
 function PObjective3_4complete()  
 	while 1 do
@@ -248,7 +240,6 @@ function PObjective3_4defead()
 end;
 --------------------------------//Main thread//
 startThread(Start_Dialog);
---startThread(PObjective1);
 startThread(PObjective2);
 startThread(Castle_1);
 startThread(Castle_2);

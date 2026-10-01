@@ -2,36 +2,32 @@ function SetMissionDifficulty()
     state = GetDifficulty();
 
    if state == DIFFICULTY_EASY then
-    print("easy");
+    print("normal");
     dif = 0;
     exp = GetHeroStat("Raelag", STAT_EXPERIENCE)/4;
     for i,h in dang_array do
       ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
     end;
-    for a = 0,6 do
-      SetPlayerResource(PLAYER_2, a, 0);
-      SetPlayerResource(PLAYER_3, a, 0);
-    end;
+	SetPlayerStartResources( PLAYER_2, 0, 0, 0, 0, 0, 0, 0 );
+	SetPlayerStartResources( PLAYER_3, 0, 0, 0, 0, 0, 0, 0 );
     AddObjectCreatures("Raelag", CREATURE_ASSASSIN , 50);
     AddObjectCreatures("Raelag", CREATURE_BLOOD_WITCH , 30);
     AddObjectCreatures("Raelag", CREATURE_MATRIARCH , 5);
   end;
 
   if state == DIFFICULTY_NORMAL then
-    print("normal");
+    print("hard");
     dif = 0;
     exp = GetHeroStat("Raelag", STAT_EXPERIENCE)/2;
     for i,h in dang_array do
       ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
     end;
-    for a = 0,6 do
-      SetPlayerResource(PLAYER_2, a, 0);
-      SetPlayerResource(PLAYER_3, a, 0);
-    end;
+	SetPlayerStartResources( PLAYER_2, 0, 0, 0, 0, 0, 0, 0 );
+	SetPlayerStartResources( PLAYER_3, 0, 0, 0, 0, 0, 0, 0 );
   end;
 
   if state == DIFFICULTY_HARD then
-    print("Hard");
+    print("heroic");
     dif = 1;
     exp = GetHeroStat("Raelag", STAT_EXPERIENCE);
     for i,h in dang_array do
@@ -43,7 +39,7 @@ function SetMissionDifficulty()
   end;
 
   if state == DIFFICULTY_HEROIC then
-    print("Impossible");
+    print("impossible");
     dif = 2;
     exp = GetHeroStat("Raelag", STAT_EXPERIENCE) + GetHeroStat("Kelodin", STAT_EXPERIENCE);
     for i,h in dang_array do

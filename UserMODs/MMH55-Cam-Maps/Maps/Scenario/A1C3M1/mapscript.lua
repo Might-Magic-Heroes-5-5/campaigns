@@ -131,7 +131,7 @@ OBJECTIVES = {
 
     prepare = function()
 		DIFFICULTY[GetDifficulty()]();
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 		SetHeroesExpCoef( 0.5 );
 		CINEMATICS.intro();
 		SetRegionBlocked("graal", 1, PLAYER_1)

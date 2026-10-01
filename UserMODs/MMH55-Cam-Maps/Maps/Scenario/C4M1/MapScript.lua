@@ -25,45 +25,42 @@ Ferigl = "Ferigl" --> Sorgal
 Eruina = "Eruina"
 
 Heroes = {"Raelag", "Urunir", "Almegir", "Inagost", "Ohtarig", "Menel", "Ferigl", "Eruina"}
-
-----------------------------------
 timer=nil
 heroname = "Raelag"
 
-----------------------------------
-ChangeHeroStat("Eruina", STAT_EXPERIENCE, 20600);
-ChangeHeroStat("Urunir", STAT_EXPERIENCE, 14700);
+ChangeHeroStat( "Eruina", STAT_EXPERIENCE, 20600);
+ChangeHeroStat( "Urunir", STAT_EXPERIENCE, 14700);
 ChangeHeroStat("Almegir", STAT_EXPERIENCE, 20600);
 ChangeHeroStat("Inagost", STAT_EXPERIENCE, 14700);
 ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 20600);
-ChangeHeroStat("Menel", STAT_EXPERIENCE, 14700);
-ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 14700);
+ChangeHeroStat(  "Menel", STAT_EXPERIENCE, 14700);
+ChangeHeroStat( "Ferigl", STAT_EXPERIENCE, 14700);
 if koef > 0 then
-ChangeHeroStat("Eruina", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Urunir", STAT_EXPERIENCE, 5900);
-ChangeHeroStat("Almegir", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Inagost", STAT_EXPERIENCE, 5900);
-ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Menel", STAT_EXPERIENCE, 5900);
-ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 5900);
+	ChangeHeroStat( "Eruina", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat( "Urunir", STAT_EXPERIENCE, 5900);
+	ChangeHeroStat("Almegir", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat("Inagost", STAT_EXPERIENCE, 5900);
+	ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat(  "Menel", STAT_EXPERIENCE, 5900);
+	ChangeHeroStat( "Ferigl", STAT_EXPERIENCE, 5900);
 end
 if koef > 1 then
-ChangeHeroStat("Eruina", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Urunir", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Almegir", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Inagost", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Menel", STAT_EXPERIENCE, 8100);
-ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat( "Eruina", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat( "Urunir", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat("Almegir", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat("Inagost", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat(  "Menel", STAT_EXPERIENCE, 8100);
+	ChangeHeroStat( "Ferigl", STAT_EXPERIENCE, 8100);
 end
 if koef > 2 then
-ChangeHeroStat("Eruina", STAT_EXPERIENCE, 16900);
-ChangeHeroStat("Urunir", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Almegir", STAT_EXPERIENCE, 16900);
-ChangeHeroStat("Inagost", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 16900);
-ChangeHeroStat("Menel", STAT_EXPERIENCE, 11800);
-ChangeHeroStat("Ferigl", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat( "Eruina", STAT_EXPERIENCE, 16900);
+	ChangeHeroStat( "Urunir", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat("Almegir", STAT_EXPERIENCE, 16900);
+	ChangeHeroStat("Inagost", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat("Ohtarig", STAT_EXPERIENCE, 16900);
+	ChangeHeroStat(  "Menel", STAT_EXPERIENCE, 11800);
+	ChangeHeroStat( "Ferigl", STAT_EXPERIENCE, 11800);
 end
 ---------------------------------
 
