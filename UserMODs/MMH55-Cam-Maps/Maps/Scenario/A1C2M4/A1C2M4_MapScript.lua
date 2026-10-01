@@ -80,23 +80,23 @@ function A1C2M4_SetEenmyHeroesArmy(koef)
 	GiveExp("Rolf", 1 + 20000 * math.pow(2,koef));
 end
 
-	if GetDifficulty() == DIFFICULTY_EASY then
-		SetPlayerStartResources(PLAYER_1, 30, 30, 10, 10, 10, 10, 10000);
-		A1C2M4_SetEenmyHeroesArmy(1);
-		print("Difficulty level is EASY");
-	elseif GetDifficulty() == DIFFICULTY_NORMAL then
-		SetPlayerStartResources(PLAYER_1, 20, 20, 5, 5, 5, 5, 7000);
-		A1C2M4_SetEenmyHeroesArmy(2);
-		print("Difficulty level is NORMAL");
-	elseif GetDifficulty() == DIFFICULTY_HARD then
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 3000);
-		A1C2M4_SetEenmyHeroesArmy(3);
-		print("Difficulty level is HARD");
-	elseif GetDifficulty() == DIFFICULTY_HEROIC then
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
-		A1C2M4_SetEenmyHeroesArmy(4);
-		print("Difficulty level is HEROIC");
-	end
+if GetDifficulty() == DIFFICULTY_EASY then
+	H55c_SetCampaignResources(PLAYER_1, 30, 30, 10, 10, 10, 10, 10000);
+	A1C2M4_SetEenmyHeroesArmy(1);
+	print("Difficulty level is normal");
+elseif GetDifficulty() == DIFFICULTY_NORMAL then
+	H55c_SetCampaignResources(PLAYER_1, 20, 20, 5, 5, 5, 5, 7000);
+	A1C2M4_SetEenmyHeroesArmy(2);
+	print("Difficulty level is hard");
+elseif GetDifficulty() == DIFFICULTY_HARD then
+	H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 3000);
+	A1C2M4_SetEenmyHeroesArmy(3);
+	print("Difficulty level is heroic");
+elseif GetDifficulty() == DIFFICULTY_HEROIC then
+	H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
+	A1C2M4_SetEenmyHeroesArmy(4);
+	print("Difficulty level is impossible");
+end
 	
 StartAdvMapDialog( 0 );
 sleep( 3 );

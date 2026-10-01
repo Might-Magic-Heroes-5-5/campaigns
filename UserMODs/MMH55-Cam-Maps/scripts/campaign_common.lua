@@ -362,6 +362,13 @@ H55c_Log = {
 	end,
 }
 
+-- Use this function to define campaign starting resources, it overwrites defaults but include campaign bonuses
+function H55c_SetCampaignResources(player, wood, ore, gem, crystal, mercury, sulfur, gold)
+	for res, val in { wood, ore, gem, crystal, mercury, sulfur, gold } do
+		SetPlayerStartResource(player, res - 1, val);
+	end
+end
+
 ----------- Start of mission commands -----------
 
 H55_AICheatMode = 0;

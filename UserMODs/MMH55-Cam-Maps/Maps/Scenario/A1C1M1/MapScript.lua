@@ -30,9 +30,7 @@ end;
 
 StartDialogScene("/DialogScenes/A1C1/INTRO/I1/DialogScene.xdb#xpointer(/DialogScene)");
 StartDialogScene("/DialogScenes/A1C1/M1/S1/DialogScene.xdb#xpointer(/DialogScene)");
-for a = 0,6 do --- Current state of things 0
-	SetPlayerResource(PLAYER_1, a, 0);
-end;
+H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 
 SetHeroesExpCoef( 0.8 );
 DisableCameraFollowHeroes( 0, 0, 1 );

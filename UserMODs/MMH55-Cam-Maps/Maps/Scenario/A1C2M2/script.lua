@@ -43,25 +43,25 @@ end;
 function SetupDifficulty()
 	slozhnost = GetDifficulty();
 	if slozhnost == DIFFICULTY_EASY then
-		SetPlayerStartResources(PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);
+		H55c_SetCampaignResources(PLAYER_1, 20, 20, 10, 10, 10, 10, 20000);
 		attacking_army_coeff = 1.0;
 		attacker_expa = 34100;
 		town_army_coeff = 0.7;
 		attack_delay = 4;
 	elseif slozhnost == DIFFICULTY_NORMAL then
-		SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
+		H55c_SetCampaignResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);
 		attacking_army_coeff = 1.33;
 		attacker_expa = 68500;
 		town_army_coeff = 1;
 		attack_delay = 3;
 	elseif slozhnost == DIFFICULTY_HARD then
-		SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
 		attacking_army_coeff = 1.66;
 		attacker_expa = 116000;
 		town_army_coeff = 1.3;
 		attack_delay = 2;
 	elseif slozhnost == DIFFICULTY_HEROIC then
-		SetPlayerStartResources(PLAYER_1, 5, 5, 5, 5, 5, 5, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 5, 5, 5, 5, 5, 5, 10000);
 		attacking_army_coeff = 2.0;
 		attacker_expa = 200000;
 		town_army_coeff = 1.6;

@@ -198,9 +198,7 @@ OBJECTIVES = {
   end,
 
   prepare = function()
-    -- Prepare Player 1
-    SetPlayerStartResources(PLAYER_1, 0, 0,  0,  0,  0,  0, 0);
-	
+    H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
     -- Prepare Player 2 heroes
 	EnableHeroAI("Brem",nil);
 	EnableHeroAI("Godric",nil);

@@ -167,7 +167,7 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 10000);
 		Trigger (REGION_ENTER_WITHOUT_STOP_TRIGGER, 'InfernoHome', 'BringBowToInferno');
 		Trigger (OBJECT_CAPTURE_TRIGGER, 'SylvanBorder', 'ElvenCity');
 		DIFFICULTY[GetDifficulty()]();

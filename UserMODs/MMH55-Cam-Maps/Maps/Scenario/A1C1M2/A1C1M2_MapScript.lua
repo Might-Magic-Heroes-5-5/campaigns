@@ -164,54 +164,35 @@ hornedDemonFirstCombat = nil;
 demonFirstCombat = nil;
 impFirstCombat = nil;
 familiarFirstCombat = nil;
-
-
-
-print("variables defined");
-
--- Difficulty dependencies
-SetPlayerStartResource(PLAYER_1,ORE,0);
-SetPlayerStartResource(PLAYER_1,WOOD,0);
-SetPlayerStartResource(PLAYER_1,MERCURY,0);
-SetPlayerStartResource(PLAYER_1,SULFUR,0);
-SetPlayerStartResource(PLAYER_1,CRYSTAL,0);
-SetPlayerStartResource(PLAYER_1,GEM,0);
-SetPlayerStartResource(PLAYER_1,GOLD,0);
-
+H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 
 if GetDifficulty() == DIFFICULTY_EASY then
-	print("Difficulty level is EASY");
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_CAVALIER, 2);
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_GRIFFIN, 8);
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 15);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
+	print("Difficulty level is normal");
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_CAVALIER, 2);
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_GRIFFIN, 8);
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 15);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
 	DF = 1;
-else
-	if GetDifficulty() == DIFFICULTY_NORMAL then
-		print("Difficulty level is NORMAL");
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_CAVALIER, 2);
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_GRIFFIN, 8);
-		AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 15);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
-		AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
-		DF = 2;
-	else
-		if GetDifficulty() == DIFFICULTY_HARD then
-			print("Difficulty level is HARD");
-			AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 10);
-			AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
-			DF = 3;
-		else
-			if GetDifficulty() == DIFFICULTY_HEROIC then
-				print("Difficulty level is HEROIC");
-				DF = 4;
-			end;
-		end;
-	end;
-end;
+elseif GetDifficulty() == DIFFICULTY_NORMAL then
+	print("Difficulty level is hard");
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_CAVALIER, 2);
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_GRIFFIN, 8);
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 15);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_CAVALIER,3);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_GRIFFIN, 10);
+	DF = 2;
+elseif GetDifficulty() == DIFFICULTY_HARD then
+	print("Difficulty level is heroic");
+	AddHeroCreatures(OUR_HERO_FREYDA,CREATURE_LONGBOWMAN, 10);
+	AddHeroCreatures(OUR_HERO_LASZLO,CREATURE_ARCHER,50);
+	DF = 3;
+elseif GetDifficulty() == DIFFICULTY_HEROIC then
+	print("Difficulty level is impossible");
+	DF = 4;
+end
 
 DisableCameraFollowHeroes(0,1,0);
 --  #####################################  --  

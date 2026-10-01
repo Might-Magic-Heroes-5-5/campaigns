@@ -210,7 +210,7 @@ OBJECTIVES = {
 		startThread(Dialog_mage);
 		H55_NewDayTrigger = 1;
 		SetRegionBlocked("Andr_mobs", 1, PLAYER_1);
-		SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 500);
+		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 500);
 		SetObjectEnabled("h1", nil);
 		SetObjectEnabled("h2", nil);
 		SetObjectEnabled("h3", nil);

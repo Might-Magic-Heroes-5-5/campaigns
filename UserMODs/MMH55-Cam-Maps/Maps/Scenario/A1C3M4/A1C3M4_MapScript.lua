@@ -212,19 +212,19 @@ CINEMATICS = {
 
 DIFFICULTY = {
 	[0] = function()
-	    SetPlayerStartResources(PLAYER_1, 30, 30, 10, 10, 10, 10, 20000);
+	    H55c_SetCampaignResources(PLAYER_1, 30, 30, 10, 10, 10, 10, 20000);
 		setBlackDragonsQuantity(120);
 	end,
 	[1] = function()
-		SetPlayerStartResources(PLAYER_1, 25, 25, 7, 7, 7, 7, 15000);
+		H55c_SetCampaignResources(PLAYER_1, 25, 25, 7, 7, 7, 7, 15000);
 		setBlackDragonsQuantity(100);
 	end,
 	[2] = function()
-		SetPlayerStartResources(PLAYER_1, 15, 15, 5, 5, 5, 5, 10000);
+		H55c_SetCampaignResources(PLAYER_1, 15, 15, 5, 5, 5, 5, 10000);
 		setBlackDragonsQuantity(80);
 	end,
 	[3] = function()
-		SetPlayerStartResources(PLAYER_1, 10, 10, 3, 3, 3, 3, 8000);
+		H55c_SetCampaignResources(PLAYER_1, 10, 10, 3, 3, 3, 3, 8000);
 		setBlackDragonsQuantity(30);
 	end,
 }

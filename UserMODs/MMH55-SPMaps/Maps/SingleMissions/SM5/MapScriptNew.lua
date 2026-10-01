@@ -97,7 +97,7 @@ function greenquest()
 	end
 end
 
-SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 1000 * (4 - GetDifficulty()));
+H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 1000 * (4 - GetDifficulty()));
 Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "LostHero" );
 Trigger( OBJECT_TOUCH_TRIGGER , "red" , "redkey" );
 Trigger( OBJECT_TOUCH_TRIGGER , "blue" , "bluekey" );

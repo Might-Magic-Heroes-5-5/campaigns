@@ -112,13 +112,13 @@ DIFFICULTY = {
 		SetGameVar("C3M5_Difficulty","normal");
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,30);
 		AddHeroCreatures("Berein",CREATURE_MANES,8);
-        SetPlayerStartResources( PLAYER_1, 20, 20, 5, 5, 5, 5, 30000);		
+        H55c_SetCampaignResources( PLAYER_1, 20, 20, 5, 5, 5, 5, 30000);		
 		print("Difficulty level is normal");
 	end,
 	
 	[1] = function()
 		SetGameVar("C3M5_Difficulty","hard");
-        SetPlayerStartResources( PLAYER_1, 16, 16, 3, 3, 3, 3, 25000);			
+        H55c_SetCampaignResources( PLAYER_1, 16, 16, 3, 3, 3, 3, 25000);			
 		AddHeroCreatures("Berein",CREATURE_SKELETON_ARCHER,15);
 		AddHeroCreatures("Berein",CREATURE_MANES,5);
 		print("Difficulty level is hard");
@@ -127,14 +127,14 @@ DIFFICULTY = {
 	[2] = function()
 		SetGameVar("C3M5_Difficulty","heroic");
 		LoadHeroAllSetArtifacts( "Godric", "C1M5" );
-        SetPlayerStartResources( PLAYER_1, 12, 10, 1, 1, 1, 1, 20000);		
+        H55c_SetCampaignResources( PLAYER_1, 12, 10, 1, 1, 1, 1, 20000);		
 		print("Difficulty level is heroic");
 	end,
 	
 	[3] = function()
 		SetGameVar("C3M5_Difficulty","impossible");
 		LoadHeroAllSetArtifacts( "Godric", "C1M5" );
-        SetPlayerStartResources( PLAYER_1, 10, 8, 1, 1, 1, 1, 15000);		
+        H55c_SetCampaignResources( PLAYER_1, 10, 8, 1, 1, 1, 1, 15000);		
 		print("Difficulty level is impossible");
 		START_TIME_PRESSING_MONTH = 4;
 	end,

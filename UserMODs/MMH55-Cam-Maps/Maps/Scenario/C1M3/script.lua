@@ -252,13 +252,7 @@ OBJECTIVES = {
     end,
 
 	prepare = function()
-		SetPlayerStartResource(PLAYER_1,    WOOD,    6);
-		SetPlayerStartResource(PLAYER_1,     ORE,   15);
-		SetPlayerStartResource(PLAYER_1,     GEM,    3);
-		SetPlayerStartResource(PLAYER_1, CRYSTAL,    3);
-		SetPlayerStartResource(PLAYER_1, MERCURY,    3);
-		SetPlayerStartResource(PLAYER_1,  SULFUR,   60);
-		SetPlayerStartResource(PLAYER_1,    GOLD, 5000);
+		H55c_SetCampaignResources( PLAYER_1, 6, 15, 3, 3, 3, 60, 5000 );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "surprize", "BATTLES.surprize.start" );
 		EnableHeroAI( ENEMY_HERO_NAME, nil );
 		-- Game difficulty adjustment

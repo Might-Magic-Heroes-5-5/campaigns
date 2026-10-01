@@ -302,13 +302,7 @@ function dwarftown_obj1()
     if IsObjectExists("d3") == 1 then
         RemoveObject("d3");
     end
-	SetPlayerResource(PLAYER_1, WOOD, 0);
-	SetPlayerResource(PLAYER_1, ORE, 0);
-	SetPlayerResource(PLAYER_1, GEM, 0);
-	SetPlayerResource(PLAYER_1, SULFUR, 0);
-	SetPlayerResource(PLAYER_1, CRYSTAL, 0);
-	SetPlayerResource(PLAYER_1, MERCURY, 0);
-	SetPlayerResource(PLAYER_1, GOLD, 0);
+	SetPlayerStartResources(PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 	sleep( 1 );
 	OpenCircleFog(75, 97, GROUND, 8, PLAYER_1);
 	sleep( 2 );
@@ -754,13 +748,7 @@ function o1_o5()
 end;
 
 function debug()
-	SetPlayerResource(PLAYER_1,GOLD,100000);
-	SetPlayerResource(PLAYER_1,ORE,1000);
-	SetPlayerResource(PLAYER_1,WOOD,1000);
-	SetPlayerResource(PLAYER_1,MERCURY,1000);
-	SetPlayerResource(PLAYER_1,SULFUR,1000);
-	SetPlayerResource(PLAYER_1,CRYSTAL,1000);
-	SetPlayerResource(PLAYER_1,GEM,1000);
+	SetPlayerStartResources(PLAYER_1, 1000, 1000, 1000, 1000, 1000, 1000, 100000);
 	AddHeroCreatures("Freyda", 2, 100);
 	AddHeroCreatures("Freyda", 4, 80);
 	AddHeroCreatures("Freyda", 6, 50);

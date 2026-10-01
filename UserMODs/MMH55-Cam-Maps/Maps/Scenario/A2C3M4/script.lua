@@ -828,7 +828,7 @@ OBJECTIVES = {
 		BlockTownGarrisonForAI( "inf2", not nil )
 		BlockTownGarrisonForAI( "inf3", not nil )
 		BlockTownGarrisonForAI( "inf4", not nil )
-		SetPlayerStartResources( PLAYER_1, 0, 0, 0, 0, 0, 10 , 10000 );
+		H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 10, 10000 );
 		EnableHeroAI(   "Biara", nil );
 		EnableHeroAI(  "Ferigl", nil );
 		EnableHeroAI(  "Menel", nil ); -- First wave enganging fight with Zehir 

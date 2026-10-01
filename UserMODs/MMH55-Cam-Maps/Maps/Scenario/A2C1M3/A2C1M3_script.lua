@@ -193,13 +193,7 @@ AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_VINDICATOR, 17*difLevel);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LONGBOWMAN, 11*difLevel*2);
 AddHeroCreatures( ENEMY_HERO_ORLANDO, CREATURE_LANDLORD, 30*difLevel);
 ChangeHeroStat (ENEMY_HERO_ORLANDO, STAT_EXPERIENCE, 123000*difLevel);
-SetPlayerStartResource( PLAYER_1, GOLD, 15500 - difLevel*1000 );
-SetPlayerStartResource( PLAYER_1, ORE, 22 - difLevel*3 );
-SetPlayerStartResource( PLAYER_1, WOOD, 22 - difLevel*3 );
-SetPlayerStartResource( PLAYER_1, GEM, 13 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, CRYSTAL, 11 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, SULFUR, 11 - difLevel*2 );
-SetPlayerStartResource( PLAYER_1, MERCURY, 18 - difLevel*2 );
+H55c_SetCampaignResources(PLAYER_1, 22 - difLevel*3, 22 - difLevel*3, 13 - difLevel*2, 11 - difLevel*2, 11 - difLevel*2, 18 - difLevel*2, 15500 - difLevel*1000 );
 DenyAIHeroFlee( ARANTIR, not nil );
 DenyAIHeroFlee( ORNELLA, not nil );
 --------------------------------------------------------------------

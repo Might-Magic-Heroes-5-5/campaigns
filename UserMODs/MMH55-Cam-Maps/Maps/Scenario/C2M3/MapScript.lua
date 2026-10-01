@@ -18,31 +18,27 @@ H55_PlayerStatus = {0,1,2,2,2,2,2,2};
 DIFFICULTY = {
 	[0] = function()
 		print("Difficulty Level is EASY");
-		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 20);
 		AddHeroCreatures('Agrael', CREATURE_HELL_HOUND, 20);
-        SetPlayerStartResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
+        H55c_SetCampaignResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
 	end,
 	
 	[1] = function()
 		print("Difficulty Level is NORMAL");
-		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 15);
 		AddHeroCreatures('Agrael', CREATURE_FAMILIAR, 30);
-        SetPlayerStartResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
+        H55c_SetCampaignResources(PLAYER_1, 30, 30, 15, 15, 15, 15, 20000);		
 	end,
 	
 	[2] = function()
 		print("Difficulty Level is HARD");
-		OBJECTIVES.DaysToGillionActivation = 28;
 		AddHeroCreatures('Agrael', CREATURE_SUCCUBUS, 4);
-        SetPlayerStartResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);		
+        H55c_SetCampaignResources(PLAYER_1, 15, 15, 10, 10, 10, 10, 15000);		
 	end,
 	
 	[3] = function()
 		print("Difficulty Level is HEROIC");
-		OBJECTIVES.DaysToGillionActivation = 28;
-		SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
+        H55c_SetCampaignResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 10000);
 	end,
 }
 
@@ -196,7 +192,7 @@ OBJECTIVES = {
 	end,
 	
 	gilraenAcitve = 0,
-	DaysToGillionActivation = 999,
+	DaysToGillionActivation = 28,
 	defeatGillion = function()
 	-- end of this task is handled by C2M3.xdb
 		if OBJECTIVES.state.defeatGillion[2] == 1 then

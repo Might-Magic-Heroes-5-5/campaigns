@@ -327,8 +327,8 @@ OBJECTIVES = {
 		EnableHeroAI('Almegir',nil);
 		EnableHeroAI('Dalom',nil);
 
-        SetPlayerStartResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 500);
-        SetPlayerStartResources(PLAYER_3, 0, 0, 0, 0, 0, 0, 0);		
+        H55c_SetCampaignResources(PLAYER_1, 10, 10, 5, 5, 5, 5, 500);
+        SetPlayerStartResources(PLAYER_2, 0, 0, 0, 0, 0, 0, 0);		
         SetPlayerStartResources(PLAYER_3, 0, 0, 0, 0, 0, 0, 0);
 		startThread(DIFFICULTY[GetDifficulty()]);
 		startThread(dungeon_town_captured);

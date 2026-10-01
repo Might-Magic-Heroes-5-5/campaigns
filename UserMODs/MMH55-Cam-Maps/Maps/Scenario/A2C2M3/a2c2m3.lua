@@ -103,7 +103,7 @@ DIFFICULTY = {
 		AddHeroCreatures( "Gottai", CREATURE_CENTAUR, 40);
 		AddHeroCreatures( "Gottai", CREATURE_SHAMAN, 10);
 		AddHeroCreatures( "Gottai", CREATURE_GOBLIN, 60);
-		SetPlayerStartResources( PLAYER_1, 15, 15, 5, 5, 5, 5, 30000);
+		H55c_SetCampaignResources( PLAYER_1, 15, 15, 5, 5, 5, 5, 30000);
 		print("Difficulty Level is NORMAL");
 	end,
 	
@@ -113,7 +113,7 @@ DIFFICULTY = {
 		AddHeroCreatures( "Gottai", CREATURE_CENTAUR, 30);
 		AddHeroCreatures( "Gottai", CREATURE_SHAMAN, 5);
 		AddHeroCreatures( "Gottai", CREATURE_GOBLIN, 50);
-		SetPlayerStartResources( PLAYER_1, 10, 10, 3, 3, 3, 3, 25000);
+		H55c_SetCampaignResources( PLAYER_1, 10, 10, 3, 3, 3, 3, 25000);
 		GiveExp("Maeve", 58600);
 		ChangeHeroStat("Maeve", STAT_ATTACK, 5);
 		ChangeHeroStat("Maeve", STAT_DEFENCE, 5);
@@ -129,7 +129,7 @@ DIFFICULTY = {
 	
 	[2] = function()
 		difLevel = 3;
-		SetPlayerStartResources( PLAYER_1, 8, 8, 1, 1, 1, 1, 12000);
+		H55c_SetCampaignResources( PLAYER_1, 8, 8, 1, 1, 1, 1, 12000);
 		GiveExp("Maeve", 181600);
 		ChangeHeroStat("Maeve", STAT_ATTACK, 10);
 		ChangeHeroStat("Maeve", STAT_DEFENCE, 10);
@@ -145,7 +145,7 @@ DIFFICULTY = {
 	
 	[3] = function()
 		difLevel = 4;
-		SetPlayerStartResources( PLAYER_1, 5, 5, 1, 1, 1, 1, 8000);
+		H55c_SetCampaignResources( PLAYER_1, 5, 5, 1, 1, 1, 1, 8000);
 		GiveExp("Maeve", 434600);
 		ChangeHeroStat("Maeve", STAT_ATTACK, 15);
 		ChangeHeroStat("Maeve", STAT_DEFENCE, 15);
@@ -1127,7 +1127,7 @@ startThread( H55c_AI_main );
 
 function a2c2m3_dbg(var)
 	H55_Speedrun(1);
-	SetPlayerStartResources( PLAYER_1, 999, 999, 999, 999,995, 995, 3000000);
+	SetCampaignResources( PLAYER_1, 999, 999, 999, 999,995, 995, 3000000);
 	if var == 1 then
 		SetObjectPosition("Gottai", 150, 67, 0 ); -- befriend elementals
 	elseif var == 11 then
