@@ -407,10 +407,25 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Level cap raised from 14 to 18
 - change: Improved army power of some contestants (Erina, Vayshan,Yrbeth). They also scale based on difficulty.
 - change: When Raelag win the competition and take the ring he also gains 500 xp.
+- change: Starting bonus choices:
+	- Army bonus from 7 to 15 Assasins
+	- Resource bonus from 10 ore to 10 wood, 10 ore
 
 ### C4M2 – Dungeon: The Expansion
 - fix: Removed an undeground Vampire lords stack as it could not be attacked nor it guarded any treasures
 - fix: Dungeon messenger heroes sometimes stuck at top of the map and jam the secondary mission progress
+- change: Level cap raised from 24 to 28
+- change: Starting bonus choices:
+	- changed 4400 gold to 5000 gold, 10 wood, 10 ore, 5 mercury, 5 crystal, 5 sulfur and 5 gems
+	- changed Boots of the Swift Journey with Crown of Sar-Issus
+	- changed 10 Minotaur guards with 30 Blood Furies
+- change: Enemy heroes and garnisson strongholds are more challenging based on difficulty
+- change: The messenger heroes that try to call Soulscar reinforcements are more experienced on higher game difficulty
+- change: Prisoner hero Vladimir comes with a better build and more troops
+- change: town Virbeth has Trade Guild
+- change: Defeat Soulscar reinforcements now yields more experience
+- change: Shadya will spawn more experiened on higher difficulty levels and the player can choose her build instead of having a predefined one
+- change: Bonus of 3 Luck is granted to Raelag for defeating the Soulscar reinforcements instead of capturing all enemy towns
 
 ### C4M3 – Dungeon: The Cultists
 - fix: Red AI player (Inferno) heroes are now in Onslaught mode, they will charge at player towns and heroes instead of wandering around the map

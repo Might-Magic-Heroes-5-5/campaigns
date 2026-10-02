@@ -23,12 +23,12 @@ H55c_AI_CONTROLLED = {
     heroes = {},
     enemies = {},
   },
-  player2 = {          -- Blue Dungeon AI player;
+  player2 = {          -- Orange Dungeon AI player;
     state = 1,         -- AI player without specific purpose so control set to 1 (Unmanaged)
     heroes = {},
     enemies = {}
   },
-  player3 = {          -- Soulscar Reinforcements
+  player3 = {          -- Yellow Dungeon AI player - Soulscar Reinforcements
     state = 2,         -- AI player with specific purpose so control set to 2
     heroes = {},
     enemies = {
@@ -39,6 +39,74 @@ H55c_AI_CONTROLLED = {
   }
 }
 
+local diff = GetDifficulty() + 1
+GiveExp("Eruina", 10000);
+GiveExp("Almegir", 10000);
+GiveExp("Dalom", 10000);
+-- Opponents start with level 8 in normal difficulty
+if diff > 1 then
+AddObjectCreatures("post2", CREATURE_STALKER, 150);
+AddObjectCreatures("post2", CREATURE_BLOOD_WITCH_2, 45);
+
+AddObjectCreatures("post1", CREATURE_STALKER, 150);
+AddObjectCreatures("post1", CREATURE_MINOTAUR_CAPTAIN, 45);
+
+AddObjectCreatures("PrisonGuards", CREATURE_CLERIC, 5 * GetDifficulty());
+AddObjectCreatures("PrisonGuards", CREATURE_MARKSMAN, 20 * GetDifficulty());
+AddObjectCreatures("PrisonGuards", CREATURE_SWORDSMAN, 15 * GetDifficulty());
+AddObjectCreatures("PrisonGuards", CREATURE_ROYAL_GRIFFIN, 10 * GetDifficulty());
+
+GiveExp("Eruina", 14300);
+GiveExp("Almegir", 14300);
+GiveExp("Dalom", 14300);
+-- Level 13
+AddHeroCreatures("Eruina", CREATURE_ASSASSIN, 25 * GetDifficulty());
+AddHeroCreatures("Eruina", CREATURE_WITCH, 15 * GetDifficulty());
+AddHeroCreatures("Almegir", CREATURE_MINOTAUR, 6 * GetDifficulty());
+AddHeroCreatures("Almegir", CREATURE_BLOOD_WITCH, 12 * GetDifficulty());
+AddHeroCreatures("Dalom", CREATURE_MINOTAUR_KING, 5 * GetDifficulty());
+AddHeroCreatures("Dalom", CREATURE_SCOUT, 35 * GetDifficulty());
+AddHeroCreatures("Segref", CREATURE_MINOTAUR, 5 * GetDifficulty());
+AddHeroCreatures("Ohtarig", CREATURE_SCOUT, 30 * GetDifficulty());
+end
+if diff > 2 then
+AddObjectCreatures("post2", CREATURE_MINOTAUR_KING, 70);
+AddObjectCreatures("post2", CREATURE_MINOTAUR_CAPTAIN, 70);
+AddObjectCreatures("post2", CREATURE_BLOOD_WITCH_2, 45);
+AddObjectCreatures("post2", CREATURE_BLOOD_WITCH, 45);
+
+AddObjectCreatures("post1", CREATURE_MINOTAUR_KING, 45);
+AddObjectCreatures("post1", CREATURE_MINOTAUR_CAPTAIN, 45);
+AddObjectCreatures("post1", CREATURE_RAVAGER, 25);
+AddObjectCreatures("post1", CREATURE_BLACK_RIDER, 50);
+
+GiveExp("Eruina", 33100);
+GiveExp("Almegir", 33100);
+GiveExp("Dalom", 33100);
+-- Level 18
+end
+if diff > 3 then
+AddObjectCreatures("post2", CREATURE_MINOTAUR_KING, 70);
+AddObjectCreatures("post2", CREATURE_MINOTAUR_CAPTAIN, 70);
+AddObjectCreatures("post2", CREATURE_BLOOD_WITCH_2, 45);
+AddObjectCreatures("post2", CREATURE_BLOOD_WITCH, 45);
+AddObjectCreatures("post2", CREATURE_STALKER, 150);
+AddObjectCreatures("post2", CREATURE_ASSASSIN, 150);
+
+AddObjectCreatures("post1", CREATURE_ASSASSIN, 150);
+AddObjectCreatures("post1", CREATURE_MINOTAUR_KING, 45);
+AddObjectCreatures("post1", CREATURE_MINOTAUR_CAPTAIN, 45);
+AddObjectCreatures("post1", CREATURE_RAVAGER, 25);
+AddObjectCreatures("post1", CREATURE_BLACK_RIDER, 25);
+AddObjectCreatures("post1", CREATURE_STALKER, 100);
+
+GiveExp("Eruina", 81600);
+GiveExp("Almegir", 81600);
+GiveExp("Dalom", 81600);
+-- Level 23
+end
+
+
 function oracul(name)
 	if name ~= 'Raelag' then
 		MessageBox("/Maps/Scenario/C4M2/text/not_raelag.txt")	-- Another hero visits Malassa
@@ -47,7 +115,7 @@ function oracul(name)
 	if OBJECTIVES.state.visitMalassa[2] == 1 then
 		OBJECTIVES.state.visitMalassa[2] = 2;					-- Raelag visits Malassa first time
 	else
-		MessageBox("/Maps/Scenario/C4M2/text/visited.txt")		-- Raelag visits Malassa second time but nobody is home
+		MessageBox("/Maps/Scenario/C4M2/text/visited.txt")		-- Raelag visits Malassa second time but nobody is in home
 	end
 end
 
@@ -91,10 +159,10 @@ function C4M2_deployInaghost(rand)
 	DeployReserveHero('Inagost', C4M2_INAGOST_ENTRY[rand][1], C4M2_INAGOST_ENTRY[rand][2], C4M2_INAGOST_ENTRY[rand][3])
 	sleep(40);
 	k = ( GetDate(MONTH) - 1 ) * 4 + GetDate(WEEK) + GetDifficulty();
-	ChangeHeroStat( 'Inagost', STAT_EXPERIENCE, 12000 + k * 3000 )
-	AddObjectCreatures('Inagost', 	  CREATURE_ASSASSIN, 200 + random(7) + k*7 )
-	AddObjectCreatures('Inagost', 	   CREATURE_RAVAGER,  50 + random(4) + k*4 )
-	AddObjectCreatures('Inagost', 	 CREATURE_MATRIARCH,  20 + random(2) + k*2 )
+	ChangeHeroStat( 'Inagost', STAT_EXPERIENCE, k * 5000 )
+	AddObjectCreatures('Inagost', 	  CREATURE_ASSASSIN, 200 + k*10 )
+	AddObjectCreatures('Inagost', 	   CREATURE_RAVAGER,  50 + k*5 )
+	AddObjectCreatures('Inagost', 	 CREATURE_MATRIARCH,  20 + k*2 )
 	AddObjectCreatures('Inagost', CREATURE_BLACK_DRAGON,   6 + k )
 	H55c_AIAddHero('Inagost');
 end
@@ -185,7 +253,6 @@ OBJECTIVES = {
 		SetRegionBlocked("c2", 1, PLAYER_2);
 		SetRegionBlocked("c3", 1, PLAYER_2);
 		SetPlayerHeroesCountNotForHire( PLAYER_1, 4 )
-		DestroyTownBuildingToLevel( "Angkar", TOWN_BUILDING_SPECIAL_4, 0, 0 );
 		Trigger( OBJECT_CAPTURE_TRIGGER, "town1", "town_capture" )
 		Trigger( OBJECT_CAPTURE_TRIGGER, "town2", "town_capture" )
 		Trigger( OBJECT_CAPTURE_TRIGGER, "town3", "town_capture" )
@@ -215,8 +282,8 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState('prim3') == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M2" );
-				--SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M2" );
-				sleep(100)
+				SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M2" );
+				sleep(50)
 				Win();
 			end
 		end
@@ -261,7 +328,7 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE )
 			OBJECTIVES.state.captureTowns[2] = 2;
 		elseif OBJECTIVES.state.captureTowns[2] == 3 then  
-			OBJECTIVES.captureTowns_KelodinArrive = OBJECTIVES.date + 1;
+			OBJECTIVES.captureTowns_KelodinArrive = OBJECTIVES.date;
 			OBJECTIVES.state.captureTowns[2] = 4;
 		elseif OBJECTIVES.state.captureTowns[2] == 4 and OBJECTIVES.captureTowns_KelodinArrive <= OBJECTIVES.date then
 			DeployReserveHero('Kelodin', 14, 156, 1);
@@ -269,10 +336,21 @@ OBJECTIVES = {
 			sleep(20);
 			OBJECTIVES.state.isShadyaAlive[2] = 1;
 			OBJECTIVES.state.captureTowns[2] = 5;
+			local exp = GetDifficulty() + 1
+			GiveExp("Kelodin", 14700); -- level 10 as in vanilla was, but this time is the player to choice the skills to learn; 
+			-- with this method is also fixed the mana bug encountered in the past. Exps scale with the threat of the difficulty
+			if exp > 1 then 
+            GiveExp("Kelodin", 14000); -- level 14
+            end
+			if exp > 2 then
+            GiveExp("Kelodin", 19500); -- level 17
+            end		
+			if exp > 3 then
+            GiveExp("Kelodin", 33500); -- level 20
+            end			
 		end
 		
 		if GetObjectiveState('prim3') == OBJECTIVE_COMPLETED then
-			ChangeHeroStat("Raelag", STAT_LUCK, 3);  -------Oblico_Morale!
 			startThread( C4M2_DefeatEnemyHeroes );
 			CINEMATICS.captureAllTowns(); --—цена на захват всех городов клана
 			OBJECTIVES.state.captureTowns[2] = 10;
@@ -323,7 +401,8 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.destroySoulscar[2] == 2 and IsHeroAlive("Inagost") == nil then
 			CINEMATICS.destroySoulscar() --—цена когда разгромим пришедшего геро€
 			SetObjectiveState( 'sec2', OBJECTIVE_COMPLETED );
-			GiveExp( "Raelag", 3000 );
+			GiveExp( "Raelag", 10000 );
+			ChangeHeroStat("Raelag", STAT_LUCK, 3);  -------Oblico_Morale!			
 			OBJECTIVES.state.destroySoulscar[2] = 10;
 		end
 	end
