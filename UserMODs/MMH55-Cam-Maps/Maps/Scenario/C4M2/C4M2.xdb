@@ -28,15 +28,11 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>50</Count>
+						<Count>150</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WITCH</Creature>
+						<Creature>CREATURE_BLOOD_WITCH</Creature>
 						<Count>45</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>50</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -64,16 +60,16 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_SCOUT</Creature>
+						<Creature>CREATURE_ASSASSIN</Creature>
 						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_MINOTAUR</Creature>
+						<Creature>CREATURE_MINOTAUR_KING</Creature>
 						<Count>45</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_SCOUT</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_RAVAGER</Creature>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -67641,7 +67637,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Almegir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>1000</Experience>
+				<Experience>0</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MINOTAUR</Creature>
@@ -67697,7 +67693,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Eruina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>1000</Experience>
+				<Experience>0</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
@@ -67753,7 +67749,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>1000</Experience>
+				<Experience>0</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
@@ -74529,11 +74525,11 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Necropolis/Pelt.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>42000</Experience>
+						<Experience>200000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_VAMPIRE_LORD</Creature>
-								<Count>15</Count>
+								<Count>150</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs>
@@ -74542,23 +74538,31 @@
 						</artifactIDs>
 						<isUntransferable>
 							<Item>1</Item>
-							<Item>1</Item>
+							<Item>0</Item>
 						</isUntransferable>
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>4</Offence>
-							<Defence>7</Defence>
-							<Spellpower>6</Spellpower>
-							<Knowledge>4</Knowledge>
+							<Offence>10</Offence>
+							<Defence>12</Defence>
+							<Spellpower>4</Spellpower>
+							<Knowledge>5</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
-									<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
 								</Item>
 								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
-									<SkillID>HERO_SKILL_LUCK</SkillID>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>		
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>								
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 								</Item>
 								<Item>
 									<Mastery>MASTERY_EXPERT</Mastery>
@@ -74566,19 +74570,40 @@
 								</Item>
 								<Item>
 									<Mastery>MASTERY_ADVANCED</Mastery>
-									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
 								</Item>
 							</skills>
-							<perkIDs/>
+							<perkIDs>
+			                    <Item>HERO_SKILL_TOUGHNESS</Item>	
+                                <Item>HERO_SKILL_EVASION</Item>	
+                                <Item>HERO_SKILL_PROTECTION</Item>
+                                <Item>HERO_SKILL_BALLISTA</Item>
+                                <Item>HERO_SKILL_FIRST_AID</Item>
+                                <Item>HERO_SKILL_LAST_AID</Item>
+                                <Item>HERO_SKILL_FRENZY</Item>
+                                <Item>HERO_SKILL_ARCHERY</Item>
+                                <Item>HERO_SKILL_WILDFIRE</Item>
+                                <Item>HERO_SKILL_SOIL_BURN</Item>
+                                <Item>HERO_SKILL_ESTATES</Item>
+                                <Item>HERO_SKILL_GRAIL_VISION</Item>
+                                <Item>HERO_SKILL_PATHFINDING</Item>								
+							</perkIDs>		
 							<spellIDs>
 								<Item>SPELL_EARTHQUAKE</Item>
 								<Item>SPELL_HASTE</Item>
 								<Item>SPELL_CURSE</Item>
 								<Item>SPELL_SLOW</Item>
+								<Item>SPELL_FORGETFULNESS</Item>
+								<Item>SPELL_BERSERK</Item>
+								<Item>SPELL_SORROW</Item>
+								<Item>SPELL_VAMPIRISM</Item>
+								<Item>SPELL_EARTHQUAKE</Item>
+								<Item>SPELL_DISRUPTING_RAY</Item>
+								<Item>SPELL_TELEPORT</Item>							
 							</spellIDs>
 							<Ballista>true</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
 						<OverrideMask>56</OverrideMask>
@@ -74703,7 +74728,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>PrisonGuards</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Cleric.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -74736,7 +74761,7 @@
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_FOOTMAN</Creature>
+						<Creature>CREATURE_SWORDSMAN</Creature>
 						<Amount>34</Amount>
 						<Amount2>41</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -85080,7 +85105,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>24</HeroMaxLevel>
+	<HeroMaxLevel>28</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
@@ -85109,10 +85134,10 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Dungeon/Kelodin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_1</PlayerID>
-						<Experience>14700</Experience>
+						<Experience>0</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_RAVAGER</Creature>
+								<Creature>CREATURE_BLACK_RIDER</Creature>
 								<Count>20</Count>
 							</Item>
 						</armySlots>
@@ -85121,24 +85146,12 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>4</Offence>
-							<Defence>2</Defence>
-							<Spellpower>5</Spellpower>
-							<Knowledge>3</Knowledge>
-							<skills>
-								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
-									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
-								</Item>
-								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
-									<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
-								</Item>
-							</skills>
-							<perkIDs>
-								<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
-								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
-							</perkIDs>
+							<Offence>0</Offence>
+							<Defence>0</Defence>
+							<Spellpower>0</Spellpower>
+							<Knowledge>0</Knowledge>
+							<skills/>
+							<perkIDs/>
 							<spellIDs/>
 							<Ballista>false</Ballista>
 							<FirstAidTent>false</FirstAidTent>
@@ -85146,7 +85159,7 @@
 							<FavoriteEnemies/>
 						</Editable>
 						<OverrideMask>48</OverrideMask>
-						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
+						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -85228,7 +85241,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_3</PlayerID>
-						<Experience>0</Experience>
+						<Experience>10000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_ASSASSIN</Creature>
@@ -85240,13 +85253,13 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
+							<Offence>2</Offence>
+							<Defence>1</Defence>
+							<Spellpower>7</Spellpower>
+							<Knowledge>4</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
+									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
 								</Item>
 								<Item>
@@ -85258,6 +85271,7 @@
 								<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
 								<Item>HERO_SKILL_FRENZY</Item>
 								<Item>HERO_SKILL_MASTER_OF_ICE</Item>
+								<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>								
 							</perkIDs>
 							<spellIDs/>
 							<Ballista>true</Ballista>
@@ -85265,7 +85279,7 @@
 							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>36</OverrideMask>
 						<PrimarySkillMastery>MASTERY_ADVANCED</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -86789,7 +86803,6 @@
 	<isUntransferable/>
 	<AvailableHeroes>
 		<Item href="/MapObjects/Necropolis/Aberrar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Zehir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Urunir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Almegir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Itil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -86800,14 +86813,11 @@
 		<Item href="/MapObjects/Dungeon/Ohtarig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Timerkhan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Nadaur.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Sovereign.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Kelodin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Segref.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Isher.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Effig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Raelag.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Ossir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Straker.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -86834,7 +86844,6 @@
 		<Item href="/MapObjects/Preserve/Heam.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Academy/Faiz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Eruina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Erasial.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Diraya.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
