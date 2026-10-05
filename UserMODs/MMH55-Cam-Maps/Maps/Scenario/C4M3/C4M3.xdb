@@ -4853,7 +4853,7 @@
 					</Item>
 				</pointLights>
 				<Shared href="/MapObjects/Sulfur_Dune.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -4889,7 +4889,7 @@
 					</Item>
 				</pointLights>
 				<Shared href="/MapObjects/Ore_Pit.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -4925,7 +4925,7 @@
 					</Item>
 				</pointLights>
 				<Shared href="/MapObjects/Gold_Mine.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -4961,7 +4961,7 @@
 					</Item>
 				</pointLights>
 				<Shared href="/MapObjects/Crystal_Cavern.(AdvMapMineShared).xdb#xpointer(/AdvMapMineShared)"/>
-				<PlayerID>PLAYER_NONE</PlayerID>
+				<PlayerID>PLAYER_2</PlayerID>
 				<CaptureTrigger>
 					<Action>
 						<FunctionName/>
@@ -36075,66 +36075,6 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 			</AdvMapHero>
 		</Item>
-		<Item href="#n:inline(AdvMapHero)" id="item_B7C929BC-6362-4CAD-AA65-C3C168E61E3C">
-			<AdvMapHero ObjectRecordID="1001981">
-				<Pos>
-					<x>25</x>
-					<y>143</y>
-					<z>0</z>
-				</Pos>
-				<Rot>0</Rot>
-				<Floor>1</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>30</Count>
-					</Item>
-				</armySlots>
-				<artifactIDs/>
-				<isUntransferable/>
-				<Editable>
-					<NameFileRef href=""/>
-					<BiographyFileRef href=""/>
-					<Offence>1</Offence>
-					<Defence>0</Defence>
-					<Spellpower>5</Spellpower>
-					<Knowledge>4</Knowledge>
-					<skills>
-						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_LUCK</SkillID>
-						</Item>
-						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_DEFENCE</SkillID>
-						</Item>
-					</skills>
-					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
-						<Item>HERO_SKILL_RESISTANCE</Item>
-					</perkIDs>
-					<spellIDs/>
-					<Ballista>true</Ballista>
-					<FirstAidTent>true</FirstAidTent>
-					<AmmoCart>true</AmmoCart>
-					<FavoriteEnemies/>
-				</Editable>
-				<OverrideMask>120</OverrideMask>
-				<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
-				<LossTrigger>
-					<Action>
-						<FunctionName/>
-					</Action>
-				</LossTrigger>
-				<AllowQuickCombat>true</AllowQuickCombat>
-			</AdvMapHero>
-		</Item>
 		<Item href="#n:inline(AdvMapTown)" id="item_3B9C6C9E-3EBD-4F55-AB27-401D7D36A928">
 			<AdvMapTown ObjectRecordID="1002381">
 				<Pos>
@@ -36722,17 +36662,17 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_4</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
-						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -36742,53 +36682,53 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_4</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_2</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_2</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
@@ -36802,37 +36742,37 @@
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_0</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_6</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
@@ -36843,7 +36783,144 @@
 				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
-				<GarrisonHero/>
+				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_B7C929BC-6362-4CAD-AA65-C3C168E61E3C">
+					<AdvMapHero ObjectRecordID="1001981">
+						<Pos>
+							<x>25</x>
+							<y>143</y>
+							<z>0</z>
+						</Pos>
+						<Rot>0</Rot>
+						<Floor>1</Floor>
+						<Name/>
+						<CombatScript/>
+						<pointLights/>
+						<Shared href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_2</PlayerID>
+						<Experience>492000</Experience>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_ASSASSIN</Creature>
+								<Count>400</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_BLOOD_WITCH_2</Creature>
+								<Count>280</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_MINOTAUR_KING</Creature>
+								<Count>200</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_BLACK_RIDER</Creature>
+								<Count>120</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_ACIDIC_HYDRA</Creature>
+								<Count>80</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_MATRIARCH</Creature>
+								<Count>60</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_BLACK_DRAGON</Creature>
+								<Count>25</Count>
+							</Item>					
+						</armySlots>
+						<artifactIDs/>
+						<isUntransferable/>
+						<Editable>
+							<NameFileRef href=""/>
+							<BiographyFileRef href=""/>
+							<Offence>4</Offence>
+							<Defence>3</Defence>
+							<Spellpower>18</Spellpower>
+							<Knowledge>13</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SORCERY</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_NECROMANCY</SkillID>
+								</Item>						
+							</skills>
+							<perkIDs>
+								<Item>HERO_SKILL_ELITE_CASTERS</Item>
+								<Item>HERO_SKILL_LUCKY_SPELLS</Item>
+								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_DWARVEN_LUCK</Item>
+								<Item>HERO_SKILL_LUCK_OF_THE_BARBARIAN</Item>
+								<Item>HERO_SKILL_COUNTERSPELL</Item>
+								<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+								<Item>HERO_SKILL_MASTER_OF_ICE</Item>
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>
+								<Item>HERO_SKILL_EVASION</Item>
+								<Item>HERO_SKILL_DEATH_SCREAM</Item>
+								<Item>HERO_SKILL_SHRUG_DARKNESS</Item>					
+							</perkIDs>
+							<spellIDs>
+								<Item>SPELL_BERSERK</Item>
+								<Item>SPELL_SORROW</Item>
+								<Item>SPELL_VAMPIRISM</Item>
+								<Item>SPELL_DISRUPTING_RAY</Item>
+								<Item>SPELL_MASS_FORGETFULNESS</Item>
+								<Item>SPELL_MASS_PLAGUE</Item>
+								<Item>SPELL_MASS_SLOW</Item>
+								<Item>SPELL_MASS_DISRUPTING_RAY</Item>	
+								<Item>SPELL_ARMAGEDDON</Item>
+								<Item>SPELL_CHAIN_LIGHTNING</Item>
+								<Item>SPELL_FROST_RING</Item>
+								<Item>SPELL_DEEP_FREEZE</Item>
+								<Item>SPELL_IMPLOSION</Item>
+								<Item>SPELL_METEOR_SHOWER</Item>
+								<Item>SPELL_STONE_SPIKES</Item>
+								<Item>SPELL_ANIMATE_DEAD</Item>
+								<Item>SPELL_PHANTOM</Item>												
+							</spellIDs>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
+							<FavoriteEnemies/>
+						</Editable>
+						<OverrideMask>120</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
+						<LossTrigger>
+							<Action>
+								<FunctionName/>
+							</Action>
+						</LossTrigger>
+						<AllowQuickCombat>true</AllowQuickCombat>
+					</AdvMapHero>
+				</GarrisonHero>
 				<Script/>
 				<RndSource>RND_NONE</RndSource>
 				<LinkToPlayer>PLAYER_NONE</LinkToPlayer>
@@ -38919,7 +38996,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Menel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
@@ -38941,26 +39018,51 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>1</Offence>
-					<Defence>1</Defence>
-					<Spellpower>3</Spellpower>
+					<Offence>12</Offence>
+					<Defence>8</Defence>
+					<Spellpower>5</Spellpower>
 					<Knowledge>5</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_LUCK</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LOGISTICS</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_DEFENCE</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
-						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_PRAYER</Item>
+						<Item>HERO_SKILL_ESTATES</Item>
+						<Item>HERO_SKILL_PATHFINDING</Item>
+						<Item>HERO_SKILL_GRAIL_VISION</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
+						<Item>HERO_SKILL_ARCHERY</Item>
+						<Item>HERO_SKILL_WILDFIRE</Item>
+						<Item>HERO_SKILL_BALLISTA</Item>
+						<Item>HERO_SKILL_TRIPLE_BALLISTA</Item>
+						<Item>HERO_SKILL_FIRST_AID</Item>
+						<Item>HERO_SKILL_MASTER_OF_WRATH</Item>						
 					</perkIDs>
 					<spellIDs>
-						<Item>SPELL_ICE_BOLT</Item>
+						<Item>SPELL_BLIND</Item>
+						<Item>SPELL_CELESTIAL_SHIELD</Item>
+						<Item>SPELL_DISPEL</Item>
+						<Item>SPELL_MASS_DEFLECT_ARROWS</Item>
+						<Item>SPELL_DIVINE_VENGEANCE</Item>
+						<Item>SPELL_MASS_STONESKIN</Item>
+						<Item>SPELL_RESURRECT</Item>
+						<Item>SPELL_REGENERATION</Item>
+						<Item>SPELL_MAGIC_ARROW</Item>						
 					</spellIDs>
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
@@ -39667,7 +39769,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
@@ -39689,27 +39791,53 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>1</Offence>
-					<Defence>0</Defence>
-					<Spellpower>3</Spellpower>
-					<Knowledge>5</Knowledge>
+					<Offence>4</Offence>
+					<Defence>3</Defence>
+					<Spellpower>15</Spellpower>
+					<Knowledge>8</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_LUCK</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SORCERY</SkillID>
+						</Item>						
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
-						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_EMPOWERED_SPELLS</Item>
+						<Item>HERO_SKILL_ELEMENTAL_VISION</Item>
+						<Item>HERO_SKILL_ARCANE_TRAINING</Item>
+						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+						<Item>HERO_SKILL_SET_AFIRE</Item>
+						<Item>HERO_SKILL_LUCK_OF_THE_BARBARIAN</Item>
+						<Item>HERO_SKILL_INSIGHTS</Item>
+						<Item>HERO_SKILL_CHAOTIC_SPELLS</Item>	
+						<Item>HERO_SKILL_LUCKY_SPELLS</Item>
+						<Item>HERO_SKILL_RESISTANCE</Item>	
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_PROTECTION</Item>	
+						<Item>HERO_SKILL_SPELLPROOF_BONES</Item>
+						<Item>HERO_SKILL_RESISTANCE</Item>							
 					</perkIDs>
 					<spellIDs>
-						<Item>SPELL_LIGHTNING_BOLT</Item>
-					</spellIDs>
+						<Item>SPELL_ARMAGEDDON</Item>
+						<Item>SPELL_CHAIN_LIGHTNING</Item>
+						<Item>SPELL_FROST_RING</Item>
+						<Item>SPELL_DEEP_FREEZE</Item>
+						<Item>SPELL_IMPLOSION</Item>
+						<Item>SPELL_METEOR_SHOWER</Item>
+						<Item>SPELL_STONE_SPIKES</Item>
+					</spellIDs>					
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
@@ -40030,7 +40158,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Almegir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
@@ -40050,25 +40178,60 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>2</Offence>
-					<Defence>1</Defence>
-					<Spellpower>4</Spellpower>
-					<Knowledge>3</Knowledge>
+					<Offence>8</Offence>
+					<Defence>3</Defence>
+					<Spellpower>12</Spellpower>
+					<Knowledge>7</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_LUCK</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_DEFENCE</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LOGISTICS</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
+						<Item>HERO_SKILL_DEAD_LUCK</Item>
 						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
+						<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+						<Item>HERO_SKILL_INTELLIGENCE</Item>
+						<Item>HERO_SKILL_EAGLE_EYE</Item>
+						<Item>HERO_SKILL_QUICKNESS_OF_MIND</Item>
+						<Item>HERO_SKILL_MASTER_OF_ICE</Item>
+						<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
+						<Item>HERO_SKILL_DEADLY_COLD</Item>						
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+						<Item>SPELL_BERSERK</Item>
+						<Item>SPELL_SORROW</Item>
+						<Item>SPELL_VAMPIRISM</Item>
+						<Item>SPELL_DISRUPTING_RAY</Item>
+						<Item>SPELL_MASS_FORGETFULNESS</Item>
+						<Item>SPELL_MASS_PLAGUE</Item>
+						<Item>SPELL_MASS_SLOW</Item>
+						<Item>SPELL_MASS_DISRUPTING_RAY</Item>	
+						<Item>SPELL_ANIMATE_DEAD</Item>
+						<Item>SPELL_PHANTOM</Item>						
+						<Item>SPELL_ARMAGEDDON</Item>
+						<Item>SPELL_CHAIN_LIGHTNING</Item>
+						<Item>SPELL_FROST_RING</Item>
+						<Item>SPELL_DEEP_FREEZE</Item>
+						<Item>SPELL_IMPLOSION</Item>
+						<Item>SPELL_METEOR_SHOWER</Item>
+						<Item>SPELL_STONE_SPIKES</Item>					
+                    </spellIDs>						
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
@@ -40364,7 +40527,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Eruina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MATRON</Creature>
@@ -40376,25 +40539,53 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>1</Offence>
-					<Defence>1</Defence>
-					<Spellpower>5</Spellpower>
-					<Knowledge>3</Knowledge>
+					<Offence>8</Offence>
+					<Defence>3</Defence>
+					<Spellpower>12</Spellpower>
+					<Knowledge>7</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_LUCK</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_INVOCATION</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_DEFENCE</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SUMMONING_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SORCERY</SkillID>
+						</Item>						
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC</SkillID>
 						</Item>
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
+						<Item>HERO_SKILL_ELVEN_LUCK</Item>
 						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_EXPLODING_CORPSES</Item>
+						<Item>HERO_SKILL_DISTRACT</Item>
+						<Item>HERO_SKILL_ELEMENTAL_OVERKILL</Item>
+						<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
+						<Item>HERO_SKILL_FIRE_AFFINITY</Item>
+						<Item>HERO_SKILL_UNSUMMON</Item>
+						<Item>HERO_SKILL_ELITE_CASTERS</Item>
+						<Item>HERO_SKILL_INSIGHTS</Item>
+						<Item>HERO_SKILL_WISDOM</Item>
+						<Item>HERO_SKILL_CORRUPT_DESTRUCTIVE</Item>						
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+						<Item>SPELL_CONJURE_PHOENIX</Item>
+						<Item>SPELL_EARTHQUAKE</Item>
+						<Item>SPELL_LAND_MINE</Item>
+						<Item>SPELL_FIREWALL</Item>
+						<Item>SPELL_MAGIC_FIST</Item>
+						<Item>SPELL_SUMMON_ELEMENTALS</Item>
+						<Item>SPELL_WASP_SWARM</Item>
+						<Item>SPELL_ANTI_MAGIC</Item>
+						<Item>SPELL_HYPNOTIZE</Item>
+                    </spellIDs>						
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
@@ -40422,13 +40613,13 @@
 				<Name/>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Dungeon/Ferigl.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+				<Shared href="/MapObjects/Dungeon/Urunir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>5</Count>
+						<Creature>CREATURE_WITCH</Creature>
+						<Count>25</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -40436,25 +40627,54 @@
 				<Editable>
 					<NameFileRef href="name.txt"/>
 					<BiographyFileRef href=""/>
-					<Offence>2</Offence>
-					<Defence>2</Defence>
-					<Spellpower>3</Spellpower>
-					<Knowledge>3</Knowledge>
+					<Offence>12</Offence>
+					<Defence>8</Defence>
+					<Spellpower>5</Spellpower>
+					<Knowledge>5</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_LUCK</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_TRAINING</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
+						<Item>HERO_SKILL_ELVEN_LUCK</Item>
 						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_DWARVEN_LUCK</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
+						<Item>HERO_SKILL_ARCHERY</Item>
+						<Item>HERO_SKILL_RETRIBUTION</Item>
+						<Item>HERO_SKILL_EXPERT_TRAINER</Item>
+						<Item>HERO_SKILL_CRITICAL_STRIKE</Item>
+						<Item>HERO_SKILL_STUNNING_BLOW</Item>
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_TOUGHNESS</Item>
+						<Item>HERO_SKILL_PROTECTION</Item>					
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+						<Item>SPELL_BERSERK</Item>
+						<Item>SPELL_SORROW</Item>
+						<Item>SPELL_VAMPIRISM</Item>
+						<Item>SPELL_DISRUPTING_RAY</Item>
+						<Item>SPELL_MASS_FORGETFULNESS</Item>
+						<Item>SPELL_MASS_PLAGUE</Item>
+						<Item>SPELL_MASS_SLOW</Item>
+						<Item>SPELL_MASS_DISRUPTING_RAY</Item>
+						<Item>SPELL_ANIMATE_DEAD</Item>
+						<Item>SPELL_PHANTOM</Item>												
+					</spellIDs>
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
@@ -42048,7 +42268,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>dark_garrison</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -42061,30 +42281,30 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>70</Count>
+						<Count>250</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WITCH</Creature>
-						<Count>50</Count>
+						<Creature>CREATURE_BLOOD_WITCH</Creature>
+						<Count>150</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
+						<Count>100</Count>
+					</Item>
+					<Item>
+						<Creature>CREATURE_BLACK_RIDER</Creature>
 						<Count>60</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_RIDER</Creature>
+						<Creature>CREATURE_ACIDIC_HYDRA</Creature>
 						<Count>40</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_CHAOS_HYDRA</Creature>
+						<Creature>CREATURE_MATRIARCH</Creature>
 						<Count>30</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_MATRIARCH</Creature>
-						<Count>20</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DEATH_KNIGHT</Creature>
+						<Creature>CREATURE_BLACK_DRAGON</Creature>
 						<Count>10</Count>
 					</Item>
 				</armySlots>
@@ -42106,7 +42326,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Segref.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>5000</Experience>
+				<Experience>200000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SCOUT</Creature>
@@ -42118,25 +42338,55 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>1</Offence>
-					<Defence>2</Defence>
-					<Spellpower>3</Spellpower>
-					<Knowledge>4</Knowledge>
+					<Offence>4</Offence>
+					<Defence>3</Defence>
+					<Spellpower>15</Spellpower>
+					<Knowledge>8</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
-							<SkillID>HERO_SKILL_LUCK</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 						</Item>
 						<Item>
-							<Mastery>MASTERY_BASIC</Mastery>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LOGISTICS</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
+						</Item>						
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
 							<SkillID>HERO_SKILL_DEFENCE</SkillID>
 						</Item>
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SEAL_OF_PROTECTION</Item>
-						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_ELEMENTAL_OVERKILL</Item>
+						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
+						<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+						<Item>HERO_SKILL_MASTER_OF_MIND</Item>
+						<Item>HERO_SKILL_ESTATES</Item>
+						<Item>HERO_SKILL_GRAIL_VISION</Item>
+						<Item>HERO_SKILL_DISGUISE_AND_RECKON</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
+						<Item>HERO_SKILL_ARCHERY</Item>
+						<Item>HERO_SKILL_TACTICS</Item>
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_TOUGHNESS</Item>
+						<Item>HERO_SKILL_PROTECTION</Item>						
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+						<Item>SPELL_BERSERK</Item>
+						<Item>SPELL_SORROW</Item>
+						<Item>SPELL_VAMPIRISM</Item>
+						<Item>SPELL_DISRUPTING_RAY</Item>
+						<Item>SPELL_MASS_FORGETFULNESS</Item>
+						<Item>SPELL_MASS_PLAGUE</Item>
+						<Item>SPELL_MASS_SLOW</Item>
+						<Item>SPELL_MASS_DISRUPTING_RAY</Item>	
+						<Item>SPELL_ANIMATE_DEAD</Item>
+						<Item>SPELL_PHANTOM</Item>												
+                    </spellIDs>
 					<Ballista>true</Ballista>
 					<FirstAidTent>true</FirstAidTent>
 					<AmmoCart>true</AmmoCart>
@@ -42438,6 +42688,36 @@
 				</Action>
 			</EnterWithoutStopTrigger>
 		</Item>
+		<Item>
+			<Floor>1</Floor>
+			<Rect>
+				<x1>37</x1>
+				<y1>139</y1>
+				<x2>37</x2>
+				<y2>143</y2>
+			</Rect>
+			<Name>MainTownEntry</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
 	<UndergroundTerrainFileName href="UndergroundTerrain.bin"/>
@@ -42458,7 +42738,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>32</HeroMaxLevel>
+	<HeroMaxLevel>40</HeroMaxLevel>
 	<CustomTeams>true</CustomTeams>
 	<players>
 		<Item>
@@ -42541,10 +42821,10 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_3</PlayerID>
-						<Experience>0</Experience>
+						<Experience>81700</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_FAMILIAR</Creature>
+								<Creature>CREATURE_IMP</Creature>
 								<Count>18</Count>
 							</Item>
 							<Item>
@@ -42560,7 +42840,7 @@
 								<Count>16</Count>
 							</Item>
 							<Item>
-								<Creature>CREATURE_DEMON</Creature>
+								<Creature>CREATURE_HORNED_DEMON</Creature>
 								<Count>23</Count>
 							</Item>
 						</armySlots>
@@ -42569,32 +42849,62 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>7</Offence>
-							<Defence>1</Defence>
-							<Spellpower>2</Spellpower>
-							<Knowledge>5</Knowledge>
+							<Offence>12</Offence>
+							<Defence>6</Defence>
+							<Spellpower>3</Spellpower>
+							<Knowledge>4</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_ADVANCED</Mastery>
-									<SkillID>HERO_SKILL_LUCK</SkillID>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>								
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_FRENZY</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_BALLISTA</Item>
+								<Item>HERO_SKILL_FIRST_AID</Item>
+								<Item>HERO_SKILL_TOUGHNESS</Item>
+								<Item>HERO_SKILL_PROTECTION</Item>
+								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>	
+								<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+								<Item>HERO_SKILL_INTELLIGENCE</Item>							
 							</perkIDs>
 							<spellIDs>
-								<Item>SPELL_FIREWALL</Item>
-								<Item>SPELL_FIREBALL</Item>
-								<Item>SPELL_METEOR_SHOWER</Item>
-								<Item>SPELL_LAND_MINE</Item>
+						        <Item>SPELL_BERSERK</Item>
+						        <Item>SPELL_SORROW</Item>
+						        <Item>SPELL_VAMPIRISM</Item>
+						        <Item>SPELL_DISRUPTING_RAY</Item>
+						        <Item>SPELL_MASS_FORGETFULNESS</Item>
+						        <Item>SPELL_MASS_PLAGUE</Item>
+						        <Item>SPELL_MASS_SLOW</Item>
+						        <Item>SPELL_MASS_DISRUPTING_RAY</Item>
+						        <Item>SPELL_ANIMATE_DEAD</Item>
+						        <Item>SPELL_PHANTOM</Item>
 							</spellIDs>
 							<Ballista>true</Ballista>
 							<FirstAidTent>true</FirstAidTent>
 							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>24</OverrideMask>
-						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
+						<OverrideMask>48</OverrideMask>
+						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
 								<FunctionName/>
@@ -42617,10 +42927,10 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_3</PlayerID>
-						<Experience>0</Experience>
+						<Experience>167000</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_FAMILIAR</Creature>
+								<Creature>CREATURE_IMP</Creature>
 								<Count>26</Count>
 							</Item>
 							<Item>
@@ -42633,11 +42943,7 @@
 							</Item>
 							<Item>
 								<Creature>CREATURE_CERBERI</Creature>
-								<Count>15</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_HELL_HOUND</Creature>
-								<Count>20</Count>
+								<Count>35</Count>
 							</Item>
 						</armySlots>
 						<artifactIDs/>
@@ -42645,32 +42951,60 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>8</Offence>
-							<Defence>2</Defence>
-							<Spellpower>2</Spellpower>
-							<Knowledge>4</Knowledge>
+							<Offence>10</Offence>
+							<Defence>4</Defence>
+							<Spellpower>9</Spellpower>
+							<Knowledge>6</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
-									<SkillID>HERO_SKILL_LUCK</SkillID>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>								
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_DEMONIC_FIRE</Item>
+								<Item>HERO_SKILL_GATING_MASTERY</Item>
+								<Item>HERO_SKILL_CRITICAL_GATING</Item>
+								<Item>HERO_SKILL_BALLISTA</Item>
+								<Item>HERO_SKILL_TRIPLE_BALLISTA</Item>
+								<Item>HERO_SKILL_RUNIC_MACHINES</Item>
+								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>	
+								<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+								<Item>HERO_SKILL_MASTER_OF_MIND</Item>	
+								<Item>HERO_SKILL_WILDFIRE</Item>	
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_FRENZY</Item>								
 							</perkIDs>
 							<spellIDs>
-								<Item>SPELL_EARTHQUAKE</Item>
-								<Item>SPELL_FIREWALL</Item>
-								<Item>SPELL_FIREBALL</Item>
-								<Item>SPELL_METEOR_SHOWER</Item>
-								<Item>SPELL_LAND_MINE</Item>
+						        <Item>SPELL_BERSERK</Item>
+						        <Item>SPELL_SORROW</Item>
+						        <Item>SPELL_VAMPIRISM</Item>
+						        <Item>SPELL_DISRUPTING_RAY</Item>
+						        <Item>SPELL_MASS_FORGETFULNESS</Item>
+						        <Item>SPELL_MASS_PLAGUE</Item>
+						        <Item>SPELL_MASS_SLOW</Item>
+						        <Item>SPELL_MASS_DISRUPTING_RAY</Item>
+						        <Item>SPELL_ANIMATE_DEAD</Item>
+						        <Item>SPELL_PHANTOM</Item>
 							</spellIDs>
 							<Ballista>true</Ballista>
 							<FirstAidTent>true</FirstAidTent>
 							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>24</OverrideMask>
+						<OverrideMask>72</OverrideMask>
 						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -42694,10 +43028,10 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Efion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_3</PlayerID>
-						<Experience>0</Experience>
+						<Experience>343000</Experience>
 						<armySlots>
 							<Item>
-								<Creature>CREATURE_FAMILIAR</Creature>
+								<Creature>CREATURE_IMP</Creature>
 								<Count>20</Count>
 							</Item>
 							<Item>
@@ -42713,7 +43047,7 @@
 								<Count>10</Count>
 							</Item>
 							<Item>
-								<Creature>CREATURE_DEMON</Creature>
+								<Creature>CREATURE_HORNED_DEMON</Creature>
 								<Count>15</Count>
 							</Item>
 						</armySlots>
@@ -42722,31 +43056,75 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>9</Offence>
-							<Defence>1</Defence>
-							<Spellpower>2</Spellpower>
-							<Knowledge>6</Knowledge>
+							<Offence>4</Offence>
+							<Defence>3</Defence>
+							<Spellpower>15</Spellpower>
+							<Knowledge>10</Knowledge>
 							<skills>
 								<Item>
-									<Mastery>MASTERY_BASIC</Mastery>
-									<SkillID>HERO_SKILL_LUCK</SkillID>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_SORCERY</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LUCK</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_DEFENCE</SkillID>
+								</Item>									
 							</skills>
 							<perkIDs>
+								<Item>HERO_SKILL_ELITE_CASTERS</Item>
+								<Item>HERO_SKILL_PAYBACK</Item>
+								<Item>HERO_SKILL_INSIGHTS</Item>
+								<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
+								<Item>HERO_SKILL_MASTER_OF_LIGHTNINGS</Item>
+								<Item>HERO_SKILL_RUNIC_ARMOR</Item>
+								<Item>HERO_SKILL_LUCK_OF_THE_BARBARIAN</Item>	
 								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_LUCKY_SPELLS</Item>	
+								<Item>HERO_SKILL_DWARVEN_LUCK</Item>
+								<Item>HERO_SKILL_SPELLPROOF_BONES</Item>
+								<Item>HERO_SKILL_PROTECTION</Item>								
 							</perkIDs>
 							<spellIDs>
-								<Item>SPELL_EARTHQUAKE</Item>
-								<Item>SPELL_FIREWALL</Item>
-								<Item>SPELL_FIREBALL</Item>
-								<Item>SPELL_METEOR_SHOWER</Item>
+						        <Item>SPELL_BERSERK</Item>
+						        <Item>SPELL_SORROW</Item>
+						        <Item>SPELL_VAMPIRISM</Item>
+						        <Item>SPELL_DISRUPTING_RAY</Item>
+						        <Item>SPELL_MASS_FORGETFULNESS</Item>
+						        <Item>SPELL_MASS_PLAGUE</Item>
+						        <Item>SPELL_MASS_SLOW</Item>
+						        <Item>SPELL_MASS_DISRUPTING_RAY</Item>	
+						        <Item>SPELL_ANIMATE_DEAD</Item>
+						        <Item>SPELL_PHANTOM</Item>						
+						        <Item>SPELL_ARMAGEDDON</Item>
+						        <Item>SPELL_CHAIN_LIGHTNING</Item>
+						        <Item>SPELL_FROST_RING</Item>
+						        <Item>SPELL_DEEP_FREEZE</Item>
+						        <Item>SPELL_IMPLOSION</Item>
+						        <Item>SPELL_METEOR_SHOWER</Item>
+						        <Item>SPELL_STONE_SPIKES</Item>
 							</spellIDs>
 							<Ballista>true</Ballista>
 							<FirstAidTent>true</FirstAidTent>
 							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>24</OverrideMask>
+						<OverrideMask>66</OverrideMask>
 						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>

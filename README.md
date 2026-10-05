@@ -433,6 +433,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Blue AI player (Dungeon) and Red AI player (Inferno) heroes were fleeing midcombat. Now they will fight to the very end.
 - fix: multiple MMH55 script bugs frequently caused engine crash and prevented mission objectives from completion
 - fix: Shadya artifacts were not transferred from the previous mission
+- change: Enemy hero Sorgal relpaced with Yrwanna due to lore reasons (mentioned in conversations)
+- change: Level cap raised from 32 to 40
+- change: The enemy garrison is more challenging on higher game difficulty
+- change: Lethos is now town defender and has redesigned skillset, his army is more challenging on higher game difficulty. His town is also more fortified.
+- change: Graal build will be built in Sorfail on hard and imposisble difficulty
+- change: The game will start with the 4 mines around Sorfail being owned by the Soulscar player.
+- change: Other Soulscar heroes have a specific skill build which becomes more developed on higher game difficulty. They army will be more powerful as well.
 - new: Added Memory Mentor
 
 ### C4M4 – Dungeon: The March
