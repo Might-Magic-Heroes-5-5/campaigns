@@ -866,6 +866,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 ### Hate Breeds Hate (A2S3)
     - fix: Removed Tome of Destruction from vault rewards as they are part of a questline
     - fix: Fortress Military Outpost was not interactable which prevented its related secondary quest from completion
+	- change: redesign of Hangvul and Egil hero builds
 ### Agrael's Trial (A2S4)
     - change: Inferno assault behavior now scales with difficulty, with higher difficulties making enemy heroes more likely to actively hunt player heroes and towns.
     - fix: The Witch curse is correctly consumed by the next successful assault wave instead of being cleared when no new hero was deployed.
