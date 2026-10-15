@@ -95,7 +95,7 @@ BATTLES = {
 OBJECTIVES = {
 	state = { -- 0 quest is not active or managed by map.xdb, 1 quest is active, 2-9 custom states, 10 success, 11 fail
 		attackBorder 		= { "prim0", 1 },   -- Capture Nearby Garrision protected by Gillion
-		captureSylvanTowns 	= { "prim1", 0 },   -- capture all 3 Sylvan towns
+		captureSylvanTowns 	= { "prim1", 1 },   -- capture all 3 Sylvan towns
 		defeatGillion 		= { "prim2", 0 },   -- Defeat GiLean once and for all
 		destroySource		= { "prim3", 0 },   -- Destroy the source of Sylvan Magic
 		isAlive    			= { "prim4", 1 },   -- Agrael must survive
@@ -167,20 +167,16 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim0', OBJECTIVE_COMPLETED );
 			ObjectiveExp("Agrael");
 			OBJECTIVES.state.defeatGillion[2] = 1;
-			OBJECTIVES.state.captureSylvanTowns[2] = 1;
 			OBJECTIVES.state.attackBorder[2] = 10;
 		end
 	end,
 	
 	captureSylvanTowns = function()
-	-- end of this task is handled by C2M3.xdb
-		if OBJECTIVES.state.captureSylvanTowns[2] == 1 then
-			SetObjectiveState( 'prim1', OBJECTIVE_ACTIVE );
-			OBJECTIVES.state.captureSylvanTowns[2] = 2;
-		elseif OBJECTIVES.state.captureSylvanTowns[2] == 2 and (GetObjectOwner("Town1") == PLAYER_1 or GetObjectOwner("Town2") == PLAYER_1 or GetObjectOwner("Town3") == PLAYER_1 ) then
+	-- lifecycle of this task is handled by C2M3.xdb
+		if OBJECTIVES.state.captureSylvanTowns[2] == 1 and (GetObjectOwner("Town1") == PLAYER_1 or GetObjectOwner("Town2") == PLAYER_1 or GetObjectOwner("Town3") == PLAYER_1 ) then
 			CINEMATICS.captureSylvanTown();
 			OBJECTIVES.state.destroySource[2] = 1;
-			OBJECTIVES.state.captureSylvanTowns[2] = 3;
+			OBJECTIVES.state.captureSylvanTowns[2] = 10;
 		end
 	end,
 	
