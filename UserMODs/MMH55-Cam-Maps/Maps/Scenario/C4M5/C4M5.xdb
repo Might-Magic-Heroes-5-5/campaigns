@@ -39840,7 +39840,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison3</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -39905,7 +39905,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison4</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -39938,7 +39938,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison8</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -39979,7 +39979,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison6</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40020,7 +40020,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison9</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40065,7 +40065,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison7</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40106,7 +40106,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40151,7 +40151,7 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40188,7 +40188,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>inferno_garrison5</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -40246,11 +40246,11 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_CHAOS_HYDRA</Creature>
-						<Count>40</Count>
+						<Count>60</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Count>65</Count>
+						<Count>115</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -40315,12 +40315,8 @@
 				<Experience>60000</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_DEEP_DRAGON</Creature>
-						<Count>1</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>10</Count>
+						<Creature>CREATURE_RED_DRAGON</Creature>
+						<Count>3</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -46818,10 +46814,10 @@
 				</Pos>
 				<Rot>1.56903</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundW2</Name>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Inferno/Devil.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Shared href="/MapObjects/Inferno/ArchDevil.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>6</Amount>
 				<Amount2>7</Amount2>
@@ -46851,7 +46847,7 @@
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_PIT_FIEND</Creature>
+						<Creature>CREATURE_BALOR</Creature>
 						<Amount>7</Amount>
 						<Amount2>9</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -49469,7 +49465,7 @@
 				<Name/>
 				<CombatScript/>
 				<pointLights/>
-				<Shared href="/MapObjects/Dungeon/Hydra.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
+				<Shared href="/MapObjects/Dungeon/Chaos_Hydra.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>20</Amount>
 				<Amount2>0</Amount2>
@@ -49502,13 +49498,13 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>stash</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Balor.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>13</Amount>
-				<Amount2>15</Amount2>
+				<Amount>35</Amount>
+				<Amount2>35</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -49530,20 +49526,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Amount>75</Amount>
-						<Amount2>82</Amount2>
+						<Amount>150</Amount>
+						<Amount2>150</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS_SEDUCER</Creature>
-						<Amount>33</Amount>
-						<Amount2>36</Amount2>
+						<Amount>80</Amount>
+						<Amount2>80</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_NIGHTMARE</Creature>
-						<Amount>27</Amount>
-						<Amount2>30</Amount2>
+						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
+						<Amount>50</Amount>
+						<Amount2>50</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -49558,7 +49554,7 @@
 				</Pos>
 				<Rot>4.69873</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>underground_guard2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Quasit.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -49608,7 +49604,7 @@
 				</Pos>
 				<Rot>4.70976</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>underground_guard1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/HellHound.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -49635,13 +49631,13 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_FAMILIAR</Creature>
+						<Creature>CREATURE_QUASIT</Creature>
 						<Amount>323</Amount>
 						<Amount2>332</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_DEMON</Creature>
+						<Creature>CREATURE_HORNED_LEAPER</Creature>
 						<Amount>227</Amount>
 						<Amount2>235</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -49658,7 +49654,7 @@
 				</Pos>
 				<Rot>3.14607</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>frontierguard_red</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Hellmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -50799,7 +50795,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>120000</Experience>
+				<Experience>343000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
@@ -50823,21 +50819,65 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>8</Offence>
-					<Defence>6</Defence>
-					<Spellpower>11</Spellpower>
-					<Knowledge>6</Knowledge>
-					<skills/>
+					<Offence>15</Offence>
+					<Defence>8</Defence>
+					<Spellpower>4</Spellpower>
+					<Knowledge>5</Knowledge>
+					<skills>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LIGHT_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_BASIC</Mastery>
+							<SkillID>HERO_SKILL_SHATTER_SUMMONING_MAGIC</SkillID>
+						</Item>						
+					</skills>
 					<perkIDs>
+						<Item>HERO_SKILL_CRITICAL_STRIKE</Item>
+						<Item>HERO_SKILL_STUNNING_BLOW</Item>
 						<Item>HERO_SKILL_PROTECTION</Item>
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
+						<Item>HERO_SKILL_ARCHERY</Item>
+						<Item>HERO_SKILL_WILDFIRE</Item>
+						<Item>HERO_SKILL_BALLISTA</Item>
+						<Item>HERO_SKILL_FIRST_AID</Item>
+						<Item>HERO_SKILL_LAST_AID</Item>
+						<Item>HERO_SKILL_MASTER_OF_BLESSING</Item>
+						<Item>HERO_SKILL_ETERNAL_LIGHT</Item>
+						<Item>HERO_SKILL_LAST_STAND</Item>
+						<Item>HERO_SKILL_DEATH_TO_NONEXISTENT</Item>						
 					</perkIDs>
-					<spellIDs/>
+					<spellIDs>
+						<Item>SPELL_DISPEL</Item>
+						<Item>SPELL_CELESTIAL_SHIELD</Item>
+						<Item>SPELL_DIVINE_VENGEANCE</Item>
+						<Item>SPELL_STONESKIN</Item>
+						<Item>SPELL_HASTE</Item>
+						<Item>SPELL_REGENERATION</Item>
+						<Item>SPELL_RESURRECT</Item>
+						<Item>SPELL_BLOODLUST</Item>
+						<Item>SPELL_MAGIC_ARROW</Item>
+					</spellIDs>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
 					<AmmoCart>false</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
-				<OverrideMask>32</OverrideMask>
+				<OverrideMask>96</OverrideMask>
 				<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
@@ -50865,7 +50905,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>160000</Experience>
+				<Experience>343000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
@@ -50893,22 +50933,18 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>14</Offence>
-					<Defence>10</Defence>
-					<Spellpower>8</Spellpower>
+					<Offence>4</Offence>
+					<Defence>3</Defence>
+					<Spellpower>16</Spellpower>
 					<Knowledge>10</Knowledge>
 					<skills>
 						<Item>
-							<Mastery>MASTERY_ADVANCED</Mastery>
-							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_OFFENCE</SkillID>
-						</Item>
-						<Item>
-							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_DEFENCE</SkillID>
+							<SkillID>HERO_SKILL_SORCERY</SkillID>
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
@@ -50916,30 +50952,50 @@
 						</Item>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_DESTRUCTIVE_MAGIC</SkillID>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_SHATTER_DARK_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_BASIC</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
+						</Item>						
 					</skills>
 					<perkIDs>
-						<Item>HERO_SKILL_SUN_FIRE</Item>
-						<Item>HERO_SKILL_DEMONIC_FIRE</Item>
-						<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
-						<Item>HERO_SKILL_DEAD_LUCK</Item>
+						<Item>HERO_SKILL_MASTER_OF_FIRE</Item>
+						<Item>HERO_SKILL_MASTER_OF_ICE</Item>
+						<Item>HERO_SKILL_RUNIC_ARMOR</Item>
+						<Item>HERO_SKILL_INSIGHTS</Item>
+						<Item>HERO_SKILL_WISDOM</Item>
+						<Item>HERO_SKILL_PAYBACK</Item>
+						<Item>HERO_SKILL_RESISTANCE</Item>
+						<Item>HERO_SKILL_DWARVEN_LUCK</Item>
+						<Item>HERO_SKILL_LUCKY_STRIKE</Item>
+						<Item>HERO_SKILL_INTELLIGENCE</Item>
+						<Item>HERO_SKILL_QUICKNESS_OF_MIND</Item>
+						<Item>HERO_SKILL_CORRUPT_DARK</Item>
+						<Item>HERO_SKILL_WEAKEN_DARK</Item>
+						<Item>HERO_SKILL_DETAIN_DARK</Item>						
 					</perkIDs>
 					<spellIDs>
 						<Item>SPELL_DISPEL</Item>
 						<Item>SPELL_DISRUPTING_RAY</Item>
 						<Item>SPELL_MAGIC_ARROW</Item>
-						<Item>SPELL_MAGIC_FIST</Item>
-						<Item>SPELL_LIGHTNING_BOLT</Item>
+						<Item>SPELL_ARMAGEDDON</Item>
 						<Item>SPELL_CHAIN_LIGHTNING</Item>
-						<Item>SPELL_CURSE</Item>
+						<Item>SPELL_FROST_RING</Item>
+						<Item>SPELL_DEEP_FREEZE</Item>
+						<Item>SPELL_METEOR_SHOWER</Item>
+						<Item>SPELL_STONE_SPIKES</Item>						
 					</spellIDs>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
 					<AmmoCart>false</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
-				<OverrideMask>32</OverrideMask>
+				<OverrideMask>92</OverrideMask>
 				<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
@@ -50967,7 +51023,7 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>150000</Experience>
+				<Experience>343000</Experience>
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
@@ -50991,25 +51047,66 @@
 				<Editable>
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
-					<Offence>8</Offence>
-					<Defence>6</Defence>
-					<Spellpower>11</Spellpower>
-					<Knowledge>6</Knowledge>
+					<Offence>12</Offence>
+					<Defence>4</Defence>
+					<Spellpower>10</Spellpower>
+					<Knowledge>7</Knowledge>
 					<skills>
 						<Item>
 							<Mastery>MASTERY_EXPERT</Mastery>
-							<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+							<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_OFFENCE</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_DEFENCE</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_ADVANCED</Mastery>
+							<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_BASIC</Mastery>
+							<SkillID>HERO_SKILL_SHATTER_LIGHT_MAGIC</SkillID>
+						</Item>
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEARNING</SkillID>
+						</Item>		
+						<Item>
+							<Mastery>MASTERY_EXPERT</Mastery>
+							<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+						</Item>							
 					</skills>
-					<perkIDs/>
+					<perkIDs>
+						<Item>HERO_SKILL_RUNIC_MACHINES</Item>
+						<Item>HERO_SKILL_TRIPLE_BALLISTA</Item>
+						<Item>HERO_SKILL_FRENZY</Item>
+						<Item>HERO_SKILL_ARCHERY</Item>
+						<Item>HERO_SKILL_WILDFIRE</Item>
+						<Item>HERO_SKILL_EVASION</Item>
+						<Item>HERO_SKILL_TOUGHNESS</Item>
+						<Item>HERO_SKILL_PROTECTION</Item>
+						<Item>HERO_SKILL_FIRE_PROTECTION</Item>						
+					</perkIDs>
 					<spellIDs>
-						<Item>SPELL_MASS_CURSE</Item>
-						<Item>SPELL_WEAKNESS</Item>
-						<Item>SPELL_STONE_SPIKES</Item>
+						<Item>SPELL_DISPEL</Item>
+						<Item>SPELL_DISRUPTING_RAY</Item>
+						<Item>SPELL_FORGETFULNESS</Item>
+						<Item>SPELL_UNHOLY_WORD</Item>
+						<Item>SPELL_PLAGUE</Item>
 						<Item>SPELL_BERSERK</Item>
-						<Item>SPELL_BLIND</Item>
-						<Item>SPELL_HASTE</Item>
-						<Item>SPELL_STONESKIN</Item>
+						<Item>SPELL_SLOW</Item>
+						<Item>SPELL_SORROW</Item>
+						<Item>SPELL_WEAKNESS</Item>
+						<Item>SPELL_VAMPIRISM</Item>
+						<Item>SPELL_CURSE</Item>
+						<Item>SPELL_PHANTOM</Item>
+						<Item>SPELL_ANIMATE_DEAD</Item>
+						<Item>SPELL_CURSE</Item>						
 					</spellIDs>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
@@ -51039,7 +51136,7 @@
 				</Pos>
 				<Rot>1.58528</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundW1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Succubus_Seducer.xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -51066,7 +51163,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_IMP</Creature>
+						<Creature>CREATURE_QUASIT</Creature>
 						<Amount>199</Amount>
 						<Amount2>205</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -52502,7 +52599,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>west1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Pit_Spawn.xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -52558,13 +52655,13 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>west2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Balor.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>8</Amount>
-				<Amount2>10</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -52586,14 +52683,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_HELLMARE</Creature>
-						<Amount>8</Amount>
-						<Amount2>11</Amount2>
+						<Amount>40</Amount>
+						<Amount2>40</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_DEVIL</Creature>
-						<Amount>4</Amount>
-						<Amount2>5</Amount2>
+						<Creature>CREATURE_ARCHDEVIL</Creature>
+						<Amount>10</Amount>
+						<Amount2>10</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -52608,13 +52705,13 @@
 				</Pos>
 				<Rot>1.57079</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS6</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Wraith.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>7</Amount>
-				<Amount2>9</Amount2>
+				<Amount>20</Amount>
+				<Amount2>20</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -52636,20 +52733,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_GHOST</Creature>
-						<Amount>20</Amount>
-						<Amount2>25</Amount2>
+						<Amount>150</Amount>
+						<Amount2>150</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_VAMPIRE</Creature>
-						<Amount>16</Amount>
-						<Amount2>22</Amount2>
+						<Amount>100</Amount>
+						<Amount2>100</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMILICH</Creature>
-						<Amount>8</Amount>
-						<Amount2>10</Amount2>
+						<Amount>35</Amount>
+						<Amount2>35</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -52720,13 +52817,13 @@
 				</Pos>
 				<Rot>3.14623</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundW3</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Lich_Master.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>13</Amount>
-				<Amount2>15</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -52748,20 +52845,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_DISEASE_ZOMBIE</Creature>
-						<Amount>41</Amount>
-						<Amount2>48</Amount2>
+						<Amount>200</Amount>
+						<Amount2>200</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GHOST</Creature>
-						<Amount>26</Amount>
-						<Amount2>31</Amount2>
+						<Amount>150</Amount>
+						<Amount2>150</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_NOSFERATU</Creature>
-						<Amount>14</Amount>
-						<Amount2>18</Amount2>
+						<Amount>100</Amount>
+						<Amount2>100</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -53090,13 +53187,13 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>keymasterguard_red</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Infernal_Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>57</Amount>
-				<Amount2>60</Amount2>
+				<Amount>100</Amount>
+				<Amount2>100</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -53117,7 +53214,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_FAMILIAR</Creature>
+						<Creature>CREATURE_QUASIT</Creature>
 						<Amount>333</Amount>
 						<Amount2>342</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -53151,11 +53248,11 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Matriarch.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>20</Amount>
+				<Amount>25</Amount>
 				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>false</DoesNotGrow>
+				<DoesNotGrow>true</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -53556,7 +53653,7 @@
 				</Pos>
 				<Rot>1.57734</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -53583,13 +53680,13 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
+						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
 						<Amount>452</Amount>
 						<Amount2>461</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
+						<Creature>CREATURE_DISEASE_ZOMBIE</Creature>
 						<Amount>223</Amount>
 						<Amount2>231</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -53800,13 +53897,13 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>south1</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Frightful_Nightmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>14</Amount>
-				<Amount2>17</Amount2>
+				<Amount>40</Amount>
+				<Amount2>40</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -53828,8 +53925,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>25</Amount>
+						<Amount2>25</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -54599,7 +54696,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS3</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Vampire_Lord.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -54626,7 +54723,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
+						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
 						<Amount>711</Amount>
 						<Amount2>720</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -54655,7 +54752,7 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS4</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -54682,7 +54779,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
+						<Creature>CREATURE_SKELETON_ARCHER</Creature>
 						<Amount>725</Amount>
 						<Amount2>734</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -55079,13 +55176,13 @@
 				</Pos>
 				<Rot>0</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>keymasterguard_blue</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>58</Amount>
-				<Amount2>63</Amount2>
+				<Amount>250</Amount>
+				<Amount2>250</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -55107,14 +55204,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
-						<Amount>167</Amount>
-						<Amount2>175</Amount2>
+						<Amount>500</Amount>
+						<Amount2>500</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
-						<Amount>153</Amount>
-						<Amount2>161</Amount2>
+						<Creature>CREATURE_VAMPIRE_LORD</Creature>
+						<Amount>100</Amount>
+						<Amount2>100</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -55252,7 +55349,7 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>south2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Nosferatu.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -55955,13 +56052,13 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS5</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Lich_Master.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>11</Amount2>
+				<Amount>30</Amount>
+				<Amount2>30</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -55983,14 +56080,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_VAMPIRE_LORD</Creature>
-						<Amount>13</Amount>
-						<Amount2>17</Amount2>
+						<Amount>50</Amount>
+						<Amount2>50</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_WRAITH</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>20</Amount>
+						<Amount2>20</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -57601,7 +57698,7 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundW4</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Air_Elemental.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -57848,7 +57945,7 @@
 				</Pos>
 				<Rot>1.5708</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>Swift_boots</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Frightful_Nightmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -58718,7 +58815,7 @@
 				</Pos>
 				<Rot>3.14159</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>undergroundS2</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Hellmare.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
@@ -58745,7 +58842,7 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
+						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
 						<Amount>37</Amount>
 						<Amount2>42</Amount2>
 						<CustomAmount>true</CustomAmount>
@@ -59405,7 +59502,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Inferno/Veyer.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>1210000</Experience>
+						<Experience>846000</Experience>
 						<armySlots>
 							<Item>
 								<Creature>CREATURE_IMP</Creature>
@@ -59417,10 +59514,10 @@
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>12</Offence>
+							<Offence>13</Offence>
 							<Defence>6</Defence>
-							<Spellpower>8</Spellpower>
-							<Knowledge>30</Knowledge>
+							<Spellpower>11</Spellpower>
+							<Knowledge>8</Knowledge>
 							<skills>
 								<Item>
 									<Mastery>MASTERY_EXPERT</Mastery>
@@ -59442,20 +59539,37 @@
 									<Mastery>MASTERY_EXPERT</Mastery>
 									<SkillID>HERO_SKILL_OFFENCE</SkillID>
 								</Item>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_LEARNING</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_LEADERSHIP</SkillID>
+								</Item>									
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_DARK_MAGIC</SkillID>
+								</Item>
+								<Item>
+									<Mastery>MASTERY_BASIC</Mastery>
+									<SkillID>HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC</SkillID>
+								</Item>							
 							</skills>
 							<perkIDs>
-								<Item>HERO_SKILL_SUN_FIRE</Item>
-								<Item>HERO_SKILL_MASTER_OF_ICE</Item>
-								<Item>HERO_SKILL_RESISTANCE</Item>
+								<Item>HERO_SKILL_DEMONIC_FIRE</Item>
+								<Item>HERO_SKILL_DEMONIC_RETALIATION</Item>
+								<Item>HERO_SKILL_BALLISTA</Item>
+								<Item>HERO_SKILL_FIRST_AID</Item>								
 								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
 								<Item>HERO_SKILL_MASTER_OF_MIND</Item>
 								<Item>HERO_SKILL_MASTER_OF_SICKNESS</Item>
 								<Item>HERO_SKILL_PROTECTION</Item>
 								<Item>HERO_SKILL_EVASION</Item>
-								<Item>HERO_SKILL_DEMONIC_FIRE</Item>
-								<Item>HERO_SKILL_DEMONIC_RETALIATION</Item>
 								<Item>HERO_SKILL_FRENZY</Item>
 								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_CORRUPT_DESTRUCTIVE</Item>
+								<Item>HERO_SKILL_CORRUPT_DARK</Item>
 							</perkIDs>
 							<spellIDs>
 								<Item>SPELL_DISPEL</Item>

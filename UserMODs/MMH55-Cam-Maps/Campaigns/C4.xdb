@@ -191,7 +191,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>16</Count>
+						<Count>50</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -212,8 +212,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>5</Count>
+						<Creature>CREATURE_BLOOD_WITCH</Creature>
+						<Count>35</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -234,8 +234,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_MATRON</Creature>
-						<Count>2</Count>
+						<Creature>CREATURE_MATRIARCH</Creature>
+						<Count>6</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -281,7 +281,7 @@
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>RING_OF_LIGHTING_PROTECTION</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_RING_OF_CELERITY</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -301,7 +301,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_MINOTAUR</Creature>
-						<Count>8</Count>
+						<Count>15</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -323,7 +323,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_ASSASSIN</Creature>
-						<Count>14</Count>
+						<Count>30</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -369,7 +369,7 @@
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>WAYFARER_BOOTS</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_TOME_OF_LIGHT_MAGIC</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -388,8 +388,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_RIDER</Creature>
-						<Count>10</Count>
+						<Creature>CREATURE_BLACK_DRAGON</Creature>
+						<Count>5</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -413,7 +413,7 @@
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>FOUR_LEAF_CLOVER</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_LEGION_T1</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
