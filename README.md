@@ -444,6 +444,17 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C4M4 – Dungeon: The March
 - fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
+- change: Level cap changed from 40 to 99
+- change: Grawl skill build has been reworked, his stats and his army are more powerful on higher game difficulty
+- change: Reworked Raelag and Shadya starting armies based in 5.5 growth instead of vanilla 
+- change: Neutral stacks are more challenging on higher game difficulty
+- change: The stack of minotaur that can join the player has been buffed 
+- change: Starting bonus choices:
+	- changed artifact bonus Ring of lightning protection with Ring of Celerity
+	- changed army bonus Assassins from 14 to 30
+	- changed army bonus Minotaurs from 8 to 15
+- new: Raelag gets a level up when he finds the key
+- new: Raelag gets a level up when he escapes the Labyrinth
 
 ### C4M5 – Dungeon: Raelag's Offer
 - fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
