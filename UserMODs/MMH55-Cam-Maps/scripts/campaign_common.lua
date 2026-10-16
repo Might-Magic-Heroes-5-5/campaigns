@@ -151,30 +151,23 @@ end
 
 function GetExpToLevel( j )
 	local a = 1;
-	if j >= 40 then a = 40 else a = j end;
-	local sum;      --LEVEL 1 2    3    4    5    6    7    8     9     10    11    12
-	ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
-	ExpArrayLess12.n = 12;
-					--LEVEL 13    14    15    16    17    18    19    20    21    22     23     24
-	ExpArrayMore12 = {24300,28700,34100,40500,48200,57400,68500,81700,97600,116000,139000,167000};
-	ExpArrayMore12.n = 12;
-					--LEVEL 25     26     27     28     29     30     31      32      33      34      35     36     37     38     39    40 
-	ExpArrayMore25 = {200000,239000,286000,343000,411000,492000,590000,706000,846000,1010000,1210000,1450000,1740000,2080000,2500000,3000000,3600000};
-	ExpArrayMore25.n = 16;
+	if j >= 50 then a = 50 else a = j end;
+				--LEVEL 1   2    3   4    5    6    7     8     9     10    11    12
+	local ExpArrayLess12 = {0,1000,2000,3200,4600,6200,8000,10000,12200,14700,17500,20600};
+			    --LEVEL 13    14    15    16    17   18     19    20    21    22     23     24
+	local ExpArrayMore12 = {24300,28700,34100,40500,48200,57400,68500,81700,97600,116000,139000,167000};
+			    --LEVEL 25     26     27     28     29     30     31      32    33    34       35      36       37     38      39      40       41      42
+	local ExpArrayMore25 = {200000,239000,286000,343000,411000,492000,590000,706000,846000,1010000,1210000,1450000,1740000,2080000,2500000,3000000,3600000,4330000,
+	            --LEVEL 43     44       45     46      47        48       49       50      
+	                 5230000,6310000,7640000,9240000,11200000,13500000,16400000,20000000};
 
+	local sum = 0;
 	if a <= 12 then
 		sum = ExpArrayLess12[a];
+	elseif a < 25 then
+		sum = ExpArrayMore12[a - 12];
 	else
-		if a < 25 then
-			sum = ExpArrayMore12[a-12];
-		else
-			if a < 40 then
-				sum = ExpArrayMore25[a-24];
-			else
-				print("Wonderfull!!!");
-				sum = 0;
-			end
-		end
+		sum = ExpArrayMore25[a - 24];
 	end
 	print("Hero need ", sum, " experience to gain level ",a);
 	return sum;
