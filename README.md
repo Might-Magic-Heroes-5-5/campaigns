@@ -416,9 +416,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Dungeon messenger heroes sometimes stuck at top of the map and jam the secondary mission progress
 - change: Level cap raised from 24 to 28
 - change: Starting bonus choices:
-	- changed 4400 gold to 5000 gold, 10 wood, 10 ore, 5 mercury, 5 crystal, 5 sulfur and 5 gems
-	- changed Boots of the Swift Journey with Crown of Sar-Issus
-	- changed 10 Minotaur guards with 30 Blood Furies
+	- increased resource bonus from 4400 gold to 5000 gold, 10 wood, 10 ore, 5 mercury, 5 crystal, 5 sulfur and 5 gems
+	- replaced artifact bonus Boots of the Swift Journey with Crown of Sar-Issus
+	- replaced army bonus 10 Minotaur guards with 30 Blood Furies
 - change: Enemy heroes and garnisson strongholds are more challenging based on difficulty
 - change: The messenger heroes that try to call Soulscar reinforcements are more experienced on higher game difficulty
 - change: Prisoner hero Vladimir comes with a better build and more troops
@@ -450,15 +450,28 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Neutral stacks are more challenging on higher game difficulty
 - change: The stack of minotaur that can join the player has been buffed 
 - change: Starting bonus choices:
-	- changed artifact bonus Ring of lightning protection with Ring of Celerity
-	- changed army bonus Assassins from 14 to 30
-	- changed army bonus Minotaurs from 8 to 15
+	- replaced artifact bonus Ring of Lightning protection with Ring of Celerity
+	- increased army bonus Assassins from 14 to 30
+	- increased army bonus Minotaurs from 8 to 15
 - new: Raelag gets a level up when he finds the key
 - new: Raelag gets a level up when he escapes the Labyrinth
 
 ### C4M5 – Dungeon: Raelag's Offer
 - fix: an undeground Poltergeist stack is now removed as it could not be attacked nor it guarded any treasures
-- change: Veyer final fight is more challenging and scales with game difficulty
+- change: Specific neutral stacks are more challenging based on game difficulty
+- change: Raelag starting army is stronger
+- change: Raelag takes Shadya's morale, to have now 2 morale but both will not get anymore the 3k exp. This is in correlation when both Shadya and Raelag have passed through the south west garrison
+- change: Shadya starting army is now 3 red dragons instead of 10 dark riders and 1 shadow dragon
+- change: Inferno garrisons are more challenging on higher game difficulty
+- change: designed builds for main inferno heroes Marbas, Deleb and Grawl and  heroes skill builds
+- change: designed Veyer build, his army is now more challenging and scales with game difficulty
+- change: Inferno heroes Nebiros and Alastor are more skilled based on difficulty
+- change: Alastor and Nebiros will no longer share units
+- change: A stack of hydra on the map is now deep hydra 
+- change: Starting bonus choices:
+	- replaced artifact bonus Boots of the Open Road with Tome of Light Magic
+	- replaced army bonus of 10 Grim Raider with 5 black dragons
+	- replaced artifact bonus Four Leaf Clover with Scarf of the Legion
 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
@@ -882,7 +895,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - fix: Removed Unicorn Horn Bow and Treeborn Quiver from vault rewards as they are part of a questline
 	- fix(cinematics): Treant T-posing instead of having a dead posture in the intro scene
 ### Hate Breeds Hate (A2S3)
-    - fix: Removed Tome of Destruction from vault rewards as they are part of a questline
+    - fix: Removed Tome of Destruction from vault rewards as they are part of a questline light
     - fix: Fortress Military Outpost was not interactable which prevented its related secondary quest from completion
 	- change: redesign of Hangvul and Egil hero builds
 ### Agrael's Trial (A2S4)
