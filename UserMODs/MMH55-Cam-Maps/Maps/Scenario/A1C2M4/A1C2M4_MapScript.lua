@@ -10,7 +10,7 @@ function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M4");
 	LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M3" );
 	LoadHeroAllSetArtifacts(   "Duncan", "A1C1M5" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 	H55_CamFixTooManySkills( PLAYER_2,   "Duncan" );
 end
@@ -365,9 +365,7 @@ function sec_objectiveReinforceDwarves()
 end
 
 function PlayerWin()
-	while GetObjectiveState("capture_tor_hallr") ~= OBJECTIVE_COMPLETED or
-		  GetObjectiveState("find_duncan") ~= OBJECTIVE_COMPLETED or
-		  GetObjectiveState("RepulseRolf") ~= OBJECTIVE_COMPLETED do
+	while GetObjectiveState("capture_tor_hallr") ~= OBJECTIVE_COMPLETED or GetObjectiveState("find_duncan") ~= OBJECTIVE_COMPLETED or GetObjectiveState("RepulseRolf") ~= OBJECTIVE_COMPLETED do
 		sleep( 50 );
 	end
 	Win(PLAYER_1);
@@ -416,7 +414,7 @@ function reinforceRutger()
 			reinforce_day = reinforce_day + 7;
 			print("Rutger reinforcements arrived!");
 		end
-		sleep(100);
+		sleep(50);
 	end
 end
 

@@ -36,10 +36,10 @@ function showUnit(hero, object)
 	local camera = h_cameras[object];
 	BlockGame();
 	MoveCamera(camera[1], camera[2], camera[3], camera[4], camera[5], camera[6], camera[7], camera[8], camera[9]);
-	sleep( 10 );
+	sleep( 5 );
 	OpenCircleFog(camera[1], camera[2], camera[3], 3, PLAYER_1);
 	MarkObjectAsVisited(object, hero);
-	sleep( 100 );
+	sleep( 50 );
 	local x,y,level = GetObjectPosition("Shadwyn");
 	MoveCamera(x, y, level, 25, 3.14/2, 0, 1, 0, 1);
 	UnblockGame();
@@ -84,10 +84,10 @@ CINEMATICS = {
 		DeployReserveHero("Kelodin", 3, 5, GROUND);
 		while IsHeroAlive("Kelodin") == nil do sleep(10); end
 		SetObjectPosition("Kelodin", 33, 30, GROUND);
-		sleep( 80 );
+		sleep( 40 );
 		SetObjectPosition("Kelodin", 3, 5, GROUND);
 		SetObjectPosition("Thralsai", 3, 4, GROUND);
-		sleep( 30 );
+		sleep( 15 );
 		UnblockGame();
 	end,
 
@@ -174,7 +174,7 @@ OBJECTIVES = {
 				Save("autosave");
 				sleep(30);
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M1");
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

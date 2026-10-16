@@ -134,7 +134,7 @@ OBJECTIVES = {
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
 				SetObjectiveState('prim4', OBJECTIVE_COMPLETED )
 				SaveHeroAllSetArtifactsEquipped("Agrael", "C2M3");
-				sleep( 100 );
+				sleep( 50 );
 				Win();
 				return
 			end

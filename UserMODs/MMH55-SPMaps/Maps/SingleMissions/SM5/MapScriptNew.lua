@@ -14,7 +14,7 @@ function PlayerWin()
 			SetObjectiveState("HeroSurvive", OBJECTIVE_COMPLETED);
 			sleep(20);
 			SetObjectiveState("PlayerWin", OBJECTIVE_COMPLETED);
-			sleep(100);
+			sleep(50);
 			Win(0);
 			return
 		end

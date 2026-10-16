@@ -262,7 +262,7 @@ OBJECTIVES = {
 				CINEMATICS.outro();
 				sleep(20);
 				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

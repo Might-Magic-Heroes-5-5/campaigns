@@ -245,7 +245,7 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

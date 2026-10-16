@@ -133,7 +133,7 @@ OBJECTIVES = {
 
 			if GetObjectiveState("Prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("Prim3") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep( 100 );
+				sleep( 50 );
 				Win();
 				return
 			end

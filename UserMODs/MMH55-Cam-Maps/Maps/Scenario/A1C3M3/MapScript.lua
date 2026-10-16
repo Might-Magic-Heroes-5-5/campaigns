@@ -21,7 +21,7 @@ H55_RemoveTheseArtifactsFromBanks = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M3");
 	LoadHeroAllSetArtifacts( "Shadwyn" , "A1C3M2" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Shadwyn" );
 end
 
@@ -51,7 +51,7 @@ function RH_Respawn()
 	print( "Function RH_respawn has started...");
 	while 1 do
 		while GetCurrentPlayer() ~= AI_PLAYER do
-			sleep(50);
+			sleep(20);
 		end;
 		print("RH_Respawn: AI player's turn");
 		RH_dead_heroes = 0;
@@ -84,7 +84,7 @@ function RH_Respawn()
 			if RH_dead_heroes == 0 then print("All AI heroes are alive."); end;
 		end;
 		while GetCurrentPlayer() == AI_PLAYER do
-			sleep(50);
+			sleep(20);
 		end;
 		print("RH_Respawn: AI player's turn has ended");
 	end;
@@ -210,23 +210,25 @@ end
 
 function play_animation(unit1, unit2)
 	while 1 do
-		sleep(100);
-		local mover1 = nil;
-		local mover2 = nil;
-		if random(2) == 0 then
-			mover1, mover2 = unit1, unit2;
-		else
-			mover1, mover2 = unit2, unit1;
+		sleep(30);
+		if not IsObjectVisible(PLAYER_1, unit1) and not IsObjectVisible(PLAYER_1, unit2) then
+			local mover1 = nil;
+			local mover2 = nil;
+			if random(2) == 0 then
+				mover1, mover2 = unit1, unit2;
+			else
+				mover1, mover2 = unit2, unit1;
+			end
+			
+			if IsObjectExists(mover1) ~= nil then
+				PlayObjectAnimation(mover1, "attack00", ONESHOT);
+			end
+			sleep(8);
+			if IsObjectExists(mover2) ~= nil then
+				PlayObjectAnimation(mover2, "hit", ONESHOT);
+			end
+			sleep(random(60));
 		end
-		
-		if IsObjectExists(mover1) ~= nil then
-			PlayObjectAnimation(mover1, "attack00", ONESHOT);
-		end
-		sleep(12);
-		if IsObjectExists(mover2) ~= nil then
-			PlayObjectAnimation(mover2, "hit", ONESHOT);
-		end
-		sleep(random(150));
 	end
 end
 
@@ -329,7 +331,7 @@ OBJECTIVES = {
 				sleep( 60 );
 				Save("autosave");
 				CINEMATICS.outro();
-				sleep( 100 );
+				sleep( 50 );
 				Win();
 				return
 			end
