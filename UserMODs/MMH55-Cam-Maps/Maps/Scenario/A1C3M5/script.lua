@@ -141,7 +141,7 @@ function transformTroops( heroName )
 				AddHeroCreatures( heroName, 105 + (n/2), creaturesCount );
 			end
 		end
-		sleep(30);
+		sleep(20);
 	end
 	print("Hero ", heroName, " is dead. Function transformTroops terminated");
 end
@@ -285,7 +285,7 @@ function Catapult()
 			end
 			Play3DSound( "/Sounds/_(Sound)/SFX/FireballHitMono.xdb#xpointer(/Sound)", x, y, 0 );
 		end
-		sleep( 400 + random(100) );
+		sleep( 200 + random(50) );
 	end
 end
 
@@ -301,7 +301,7 @@ function Siege( counter )
 				PlayObjectAnimation( 'siege' .. counter, 'rangeattack', ONESHOT );
 			end
 		end
-		sleep( 200 + random( 100 ) );
+		sleep( 100 + random( 50 ) );
 	end
 end
 
@@ -437,9 +437,9 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				Save("autosave");
-				sleep(40);
+				sleep(20);
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

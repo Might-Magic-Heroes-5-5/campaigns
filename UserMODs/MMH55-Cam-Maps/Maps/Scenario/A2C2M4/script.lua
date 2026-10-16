@@ -95,7 +95,7 @@ function Pobeda()
 	sleep(20);
 	StartDialogScene("/DialogScenes/A2C2/M4/S2/DialogScene.xdb#xpointer(/DialogScene)"); ----///Noaia oeiaeuiay 
 	SaveHeroAllSetArtifactsEquipped( "Kujin",  "A2C2M4" );
-	sleep(100);
+	sleep(50);
 	Win();
 end
 -------------------------------------------------Andrey

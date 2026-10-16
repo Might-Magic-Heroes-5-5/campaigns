@@ -335,7 +335,7 @@ OBJECTIVES = {
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
 				startThread( Play2DSound, "/Maps/Scenario/A2C2M2/C2M2_VO4_Kujin_01sound.xdb#xpointer(/Sound)" );
 				SaveHeroAllSetArtifactsEquipped( "Kujin", "A2C2M2" );
-				sleep( 100 );
+				sleep( 50 );
 				Win();
 				return
 			end

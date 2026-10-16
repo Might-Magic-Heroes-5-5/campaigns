@@ -632,7 +632,7 @@ function StartCivilWarScene()
 	PlayObjectAnimation( "crossbowman3", "rangeattack", IDLE );
 	PlayObjectAnimation( 	 "champion", 	"attack00", IDLE );
 	PlayObjectAnimation( 	  "paladin", 	"attack00", IDLE );
-	sleep(25);
+	sleep(20);
 	Play2DSound( VOICEOVER_GOTAI_SEES_HAVEN_FIGHTING );
 	PlayObjectAnimation( 	 "champion", 	  "death", ONESHOT_STILL );
 	PlayObjectAnimation( 	  "paladin", 	   "happy", ONESHOT );
@@ -659,13 +659,13 @@ function StartCivilWarScene()
 	PlayObjectAnimation( "crossbowman3", 	   "happy", ONESHOT );
 	sleep(5);
 	PlayObjectAnimation( "footman_catapulter1", "attack00", ONESHOT );
-	sleep(25);
+	sleep(12);
 	PlayObjectAnimation( "catapult_sw_bridge_blue1", "rangeattack", ONESHOT );
 	sleep(15);
 	PlayVisualEffect( FIREBALL, '', 'boom', 76, 81, 0, 0, GROUND );
 	Play3DSound( SOUND_EFFECT_EXPLOSIVE_3D, x, y, 0);
 	PlayObjectAnimation( "footman_catapulter2", "attack00", ONESHOT );
-	sleep(25);
+	sleep(12);
 	PlayObjectAnimation( "catapult_sw_bridge_blue2", "rangeattack", ONESHOT );
 	sleep(15);
 	x,y = GetObjectPosition( "crossbowman2" );

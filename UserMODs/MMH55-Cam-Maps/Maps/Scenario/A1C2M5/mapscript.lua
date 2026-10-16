@@ -40,7 +40,7 @@ function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M5");
 	LoadHeroAllSetArtifacts( "Wulfstan", "A1C2M4" );
 	LoadHeroAllSetArtifacts(   "Duncan", "A1C2M4" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 	H55_CamFixTooManySkills( PLAYER_1,   "Duncan" );	
 end
@@ -187,8 +187,8 @@ function objective4()
 			sleep(10);
 			Loose();
 			break;
-		end;
-	sleep( 20 );
+		end
+		sleep( 20 );
 	end;	
 end;
 
@@ -199,15 +199,15 @@ function win_check()
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M5" );
 			SaveHeroAllSetArtifactsEquipped(   "Duncan", "A1C2M5" );
-			sleep(60);
+			sleep(30);
 			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
-			sleep(100);
+			sleep(50);
 			Win();
 			break;
 		end;
 	sleep( 20 );
-	end;
-end;
+	end
+end
 
 ------Laszlo Activation------
 

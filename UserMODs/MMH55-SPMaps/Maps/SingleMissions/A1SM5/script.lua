@@ -25,7 +25,7 @@ end;
 function AttackZehir()
 	BlockGame();
 	MoveCamera( 67, 69, 1, 40, 1.0, 0, 0, 0 );
-	sleep( 40 );
+	sleep( 30 );
 	PlayVisualEffect( "/Effects/_(Effect)/Spells/AnimateDead.xdb#xpointer(/Effect)", "", "", 67.5, 75.5, 0, 0, 1 );
 	sleep( 17 );
 	DeployReserveHero( "Berein", 67, 75, 1 );
@@ -39,7 +39,7 @@ function AttackZehir()
 	AddHeroCreatures( "Berein", CREATURE_DEMILICH, 5 + army_coeff * 3 * weeks );
 	AddHeroCreatures( "Berein", CREATURE_WRAITH, 3 + army_coeff * 2 * weeks );
 	AddHeroCreatures( "Berein", CREATURE_SHADOW_DRAGON, 1 + army_coeff * 1 * weeks );
-	sleep( 100 );
+	sleep( 50 );
 	MoveHeroRealTime( "Berein", GetObjectPosition( "Zehir" ) );
 	sleep( 50 );
 	UnblockGame();

@@ -287,7 +287,7 @@ DISCO = {
 		while IsObjectExists( dancerName ) ~= nil do
 			local anim = DISCO.ANIMATIONS[ random(table.length(DISCO.ANIMATIONS)) + 1 ];
 			PlayObjectAnimation( dancerName, anim, ONESHOT );
-			sleep( random(15)+50 );
+			sleep( 15 + random(15) );
 		end;
 		print("Object "..dancerName.." doesn't exist");
 	end,
@@ -296,7 +296,7 @@ DISCO = {
 		print("DiscoLights for object "..object.. " started");
 		while 1 do
 			SetObjectFlashlight( object, DISCO.Lights[ random( table.length( DISCO.Lights ))+1]);
-			sleep( random(30) );
+			sleep( 10 + random(10) );
 			ResetObjectFlashlight( object );
 		end
 	end,
@@ -337,7 +337,7 @@ CINEMATICS = {
 	playAndWait = function( id )
 		CINEMATICS.are_playing = not nil;
 		StartAdvMapDialog( id, CINEMATICS.end_play() );
-		repeat sleep(30); until CINEMATICS.are_playing == nil;
+		repeat sleep(10); until CINEMATICS.are_playing == nil;
 	end,
 		
 	end_play = function()
@@ -349,12 +349,12 @@ CINEMATICS = {
 		local x,y,floor = GetObjectPosition( "Zehir" );
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "Loose(PLAYER_1)" );
 		MoveHeroRealTime( "RedHeavenHero02", x, y, floor );
-		repeat sleep( 50 ) until IsHeroAlive( "RedHeavenHero02") == nil;
+		repeat sleep( 5 ) until IsHeroAlive( "RedHeavenHero02") == nil;
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
 		CreateMonster("tmp_zealot", CREATURE_ZEALOT, 1, 127,40,GROUND,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN,100);
-		sleep(20);
+		sleep(10);
 		CINEMATICS.playAndWait( 2 ); -- speak with the zealot after battle
-		sleep(20);
+		sleep(10);
 		SetClericOnRitePosition( CREATURE_ZEALOT, "Zehir", "tmp_zealot" );	-- Поставить клерика на место ритуала
 		UnblockGame();
 	end,
@@ -518,9 +518,6 @@ OBJECTIVES = {
 		SetGameVar( "A2C3M3_Graal", "0");
 		BlockGame();
 		GiveTransferrableArtifacts();
-		ZehirAbilitiesInit("Zehir");
-		ZehirTownInit("ZehirsTown");
-		AddTownPoint(92, 127, GROUND, 0, "summon_town_area", 15000, "landing_zone");
 		SetRegionBlocked( "landing_zone", not nil, PLAYER_1);
 		DIFFICULTY[GetDifficulty()]();
 		if GetDifficulty() ~= DIFFICULTY_EASY then
@@ -532,9 +529,9 @@ OBJECTIVES = {
 			AddObjectCreatures( "InfernoBoss", CREATURE_SUCCUBUS, 1+70*GetDifficulty() );
 			AddObjectCreatures( "InfernoBoss", CREATURE_FAMILIAR, 1+300*GetDifficulty() );
 		end
-		CINEMATICS.intro();
 		SetPlayerStartResource( PLAYER_1, CRYSTAL, 60 );
 		SetPlayerStartResource( PLAYER_1, MERCURY, 20 );
+		CINEMATICS.intro();
 		SetRegionBlocked( "garrison1", not nil, PLAYER_2 ); 
 		SetRegionBlocked( "garrison2", not nil, PLAYER_2 );
 		SetRegionBlocked( "level2_border1", not nil, PLAYER_2 ); 
@@ -571,7 +568,10 @@ OBJECTIVES = {
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_enter", "DISCO.ENTER" );
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "disco_exit", "DISCO.EXIT" );
 		Trigger( REGION_ENTER_WITHOUT_STOP_TRIGGER, "ZehirsExit", "RemoveZehirAndHisTown");
-		sleep( 10 ); -- required for PCs with faster CPUs in order to not break meetCleric() cinematics.
+		--sleep( 10 ); -- required for PCs with faster CPUs in order to not break meetCleric() cinematics.
+		ZehirAbilitiesInit("Zehir");
+		ZehirTownInit("ZehirsTown");
+		AddTownPoint(92, 127, GROUND, 0, "summon_town_area", 15000, "landing_zone");
 		UnblockGame();
 	end,
 	
@@ -593,7 +593,7 @@ OBJECTIVES = {
 			if GetObjectiveState("prim5_CaptureDeamonMainTown") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Freyda", "A2C3M2");
 				SaveHeroAllSetArtifactsEquipped( "Duncan", "A2C3M2");
-				sleep( 200 );
+				sleep( 50 );
 				Win();
 				return
 			end
@@ -803,7 +803,7 @@ function a2c3m2_dbg( var )
 		IsClericJoined("Zehir", "cleric");
 		IsClericJoined("Zehir", "priest");
 		GiveArtefact("Zehir", 53);
-		SetObjectPosition("Zehir", 98, 118, 0 );
+		SetObjectPosition("Zehir", 98, 118, 0, 1 );
 	elseif var == 2 then
 		MakeTownMovable("ZehirsTown");
 		OBJECTIVES.state.performRite[2] = 7;

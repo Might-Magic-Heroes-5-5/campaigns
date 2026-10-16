@@ -580,7 +580,7 @@ OBJECTIVES = {
 			if GetObjectiveState("OBJECTIVE_PRI_01") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_03") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_PRI_04") == OBJECTIVE_COMPLETED and GetObjectiveState("OBJECTIVE_SEC_04") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
 				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

@@ -233,7 +233,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M4");
 				Save("scene2");
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end
