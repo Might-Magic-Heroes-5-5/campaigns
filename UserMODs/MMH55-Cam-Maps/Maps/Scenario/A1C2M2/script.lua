@@ -9,7 +9,7 @@ end
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M2");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M1" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 end;
 
@@ -109,7 +109,7 @@ function DwellingCaptured( oldowner, newowner )
 	if cnt < 6 then
 		return
 	end;
-	sleep( 30 );
+	sleep( 15 );
 	SetObjectiveState( 'prim2', OBJECTIVE_COMPLETED );
 	SetObjectiveState( 'prim3', OBJECTIVE_ACTIVE );
 	if attack_delay == 0 then
@@ -127,14 +127,14 @@ end;
 
 function A1C2M2_set_enemy_army()
 	DeployReserveHero( ENEMY_HERO, 22, 3, 0 );
-	sleep(30);
+	sleep(15);
 	GiveExp( ENEMY_HERO, attacker_expa );
 	AddHeroCreatures( ENEMY_HERO, CREATURE_CHAMPION, 		35  * attacking_army_coeff);
 	AddHeroCreatures( ENEMY_HERO, CREATURE_ZEALOT,			60  * attacking_army_coeff);
 	AddHeroCreatures( ENEMY_HERO, CREATURE_BATTLE_GRIFFIN, 	80  * attacking_army_coeff);
 	AddHeroCreatures( ENEMY_HERO, CREATURE_VINDICATOR, 		250 * attacking_army_coeff);
 	AddHeroCreatures( ENEMY_HERO, CREATURE_LONGBOWMAN, 		300 * attacking_army_coeff);
-	sleep(10);
+	sleep(5);
 end
 
 function H55_ThrTriggerDaily()
@@ -153,7 +153,7 @@ function H55_FrtTriggerDaily()
 	if IsHeroAlive( ENEMY_HERO ) == nil then
 		SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M2");
 		StartDialogScene( "/DialogScenes/A1C2/M2/S1/DialogScene.xdb#xpointer(/DialogScene)" );
-		sleep( 40 );
+		sleep( 20 );
 		SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
 		sleep( 20 );
 		Win();

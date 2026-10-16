@@ -192,9 +192,9 @@ CINEMATICS = {
 	
 	findDragonStart = function()
 		MoveCamera(124,13,UNDERGROUND,30,0.6,3.14,0,0);
-		sleep(60);
+		sleep(30);
 		OpenCircleFog(123,16,UNDERGROUND,12,PLAYER_1);
-		sleep(120);
+		sleep(60);
 		MoveCamera(83,15,UNDERGROUND,50,1.4,0,0,0);
 		UnblockGame();
     end,
@@ -273,7 +273,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("DefeatThralsai") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M4");
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end
@@ -285,7 +285,7 @@ OBJECTIVES = {
 		if OBJECTIVES.state.defeatThralsai[2] == 1 and ( AreEnemyHeroesDefeated() ~= nil or OBJECTIVES.state.findDragon[2] == 10 ) then
 			MessageBox("Maps/Scenario/A1C3M4/MsgBox_ThralsaiApproaching.txt");
 			DeployReserveHero( "Thralsai", 5, 105, UNDERGROUND);
-			sleep(50);
+			sleep(30);
 			local coef = GetDifficulty() + 1;
 			AddHeroCreatures( "Thralsai",      CREATURE_ASSASSIN, 600 + coef*300 );
 			AddHeroCreatures( "Thralsai",   CREATURE_BLOOD_WITCH, 350 + coef*250 );

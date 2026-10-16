@@ -17,7 +17,7 @@ H55_RemoveTheseArtifactsFromBanks = {
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C1M1");
-end;
+end
 
 startThread(H55_InitSetArtifacts);
 
@@ -25,8 +25,8 @@ AddHeroCreaturesOld = AddHeroCreatures;
 AddHeroCreatures = function( hero, creature, num )
 	if num >= 1 then
 		AddHeroCreaturesOld( hero, creature, num );
-	end;
-end;
+	end
+end
 
 StartDialogScene("/DialogScenes/A1C1/INTRO/I1/DialogScene.xdb#xpointer(/DialogScene)");
 StartDialogScene("/DialogScenes/A1C1/M1/S1/DialogScene.xdb#xpointer(/DialogScene)");
@@ -37,7 +37,7 @@ DisableCameraFollowHeroes( 0, 0, 1 );
 MoveHeroRealTime( "Caldwell_DSU", 74, 18, 0 );
 while GetObjectPosition( "Caldwell_DSU" ) > 74 do
 	sleep( 1 );
-end;
+end
 RemoveObject( "Caldwell_DSU" );
 DisableCameraFollowHeroes( 0, 0, 0 );
 ---------------------------------------------------------------------
@@ -137,7 +137,7 @@ if GetDifficulty() == DIFFICULTY_EASY then
 	AddHeroCreatures(PlayerHero2, CREATURE_CAVALIER, 8);
 	sleep (1);
 	RemoveObjectCreatures(PlayerHero2, CREATURE_MILITIAMAN, 10);
-end;
+end
 
 if GetDifficulty() == DIFFICULTY_NORMAL then
 	diff = 1;
@@ -158,7 +158,7 @@ if GetDifficulty() == DIFFICULTY_NORMAL then
 	AddHeroCreatures(PlayerHero2, CREATURE_CAVALIER, 6);
 	sleep (1);
 	RemoveObjectCreatures(PlayerHero2, CREATURE_MILITIAMAN, 10);
-end;
+end
 
 if GetDifficulty() == DIFFICULTY_HARD then
 	diff = 2;
@@ -175,7 +175,7 @@ if GetDifficulty() == DIFFICULTY_HARD then
 	AddHeroCreatures(PlayerHero2, CREATURE_ROYAL_GRIFFIN, 20);
 	AddHeroCreatures(PlayerHero2, CREATURE_CLERIC, 10);
 	AddHeroCreatures(PlayerHero2, CREATURE_PALADIN, 4);
-end;
+end
 
 if GetDifficulty() == DIFFICULTY_HEROIC then
 	diff = 3;
@@ -192,7 +192,7 @@ if GetDifficulty() == DIFFICULTY_HEROIC then
 	AddHeroCreatures(PlayerHero2, CREATURE_ROYAL_GRIFFIN, 15);
 	AddHeroCreatures(PlayerHero2, CREATURE_CLERIC, 7);
 	AddHeroCreatures(PlayerHero2, CREATURE_PALADIN, 3);
-end;
+end
 
 AddObjectCreatures("rh1", 106, 99- 6*diff);
 AddObjectCreatures("rh2", 106, 99- 6*diff);
@@ -210,17 +210,17 @@ function Start_count() -- We are filling the air with angry shouts
 		for id = 1,12 do
 			if GetObjectCreatures(rebel_array[num], id) > 0 then
 				id_creature = id;
-			end;
-		end;
+			end
+		end
 		rebel_array_numbers [num] = GetObjectCreatures(rebel_array[num], id_creature); -- default value
 		rebel_array_final [num] = rebel_array_numbers [num]*(2 + diff*0.5); -- threshold value
 		rebel_array_Names [num] = id_creature; 
-	end;
-end;
+	end
+end
 
 for f = 1,8 do -- We are installing triggers on all farms
 	Trigger(OBJECT_CAPTURE_TRIGGER, farm_array[f] ,"secondary1");
-end;
+end
 
 --- We are hanging off the elf's ambushes.
 Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush4" ,"diff_ambush");
@@ -228,7 +228,7 @@ Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush30" ,"diff_ambush1");
 
 for f = 1,9 do -- вешаем триггеры на простые эльфийские засады
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, elf_ambush_array[f] ,"ambush");
-end;
+end
 
 H55_NewDayTrigger = 1;
 -- Trigger(NEW_DAY_TRIGGER , "rebels_count"); --- Триггер на наступление нового дн
@@ -254,9 +254,9 @@ function militia() --- В случае уничтожения первого отряда милиции открываются р
 			OpenCircleFog(x, y, z, 10 , PLAYER_1);
 			SetObjectiveState("sec2", OBJECTIVE_ACTIVE);
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function Treants() --- Месаджбокс про гвардов
 	while 1 do
@@ -264,9 +264,9 @@ function Treants() --- Месаджбокс про гвардов
 		if IsObjectExists("treant") == nil then
 			MessageBox ("/Maps/Scenario/A1C1M1/messagebox5.txt" );
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function elfdruids_kill() --- В случае уничтожения друидов снимаются все триггеры эльфийских засад
 	while 1 do
@@ -277,35 +277,35 @@ function elfdruids_kill() --- В случае уничтожения друидов снимаются все триггер
 				SetObjectEnabled("questqiver", nil);
 				Trigger(OBJECT_TOUCH_TRIGGER, "questqiver", "quest");
 			--	SetObjectiveState( "elfdruids", OBJECTIVE_COMPLETED );
-			end;
+			end
 
 			for ef = 1,9 do -- снимаем триггеры с простых эльфийских засад
 				Trigger(REGION_ENTER_AND_STOP_TRIGGER, elf_ambush_array[ef] , nil);
-			end;
+			end
 			for fm = 1,8 do -- снимаем триггеры с ферм
 				Trigger(OBJECT_CAPTURE_TRIGGER, farm_array[fm] ,nil);
-			end;
+			end
 			--if GetObjectiveState("sec1") ~= OBJECTIVE_COMPLETED then --- Если обжектив не закомпличен то делаем его не видимым
 			--	SetObjectiveVisible("sec1", nil);
-			--end;
+			--end
 			if IsHeroAlive(EnemyHero1) == not nil then --- Если 1ый эльфийский герой на карте то убираем его
 				RemoveObject(EnemyHero1);
-			end;
+			end
 			if IsHeroAlive(EnemyHero2) == not nil then --- Если 2ой эльфийский герой на карте то убираем его
 				RemoveObject(EnemyHero2);
-			end;
+			end
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush30" ,nil);
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush4" ,nil);
 			SetRegionBlocked("super_ambush20", nil, PLAYER_1);
 			SetRegionBlocked("super_ambush3", nil, PLAYER_1);
 			break;
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function quest()
-	ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox11.txt", "questqiver", -1, 3.0);
-end;
+	ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox11.txt", "questqiver", -1, 8.0);
+end
 
 ---------------------------------------------------------------------
 ----------------------- ГЛАВНЫЕ ФУНКЦИОНАЛЫ -------------------------
@@ -316,7 +316,7 @@ function H55_TriggerDaily() --Очищаем массивы от убитых кричей
 	if GetDate(ABSOLUTE_DAY) == 2 and haven_obj == 0 then --- Основной способ запуска обжектива Про РЕд Хавен Трупс на 1 день 2ой недели
 		startThread(red_haven_obj);
 		Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "haven_trigger", nil);
-	end;
+	end
 	local j=1 --индекс временного массива
 	local a={}
 	local b={}
@@ -331,22 +331,22 @@ function H55_TriggerDaily() --Очищаем массивы от убитых кричей
 			c[j]=rebel_array_final[num];
 			d[j]=rebel_array_Names[num];
 			j=j+1;
-		end;
-	end;
+		end
+	end
 --	print ("j = ",j);
 	if j < 2 then
 		if removed_rebels <= 16 then
 			SetObjectiveState("sec2", OBJECTIVE_COMPLETED );
 		else
 			SetObjectiveState("sec2", OBJECTIVE_FAILED );
-		end;
+		end
 		H55_NewDayTrigger = 0;
 		H55_SecNewDayTrigger = 1;
 		--Trigger(NEW_DAY_TRIGGER , "dezertiren"); --- Снимаем Триггер на наступление нового дня и перевешиваем его на другую функцию
 		return
 	else
 --		print ("lenght massive = ",table.length(rebel_array));
-	end;
+	end
 	rebel_array = {}
 	rebel_array_numbers = {}
 	rebel_array_final = {}
@@ -357,21 +357,21 @@ function H55_TriggerDaily() --Очищаем массивы от убитых кричей
 	rebel_array_Names = d
 	sleep (1);
 	startThread(Training); -- Добавляем кричей в стеки на карте
-end;
+end
 
 function H55_SecTriggerDaily()
 	startThread(dezert);
-end;
+end
 
 function Training() --- Функция рассчета прироста мятежных кричей
 	for t = 1,7 do
 		RND = random(table.length(rebel_array))+1;
 		Creatures_Add = GetObjectCreatures(rebel_array[RND], rebel_array_Names[RND])/5;
 		AddObjectCreatures(rebel_array[RND], rebel_array_Names[RND], Creatures_Add);
-	end;
+	end
 	sleep (1);
 	startThread(Teleport); -- Телепортим кричи которые накопили максимум
-end;
+end
 
 function Teleport() --- Функция телепорта накопившихся кричей и увеличени армий мятежных лордов
 	rnd_lord = random(2);
@@ -392,9 +392,9 @@ function Teleport() --- Функция телепорта накопившихся кричей и увеличени армий 
 						rnd_lord = 0;
 					else
 						return ---- Если оба лорда убиты просто выходим из функции
-					end;
-				end;
-			end;
+					end
+				end
+			end
 			if rnd_lord == 1 then
 				x,y,z = RegionToPoint('NewRecrut1');
 ---				MoveCamera( x, y, z, 17, 0, 0, 0, 1 ); -- придвинуть камеру без поворотов
@@ -407,36 +407,35 @@ function Teleport() --- Функция телепорта накопившихся кричей и увеличени армий 
 ---				CreateMob("Fake", rebel_array_Names[num1], rebel_array_numbers[num1], x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
 				cr_id = rebel_array_Names[num1] + 1;
 				c_tier_array [cr_id] = c_tier_array [cr_id] + (rebel_array_numbers[num1]*(0.2 + diff*0.03));
-			end;
+			end
 			sleep (1);
-		end;
-	end;
+		end
+	end
 	sleep (1);
-end;
+end
 
-Trigger(REGION_ENTER_AND_STOP_TRIGGER , "archers1", "ambush1"); --- Реализация засады эльфийских стрелков на страте миссии
-Trigger(REGION_ENTER_AND_STOP_TRIGGER , "archers2", "ambush1");
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, "archers1", "ambush1"); --- Реализация засады эльфийских стрелков на страте миссии
+Trigger(REGION_ENTER_AND_STOP_TRIGGER, "archers2", "ambush1");
 function ambush1( HeroName )
 	startThread(ambush, HeroName);
 	StartDialogScene("/DialogScenes/A1C1/M1/S2/DialogScene.xdb#xpointer(/DialogScene)");
 	RazeBuilding("Destroy");
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER , "archers1", nil);
-	Trigger(REGION_ENTER_AND_STOP_TRIGGER , "archers2", nil);
-	sleep (3);
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "archers1", nil);
+	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "archers2", nil);
 	SetObjectiveState("sec1", OBJECTIVE_ACTIVE);
-	sleep (5);
+	sleep(15);
 	BlockGame();
 	for n_farm = 1,8 do
 		x,y,z = GetObjectPosition( farm_array [n_farm] );
-		OpenCircleFog(x, y, z, 5 , PLAYER_1);
-		sleep (4);
+		OpenCircleFog(x, y, z, 5, PLAYER_1);
+		sleep(6);
 		MoveCamera( x, y, z, 0, 0, 0, 1, 1, 1 );
-	end;
-	sleep( 4 );
+		sleep(25);
+	end
 	x, y, z = GetObjectPosition( PlayerHero1 );
 	MoveCamera( x, y, z, 0, 0, 0, 1, 1, 1 );
 	UnblockGame();
-end;
+end
 
 function secondary1()-- Подсчет захваченых ферм
 	_week = GetDate( WEEK ) + (GetDate( MONTH ) - 1) * 4 - 1;
@@ -448,12 +447,12 @@ function secondary1()-- Подсчет захваченых ферм
 		else
 			farm_owner = 1;
 			break;
-		end;
-	end;
+		end
+	end
 	if farm_owner == 0 then --- Если все фермы захвачены игроком то ставим эльфийских героев и снимаем триггеры с регионов ловушек
 		for ef = 1,9 do -- снимаем триггеры с простых эльфийских засад
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER, elf_ambush_array[ef] , nil);
-		end;
+		end
 --		SetObjectiveState("sec1", OBJECTIVE_COMPLETED); ----------------------------##############DB############################
 		DeployReserveHero(EnemyHero1, RegionToPoint('elven_hero_deploy2'));
 		DeployReserveHero(EnemyHero2, RegionToPoint('elven_hero_deploy1'));
@@ -481,8 +480,8 @@ function secondary1()-- Подсчет захваченых ферм
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush4" ,nil);
 		SetRegionBlocked("super_ambush20", nil, PLAYER_1);
 		SetRegionBlocked("super_ambush3", nil, PLAYER_1);
-	end;
-end;
+	end
+end
 
 Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, "LostHero" ); --- триггер на потерю героя игроком
 function LostHero( HeroName )
@@ -491,128 +490,126 @@ function LostHero( HeroName )
 		Trigger( PLAYER_REMOVE_HERO_TRIGGER, PLAYER_1, nil );
 		sleep (15);
 		Loose();
-	end;
-end;
+	end
+end
 
 function dezert() --- Функция рассчета дезертиров
 	if random (diff + 2) == 0 then
 		return
-	end;
+	end
 	if random ( 2 ) == 0 then
 		hero = PlayerHero1;
---		print (PlayerHero1);
 	else
 		hero = PlayerHero2;
---		print (PlayerHero2);
-	end;
+	end
 	massa = random (100);
 	if massa > 97 then
 		if GetHeroCreatures(hero, 12) > 0 then
 			RemoveHeroCreatures(hero, 12, 1);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[14], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[14], hero, -1, 8.0 );
 			return
-		end;
+		end
 		if GetHeroCreatures(hero, 11) > 0 then
 			RemoveHeroCreatures(hero, 11, 1);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[13], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[13], hero, -1, 8.0 );
 			return
-		end;
-	end;
+		end
+	end
 	if massa > 94 then
 		if GetHeroCreatures(hero, 10) > 1 then
 			RemoveHeroCreatures(hero, 10, 2);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[12], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[12], hero, -1, 8.0 );
 			return
-		end;
+		end
 		if GetHeroCreatures(hero, 9) > 1 then
 			RemoveHeroCreatures(hero, 9, 2);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[11], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[11], hero, -1, 8.0 );
 			return
-		end;
-	end;
+		end
+	end
 	if massa > 89 then
 		if GetHeroCreatures(hero, 8) > 2 then
 			RemoveHeroCreatures(hero, 8, 3);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[10], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[10], hero, -1, 8.0 );
 			return
-		end;
+		end
 		if GetHeroCreatures(hero, 7) > 2 then
 			RemoveHeroCreatures(hero, 7, 3);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[9], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[9], hero, -1, 8.0 );
 			return
-		end;
-	end;
+		end
+	end
 	if massa > 79 then
 		if GetHeroCreatures(hero, 6) > 4 then
 			RemoveHeroCreatures(hero, 6, 5);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[8], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[8], hero, -1, 8.0 );
 			return
-		end;
+		end
 		if GetHeroCreatures(hero, 5) > 4 then
 			RemoveHeroCreatures(hero, 5, 5);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[7], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[7], hero, -1, 8.0 );
 			return
-		end;
-	end;
+		end
+	end
 	if massa > 49 then
 		if GetHeroCreatures(hero, 4) > 9 then
 			RemoveHeroCreatures(hero, 4, 10);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[6], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[6], hero, -1, 8.0 );
 			return
-		end;
+		end
 		if GetHeroCreatures(hero, 3) > 9 then
 			RemoveHeroCreatures(hero, 3, 10);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[5], hero, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[5], hero, -1, 8.0 );
 			return
-		end;
-	end;
+		end
+	end
 	if GetHeroCreatures(hero, 2) > 19 then
 		RemoveHeroCreatures(hero, 2, 20);
-		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 		sleep ( 20 );
-		ShowFlyingSign (t_tier_array[4], hero, -1, 3.0 );
+		ShowFlyingSign (t_tier_array[4], hero, -1, 8.0 );
 		return
-	end;
+	end
 	if GetHeroCreatures(hero, 1) > 19 then
 		RemoveHeroCreatures(hero, 1, 20);
-		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 3.0);
+		ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox13.txt", hero, -1, 8.0);
 		sleep ( 20 );
-		ShowFlyingSign (t_tier_array[3], hero, -1, 3.0 );
+		ShowFlyingSign (t_tier_array[3], hero, -1, 8.0 );
 		return
-	end;
-end;
+	end
+end
 
 function ambush( HeroName ) --- Функция рассчета потерь при попадании в засаду
 	for a = 1,14 do
 		if GetHeroCreatures(HeroName, h_tier_array[a]) > l_tier_array[a] then
 			RemoveHeroCreatures(HeroName, h_tier_array[a], l_tier_array[a]);
-			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox12.txt", HeroName, -1, 3.0);
+			ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox12.txt", HeroName, -1, 8.0);
 			sleep ( 20 );
-			ShowFlyingSign (t_tier_array[a], HeroName, -1, 3.0 );
+			ShowFlyingSign (t_tier_array[a], HeroName, -1, 8.0 );
 			return
-		end;
-	end;
-end;
+		end
+	end
+end
 
 function diff_ambush (HeroName) ----- Блокирующие эльфийские засады
 	MoveHeroRealTime( HeroName, 81, 74, 0 );
@@ -621,57 +618,56 @@ function diff_ambush (HeroName) ----- Блокирующие эльфийские засады
 	SetRegionBlocked("super_ambush3", not nil, PLAYER_1);
 	sleep ( 5 );
 	MessageBox ("/Maps/Scenario/A1C1M1/messagebox8.txt" );
-end;
+end
 
-function diff_ambush_mes ()
+function diff_ambush_mes()
 	MessageBox ("/Maps/Scenario/A1C1M1/messagebox8.txt" );
-end;
+end
 
 function diff_ambush1 (HeroName) ----- Блокирующие эльфийские засады
 	MoveHeroRealTime( HeroName, 23, 72, 0 );
-	StartCombat(HeroName ,  nil , 2 , 47 , 20 + 3*diff , 48 , 20 + 3*diff );
+	StartCombat(HeroName,  nil , 2 , 47 , 20 + 3*diff , 48 , 20 + 3*diff );
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "super_ambush30" ,"diff_ambush_mes1");
 	SetRegionBlocked("super_ambush20", not nil, PLAYER_1);
 	sleep ( 5 );
-	MessageBox ("/Maps/Scenario/A1C1M1/messagebox8.txt" );
-end;
+	MessageBox("/Maps/Scenario/A1C1M1/messagebox8.txt" );
+end
 
-function diff_ambush_mes1 ()
+function diff_ambush_mes1()
 	MessageBox ("/Maps/Scenario/A1C1M1/messagebox8.txt" );
-end;
+end
 
-function red_haven_obj () ----- Старт обжектива про освобождение Ред Хавен Трупс
+function red_haven_obj() ----- Старт обжектива про освобождение Ред Хавен Трупс
 	if haven_obj == 1 then
 		return
-	end;
+	end
 	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "haven_trigger", nil);
 	sleep (1);
 	SetObjectiveState("prim4", OBJECTIVE_ACTIVE);
 	startThread(Treants);
-	x,y,z = RegionToPoint("openwarfog");
+	local x,y,z = RegionToPoint("openwarfog");
 	OpenCircleFog(x, y, z, 10 , PLAYER_1);
-	zoom = 35;
 	BlockGame();
-	MoveCamera( x, y, z, zoom, 0, 0, 0, 1 );
-	sleep( 30 );
+	MoveCamera( x, y, z, 35, 0, 0, 0, 1 );
+	sleep( 100 );
 	x, y, z = GetObjectPosition( PlayerHero2 );
 	MoveCamera( x, y, z, 30, 0, 0, 0, 1, 1 );
 	UnblockGame();
 	haven_obj = 1;
 	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "red_haven", "red_haven_obj_next");
-end;
+end
 
-function red_haven_obj_next () ----- Окончание обжектива про освобождение Ред Хавен Трупс
+function red_haven_obj_next() ----- Окончание обжектива про освобождение Ред Хавен Трупс
 	Trigger(REGION_ENTER_WITHOUT_STOP_TRIGGER, "red_haven", nil);
 	for e_a = 1,7 do
 		if IsObjectExists(elvenwar_array[e_a]) ~= nil then
 			RemoveObject(elvenwar_array[e_a]);
-		end;
-	end;
+		end
+	end
 	SetObjectiveState("prim4", OBJECTIVE_COMPLETED);
 	obj_count = obj_count + 1;
 	startThread(Winer);
-end;
+end
 
 function ffc(HeroName ) ----- Скриптовый бой против Калдвела
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "final_fight_Cadwell" ,nil);
@@ -679,7 +675,7 @@ function ffc(HeroName ) ----- Скриптовый бой против Калдвела
 	sleep (10);
 	for c_a = 1,15 do
 		RemoveObject(caldwellarmy_array[c_a]);
-	end;
+	end
 	RemoveObject("training1");
 	RemoveObject("training2");
 	RemoveObject("training3");
@@ -690,7 +686,7 @@ function ffc(HeroName ) ----- Скриптовый бой против Калдвела
 	RemoveObject("training8");
 	RemoveObject("training9");
 	RemoveObject("training10");
-end;
+end
 
 function CadwellResult (h_name, result) ---- Результаты боя против Калдвела
 	sleep (2);
@@ -702,8 +698,8 @@ function CadwellResult (h_name, result) ---- Результаты боя против Калдвела
 		SetObjectiveState("prim1", OBJECTIVE_COMPLETED);
 		obj_count = obj_count + 1;
 		startThread(Winer);
-	end;
-end;
+	end
+end
 
 function ffr(HeroName ) ----- Скриптовый бой против Рандала
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "final_fight_Randall" ,nil);
@@ -711,12 +707,12 @@ function ffr(HeroName ) ----- Скриптовый бой против Рандала
 	sleep (1);
 	for r_a = 1,16 do
 		RemoveObject(Randellarmy_array[r_a]);
-	end;
+	end
 	RemoveObject("training11");
 	RemoveObject("training12");
 	RemoveObject("training13");
 	RemoveObject("training14");
-end;
+end
 
 function RandallResult (h_name, result) ---- Результаты боя против Рандала
 	sleep (2);
@@ -728,25 +724,25 @@ function RandallResult (h_name, result) ---- Результаты боя против Рандала
 		SetObjectiveState("prim2", OBJECTIVE_COMPLETED);
 		obj_count = obj_count + 1;
 		startThread(Winer);
-	end;
-end;
+	end
+end
 
-function Winer () ---- Обработчик победы
+function Winer() ---- Обработчик победы
 	if obj_count == 3 then
 		SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M1");
-		sleep (100);
+		sleep (50);
 		Win()
-	end;
-end;
+	end
+end
 
 function crossroad (hero) ---- сообщение на перекрестке
-	ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox9.txt", hero, -1, 3.0);
+	ShowFlyingSign("/Maps/Scenario/A1C1M1/messagebox9.txt", hero, -1, 8.0);
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "cross" ,nil);
-end;
+end
 
-function neitral () ---- сообщение от ангелов
+function neitral() ---- сообщение от ангелов
 	MessageBox ("/Maps/Scenario/A1C1M1/messagebox10.txt" );
-end;
+end
 
 ---------------------------------------------------------------------
 ----------------------- АНИМАЦИИ и ЭФФЕКТЫ --------------------------
@@ -759,27 +755,27 @@ function Films() --- Бой двух крестьян
 	else
 		mover1 = training_array[2];
 		mover2 = training_array[1];
-	end;
+	end
 	type_hit = random ( 2 ) + 2;
 	type_dam = random ( 2 ) + 4;
 	type_idle = random ( 3 ) + 6;
 	type_idle2 = random ( 2 ) + 7;
 	PlayObjectAnimation(mover1 , effect_array [type_hit], type_effect_array [type_hit]);
-	sleep  ( 8 );
+	sleep ( 8 );
 	if IsObjectExists(mover2) ~= nil then
 		PlayObjectAnimation(mover2 , effect_array [type_dam], type_effect_array [type_dam]);
-	end;
+	end
 	sleep  ( 15 );
 	if IsObjectExists(mover2) ~= nil then
 		PlayObjectAnimation(mover2 , effect_array [type_idle2], type_effect_array [type_idle2]);
-	end;
+	end
 	sleep  ( 1 );
 	PlayObjectAnimation(mover1 , effect_array [type_idle], type_effect_array [type_idle]);
 	sleep  ( random(5)+15 );
 	if IsObjectExists(mover1) ~= nil then
 		startThread(Films);
-	end;
-end;
+	end
+end
 
 function Films2() --- Бой двух крестьян
 	sleep ( 1 );
@@ -789,7 +785,7 @@ function Films2() --- Бой двух крестьян
 	else
 		mover3 = training_array[4];
 		mover4 = training_array[3];
-	end;
+	end
 	type_hit2 = random ( 2 ) + 2;
 	type_dam2 = random ( 2 ) + 4;
 	type_idle2 = random ( 3 ) + 6;
@@ -798,34 +794,34 @@ function Films2() --- Бой двух крестьян
 	sleep  ( 8 );
 	if IsObjectExists(mover4) ~= nil then
 		PlayObjectAnimation(mover4 , effect_array [type_dam2], type_effect_array [type_dam2]);
-	end;
+	end
 	sleep  ( 15 );
 	if IsObjectExists(mover4) ~= nil then
 		PlayObjectAnimation(mover4 , effect_array [type_idle22], type_effect_array [type_idle22]);
-	end;
+	end
 	sleep  ( 1 );
 	PlayObjectAnimation(mover3 , effect_array [type_idle2], type_effect_array [type_idle2]);
 	sleep  ( random(5)+15 );
 	if IsObjectExists(mover3) ~= nil then
 		startThread(Films2);
-	end;
-end;
+	end
+end
 
 function Films3() --- Анимация Командира крестьян
 	while IsObjectExists(training_array[5]) ~= nil do
 		type_idle_c = random ( 3 ) + 6;
 		PlayObjectAnimation(training_array[5] , effect_array [type_idle_c], type_effect_array [type_idle_c]);
 		sleep (random (20) + 10);
-	end;
-end;
+	end
+end
 
 function Films4() --- Анимация Кавалеристов
 	while IsObjectExists(training_array[6]) ~= nil do
 		type_idle_cav = random ( 3 ) + 6;
 		PlayObjectAnimation(training_array[random ( 2 ) + 6] , effect_array [type_idle_cav], type_effect_array [type_idle_cav]);
 		sleep (random (10) + 10);
-	end;
-end;
+	end
+end
 
 function Films5() --- Анимация Стрелка
 	while IsObjectExists(training_array[8]) ~= nil do
@@ -836,10 +832,10 @@ function Films5() --- Анимация Стрелка
 			PlayVisualEffect("/Effects/_(Effect)/Characters/WarMachines/Ballista_WildFire/death01.(Effect).xdb#xpointer(/Effect)", "target1");
 		else
 			PlayObjectAnimation(training_array[8] , effect_array [type_idle_arc], type_effect_array [type_idle_arc]);
-		end;
+		end
 		sleep (random (10) + 10);
-	end;
-end;
+	end
+end
 
 function Films6() --- Анимация Стрелка
 	while IsObjectExists(training_array[9]) ~= nil do
@@ -850,18 +846,18 @@ function Films6() --- Анимация Стрелка
 			PlayVisualEffect("/Effects/_(Effect)/Characters/WarMachines/Ballista_WildFire/death01.(Effect).xdb#xpointer(/Effect)", "target2");
 		else
 			PlayObjectAnimation(training_array[9] , effect_array [type_idle_arc], type_effect_array [type_idle_arc]);
-		end;
+		end
 		sleep (random (10) + 10);
-	end;
-end;
+	end
+end
 
 function Films7() --- Анимация Командира Лучников
 	while IsObjectExists(training_array[10]) ~= nil do
 		type_idle_cc = random ( 3 ) + 6;
 		PlayObjectAnimation(training_array[10] , effect_array [type_idle_cc], type_effect_array [type_idle_cc]);
 		sleep (random (20) + 10);
-	end;
-end;
+	end
+end
 
 function Films8() --- Бой мечников
 	sleep ( 1 );
@@ -872,31 +868,31 @@ function Films8() --- Бой мечников
 			sleep  ( 8 );
 			if IsObjectExists(training_array[13]) ~= nil then
 				PlayObjectAnimation(training_array[13] , effect_array [4], type_effect_array [4]);
-			end;
+			end
 			sleep  ( 15 );
 			if IsObjectExists(training_array[13]) ~= nil then
 				PlayObjectAnimation(training_array[13] , effect_array [random ( 2 ) + 7], type_effect_array [random ( 2 ) + 7]);
-			end;
+			end
 		else
 			PlayObjectAnimation(training_array[11] , effect_array [type_hit_sw], type_effect_array [type_hit_sw]);
 			sleep  ( 8 );
 			if random (100) < 75 then
 				PlayObjectAnimation(training_array[12] , effect_array [5], type_effect_array [5]);
-			end;
+			end
 			if random (100) < 75 then
 				sleep  ( 1 );
 				PlayObjectAnimation(training_array[13] , effect_array [5], type_effect_array [5]);
-			end;
+			end
 			if random (100) < 75 then
 				sleep  ( 2 );
 				PlayObjectAnimation(training_array[14] , effect_array [5], type_effect_array [5]);
-			end;
-		end;
-	end;
+			end
+		end
+	end
 	if IsObjectExists(training_array[11]) ~= nil then
 		startThread(Films8);
-	end;
-end;
+	end
+end
 
 
 function ZFarm()
@@ -906,10 +902,10 @@ function ZFarm()
 			print ("Farms captured!!!");
 			SetObjectiveState("sec1", OBJECTIVE_COMPLETED );
 			return
-		end;
+		end
 		sleep();
-	end;
-end;
+	end
+end
 ---------------------------------------------------------------------
 ---------------------------- СТАРТ МИССИИ ---------------------------
 ---------------------------------------------------------------------

@@ -10,7 +10,7 @@ H55_PlayerStatus = {0,1,1,1,2,2,2,2};
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C2M3");
 	LoadHeroAllSetArtifacts( "Wulfstan" , "A1C2M2" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Wulfstan" );
 end
 
@@ -112,20 +112,21 @@ DWARVES = {
 		BlockGame();
 		x, y, f = GetObjectPosition( "underway"..DWARVES.choice.."2" );
 		OpenCircleFog(x, y, f, 7 , PLAYER_1);
-		MoveCamera( x, y - 5, f, 25, 0, 0, 0, 1, 1 );
+		MoveCamera( x, y-5, f, 30, 1.2, 0.35, 0, 0, 1 );
 		sleep ( 5 );
 		RemoveObject( "sacriface"..DWARVES.choice );
 		x,y,z = RegionToPoint('taunt'..DWARVES.choice);
 		CreateMob("sacriface"..DWARVES.choice.."2", 92 , 20, x, y, z,MONSTER_MOOD_FRIENDLY,MONSTER_COURAGE_ALWAYS_JOIN); --генерим стек юнитов
 		sleep ( 20 );
 		while not Exists( "sacriface"..DWARVES.choice.."2" ) do
-			sleep( 1 );
+			sleep( 5 );
 		end
 		PlayObjectAnimation("sacriface"..DWARVES.choice.."2" , "attack00", IDLE);
 		Play2DSound( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)", x, y, z );
-		sleep ( 100 );
+		local delay = GetSoundTimeInSleeps( "/Sounds/_(Sound)/Creatures/Haven/Peasant/happy.xdb#xpointer(/Sound)" ) + 5;
+		sleep( delay );
 		x, y, f = GetObjectPosition( "Wulfstan" );
-		MoveCamera( x, y, f, 25, 0, 0, 0, 1, 1 );
+		MoveCamera( x, y, f, 30, 0, 0, 0, 1, 1 );
 		MoveHero("RedHeavenHero01", RegionToPoint('taunt'..DWARVES.choice..'hero'));
 		UnblockGame();
 	end,
@@ -246,7 +247,7 @@ CINEMATICS = {
 		local x, y, f = GetObjectPosition( "Town" );
 		OpenCircleFog(x, y, f, 12 , PLAYER_1);
 		MoveCamera( x, y, f, 35, 1.4, 0, 0, 0, 1 );
-		sleep( 100 );
+		sleep( 50 );
 		local Pl_x, Pl_y, Pl_floor = GetObjectPosition( "Wulfstan" );
 		MoveCamera( Pl_x, Pl_y, Pl_floor, 35, 1.4, 0, 0, 0, 1 );
 		UnblockGame();
@@ -259,9 +260,9 @@ CINEMATICS = {
 		for i = 1, 3 do
 			x, y, f = GetObjectPosition( "sacriface" .. i );
 			MoveCamera( x, y, f, 15, 0, 0, 0, 1, 1 );
-			sleep( 1 );
+			sleep( 2 );
 			PlayObjectAnimation("sacriface" .. i, "attack00", ONESHOT);
-			sleep( 40 );
+			sleep( 25 );
 		end
 		x, y, f = GetObjectPosition( "Wulfstan" );
 		MoveCamera( x, y, f, 20, 0, 0, 0, 1, 1 );
@@ -280,13 +281,13 @@ CINEMATICS = {
 			OpenCircleFog( x, y, fl, 5, PLAYER_1 );
 			MoveCamera( x, y, fl, 45, 1.3, 0, 0, 0, 1);
 			if first == 0 then
-				sleep( 100 );
+				sleep( 50 );
 				x, y, floor = RegionToPoint( "Caravan_Out");
 				OpenCircleFog(x, y, floor, 12, PLAYER_1);
 				MoveCamera( x, y, floor, 45, 1, 0.3, 0, 0, 0);
 				first = 1;
 			end
-			sleep(40);
+			sleep(20);
 			UnblockGame();
 			while GetCurrentPlayer() == PLAYER_1 do sleep( 50 ); end
 		end
@@ -353,7 +354,7 @@ OBJECTIVES = {
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M3");
 				CINEMATICS.outro();
-				sleep ( 100 );
+				sleep ( 50 );
 				Win();
 				return
 			end
@@ -404,7 +405,7 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.captureCaravan[2] == 2 and OBJECTIVES.date >= OBJECTIVES.captureCaravan_time then
 			x, y, floor = RegionToPoint( "caravan_here" );
 			DeployReserveHero( "Caravan", 133, 114, 0 );
-			sleep( 50 );
+			sleep( 25 );
 			SetHeroRoleMode( "Caravan", HERO_ROLE_MODE_HERMIT );
 			AddHeroCreatures( "Caravan",   CREATURE_CHAMPION,  30 + diff * 10 );
 			AddHeroCreatures( "Caravan", CREATURE_VINDICATOR, 200 + diff * 40 );

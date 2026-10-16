@@ -151,7 +151,7 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M1");
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

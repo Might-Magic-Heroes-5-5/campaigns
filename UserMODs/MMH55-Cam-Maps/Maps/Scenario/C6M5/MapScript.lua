@@ -284,7 +284,7 @@ OBJECTIVES = {
 				SetObjectiveState("save_isabell", OBJECTIVE_COMPLETED);
 				sleep(20);
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

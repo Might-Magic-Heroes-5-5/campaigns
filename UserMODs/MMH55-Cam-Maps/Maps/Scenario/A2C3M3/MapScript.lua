@@ -255,7 +255,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped( 	"Zehir", "A2C3M3" );
 				SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A2C3M3" );
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

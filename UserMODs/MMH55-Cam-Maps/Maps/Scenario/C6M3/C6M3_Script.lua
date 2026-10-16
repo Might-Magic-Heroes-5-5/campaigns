@@ -228,7 +228,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped(   "Heam", "C6M3" );
 				sleep(30);
 				Save("Scene_18");
-				sleep(200);
+				sleep(50);
 				Win();
 				return
 			end

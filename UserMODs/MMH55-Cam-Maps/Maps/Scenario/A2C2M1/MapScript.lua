@@ -584,7 +584,7 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("sobj1") ~= OBJECTIVE_ACTIVE then
 				CINEMATICS.outro();
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

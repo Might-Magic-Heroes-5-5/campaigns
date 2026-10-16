@@ -369,7 +369,7 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped("Duncan", "A1C1M5");
 				SetObjectiveState('prim4', OBJECTIVE_COMPLETED);
 				SetObjectiveState('prim5', OBJECTIVE_COMPLETED);
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

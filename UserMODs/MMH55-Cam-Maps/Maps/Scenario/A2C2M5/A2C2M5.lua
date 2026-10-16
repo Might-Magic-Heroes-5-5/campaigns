@@ -318,7 +318,7 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim1_CaptureMainAcademyTown") == OBJECTIVE_COMPLETED and  GetObjectiveState("prim2_KillAlaric") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M5" );
-				sleep( 100 );
+				sleep( 50 );
 				Win();
 				return
 			end

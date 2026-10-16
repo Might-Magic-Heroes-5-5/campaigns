@@ -238,7 +238,7 @@ OBJECTIVES = {
 				sleep(10);
 				CINEMATICS.outro();
 				SaveHeroAllSetArtifactsEquipped(HERO_NAME, "C1M1");
-				sleep(100)
+				sleep(50)
 				Win();
 				return
 			end

@@ -985,7 +985,7 @@ OBJECTIVES = {
 				CINEMATICS.outro();
 				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
 				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
-				sleep(100);
+				sleep(50);
 				Win();
 				return
 			end

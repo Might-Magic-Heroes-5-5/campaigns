@@ -21,7 +21,7 @@ H55_RemoveTheseArtifactsFromBanks = {
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("A1C3M2");
 	LoadHeroAllSetArtifacts( "Shadwyn", "A1C3M1" );
-	sleep(40);
+	sleep(25);
 	H55_CamFixTooManySkills( PLAYER_1, "Shadwyn" );
 end
 
@@ -195,9 +195,9 @@ OBJECTIVES = {
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SetObjectiveState( 'prim1', OBJECTIVE_COMPLETED );
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M2");
-				sleep(100);
+				sleep(50);
 				CINEMATICS.outro();
-				sleep(80);
+				sleep(20);
 				Win();
 			end
 		end
