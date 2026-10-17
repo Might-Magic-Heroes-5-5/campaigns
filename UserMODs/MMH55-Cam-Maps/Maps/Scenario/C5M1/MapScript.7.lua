@@ -25,6 +25,7 @@ function H55_InitSetArtifacts()
 end
 
 startThread(H55_InitSetArtifacts);
+GiveHeroWarMachine("Heam", WAR_MACHINE_BALLISTA);
 
 H55c_AI_CONTROLLED = {
   player1 = {          -- player 1player/human so state should be 0 to skip control of the heroes
@@ -32,13 +33,13 @@ H55c_AI_CONTROLLED = {
 	  heroes = {},
 	  enemies = {},
   },
-  player2 = {
+  player2 = {         -- Teal player - both unmanaged and managed AI 
       state = 1,
 	  heroes = {},
 	  enemies = {},
   },
   player3 = {
-      state = 2,       -- Red Inferno player - Biara
+      state = 2,       -- Red Inferno player - Biara - managed AI 
 	  heroes = {},
 	  enemies = {
 	    { priority = 1.0, heroes = 0.5, towns = 1.0, is_enemy = 1 },  -- PLAYER1
@@ -62,7 +63,7 @@ SylvanPosts = {
 ai_regions={'ai_block1','ai_block2','ai_block3','ai_block4','ai_block5'};
 pl_message_regions={'player_alarm1','player_alarm2','player_alarm3','player_alarm4','player_alarm5'};
 pl_fail_regions={'player_fail1','player_fail2','player_fail3','player_fail4','player_fail5'};
-heroes={'Tamika','Straker','Pelt','Nemor','Effig'};
+heroes={'Tamika','Straker','Pelt','Nemor','Effig'};  -- Lucretia, Orson, Vladimir, Deirdre, Raven
 
 function block_regions_for_ai()
 	for i,h in ai_regions do
@@ -153,23 +154,24 @@ DIFFICULTY = {
 	[0] = function()
 		dif = 1;
 		demon_invasion_day = 37;
-		SetTownBuildingLimitLevel('Damlad', 11, 2);
-		SetTownBuildingLimitLevel('Damlad', 12, 2);
 		AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
 	end,
 
 	[1] = function()
 		dif = 2;
+		SetTownBuildingLimitLevel('Damlad', 1, 2);
 		demon_invasion_day = 37;
 	end,
 
 	[2] = function()
 		dif = 3;
+		SetTownBuildingLimitLevel('Damlad', 1, 2);
 		demon_invasion_day = 37;
 	end,
 
 	[3] = function()
 		dif = 4;
+		SetTownBuildingLimitLevel('Damlad', 1, 2);
 		demon_invasion_day = 37;
 	end,
 }
@@ -205,9 +207,9 @@ OBJECTIVES = {
 	state = {
 		holdBorders		= { "prim1", 1 }, -- hold at least 3 border posts for X days
 		borderCross		= { "prim2", 1 }, -- do not cross the borders
-		isAlive			= { "prim3", 1 }, -- do not let Heam die
+		isAlive			= { "prim3", 1 }, -- do not let Findan/Heam die
 		demonArmy		= { "prim4", 1 }, -- destroy demon army
-		recapturePost	= { "prim5", 1 }, -- recapture all lost military posts
+		recapturePost	= { "prim5", 1 }, -- recapture lost military posts
 	},
 
 	start = function()
@@ -304,25 +306,35 @@ OBJECTIVES = {
 		if OBJECTIVES.state.demonArmy[2] == 1 and GetDate(DAY) == demon_invasion_day then
 			DeployReserveHero("Biara" , RegionToPoint('EnemyHere'));
 			sleep(50); -- Wait Biara to be deployed before adding units
-			exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-			ChangeHeroStat("Biara", STAT_EXPERIENCE, exp*(dif/4));
-			GiveHeroSkill("Biara", PERK_MASTER_OF_FIRE);
-			GiveHeroSkill("Biara", PERK_MASTER_OF_ICE);
-			GiveHeroSkill("Biara", HERO_SKILL_SET_AFIRE);
-			GiveHeroSkill("Biara", SKILL_NECROMANCY);
-			GiveHeroSkill("Biara", SKILL_OFFENCE);
-			GiveHeroSkill("Biara", SKILL_NECROMANCY);
-			GiveHeroSkill("Biara", PERK_DEATH_SCREAM);
-			GiveHeroSkill("Biara", NECROMANCER_FEAT_CHILLING_STEEL);
-			GiveHeroSkill("Biara", SKILL_NECROMANCY);
-			GiveHeroSkill("Biara", HERO_SKILL_SHRUG_DARKNESS);
-			AddHeroCreatures("Biara", CREATURE_IMP, dif * 30);
-			AddHeroCreatures("Biara", CREATURE_HORNED_LEAPER, dif * 20);
-			AddHeroCreatures("Biara", CREATURE_CERBERI, dif * 15);
-			AddHeroCreatures("Biara", CREATURE_INFERNAL_SUCCUBUS, dif * 12);
-			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif * 6);
-			AddHeroCreatures("Biara", CREATURE_BALOR, dif * 5);
-			AddHeroCreatures("Biara", CREATURE_ARCHDEVIL, dif * 2);
+			AddHeroCreatures("Biara", CREATURE_QUASIT, dif * 35);
+			AddHeroCreatures("Biara", CREATURE_HORNED_LEAPER, dif * 25);
+			AddHeroCreatures("Biara", CREATURE_CERBERI, dif * 20);
+			AddHeroCreatures("Biara", CREATURE_INFERNAL_SUCCUBUS, dif * 15);
+			AddHeroCreatures("Biara", CREATURE_FRIGHTFUL_NIGHTMARE, dif * 7);
+			AddHeroCreatures("Biara", CREATURE_BALOR, dif * 6);
+			AddHeroCreatures("Biara", CREATURE_ARCHDEVIL, dif * 3);
+			if dif > 1 then
+				GiveExp("Biara", 8100); -- level 12 to 14
+				ChangeHeroStat("Biara", STAT_ATTACK, 2 * GetDifficulty());
+				ChangeHeroStat("Biara", STAT_DEFENCE, 2 * GetDifficulty());
+				ChangeHeroStat("Biara", STAT_SPELL_POWER, 2 * GetDifficulty());
+				ChangeHeroStat("Biara", STAT_KNOWLEDGE, 2 * GetDifficulty());		
+				GiveHeroSkill("Biara", SKILL_GATING);
+				GiveHeroSkill("Biara", SKILL_LEARNING);
+				GiveHeroSkill("Biara", PERK_SCHOLAR);
+				GiveHeroSkill("Biara", HERO_SKILL_MENTORING);
+				GiveHeroSkill("Biara", PERK_EAGLE_EYE);	-- I added this perks to avoid to take intelligence perk		
+			end
+			if dif > 2 then
+				GiveExp("Biara", 11800); -- level 14 to 16
+				GiveHeroSkill("Biara", SKILL_GATING);
+				GiveHeroSkill("Biara", SKILL_LEARNING);
+			end
+			if dif > 3 then
+				GiveExp("Biara", 16900); -- level 16 to 18
+				GiveHeroSkill("Biara", SKILL_GATING);
+				GiveHeroSkill("Biara", SKILL_LEARNING);
+			end			
 			EnableHeroAI("Biara", not nil);
 			sleep(10);
 			H55c_AIAddHero("Biara");
@@ -373,5 +385,5 @@ OBJECTIVES = {
 }
 
 ------------------- MAIN ------------------------
-startThread(OBJECTIVES.start)
+startThread(OBJECTIVES.start);
 startThread( H55c_AI_main );

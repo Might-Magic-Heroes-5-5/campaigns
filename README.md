@@ -476,8 +476,15 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
-- change: Biara army size increased
-
+- change: Level cap changed from 14 to 18
+- change: Biara experience and army is now more challenging based on game difficulty. Her level changed from 14/14/14/14 to 12/14/16/18.
+- change: Findan starting army has more shooters an he also starts with Ballista
+- change: On difficulty above normal the player cannot build Castle fortification in town
+- change: Starting bonus choices:
+	- replaced army bonus of 2 Elder Druids with 18 War Dancers 
+	- increased army bonus of Master Hunters from 4 to 9
+	- replaced resource bonus of 5 crystals with artifact bonus Ankh of the Saint
+	
 ### C5M3 - Sylvan: The Defense
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
 - change: Disabled Purple player from hiring heroes in Syris Thalla.
