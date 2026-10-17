@@ -19,8 +19,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_DRUID_ELDER</Creature>
-						<Count>2</Count>
+						<Creature>CREATURE_WAR_DANCER</Creature>
+						<Count>18</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -42,7 +42,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_GRAND_ELF</Creature>
-						<Count>4</Count>
+						<Count>9</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -61,17 +61,17 @@
 					<Target>
 						<Hero/>
 					</Target>
-					<Type>E_BONUS_RESOURCE</Type>
+					<Type>E_BONUS_ARTIFACT</Type>
 					<BonusArmy>
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_LIFE_03</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
 						<Mercury>0</Mercury>
-						<Crystal>5</Crystal>
+						<Crystal>0</Crystal>
 						<Sulfur>0</Sulfur>
 						<Gem>0</Gem>
 						<Gold>0</Gold>
@@ -100,12 +100,12 @@
 					<Target>
 						<Hero/>
 					</Target>
-					<Type>E_BONUS_SPELL</Type>
+					<Type>E_BONUS_ARTIFACT</Type>
 					<BonusArmy>
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_LEGION_T3</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -115,7 +115,7 @@
 						<Gem>0</Gem>
 						<Gold>0</Gold>
 					</BonusResources>
-					<BonusSpellID>SPELL_WASP_SWARM</BonusSpellID>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
 					<Building>TB_TOWN_HALL</Building>
 				</Item>
 				<Item>
@@ -124,8 +124,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_SPRITE</Creature>
-						<Count>12</Count>
+						<Creature>CREATURE_TREANT_GUARDIAN</Creature>
+						<Count>3</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -147,7 +147,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_WOOD_ELF</Creature>
-						<Count>4</Count>
+						<Count>20</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
