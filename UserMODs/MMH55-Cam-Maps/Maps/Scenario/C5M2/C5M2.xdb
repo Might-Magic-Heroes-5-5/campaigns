@@ -133,8 +133,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -299,8 +299,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -724,8 +724,8 @@
 					</Item>
 					<Item>
 						<Type>TB_TAVERN</Type>
-						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
+						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_BLACKSMITH</Type>
@@ -749,7 +749,7 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -5408,8 +5408,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>50</Amount>
+				<Amount2>50</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -5431,8 +5431,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
-						<Amount>9</Amount>
-						<Amount2>15</Amount2>
+						<Amount>50</Amount>
+						<Amount2>50</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -5468,8 +5468,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Quasit.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>90</Amount>
+				<Amount2>105</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -5491,8 +5491,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>9</Amount>
-						<Amount2>18</Amount2>
+						<Amount>90</Amount>
+						<Amount2>108</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -15542,8 +15542,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Quasit.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>90</Amount>
+				<Amount2>105</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -15565,8 +15565,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>9</Amount>
-						<Amount2>18</Amount2>
+						<Amount>90</Amount>
+						<Amount2>108</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -15586,8 +15586,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>38</Amount>
-				<Amount2>44</Amount2>
+				<Amount>98</Amount>
+				<Amount2>104</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -15609,8 +15609,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
-						<Amount>25</Amount>
-						<Amount2>32</Amount2>
+						<Amount>75</Amount>
+						<Amount2>82</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -16318,8 +16318,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Quasit.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>90</Amount>
+				<Amount2>105</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -16341,8 +16341,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>9</Amount>
-						<Amount2>18</Amount2>
+						<Amount>90</Amount>
+						<Amount2>108</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -16580,8 +16580,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Quasit.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>90</Amount>
+				<Amount2>105</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -16603,8 +16603,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>9</Amount>
-						<Amount2>18</Amount2>
+						<Amount>90</Amount>
+						<Amount2>108</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -16736,8 +16736,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>75</Amount>
+				<Amount2>85</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -16759,8 +16759,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
-						<Amount>9</Amount>
-						<Amount2>15</Amount2>
+						<Amount>99</Amount>
+						<Amount2>115</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -17158,8 +17158,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>14</Amount2>
+				<Amount>29</Amount>
+				<Amount2>34</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -17181,20 +17181,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>18</Amount>
-						<Amount2>27</Amount2>
+						<Amount>58</Amount>
+						<Amount2>67</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Amount>13</Amount>
-						<Amount2>20</Amount2>
+						<Amount>43</Amount>
+						<Amount2>50</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Amount>11</Amount>
-						<Amount2>18</Amount2>
+						<Amount>31</Amount>
+						<Amount2>38</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -18526,8 +18526,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Infernal_Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>7</Amount>
-				<Amount2>10</Amount2>
+				<Amount>27</Amount>
+				<Amount2>30</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -18549,20 +18549,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_IMP</Creature>
-						<Amount>12</Amount>
-						<Amount2>18</Amount2>
+						<Amount>62</Amount>
+						<Amount2>68</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Amount>11</Amount>
-						<Amount2>18</Amount2>
+						<Amount>41</Amount>
+						<Amount2>48</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Amount>8</Amount>
-						<Amount2>15</Amount2>
+						<Amount>28</Amount>
+						<Amount2>35</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -20528,8 +20528,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Skeleton_Warrior.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>14</Amount>
-				<Amount2>22</Amount2>
+				<Amount>74</Amount>
+				<Amount2>82</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -20551,8 +20551,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>14</Amount>
-						<Amount2>23</Amount2>
+						<Amount>84</Amount>
+						<Amount2>93</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -28140,8 +28140,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Sceleton_Archer.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>13</Amount>
-				<Amount2>21</Amount2>
+				<Amount>93</Amount>
+				<Amount2>101</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -28163,8 +28163,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
-						<Amount>12</Amount>
-						<Amount2>20</Amount2>
+						<Amount>82</Amount>
+						<Amount2>90</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -30176,8 +30176,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>12</Amount>
-				<Amount2>18</Amount2>
+				<Amount>82</Amount>
+				<Amount2>88</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -30199,8 +30199,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_QUASIT</Creature>
-						<Amount>11</Amount>
-						<Amount2>17</Amount2>
+						<Amount>81</Amount>
+						<Amount2>87</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -30462,8 +30462,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>15</Amount2>
+				<Amount>90</Amount>
+				<Amount2>105</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -30485,8 +30485,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>9</Amount>
-						<Amount2>18</Amount2>
+						<Amount>90</Amount>
+						<Amount2>108</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -31268,8 +31268,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>29</Amount>
-				<Amount2>35</Amount2>
+				<Amount>79</Amount>
+				<Amount2>85</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -31291,8 +31291,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_DEMON</Creature>
-						<Amount>29</Amount>
-						<Amount2>37</Amount2>
+						<Amount>69</Amount>
+						<Amount2>77</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -46566,8 +46566,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Imp.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>53</Amount>
-				<Amount2>59</Amount2>
+				<Amount>83</Amount>
+				<Amount2>89</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -47032,7 +47032,7 @@
 					<Item>
 						<Type>TB_MAGIC_GUILD</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_1</Type>
@@ -47143,12 +47143,8 @@
 				<Experience>20600</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_WAR_DANCER</Creature>
-						<Count>19</Count>
-					</Item>
-					<Item>
 						<Creature>CREATURE_WOOD_ELF</Creature>
-						<Count>8</Count>
+						<Count>18</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -47344,8 +47340,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Sceleton_Archer.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>12</Amount>
-				<Amount2>20</Amount2>
+				<Amount>82</Amount>
+				<Amount2>90</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -47367,8 +47363,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>16</Amount>
-						<Amount2>25</Amount2>
+						<Amount>86</Amount>
+						<Amount2>95</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -48146,8 +48142,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Skeleton_Warrior.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>19</Amount>
-				<Amount2>27</Amount2>
+				<Amount>89</Amount>
+				<Amount2>97</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -48169,8 +48165,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>18</Amount>
-						<Amount2>27</Amount2>
+						<Amount>88</Amount>
+						<Amount2>97</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -48190,8 +48186,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Skeleton_Warrior.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>17</Amount2>
+				<Amount>79</Amount>
+				<Amount2>87</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -48227,8 +48223,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Cerberi.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>10</Amount>
-				<Amount2>15</Amount2>
+				<Amount>30</Amount>
+				<Amount2>35</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -48250,8 +48246,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
-						<Amount>7</Amount>
-						<Amount2>12</Amount2>
+						<Amount>27</Amount>
+						<Amount2>32</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -48315,8 +48311,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Wraith.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>8</Amount>
-				<Amount2>10</Amount2>
+				<Amount>5</Amount>
+				<Amount2>5</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -48344,14 +48340,14 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_VAMPIRE</Creature>
-						<Amount>20</Amount>
-						<Amount2>26</Amount2>
+						<Amount>15</Amount>
+						<Amount2>15</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LICH</Creature>
-						<Amount>11</Amount>
-						<Amount2>14</Amount2>
+						<Amount>9</Amount>
+						<Amount2>9</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -48854,62 +48850,6 @@
 					</Item>
 				</AdditionalStacks>
 			</AdvMapMonster>
-		</Item>
-		<Item href="#n:inline(AdvMapHero)" id="id52a418b2-f211-4865-afd2-7b61aec95de3">
-			<AdvMapHero ObjectRecordID="1000617">
-				<Pos>
-					<x>20</x>
-					<y>20</y>
-					<z>0</z>
-				</Pos>
-				<Rot>0</Rot>
-				<Floor>0</Floor>
-				<Name/>
-				<CombatScript/>
-				<pointLights/>
-				<Shared href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-				<PlayerID>PLAYER_2</PlayerID>
-				<Experience>0</Experience>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_IMP</Creature>
-						<Count>30</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Count>8</Count>
-					</Item>
-				</armySlots>
-				<artifactIDs/>
-				<isUntransferable/>
-				<Editable>
-					<NameFileRef href=""/>
-					<BiographyFileRef href=""/>
-					<Offence>0</Offence>
-					<Defence>0</Defence>
-					<Spellpower>0</Spellpower>
-					<Knowledge>0</Knowledge>
-					<skills/>
-					<perkIDs/>
-					<spellIDs/>
-					<Ballista>false</Ballista>
-					<FirstAidTent>false</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
-					<FavoriteEnemies/>
-				</Editable>
-				<OverrideMask>0</OverrideMask>
-				<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
-				<LossTrigger>
-					<Action>
-						<FunctionName/>
-					</Action>
-				</LossTrigger>
-				<AllowQuickCombat>true</AllowQuickCombat>
-			</AdvMapHero>
 		</Item>
 		<Item href="#n:inline(AdvMapHero)" id="id11311334-91a0-459e-8136-a1a944711d29">
 			<AdvMapHero ObjectRecordID="1000619">
@@ -53546,7 +53486,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>24</HeroMaxLevel>
+	<HeroMaxLevel>28 </HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
@@ -53587,7 +53527,88 @@
 			<CaptureAbility>0</CaptureAbility>
 			<StartHero/>
 			<HeroInTown>false</HeroInTown>
-			<ReserveHeroes/>
+			<ReserveHeroes>
+				<Item href="Oddrema.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Ash.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Zydar.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="#n:inline(AdvMapHero)" id="id52a418b2-f211-4865-afd2-7b61aec95de3">
+					<AdvMapHero ObjectRecordID="1000617">
+						<Pos>
+							<x>20</x>
+							<y>20</y>
+							<z>0</z>
+						</Pos>
+						<Rot>0</Rot>
+						<Floor>0</Floor>
+						<Name/>
+						<CombatScript/>
+						<pointLights/>
+						<Shared href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_2</PlayerID>
+						<Experience>20600</Experience>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_IMP</Creature>
+								<Count>30</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_SUCCUBUS</Creature>
+								<Count>10</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_HELL_HOUND</Creature>
+								<Count>8</Count>
+							</Item>
+						</armySlots>
+						<artifactIDs/>
+						<isUntransferable/>
+						<Editable>
+							<NameFileRef href=""/>
+							<BiographyFileRef href=""/>
+							<Offence>6</Offence>
+							<Defence>2</Defence>
+							<Spellpower>6</Spellpower>
+							<Knowledge>3</Knowledge>
+							<skills>
+								<Item>
+									<Mastery>MASTERY_EXPERT</Mastery>
+									<SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+								</Item>	
+								<Item>
+									<Mastery>MASTERY_ADVANCED</Mastery>
+									<SkillID>HERO_SKILL_OFFENCE</SkillID>
+								</Item>						
+							</skills>
+							<perkIDs>
+								<Item>HERO_SKILL_GATING_MASTERY</Item>
+								<Item>HERO_SKILL_CRITICAL_GATING</Item>
+								<Item>HERO_SKILL_FIRST_AID</Item>
+								<Item>HERO_SKILL_RUNIC_MACHINES</Item>
+								<Item>HERO_SKILL_ARCHERY</Item>
+								<Item>HERO_SKILL_WILDFIRE</Item>						
+							</perkIDs>
+								<Item>SPELL_STONE_SPIKES</Item>	
+								<Item>SPELL_LIGHTNING_BOLT</Item>	
+								<Item>SPELL_FIREBALL</Item>	
+								<Item>SPELL_ICE_BOLT</Item>	
+							<spellIDs>
+							</spellIDs>
+							<Ballista>false</Ballista>
+							<FirstAidTent>false</FirstAidTent>
+							<AmmoCart>false</AmmoCart>
+							<FavoriteEnemies/>
+						</Editable>
+						<OverrideMask>66</OverrideMask>
+						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
+						<LossTrigger>
+							<Action>
+								<FunctionName/>
+							</Action>
+						</LossTrigger>
+						<AllowQuickCombat>true</AllowQuickCombat>
+					</AdvMapHero>
+				</Item>
+			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
 					<FunctionName/>
@@ -54382,77 +54403,6 @@
 	</artifactIDs>
 	<isUntransferable/>
 	<AvailableHeroes>
-		<Item href="/MapObjects/Academy/Havez.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Minasli.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Josephine.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Isher.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Davius.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Rissa.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Academy/Nur.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Astral.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Timerkhan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Emilia.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Gurvilin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Academy/Razzak.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Sufi.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Tan.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Faiz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Academy/Maahir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dungeon/Ferigl.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Menel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Agbeth.xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Ranleth.xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Urunir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Ohtarig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Darkstorm.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dungeon/Sephinroth.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Sylsai.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Kelodin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dungeon/Kastore.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero01.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Haven/RedHeavenHero05.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero03.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero06.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Haven/RedHeavenHero02.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Christian.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Maeve.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/Jeddite.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>				
-		<Item href="/MapObjects/Haven/RedHeavenHero04.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Harkenraz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Inferno/Grok.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Inferno/Malustar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Calh.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Oddrema.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Ash.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Efion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Zydar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Inferno/Calid2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Gles.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Pelt.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Straker.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Tamika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Necropolis/Xerxon.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Necropolis/Aberrar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Necropolis/Effig.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Necropolis/Aislinn.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Necropolis/Nimbus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Archilus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Thant.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Sandro.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Necropolis/Nemor.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Necropolis/Vidomina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Linaas.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Gillion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Preserve/Ossir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -54468,37 +54418,6 @@
 		<Item href="/MapObjects/Preserve/Itil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Gem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Vinrael.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Tazar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Maximus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Ufretin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Skeggy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Una.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Ingvar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Bersy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Dwarves/Ottar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Dwarves/Brand.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Egil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Vegeyr.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Hangvul2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Bart.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Vilma.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero8.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero4.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero9.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Crag.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Kraal.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Stronghold/Hero5.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero6.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Azar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Matewa.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Shiva.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Mokka.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero7.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero3.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Zouleika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Erika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	</AvailableHeroes>
 	<MapRumours>
 		<Item>
