@@ -317,7 +317,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C2M2 – Inferno: The Betrayal
 - change: player starting resources are slightly increased on some game difficulty levels (Mercury: 0,0,0,0 -> 5,5,5,0; Sulfur: 10,5,0,0 -> 10,10,5,5)
 - change: Final fights vs Stephan and Veyer are now more challenging on higher difficulties
-- change: Assassins that will join Agrael at th second secret stash changed from random(20-40) to 40
+- change: Assassins that will join Agrael at the second secret stash from random(20-40) to 40
 - change: Stephan army is more challenging at higher game difficulties
 - change: Veyer final army is now stronger based on game difficulty
 
@@ -354,7 +354,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
-- changed: Academy heroes tracking works on all difficulties (was heroic and impossible) but their detection range is now shorter on lower difficulties (from 0/0/13/15 to 8/10/12/14).
+- change: Academy heroes tracking works on all difficulties (was heroic and impossible) but their detection range is now shorter on lower difficulties (from 0/0/13/15 to 8/10/12/14).
 - change: Level cap increased from 12 to 35 so Godric can be imported from previous missions
 - change: Mardigo has Expert Light skill and his army is more challenging on higher difficulties
 - change: Starting bonus choice set from 20 Skeletons, Breastplate of Eldritch Might, Curse spell to 30 Skeletons, Helm of Chaos, Rupture spell
@@ -444,7 +444,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C4M4 – Dungeon: The March
 - fix: Storyline enemy is Grawl but the actual in-game hero was Alastor
-- change: Level cap changed from 40 to 99
+- change: Level cap from 40 to 99
 - change: Grawl skill build has been reworked, his stats and his army are more powerful on higher game difficulty
 - change: Reworked Raelag and Shadya starting armies based in 5.5 growth instead of vanilla 
 - change: Neutral stacks are more challenging on higher game difficulty
@@ -476,7 +476,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M1 - Sylvan: The Refugees
 - fix: Orson onslaught hero could not spawn and attack because he was already present on map
 - fix: Onslaught heroes did not attack or rarely attack any posts due to bug into ToE engine
-- change: Level cap changed from 14 to 18
+- change: Level cap from 14 to 18
 - change: Biara experience and army is now more challenging based on game difficulty. Her level changed from 14/14/14/14 to 12/14/16/18.
 - change: Findan starting army has more shooters an he also starts with Ballista
 - change: On difficulty above normal the player cannot build Castle fortification in town
@@ -484,7 +484,20 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 	- replaced army bonus of 2 Elder Druids with 18 War Dancers 
 	- increased army bonus of Master Hunters from 4 to 9
 	- replaced resource bonus of 5 crystals with artifact bonus Ankh of the Saint
-	
+
+### C5M2 – Sylvan: The Emerald Ones
+- change: Level cap from 24 to 28
+- change: Deleb skill tree redesigned and is more skillful on higher game difficulty
+- change: Alastor is more skillful on higher game difficulty
+- change: Deleb and Alastor armies are more challenging on higher game difficulty
+- change: Findan starting army gets 10 more Hunters but has no War Dancers
+- change: Time when enemy hero begins to roam the map from 36/28/14/2 to 29/22/15/8 based on game difficulty
+- change: Some neutral stacks are now stronger
+- change: Starting bonus choices:
+	- replaced spell bonus Wasp Swarm with artifact bonus Crest of the Legion
+	- replaced army bonus of 12 sprites with 3 Ancient Treants
+	- increased army bonus of Hunters from 4 to 20
+
 ### C5M3 - Sylvan: The Defense
 - change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
 - change: Disabled Purple player from hiring heroes in Syris Thalla.
@@ -509,12 +522,12 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - new: Combat arena light and Skydome reflects the one on the adventure map.
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
 - new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
-- changed: Night counter increases faster at higher difficulty levels 0%, 25%, 50% and 75% for impossible.
+- change: Night counter increases faster at higher difficulty levels 0%, 25%, 50% and 75% for impossible.
 
 ### C6M2 - Academy: The Liberation
 - fix: It was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
 - fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 
-- changed: Angel creature stack guarding Lorekeep island from the left side now grows every week.
+- change: Angel creature stack guarding Lorekeep island from the left side now grows every week.
 - new: Lorekeep now has a hero that guards it (was empty before) and his army power scales with difficulty level.
 - new: Added Memory Mentor
 
@@ -535,9 +548,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M5 - Academy: Zehir's Hope
 - new: Added Hill Fort on the map and the player starts with 500000 gold so he can swap army alternative upgrades.
-- changed: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
-- changed: Buffed Godric's army as his army value was considerably lower then the other heroes.
-- changed: Increased Magic Wall health from 500 to 750
+- change: Reworked Biara and Sovereign fights, they are significantly stronger on higher difficulties.
+- change: Buffed Godric's army as his army value was considerably lower then the other heroes.
+- change: Increased Magic Wall health from 500 to 750
 
 ### A1C1M1 - Freyda: Rebels
 - fix: Overlapping messages during troop desertion made them unreadable
@@ -585,7 +598,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Enemy hero Andreas (patrol) is now more challenging on higher difficulty levels.
 - change: Enemy hero Valeria (town guard) is now more challenging on higher difficulty levels.
 - change: Quest Caravan acompanying army is now more challenging on higher difficulty levels.
-- change: Reduced Quest Caravan travel time changed from 4 days to 7/6/5/4 days based on difficulty level
+- change: Reduced Quest Caravan travel time from 4 days to 7/6/5/4 days based on difficulty level
 - new: Added a Hill Fort that is available to the player
 
 ### A1C2M4 - Wulfstan: Two Brothers
@@ -635,7 +648,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### A2C0M0 - Rage of The Tribes: A Murder of Crows
 - fix: Removed wandering enemy player hero.
-- changed: Voron Peak defending army is more challenging on higher difficulty levels.
+- change: Voron Peak defending army is more challenging on higher difficulty levels.
 
 ### A2C1M1 - The Will of Asha: Last Soul Standing
 - change: Removed tutorial messages as player has already been introduced to Necromancy in previous missions.
@@ -656,8 +669,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - fix: Stronghold onslaught heroes would stop spawning if the current wave hero was not killed in less than 7 days after he has spawned
 - fix: capturing all Gold mines would not complete the related quest
 - fix: Units from Inferno town could be taken by Inferno onsalught heroes
-- changed: Inferno wave heroes army are now more challenging on higher difficulty levels and scale with time.
-- changed: Stronghold wave heroes are now more challenging on higher difficulty levels and scale with time.
+- change: Inferno wave heroes army are now more challenging on higher difficulty levels and scale with time.
+- change: Stronghold wave heroes are now more challenging on higher difficulty levels and scale with time.
 
 ### A2C1M5 - The Will of Asha: The Bull's Wake
 - fix: Camera angle on Arantir caravan with reinforcements was messed up
@@ -673,7 +686,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### A2C2M2 - To Honour our Fathers: One Khan, One Clan
 - fix: Dungeon pirate heroes sometimes jammed and stopped moving.
 - fix: Stronghold Tribe harassment waves against the player did not work at all
-- change: AI harassment waves changed from 3 to infinite where each next wave is stronger
+- change: AI harassment waves from 3 to infinite where each next wave is stronger
 - change: Raised level cap from 22 to 30
 - change: Experience yield increased from 0.45 to 0.7
 - change: Buffed Kujin starting army
@@ -717,10 +730,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Revoked Dungeon player heroes access to portal (76, 126).
 - change: Gottai replaces Kujin in the inferno town siege.
 - change: Talonguard garrisons guards increased to 400k Ims and 1000 ArchDevils. It is up to the player to find a way to the town.
-- change: Biara reinforcement groups now arrive 1 month earlier for each difficulty level above normal. Arrival time changed from months 4 and 5 to months 4,5/3,4/2,3/1,2 based on game difficulty.
-- change: Siege led by Ylaya is now more challenging on normal difficulty.
-- change: Adventure map guards for locations (keymasters, dwarven treasuries, gold mines etc..) related to questline progression are now more powerful based on difficulty.
-- change: Inferno portal guardian heroes (Nymus, Marbas, Deleb) level and army now scale with difficulty.
+- change: Biara first reinforcement wave arrival date from month 4 to 4/3/2/1 based on game difficulty
+- change: Biara second reinforcement wave arrival date from month 5 to 5/4/3/2 based on game difficulty
+- change: Siege led by Ylaya is now more challenging on normal difficulty
+- change: Adventure map guards for locations (keymasters, dwarven treasuries, gold mines etc..) related to questline progression are now more powerful based on difficulty
+- change: Inferno portal guardian heroes (Nymus, Marbas, Deleb) level and army now scale with difficulty
 
 ## Dialogue changes
 
