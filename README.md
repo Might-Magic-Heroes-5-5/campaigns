@@ -884,6 +884,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - fix: Signs were broken and mission could not be completed
     - fix(cinematics): Sign 6 dialog camera was not showing conversation participants but was looking at the sky.
 ### Defiance (SM2)
+    - fix: Blocked resource due to wrong placement (38-56-1) 
     - change: Nadaur is in onslaught mode, meaning  he will assault player heroes and towns until defeated.
 ### Diplomat (SM3)
     - change: Instant travel spell is no longer available on this map.
