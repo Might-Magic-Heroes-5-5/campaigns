@@ -202,7 +202,6 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState('obj9', PLAYER_1) == OBJECTIVE_COMPLETED then 
-				sleep(100);
 				Win(PLAYER_1);
 				return
 			end

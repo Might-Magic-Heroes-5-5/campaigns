@@ -230,9 +230,8 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M5");
-				sleep(20);
-				CINEMATICS.outro();
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -302,10 +301,6 @@ OBJECTIVES = {
 		if (IsHeroAlive("Isabell") == nil or IsHeroAlive("Berein") == nil) then
 			SetObjectiveState("prim5", OBJECTIVE_FAILED);
 			OBJECTIVES.state.isAlive[2] = 11;
-		end
-		if OBJECTIVES.state.defeatGodric[2] == 10 and OBJECTIVES.state.captureHikm[2] == 10 then
-			SetObjectiveState("prim5", OBJECTIVE_COMPLETED);
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

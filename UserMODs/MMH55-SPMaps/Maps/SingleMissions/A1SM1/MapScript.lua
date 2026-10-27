@@ -27,7 +27,7 @@ CINEMATICS = {
 		SetObjectPosition( "Ornella", 71, 118, 0 );
 		SetObjectRotation( "Giovanni", 90 );
 		SetObjectRotation( "Ornella", 270 );
-		sleep( 20 );
+		sleep( 10 );
 		CINEMATICS.playAndWait( 0 );
 	end
 }
@@ -73,7 +73,6 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(100);
 				Win( PLAYER_1 );
 				return
 			end

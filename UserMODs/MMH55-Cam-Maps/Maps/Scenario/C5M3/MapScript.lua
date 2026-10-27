@@ -219,10 +219,10 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("harrison") == OBJECTIVE_COMPLETED and GetObjectiveState("twoheros") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Heam", "C5M3");
-				CINEMATICS.outro();
-				sleep(50);
 				--SaveHeroAllSetArtifactsEquipped( "Diraya", "C5M3");
 				--SaveHeroAllSetArtifactsEquipped( "Nadaur", "C5M3");
+				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

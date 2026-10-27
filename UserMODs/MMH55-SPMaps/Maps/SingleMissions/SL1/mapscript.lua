@@ -135,7 +135,6 @@ OBJECTIVES = {
 
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(100);
 				Win( PLAYER_1 );
 				return
 			end

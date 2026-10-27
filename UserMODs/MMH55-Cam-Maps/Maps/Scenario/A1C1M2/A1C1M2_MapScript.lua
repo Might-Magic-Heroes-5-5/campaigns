@@ -864,7 +864,7 @@ function combatResult( heroName, result )
 		print("you won!");
 		SaveHeroAllSetArtifactsEquipped( "Freyda", "A1C1M2" );
 		StartDialogScene("/DialogScenes/A1C1/M2/S3/DialogScene.xdb#xpointer(/DialogScene)");
-		sleep(100);
+		sleep(40);
 		Win(PLAYER_1);
 	end;
 end;

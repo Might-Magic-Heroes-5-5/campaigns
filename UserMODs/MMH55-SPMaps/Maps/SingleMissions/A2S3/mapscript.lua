@@ -364,7 +364,6 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState("obj2") == OBJECTIVE_COMPLETED and GetObjectiveState("obj3") == OBJECTIVE_COMPLETED then
-				sleep( 50 );
 				Win();
 				return
 			end

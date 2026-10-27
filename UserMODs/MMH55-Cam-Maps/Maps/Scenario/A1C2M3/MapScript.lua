@@ -353,8 +353,8 @@ OBJECTIVES = {
 
 			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3_intercept_caravan") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Wulfstan", "A1C2M3");
-				CINEMATICS.outro();
 				sleep ( 50 );
+				CINEMATICS.outro();
 				Win();
 				return
 			end

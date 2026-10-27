@@ -246,7 +246,9 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Heam", "C5M1");
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -349,10 +351,7 @@ OBJECTIVES = {
 			SetObjectiveState('prim4', OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.demonArmy[2] = 3;
 		elseif OBJECTIVES.state.demonArmy[2] == 3 and IsHeroAlive("Biara") == nil then
-			SaveHeroAllSetArtifactsEquipped("Heam", "C5M1");
 			SetObjectiveState("prim4", OBJECTIVE_COMPLETED);
-			sleep(10);
-			CINEMATICS.outro();
 			LevelUpHero("Heam");
 			OBJECTIVES.state.demonArmy[2] = 10;
 		end

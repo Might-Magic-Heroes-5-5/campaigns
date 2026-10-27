@@ -331,9 +331,8 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Arantir",  "A2C1M2" );
-				sleep(100);
-				CINEMATICS.outro();
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

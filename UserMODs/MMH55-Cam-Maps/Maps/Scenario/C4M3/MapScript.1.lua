@@ -315,38 +315,49 @@ function C4M3_ApplyExtraDifficultyBonuses()
 	end
 end
 
+function GetOwnedTowns(towns, player)
+	local cnt = 0;
+
+	for _, town in towns do
+		if GetObjectOwner(town) == player then
+			cnt = cnt + 1;
+		end
+	end
+	return cnt;
+end
+	
 OBJECTIVES = {
-  state = { -- 0 quest is not active or managed by map.xdb, 1 quest is active, 2-9 custom states, 10 success, 11 fail
-    capturedTowns = {    "prim1", 1 },      -- primary: 1 quest active, 10 all seven towns captured
-    Survival      = { "Survival", 1 },      -- primary: if Raleag or Kelodin die mission fails
-    Envasion      = { "Envasion", 1 },      -- secondary: 2 quest active & launch wave 1, 3 launch wave 2, 4 launch wave 3, 9-10 player defeated all three waves
-  },
+	state = { -- 0 quest is not active or managed by map.xdb, 1 quest is active, 2-9 custom states, 10 success, 11 fail
+		capturedTowns = {    "prim1", 1 },      -- primary: 1 quest active, 10 all seven towns captured
+		Survival      = { "Survival", 1 },      -- primary: if Raleag or Kelodin die mission fails
+		Envasion      = { "Envasion", 1 },      -- secondary: 2 quest active & launch wave 1, 3 launch wave 2, 4 launch wave 3, 9-10 player defeated all three waves
+	},
 
-  start = function()
-    OBJECTIVES.prepare();
-    OBJECTIVES.run();
-  end,
+	start = function()
+		OBJECTIVES.prepare();
+		OBJECTIVES.run();
+	end,
 
-  prepare = function()
-	dif = 0;
-    SetRegionBlocked("MainTownEntry", not nil, PLAYER_2);
-	EnableHeroAI("Dalom",nil);
-    lists = {
-      towns = GetObjectNamesByType("TOWN"),
-      heroes = GetObjectNamesByType("HERO"),
-    }
+	prepare = function()
+		dif = 0;
+		SetRegionBlocked("MainTownEntry", not nil, PLAYER_2);
+		EnableHeroAI("Dalom",nil);
+		lists = {
+			towns = GetObjectNamesByType("TOWN"),
+			heroes = GetObjectNamesByType("HERO"),
+		};
 
-    envasion_army = {
-      { hero = "Calid", troops = C4M3_AddTroops1 },
-      { hero = "Deleb", troops = C4M3_AddTroops2 },
-      { hero = "Efion", troops = C4M3_AddTroops3 }
-     }
+		envasion_army = {
+			{ hero = "Calid", troops = C4M3_AddTroops1 },
+			{ hero = "Deleb", troops = C4M3_AddTroops2 },
+			{ hero = "Efion", troops = C4M3_AddTroops3 }
+		};
   
-    deafeated_waves = 0;
-	DIFFICULTY[GetDifficulty()]();
-	C4M3_ApplyExtraDifficultyBonuses();
-    CINEMATICS.intro();
-  end,
+		deafeated_waves = 0;
+		DIFFICULTY[GetDifficulty()]();
+		C4M3_ApplyExtraDifficultyBonuses();
+		CINEMATICS.intro();
+	end,
 
 	run = function()
 		while true do
@@ -367,90 +378,73 @@ OBJECTIVES = {
 				SaveHeroAllSetArtifactsEquipped(  "Raelag", "C4M3" );
 				--SaveHeroAllSetArtifactsEquipped( "Kelodin", "C4M3" );
 				sleep(40);
-				Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, nil);
 				Save("quicksave");
 				CINEMATICS.outro();
-				sleep(30);
 				Win();
 				return
 			end
 		end
 	end,
+ 
+	capturedTowns = function()
+		if OBJECTIVE.state.capturedTowns[2] == 1 and GetOwnedTowns(lists.towns, 1) >= 7 then
+			SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
+			OBJECTIVES.state.capturedTowns[2] = 10;
+		end
+	end,
   
-  _CountOwnedTowns = function (towns, player)
-    local cnt = 0;
-
-    for _, town in towns do
-      if GetObjectOwner(town) == player then
-        cnt = cnt + 1;
-      end
-    end
-    return cnt;
-  end,
-
-  capturedTowns = function()
-    local owned_towns = OBJECTIVES._CountOwnedTowns(lists.towns, 1);
-    if owned_towns >= 7 then
-      SetObjectiveState( "prim1", OBJECTIVE_COMPLETED );
-      OBJECTIVES.state.capturedTowns[2] = 10;
-    end
-  end,
+	_EnvasionDefeated = function(hero)
+		if hero == 'Calid' or hero == 'Deleb' or hero == 'Efion' then
+			deafeated_waves = deafeated_waves + 1;
+			if deafeated_waves == 3 then
+				OBJECTIVES.state.Envasion[2] = 9
+			end
+		end
+	end,
   
-  _EnvasionDefeated = function(hero)
-    if hero == 'Calid' or hero == 'Deleb' or hero == 'Efion' then
-      deafeated_waves = deafeated_waves + 1;
-      if deafeated_waves == 3 then
-        OBJECTIVES.state.Envasion[2] = 9
-      end
-    end
-  end,
+	_EnvasionLaunch = function(wave)
+		local army = envasion_army[wave];
+		DeployReserveHero(army.hero, RegionToPoint('EnemyHere'));
+		sleep(5);
+		army.troops();
+		sleep(2);
+		print("## Launch wave " .. wave .. ": " .. army.hero);
+		CINEMATICS.showHero()
+		H55c_AIAddHero(army.hero)
+	end,
   
-  _EnvasionLaunch = function(wave)
-    local army = envasion_army[wave];
-    DeployReserveHero(army.hero, RegionToPoint('EnemyHere'));
-    sleep(5);
-    army.troops();
-    sleep(2);
-    print("## Launch wave " .. wave .. ": " .. army.hero);
-    CINEMATICS.showHero()
-    H55c_AIAddHero(army.hero)
-  end,
+	Envasion = function()
+		local owned_towns = GetOwnedTowns(lists.towns, 1);
+		if GetObjectiveState('Envasion') == OBJECTIVE_UNKNOWN and owned_towns >= 2 then
+			CINEMATICS.launchEnvasion();
+			Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, 'OBJECTIVES._EnvasionDefeated');
+			SetObjectiveState("Envasion", OBJECTIVE_ACTIVE);
+			OBJECTIVES._EnvasionLaunch(1);
+			OBJECTIVES.state.Envasion[2] = 2;
+		elseif OBJECTIVES.state.Envasion[2] == 2 and owned_towns >= 4 then
+			OBJECTIVES._EnvasionLaunch(2);
+			OBJECTIVES.state.Envasion[2] = 3;
+		elseif OBJECTIVES.state.Envasion[2] == 3 and owned_towns >= 6 then
+			OBJECTIVES._EnvasionLaunch(3);
+			OBJECTIVES.state.Envasion[2] = 4;
+		end
   
-  Envasion = function()
-    owned_towns = OBJECTIVES._CountOwnedTowns(lists.towns, 1);
-    if GetObjectiveState('Envasion') == OBJECTIVE_UNKNOWN and owned_towns >= 2 then
-      CINEMATICS.launchEnvasion();
-      Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_3, 'OBJECTIVES._EnvasionDefeated');
-      SetObjectiveState("Envasion", OBJECTIVE_ACTIVE);
-      OBJECTIVES._EnvasionLaunch(1);
-      OBJECTIVES.state.Envasion[2] = 2;
-    end
+		if OBJECTIVES.state.Envasion[2] == 9 then
+			CINEMATICS.defeatEnvasion();
+			SetObjectiveState("Envasion", OBJECTIVE_COMPLETED);
+			sleep(10);
+			LevelUpHero("Raelag");
+			OBJECTIVES.state.Envasion[2] = 10;
+		end
+	end,
   
-    if OBJECTIVES.state.Envasion[2] == 2 and owned_towns >= 4 then
-      OBJECTIVES._EnvasionLaunch(2);
-      OBJECTIVES.state.Envasion[2] = 3;
-    end
-  
-    if OBJECTIVES.state.Envasion[2] == 3 and owned_towns >= 6 then
-      OBJECTIVES._EnvasionLaunch(3);
-      OBJECTIVES.state.Envasion[2] = 4;
-    end
-  
-    if OBJECTIVES.state.Envasion[2] == 9 then
-      CINEMATICS.defeatEnvasion();
-      SetObjectiveState("Envasion", OBJECTIVE_COMPLETED);
-      sleep(5);
-      LevelUpHero("Raelag");
-      OBJECTIVES.state.Envasion[2] = 10;
-    end
-  end,
-  
-  Survival = function()
-    -- start of this task is handled by C4M3.xdb
-    if not IsHeroAlive('Raelag') or not IsHeroAlive('Kelodin') then
-      SetObjectiveState( 'Survival', OBJECTIVE_FAILED );
-    end
-  end
+	Survival = function()
+	-- start of this task is handled by C4M3.xdb
+		if not IsHeroAlive('Raelag') or not IsHeroAlive('Kelodin') then
+			SetObjectiveState( 'Survival', OBJECTIVE_FAILED );
+			OBJECTIVES.state.Survival[2] = 11;
+		end
+	end
 }
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
@@ -459,7 +453,7 @@ startThread( H55c_AI_main );
 ------------------ DEBUG ------------------------
 -- changes ownership of num amount of towns to the human player
 function gain(num)
-  for i = 1, num do
-    SetObjectOwner("Town"..i, PLAYER_1);
-  end
+	for i = 1, num do
+		SetObjectOwner("Town"..i, PLAYER_1);
+	end
 end

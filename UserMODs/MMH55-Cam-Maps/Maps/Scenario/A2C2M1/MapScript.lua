@@ -505,7 +505,7 @@ OBJECTIVES = {
 	state = {
 	   getHeads		= {  "obj1", 1 },		-- collect 1000 heads
 	   isAlive		= {  "obj2", 1 },		-- Gottai must survive
-	   saveOrcs		= { "sobj1", 0 },		-- Keephalf of Orc Warriors alive till the end
+	   saveOrcs		= { "sobj1", 0 },		-- Keep half of Orc Warriors alive till the end
 	   killLich		= { "sobj2", 0 },		-- ??
 	   bribeGoblins	= { "sobj3", 0 },		-- ??
 	},
@@ -583,8 +583,9 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("sobj1") ~= OBJECTIVE_ACTIVE then
-				CINEMATICS.outro();
+				SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M1" );
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -597,7 +598,6 @@ OBJECTIVES = {
 			OBJECTIVES.state.getHeads[2] = 2;
 		elseif OBJECTIVES.state.getHeads[2] == 3 then
 			SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
-			SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M1" );
 			OBJECTIVES.state.getHeads[2] = 10;
 		elseif OBJECTIVES.state.getHeads[2] == 4 then
 			SetObjectiveState( "obj1", OBJECTIVE_FAILED );
@@ -612,9 +612,6 @@ OBJECTIVES = {
 			if IsHeroAlive("Gottai") == nil then
 				SetObjectiveState( "obj2", OBJECTIVE_FAILED );
 				OBJECTIVES.state.isAlive[2] = 11;
-			elseif GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
-				SetObjectiveState("obj2", OBJECTIVE_COMPLETED);
-				OBJECTIVES.state.isAlive[2] = 10;
 			end
 		end
 	end,

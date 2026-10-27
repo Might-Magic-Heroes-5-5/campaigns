@@ -171,10 +171,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M1");
 				Save("autosave");
 				sleep(30);
-				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M1");
-				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -186,9 +186,8 @@ OBJECTIVES = {
 			SetObjectiveState("obj1", OBJECTIVE_ACTIVE);
 			OBJECTIVES.state.findRiteSite[2] = 2;
 		elseif OBJECTIVES.state.findRiteSite[2] == 3 then
-			CINEMATICS.rite();
-			CINEMATICS.outro();
 			SetObjectiveState( "obj1", OBJECTIVE_COMPLETED );
+			CINEMATICS.rite();
 			OBJECTIVES.state.findRiteSite[2] = 10;
 		end
 		

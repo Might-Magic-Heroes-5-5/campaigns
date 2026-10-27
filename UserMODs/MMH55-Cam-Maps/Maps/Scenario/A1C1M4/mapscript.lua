@@ -475,7 +475,7 @@ end;
 
 function escape()
 	SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M4");
-	sleep(5);
+	sleep(50);
 	StartDialogScene("/DialogScenes/A1C1/M4/S3/DialogScene.xdb#xpointer(/DialogScene)");
 	SetObjectiveState("obj5", OBJECTIVE_COMPLETED);
 	sleep(50);

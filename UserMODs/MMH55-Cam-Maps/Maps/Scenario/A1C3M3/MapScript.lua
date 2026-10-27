@@ -327,11 +327,10 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M3");
-				SetObjectPosition("Shadwyn", 50, 50, 0);
-				sleep( 60 );
+				sleep( 40 );
 				Save("autosave");
+				SetObjectPosition("Shadwyn", 50, 50, 0);
 				CINEMATICS.outro();
-				sleep( 50 );
 				Win();
 				return
 			end

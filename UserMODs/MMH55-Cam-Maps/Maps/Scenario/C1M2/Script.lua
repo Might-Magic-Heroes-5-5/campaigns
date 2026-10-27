@@ -25,14 +25,17 @@ m07= "c1_m2_t7" ;--"/Maps/Scenario/C1M2/tutorial/tutorial7.txt"
 CINEMATICS = {
     intro = function()
       StartDialogScene("/DialogScenes/C1/M2/R1/DialogScene.xdb#xpointer(/DialogScene)");
+	  sleep(2);
     end,
 
     captureAshwood = function()
       StartDialogScene("/DialogScenes/C1/M2/R2/DialogScene.xdb#xpointer(/DialogScene)");
+	  sleep(2);
     end,
     
     outro = function()
       StartDialogScene("/DialogScenes/C1/M2/R3/DialogScene.xdb#xpointer(/DialogScene)");
+	  sleep(2);
     end,
     
     showTown = function()
@@ -72,11 +75,11 @@ TUTORIALS = {
     },
 
     run = function()
-      SetGameVar( 		 'temp.creaturehired', 0);
-      SetGameVar(       "temp.C1M2_perk_hint", 0);
-      SetGameVar(    "temp.C1M2_archers_hint", 0);
-      SetGameVar("temp.C1M2_CountVisitToTown", 0);
-      manageTutorials(TUTORIALS.list);
+		SetGameVar( 		 'temp.creaturehired', 0);
+		SetGameVar(       "temp.C1M2_perk_hint", 0);
+		SetGameVar(    "temp.C1M2_archers_hint", 0);
+		SetGameVar("temp.C1M2_CountVisitToTown", 0);
+		manageTutorials(TUTORIALS.list);
     end,
 
     markComplete = function(name)
@@ -259,10 +262,8 @@ OBJECTIVES = {
       
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C1M2");
-				CINEMATICS.outro();
-				sleep(20);
-				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -301,7 +302,7 @@ OBJECTIVES = {
     -- start of this task is handled by C1M2.xdb
 		if IsHeroAlive("Isabell") == nil then
 			SetObjectiveState( 'prim4', OBJECTIVE_FAILED );
-			sleep(2);
+			OBJECTIVES.state.isAlive[2] = 11;
 		end
 	end,
 }

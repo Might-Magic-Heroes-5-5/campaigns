@@ -136,7 +136,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
-				sleep(50);
+				Save("Scene_19");
+				sleep(20);
+				CINEMATICS.defeatIsabel();
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -149,11 +152,7 @@ OBJECTIVES = {
 			SaveHeroAllSetArtifactsEquipped(   "Heam", "C6M4" );
 			SaveHeroAllSetArtifactsEquipped( "Godric", "C6M4" );
 			SaveHeroAllSetArtifactsEquipped( "Raelag", "C6M4" );
-			sleep(20);
-			Save("Scene_19");
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
-			CINEMATICS.defeatIsabel();
-			CINEMATICS.outro();
 			OBJECTIVES.state.riteIsabel[2] = 10;
 		end
 	end,

@@ -67,7 +67,6 @@ OBJECTIVES = {
 
 			if GetObjectiveState("Prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("Prim3") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep( 100 );
 				Win( PLAYER_1 );
 				return
 			end
@@ -83,7 +82,7 @@ OBJECTIVES = {
 	end,
 	
 	isAlive = function()
-	-- objective state start is controlled by the map.xdb file
+	-- objective start is controlled by the map.xdb file
 		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Heam") == nil then
 			SetObjectiveState( 'Prim2', OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;

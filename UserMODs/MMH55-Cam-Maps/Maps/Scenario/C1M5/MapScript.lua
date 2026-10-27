@@ -435,10 +435,9 @@ OBJECTIVES = {
 
 			if GetObjectiveState( "prim5") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C1M5");
-				sleep(40);
-				Save("scene3" );
-				CINEMATICS.outro();
 				sleep(50);
+				Save("scene3");
+				CINEMATICS.outro();
 				Win();
 				return
 			end

@@ -194,8 +194,6 @@ function ornella_ex()
 	sleep( 50 );
 	ChangeHeroStat("OrnellaNecro", STAT_EXPERIENCE, pexp);
 	A2C1M1_loadArtifacts("OrnellaNecro");
-	sleep(20);
-	SaveHeroAllSetArtifactsEquipped("OrnellaNecro", "A2C1M1");
 end
 
 function StrangeMineOre(hero)
@@ -355,6 +353,7 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("OrnellaNecro", "A2C1M1");
 				sleep(50);
 				Win();
 				return
@@ -370,12 +369,11 @@ OBJECTIVES = {
 			MessageBox("/Maps/Scenario/a2c1m1/warning.txt");
 			OBJECTIVES.state.captureNadin[2] = 2;
 		elseif OBJECTIVES.state.captureNadin[2] == 2 and GetObjectOwner("apelsin") == PLAYER_1 then
-			A2C1M1_saveArtifacts("Ornella")
-			OBJECTIVES.state.isAlive[2] = 2;
 			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
+			A2C1M1_saveArtifacts("Ornella")
+			OBJECTIVES.state.isAlive[2] = 10; -- Silently copmlete the IsAlive quest as the game will fail during the hero swap
 			CINEMATICS.outro();
 			ornella_ex();
-			sleep( 400 );
 			OBJECTIVES.state.captureNadin[2] = 10;
 		end
 		
@@ -484,9 +482,6 @@ OBJECTIVES = {
 		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Ornella") == nil then
 			SetObjectiveState( 'obj5', OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;
-		elseif OBJECTIVES.state.isAlive[2] == 2 then
-			SetObjectiveState( 'obj5', OBJECTIVE_COMPLETED );
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

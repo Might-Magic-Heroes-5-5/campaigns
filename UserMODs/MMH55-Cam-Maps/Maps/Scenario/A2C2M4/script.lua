@@ -92,10 +92,9 @@ end
 -------------------------------------------------Winners
 function Pobeda()
 	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "Final",nil);
-	sleep(20);
-	StartDialogScene("/DialogScenes/A2C2/M4/S2/DialogScene.xdb#xpointer(/DialogScene)"); ----///Noaia oeiaeuiay 
 	SaveHeroAllSetArtifactsEquipped( "Kujin",  "A2C2M4" );
 	sleep(50);
+	StartDialogScene("/DialogScenes/A2C2/M4/S2/DialogScene.xdb#xpointer(/DialogScene)"); ----///Noaia oeiaeuiay 
 	Win();
 end
 -------------------------------------------------Andrey
