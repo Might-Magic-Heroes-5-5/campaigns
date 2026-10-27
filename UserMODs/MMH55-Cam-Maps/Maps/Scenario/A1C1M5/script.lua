@@ -364,12 +364,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED and IsHeroAlive("Ving") == nil then
-				CINEMATICS.outro();
 				SaveHeroAllSetArtifactsEquipped("Freyda", "A1C1M5");
 				SaveHeroAllSetArtifactsEquipped("Duncan", "A1C1M5");
-				SetObjectiveState('prim4', OBJECTIVE_COMPLETED);
-				SetObjectiveState('prim5', OBJECTIVE_COMPLETED);
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

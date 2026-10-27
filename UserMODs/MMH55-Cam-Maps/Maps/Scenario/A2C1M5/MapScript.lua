@@ -982,10 +982,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("pri2") == OBJECTIVE_COMPLETED then
-				CINEMATICS.outro();
 				SaveHeroAllSetArtifactsEquipped(      "Arantir", "A2C1M4" );
 				SaveHeroAllSetArtifactsEquipped( "OrnellaNecro", "A2C1M4" );
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

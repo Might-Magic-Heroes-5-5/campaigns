@@ -305,9 +305,8 @@ CINEMATICS = {
     end,
 	 
     outro = function()
-	    sleep( 30 );
 		StartDialogScene("/DialogScenes/C3/M2/D2/DialogScene.xdb#xpointer(/DialogScene)", nil, "FirstDifficulties");
-		sleep( 20 );
+		sleep( 2 );
     end,
 }
 
@@ -370,10 +369,8 @@ OBJECTIVES = {
 
 			-- Loss is handled by C3M2.xdb
 			
-			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-				sleep(100);
+			if GetObjectiveState("prim2") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(50);
 				Win();
 				return
 			end
@@ -452,10 +449,6 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim3', OBJECTIVE_FAILED );
 			sleep(2);
 			OBJECTIVES.state.isAlive[2] = 11;
-		end
-		if OBJECTIVES.state.captureHikm[2] == 10 then
-			SetObjectiveState("prim3", OBJECTIVE_COMPLETED);
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

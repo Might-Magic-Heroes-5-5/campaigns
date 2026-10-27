@@ -74,10 +74,9 @@ CINEMATICS = {
 		sleep( 2 );
 	end,
 	
-	outro = function()
-        sleep( 20 );	
+	outro = function()	
 		StartDialogScene("/DialogScenes/C3/M1/D2/DialogScene.xdb#xpointer(/DialogScene)", nil, "AgreementWithNecromant");
-		sleep( 20 );
+		sleep( 2 );
 	end,
 }
 
@@ -355,11 +354,10 @@ OBJECTIVES = {
 				return
 			end
 			
-			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED and GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
+			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M1");
 				sleep(50);
 				CINEMATICS.outro();
-				sleep(50);
 				Win();
 				return
 			end
@@ -424,14 +422,10 @@ OBJECTIVES = {
 			if IsHeroAlive("Berein") == nil then
 				SetObjectiveState("prim4", OBJECTIVE_FAILED);
 				OBJECTIVES.state.isAlive[2] = 11;
-			elseif OBJECTIVES.state.destroyRebels[2] == 10 then
-				SetObjectiveState("prim4", OBJECTIVE_COMPLETED);
-				OBJECTIVES.state.isAlive[2] = 10;
 			end
 		end
 	end,
 }
-
 
 function FollowMarkal()
 	local day = GetDate(ABSOLUTE_DAY) + 7 - __difficulty;

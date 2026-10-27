@@ -274,6 +274,7 @@ OBJECTIVES = {
 			if GetObjectiveState("DefeatThralsai") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Shadwyn", "A1C3M4");
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -302,7 +303,6 @@ OBJECTIVES = {
 			H55c_AIAddHero("Thralsai");
 			OBJECTIVES.state.defeatThralsai[2] = 2;
 		elseif OBJECTIVES.state.defeatThralsai[2] == 2 and IsHeroAlive( "Thralsai" ) == nil then
-			CINEMATICS.outro();
 			SetObjectiveState( "DefeatThralsai", OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.defeatThralsai[2] = 10;
 		end

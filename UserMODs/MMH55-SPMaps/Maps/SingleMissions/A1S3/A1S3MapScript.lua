@@ -21,7 +21,6 @@ function A1S3_visitPortal( heroName )
 	if heroName == "Veyer" then
 		Trigger( REGION_ENTER_AND_STOP_TRIGGER, "sovereign", nil );
 		OBJECTIVES.state.reachPortal[2] = 4;
-		OBJECTIVES.state.isAlive[2] = 2;
 	end
 end
 
@@ -79,7 +78,7 @@ OBJECTIVES = {
 				return
 			end
 
-			if GetObjectiveState("HeroMustSurvive") == OBJECTIVE_COMPLETED and GetObjectiveState("ReachPortal") == OBJECTIVE_COMPLETED then
+			if GetObjectiveState("ReachPortal") == OBJECTIVE_COMPLETED then
 				sleep(100);
 				Win( PLAYER_1 );
 				return
@@ -117,9 +116,6 @@ OBJECTIVES = {
 		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive("Veyer") == nil then
 			SetObjectiveState( "HeroMustSurvive", OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;
-		elseif OBJECTIVES.state.isAlive[2] == 2 then
-			SetObjectiveState( "HeroMustSurvive", OBJECTIVE_COMPLETED );
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

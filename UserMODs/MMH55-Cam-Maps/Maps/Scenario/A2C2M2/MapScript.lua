@@ -421,9 +421,6 @@ OBJECTIVES = {
 		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive( "Kujin" ) == nil then
 			SetObjectiveState( "obj6", OBJECTIVE_FAILED );
 			OBJECTIVES.state.isAlive[2] = 11;
-		elseif OBJECTIVES.state.gatherClans[2] == 10 then
-			SetObjectiveState( "obj6", OBJECTIVE_COMPLETED );
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

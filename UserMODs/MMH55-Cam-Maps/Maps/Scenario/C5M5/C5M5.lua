@@ -402,7 +402,10 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED then
+				SaveHeroAllSetArtifactsEquipped("Heam", "C5M5");
+				Save("autosave");
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -453,11 +456,7 @@ OBJECTIVES = {
 				OBJECTIVES.progress_day = OBJECTIVES.date + 1;
 			end
 		elseif OBJECTIVES.state.defeatNikolay[2] == 9 then
-			SaveHeroAllSetArtifactsEquipped("Heam", "C5M5");
 			SetObjectiveState('prim1', OBJECTIVE_COMPLETED);
-			Save("autosave");
-			sleep(10);
-			CINEMATICS.outro();
 			OBJECTIVES.state.defeatNikolay[2] = 10;
 		end
 	end,	

@@ -156,7 +156,6 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("Final") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(100);
 				Win(PLAYER1);
 			end
 		end

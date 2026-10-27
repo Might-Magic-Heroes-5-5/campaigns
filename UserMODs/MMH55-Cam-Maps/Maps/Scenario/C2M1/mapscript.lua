@@ -241,7 +241,6 @@ OBJECTIVES = {
 	
 			if GetObjectiveState( "prim1") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep(20);
 				Win();
 				return
 			end
@@ -293,8 +292,7 @@ OBJECTIVES = {
     -- start of this task is handled by C2M1.xdb
 	if IsHeroAlive("Agrael") == nil then
 		SetObjectiveState('prim2',OBJECTIVE_FAILED);
-		sleep(10);
-		OBJECTIVES.state.routeToSheogath[2] = 10;
+		OBJECTIVES.state.isAlive[2] = 11;
 	end
   end
 } 

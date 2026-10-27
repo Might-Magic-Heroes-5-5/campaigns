@@ -884,7 +884,8 @@ OBJECTIVES = {
 			end
 			
 			if GetObjectiveState("prim6") == OBJECTIVE_COMPLETED then
-				sleep(50);
+				StartDialogScene("/DialogScenes/A2C3/M4/S1/DialogScene.xdb#xpointer(/DialogScene)");
+				StartDialogScene("/DialogScenes/A2C3/M4/S2/DialogScene.xdb#xpointer(/DialogScene)");
 				Win();
 				return
 			end
@@ -994,8 +995,6 @@ OBJECTIVES = {
 			UnblockGame();
 			OBJECTIVES.state.captureTalonguard[2] = 2;
 		elseif OBJECTIVES.state.captureTalonguard[2] == 2 and GetObjectOwner("Talonguard") == PLAYER_1 then
-			StartDialogScene("/DialogScenes/A2C3/M4/S1/DialogScene.xdb#xpointer(/DialogScene)");
-			StartDialogScene("/DialogScenes/A2C3/M4/S2/DialogScene.xdb#xpointer(/DialogScene)");
 			SetObjectiveState('prim6', OBJECTIVE_COMPLETED);
 			OBJECTIVES.state.captureTalonguard[2] = 10;
 		end

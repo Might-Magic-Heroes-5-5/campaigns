@@ -428,8 +428,8 @@ OBJECTIVES = {
 	
 			if GetObjectiveState("pri2") == OBJECTIVE_COMPLETED and GetObjectiveState("sec2") ~= OBJECTIVE_ACTIVE then
 				SaveHeroAllSetArtifactsEquipped( "Zehir", "A2C3M1" );
-				CINEMATICS.outro();
 				sleep( 50 );
+				CINEMATICS.outro();
 				Win();
 				return
 			end

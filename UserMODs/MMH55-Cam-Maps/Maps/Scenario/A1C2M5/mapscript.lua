@@ -62,8 +62,8 @@ for i=1, RH_RespawnPoints_XYZ_Town.n do
 		EnableAIHeroHiring(AI_PLAYER, RH_RespawnPoints_XYZ_Town[i][4], nil);
 		RH_TownsTotal = RH_TownsTotal + 1;
 		print("AI hero hiring was disabled at town ", RH_RespawnPoints_XYZ_Town[i][4]);
-	end;
-end;
+	end
+end
 print("AI has ",RH_TownsTotal," towns for respawn");
 
 function RH_Respawn()
@@ -72,7 +72,7 @@ function RH_Respawn()
 		sleep(5);
 		while GetCurrentPlayer() ~= AI_PLAYER do
 			sleep(10);
-		end;
+		end
 		print("RH_Respawn: AI player's turn");
 		RH_dead_heroes = 0;
 		for i=1, RH_heroes.n do
@@ -91,26 +91,26 @@ function RH_Respawn()
 								break;
 							else
 								lostRespawmTowns = lostRespawmTowns + 1;
-							end;
+							end
 						else
 							print("Respawn point without town. Trying to deploy hero ", RH_heroes[i]);
 							DeployReserveHero( RH_heroes[i], RH_RespawnPoints_XYZ_Town[j][1], RH_RespawnPoints_XYZ_Town[j][2], RH_RespawnPoints_XYZ_Town[j][3] );
 							startThread( transformTroops, RH_heroes[i] );
-						end;
-					end;
-					if lostRespawmTowns == RH_RespawnPoints_XYZ_Town.n then print("RH_Respawn: AI doen't have any towns for respawn"); end;
+						end
+					end
+					if lostRespawmTowns == RH_RespawnPoints_XYZ_Town.n then print("RH_Respawn: AI doen't have any towns for respawn"); end
 				else
 					print("Hero can't be deployed");
-				end;		
-			end;
-			if RH_dead_heroes == 0 then print("All AI heroes are alive."); end;
-		end;
+				end		
+			end
+			if RH_dead_heroes == 0 then print("All AI heroes are alive."); end
+		end
 		while GetCurrentPlayer() == AI_PLAYER do
 			sleep(10);
-		end;
+		end
 		print("RH_Respawn: AI player's turn has ended");
-	end;
-end;
+	end
+end
 
 function transformTroops( heroName )
 	sleep(3);
@@ -121,14 +121,14 @@ function transformTroops( heroName )
 			if creaturesCount  > 0 then
 				RemoveHeroCreatures( heroName, i, 10000);
 				n = i;
-				if mod(i,2) ~= 0 then n = i+1; end;
+				if mod(i,2) ~= 0 then n = i+1; end
 				AddHeroCreatures( heroName, 105 + (n/2), creaturesCount );
-			end;
-		end;
+			end
+		end
 		sleep(2);
-	end;
+	end
 	print("Hero ", heroName, " is dead. Function transformTroops terminated");
-end;
+end
 
 startThread(RH_Respawn);
 
@@ -146,12 +146,12 @@ function diffsetup()
 			ChangeHeroStat("Laszlo", 	STAT_KNOWLEDGE, 2 * diff);
 			ChangeHeroStat("Laszlo",  STAT_EXPERIENCE, 260000 * diff);
 		end
-	end;
-end;
+	end
+end
 
 function portal()
 	ShowFlyingSign("/Maps/Scenario/A1C2M5/portal.txt", "portal", 1, 5);
-end;
+end
 
 ---------Main Objective 1----------
 
@@ -160,23 +160,23 @@ function objective1()
 		if GetObjectOwner("stug_dutchy") == PLAYER_1 then
 			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
 			SetAIPlayerAttractor("stug_dutchy", PLAYER_2, 2);
-		end;
-	end;
-end;
+		end
+	end
+end
 
 ---------Main Objective 2----------
 
 function objective2()
 	if IsHeroAlive("Laszlo") == nil and GetObjectiveState("obj2") == OBJECTIVE_ACTIVE then
 		StartDialogScene("/DialogScenes/A1C2/M5/S1/DialogScene.xdb#xpointer(/DialogScene)", "d_scene", "autosave");
-	end;
-end;
+	end
+end
 
 function d_scene()
 	SetObjectiveState("obj2", OBJECTIVE_COMPLETED);
 	print ("objective 2 completed");
 	objective1();
-end;
+end
 
 ---------Main Objective 4----------
 
@@ -189,8 +189,8 @@ function objective4()
 			break;
 		end
 		sleep( 20 );
-	end;	
-end;
+	end	
+end
 
 -----------------Win------------------
 
@@ -199,12 +199,10 @@ function win_check()
 		if GetObjectiveState("obj1") == OBJECTIVE_COMPLETED and GetObjectiveState("obj2") == OBJECTIVE_COMPLETED then
 			SaveHeroAllSetArtifactsEquipped( "Wulfstan", "A1C2M5" );
 			SaveHeroAllSetArtifactsEquipped(   "Duncan", "A1C2M5" );
-			sleep(30);
-			SetObjectiveState("obj4", OBJECTIVE_COMPLETED);
 			sleep(50);
 			Win();
 			break;
-		end;
+		end
 	sleep( 20 );
 	end
 end
@@ -230,8 +228,8 @@ function H55_TriggerDaily()
 	if GetDate(MONTH) == 6 then
 		laszlo_ai_enabled();
 		H55_NewDayTrigger = 0;
-	end;
-end;
+	end
+end
 
 StartAdvMapDialog( 0 );
 SetRegionBlocked("laszlo_block", not nil, PLAYER_2);
@@ -249,5 +247,4 @@ H55_NewDayTrigger = 1;
 startThread (objective4);
 startThread (win_check);
 Trigger (OBJECT_TOUCH_TRIGGER, "portal", "portal");
-
-startThread( H55c_AI_main )
+startThread( H55c_AI_main );

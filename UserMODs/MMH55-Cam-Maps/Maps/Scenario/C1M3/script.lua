@@ -88,14 +88,17 @@ BATTLES = {
 CINEMATICS = {
 	intro = function()
 		StartDialogScene("/DialogScenes/C1/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
 	end,
 
 	clearScouts = function()
 		StartDialogScene("/DialogScenes/C1/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
 	end,
 
 	outro = function()
 		StartDialogScene("/DialogScenes/C1/M3/D1/DialogScene.xdb#xpointer(/DialogScene)");
+		sleep(2);
 	end,
 
 	showEnemy = function()
@@ -280,11 +283,9 @@ OBJECTIVES = {
 			end
 
 			if GetObjectiveState("prim1") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2") == OBJECTIVE_COMPLETED and GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-				CINEMATICS.outro();
-				sleep(10);
-				SetObjectiveState( "prim4", OBJECTIVE_COMPLETED );
 				SaveHeroAllSetArtifactsEquipped(OUR_HERO_NAME, "C1M3");
-				sleep(80);
+				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

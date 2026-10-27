@@ -378,7 +378,7 @@ OBJECTIVES = {
 		reachHorncrest	= { "prim1", 1 }, 	-- Reach Horncrest town
 		liftSiege		= { "prim2", 0 }, 	-- Lift the siege over Horncrest
 		captureTorHrall	= { "prim3", 0 }, 	-- Capture TorHrall town
-		isAlive			= { "prim4", 1 }, 	-- Capture TorHrall town
+		isAlive			= { "prim4", 1 }, 	-- Main heroes should survive
 		demonRaids		= {  "sec1", 0 }, 	-- Stop the demon raids
 		eventManager	= {  "_", 1 }, 	-- Heaven enemy reinforcements
 	},
@@ -437,9 +437,8 @@ OBJECTIVES = {
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
 				Save("autosave");
-				sleep(20);
-				CINEMATICS.outro();
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end

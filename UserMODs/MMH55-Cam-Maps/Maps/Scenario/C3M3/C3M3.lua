@@ -502,9 +502,8 @@ OBJECTIVES = {
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M3");
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M3");
-				sleep(40);
+				sleep(50);
 				CINEMATICS.outro();
-				sleep(40);
 				Win(PLAYER_1);
 			end
 		end
@@ -584,9 +583,6 @@ OBJECTIVES = {
 			SetObjectiveState("prim5", OBJECTIVE_FAILED);
 			sleep(2);
 			OBJECTIVES.state.isAlive[2] = 11;
-		elseif OBJECTIVES.state.followCyrus[2] == 10 then
-			SetObjectiveState("prim5", OBJECTIVE_COMPLETED);
-			OBJECTIVES.state.isAlive[2] = 10;
 		end
 	end,
 	

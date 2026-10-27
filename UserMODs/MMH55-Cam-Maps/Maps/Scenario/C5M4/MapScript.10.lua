@@ -206,8 +206,9 @@ OBJECTIVES = {
 			-- Loss of the mission is handled by C5M4.xdb
 			
 			if GetObjectiveState("prim3") == OBJECTIVE_COMPLETED then
-				CINEMATICS.outro();
+				SaveHeroAllSetArtifactsEquipped( "Heam", "C5M4" );
 				sleep(50);
+				CINEMATICS.outro();
 				Win();
 				return
 			end
@@ -280,7 +281,6 @@ OBJECTIVES = {
 			AddHeroCreatures( 'Oddrema',CREATURE_FRIGHTFUL_NIGHTMARE, 3 * ArmyMult );
 			OBJECTIVES.state.defeatBiara[2] = 2;
 		elseif OBJECTIVES.state.defeatBiara[2] == 2 and IsHeroAlive("Biara") == nil then
-			SaveHeroAllSetArtifactsEquipped( "Heam", "C5M4" );
 			SetObjectiveState( 'prim3', OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.defeatBiara[2] = 10;
 		end

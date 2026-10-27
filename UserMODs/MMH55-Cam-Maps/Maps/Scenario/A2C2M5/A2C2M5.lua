@@ -316,7 +316,7 @@ OBJECTIVES = {
 				return
 			end
 
-			if GetObjectiveState("prim1_CaptureMainAcademyTown") == OBJECTIVE_COMPLETED and  GetObjectiveState("prim2_KillAlaric") == OBJECTIVE_COMPLETED then
+			if GetObjectiveState("prim1_CaptureMainAcademyTown") == OBJECTIVE_COMPLETED and GetObjectiveState("prim2_KillAlaric") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped( "Gottai", "A2C2M5" );
 				sleep( 50 );
 				Win();
@@ -364,8 +364,8 @@ OBJECTIVES = {
 			SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_ACTIVE );
 			OBJECTIVES.state.defeatAlaric[2] = 2;
 		elseif OBJECTIVES.state.defeatAlaric[2] == 2 and IsHeroAlive( "Alaric" ) == nil then
-			CINEMATICS.outro();
 			SetObjectiveState( "prim2_KillAlaric", OBJECTIVE_COMPLETED );
+			CINEMATICS.outro();
 			OBJECTIVES.state.defeatAlaric[2] = 10;
 		end
 	end,

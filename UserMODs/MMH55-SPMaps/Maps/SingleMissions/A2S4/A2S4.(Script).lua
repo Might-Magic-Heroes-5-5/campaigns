@@ -382,7 +382,6 @@ OBJECTIVES = {
 
 			if GetObjectiveState("MAIN_OBJECTIVE") == OBJECTIVE_COMPLETED then
 				CINEMATICS.outro();
-				sleep( 50 );
 				Win();
 				return
 			end
