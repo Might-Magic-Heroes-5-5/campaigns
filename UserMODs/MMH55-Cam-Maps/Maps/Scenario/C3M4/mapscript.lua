@@ -26,7 +26,7 @@ H55c_SetCampaignResources( PLAYER_1, 0, 0, 0, 0, 0, 0, 0);
 local army_diff = GetDifficulty() + 1;      
 ChangeHeroStat("Cyrus", STAT_ATTACK, 3 * army_diff);
 ChangeHeroStat("Cyrus", STAT_DEFENCE, 3 * army_diff);
-ChangeHeroStat("Cyrus", STAT_SPELL_POWER, 4 * army_diff);
+ChangeHeroStat("Cyrus", STAT_SPELL_POWER, 2 * army_diff);
 ChangeHeroStat("Cyrus", STAT_KNOWLEDGE, 4 * army_diff);
 if army_diff > 1 then
     GiveExp("Cyrus", 363000);
