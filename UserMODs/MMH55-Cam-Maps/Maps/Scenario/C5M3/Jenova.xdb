@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdvMapHero>
+	<Pos>
+		<x>134</x>
+		<y>162</y>
+		<z>0</z>
+	</Pos>
+	<Rot>1.5708</Rot>
+	<Floor>0</Floor>
+	<Name>Jenova</Name>
+	<CombatScript/>
+	<pointLights/>
+	<Shared href="/MapObjects/Preserve/Jenova.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	<PlayerID>PLAYER_1</PlayerID>
+	<Experience>0</Experience>
+	<armySlots>
+		<Item>
+			<Creature>CREATURE_BLADE_SINGER</Creature>
+			<Count>30</Count>
+		</Item>
+	</armySlots>
+	<artifactIDs/>
+	<isUntransferable/>
+	<Editable>
+		<NameFileRef href=""/>
+		<BiographyFileRef href=""/>
+		<Offence>0</Offence>
+		<Defence>0</Defence>
+		<Spellpower>0</Spellpower>
+		<Knowledge>0</Knowledge>		
+		<skills/>			
+		<perkIDs/>
+		<spellIDs/>
+		<Ballista>true</Ballista>
+		<FirstAidTent>true</FirstAidTent>
+		<AmmoCart>true</AmmoCart>
+		<FavoriteEnemies/>
+	</Editable>
+	<OverrideMask>36</OverrideMask>
+	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
+	<LossTrigger>
+		<Action>
+			<FunctionName/>
+		</Action>
+	</LossTrigger>
+	<AllowQuickCombat>true</AllowQuickCombat>
+</AdvMapHero>

@@ -499,14 +499,23 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 	- increased army bonus of Hunters from 4 to 20
 
 ### C5M3 - Sylvan: The Defense
-- change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell).
-- change: Disabled Purple player from hiring heroes in Syris Thalla.
-- change: Purple player onslaught heroes will spawn only when none are present and he has no control over Syris Thalla.
+- fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla
+- fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons
+- fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan
+- change: Level cap from 32 to 36
+- change: Findan starting army additional units gained has been nerfed in normal and hard difficulty
+- change: Disabled "Summon Boat" spell on map so Purple player cannot cross the river (Findan already has the spell)
+- change: Disabled Purple player from hiring heroes in Syris Thalla
+- change: After the first 2 purple player onslaught waves, the average time between waves has decreased from 16/15/14/13 to 12/11/10 based on game diffculty. Each wave will get stronger and spawn only when no wave hero is present and puprle player does not control Syris Thalla. The roster of onslaught heroes is now 3 (was 2) so there is a 3 different hero classes to diversify the fights and make them more challenging
 - change: Dirael and Talanar skills and stats adjusted to fit class changes
-- change: Dirael and Talanar prison guards are more challenging
-- fix: Purple player oslaught heroes sometimes did not appear and attack Syris Thalla.
-- fix: "Prepare the garrison" quest did not always count some base/upgrade type of Druids, Unicorns, Dragons.
-- fix: "Prepare the garrison" quest did not count units in heroes at the town gate unless it is Findan.
+- change: Quest prison guards and garrisons are more challenging on higher game difficulty
+- change: Teal player heroes Orson and Zoltan are more challenging on higher game difficulty
+- change: Buffed Anwen during the first siege as the new combat AI made the siege even more dire for the human player
+- change: Starting bonus choices:
+	- increased army bonus of Silver Unicorns from 2 to 10
+	- replaced artifact bonus Tarrot Deck with Dragon Bone Greaves
+	- replaced army bonus of 20 sprites with artifact bonus Horn of the Legion
+- new: Once Findan capture Syris Thalla the player gets Jenova as prize
 - new: Added Memory Mentor
 
 ### C5M4 - Sylvan: The Archipelago
