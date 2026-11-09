@@ -4,33 +4,33 @@
 	<Name>c5m5_dusk5</Name>
 	<NameFileRef href=""/>
 	<LightColor>
-		<x>0.32</x>
-		<y>0.30</y>
-		<z>0.28</z>
+		<x>0.15</x>
+		<y>0.15</y>
+		<z>0.15</z>
 	</LightColor>
 	<AmbientColor>
-		<x>0.199216</x>
-		<y>0.232941</y>
-		<z>0.329019</z>
+		<x>0.08</x>
+		<y>0.08</y>
+		<z>0.08</z>
 	</AmbientColor>
 	<ShadeColor>
-		<x>0.282353</x>
-		<y>0.294118</y>
-		<z>0.351373</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</ShadeColor>
 	<IncidentShadowColor>
-		<x>0.192549</x>
-		<y>0.20902</y>
-		<z>0.290588</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</IncidentShadowColor>
 	<ParticlesColor>
-		<x>0.2</x>
-		<y>0.3</y>
-		<z>0.4</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</ParticlesColor>
-	<Whitening>true</Whitening>
-	<Pitch>10.5</Pitch>
-	<Yaw>37.9</Yaw>
+	<Whitening>false</Whitening>
+	<Pitch>35</Pitch>
+	<Yaw>40</Yaw>
 	<ShadowPitch>100</ShadowPitch>
 	<ShadowYaw>100</ShadowYaw>
 	<Sky href="/Textures/_(CubeTexture)/Sky.xdb#xpointer(/CubeTexture)"/>
@@ -44,7 +44,7 @@
 		<y>0</y>
 		<z>0</z>
 	</FogColor>
-	<FogStartDistance>0</FogStartDistance>
+	<FogStartDistance>1000</FogStartDistance>
 	<FogDistance>2000</FogDistance>
 	<VapourHeight>0</VapourHeight>
 	<VapourDensity>0</VapourDensity>
@@ -76,26 +76,26 @@
 		<z>0</z>
 	</GroundAmbientColor>
 	<MaxShadowHeight>20</MaxShadowHeight>
-	<SunFlares href="/_(SunFlares)/Test.(SunFlares).xdb#xpointer(/SunFlares)"/>
+	<SunFlares/>
 	<Haze/>
 	<CloudTex/>
 	<CloudSize>
-		<x>35</x>
-		<y>35</y>
+		<x>0</x>
+		<y>0</y>
 	</CloudSize>
-	<CloudDir>31.5</CloudDir>
-	<CloudSpeed>0.37</CloudSpeed>
+	<CloudDir>0</CloudDir>
+	<CloudSpeed>1</CloudSpeed>
 	<Rain/>
-	<SunFlarePitch>12</SunFlarePitch>
-	<SunFlareYaw>1.5</SunFlareYaw>
+	<SunFlarePitch>0</SunFlarePitch>
+	<SunFlareYaw>0</SunFlareYaw>
 	<ShadowsMaxDetailLength>10</ShadowsMaxDetailLength>
 	<HeightFog/>
 	<DepthOfField/>
 	<DistanceFog/>
-	<SkyDome href="/_(Model)/SkyDomes/Virtual/SkyDome_Ramp_Virt.xdb#xpointer(/Model)"/>
+	<SkyDome href="/_(Model)/SkyDomes/Virtual/SkyDome_Necro_Virt.xdb#xpointer(/Model)"/>
 	<DymanicLightsModifications>
-		<x>1</x>
-		<y>1</y>
-		<z>1</z>
+		<x>0.923529</x>
+		<y>0.923529</y>
+		<z>0.923529</z>
 	</DymanicLightsModifications>
 </AmbientLight>

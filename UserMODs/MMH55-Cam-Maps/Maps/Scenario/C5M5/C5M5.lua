@@ -31,7 +31,9 @@ end
 startThread(H55_InitSetArtifacts);
 
 dang_array = {"Nemor","Pelt","Straker","Tamika","Effig"};
-shadow_dragons = {"SD1", "SD2", "SD3", "SD4", "SD5", "SD6"};
+shadow_dragons = {"SD1", "SD2", "SD3", "SD4", "SD5", "SD6"}; -- used also for the first line buff
+shadow_dragons1 = {"SD1", "SD2", "SD3", "SD5", "SD6"}; -- used for the second line buff
+shadow_dragons2 = {"SD1", "SD2", "SD3"}; -- used for the third line buff
 regions={'sdregion1','sdregion2','sdregion3','sdregion4','sdregion5','sdregion6',"AI_block_1","AI_block_2","AI_block_3","AI_block_4","AI_blok","AI_block_5","AI_block_6","AI_blok","AI_blok1","AI_blok2","AI_blok3","AI_block_7","AI_block_8"}
 towns={'town1','town2','town3','town4','town5','town6'}
 respawns_x={37,84,41,160,95,26}
@@ -42,7 +44,7 @@ kolyan_army={
  [1]={50,40,30,25},
  [2]={70,55,40,35},
  [3]={90,70,50,45},
-}
+} ---Nikolay
 
 creatures_types={CREATURE_SKELETON_ARCHER, CREATURE_ZOMBIE, CREATURE_GHOST, CREATURE_VAMPIRE_LORD, CREATURE_DEMILICH, CREATURE_WRAITH, CREATURE_SHADOW_DRAGON}
 
@@ -113,7 +115,7 @@ function update_army() --добавление армии Коляну после респавноа
 	local diff = GetDifficulty();
 	for i,h in kolyan_army[diff] do
 		AddHeroCreatures('Nikolay', creatures_types[i+3] , 1+kolyan_army[diff][i])
-		print("Kolyan gain ",1+kolyan_army[diff][i]," ", creatures_types[i+3])
+		print("Nikolay gain ",1+kolyan_army[diff][i]," ", creatures_types[i+3])
 	end
 end
 
@@ -198,12 +200,16 @@ CINEMATICS = {
 		for i,h in shadow_dragons do
 			if IsObjectExists(shadow_dragons[i])~=nil and IsObjectVisible(PLAYER_1, shadow_dragons[i]) then
 				local x,y,z = GetObjectPosition(shadow_dragons[i]);
-				MoveCamera(x, y, z, 50, 0.925, 0.279, 0, 1);
-				sleep(100);
+				MoveCamera(x, y, z, 50, 0.925, 0.279, 0, 0, 1);
+				sleep(40);
 			end
-		end
-		sleep(5);
+		end	
 		UnblockGame();
+	end,
+	
+	showHeam = function()
+		local x,y,z = GetObjectPosition("Heam");
+		MoveCamera(x, y, z, 50, 0.925, 0.279, 0, 0, 1);
 	end,
 	
 	outro = function()
@@ -221,108 +227,91 @@ function disableEnemyFleeing()
 	end
 end
 
-function SetUpNikolay(koef)
-	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_CHILLING_STEEL);
-	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_CHILLING_BONES);
-	GiveHeroSkill("Nikolay", SKILL_DARK_MAGIC);
-	GiveHeroSkill("Nikolay", SKILL_DARK_MAGIC);
-	GiveHeroSkill("Nikolay", PERK_MASTER_OF_CURSES);
-	GiveHeroSkill("Nikolay", PERK_MASTER_OF_MIND);
-	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
-	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
-	GiveHeroSkill("Nikolay", SKILL_OFFENCE);
-	GiveHeroSkill("Nikolay", PERK_FRENZY);
-	GiveHeroSkill("Nikolay", PERK_ARCHERY);
-	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
-	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
-	GiveHeroSkill("Nikolay", SKILL_DEFENCE);
-	GiveHeroSkill("Nikolay", PERK_EVASION);
-	GiveHeroSkill("Nikolay", PERK_TOUGHNESS);
-	GiveHeroSkill("Nikolay", HERO_SKILL_DEFENSIVE_FORMATION);
-	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
-	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
-	GiveHeroSkill("Nikolay", SKILL_SUMMONING_MAGIC);
-	GiveHeroSkill("Nikolay", PERK_MASTER_OF_CREATURES);
-	GiveHeroSkill("Nikolay", DEMON_FEAT_FIRE_AFFINITY);
-	GiveHeroSkill("Nikolay", PERK_MASTER_OF_ANIMATION);
-	GiveHeroSkill("Nikolay", SKILL_SORCERY);
-	GiveHeroSkill("Nikolay", SKILL_SORCERY);
-	GiveHeroSkill("Nikolay", SKILL_SORCERY);
-	GiveHeroSkill("Nikolay", PERK_MYSTICISM);
-	GiveHeroSkill("Nikolay", WARLOCK_FEAT_PAYBACK);
-	GiveHeroSkill("Nikolay", SKILL_LUCK);
-	GiveHeroSkill("Nikolay", SKILL_LUCK);
-	GiveHeroSkill("Nikolay", SKILL_LUCK);
-	GiveHeroSkill("Nikolay", PERK_RESISTANCE);
-	GiveHeroSkill("Nikolay", NECROMANCER_FEAT_DEAD_LUCK);
-	GiveHeroSkill("Nikolay", HERO_SKILL_DWARVEN_LUCK);
-	
+function SetUpNikolay(koef)	
 	if koef > 1 then 
+		for i,h in shadow_dragons do
+			AddObjectCreatures(shadow_dragons[i], CREATURE_SHADOW_DRAGON , 40 * GetDifficulty());
+			for i,h in dang_array do
+			    ChangeHeroStat(dang_array[i], STAT_ATTACK , GetDifficulty() * 5);
+			    ChangeHeroStat(dang_array[i], STAT_DEFENCE , GetDifficulty() * 5);
+			    ChangeHeroStat(dang_array[i], STAT_SPELL_POWER , GetDifficulty() * 5);
+			    ChangeHeroStat(dang_array[i], STAT_KNOWLEDGE , GetDifficulty() * 5);
+		    end	
+		end		
+	
+	    GiveExp("Nikolay", 1790000); -- level 35 -> 40
+	    ChangeHeroStat("Nikolay", STAT_ATTACK, GetDifficulty() * 7);
+	    ChangeHeroStat("Nikolay", STAT_DEFENCE, GetDifficulty() * 7);
+	    ChangeHeroStat("Nikolay", STAT_SPELL_POWER, GetDifficulty() * 12);
+	    ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, GetDifficulty() * 10);
+		
 		GiveHeroSkill("Nikolay", RANGER_FEAT_SOIL_BURN);
 		GiveHeroSkill("Nikolay", WARLOCK_FEAT_POWER_OF_HASTE);
 		GiveHeroSkill("Nikolay", SKILL_LEARNING);
 		GiveHeroSkill("Nikolay", PERK_INTELLIGENCE);
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 11);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 12);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 13);		
+			
 	end
 	
 	if koef > 2 then
+	    GiveExp("Nikolay", 4640000); -- level 40 -> 45	
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 15);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 20);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 30);
+		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 35);		
 		GiveHeroSkill("Nikolay", RANGER_FEAT_INSIGHTS);
 		GiveHeroSkill("Nikolay", SKILL_LEARNING);
 		GiveHeroSkill("Nikolay", PERK_EAGLE_EYE);
+		
+		for i,h in shadow_dragons1 do
+			AddObjectCreatures(shadow_dragons1[i], CREATURE_SHADOW_DRAGON , 120 * GetDifficulty());
+		end			
 	end
 	
 	if koef > 3 then
+	    GiveExp("Nikolay", 12360000); -- level 45 -> 50	
 		GiveHeroSkill("Nikolay", SKILL_LEARNING);
 		GiveHeroSkill("Nikolay", PERK_INTELLIGENCE);
 		GiveHeroSkill("Nikolay", HERO_SKILL_QUICKNESS_OF_MIND);
+		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 15);
+		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 10);
+		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 15);
+		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 20);	
+
+		for i,h in shadow_dragons2 do
+			AddObjectCreatures(shadow_dragons2[i], CREATURE_SHADOW_DRAGON , 360 * GetDifficulty());
+		end		
 	end
-	
-	if koef == 2 then
-		ChangeHeroStat("Nikolay", STAT_ATTACK, 19);
-		ChangeHeroStat("Nikolay", STAT_DEFENCE, 17);
-		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 32);
-		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 29);
-		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 11);
-		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 12);
-		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 13);
-	elseif koef == 3 then
-		ChangeHeroStat("Nikolay", STAT_ATTACK, 24);
-		ChangeHeroStat("Nikolay", STAT_DEFENCE, 22);
-		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 37);
-		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 34);
-		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 31);
-		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 32);
-		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 43);
-		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 35);
-	elseif koef == 4 then
-		ChangeHeroStat("Nikolay", STAT_ATTACK, 29);
-		ChangeHeroStat("Nikolay", STAT_DEFENCE, 27);
-		ChangeHeroStat("Nikolay", STAT_SPELL_POWER, 42);
-		ChangeHeroStat("Nikolay", STAT_KNOWLEDGE, 39);
-		AddHeroCreatures("Nikolay", CREATURE_SHADOW_DRAGON, 41);
-		AddHeroCreatures("Nikolay", CREATURE_WRAITH, 42);
-		AddHeroCreatures("Nikolay", CREATURE_DEMILICH, 58);
-		AddHeroCreatures("Nikolay", CREATURE_VAMPIRE_LORD, 55);
+
+	if koef == 1 then
+		GiveHeroSkill("Nikolay", SKILL_LOGISTICS);
+		GiveHeroSkill("Nikolay", SKILL_LOGISTICS);
+		GiveHeroSkill("Nikolay", SKILL_LOGISTICS);
+		GiveHeroSkill("Nikolay", PERK_PATHFINDING);
 	end
 end
 
+
 DIFFICULTY = {
 	[0] = function()
-		print ("easy");
+		print ("Normal");
 		dif = 0;
 		night_diff = 1;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/4;
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-		end
+		end		
 		SetPlayerStartResources(PLAYER_2, 0, 0, 0, 0, 0, 0, 0);
 		AddObjectCreatures("Heam", CREATURE_GRAND_ELF, 20);
 		SetUpNikolay(1);
 	end,
 	
 	[1] = function()
-		print ("normal");
+		print ("Hard");
 		dif = 0;
-		night_diff = 1.25;
+		night_diff = 1.5;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE)/2;
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
@@ -332,14 +321,14 @@ DIFFICULTY = {
 	end,
 	
 	[2] = function()
-		print ("Hard");
+		print ("Heroic");
 		dif = 1;
-		night_diff = 1.5;
+		night_diff = 2;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE , exp);
-			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 30);
-			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 20);
+			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER , 150);
+			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE , 65);
 		end
 		SetUpNikolay(3);
 	end,
@@ -347,17 +336,31 @@ DIFFICULTY = {
 	[3] = function()
 		print ("Impossible");
 		dif = 2;
-		night_diff = 1.75;
+		night_diff = 2.5;
 		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
 		for i,h in dang_array do
 			ChangeHeroStat(dang_array[i], STAT_EXPERIENCE, exp);
-			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER, 45);
-			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE, 30);
-			AddObjectCreatures(dang_array[i], CREATURE_GHOST, 37);
+			AddObjectCreatures(dang_array[i], CREATURE_SKELETON_ARCHER, 250);
+			AddObjectCreatures(dang_array[i], CREATURE_ZOMBIE, 110);
+			AddObjectCreatures(dang_array[i], CREATURE_GHOST, 75);
 		end
 		SetUpNikolay(4);
 	end,
 }
+
+function restoreHeamLight(hero)
+    if hero == "Heam" then
+        SetObjectFlashlight("Heam", "phoenix");
+    end
+end
+
+function fixHeamLoosingLight()
+    local towns = GetObjectNamesByType("TOWN");
+
+    for _, town in towns do
+        Trigger(10, town, "restoreHeamLight");
+    end
+end
 
 OBJECTIVES = {
 	state = {
@@ -378,8 +381,6 @@ OBJECTIVES = {
 		first_time=1
 		CINEMATICS.intro();
 		DeployReserveHero('Nikolay',84,86,GROUND);
-		exp = GetHeroStat("Heam", STAT_EXPERIENCE);
-		ChangeHeroStat('Nikolay', STAT_EXPERIENCE, 900000+exp);
 		blocking();
 		Trigger(PLAYER_REMOVE_HERO_TRIGGER, PLAYER_2, 'ressurect');
 		startThread(DIFFICULTY[GetDifficulty()]);
@@ -439,6 +440,7 @@ OBJECTIVES = {
 				if new_progress == 4 then 
 					pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night1.txt");
 					CINEMATICS.showDragons();
+					pcall(CINEMATICS.showHeam);
 				end
 				if new_progress == 5 then pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night2.txt"); end
 				if new_progress == 6 then pcall(startThread, MessageBox, "/Maps/Scenario/C5M5/night3.txt"); end
@@ -500,6 +502,7 @@ OBJECTIVES = {
 			sleep(5);
 			SetObjectiveState('sec2', OBJECTIVE_COMPLETED);
 			SetObjectFlashlight("Heam", "phoenix");
+			fixHeamLoosingLight();
 			RemoveArtefact("Heam", 48);
 			RemoveArtefact("Heam", 49);
 			RemoveArtefact("Heam", 50);

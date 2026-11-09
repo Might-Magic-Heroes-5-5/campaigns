@@ -4,33 +4,33 @@
 	<Name>c5m5_dusk2</Name>
 	<NameFileRef href=""/>
 	<LightColor>
-		<x>0.52</x>
-		<y>0.43</y>
-		<z>0.35</z>
+		<x>0.3</x>
+		<y>0.3</y>
+		<z>0.3</z>
 	</LightColor>
 	<AmbientColor>
-		<x>0.189804</x>
-		<y>0.204706</y>
-		<z>0.26549</z>
+		<x>0.17</x>
+		<y>0.17</y>
+		<z>0.17</z>
 	</AmbientColor>
 	<ShadeColor>
-		<x>0.305882</x>
-		<y>0.270589</y>
-		<z>0.379608</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</ShadeColor>
 	<IncidentShadowColor>
-		<x>0.232549</x>
-		<y>0.211373</y>
-		<z>0.26</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</IncidentShadowColor>
 	<ParticlesColor>
-		<x>0.25</x>
-		<y>0.25</y>
-		<z>0.25</z>
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
 	</ParticlesColor>
-	<Whitening>true</Whitening>
-	<Pitch>31.5</Pitch>
-	<Yaw>39.7</Yaw>
+	<Whitening>false</Whitening>
+	<Pitch>35</Pitch>
+	<Yaw>40</Yaw>
 	<ShadowPitch>100</ShadowPitch>
 	<ShadowYaw>100</ShadowYaw>
 	<Sky href="/Textures/_(CubeTexture)/Sky.xdb#xpointer(/CubeTexture)"/>
@@ -44,7 +44,7 @@
 		<y>0</y>
 		<z>0</z>
 	</FogColor>
-	<FogStartDistance>0</FogStartDistance>
+	<FogStartDistance>1000</FogStartDistance>
 	<FogDistance>2000</FogDistance>
 	<VapourHeight>0</VapourHeight>
 	<VapourDensity>0</VapourDensity>
@@ -76,26 +76,26 @@
 		<z>0</z>
 	</GroundAmbientColor>
 	<MaxShadowHeight>20</MaxShadowHeight>
-	<SunFlares href="/_(SunFlares)/Test.(SunFlares).xdb#xpointer(/SunFlares)"/>
+	<SunFlares/>
 	<Haze/>
-	<CloudTex href="/Textures/Effects/Clouds/CloudTex01.xdb#xpointer(/Texture)"/>
+	<CloudTex/>
 	<CloudSize>
-		<x>5</x>
-		<y>5</y>
+		<x>0</x>
+		<y>0</y>
 	</CloudSize>
-	<CloudDir>4.5</CloudDir>
-	<CloudSpeed>0.91</CloudSpeed>
+	<CloudDir>0</CloudDir>
+	<CloudSpeed>1</CloudSpeed>
 	<Rain/>
-	<SunFlarePitch>36</SunFlarePitch>
-	<SunFlareYaw>4.5</SunFlareYaw>
+	<SunFlarePitch>0</SunFlarePitch>
+	<SunFlareYaw>0</SunFlareYaw>
 	<ShadowsMaxDetailLength>10</ShadowsMaxDetailLength>
 	<HeightFog/>
 	<DepthOfField/>
 	<DistanceFog/>
-	<SkyDome href="/_(Model)/SkyDomes/Virtual/SkyDome_Ramp_Virt.xdb#xpointer(/Model)"/>
+	<SkyDome href="/_(Model)/SkyDomes/Virtual/SkyDome_Necro_Virt.xdb#xpointer(/Model)"/>
 	<DymanicLightsModifications>
-		<x>1</x>
-		<y>1</y>
-		<z>1</z>
+		<x>0.923529</x>
+		<y>0.923529</y>
+		<z>0.923529</z>
 	</DymanicLightsModifications>
 </AmbientLight>

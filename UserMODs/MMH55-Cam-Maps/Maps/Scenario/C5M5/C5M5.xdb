@@ -59410,7 +59410,7 @@
 				<buildings>
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
-						<InitialUpgrade>BLD_UPG_2</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_3</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -109569,151 +109569,7 @@
 			<StartHero/>
 			<HeroInTown>false</HeroInTown>
 			<ReserveHeroes>
-				<Item href="#n:inline(AdvMapHero)" id="item_e197449f-cbb3-4dae-bdac-39c270b90184">
-					<AdvMapHero ObjectRecordID="1001837">
-						<Pos>
-							<x>0</x>
-							<y>0</y>
-							<z>0</z>
-						</Pos>
-						<Rot>0</Rot>
-						<Floor>0</Floor>
-						<Name>Nickolas</Name>
-						<CombatScript/>
-						<pointLights/>
-						<Shared href="/MapObjects/Necropolis/Nikolay.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_2</PlayerID>
-						<Experience>11200000</Experience>
-						<armySlots>
-							<Item>
-								<Creature>CREATURE_SKELETON_ARCHER</Creature>
-								<Count>300</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_DEMILICH</Creature>
-								<Count>12</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_SHADOW_DRAGON</Creature>
-								<Count>4</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_WRAITH</Creature>
-								<Count>8</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_GHOST</Creature>
-								<Count>50</Count>
-							</Item>
-							<Item>
-								<Creature>CREATURE_VAMPIRE_LORD</Creature>
-								<Count>35</Count>
-							</Item>
-						</armySlots>
-						<artifactIDs/>
-						<isUntransferable/>
-						<Editable>
-							<NameFileRef href=""/>
-							<BiographyFileRef href="bio.txt"/>
-							<Offence>15</Offence>
-							<Defence>15</Defence>
-							<Spellpower>35</Spellpower>
-							<Knowledge>25</Knowledge>
-							<skills>
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_DARK_MAGIC</SkillID>
-								</Item>
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_SUMMONING_MAGIC</SkillID>
-								</Item>
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_DEFENCE</SkillID>
-								</Item>
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_OFFENCE</SkillID>
-								</Item>
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_LUCK</SkillID>
-								</Item>	
-								<Item>
-									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>SKILL_SORCERY</SkillID>
-								</Item>
-							</skills>
-							<perkIDs>
-								<Item>HERO_SKILL_MASTER_OF_ANIMATION</Item>
-								<Item>HERO_SKILL_DEATH_SCREAM</Item>
-								<Item>HERO_SKILL_CHILLING_STEEL</Item>
-								<Item>HERO_SKILL_CHILLING_BONES</Item>
-								<Item>HERO_SKILL_POWER_OF_STONE</Item>
-								<Item>HERO_SKILL_POWER_OF_HASTE</Item>
-								<Item>HERO_SKILL_MASTER_OF_MIND</Item>
-								<Item>HERO_SKILL_MASTER_OF_CURSES</Item>
-								<Item>HERO_SKILL_FRENZY</Item>
-								<Item>HERO_SKILL_ARCHERY</Item>
-								<Item>HERO_SKILL_EVASION</Item>
-								<Item>HERO_SKILL_TOUGHNESS</Item>
-								<Item>HERO_SKILL_RESISTANCE</Item>
-								<Item>HERO_SKILL_DEAD_LUCK</Item>
-								<Item>HERO_SKILL_MASTER_OF_CREATURES</Item>
-								<Item>HERO_SKILL_SOIL_BURN</Item>
-							</perkIDs>
-							<spellIDs>
-								<Item>SPELL_CONJURE_PHOENIX</Item>
-								<Item>SPELL_FIREWALL</Item>
-								<Item>SPELL_SUMMON_ELEMENTALS</Item>
-								<Item>SPELL_MAGIC_FIST</Item>
-								<Item>SPELL_HYPNOTIZE</Item>
-								<Item>SPELL_ANTI_MAGIC</Item>
-								<Item>SPELL_BLADE_BARRIER</Item>
-								<Item>SPELL_SUMMON_HIVE</Item>
-								<Item>SPELL_ARCANE_CRYSTAL</Item>
-								<Item>SPELL_WASP_SWARM</Item>
-								<Item>SPELL_EARTHQUAKE</Item>
-								<Item>SPELL_LAND_MINE</Item>
-								<Item>SPELL_ANIMATE_DEAD</Item>
-								<Item>SPELL_SLOW</Item>
-								<Item>SPELL_SORROW</Item>
-								<Item>SPELL_DISRUPTING_RAY</Item>
-								<Item>SPELL_CURSE</Item>
-								<Item>SPELL_PLAGUE</Item>
-								<Item>SPELL_WEAKNESS</Item>
-								<Item>SPELL_FORGETFULNESS</Item>
-								<Item>SPELL_BERSERK</Item>
-								<Item>SPELL_UNHOLY_WORD</Item>
-								<Item>SPELL_TELEPORT</Item>
-								<Item>SPELL_PHANTOM</Item>
-								<Item>SPELL_VAMPIRISM</Item>
-							</spellIDs>
-							<Ballista>true</Ballista>
-							<FirstAidTent>true</FirstAidTent>
-							<AmmoCart>true</AmmoCart>
-							<FavoriteEnemies/>
-						</Editable>
-						<OverrideMask>16</OverrideMask>
-						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
-						<LossTrigger>
-							<Action>
-								<FunctionName/>
-							</Action>
-						</LossTrigger>
-						<AllowQuickCombat>true</AllowQuickCombat>
-						<Textures>
-							<Icon128x128/>
-							<Icon64x64/>
-							<RoundedFace/>
-							<LeftFace/>
-							<RightFace/>
-						</Textures>
-						<PresetPrice>0</PresetPrice>
-						<BannedRaces/>
-					</AdvMapHero>
-				</Item>
+                <Item href="Nicolai.xdb#xpointer(/AdvMapHero)"/>			
 			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
@@ -110672,14 +110528,8 @@
 		<Item href="/MapObjects/Dungeon/Sephinroth.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Sylsai.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Kelodin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Dungeon/Kastore.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero01.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Haven/RedHeavenHero05.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero03.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero06.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Haven/RedHeavenHero02.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
 		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -110687,7 +110537,6 @@
 		<Item href="/MapObjects/Haven/Maeve.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Jeddite.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>				
-		<Item href="/MapObjects/Haven/RedHeavenHero04.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -110712,8 +110561,7 @@
 		<Item href="/MapObjects/Necropolis/Aislinn.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
 		<Item href="/MapObjects/Necropolis/Nimbus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Archilus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Thant.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Sandro.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
+		<Item href="/MapObjects/Necropolis/Thant.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
 		<Item href="/MapObjects/Necropolis/Nemor.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Necropolis/Vidomina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -110732,37 +110580,6 @@
 		<Item href="/MapObjects/Preserve/Itil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Gem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Vinrael.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Tazar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Maximus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Ufretin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Skeggy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Una.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Ingvar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Bersy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Dwarves/Ottar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Dwarves/Brand.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Egil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Vegeyr.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Hangvul2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Bart.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Vilma.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero8.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero4.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero9.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Crag.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Kraal.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Stronghold/Hero5.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero6.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Azar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Matewa.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Shiva.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Mokka.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero7.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero3.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Zouleika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Erika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	</AvailableHeroes>
 	<MapRumours>
 		<Item>

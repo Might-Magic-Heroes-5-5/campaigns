@@ -530,14 +530,21 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 	- replaced army bonus of 6 Druids with artifact bonus Shield of Crystal Ice 
 
 ### C5M5 - Sylvan: The Vampire Lord
-- fix: Nikolay occasionally transferred his army to other heroes due to AI not considering him the main player hero.
-- fix: Necropolis player heroes no longer flee from combat and fight till the very end.
-- change: Nikolay hero has better stats, knows more spells and his army scales with game difficulty.
-- new: map ambient light did not changed properly as the night drew near. Now the dusk will gradually become darker. If the player manages to break the dragons causing the night, daylight will shine bright.
-- new: Combat arena light and Skydome reflects the one on the adventure map.
+- fix: Nikolai occasionally transferred his army to other heroes due to AI not considering him the main player hero.
+- fix: Enemy heroes no longer flee from combat and fight till the very end
+- fix: Findan loosing phoenix light effect after entering town
+- change: Nikolai hero stats, known spells and army size are higher and more challenging on higher game difficulty
+- change: Enemy side heroes' army is more challenging on Heroic and Impossible game difficulties
+- change: Night counter increases faster at higher difficulty levels 0%, 50%, 100% and 150% for impossible
+- change: Main quest Spectral Dragons stacks are more challenging on higher game difficulty
+- new: map ambient light did not changed properly as the night drew near. Now the dusk will gradually become darker and if the player manages to defeat the Spectral dragons causing the night, daylight will shine bright.
+- new: Combat arena light and Skydome reflects the one on the adventure map
 - new: Message will notify the player when the night countdown is at 40%, 20% and when the night comes
-- new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%.
-- change: Night counter increases faster at higher difficulty levels 0%, 25%, 50% and 75% for impossible.
+- new: Camera will go through the locations of all player visible Spectral Dragons when the night counter is at 60%
+- change: Starting bonus choices:
+	- replaced army bonus of 1 Green Dragon with artifact bonus Mantle of the Legion
+	- replaced army bonus of 3 Unicorns with artifact bonus Guildmaster's Compendium 
+	- replaced building bonus Town hall with artifact bonus Staff of the Saint
 
 ### C6M2 - Academy: The Liberation
 - fix: It was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
