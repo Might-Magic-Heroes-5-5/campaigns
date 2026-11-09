@@ -521,7 +521,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C5M4 - Sylvan: The Archipelago
 - new: Added Memory Mentor
 - new: added a naval fight ( originally prepared by Nival but was never introduced in the scenario )
-- change: Inferno heroes army is now stronger and will scale up with every month that passes by
+- change: Most neutral stacks have their size increased (reverted to original numbers from Vanilla 1.0 version); moreover, some of them have secondary tacks which will become stronger on higher game diffculty.
+- change: Inferno heroes have been reworked (Jezebeth and Biara are closer to what they were in Vanilla) and their armies are now stronger and will be more challenging on higher game difficulty
+- change: "Collect Artifacts" quest experience rewards for each collected artifact from 5k,10k,15k,20k to 5k,10k,15k,20k/10k,15k,20k,25k/15k,20k,25k,30k/20k,25k,30k,35k based on game difficulty
+- change: Starting bonus choices:
+	- replaced army bonus of 12 War Dancers with spell bonus Celestial shield
+	- increased army bonus of Master Hunters from 8 to 22
+	- replaced army bonus of 6 Druids with artifact bonus Shield of Crystal Ice 
 
 ### C5M5 - Sylvan: The Vampire Lord
 - fix: Nikolay occasionally transferred his army to other heroes due to AI not considering him the main player hero.

@@ -805,8 +805,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Firebreather.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>11</Amount>
-				<Amount2>16</Amount2>
+				<Amount>25</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -828,14 +828,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>22</Amount>
-						<Amount2>31</Amount2>
+						<Amount>55</Amount>
+						<Amount2>55</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMON</Creature>
-						<Amount>16</Amount>
-						<Amount2>24</Amount2>
+						<Amount>40</Amount>
+						<Amount2>40</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -2492,8 +2492,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Demilich.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>6</Amount>
-				<Amount2>8</Amount2>
+				<Amount>18</Amount>
+				<Amount2>18</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -2514,21 +2514,15 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
-						<Amount>18</Amount>
-						<Amount2>26</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_POLTERGEIST</Creature>
-						<Amount>11</Amount>
-						<Amount2>16</Amount2>
+						<Amount>46</Amount>
+						<Amount2>46</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_VAMPIRE</Creature>
-						<Amount>8</Amount>
-						<Amount2>14</Amount2>
+						<Creature>CREATURE_VAMPIRE_LORD</Creature>
+						<Amount>29</Amount>
+						<Amount2>29</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -4319,8 +4313,8 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_BANSHEE</Creature>
-						<Amount>19</Amount>
-						<Amount2>21</Amount2>
+						<Amount>70</Amount>
+						<Amount2>70</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -7062,8 +7056,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Infernal_Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>8</Amount>
-				<Amount2>11</Amount2>
+				<Amount>18</Amount>
+				<Amount2>21</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -7085,10 +7079,16 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Amount>8</Amount>
-						<Amount2>13</Amount2>
+						<Amount>18</Amount>
+						<Amount2>23</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
+					<Item>
+						<Creature>CREATURE_PIT_FIEND</Creature>
+						<Amount>5</Amount>
+						<Amount2>6</Amount2>
+						<CustomAmount>true</CustomAmount>
+					</Item>					
 				</AdditionalStacks>
 			</AdvMapMonster>
 		</Item>
@@ -22987,20 +22987,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_NOSFERATU</Creature>
-						<Amount>9</Amount>
-						<Amount2>13</Amount2>
+						<Amount>29</Amount>
+						<Amount2>33</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEMILICH</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>18</Amount>
+						<Amount2>18</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_DEATH_KNIGHT</Creature>
-						<Amount>6</Amount>
-						<Amount2>8</Amount2>
+						<Amount>12</Amount>
+						<Amount2>12</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -23038,8 +23038,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>21</Amount>
-				<Amount2>26</Amount2>
+				<Amount>80</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -23060,15 +23060,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>90</Amount>
-						<Amount2>99</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DISEASE_ZOMBIE</Creature>
-						<Amount>40</Amount>
-						<Amount2>47</Amount2>
+						<Creature>CREATURE_SKELETON_ARCHER</Creature>
+						<Amount>170</Amount>
+						<Amount2>170</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -26762,8 +26756,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Wraith.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>7</Amount2>
+				<Amount>11</Amount>
+				<Amount2>13</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -26784,9 +26778,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_MUMMY</Creature>
+						<Creature>CREATURE_BONE_DRAGON</Creature>
 						<Amount>8</Amount>
-						<Amount2>11</Amount2>
+						<Amount2>8</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -27206,8 +27200,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Death_Knight.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>4</Amount>
-				<Amount2>6</Amount2>
+				<Amount>14</Amount>
+				<Amount2>16</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -27228,21 +27222,15 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_POLTERGEIST</Creature>
-						<Amount>8</Amount>
-						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_NOSFERATU</Creature>
-						<Amount>8</Amount>
-						<Amount2>12</Amount2>
+						<Amount>38</Amount>
+						<Amount2>42</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_LICH</Creature>
-						<Amount>7</Amount>
-						<Amount2>10</Amount2>
+						<Amount>25</Amount>
+						<Amount2>25</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -27552,8 +27540,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Alt_upgrade/Poltergeist.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>35</Amount2>
+				<Amount>80</Amount>
+				<Amount2>85</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -27574,15 +27562,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>109</Amount>
-						<Amount2>118</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
-						<Amount>55</Amount>
-						<Amount2>63</Amount2>
+						<Creature>CREATURE_SKELETON_ARCHER</Creature>
+						<Amount>210</Amount>
+						<Amount2>210</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -31918,9 +31900,9 @@
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
-						<Amount>31</Amount>
-						<Amount2>38</Amount2>
+						<Creature>CREATURE_STEEL_GOLEM</Creature>
+						<Amount>98</Amount>
+						<Amount2>98</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -31940,8 +31922,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Master_Genie.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>8</Amount>
-				<Amount2>11</Amount2>
+				<Amount>22</Amount>
+				<Amount2>22</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -31962,15 +31944,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_IRON_GOLEM</Creature>
-						<Amount>12</Amount>
-						<Amount2>19</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_MAGI</Creature>
-						<Amount>9</Amount>
-						<Amount2>14</Amount2>
+						<Amount>29</Amount>
+						<Amount2>34</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -32122,8 +32098,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Arch_Magi.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>10</Amount>
-				<Amount2>12</Amount2>
+				<Amount>22</Amount>
+				<Amount2>22</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -32880,8 +32856,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Infernal_Succubus.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>10</Amount>
-				<Amount2>13</Amount2>
+				<Amount>20</Amount>
+				<Amount2>23</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -32902,21 +32878,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_FAMILIAR</Creature>
-						<Amount>24</Amount>
-						<Amount2>33</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DEMON</Creature>
-						<Amount>20</Amount>
-						<Amount2>28</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Amount>11</Amount>
-						<Amount2>18</Amount2>
+						<Amount>57</Amount>
+						<Amount2>57</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -33066,8 +33030,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Ghost.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>12</Amount>
-				<Amount2>17</Amount2>
+				<Amount>30</Amount>
+				<Amount2>30</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -33089,14 +33053,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON</Creature>
-						<Amount>35</Amount>
-						<Amount2>44</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_WALKING_DEAD</Creature>
-						<Amount>23</Amount>
-						<Amount2>31</Amount2>
+						<Amount>140</Amount>
+						<Amount2>140</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -33139,8 +33097,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_ARCHER</Creature>
-						<Amount>31</Amount>
-						<Amount2>39</Amount2>
+						<Amount>131</Amount>
+						<Amount2>139</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
@@ -35029,9 +34987,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_COMBAT_MAGE</Creature>
-						<Amount>8</Amount>
-						<Amount2>11</Amount2>
+						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
+						<Amount>6</Amount>
+						<Amount2>8</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -36424,8 +36382,8 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Amount>37</Amount>
-						<Amount2>41</Amount2>
+						<Amount>150</Amount>
+						<Amount2>150</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -38626,8 +38584,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Blood_Witch.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>12</Amount>
-				<Amount2>15</Amount2>
+				<Amount>22</Amount>
+				<Amount2>25</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -38649,14 +38607,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SCOUT</Creature>
-						<Amount>13</Amount>
-						<Amount2>19</Amount2>
+						<Amount>43</Amount>
+						<Amount2>49</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_CAPTAIN</Creature>
-						<Amount>8</Amount>
-						<Amount2>12</Amount2>
+						<Amount>28</Amount>
+						<Amount2>32</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -38712,8 +38670,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Firebreather.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>35</Amount2>
+				<Amount>60</Amount>
+				<Amount2>65</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -38734,15 +38692,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_IMP</Creature>
-						<Amount>62</Amount>
-						<Amount2>68</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_HORNED_LEAPER</Creature>
-						<Amount>44</Amount>
-						<Amount2>51</Amount2>
+						<Amount>144</Amount>
+						<Amount2>151</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -38762,8 +38714,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Matriarch.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>7</Amount2>
+				<Amount>11</Amount>
+				<Amount2>11</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -38784,15 +38736,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_BLACK_RIDER</Creature>
-						<Amount>10</Amount>
-						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_ACIDIC_HYDRA</Creature>
-						<Amount>7</Amount>
-						<Amount2>10</Amount2>
+						<Amount>17</Amount>
+						<Amount2>20</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -39945,7 +39891,7 @@
 				<Shared href="/MapObjects/Academy/Iron_Golem.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>147</Amount>
-				<Amount2>75</Amount2>
+				<Amount2>147</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -40813,8 +40759,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Pit_Spawn.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>6</Amount>
-				<Amount2>8</Amount2>
+				<Amount>10</Amount>
+				<Amount2>12</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -40835,21 +40781,15 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_FIREBREATHER_HOUND</Creature>
-						<Amount>10</Amount>
-						<Amount2>15</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Amount>7</Amount>
-						<Amount2>10</Amount2>
+						<Amount>27</Amount>
+						<Amount2>30</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_NIGHTMARE</Creature>
-						<Amount>6</Amount>
-						<Amount2>9</Amount2>
+						<Amount>16</Amount>
+						<Amount2>19</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -41843,8 +41783,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Necropolis/Ghost.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>20</Amount>
-				<Amount2>25</Amount2>
+				<Amount>60</Amount>
+				<Amount2>65</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -41866,14 +41806,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SKELETON_WARRIOR</Creature>
-						<Amount>46</Amount>
-						<Amount2>54</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_DISEASE_ZOMBIE</Creature>
-						<Amount>32</Amount>
-						<Amount2>39</Amount2>
+						<Amount>250</Amount>
+						<Amount2>250</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -42272,8 +42206,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Militiaman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>21</Amount>
-				<Amount2>30</Amount2>
+				<Amount>71</Amount>
+				<Amount2>80</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -42294,9 +42228,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_PEASANT</Creature>
-						<Amount>25</Amount>
-						<Amount2>34</Amount2>
+						<Creature>CREATURE_MARKSMAN</Creature>
+						<Amount>55</Amount>
+						<Amount2>64</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -42890,8 +42824,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Wolf.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>22</Amount>
-				<Amount2>28</Amount2>
+				<Amount>42</Amount>
+				<Amount2>48</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -42913,8 +42847,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WOLF</Creature>
-						<Amount>18</Amount>
-						<Amount2>24</Amount2>
+						<Amount>48</Amount>
+						<Amount2>54</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -43381,8 +43315,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Stalker.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>30</Amount>
-				<Amount2>33</Amount2>
+				<Amount>70</Amount>
+				<Amount2>73</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -43404,20 +43338,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_WITCH</Creature>
-						<Amount>25</Amount>
-						<Amount2>30</Amount2>
+						<Amount>55</Amount>
+						<Amount2>60</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Amount>21</Amount>
-						<Amount2>25</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_RIDER</Creature>
-						<Amount>15</Amount>
-						<Amount2>20</Amount2>
+						<Amount>75</Amount>
+						<Amount2>75</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -43570,8 +43498,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Stalker.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>12</Amount2>
+				<Amount>49</Amount>
+				<Amount2>52</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -43593,8 +43521,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_SCOUT</Creature>
-						<Amount>9</Amount>
-						<Amount2>15</Amount2>
+						<Amount>49</Amount>
+						<Amount2>55</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -44026,8 +43954,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Griffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>17</Amount>
-				<Amount2>22</Amount2>
+				<Amount>30</Amount>
+				<Amount2>30</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -44048,21 +43976,15 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Amount>48</Amount>
-						<Amount2>57</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Amount>31</Amount>
-						<Amount2>39</Amount2>
+						<Amount>100</Amount>
+						<Amount2>100</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Amount>22</Amount>
-						<Amount2>27</Amount2>
+						<Amount>71</Amount>
+						<Amount2>71</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -44082,8 +44004,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Swordsman.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>11</Amount>
-				<Amount2>16</Amount2>
+				<Amount>50</Amount>
+				<Amount2>50</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -44105,14 +44027,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Amount>23</Amount>
-						<Amount2>32</Amount2>
+						<Amount>90</Amount>
+						<Amount2>90</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Amount>19</Amount>
-						<Amount2>27</Amount2>
+						<Amount>60</Amount>
+						<Amount2>60</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -46230,14 +46152,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_ROYAL_GRIFFIN</Creature>
-						<Amount>10</Amount>
-						<Amount2>13</Amount2>
+						<Amount>20</Amount>
+						<Amount2>23</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
-						<Amount>5</Amount>
-						<Amount2>7</Amount2>
+						<Amount>10</Amount>
+						<Amount2>12</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -46319,8 +46241,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Haven/Royal_Griffin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>29</Amount>
-				<Amount2>32</Amount2>
+				<Amount>88</Amount>
+				<Amount2>88</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -46341,21 +46263,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_ARCHER</Creature>
-						<Amount>104</Amount>
-						<Amount2>112</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_FOOTMAN</Creature>
-						<Amount>68</Amount>
-						<Amount2>75</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_PRIEST</Creature>
-						<Amount>24</Amount>
-						<Amount2>28</Amount2>
+						<Creature>CREATURE_MARKSMAN</Creature>
+						<Amount>150</Amount>
+						<Amount2>150</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -46503,8 +46413,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Air_Elemental.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>31</Amount>
-				<Amount2>34</Amount2>
+				<Amount>55</Amount>
+				<Amount2>55</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -46526,8 +46436,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FIRE_ELEMENTAL</Creature>
-						<Amount>19</Amount>
-						<Amount2>22</Amount2>
+						<Amount>35</Amount>
+						<Amount2>35</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -47958,11 +47868,11 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Death_Knight.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>6</Amount>
-				<Amount2>8</Amount2>
+				<Amount>12</Amount>
+				<Amount2>14</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>true</DoesNotGrow>
+				<DoesNotGrow>false</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -47981,14 +47891,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_VAMPIRE</Creature>
-						<Amount>16</Amount>
-						<Amount2>22</Amount2>
+						<Amount>36</Amount>
+						<Amount2>43</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MUMMY</Creature>
-						<Amount>9</Amount>
-						<Amount2>12</Amount2>
+						<Amount>19</Amount>
+						<Amount2>22</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -49280,8 +49190,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Shadow_Mistress.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>7</Amount2>
+				<Amount>10</Amount>
+				<Amount2>12</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -49303,20 +49213,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Amount>9</Amount>
-						<Amount2>13</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BLACK_RIDER</Creature>
-						<Amount>6</Amount>
-						<Amount2>9</Amount2>
+						<Amount>49</Amount>
+						<Amount2>53</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_HYDRA</Creature>
-						<Amount>5</Amount>
-						<Amount2>10</Amount2>
+						<Amount>22</Amount>
+						<Amount2>24</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -50207,20 +50111,20 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
-						<Amount>9</Amount>
-						<Amount2>14</Amount2>
+						<Amount>29</Amount>
+						<Amount2>34</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PRIEST</Creature>
-						<Amount>7</Amount>
-						<Amount2>11</Amount2>
+						<Amount>17</Amount>
+						<Amount2>21</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_PALADIN</Creature>
-						<Amount>5</Amount>
-						<Amount2>7</Amount2>
+						<Amount>10</Amount>
+						<Amount2>12</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -50829,8 +50733,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Assassin.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>13</Amount>
-				<Amount2>16</Amount2>
+				<Amount>73</Amount>
+				<Amount2>76</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -50852,8 +50756,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Amount>8</Amount>
-						<Amount2>11</Amount2>
+						<Amount>48</Amount>
+						<Amount2>51</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -50873,8 +50777,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Black_Rider.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>14</Amount>
-				<Amount2>17</Amount2>
+				<Amount>34</Amount>
+				<Amount2>37</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -50895,21 +50799,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_ASSASSIN</Creature>
-						<Amount>29</Amount>
-						<Amount2>32</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
-						<Creature>CREATURE_BLOOD_WITCH</Creature>
-						<Amount>19</Amount>
-						<Amount2>22</Amount2>
-						<CustomAmount>true</CustomAmount>
-					</Item>
-					<Item>
 						<Creature>CREATURE_MINOTAUR_KING</Creature>
-						<Amount>19</Amount>
-						<Amount2>23</Amount2>
+						<Amount>84</Amount>
+						<Amount2>84</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -51072,8 +50964,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Water_Elemental.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>23</Amount>
-				<Amount2>25</Amount2>
+				<Amount>55</Amount>
+				<Amount2>55</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -51108,8 +51000,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Neutral/Earth_Elemental.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>24</Amount>
-				<Amount2>27</Amount2>
+				<Amount>30</Amount>
+				<Amount2>30</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -51131,8 +51023,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FIRE_ELEMENTAL</Creature>
-						<Amount>18</Amount>
-						<Amount2>21</Amount2>
+						<Amount>25</Amount>
+						<Amount2>25</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -51782,8 +51674,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Genie.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>12</Amount>
-				<Amount2>16</Amount2>
+				<Amount>22</Amount>
+				<Amount2>26</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -51805,8 +51697,8 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_MAGI</Creature>
-						<Amount>14</Amount>
-						<Amount2>19</Amount2>
+						<Amount>34</Amount>
+						<Amount2>39</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -51880,8 +51772,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Academy/Rakshasa_Kshatri.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>6</Amount>
-				<Amount2>8</Amount2>
+				<Amount>8</Amount>
+				<Amount2>10</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -51902,9 +51794,9 @@
 				<AllowQuickCombat>true</AllowQuickCombat>
 				<AdditionalStacks>
 					<Item>
-						<Creature>CREATURE_GENIE</Creature>
-						<Amount>13</Amount>
-						<Amount2>17</Amount2>
+						<Creature>CREATURE_TITAN</Creature>
+						<Amount>5</Amount>
+						<Amount2>7</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -52342,16 +52234,16 @@
 				</Pos>
 				<Rot>2.35002</Rot>
 				<Floor>1</Floor>
-				<Name/>
+				<Name>mini-boss</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Arch_Demon.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>5</Amount>
-				<Amount2>6</Amount2>
+				<Amount>15</Amount>
+				<Amount2>16</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
-				<DoesNotGrow>true</DoesNotGrow>
+				<DoesNotGrow>false</DoesNotGrow>
 				<MessageFileRef href=""/>
 				<Script/>
 				<Resources>
@@ -52370,14 +52262,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-						<Amount>12</Amount>
-						<Amount2>15</Amount2>
+						<Amount>32</Amount>
+						<Amount2>35</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Amount>9</Amount>
-						<Amount2>11</Amount2>
+						<Amount>19</Amount>
+						<Amount2>21</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
@@ -56904,7 +56796,7 @@
 				<Shared href="/MapObjects/Academy/Rakshasa.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>19</Amount>
-				<Amount2>16</Amount2>
+				<Amount2>19</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -57136,8 +57028,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Dungeon/Stalker.(AdvMapMonsterShared).xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>9</Amount>
-				<Amount2>12</Amount2>
+				<Amount>60</Amount>
+				<Amount2>60</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -58959,7 +58851,7 @@
 				<Shared href="/MapObjects/Academy/Master_Genie.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
 				<Amount>55</Amount>
-				<Amount2>68</Amount2>
+				<Amount2>55</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>true</DoesNotGrow>
@@ -61441,8 +61333,8 @@
 			<HeroInTown>false</HeroInTown>
 			<ReserveHeroes>
 				<Item href="Jazaz.(AdvMapHero).xdb#xpointer(/AdvMapHero)"/>
-				<Item href="Odrema.(AdvMapHero).xdb#xpointer(/AdvMapHero)"/>
-				<Item href="New Object.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Oddrema.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Biara.xdb#xpointer(/AdvMapHero)"/>
 			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
