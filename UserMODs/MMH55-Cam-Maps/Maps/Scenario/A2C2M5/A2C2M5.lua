@@ -332,7 +332,9 @@ OBJECTIVES = {
 		elseif OBJECTIVES.state.captureMainTown[2] == 2 and GetObjectOwner("MainAcademyTown") == PLAYER_1 then
 			SetObjectiveState( "prim1_CaptureMainAcademyTown", OBJECTIVE_COMPLETED );
 			CINEMATICS.captureMainTown();
+			sleep(10);
 			H55c_Message.show( PATH.."MsgBox_GotaiStatsBoosted.txt" );
+			sleep(10);
 			ChangeHeroStat( "Gottai", STAT_ATTACK, 15 );
 			ChangeHeroStat( "Gottai", STAT_DEFENCE, 15 );
 			ChangeHeroStat( "Gottai", STAT_SPELL_POWER, 15 );
