@@ -565,6 +565,13 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 	- replaced army bonus of 3 Unicorns with artifact bonus Guildmaster's Compendium 
 	- replaced building bonus Town hall with artifact bonus Staff of the Saint
 
+### C6M1 - Academy: The Defiant Mage
+- change: Zehir starting army is bigger on Normal and Hard game difficulties
+- change: Starting bonus choices:
+	- replaced spell bonus of Fire Trap with Magic Fist
+	- replaced army bonus of 5 Djinns with artifact bonus Turban of Enlightenment
+	- replaced artifact bonus of Beginner's Magic Wand with Holy Griffin Ring
+
 ### C6M2 - Academy: The Liberation
 - fix: It was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
 - fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 

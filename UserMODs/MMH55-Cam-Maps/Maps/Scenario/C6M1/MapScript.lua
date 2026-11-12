@@ -44,6 +44,16 @@ OBJECTIVES = {
     end,
 	
 	prepare = function()
+		local buff = GetDifficulty() + 1;
+		if buff == 1 then
+			AddHeroCreatures("Zehir", CREATURE_MASTER_GREMLIN, 24);
+			AddHeroCreatures("Zehir", CREATURE_STONE_GARGOYLE, 12);
+			AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 6);
+		elseif buff == 2 then
+			AddHeroCreatures("Zehir", CREATURE_MASTER_GREMLIN, 12);
+			AddHeroCreatures("Zehir", CREATURE_STONE_GARGOYLE, 6);
+			AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 3);
+		end
 		CINEMATICS.intro();
 		SetRegionBlocked('noway1', not nil, PLAYER_2);
 		SetRegionBlocked('noway2', not nil, PLAYER_2);
