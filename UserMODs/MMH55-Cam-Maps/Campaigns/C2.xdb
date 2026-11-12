@@ -22,7 +22,7 @@
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>NECKLACE_OF_BRAVERY</BonusArtifactID>
+					<BonusArtifactID>LION_HIDE_CAPE</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -42,7 +42,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_CERBERI</Creature>
-						<Count>12</Count>
+						<Count>15</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -63,8 +63,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_NIGHTMARE</Creature>
-						<Count>3</Count>
+						<Creature>CREATURE_SUCCUBUS</Creature>
+						<Count>8</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -105,12 +105,12 @@
 					<Target>
 						<Hero/>
 					</Target>
-					<Type>E_BONUS_RESOURCE</Type>
+					<Type>E_BONUS_ARTIFACT</Type>
 					<BonusArmy>
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusArtifactID>BOOTS_OF_SPEED</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -118,7 +118,7 @@
 						<Crystal>0</Crystal>
 						<Sulfur>0</Sulfur>
 						<Gem>0</Gem>
-						<Gold>3600</Gold>
+						<Gold>0</Gold>
 					</BonusResources>
 					<BonusSpellID>SPELL_NONE</BonusSpellID>
 					<Building>TB_TOWN_HALL</Building>
@@ -130,7 +130,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_SUCCUBUS</Creature>
-						<Count>8</Count>
+						<Count>12</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -190,8 +190,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_PIT_FIEND</Creature>
-						<Count>2</Count>
+						<Creature>CREATURE_BALOR</Creature>
+						<Count>3</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -213,7 +213,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_HORNED_DEMON</Creature>
-						<Count>36</Count>
+						<Count>48</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -234,8 +234,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-						<Count>4</Count>
+						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
+						<Count>12</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -273,8 +273,8 @@
 					</Target>
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
-						<Creature>CREATURE_DRUID</Creature>
-						<Count>10</Count>
+						<Creature>CREATURE_GRAND_ELF</Creature>
+						<Count>20</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -300,13 +300,13 @@
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
-						<Wood>20</Wood>
-						<Ore>0</Ore>
-						<Mercury>0</Mercury>
-						<Crystal>0</Crystal>
-						<Sulfur>0</Sulfur>
-						<Gem>0</Gem>
-						<Gold>0</Gold>
+						<Wood>10</Wood>
+						<Ore>10</Ore>
+						<Mercury>5</Mercury>
+						<Crystal>5</Crystal>
+						<Sulfur>5</Sulfur>
+						<Gem>5</Gem>
+						<Gold>5000</Gold>
 					</BonusResources>
 					<BonusSpellID>SPELL_NONE</BonusSpellID>
 					<Building>TB_TOWN_HALL</Building>
@@ -315,12 +315,12 @@
 					<Target>
 						<Hero/>
 					</Target>
-					<Type>E_BONUS_RESOURCE</Type>
+					<Type>E_BONUS_ARTIFACT</Type>
 					<BonusArmy>
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
+					<BonusArtifactID>NIGHTMARISH_RING</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>
@@ -328,7 +328,7 @@
 						<Crystal>0</Crystal>
 						<Sulfur>0</Sulfur>
 						<Gem>0</Gem>
-						<Gold>6000</Gold>
+						<Gold>0</Gold>
 					</BonusResources>
 					<BonusSpellID>SPELL_NONE</BonusSpellID>
 					<Building>TB_TOWN_HALL</Building>
@@ -357,29 +357,7 @@
 					<Type>E_BONUS_CREATURE</Type>
 					<BonusArmy>
 						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
-						<Count>4</Count>
-					</BonusArmy>
-					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
-					<BonusResources>
-						<Wood>0</Wood>
-						<Ore>0</Ore>
-						<Mercury>0</Mercury>
-						<Crystal>0</Crystal>
-						<Sulfur>0</Sulfur>
-						<Gem>0</Gem>
-						<Gold>0</Gold>
-					</BonusResources>
-					<BonusSpellID>SPELL_NONE</BonusSpellID>
-					<Building>TB_TOWN_HALL</Building>
-				</Item>
-				<Item>
-					<Target>
-						<Hero/>
-					</Target>
-					<Type>E_BONUS_CREATURE</Type>
-					<BonusArmy>
-						<Creature>CREATURE_HELL_HOUND</Creature>
-						<Count>12</Count>
+						<Count>16</Count>
 					</BonusArmy>
 					<BonusArtifactID>ARTIFACT_NONE</BonusArtifactID>
 					<BonusResources>
@@ -403,7 +381,29 @@
 						<Creature>CREATURE_UNKNOWN</Creature>
 						<Count>0</Count>
 					</BonusArmy>
-					<BonusArtifactID>GOLDEN_SEXTANT</BonusArtifactID>
+					<BonusArtifactID>ARTIFACT_LEGION_T3</BonusArtifactID>
+					<BonusResources>
+						<Wood>0</Wood>
+						<Ore>0</Ore>
+						<Mercury>0</Mercury>
+						<Crystal>0</Crystal>
+						<Sulfur>0</Sulfur>
+						<Gem>0</Gem>
+						<Gold>0</Gold>
+					</BonusResources>
+					<BonusSpellID>SPELL_NONE</BonusSpellID>
+					<Building>TB_TOWN_HALL</Building>
+				</Item>
+				<Item>
+					<Target>
+						<Hero/>
+					</Target>
+					<Type>E_BONUS_ARTIFACT</Type>
+					<BonusArmy>
+						<Creature>CREATURE_UNKNOWN</Creature>
+						<Count>0</Count>
+					</BonusArmy>
+					<BonusArtifactID>ARTIFACT_LEGION_T4</BonusArtifactID>
 					<BonusResources>
 						<Wood>0</Wood>
 						<Ore>0</Ore>

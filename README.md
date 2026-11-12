@@ -313,14 +313,21 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 ### C2M1 – Inferno: The Betrayal
 - change: Level cap increased from 12 to 35 so Godric can be imported from previous missions
 - change: Final fight vs Erasiel is more challenging on higher difficulties
-
+- change: Starting bonus choices:
+	- replaced artifact bonus Necklace of the Lion with Cape of the Lion's Mane
+	- increased army bonus Cerberus from 12 to 15
+	- replaced army bonus 3 Hell Chargers to 8 Succubus 
+	
 ### C2M2 – Inferno: The Betrayal
 - change: player starting resources are slightly increased on some game difficulty levels (Mercury: 0,0,0,0 -> 5,5,5,0; Sulfur: 10,5,0,0 -> 10,10,5,5)
 - change: Final fights vs Stephan and Veyer are now more challenging on higher difficulties
 - change: Assassins that will join Agrael at the second secret stash from random(20-40) to 40
 - change: Stephan army is more challenging at higher game difficulties
 - change: Veyer final army is now stronger based on game difficulty
-
+- change: Starting bonus choices:
+	- replaced resource bonus of 3600 gold with artifact bonus Boots of the Swift Journey
+	- increased army bonus Succubus from 8 to 12
+	
 ### C2M3 – Inferno: The Conquest
 - fix: Druid weekly growth magic did not start unless player captured Wenlan, now that happens on any captured Sylvan town.
 - fix: Player 2 heroes no longer flee battles
@@ -333,7 +340,11 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Ynthil has been developed further and can recruit any unupgraded units. Gilraen will recruit and upgrade those once he's enabled to move freely at the start of 2nd month.
 - change: Gilraen skills, spells and army are now more challenging based on game difficulty
 - new: Added Memory Mentor
-
+- change: Starting bonus choices:
+	- replaced army bonus of 2 Pit Fiends with 3 Pit Lords
+	- increased army bonus Horned Overseers from 36 to 48
+	- replaced army bonus of 4 Hell Stallion with 12 Succubus Mistress
+	
 ### C2M4 – Inferno: The Ship
 - fix: Erewel stopped being reinforced after week 4
 - change: Increased the quantity of various stacks throughout the map that will join the player
@@ -346,11 +357,19 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Inferno enemy hero Erasiel stats and army are now more challenging
 - change: Bone Dragons stack size defending the underground garnission scale with difficulty
 - new: Added Memory Mentor
+- change: Starting bonus choices:
+	- replaced army bonus of 10 Druids with 20 Master Hunters
+	- increased resource bonus of 20 Wood to 10 Wood, 10 Ore, 5 Mercury, 5 Crystal, 5 Sulfur, 5 Gems, 5000 Gold
+	- replaced resource bonus of 6000 for artifact bonus Ring of the Broken Will
 
 ### C2M5 – Inferno: Agrael's Decision
 - change: The creature stack defending Tieru bridge scales with difficulty
 - change: The creature stack defending the Cartographer scales with difficulty
 - new: Added War Machine factory on the map
+- change: Starting bonus choices:
+	- increased army bonus of Succubus Mistress from 4 to 16
+	- replaced army bonus of 12 Hell Hounds with artifact bonus Crest of the Legion 
+	- replaced artifact bonus of Sextant of the Sea Elves with War Drums of the Legion
 
 ### C3M1 – Necropolis: The Temptation
 - fix: Enemy hero Amin did not patrol the map as inteneded
@@ -408,8 +427,8 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Improved army power of some contestants (Erina, Vayshan,Yrbeth). They also scale based on difficulty.
 - change: When Raelag win the competition and take the ring he also gains 500 xp.
 - change: Starting bonus choices:
-	- Army bonus from 7 to 15 Assasins
-	- Resource bonus from 10 ore to 10 wood, 10 ore
+	- increased army bonus from 7 to 15 Assasins
+	- increased resource bonus from 10 ore to 10 wood, 10 ore
 
 ### C4M2 – Dungeon: The Expansion
 - fix: Removed an undeground Vampire lords stack as it could not be attacked nor it guarded any treasures
