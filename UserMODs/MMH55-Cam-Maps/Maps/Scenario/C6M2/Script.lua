@@ -32,11 +32,18 @@ end
 DIFFICULTY = {
 	[0] = function()
 		print ("normal");
-		GiveExp( "Aberrar", 15000 );
+		GiveExp( "Aberrar", 14700 ); --> level 10
+		GiveExp( "Orrin", 20600 ); --> level 12		
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 25); 
+		AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 50); 	
+		AddHeroCreatures("Zehir", CREATURE_GENIE, 10);	
+        UpgradeTownBuilding("insar", TOWN_BUILDING_FORT, 1); -- Upgrade to castle fortifications			
+        UpgradeTownBuilding("insar", TOWN_BUILDING_DWELLING_4, 1);	-- Recruit directly archmages	
 	end,
 	[1] = function()
 		print ("hard");
-		GiveExp( "Aberrar", 20000 );
+		GiveExp( "Aberrar", 20600 ); --> level 12
+		GiveExp( "Orrin", 40500 ); --> level 16		
 		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 100);
 		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE,  80);
 		AddObjectCreatures("nar_ankar",           CREATURE_GHOST,  60);
@@ -44,10 +51,16 @@ DIFFICULTY = {
 		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  25);
 		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  10);
 		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,   5);
+		
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 15); 
+		AddHeroCreatures("Zehir", CREATURE_STEEL_GOLEM, 30); 	
+		AddHeroCreatures("Zehir", CREATURE_GENIE, 5);
+        UpgradeTownBuilding("insar", TOWN_BUILDING_DWELLING_4, 1); -- Recruit directly archmages		
 	end,
 	[2] = function()
 		print ("heroic");
-		GiveExp( "Aberrar", 25000 );
+		GiveExp( "Aberrar", 34100 ); --> level 15 
+		GiveExp( "Orrin", 81700 ); --> level 20			
 		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 250);
 		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 200);
 		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 120);
@@ -55,10 +68,13 @@ DIFFICULTY = {
 		AddObjectCreatures("nar_ankar",        CREATURE_DEMILICH,  50);
 		AddObjectCreatures("nar_ankar",         CREATURE_BANSHEE,  30);
 		AddObjectCreatures("nar_ankar",   CREATURE_HORROR_DRAGON,  15);
+
+		AddHeroCreatures("Zehir", CREATURE_ARCH_MAGI, 10); 		
 	end,
 	[3] = function()
 		print ("impossible");
-		GiveExp( "Aberrar", 30000 );
+		GiveExp( "Aberrar", 57400 ); --> level 18
+		GiveExp( "Orrin", 167000 ); --> level 24		
 		AddObjectCreatures("nar_ankar", CREATURE_SKELETON_ARCHER, 500);
 		AddObjectCreatures("nar_ankar",          CREATURE_ZOMBIE, 300);
 		AddObjectCreatures("nar_ankar",           CREATURE_GHOST, 220);
@@ -119,7 +135,7 @@ OBJECTIVES = {
 		startThread(DIFFICULTY[GetDifficulty()]);
 		DenyAIHeroFlee('Aberrar', not nil);
 		DenyAIHeroFlee('Thant', not nil);
-		EnableHeroAI('Thant', nil);
+		EnableHeroAI('Thant', not nil); -- for allow to recruit new units
 	
 	end,
 	

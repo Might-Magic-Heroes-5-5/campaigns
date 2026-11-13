@@ -242,7 +242,7 @@
 					<Item>
 						<Type>TB_TOWN_HALL</Type>
 						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_2</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_3</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_FORT</Type>
@@ -252,7 +252,7 @@
 					<Item>
 						<Type>TB_MARKETPLACE</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SHIPYARD</Type>
@@ -287,27 +287,27 @@
 					<Item>
 						<Type>TB_DWELLING_3</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_5</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_6</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_1</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_7</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_GRAIL</Type>
@@ -327,22 +327,22 @@
 					<Item>
 						<Type>TB_SPECIAL_1</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_2</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_3</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_4</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
 						<Type>TB_SPECIAL_5</Type>
@@ -352,7 +352,7 @@
 					<Item>
 						<Type>TB_SPECIAL_6</Type>
 						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
-						<MaxUpgrade>BLD_UPG_NONE</MaxUpgrade>
+						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 				</buildings>
 				<Editable>
@@ -20824,11 +20824,11 @@
 						<Count>80</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_BANSHEE</Creature>
+						<Creature>CREATURE_DEMILICH</Creature>
 						<Count>50</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_DEMILICH</Creature>
+						<Creature>CREATURE_BANSHEE</Creature>
 						<Count>20</Count>
 					</Item>
 				</armySlots>
@@ -21012,7 +21012,7 @@
 						<pointLights/>
 						<Shared href="/MapObjects/Necropolis/Thant.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 						<PlayerID>PLAYER_3</PlayerID>
-						<Experience>170000</Experience>
+						<Experience>167000</Experience>
 						<armySlots/>
 						<artifactIDs>
 							<Item>RING_OF_MAGI</Item>
@@ -60849,7 +60849,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>24</HeroMaxLevel>
+	<HeroMaxLevel>28</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>

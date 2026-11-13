@@ -574,10 +574,20 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M2 - Academy: The Liberation
 - fix: It was possible to get the outro cinematic if you directly capture Lorekeep. Now that happens only when all main objectives are accomplished.
-- fix: AI hired and cluttered many heroes on the Lorekeep island for no reason. 
-- change: Angel creature stack guarding Lorekeep island from the left side now grows every week.
-- new: Lorekeep now has a hero that guards it (was empty before) and his army power scales with difficulty level.
+- fix: AI hired and cluttered many heroes on the Lorekeep island for no reason.
+- change: Zehir starting army is bigger in Normal and Hard game difficulties
+- change: Zehir starting town is more developed on Normal, Hard and Heroic game difficulties
+- change: Level cap from 24 to 28
+- change: Enemy hero Dougal, guard of Lorekeep island, is more challenging on higher game difficulties
+- change: Enemy hero Zoltan is more experienced on higher game difficulties
+- change: Angel creature stack guarding Lorekeep island from the left side now grows every week
+- change: removed building construction restrictions for Newpost town
+- new: Lorekeep now has a town defener hero - Thant. His army power scales with difficulty level.
 - new: Added Memory Mentor
+- change: Starting bonus choices:
+	- replaced spell bonus of Cleansing with Firewall
+	- replaced army bonus of 9 Iron Golems with artifact bonus Ancient Tome
+	- replaced artifact bonus of Breastplate of Eldritch Might with Dragon Eye Ring 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
