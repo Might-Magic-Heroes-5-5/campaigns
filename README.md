@@ -392,7 +392,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
   - Faiz - Enemy control mind and counterspell
   - Nathir - destro spells + Irresistible Magic skill
 - change: Level cap increased from 24 to 35 so Godric can be imported from previous missions
-
+- change: Starting bonus choices:
+	- increased army bonus Liches from 2 to 5
+	- increased army bonus Wights from 1 to 2
+	
 ### C3M3 – Necropolis: The Invasion
 - fix: Sometimes player heroes were not granted Cloak of Death's Shadow when visiting Bahiyaa
 - change: Level cap increased from 32 to 40.
@@ -409,6 +412,10 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Level cap increased from 40 to 41
 - change: Cyrus skills reworked, he will gain more of them as well as his army will be more challenging on higher game difficulty
 - new: Added Hill Fort
+- change: Starting bonus choices:
+	- increased army bonus Spectres from 20 to 30
+	- increased army bonus Liches from 4 to 7
+	- replaced spell bonus Hypnotize with Vampirism
 
 ### C3M5 – Necropolis: Lord of Heresh
 - fix: Godric's Angel trap sometimes did not trigger which broke the main quest line
@@ -421,6 +428,9 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Player3 (Academy) heroes are now in Onslaught mode. They are more challenging on higher difficulty levels and will storm player's towns at any cost
 - change: All mines are now guarded from start
 - new: Added Memory Mentor
+- change: Starting bonus choices:
+	- increased army bonus Liches from 4 to 7
+	- replaced artifact bonus Cape of Lion's Mane with Sack of Endless Gold
 
 ### C4M1 – Dungeon: The Clanlord
 - change: Level cap raised from 14 to 18
