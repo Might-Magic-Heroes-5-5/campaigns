@@ -592,7 +592,7 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 - change: Enemy hero Zoltan is more experienced on higher game difficulties
 - change: Angel creature stack guarding Lorekeep island from the left side now grows every week
 - change: removed building construction restrictions for Newpost town
-- new: Lorekeep now has a town defener hero - Thant. His army power scales with difficulty level.
+- new: Lorekeep is now fully developed and has a town defender hero - Thant. His army power scales with game difficulty.
 - new: Added Memory Mentor
 - change: Starting bonus choices:
 	- replaced spell bonus of Cleansing with Firewall
