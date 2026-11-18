@@ -38,8 +38,8 @@ function DefenderHeroMove(heroName)
 	if defender_turn <= waves then
 		if defender_turn == 1 then
 			SummonCreature(DEFENDER, CREATURE_SHADOW_DRAGON, army_rating *  3, get_coords(nil));
-			SummonCreature(DEFENDER,	  CREATURE_SKELETON, army_rating * 80, get_coords(nil));
-			SummonCreature(DEFENDER,		  CREATURE_LICH, army_rating * 20, get_coords(not nil));
+			SummonCreature(DEFENDER,	  CREATURE_SKELETON, army_rating * 70, get_coords(nil));
+			SummonCreature(DEFENDER,		  CREATURE_LICH, army_rating * 18, get_coords(not nil));
 			return nil	-- cast a spell
 		elseif defender_turn == 2 then
 			SummonCreature(DEFENDER, 	   CREATURE_ZOMBIE, army_rating * 30, get_coords(nil));
@@ -56,14 +56,14 @@ function DefenderHeroMove(heroName)
 		elseif defender_turn == 4 then
 			SummonCreature(DEFENDER,  CREATURE_SKELETON_ARCHER, army_rating * 50, get_coords(nil));
 			SummonCreature(DEFENDER,    CREATURE_SHADOW_DRAGON, army_rating *  2, get_coords(nil));
-			SummonCreature(DEFENDER,	 CREATURE_VAMPIRE_LORD, army_rating *  5, get_coords(nil));
+			SummonCreature(DEFENDER,	 CREATURE_VAMPIRE_LORD, army_rating *  8, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 40, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_SKELETON_WARRIOR, army_rating * 40, get_coords(nil));
 			return nil	-- cast a spell
 		elseif defender_turn == 5 then
 			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 3, get_coords(nil));
-			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER,  CREATURE_SHADOW_DRAGON, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 3, get_coords(nil));
 			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
 			return nil	-- cast a spell
@@ -71,7 +71,7 @@ function DefenderHeroMove(heroName)
 			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
-			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
+			SummonCreature(DEFENDER, CREATURE_SHADOW_DRAGON, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_WRAITH, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER,  CREATURE_WIGHT, army_rating * 2, get_coords(nil));
 			SummonCreature(DEFENDER, CREATURE_SKELETON_ARCHER, army_rating * 30, get_coords(nil));
