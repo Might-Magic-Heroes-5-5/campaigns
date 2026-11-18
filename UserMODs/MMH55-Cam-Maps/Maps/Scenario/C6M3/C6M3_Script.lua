@@ -1,12 +1,37 @@
 doFile("/scripts/A2_Artifact_Sets/A2_Artifact_Sets.lua");
 doFile("/scripts/campaign_common.lua");
+doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT or not InitAllSetArtifacts do
+while not COMBAT or not InitAllSetArtifacts or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
 H55_PlayerStatus = {0,1,1,2,2,2,2,2};
+
+H55c_AI_CONTROLLED = {
+	player1 = {
+		state = 0,      	 -- 0 human
+		heroes = {},
+		enemies = {},
+	},
+   
+	player2 = { 		     -- Haven/Necro AI player
+		state = 2,
+		heroes = {},
+		enemies = {
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 1 },  -- PLAYER1
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER2
+			{ priority = 1.0, heroes = 1.0, towns = 1.0, is_enemy = 0 },  -- PLAYER3
+		}
+	},
+   
+	player3 = { 		     -- Findan
+		state = 1,
+		heroes = {},
+		enemies = {},
+	}
+}
 
 function H55_InitSetArtifacts()
 	InitAllSetArtifacts("C6M3");
@@ -19,10 +44,7 @@ startThread(H55_InitSetArtifacts);
 
 town_array = {"town1","town2","town3","town4"};
 town_array.n = 4;
-
-function theend()
-	OBJECTIVES.state.defeatMarkal[2] = 6;
-end
+knights_array = {"Brem","Christian","Nathaniel"};
 
 function Town_count()
 	local count = 0;
@@ -37,12 +59,15 @@ end
 function MeetingGodric()
 	Trigger(OBJECT_TOUCH_TRIGGER, "prison", nil);
 	SetObjectEnabled("prison", nil);
+	RemoveObjectCreatures("firstborder", CREATURE_ANGEL, 250);
+	RemoveObjectCreatures("firstborder", CREATURE_CAVALIER, 500);
+	RemoveObjectCreatures("firstborder", CREATURE_PALADIN, 500);
 	OBJECTIVES.state.meetGodric[2] = 2;
-end	
+end
 
 function GodricMeetsAllies()
 	Trigger(REGION_ENTER_AND_STOP_TRIGGER, "guardian", nil)
-	if GetObjectOwner("firstborder") ~= PLAYER_1 then 
+	if GetObjectOwner("firstborder") ~= PLAYER_1 then
 		SetObjectOwner("firstborder", PLAYER_1)
 		sleep(5);
 		CINEMATICS.firstBorder();
@@ -59,8 +84,10 @@ end
 d = GetDifficulty() + 1;
 
 -- Messages
-function AreYouReady()
-	QuestionBox('/Maps/Scenario/C6M3/message-8.txt', "WeAreReady" );
+function AreYouReady(hero)
+	if GetObjectOwner(hero) == PLAYER_1 then
+		QuestionBox('/Maps/Scenario/C6M3/message-8.txt', "WeAreReady" );
+	end
 end
 
 function WeAreReady()
@@ -79,11 +106,12 @@ end
 BATTLES = {
     zehir = {
       start = function()
+		Save("C6M3_Zehir");
         StartCombat("Zehir", "Berein", 6,
 		         CREATURE_WRAITH,  40,
 	   CREATURE_SKELETON_WARRIOR, 200,
 		         CREATURE_ZOMBIE, 150,
-		          CREATURE_GHOST, 100,		
+		          CREATURE_GHOST, 100,
 		   CREATURE_VAMPIRE_LORD,  75,
 		       CREATURE_DEMILICH,  50,
 		'/Maps/Scenario/C6M3/CombatScript_zehir.xdb#xpointer(/Script)',
@@ -98,29 +126,31 @@ BATTLES = {
 		end
       end
     },
-	
+
 	godric = {
 		start = function()
+			Save("C6M3_Godric");
 			StartCombat("Godric", "Berein", 5,
 			       CREATURE_DEMILICH,  50,
-			   CREATURE_VAMPIRE_LORD, 200,			
-			          CREATURE_GHOST, 300,		
-				  CREATURE_NOSFERATU, 200,
+			   CREATURE_VAMPIRE_LORD, 100,
+			          CREATURE_GHOST, 300,
+				  CREATURE_NOSFERATU, 100,
 			CREATURE_SKELETON_ARCHER, 250,
 			'/Maps/Scenario/C6M3/CombatScript_godric.xdb#xpointer(/Script)',
 			"BATTLES.godric.finish",
 			'/Scenes/CombatArenas/Boss_c6m3_Dirt2.xdb#xpointer(/AdventureFlybyScene)')
 		end,
-		
+
 		finish = function()
 			if IsHeroAlive("Godric") then
 				BATTLES.findan.start();
 			end
 		end
 	},
-	
+
 	findan = {
 		start = function()
+			Save("C6M3_Findan");
 			DeployReserveHero("Berein", 2, 22, 0 );
 			sleep(10);
 			AddHeroCreatures("Berein",      CREATURE_LICH_MASTER, 50);
@@ -145,22 +175,22 @@ CINEMATICS = {
 		StartDialogScene("/DialogScenes/C6/M3/D1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
 	end,
-	
+
 	meetGodric = function()
 		StartDialogScene("/DialogScenes/C6/M3/D2/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
 	end,
-	
+
 	firstBorder = function()
 		StartDialogScene("/DialogScenes/C6/M3/R1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
 	end,
-	
+
 	firstTown = function()
 		StartDialogScene("/DialogScenes/C6/M3/R2/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
 	end,
-	
+
 	meetFindan = function()
 		StartDialogScene("/DialogScenes/C6/M3/D3/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
@@ -187,12 +217,72 @@ OBJECTIVES = {
 		OBJECTIVES.prepare();
 		OBJECTIVES.run();
     end,
-	
+
 	prepare = function()
 		SetPlayerHeroesCountNotForHire(PLAYER_1, 6);
 		CINEMATICS.intro();
-		GiveExp( "Nathaniel", 80000 );
-		GiveExp( "Brem", 80000 );
+		DeployReserveHero("Tamika", 122, 42, GROUND); -- Lucretia
+		sleep(10);
+		local knights = GetDifficulty() + 1;
+		for i,hero in knights_array do
+			ChangeHeroStat(hero, STAT_EXPERIENCE, 81700);
+		end
+		H55c_SetCampaignResources( PLAYER_2, 30, 30, 15, 15, 15, 15, 25000);
+		if knights > 1 then
+			for i,hero in knights_array do
+			    ChangeHeroStat(hero, STAT_ATTACK, GetDifficulty() * 4);
+			    ChangeHeroStat(hero, STAT_DEFENCE, GetDifficulty() * 4);
+			    ChangeHeroStat(hero, STAT_SPELL_POWER, GetDifficulty() * 2);
+			    ChangeHeroStat(hero, STAT_KNOWLEDGE, GetDifficulty() * 2);
+				AddHeroCreatures(hero, CREATURE_MARKSMAN, 50);
+		    end
+			H55c_SetCampaignResources( PLAYER_2, 30, 30, 15, 15, 15, 15, 50000);
+			ChangeHeroStat("Tamika", STAT_ATTACK, GetDifficulty() * 4);
+	        ChangeHeroStat("Tamika", STAT_DEFENCE, GetDifficulty() * 4);
+		    ChangeHeroStat("Tamika", STAT_SPELL_POWER, GetDifficulty() * 2);
+		    ChangeHeroStat("Tamika", STAT_KNOWLEDGE, GetDifficulty() * 2);
+			TeachHeroSpell("Tamika", SPELL_SORROW);
+			TeachHeroSpell("Tamika", SPELL_ANIMATE_DEAD);
+
+			AddObjectCreatures("2ndgarrison", CREATURE_MARKSMAN, 140 * GetDifficulty());
+			AddObjectCreatures("2ndgarrison", CREATURE_SWORDSMAN, 110 * GetDifficulty());
+			AddObjectCreatures("2ndgarrison", CREATURE_GRIFFIN, 60 * GetDifficulty());
+			AddObjectCreatures("2ndgarrison", CREATURE_ANGEL, 12 * GetDifficulty());
+
+			AddObjectCreatures("markalgate", CREATURE_SKELETON_ARCHER, 500 * GetDifficulty());
+			AddObjectCreatures("markalgate", CREATURE_ZOMBIE, 400 * GetDifficulty());
+			AddObjectCreatures("markalgate", CREATURE_GHOST, 250 * GetDifficulty());
+			AddObjectCreatures("markalgate", CREATURE_VAMPIRE_LORD, 160 * GetDifficulty());
+			AddObjectCreatures("markalgate", CREATURE_DEMILICH, 90 * GetDifficulty());
+			AddObjectCreatures("markalgate", CREATURE_WRAITH, 55 * GetDifficulty());
+        end
+		if knights > 2 then
+			for i,hero in knights_array do
+			    ChangeHeroStat(hero, STAT_EXPERIENCE, 118300);
+				AddHeroCreatures(hero, CREATURE_MARKSMAN, 30);
+				AddHeroCreatures(hero, CREATURE_SWORDSMAN, 35);
+		    end
+	        H55c_SetCampaignResources( PLAYER_2, 40, 40, 20, 20, 20, 20, 75000);
+			GiveExp("Tamika", 118300);	--> level 25
+			TeachHeroSpell("Tamika", SPELL_VAMPIRISM);
+			TeachHeroSpell("Tamika", SPELL_UNHOLY_WORD);
+            GiveHeroSkill("Tamika", DEMON_FEAT_CRITICAL_STRIKE);
+        end
+		if knights > 3 then
+			for i,hero in knights_array do
+			    ChangeHeroStat(hero, STAT_EXPERIENCE, 292000);
+				AddHeroCreatures(hero, CREATURE_SWORDSMAN, 20);
+				AddHeroCreatures(hero, CREATURE_CLERIC, 12);
+				AddHeroCreatures(hero, CREATURE_PALADIN, 4);
+		    end
+            H55c_SetCampaignResources( PLAYER_2, 50, 50, 25, 25, 25, 25, 100000);
+			GiveExp("Tamika", 292000);	--> level 30
+			GiveArtifact("Tamika", 91); --> Ring of Machine Affinity
+			TeachHeroSpell("Tamika", SPELL_BERSERK);
+			TeachHeroSpell("Tamika", SPELL_PHANTOM);
+            GiveHeroSkill("Tamika", HERO_SKILL_STUNNING_BLOW);
+            GiveHeroSkill("Tamika", PERK_EXPERT_TRAINER);
+        end
 		Trigger(OBJECT_TOUCH_TRIGGER, "spes", "YouAreNotReady");
 		Trigger(OBJECT_TOUCH_TRIGGER, "post", "YouAreNotReady");
 		Trigger(REGION_ENTER_AND_STOP_TRIGGER, "gathering", "YouAreNotReady");
@@ -201,12 +291,13 @@ OBJECTIVES = {
 		SetObjectEnabled("spes", nil);
 		SetObjectEnabled("post", nil);
 		EnableHeroAI("Godric", nil);
+		SetRegionBlocked("necro_exit", not nil, PLAYER_2);
 		SetRegionBlocked("heam", not nil, PLAYER_2);
-		SetRegionBlocked("block", not nil, PLAYER_2);	
+		SetRegionBlocked("block", not nil, PLAYER_2);
 		Trigger(OBJECT_TOUCH_TRIGGER, "prison", "MeetingGodric");
 		TeachHeroSpell("Berein", 21); -- required for final finght
 	end,
-	
+
 	run = function()
 		while true do
 			sleep(10);
@@ -216,12 +307,12 @@ OBJECTIVES = {
 					if pcall(OBJECTIVES[key]) == nil then print(key) end;
 				end
 			end
-			
+
 			if GetObjectiveState("obj5") == OBJECTIVE_FAILED or GetObjectiveState("obj6") == OBJECTIVE_FAILED or GetObjectiveState("obj7") == OBJECTIVE_FAILED then
 				Loose();
 				return
 			end
-			
+
 			if GetObjectiveState("obj4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped(  "Zehir", "C6M3" );
 				SaveHeroAllSetArtifactsEquipped( "Godric", "C6M3" );
@@ -234,31 +325,39 @@ OBJECTIVES = {
 			end
 		end
 	end,
-	
+
 	meetFindan = function()
 		if OBJECTIVES.state.meetFindan[2] == 2 then
 			DeployReserveHero("Heam", 84, 41, 0);
 			sleep(20);
 			LoadHeroAllSetArtifacts("Heam", "C5M5" );
 			sleep(40);
-			H55_CamFixTooManySkills(PLAYER_1, "Heam");
+			H55_CamFixTooManySkills(PLAYER_3, "Heam");
 			sleep(10);
 			MoveHero("Heam", 86, 42, 0);
 			EnableHeroAI("Heam", nil);
 			OBJECTIVES.state.isFindanAlive[2] = 1;
 			OBJECTIVES.state.meetFindan[2] = 3;
-		elseif OBJECTIVES.state.meetFindan[2] == 3 and IsObjectVisible(PLAYER_1, "Heam")==not nil then
+		elseif OBJECTIVES.state.meetFindan[2] == 3 and IsObjectVisible(PLAYER_1, "Heam") ~= nil then
 			CINEMATICS.meetFindan();
 			SetObjectiveState("obj1", OBJECTIVE_COMPLETED);
 			SetObjectOwner("Heam", PLAYER_1);
-			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1473);
+			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 30000);
+			SetRegionBlocked("necro_exit", nil, PLAYER_2);
+			H55c_AIAddHero( "Tamika" ); -- To prevent Lucretia uses town spell to Bel-Zeri if Inhumatio falls,(if have already built Mage guild lv 4), she is outside and trigger "Are Heroes ready to fight Markal?" in her turn
+			local extra = GetDifficulty() + 1
+			AddHeroCreatures("Tamika", CREATURE_VAMPIRE_LORD, 150); -- Onslaught role so she will receive more vampires for the attack
+			if extra > 1 then
+			AddHeroCreatures("Tamika", CREATURE_VAMPIRE_LORD, 250 * GetDifficulty());
+			end
 			OBJECTIVES.state.defeatMarkal[2] = 1;
 			OBJECTIVES.state.meetFindan[2] = 10;
 		end
 	end,
-	
+
 	meetGodric = function()
 		if OBJECTIVES.state.meetGodric[2] == 2 then
+	        sleep(10);
 			CINEMATICS.meetGodric();
 			SetObjectiveState("obj2",OBJECTIVE_COMPLETED);
 			SetObjectOwner("Godric", PLAYER_1);
@@ -266,30 +365,30 @@ OBJECTIVES = {
 			LoadHeroAllSetArtifacts( "Godric", "C1M5" );
 			sleep(40);
 			H55_CamFixTooManySkills(PLAYER_1, "Godric");
-			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 1532);
+			LevelUpHero("Zehir");
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"guardian", "GodricMeetsAllies");
 			Trigger(REGION_ENTER_AND_STOP_TRIGGER,"town", "GodricFight");
 			OBJECTIVES.state.captureTowns[2] = 2;
-			OBJECTIVES.state.meetFindan[2] = 2;
 			OBJECTIVES.state.isGodricAlive[2] = 1;
 			OBJECTIVES.state.meetGodric[2] = 10;
 		end
 	end,
-	
+
 	captureTowns = function()
 		local owned_towns = Town_count();
 		if OBJECTIVES.state.captureTowns[2] == 2 then
 			SetObjectiveVisible("obj3", not nil);
 			OBJECTIVES.state.captureTowns[2] = 3;
 		elseif OBJECTIVES.state.captureTowns[2] == 3 and owned_towns == 4 then
-			ChangeHeroStat("Zehir", STAT_EXPERIENCE, 2162);
+			LevelUpHero("Zehir");
 			SetObjectEnabled("markalgate", not nil);
 			Trigger(OBJECT_TOUCH_TRIGGER, "markalgate", nil);
 			SetObjectiveState("obj3", OBJECTIVE_COMPLETED);
+			OBJECTIVES.state.meetFindan[2] = 2;
 			OBJECTIVES.state.captureTowns[2] = 10;
 		end
 	end,
-	
+
 	defeatMarkal = function()
 		if OBJECTIVES.state.defeatMarkal[2] == 1 then
 			SetObjectiveState("obj4", OBJECTIVE_ACTIVE);
@@ -309,14 +408,14 @@ OBJECTIVES = {
 			OBJECTIVES.state.defeatMarkal[2] = 10;
 		end
 	end,
-	
+
 	isZehirAlive = function()
 		if OBJECTIVES.state.isZehirAlive[2] == 1 and IsHeroAlive("Zehir") == nil then
 			SetObjectiveState("obj5", OBJECTIVE_FAILED);
 			OBJECTIVES.state.isZehirAlive[2] = 11;
 		end
 	end,
-	
+
 	isFindanAlive = function()
 		if OBJECTIVES.state.isFindanAlive[2] == 1 then
 			SetObjectiveVisible("obj6", not nil);
@@ -326,7 +425,7 @@ OBJECTIVES = {
 			OBJECTIVES.state.isFindanAlive[2] = 11;
 		end
 	end,
-	
+
 	isGodricAlive = function()
 		if OBJECTIVES.state.isGodricAlive[2] == 1 then
 			SetObjectiveVisible("obj7", not nil);
@@ -340,6 +439,7 @@ OBJECTIVES = {
 
 ------------------- MAIN ------------------------
 startThread(OBJECTIVES.start)
+startThread( H55c_AI_main );
 
 ------------------- DEBUG ------------------------
 function C6M3_debug(eax, player)

@@ -601,12 +601,26 @@ The name-to-ID mappings for all in-game objects can be found in the `types.xml` 
 
 ### C6M3 - Academy: The Triumvirate
 - fix: final Markal fight (vs Findan) used dummy Markal hero instead of the one importred from C3M5
-- change: First garrison troop strength increased by 30%
+- change: Level cap increased from 32 to 99
+- change: enemy player 2 starts the game with more resources based on game difficulty
+- change: enemy player 2 begin with higher stats and hero level on higher game difficulty ( start at level 20/20/25/30; + stats  Att/def 4 x difficulty + SP/K 2 x difficulty)
+- change: enemy player 2 heroes army is more challenging on higher game difficulty
+- change: First garrison army increased by 30% and in addition 250 angels and 500 cavalery units are added who will abandon garrison when it is captured by Godric
+- change: Exchanged Razzak hero with Vittorio, as at the time Griffin empire is at war with the Mages
+- new: Enemy player 2 gets undead hero Lucretia ( griffin and undeads fight side by side under Markal control). She gains the same exp and stats as others but no extra units. After the player meets Findan, Lucretia becomes an onslaught hero and gains more vampires based on difficulty (150/250/500/750)
+- change: Experience gained by Zehir for various tasks:
+	- freeing Godric from 1532 to an amount-to-level up
+	- meeting Findan from 1473 to 30000
+	- capturing all Haven towns from 2162 to an amount-to-level up 
 - change: Haven towns are now of higher town level:
    - Dwellings: T1, T2, T3, T4, T5 built up to level 1 (provide non upgraded units).
    - Magic Guilds from level 0 to 3
    - Common buildings: Village is now Town Hall, added Marketplace, added Blacksmith, Taverns cannot be built.
 - change: Markal fights are now more challenging, scale with game difficulty and time passed.
+- change: Starting bonus choices:
+	- replaced spell bonus of Endurance with Hypnotize
+	- replaced army bonus of 4 Rakshasas with 8 Rakshasa Rajas
+	- replaced artifact bonus Staff of Grand Vizier has been replaced with artifact Scale Mail of Enlightenment
 
 ### C6M4 - Academy: The Alliance
 - fix: archer dwelling (at 150,148) could not transport units via caravan due to terrain block

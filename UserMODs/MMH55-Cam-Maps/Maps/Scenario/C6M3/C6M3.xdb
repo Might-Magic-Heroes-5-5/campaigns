@@ -168,13 +168,18 @@
 						</Pos>
 						<Rot>0</Rot>
 						<Floor>0</Floor>
-						<Name/>
+						<Name>Rutger</Name>
 						<CombatScript/>
 						<pointLights/>
 						<Shared href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_1</PlayerID>
+						<PlayerID>PLAYER_2</PlayerID>
 						<Experience>0</Experience>
-						<armySlots/>
+				        <armySlots>
+					        <Item>
+						        <Creature>CREATURE_CLERIC</Creature>
+						        <Count>15</Count>
+					        </Item>						
+						</armySlots>
 						<artifactIDs/>
 						<isUntransferable/>
 						<Editable>
@@ -383,20 +388,7 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_PALADIN</Creature>
-						<Count>10</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>15</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MILITIAMAN</Creature>
-						<Count>20</Count>
-					</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_EB088947-12C7-41BD-8C7F-456AFB3D12DC">
@@ -408,22 +400,35 @@
 						</Pos>
 						<Rot>0</Rot>
 						<Floor>0</Floor>
-						<Name/>
+						<Name>Vittorio</Name>
 						<CombatScript/>
 						<pointLights/>
-						<Shared href="/MapObjects/Academy/Isher.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_1</PlayerID>
+						<Shared href="/MapObjects/Haven/Christian.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_2</PlayerID>
 						<Experience>0</Experience>
-						<armySlots/>
+				        <armySlots>
+					        <Item>
+						        <Creature>CREATURE_PALADIN</Creature>
+						        <Count>10</Count>
+					        </Item>
+					        <Item>
+						        <Creature>CREATURE_MARKSMAN</Creature>
+						        <Count>15</Count>
+					        </Item>
+					        <Item>
+						        <Creature>CREATURE_MILITIAMAN</Creature>
+						        <Count>20</Count>
+					        </Item>
+				        </armySlots>
 						<artifactIDs/>
 						<isUntransferable/>
 						<Editable>
 							<NameFileRef href=""/>
 							<BiographyFileRef href=""/>
-							<Offence>0</Offence>
-							<Defence>0</Defence>
-							<Spellpower>0</Spellpower>
-							<Knowledge>0</Knowledge>
+							<Offence>2</Offence>
+							<Defence>4</Defence>
+							<Spellpower>2</Spellpower>
+							<Knowledge>2</Knowledge>
 							<skills/>
 							<perkIDs/>
 							<spellIDs/>
@@ -595,20 +600,7 @@
 					<NameFileRef href=""/>
 					<BiographyFileRef href=""/>
 				</Editable>
-				<armySlots>
-					<Item>
-						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>20</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>30</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>40</Count>
-					</Item>
-				</armySlots>
+				<armySlots/>
 				<spellIDs/>
 				<CaptionFileRef href=""/>
 				<GarrisonHero href="#n:inline(AdvMapHero)" id="item_A259A18E-C2BD-42F0-9491-9CA6855A27EB">
@@ -620,13 +612,26 @@
 						</Pos>
 						<Rot>0</Rot>
 						<Floor>0</Floor>
-						<Name/>
+						<Name>Ellaine</Name>
 						<CombatScript/>
 						<pointLights/>
 						<Shared href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-						<PlayerID>PLAYER_1</PlayerID>
+						<PlayerID>PLAYER_2</PlayerID>
 						<Experience>0</Experience>
-						<armySlots/>
+				        <armySlots>
+					        <Item>
+						        <Creature>CREATURE_GRIFFIN</Creature>
+						        <Count>20</Count>
+					        </Item>
+					        <Item>
+						        <Creature>CREATURE_SWORDSMAN</Creature>
+						        <Count>30</Count>
+					        </Item>
+					        <Item>
+						        <Creature>CREATURE_MARKSMAN</Creature>
+						        <Count>40</Count>
+					        </Item>
+				        </armySlots>
 						<artifactIDs/>
 						<isUntransferable/>
 						<Editable>
@@ -1292,16 +1297,20 @@
 					</Item>
 					<Item>
 						<Creature>CREATURE_CAVALIER</Creature>
-						<Count>20</Count>
-					</Item>
+						<Count>520</Count>
+					</Item>					
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
 						<Count>40</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ANGEL</Creature>
-						<Count>5</Count>
+						<Count>255</Count>
 					</Item>
+					<Item>
+						<Creature>CREATURE_PALADIN</Creature>
+						<Count>500</Count>
+					</Item>					
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
 				<AllowQuickCombat>true</AllowQuickCombat>
@@ -6115,12 +6124,8 @@
 				<Experience>30000</Experience>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_GREMLIN</Creature>
-						<Count>50</Count>
-					</Item>
-					<Item>
-						<Creature>CREATURE_OBSIDIAN_GARGOYLE</Creature>
-						<Count>20</Count>
+						<Creature>CREATURE_RAKSHASA_RUKH</Creature>
+						<Count>2</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -54539,7 +54544,7 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_4</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_5</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -68175,7 +68180,7 @@
 				</Pos>
 				<Rot>4.71239</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>2ndgarrison</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonGood.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -68188,19 +68193,19 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>20</Count>
+						<Count>70</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>15</Count>
+						<Count>55</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_GRIFFIN</Creature>
-						<Count>10</Count>
+						<Count>30</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ANGEL</Creature>
-						<Count>2</Count>
+						<Count>6</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -69395,6 +69400,36 @@
 				</Action>
 			</EnterWithoutStopTrigger>
 		</Item>
+		<Item>
+			<Floor>0</Floor>
+			<Rect>
+				<x1>67</x1>
+				<y1>49</y1>
+				<x2>68</x2>
+				<y2>53</y2>
+			</Rect>
+			<Name>necro_exit</Name>
+			<Color>
+				<x>1</x>
+				<y>1</y>
+				<z>1</z>
+			</Color>
+			<EnterAndStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterAndStopTrigger>
+			<EnterWithoutStopTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</EnterWithoutStopTrigger>
+			<ExitTrigger>
+				<Action>
+					<FunctionName/>
+				</Action>
+			</ExitTrigger>
+		</Item>
 	</regions>
 	<GroundTerrainFileName href="GroundTerrain.bin"/>
 	<UndergroundTerrainFileName href="UndergroundTerrain.bin"/>
@@ -69415,7 +69450,7 @@
 		</Item>
 	</moons>
 	<RandomMoons>true</RandomMoons>
-	<HeroMaxLevel>32</HeroMaxLevel>
+	<HeroMaxLevel>0</HeroMaxLevel>
 	<CustomTeams>false</CustomTeams>
 	<players>
 		<Item>
@@ -69458,6 +69493,7 @@
 			<HeroInTown>false</HeroInTown>
 			<ReserveHeroes>
 				<Item href="markal.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Lucretia.xdb#xpointer(/AdvMapHero)"/>				
 			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
@@ -70350,7 +70386,6 @@
 		<Item>SPELL_STONE_SPIKES</Item>
 		<Item>SPELL_RESURRECT</Item>
 		<Item>SPELL_SUMMON_BOAT</Item>
-		<Item>SPELL_TOWN_PORTAL</Item>
 		<Item>SPELL_RUNE_OF_CHARGE</Item>
 		<Item>SPELL_RUNE_OF_BERSERKING</Item>
 		<Item>SPELL_ABILITY_CUSTOM1</Item>
@@ -70404,14 +70439,8 @@
 		<Item href="/MapObjects/Dungeon/Sephinroth.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Sylsai.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Dungeon/Inagost.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dungeon/Kelodin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Dungeon/Dalom.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Dungeon/Kastore.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero01.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Haven/RedHeavenHero05.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero03.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Haven/RedHeavenHero06.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Haven/RedHeavenHero02.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
 		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -70419,7 +70448,6 @@
 		<Item href="/MapObjects/Haven/Maeve.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Haven/Jeddite.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>				
-		<Item href="/MapObjects/Haven/RedHeavenHero04.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -70445,7 +70473,6 @@
 		<Item href="/MapObjects/Necropolis/Nimbus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Archilus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Thant.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Necropolis/Sandro.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
 		<Item href="/MapObjects/Necropolis/Nemor.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Necropolis/Muscip.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
 		<Item href="/MapObjects/Necropolis/Vidomina.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
@@ -70464,37 +70491,6 @@
 		<Item href="/MapObjects/Preserve/Itil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Gem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 		<Item href="/MapObjects/Preserve/Vinrael.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Tazar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Maximus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Ufretin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Skeggy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Una.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Ingvar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Bersy.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Dwarves/Ottar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Dwarves/Brand.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Egil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Vegeyr.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Hangvul2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Dwarves/Bart.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
-		<Item href="/MapObjects/Dwarves/Vilma.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero8.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero4.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero1.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero9.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Crag.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Kraal.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
-		<Item href="/MapObjects/Stronghold/Hero5.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero6.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Azar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Matewa.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Shiva.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Mokka.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
-		<Item href="/MapObjects/Stronghold/Hero7.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Hero3.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Zouleika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
-		<Item href="/MapObjects/Stronghold/Erika.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
 	</AvailableHeroes>
 	<MapRumours>
 		<Item>

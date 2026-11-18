@@ -1,8 +1,8 @@
 d = GetDifficulty() + 1;
 defender_turn = 0
 game_time = GetGameVar("game_time");
-waves = 7 + d -- 1.47/1.75/2.15/2.8
-army_rating = d*0.45
+waves = 8 + d -- 1.47/1.75/2.15/2.8
+army_rating = d*(0.21 + 0.08 * GetDifficulty()) 
 
 summon = {
 	inside = {
@@ -81,5 +81,6 @@ while combatStarted() == nil do
 end;
 		
 print("Combat Findan");
+SetUnitManaPoints(GetDefenderHero(),510)
 setATB(GetDefenderHero(), 0 );
 sleep(20);
