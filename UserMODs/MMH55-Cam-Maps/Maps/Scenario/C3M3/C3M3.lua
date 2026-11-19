@@ -140,213 +140,214 @@ DIFFICULTY = {
 	end,
 }
     local koef = GetDifficulty() + 1
-	ChangeHeroStat("Razzak", 	  STAT_ATTACK, 3 );
-	ChangeHeroStat("Razzak", 	 STAT_DEFENCE, 3 );
-	ChangeHeroStat("Razzak", STAT_SPELL_POWER, 9 );
-	ChangeHeroStat("Razzak",   STAT_KNOWLEDGE, 9 );
+	    ChangeHeroStat("Razzak", 	  STAT_ATTACK, 3 );
+	    ChangeHeroStat("Razzak", 	 STAT_DEFENCE, 3 );
+	    ChangeHeroStat("Razzak", STAT_SPELL_POWER, 9 );
+	    ChangeHeroStat("Razzak",   STAT_KNOWLEDGE, 9 );
 
-	ChangeHeroStat("Maahir", 	  STAT_ATTACK, 3 );
-	ChangeHeroStat("Maahir", 	 STAT_DEFENCE, 3 );
-	ChangeHeroStat("Maahir", STAT_SPELL_POWER, 9 );
-	ChangeHeroStat("Maahir",   STAT_KNOWLEDGE, 9 );	
-	if koef > 1 then
-		ChangeHeroStat("Havez", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Havez", 	 STAT_DEFENCE, GetDifficulty() * 3 );
-		ChangeHeroStat("Havez", STAT_SPELL_POWER, GetDifficulty() * 2 );
-		ChangeHeroStat("Havez",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+	    ChangeHeroStat("Maahir", 	  STAT_ATTACK, 3 );
+	    ChangeHeroStat("Maahir", 	 STAT_DEFENCE, 3 );
+	    ChangeHeroStat("Maahir", STAT_SPELL_POWER, 9 );
+	    ChangeHeroStat("Maahir",   STAT_KNOWLEDGE, 9 );	
+	    if koef > 1 then
+	        ChangeHeroStat("Havez", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Havez", 	 STAT_DEFENCE, GetDifficulty() * 3 );
+	        ChangeHeroStat("Havez", STAT_SPELL_POWER, GetDifficulty() * 2 );
+	        ChangeHeroStat("Havez",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
 
-		ChangeHeroStat("Sufi", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Sufi", 	 STAT_DEFENCE, GetDifficulty() * 2 );
-		ChangeHeroStat("Sufi", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Sufi",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+	        ChangeHeroStat("Sufi", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Sufi", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	        ChangeHeroStat("Sufi", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Sufi",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
 
-		ChangeHeroStat("Maahir", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Maahir", 	 STAT_DEFENCE, GetDifficulty() * 2 );
-		ChangeHeroStat("Maahir", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Maahir",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
+	        ChangeHeroStat("Maahir", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Maahir", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	        ChangeHeroStat("Maahir", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Maahir",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 
 
-		ChangeHeroStat("Razzak", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Razzak", 	 STAT_DEFENCE, GetDifficulty() * 2 );
-		ChangeHeroStat("Razzak", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Razzak",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 	
-
-		ChangeHeroStat("Nadaur", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Nadaur", 	 STAT_DEFENCE, GetDifficulty() * 3 );
-		ChangeHeroStat("Nadaur", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Nadaur",   STAT_KNOWLEDGE, GetDifficulty() * 2 );	
+	        ChangeHeroStat("Razzak", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Razzak", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	        ChangeHeroStat("Razzak", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Razzak",   STAT_KNOWLEDGE, GetDifficulty() * 3 ); 	
 	
-		AddObjectCreatures("last_garrison", CREATURE_MASTER_GENIE, GetDifficulty() * 50);		
-		AddObjectCreatures("last_garrison", CREATURE_RAKSHASA_RUKH, GetDifficulty() * 40);
-		AddObjectCreatures("last_garrison", CREATURE_TITAN, GetDifficulty() * 25);
-		AddObjectCreatures("last_garrison", CREATURE_ARCH_MAGI, GetDifficulty() * 80);
-		AddObjectCreatures("last_garrison", CREATURE_OBSIDIAN_GARGOYLE, GetDifficulty() * 150);
-		AddObjectCreatures("last_garrison", CREATURE_MASTER_GREMLIN, GetDifficulty() * 250);
-		AddObjectCreatures("last_garrison", CREATURE_STEEL_GOLEM, GetDifficulty() * 200);
+	        ChangeHeroStat("Nadaur", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Nadaur", 	 STAT_DEFENCE, GetDifficulty() * 3 );
+	        ChangeHeroStat("Nadaur", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Nadaur",   STAT_KNOWLEDGE, GetDifficulty() * 2 );	
+		
+            AddObjectCreatures("last_garrison", CREATURE_MASTER_GENIE, GetDifficulty() * 50);		
+            AddObjectCreatures("last_garrison", CREATURE_RAKSHASA_RUKH, GetDifficulty() * 40);
+            AddObjectCreatures("last_garrison", CREATURE_TITAN, GetDifficulty() * 25);
+            AddObjectCreatures("last_garrison", CREATURE_ARCH_MAGI, GetDifficulty() * 80);
+            AddObjectCreatures("last_garrison", CREATURE_OBSIDIAN_GARGOYLE, GetDifficulty() * 150);
+            AddObjectCreatures("last_garrison", CREATURE_MASTER_GREMLIN, GetDifficulty() * 250);
+            AddObjectCreatures("last_garrison", CREATURE_STEEL_GOLEM, GetDifficulty() * 200);
 
-		AddObjectCreatures("first_garrison", CREATURE_MASTER_GREMLIN, GetDifficulty() * 200);		
-		AddObjectCreatures("first_garrison", CREATURE_STEEL_GOLEM, GetDifficulty() * 150);
-		AddObjectCreatures("first_garrison", CREATURE_OBSIDIAN_GARGOYLE, GetDifficulty() * 100);
-		AddObjectCreatures("first_garrison", CREATURE_ARCH_MAGI, GetDifficulty() * 25);
-	
-		AddObjectCreatures("second_garrison", CREATURE_GREMLIN_SABOTEUR, GetDifficulty() * 250);		
-		AddObjectCreatures("second_garrison", CREATURE_RAKSHASA_KSHATRI, GetDifficulty() * 20);
-		AddObjectCreatures("second_garrison", CREATURE_COMBAT_MAGE, GetDifficulty() * 50);
-		AddObjectCreatures("second_garrison", CREATURE_OBSIDIAN_GOLEM, GetDifficulty() * 200);
-		AddObjectCreatures("second_garrison", CREATURE_MARBLE_GARGOYLE, GetDifficulty() * 120);		
-	
-		GiveExp("Nadaur", 143000);
-		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
-		GiveHeroSkill("Nadaur", KNIGHT_FEAT_PARIAH);	
-		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
-		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
-		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
-		GiveHeroSkill("Nadaur", PERK_BALLISTA);	
-		TeachHeroSpell("Nadaur", SPELL_LIGHTNING_BOLT);
-		TeachHeroSpell("Nadaur", SPELL_STONE_SPIKES);
-		TeachHeroSpell("Nadaur", SPELL_FIREBALL);
-		AddHeroCreatures("Nadaur", CREATURE_SPRITE, 150);
-		AddHeroCreatures("Nadaur", CREATURE_WAR_UNICORN, 15);	
-	
-		GiveExp("Havez", 143000);
-		GiveHeroSkill("Havez", SKILL_ARTIFICIER);
-		GiveHeroSkill("Havez", SKILL_DEFENCE);	
-		GiveHeroSkill("Havez", SKILL_LUCK);
-		GiveHeroSkill("Havez", WIZARD_FEAT_ARTIFICIAL_GLORY);
-		GiveHeroSkill("Havez", PERK_EVASION);
-		GiveHeroSkill("Havez", PERK_LUCKY_STRIKE);		
-	
-		GiveExp("Sufi", 143000);
-		GiveHeroSkill("Sufi", SKILL_OFFENCE);
-		GiveHeroSkill("Sufi", SKILL_DEFENCE);	
-		GiveHeroSkill("Sufi", SKILL_LUCK);
-		GiveHeroSkill("Sufi", PERK_TOUGHNESS);
-		GiveHeroSkill("Sufi", PERK_FRENZY);
-		GiveHeroSkill("Sufi", PERK_RESISTANCE);	
+            AddObjectCreatures("first_garrison", CREATURE_MASTER_GREMLIN, GetDifficulty() * 200);		
+            AddObjectCreatures("first_garrison", CREATURE_STEEL_GOLEM, GetDifficulty() * 150);
+            AddObjectCreatures("first_garrison", CREATURE_OBSIDIAN_GARGOYLE, GetDifficulty() * 100);
+            AddObjectCreatures("first_garrison", CREATURE_ARCH_MAGI, GetDifficulty() * 25);
+		
+            AddObjectCreatures("second_garrison", CREATURE_GREMLIN_SABOTEUR, GetDifficulty() * 250);		
+            AddObjectCreatures("second_garrison", CREATURE_RAKSHASA_KSHATRI, GetDifficulty() * 20);
+            AddObjectCreatures("second_garrison", CREATURE_COMBAT_MAGE, GetDifficulty() * 50);
+            AddObjectCreatures("second_garrison", CREATURE_OBSIDIAN_GOLEM, GetDifficulty() * 200);
+            AddObjectCreatures("second_garrison", CREATURE_MARBLE_GARGOYLE, GetDifficulty() * 120);		
+		
+		    GiveExp("Nadaur", 143000);
+		    GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		    GiveHeroSkill("Nadaur", KNIGHT_FEAT_PARIAH);	
+		    GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
+		    GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);
+		    GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		    GiveHeroSkill("Nadaur", PERK_BALLISTA);	
+		    TeachHeroSpell("Nadaur", SPELL_LIGHTNING_BOLT);
+		    TeachHeroSpell("Nadaur", SPELL_STONE_SPIKES);
+		    TeachHeroSpell("Nadaur", SPELL_FIREBALL);
+		    AddHeroCreatures("Nadaur", CREATURE_SPRITE, 150);
+		    AddHeroCreatures("Nadaur", CREATURE_WAR_UNICORN, 15);	
+		
+		    GiveExp("Havez", 143000);
+		    GiveHeroSkill("Havez", SKILL_ARTIFICIER);
+		    GiveHeroSkill("Havez", SKILL_DEFENCE);	
+		    GiveHeroSkill("Havez", SKILL_LUCK);
+		    GiveHeroSkill("Havez", WIZARD_FEAT_ARTIFICIAL_GLORY);
+		    GiveHeroSkill("Havez", PERK_EVASION);
+		    GiveHeroSkill("Havez", PERK_LUCKY_STRIKE);		
+		
+		    GiveExp("Sufi", 143000);
+		    GiveHeroSkill("Sufi", SKILL_OFFENCE);
+		    GiveHeroSkill("Sufi", SKILL_DEFENCE);	
+		    GiveHeroSkill("Sufi", SKILL_LUCK);
+		    GiveHeroSkill("Sufi", PERK_TOUGHNESS);
+		    GiveHeroSkill("Sufi", PERK_FRENZY);
+		    GiveHeroSkill("Sufi", PERK_RESISTANCE);	
 
-		GiveExp("Maahir", 143000);
-		GiveHeroSkill("Maahir", SKILL_OFFENCE);
-		GiveHeroSkill("Maahir", SKILL_DEFENCE);	
-		GiveHeroSkill("Maahir", SKILL_LUCK);
-		GiveHeroSkill("Maahir", PERK_TOUGHNESS);
-		GiveHeroSkill("Maahir", PERK_FRENZY);
-		GiveHeroSkill("Maahir", WARLOCK_FEAT_CHAOTIC_SPELLS);		
+		    GiveExp("Maahir", 143000);
+		    GiveHeroSkill("Maahir", SKILL_OFFENCE);
+		    GiveHeroSkill("Maahir", SKILL_DEFENCE);	
+		    GiveHeroSkill("Maahir", SKILL_LUCK);
+		    GiveHeroSkill("Maahir", PERK_TOUGHNESS);
+		    GiveHeroSkill("Maahir", PERK_FRENZY);
+		    GiveHeroSkill("Maahir", WARLOCK_FEAT_CHAOTIC_SPELLS);		
+		
+		    GiveExp("Razzak", 143000);
+		    GiveHeroSkill("Razzak", SKILL_TRAINING);
+		    GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);	
+		    GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_SUMMONING_MAGIC);
+		    GiveHeroSkill("Razzak", DEMON_FEAT_CRITICAL_STRIKE); --> Martial arts
+		    GiveHeroSkill("Razzak", KNIGHT_FEAT_ANCIENT_SMITHY); --> Fiery wrath
+		    GiveHeroSkill("Razzak", RANGER_FEAT_FOG_VEIL);	
+	    end
 	
-		GiveExp("Razzak", 143000);
-		GiveHeroSkill("Razzak", SKILL_TRAINING);
-		GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);	
-		GiveHeroSkill("Razzak", HERO_SKILL_SHATTER_SUMMONING_MAGIC);
-		GiveHeroSkill("Razzak", DEMON_FEAT_CRITICAL_STRIKE); --> Martial arts
-		GiveHeroSkill("Razzak", KNIGHT_FEAT_ANCIENT_SMITHY); --> Fiery wrath
-		GiveHeroSkill("Razzak", RANGER_FEAT_FOG_VEIL);	
-	end
-	
-	if koef > 2 then
-		GiveExp("Nadaur", 247000);	
-		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
-		GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);	
-		GiveHeroSkill("Nadaur", PERK_MASTER_OF_ICE);
-		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
-		GiveHeroSkill("Nadaur", HERO_SKILL_BARBARIAN_ANCIENT_SMITHY); --> Scorched earth
-		GiveHeroSkill("Nadaur", PERK_FIRST_AID);
-		TeachHeroSpell("Nadaur", SPELL_CHAIN_LIGHTNING);
-		TeachHeroSpell("Nadaur", SPELL_FROST_RING);	
-		AddHeroCreatures("Nadaur", CREATURE_SPRITE, 100);
-		AddHeroCreatures("Nadaur", CREATURE_GRAND_ELF, 50);
+	    if koef > 2 then
+		    GiveExp("Nadaur", 247000);	
+		    GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		    GiveHeroSkill("Nadaur", SKILL_DESTRUCTIVE_MAGIC);	
+		    GiveHeroSkill("Nadaur", PERK_MASTER_OF_ICE);
+		    GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		    GiveHeroSkill("Nadaur", HERO_SKILL_BARBARIAN_ANCIENT_SMITHY); --> Scorched earth
+		    GiveHeroSkill("Nadaur", PERK_FIRST_AID);
+		    TeachHeroSpell("Nadaur", SPELL_CHAIN_LIGHTNING);
+		    TeachHeroSpell("Nadaur", SPELL_FROST_RING);	
+		    AddHeroCreatures("Nadaur", CREATURE_SPRITE, 100);
+		    AddHeroCreatures("Nadaur", CREATURE_GRAND_ELF, 50);
 
-		GiveExp("Havez", 247000);
-		GiveHeroSkill("Havez", WARLOCK_FEAT_FAST_AND_FURIOUS); --> Aura of swifness 
-		GiveHeroSkill("Havez", WIZARD_FEAT_WILDFIRE);	
-		GiveHeroSkill("Havez", NECROMANCER_FEAT_LAST_AID);
-		GiveHeroSkill("Havez", PERK_TOUGHNESS);
-		GiveHeroSkill("Havez", NECROMANCER_FEAT_TWILIGHT);
-		GiveHeroSkill("Havez", RANGER_FEAT_ELVEN_LUCK);		
-	
-		GiveExp("Sufi", 247000);
-		GiveHeroSkill("Sufi", DEMON_FEAT_EXPLODING_CORPSES); --> Cult master
-		GiveHeroSkill("Sufi", HERO_SKILL_DWARVEN_LUCK);	--> Warrior's luck
-		GiveHeroSkill("Sufi", PERK_ARCHERY);
-		GiveHeroSkill("Sufi", PERK_EVASION);
-		GiveHeroSkill("Sufi", WIZARD_FEAT_COUNTERSPELL);
-		GiveHeroSkill("Sufi", WARLOCK_FEAT_ELEMENTAL_OVERKILL);	--> Exorcism 	
-	
-		GiveExp("Maahir", 247000);
-		GiveHeroSkill("Maahir", KNIGHT_FEAT_PARIAH);
-		GiveHeroSkill("Maahir", DEMON_FEAT_WEAKENING_STRIKE);	
-		GiveHeroSkill("Maahir", NECROMANCER_FEAT_DEAD_LUCK);
-		GiveHeroSkill("Maahir", PERK_ARCHERY);
-		GiveHeroSkill("Maahir", PERK_EVASION);
-		GiveHeroSkill("Maahir", PERK_RESISTANCE);	
-	
-		GiveExp("Razzak", 247000);
-		GiveHeroSkill("Razzak", HERO_SKILL_DEATH_TO_NONEXISTENT); --> Back to the void
-		GiveHeroSkill("Razzak", RANGER_FEAT_SUN_FIRE); --> Mana burst 
-		GiveHeroSkill("Razzak", PERK_EXPERT_TRAINER); --> Armor spikes
-		GiveHeroSkill("Razzak", WIZARD_FEAT_SUPRESS_LIGHT); 
-		GiveHeroSkill("Razzak", HERO_SKILL_DEFENSIVE_FORMATION);
-		GiveHeroSkill("Razzak", PERK_MASTER_OF_ANIMATION);	
+		    GiveExp("Havez", 247000);
+		    GiveHeroSkill("Havez", WARLOCK_FEAT_FAST_AND_FURIOUS); --> Aura of swifness 
+		    GiveHeroSkill("Havez", WIZARD_FEAT_WILDFIRE);	
+		    GiveHeroSkill("Havez", NECROMANCER_FEAT_LAST_AID);
+		    GiveHeroSkill("Havez", PERK_TOUGHNESS);
+		    GiveHeroSkill("Havez", NECROMANCER_FEAT_TWILIGHT);
+		    GiveHeroSkill("Havez", RANGER_FEAT_ELVEN_LUCK);		
+		
+		    GiveExp("Sufi", 247000);
+		    GiveHeroSkill("Sufi", DEMON_FEAT_EXPLODING_CORPSES); --> Cult master
+		    GiveHeroSkill("Sufi", HERO_SKILL_DWARVEN_LUCK);	--> Warrior's luck
+		    GiveHeroSkill("Sufi", PERK_ARCHERY);
+		    GiveHeroSkill("Sufi", PERK_EVASION);
+		    GiveHeroSkill("Sufi", WIZARD_FEAT_COUNTERSPELL);
+		    GiveHeroSkill("Sufi", WARLOCK_FEAT_ELEMENTAL_OVERKILL);	--> Exorcism 	
+		
+		    GiveExp("Maahir", 247000);
+		    GiveHeroSkill("Maahir", KNIGHT_FEAT_PARIAH);
+		    GiveHeroSkill("Maahir", DEMON_FEAT_WEAKENING_STRIKE);	
+		    GiveHeroSkill("Maahir", NECROMANCER_FEAT_DEAD_LUCK);
+		    GiveHeroSkill("Maahir", PERK_ARCHERY);
+		    GiveHeroSkill("Maahir", PERK_EVASION);
+		    GiveHeroSkill("Maahir", PERK_RESISTANCE);	
+		
+		    GiveExp("Razzak", 247000);
+		    GiveHeroSkill("Razzak", HERO_SKILL_DEATH_TO_NONEXISTENT); --> Back to the void
+		    GiveHeroSkill("Razzak", RANGER_FEAT_SUN_FIRE); --> Mana burst 
+		    GiveHeroSkill("Razzak", PERK_EXPERT_TRAINER); --> Armor spikes
+		    GiveHeroSkill("Razzak", WIZARD_FEAT_SUPRESS_LIGHT); 
+		    GiveHeroSkill("Razzak", HERO_SKILL_DEFENSIVE_FORMATION);
+		    GiveHeroSkill("Razzak", PERK_MASTER_OF_ANIMATION);	
 
-		ChangeHeroStat("Astral", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Astral", 	 STAT_DEFENCE, GetDifficulty() * 2 );
-		ChangeHeroStat("Astral", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Astral",   STAT_KNOWLEDGE, GetDifficulty() * 3 );
-	end
+	        ChangeHeroStat("Astral", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Astral", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	        ChangeHeroStat("Astral", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Astral",   STAT_KNOWLEDGE, GetDifficulty() * 3 );
+        end
 
-	if koef > 3 then
-		GiveExp("Nadaur", 620000);	
-		GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
-		GiveHeroSkill("Nadaur", RANGER_FEAT_ABSOLUTE_LUCK);	
-		GiveHeroSkill("Nadaur", NECROMANCER_FEAT_DEADLY_COLD);
-		GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
-		GiveHeroSkill("Nadaur", KNIGHT_FEAT_TRIPLE_BALLISTA); 
-		GiveHeroSkill("Nadaur", PERK_FIRST_AID);
-		TeachHeroSpell("Nadaur", SPELL_DEEP_FREEZE);
-		TeachHeroSpell("Nadaur", SPELL_METEOR_SHOWER);
+        if koef > 3 then
+		    GiveExp("Nadaur", 620000);	
+		    GiveHeroSkill("Nadaur", SKILL_LEADERSHIP);
+		    GiveHeroSkill("Nadaur", RANGER_FEAT_ABSOLUTE_LUCK);	
+		    GiveHeroSkill("Nadaur", NECROMANCER_FEAT_DEADLY_COLD);
+		    GiveHeroSkill("Nadaur", SKILL_WAR_MACHINES);
+		    GiveHeroSkill("Nadaur", KNIGHT_FEAT_TRIPLE_BALLISTA); 
+		    GiveHeroSkill("Nadaur", PERK_FIRST_AID);
+		    TeachHeroSpell("Nadaur", SPELL_DEEP_FREEZE);
+		    TeachHeroSpell("Nadaur", SPELL_METEOR_SHOWER);		
+		
 
-		GiveExp("Havez", 420000);
-		GiveHeroSkill("Havez", WIZARD_FEAT_MARCH_OF_THE_MACHINES);
-		GiveHeroSkill("Havez", KNIGHT_FEAT_TRIPLE_BALLISTA);	
-		GiveHeroSkill("Havez", KNIGHT_FEAT_GUARDIAN_ANGEL);
-		GiveHeroSkill("Havez", PERK_RESISTANCE);
-		GiveHeroSkill("Havez", HERO_SKILL_DWARVEN_LUCK);
-		GiveHeroSkill("Havez", PERK_PROTECTION);
+       		GiveExp("Havez", 420000);
+		    GiveHeroSkill("Havez", WIZARD_FEAT_MARCH_OF_THE_MACHINES);
+		    GiveHeroSkill("Havez", KNIGHT_FEAT_TRIPLE_BALLISTA);	
+		    GiveHeroSkill("Havez", KNIGHT_FEAT_GUARDIAN_ANGEL);
+		    GiveHeroSkill("Havez", PERK_RESISTANCE);
+		    GiveHeroSkill("Havez", HERO_SKILL_DWARVEN_LUCK);
+		    GiveHeroSkill("Havez", PERK_PROTECTION);
 
-		GiveExp("Sufi", 420000);
-		GiveHeroSkill("Sufi", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
-		GiveHeroSkill("Sufi", WIZARD_FEAT_UNSUMMON);	
-		GiveHeroSkill("Sufi", RANGER_FEAT_ELVEN_LUCK);
-		GiveHeroSkill("Sufi", HERO_SKILL_DISTRACT);
-		GiveHeroSkill("Sufi", PERK_PROTECTION);
-		GiveHeroSkill("Sufi", NECROMANCER_FEAT_SPELLPROOF_BONES); --> Forge master	
+		    GiveExp("Sufi", 420000);
+		    GiveHeroSkill("Sufi", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
+		    GiveHeroSkill("Sufi", WIZARD_FEAT_UNSUMMON);	
+		    GiveHeroSkill("Sufi", RANGER_FEAT_ELVEN_LUCK);
+		    GiveHeroSkill("Sufi", HERO_SKILL_DISTRACT);
+		    GiveHeroSkill("Sufi", PERK_PROTECTION);
+		    GiveHeroSkill("Sufi", NECROMANCER_FEAT_SPELLPROOF_BONES); --> Forge master	
+		
+		    GiveExp("Maahir", 420000);
+		    GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);
+		    GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);	
+		    GiveHeroSkill("Maahir", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
+		    GiveHeroSkill("Maahir", RANGER_FEAT_SOIL_BURN);
+		    GiveHeroSkill("Maahir", WIZARD_FEAT_ACADEMY_AWARD);
+		    GiveHeroSkill("Maahir", PERK_PROTECTION);
 
-		GiveExp("Maahir", 420000);
-		GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);
-		GiveHeroSkill("Maahir", HERO_SKILL_OFFENSIVE_FORMATION);	
-		GiveHeroSkill("Maahir", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
-		GiveHeroSkill("Maahir", RANGER_FEAT_SOIL_BURN);
-		GiveHeroSkill("Maahir", WIZARD_FEAT_ACADEMY_AWARD);
-		GiveHeroSkill("Maahir", PERK_PROTECTION);
+		    GiveExp("Razzak", 420000);
+		    GiveHeroSkill("Razzak", HERO_SKILL_DETAIN_SUMMONING);
+		    GiveHeroSkill("Razzak", HERO_SKILL_STUNNING_BLOW); 
+		    GiveHeroSkill("Razzak", WIZARD_FEAT_ACADEMY_AWARD); 
+		    GiveHeroSkill("Razzak", WIZARD_FEAT_UNSUMMON); 
+		    GiveHeroSkill("Razzak", HERO_SKILL_WEAKEN_SUMMONING);
+		    GiveHeroSkill("Razzak", KNIGHT_FEAT_GUARDIAN_ANGEL);	
+		
+		    GiveExp("Astral", 420000);
+		    GiveHeroSkill("Astral", WIZARD_FEAT_MARCH_OF_THE_MACHINES);
+		    GiveHeroSkill("Astral", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
+		    GiveHeroSkill("Astral", WIZARD_FEAT_ACADEMY_AWARD); 
+		    GiveHeroSkill("Astral", PERK_MAGIC_MIRROR); 
+		    GiveHeroSkill("Astral", WIZARD_FEAT_SUPRESS_LIGHT);
+		    GiveHeroSkill("Astral", WIZARD_FEAT_ABSOLUTE_WIZARDY); --> Arcane omniscience
 
-		GiveExp("Razzak", 420000);
-		GiveHeroSkill("Razzak", HERO_SKILL_DETAIN_SUMMONING);
-		GiveHeroSkill("Razzak", HERO_SKILL_STUNNING_BLOW); 
-		GiveHeroSkill("Razzak", WIZARD_FEAT_ACADEMY_AWARD); 
-		GiveHeroSkill("Razzak", WIZARD_FEAT_UNSUMMON); 
-		GiveHeroSkill("Razzak", HERO_SKILL_WEAKEN_SUMMONING);
-		GiveHeroSkill("Razzak", KNIGHT_FEAT_GUARDIAN_ANGEL);	
-	
-		GiveExp("Astral", 420000);
-		GiveHeroSkill("Astral", WIZARD_FEAT_MARCH_OF_THE_MACHINES);
-		GiveHeroSkill("Astral", DEMON_FEAT_MASTER_OF_SECRETS); --> Silver city magistrate 
-		GiveHeroSkill("Astral", WIZARD_FEAT_ACADEMY_AWARD); 
-		GiveHeroSkill("Astral", PERK_MAGIC_MIRROR); 
-		GiveHeroSkill("Astral", WIZARD_FEAT_SUPRESS_LIGHT);
-		GiveHeroSkill("Astral", WIZARD_FEAT_ABSOLUTE_WIZARDY); --> Arcane omniscience
-
-		ChangeHeroStat("Tan", 	  STAT_ATTACK, GetDifficulty() * 2 );
-		ChangeHeroStat("Tan", 	 STAT_DEFENCE, GetDifficulty() * 2 );
-		ChangeHeroStat("Tan", STAT_SPELL_POWER, GetDifficulty() * 3 );
-		ChangeHeroStat("Tan",   STAT_KNOWLEDGE, GetDifficulty() * 3 );	
-	end		
+	        ChangeHeroStat("Tan", 	  STAT_ATTACK, GetDifficulty() * 2 );
+	        ChangeHeroStat("Tan", 	 STAT_DEFENCE, GetDifficulty() * 2 );
+	        ChangeHeroStat("Tan", STAT_SPELL_POWER, GetDifficulty() * 3 );
+	        ChangeHeroStat("Tan",   STAT_KNOWLEDGE, GetDifficulty() * 3 );	
+        end		
 
 -- GiveHeroSkill("Nadaur", HERO_SKILL_STRONG_RUNE);	--> Twisted avenger 
 
@@ -468,6 +469,7 @@ OBJECTIVES = {
 		EnableHeroAI("Maahir",nil);
 		CINEMATICS.intro()
 		startThread(DIFFICULTY[GetDifficulty()]);
+		
 		---Disable AI of quest heroes---
 		EnableHeroAI("Cyrus", nil);
 		EnableHeroAI("Nadaur", nil);
@@ -502,7 +504,7 @@ OBJECTIVES = {
 			if GetObjectiveState("prim4") == OBJECTIVE_COMPLETED then
 				SaveHeroAllSetArtifactsEquipped("Berein", "C3M3");
 				SaveHeroAllSetArtifactsEquipped("Isabell", "C3M3");
-				sleep(50);
+				sleep(40);
 				CINEMATICS.outro();
 				Win(PLAYER_1);
 			end

@@ -33,7 +33,7 @@
 				<Mastery>MASTERY_BASIC</Mastery>
 				<SkillID>HERO_SKILL_DARK_MAGIC</SkillID>
 			</Item>	
-        <skills/>			
+        </skills>			
 		<perkIDs/>
 		<spellIDs>
 			<Item>SPELL_ANIMATE_DEAD</Item>		
@@ -42,13 +42,13 @@
 			<Item>SPELL_UNHOLY_WORD</Item>	
 			<Item>SPELL_FORGETFULNESS</Item>
 			<Item>SPELL_PLAGUE</Item>			
-		<spellIDs>
+		</spellIDs>
 		<Ballista>true</Ballista>
 		<FirstAidTent>true</FirstAidTent>
 		<AmmoCart>true</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
-	<OverrideMask>36</OverrideMask>
+	<OverrideMask>16</OverrideMask>
 	<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 	<LossTrigger>
 		<Action>

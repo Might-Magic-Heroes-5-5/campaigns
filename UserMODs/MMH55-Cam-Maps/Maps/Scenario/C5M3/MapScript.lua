@@ -60,14 +60,11 @@ C5M3_ENEMY_ARMY = {
 		AddObjectCreatures("Nemor",	  CREATURE_ZOMBIE, (1 + (dif + week) * 45) + 10 * dif);
 		AddObjectCreatures("Nemor",    CREATURE_MANES, (1 + (dif + week) * 23) + 7 * dif);
 		AddObjectCreatures("Nemor",  CREATURE_VAMPIRE, (1 + (dif + week) *  9) + 5 * dif);
-		AddObjectCreatures("Nemor",     CREATURE_LICH, (1 + (dif + week) *  7) + 2 * dif);
+		AddObjectCreatures("Nemor",     CREATURE_DEMILICH, (1 + (dif + week) *  5) + 2 * dif);
 		if GetDifficulty() > 0 then
 		    sleep(3); -- required to restore her mana
 			ChangeHeroStat("Nemor", STAT_MANA_POINTS, 200);
 			sleep(3);
-			GiveHeroWarMachine("Nemor", WAR_MACHINE_AMMO_CART);
-			GiveHeroWarMachine("Nemor", WAR_MACHINE_BALLISTA);
-			GiveHeroWarMachine("Nemor", WAR_MACHINE_FIRST_AID_TENT);
 		end
 	end,
 
@@ -81,9 +78,6 @@ C5M3_ENEMY_ARMY = {
 		    sleep(3); -- required to restore his mana
 			ChangeHeroStat("Gles", STAT_MANA_POINTS, 200);
 			sleep(3);
-			GiveHeroWarMachine("Gles", WAR_MACHINE_AMMO_CART);
-			GiveHeroWarMachine("Gles", WAR_MACHINE_BALLISTA);
-			GiveHeroWarMachine("Gles", WAR_MACHINE_FIRST_AID_TENT);
 		end
 	end,
 
@@ -97,9 +91,6 @@ C5M3_ENEMY_ARMY = {
 		    sleep(3); -- required to restore his mana
 			ChangeHeroStat("Nimbus", STAT_MANA_POINTS, 200);
 			sleep(3);
-			GiveHeroWarMachine("Nimbus", WAR_MACHINE_AMMO_CART);
-			GiveHeroWarMachine("Nimbus", WAR_MACHINE_BALLISTA);
-			GiveHeroWarMachine("Nimbus", WAR_MACHINE_FIRST_AID_TENT);
 		end
 		if GetDifficulty() > 2 then
 			TeachHeroSpell("Nimbus", SPELL_BERSERK);

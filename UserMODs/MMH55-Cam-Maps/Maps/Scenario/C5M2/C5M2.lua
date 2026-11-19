@@ -40,12 +40,6 @@ DeployReserveHero( "Ash", 22, 24, GROUND );
 DeployReserveHero( "Oddrema", 14, 20, GROUND );
 DeployReserveHero( "Deleb", 20, 20, GROUND );
 local demons = GetDifficulty() + 1
-ChangeHeroStat("Deleb", STAT_ATTACK, 6);
-ChangeHeroStat("Deleb", STAT_DEFENCE, 2);
-ChangeHeroStat("Deleb", STAT_SPELL_POWER, 6);
-ChangeHeroStat("Deleb", STAT_KNOWLEDGE, 3);
-GiveHeroSkill("Deleb", SKILL_WAR_MACHINES);
-GiveHeroSkill("Deleb", SKILL_WAR_MACHINES);
 if demons > 1 then
 	-- extra stats
 	ChangeHeroStat("Deleb", STAT_ATTACK, 2 * GetDifficulty());

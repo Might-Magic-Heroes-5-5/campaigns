@@ -324,7 +324,7 @@
 					</Item>
 					<Item>
 						<Type>TB_DWELLING_3</Type>
-						<InitialUpgrade>BLD_UPG_NONE</InitialUpgrade>
+						<InitialUpgrade>BLD_UPG_1</InitialUpgrade>
 						<MaxUpgrade>BLD_UPG_5</MaxUpgrade>
 					</Item>
 					<Item>
@@ -53572,7 +53572,7 @@
 							<skills>
 								<Item>
 									<Mastery>MASTERY_EXPERT</Mastery>
-									<SkillID>HERO_SKILL_WAR_MACHINE</SkillID>
+									<SkillID>HERO_SKILL_WAR_MACHINES</SkillID>
 								</Item>	
 								<Item>
 									<Mastery>MASTERY_ADVANCED</Mastery>
@@ -53598,7 +53598,7 @@
 							<AmmoCart>false</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>66</OverrideMask>
+						<OverrideMask>48</OverrideMask>
 						<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>

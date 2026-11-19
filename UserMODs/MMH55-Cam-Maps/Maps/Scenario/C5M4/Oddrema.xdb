@@ -36,10 +36,10 @@
 	<Editable>
 		<NameFileRef href=""/>
 		<BiographyFileRef href=""/>
-		<Offence>20</Offence>
-		<Defence>15</Defence>
-		<Spellpower>25</Spellpower>
-		<Knowledge>8</Knowledge>
+		<Offence>17</Offence>
+		<Defence>7</Defence>
+		<Spellpower>17</Spellpower>
+		<Knowledge>7</Knowledge>
 		<skills>
 			<Item>
 				<Mastery>MASTERY_EXPERT</Mastery>
@@ -58,7 +58,7 @@
 		<AmmoCart>True</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
-	<OverrideMask>64</OverrideMask>
+	<OverrideMask>120</OverrideMask>
 	<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 	<LossTrigger>
 		<Action>

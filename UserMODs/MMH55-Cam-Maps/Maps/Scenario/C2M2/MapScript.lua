@@ -27,7 +27,7 @@ DIFFICULTY = {
 		AddHeroCreatures("Agrael",CREATURE_NIGHTMARE,8);
 		startThread(RemoveVeyerMP, 2);
 	end,
-	
+
 	[1] = function()
 		print("Difficulty level is hard");
 		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 5, 10, 0, 8000);
@@ -38,20 +38,20 @@ DIFFICULTY = {
 		AddHeroCreatures("Mardigo", CREATURE_ARCHANGEL, 1);
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 2);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 5);
-		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 12);		
-		startThread(RemoveVeyerMP, 3);		
+		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 12);
+		startThread(RemoveVeyerMP, 3);
 	end,
-	
+
 	[2] = function()
 		print("Difficulty level is heroic");
 		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 5, 5, 0, 6000);
 		AddHeroCreatures("Mardigo", CREATURE_ARCHANGEL, 2);
 		AddHeroCreatures("Mardigo", CREATURE_PALADIN, 4);
 		AddHeroCreatures("Mardigo", CREATURE_ROYAL_GRIFFIN, 10);
-		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 24);		
-		startThread(RemoveVeyerMP, 4);	
+		AddHeroCreatures("Mardigo", CREATURE_MARKSMAN, 24);
+		startThread(RemoveVeyerMP, 4);
 	end,
-	
+
 	[3] = function()
 		print("Difficulty level is impossible");
 		H55c_SetCampaignResources(PLAYER_1, 0, 0, 0, 0, 5, 0, 4000);
@@ -72,7 +72,7 @@ function RemoveVeyerMP(part)
 		sleep(10);
 		print("Now hero has ",GetHeroStat("Veyer",STAT_MOVE_POINTS));
 		repeat sleep(10) until GetCurrentPlayer() ~= PLAYER_2;
-		print("End of player's 2 turn");	
+		print("End of player's 2 turn");
 	end
 end
 
@@ -129,33 +129,19 @@ BATTLES = {
 		MoveHeroRealTime('Mardigo', Agrael_x, Agrael_y , 0 );
 		repeat sleep(20) until IsHeroAlive('Mardigo') == nil
 	end,
-	
+
 	veyerAttack = function()
 		local Agrael_x, Agrael_y = GetObjectPosition( 'Agrael' );
 		ChangeHeroStat( "Veyer", STAT_MOVE_POINTS, 4000 );
 		MoveHeroRealTime( "Veyer", Agrael_x, Agrael_y , 0 );
 		local coef = GetDifficulty() + 1
 		if coef > 1 then
-			AddHeroCreatures("Veyer", CREATURE_ARCHDEVIL, 2);
-			AddHeroCreatures("Veyer", CREATURE_HELL_HOUND, 20);
-			AddHeroCreatures("Veyer", CREATURE_SUCCUBUS, 10);
-			AddHeroCreatures("Veyer", CREATURE_DEMON, 40);
-			AddHeroCreatures("Veyer", CREATURE_IMP, 45);
+			AddHeroCreatures("Veyer", CREATURE_ARCHDEVIL, 2 * GetDifficulty());
+			AddHeroCreatures("Veyer", CREATURE_HELL_HOUND, 20 * GetDifficulty());
+			AddHeroCreatures("Veyer", CREATURE_SUCCUBUS, 10 * GetDifficulty());
+			AddHeroCreatures("Veyer", CREATURE_DEMON, 40 * GetDifficulty());
+			AddHeroCreatures("Veyer", CREATURE_IMP, 45 * GetDifficulty());
 		end
-		if coef > 2 then
-			AddHeroCreatures("Veyer", CREATURE_ARCHDEVIL, 2);
-			AddHeroCreatures("Veyer", CREATURE_HELL_HOUND, 20);
-			AddHeroCreatures("Veyer", CREATURE_SUCCUBUS, 10);
-			AddHeroCreatures("Veyer", CREATURE_DEMON, 40);
-			AddHeroCreatures("Veyer", CREATURE_IMP, 45);
-		end
-		if coef > 3 then
-			AddHeroCreatures("Veyer", CREATURE_ARCHDEVIL, 2);
-			AddHeroCreatures("Veyer", CREATURE_HELL_HOUND, 20);
-			AddHeroCreatures("Veyer", CREATURE_SUCCUBUS, 10);
-			AddHeroCreatures("Veyer", CREATURE_DEMON, 40);
-			AddHeroCreatures("Veyer", CREATURE_IMP, 45);
-        end		
 	end,
 }
 
@@ -164,17 +150,17 @@ CINEMATICS = {
 		StartDialogScene("/DialogScenes/C2/M2/D1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep(2);
 	end,
-	
+
 	stephanAttack = function()
 		StartDialogScene("/DialogScenes/C2/M2/D2/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep(2);
 	end,
-	
+
 	veyerAttack = function()
 		StartDialogScene("/DialogScenes/C2/M2/R1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep(2);
 	end,
-	
+
 	outro = function()
 		StartCutScene("/Maps/Cutscenes/C2M2/_.(AnimScene).xdb#xpointer(/AnimScene)");
 		sleep(2);
@@ -191,7 +177,7 @@ OBJECTIVES = {
 		OBJECTIVES.prepare();
 		OBJECTIVES.run();
     end,
-	
+
 	prepare = function()
 		assasins_ambush = 0;
 		OpenCircleFog(  64, 125, 0, 15, PLAYER_1 );
@@ -212,7 +198,7 @@ OBJECTIVES = {
 		CINEMATICS.intro();
 		print("All triggers and functions run");
 	end,
-	
+
 	run = function()
 		while true do
 			sleep(10);
@@ -238,7 +224,7 @@ OBJECTIVES = {
 			end
 		end
 	end,
-	
+
 	getGriffinHeart = function()
 	-- task started is handled by C2M2.xdb
 		if OBJECTIVES.state.getGriffinHeart[2] == 2 then

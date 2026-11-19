@@ -53803,12 +53803,12 @@
 								<Item>SPELL_CURSE</Item>
 								<Item>SPELL_SLOW</Item>
 							</spellIDs>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>16</OverrideMask>
 						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>
@@ -53865,12 +53865,12 @@
 								<Item>SPELL_FROST_RING</Item>
 								<Item>SPELL_CHAIN_LIGHTNING</Item>
 							</spellIDs>
-							<Ballista>false</Ballista>
-							<FirstAidTent>false</FirstAidTent>
-							<AmmoCart>false</AmmoCart>
+							<Ballista>true</Ballista>
+							<FirstAidTent>true</FirstAidTent>
+							<AmmoCart>true</AmmoCart>
 							<FavoriteEnemies/>
 						</Editable>
-						<OverrideMask>0</OverrideMask>
+						<OverrideMask>16</OverrideMask>
 						<PrimarySkillMastery>MASTERY_NONE</PrimarySkillMastery>
 						<LossTrigger>
 							<Action>

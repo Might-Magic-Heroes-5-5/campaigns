@@ -307,17 +307,13 @@ OBJECTIVES = {
 			TeachHeroSpell("Biara", SPELL_FROST_RING);
 			TeachHeroSpell("Biara", SPELL_FIREBALL);			
 			sleep(2);	-- required for recover her mana		
-			ChangeHeroStat("Biara", STAT_MANA_POINTS, 150);			
+			ChangeHeroStat("Biara", STAT_MANA_POINTS, 150 * AT);			
 			end
             if AT > 2 then
-			TeachHeroSpell("Biara", SPELL_DEEP_FREEZE);			
-			sleep(2);	-- required for recover her mana		
-			ChangeHeroStat("Biara", STAT_MANA_POINTS, 150);			
+			TeachHeroSpell("Biara", SPELL_DEEP_FREEZE);						
 			end	
             if AT > 3 then
-			TeachHeroSpell("Biara", SPELL_IMPLOSION);			
-			sleep(2);	-- required for recover her mana		
-			ChangeHeroStat("Biara", STAT_MANA_POINTS, 150);			
+			TeachHeroSpell("Biara", SPELL_IMPLOSION);					
 			end						
 			SetObjectEnabled('ExitToIsland', nil); -- There is no way back!  -- blokiruem vihod s ostrova.
 			Trigger( OBJECT_TOUCH_TRIGGER, 'ExitToIsland', 'MessageBox("/Maps/Scenario/C5M4/Texts/NoWay.txt")' );
@@ -347,10 +343,10 @@ OBJECTIVES = {
 			EnableHeroAI('Oddrema', nil);
 			local KB = GetDifficulty() + 1
 			local ArmyMult = diff + GetDate(MONTH);
-			ChangeHeroStat("Oddrema", STAT_ATTACK, 15 + 2 * diff); -- started stats haven't been added from her folder
-			ChangeHeroStat("Oddrema", STAT_DEFENCE, 7 + 2 * diff);
-			ChangeHeroStat("Oddrema", STAT_SPELL_POWER, 15 + 10 * diff);
-			ChangeHeroStat("Oddrema", STAT_KNOWLEDGE, 6 + 2 * diff);						
+			ChangeHeroStat("Oddrema", STAT_ATTACK, 2 * diff);
+			ChangeHeroStat("Oddrema", STAT_DEFENCE, 2 * diff);
+			ChangeHeroStat("Oddrema", STAT_SPELL_POWER, 10 * diff);
+			ChangeHeroStat("Oddrema", STAT_KNOWLEDGE, 2 * diff);						
 			AddHeroCreatures( 'Oddrema',CREATURE_INFERNAL_SUCCUBUS, 20 * ArmyMult );
 			AddHeroCreatures( 'Oddrema',CREATURE_CERBERI, 35 * ArmyMult );
 			AddHeroCreatures( 'Oddrema',CREATURE_FIREBREATHER_HOUND, 35 * ArmyMult );

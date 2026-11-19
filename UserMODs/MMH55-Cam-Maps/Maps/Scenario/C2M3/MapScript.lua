@@ -198,10 +198,10 @@ OBJECTIVES = {
 			SetObjectiveState( 'prim2', OBJECTIVE_ACTIVE );
 			local army_diff = GetDifficulty() + 1;
 			AddHeroCreatures("Gillion", CREATURE_DRUID, 17);
-			AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 32);
+			AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 52);
 			AddHeroCreatures("Gillion", CREATURE_UNICORN, 15);
-			AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 1);
-			AddHeroCreatures("Gillion", CREATURE_TREANT, 4);
+			AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 5);
+			AddHeroCreatures("Gillion", CREATURE_TREANT, 9);
             if army_diff > 1 then
                 GiveHeroSkill("Gillion", SKILL_DEFENCE);
 			    GiveHeroSkill("Gillion", PERK_EVASION);
@@ -210,7 +210,6 @@ OBJECTIVES = {
 				ChangeHeroStat("Gillion", STAT_SPELL_POWER, 1);
 				ChangeHeroStat("Gillion", STAT_KNOWLEDGE, 1);
 				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 8100);
-                AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
                 AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
                AddHeroCreatures("Gillion", CREATURE_TREANT, 6);				
             end
@@ -225,8 +224,7 @@ OBJECTIVES = {
 				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 11800);
 				AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
                 AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
-                AddHeroCreatures("Gillion", CREATURE_TREANT, 10);
-                AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 4);				
+                AddHeroCreatures("Gillion", CREATURE_TREANT, 10);				
 		    end
             if army_diff > 3 then
 			    GiveHeroWarMachine("Gillion", WAR_MACHINE_BALLISTA);
@@ -240,9 +238,10 @@ OBJECTIVES = {
 				ChangeHeroStat("Gillion", STAT_EXPERIENCE, 16900);
                 AddHeroCreatures("Gillion", CREATURE_GRAND_ELF, 20);
                 AddHeroCreatures("Gillion", CREATURE_UNICORN, 10);
-                AddHeroCreatures("Gillion", CREATURE_TREANT, 10);
+                AddHeroCreatures("Gillion", CREATURE_TREANT, 5);
                 AddHeroCreatures("Gillion", CREATURE_GREEN_DRAGON, 5);
 		    end
+						
 			OBJECTIVES.DaysToGillionActivation = GetDate(ABSOLUTE_DAY) + OBJECTIVES.DaysToGillionActivation
 			OBJECTIVES.state.defeatGillion[2] = 2;
 		elseif OBJECTIVES.state.defeatGillion[2] == 2 and (OBJECTIVES.DaysToGillionActivation <= GetDate(ABSOLUTE_DAY) or OBJECTIVES.gilraenAcitve == 1) then

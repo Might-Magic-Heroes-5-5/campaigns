@@ -82,12 +82,12 @@
 			<Item>SPELL_UNHOLY_WORD</Item>
 			<Item>SPELL_PHANTOM</Item>
 		</spellIDs>
-		<Ballista>false</Ballista>
-		<FirstAidTent>false</FirstAidTent>
-		<AmmoCart>false</AmmoCart>
+		<Ballista>true</Ballista>
+		<FirstAidTent>true</FirstAidTent>
+		<AmmoCart>true</AmmoCart>
 		<FavoriteEnemies/>
 	</Editable>
-	<OverrideMask>104</OverrideMask>
+	<OverrideMask>120</OverrideMask>
 	<PrimarySkillMastery>MASTERY_EXPERT</PrimarySkillMastery>
 	<LossTrigger>
 		<Action>
