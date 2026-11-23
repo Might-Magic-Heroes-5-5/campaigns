@@ -990,11 +990,18 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
 	- change: Instant travel spell is no longer avialable on this map.
 ### Hot Pursuit (SM6)
 	- fix: Siege inferno stacks in front of the Sylvan town remained even if the message said the Inferno siege forces are now gone.
-	- fix: Cinematics used Agrael hero model but it is Grok that is in play
+	- fix(cinematics): used Agrael hero model but it is Grok that is in play
+	- fix(cinematics): poor blur amobience on demon defeat
+	- fix(cinematics): faulty camera angles on Alaric and Doughal conversation after demon defeat
+	- change: Dougal starting army buffed, bonus skills removed
+	- change: Garrisons under inferno control have more units depending the difficulty
+	- change: Inferno player and his heroes will be more challenging to defeat in all difficulties
+	- change: replaced Ring of the Saint with The Forgotten Ring
+	- change: removed Unicorn Horn Bow from random pool as it is quest artifact
 ### Falcon's Last Flight (SS2)
-	- fix: Jezbeth and Maeve occasionally T-posing in cinematics
+	- fix(cinematics): Jezbeth and Maeve occasionally T-posing
 ### Refugee (SXL1)
-	- fix: cinematics where Yrbeth appears next to the Dragonteeth artifact sometimes did not complete and blocked the game.
+	- fix(cinematics): when Yrbeth appears next to the Dragonteeth artifact sometimes did not complete and blocked the game.
 ### The Days of Fire (A2S2)
     - fix: Removed Unicorn Horn Bow and Treeborn Quiver from vault rewards as they are part of a questline
 	- fix(cinematics): Treant T-posing instead of having a dead posture in the intro scene
@@ -1006,7 +1013,7 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - change: Inferno assault behavior now scales with difficulty, with higher difficulties making enemy heroes more likely to actively hunt player heroes and towns.
     - fix: The Witch curse is correctly consumed by the next successful assault wave instead of being cleared when no new hero was deployed.
 ### Battle of Cry Freedom (A2S5)
-  - fix: cinematics after defeating the Academy did not show the opening of the sea path
+  - fix(cinematics): defeating the Academy did not show the opening of the sea path
   - fix: increasing game difficulty also increased human player starting army
   - fix: Haven AI player spawned additional heroes which messed up the town defense army and the main hero army distribution.
   - change: returned back plunder effect when capturing Peasant hut dwellings

@@ -3025,11 +3025,11 @@
 						<Count>6</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
+						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
 						<Count>30</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_FAMILIAR</Creature>
+						<Creature>CREATURE_IMP</Creature>
 						<Count>44</Count>
 					</Item>
 					<Item>
@@ -30637,7 +30637,7 @@
 				</Pos>
 				<Rot>3.22049</Rot>
 				<Floor>0</Floor>
-				<Name/>
+				<Name>EastGarrison</Name>
 				<CombatScript/>
 				<pointLights/>
 				<Shared href="/MapObjects/GarrisonEvil.(AdvMapGarrisonShared).xdb#xpointer(/AdvMapGarrisonShared)"/>
@@ -30649,15 +30649,15 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_SUCCUBUS</Creature>
+						<Creature>CREATURE_INFERNAL_SUCCUBUS</Creature>
 						<Count>39</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_DEMON</Creature>
+						<Creature>CREATURE_HORNED_DEMON</Creature>
 						<Count>230</Count>
 					</Item>
 					<Item>
-						<Creature>CREATURE_IMP</Creature>
+						<Creature>CREATURE_QUASIT</Creature>
 						<Count>160</Count>
 					</Item>
 					<Item>
@@ -40187,15 +40187,15 @@
 				<armySlots>
 					<Item>
 						<Creature>CREATURE_SWORDSMAN</Creature>
-						<Count>15</Count>
+						<Count>25</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHER</Creature>
-						<Count>30</Count>
+						<Count>50</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_MARKSMAN</Creature>
-						<Count>10</Count>
+						<Count>30</Count>
 					</Item>
 				</armySlots>
 				<artifactIDs/>
@@ -40207,17 +40207,22 @@
 					<Defence>0</Defence>
 					<Spellpower>0</Spellpower>
 					<Knowledge>0</Knowledge>
-					<skills/>
+					<skills>
+			            <Item>
+				            <Mastery>MASTERY_BASIC</Mastery>
+				            <SkillID>HERO_SKILL_OFFENCE</SkillID>
+			            </Item>
+					</skills>
 					<perkIDs>
 						<Item>HERO_SKILL_ARCHERY</Item>
 					</perkIDs>
 					<spellIDs/>
 					<Ballista>false</Ballista>
 					<FirstAidTent>false</FirstAidTent>
-					<AmmoCart>false</AmmoCart>
+					<AmmoCart>true</AmmoCart>
 					<FavoriteEnemies/>
 				</Editable>
-				<OverrideMask>67</OverrideMask>
+				<OverrideMask>24</OverrideMask>
 				<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
 				<LossTrigger>
 					<Action>
@@ -44233,7 +44238,7 @@
 						<Radius>0</Radius>
 					</Item>
 				</pointLights>
-				<Shared href="/MapObjects/Artifacts/ring_of_haste.(AdvMapArtifactShared).xdb#xpointer(/AdvMapArtifactShared)"/>
+				<Shared href="/MapObjects/Artifacts/Gear01.(AdvMapArtifactShared).xdb#xpointer(/AdvMapArtifactShared)"/>
 				<armySlots/>
 				<MessageFileRef href=""/>
 				<spellID>SPELL_NONE</spellID>
@@ -44598,16 +44603,16 @@
 				</CaptureTrigger>
 				<armySlots>
 					<Item>
-						<Creature>CREATURE_DEMON</Creature>
-						<Count>117</Count>
+						<Creature>CREATURE_HORNED_DEMON</Creature>
+						<Count>177</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_ARCHDEVIL</Creature>
-						<Count>5</Count>
+						<Count>9</Count>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Count>10</Count>
+						<Count>18</Count>
 					</Item>
 				</armySlots>
 				<CollectableArmy>false</CollectableArmy>
@@ -48302,6 +48307,71 @@
 			<HeroInTown>false</HeroInTown>
 			<ReserveHeroes>
 				<Item href="Nymus.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="Zydar.xdb#xpointer(/AdvMapHero)"/>
+				<Item href="#n:inline(AdvMapHero)" id="item_AC42FED0-8CD8-4A90-9588-D549F3B6977A">
+					<AdvMapHero>
+						<Pos>
+							<x>0</x>
+							<y>0</y>
+							<z>0</z>
+						</Pos>
+						<Rot>2.55215</Rot>
+						<Floor>0</Floor>
+						<Name>Calh</Name>
+						<CombatScript/>
+						<pointLights/>
+						<Shared href="/MapObjects/Inferno/Calh.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+						<PlayerID>PLAYER_2</PlayerID>
+						<Experience>5000</Experience>
+						<armySlots>
+							<Item>
+								<Creature>CREATURE_IMP</Creature>
+								<Count>40</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_HORNED_DEMON</Creature>
+								<Count>25</Count>
+							</Item>
+							<Item>
+								<Creature>CREATURE_HELL_HOUND</Creature>
+								<Count>15</Count>
+							</Item>
+						</armySlots>
+						<artifactIDs/>
+						<isUntransferable/>
+						<Editable>
+							<NameFileRef/>
+							<BiographyFileRef/>
+							<Offence>0</Offence>
+							<Defence>0</Defence>
+							<Spellpower>0</Spellpower>
+							<Knowledge>0</Knowledge>
+							<skills/>
+							<perkIDs/>
+							<spellIDs/>
+							<Ballista>false</Ballista>
+							<FirstAidTent>false</FirstAidTent>
+							<AmmoCart>false</AmmoCart>
+							<FavoriteEnemies/>
+						</Editable>
+						<OverrideMask>0</OverrideMask>
+						<PrimarySkillMastery>MASTERY_BASIC</PrimarySkillMastery>
+						<LossTrigger>
+							<Action>
+								<FunctionName/>
+							</Action>
+						</LossTrigger>
+						<AllowQuickCombat>true</AllowQuickCombat>
+						<Textures>
+							<Icon128x128/>
+							<Icon64x64/>
+							<RoundedFace/>
+							<LeftFace/>
+							<RightFace/>
+						</Textures>
+						<PresetPrice>0</PresetPrice>
+					</AdvMapHero>
+				</Item>
 			</ReserveHeroes>
 			<AddHeroTrigger>
 				<Action>
@@ -49079,9 +49149,200 @@
 	<PWLTutorialHintTrigger/>
 	<BorderSize>2</BorderSize>
 	<spellIDs/>
-	<artifactIDs/>
+	<artifactIDs>
+		<Item>SWORD_OF_RUINS</Item>
+		<Item>GREAT_AXE_OF_GIANT_SLAYING</Item>
+		<Item>WAND_OF_X</Item>
+		<Item>TITANS_TRIDENT</Item>
+		<Item>STAFF_OF_VEXINGS</Item>
+		<Item>SHACKLES_OF_WAR</Item>
+		<Item>FOUR_LEAF_CLOVER</Item>
+		<Item>ICEBERG_SHIELD</Item>
+		<Item>GOLDEN_SEXTANT</Item>
+		<Item>CROWN_OF_COURAGE</Item>
+		<Item>CROWN_OF_MANY_EYES</Item>
+		<Item>PLATE_MAIL_OF_STABILITY</Item>
+		<Item>BREASTPLATE_OF_PETRIFIED_WOOD</Item>
+		<Item>PEDANT_OF_MASTERY</Item>
+		<Item>NECKLACE_OF_BRAVERY</Item>
+		<Item>WEREWOLF_CLAW_NECKLACE</Item>
+		<Item>EVERCOLD_ICICLE</Item>
+		<Item>NECKLACE_OF_POWER</Item>
+		<Item>RING_OF_LIGHTING_PROTECTION</Item>
+		<Item>RING_OF_LIFE</Item>
+		<Item>RING_OF_HASTE</Item>
+		<Item>NIGHTMARISH_RING</Item>
+		<Item>BOOTS_OF_SPEED</Item>
+		<Item>GOLDEN_HORSESHOE</Item>
+		<Item>WAYFARER_BOOTS</Item>
+		<Item>BOOTS_OF_INTERFERENCE</Item>
+		<Item>ENDLESS_SACK_OF_GOLD</Item>
+		<Item>ENDLESS_BAG_OF_GOLD</Item>
+		<Item>ANGEL_WINGS</Item>
+		<Item>LION_HIDE_CAPE</Item>
+		<Item>PHOENIX_FEATHER_CAPE</Item>
+		<Item>CLOAK_OF_MOURNING</Item>
+		<Item>HELM_OF_ENLIGHTMENT</Item>
+		<Item>CHAIN_MAIL_OF_ENLIGHTMENT</Item>
+		<Item>DRAGON_SCALE_ARMOR</Item>
+		<Item>DRAGON_SCALE_SHIELD</Item>
+		<Item>DRAGON_BONE_GRAVES</Item>
+		<Item>DRAGON_WING_MANTLE</Item>
+		<Item>DRAGON_TEETH_NECKLACE</Item>
+		<Item>DRAGON_TALON_CROWN</Item>
+		<Item>DRAGON_EYE_RING</Item>
+		<Item>DRAGON_FLAME_TONGUE</Item>
+		<Item>ROBE_OF_MAGI</Item>
+		<Item>STAFF_OF_MAGI</Item>
+		<Item>CROWN_OF_MAGI</Item>
+		<Item>RING_OF_MAGI</Item>
+		<Item>SCROLL_OF_SPELL_X</Item>
+		<Item>GRAAL</Item>
+		<Item>BOOTS_OF_LEVITATION</Item>
+		<Item>ARTIFACT_SKULL_HELMET</Item>
+		<Item>ARTIFACT_VALORIOUS_ARMOR</Item>
+		<Item>ARTIFACT_BOOTS_OF_SWIFTNESS</Item>
+		<Item>ARTIFACT_MOONBLADE</Item>
+		<Item>ARTIFACT_RING_OF_CELERITY</Item>
+		<Item>ARTIFACT_BAND_OF_CONJURER</Item>
+		<Item>ARTIFACT_EARTHSLIDERS</Item>
+		<Item>ARTIFACT_RIGID_MANTLE</Item>
+		<Item>ARTIFACT_JINXING_BAND</Item>
+		<Item>ARTIFACT_BONESTUDDED_LEATHER</Item>
+		<Item>ARTIFACT_WISPERING_RING</Item>
+		<Item>ARTIFACT_HELM_OF_CHAOS</Item>
+		<Item>ARTIFACT_TWISTING_NEITHER</Item>
+		<Item>ARTIFACT_SANDALS_OF_THE_SAINT</Item>
+		<Item>ARTIFACT_SHAWL_OF_GREAT_LICH</Item>
+		<Item>ARTIFACT_RING_OF_DEATH</Item>
+		<Item>ARTIFACT_NECROMANCER_PENDANT</Item>
+		<Item>ARTIFACT_FREIDA</Item>
+		<Item>ARTIFACT_RING_OF_THE_SHADOWBRAND</Item>
+		<Item>ARTIFACT_OGRE_CLUB</Item>
+		<Item>ARTIFACT_OGRE_SHIELD</Item>
+		<Item>ARTIFACT_TOME_OF_DESTRUCTION</Item>
+		<Item>ARTIFACT_TOME_OF_LIGHT_MAGIC</Item>
+		<Item>ARTIFACT_TOME_OF_DARK_MAGIC</Item>
+		<Item>ARTIFACT_TOME_OF_SUMMONING_MAGIC</Item>
+		<Item>ARTIFACT_BEGINNER_MAGIC_STICK</Item>
+		<Item>ARTIFACT_RUNIC_WAR_AXE</Item>
+		<Item>ARTIFACT_RUNIC_WAR_HARNESS</Item>
+		<Item>ARTIFACT_SKULL_OF_MARKAL</Item>
+		<Item>ARTIFACT_BEARHIDE_WRAPS</Item>
+		<Item>ARTIFACT_DWARVEN_SMITHY_HUMMER</Item>
+		<Item>ARTIFACT_RUNE_OF_FLAME</Item>
+		<Item>ARTIFACT_TAROT_DECK</Item>
+		<Item>ARTIFACT_CROWN_OF_LEADER</Item>
+		<Item>ARTIFACT_MASK_OF_DOPPELGANGER</Item>
+		<Item>ARTIFACT_EDGE_OF_BALANCE</Item>
+		<Item>ARTIFACT_RING_OF_MACHINE_AFFINITY</Item>
+		<Item>ARTIFACT_HORN_OF_PLENTY</Item>
+		<Item>ARTIFACT_RING_OF_UNSUMMONING</Item>
+		<Item>ARTIFACT_BOOK_OF_POWER</Item>
+		<Item>ARTIFACT_TREEBORN_QUIVER</Item>
+		<Item>ARTIFACT_PRINCESS</Item>
+		<Item>ARTIFACT_RES_WOOD</Item>
+		<Item>ARTIFACT_RES_ORE</Item>
+		<Item>ARTIFACT_RES_SULPHUR</Item>
+		<Item>ARTIFACT_RES_CRYSTAL</Item>
+		<Item>ARTIFACT_RES_GEM</Item>
+		<Item>ARTIFACT_RES_MERCURY</Item>
+		<Item>ARTIFACT_LEGION_T1</Item>
+		<Item>ARTIFACT_LEGION_T2</Item>
+		<Item>ARTIFACT_LEGION_T3</Item>
+		<Item>ARTIFACT_LEGION_T4</Item>
+		<Item>ARTIFACT_LEGION_T5</Item>
+		<Item>ARTIFACT_LEGION_T6</Item>
+		<Item>ARTIFACT_LEGION_T7</Item>
+		<Item>ARTIFACT_STEADFAST</Item>
+		<Item>ARTIFACT_BUCKLER</Item>
+		<Item>ARTIFACT_LIFE_01</Item>
+		<Item>ARTIFACT_LIFE_02</Item>
+		<Item>ARTIFACT_LIFE_03</Item>
+		<Item>ARTIFACT_LIFE_04</Item>
+		<Item>ARTIFACT_MONK_01</Item>
+		<Item>ARTIFACT_MONK_02</Item>
+		<Item>ARTIFACT_MONK_03</Item>
+		<Item>ARTIFACT_MONK_04</Item>
+		<Item>ARTIFACT_GUARDIAN_01</Item>
+		<Item>ARTIFACT_GUARDIAN_02</Item>
+		<Item>ARTIFACT_GUARDIAN_03</Item>
+		<Item>ARTIFACT_PIRATE01</Item>
+		<Item>ARTIFACT_PIRATE02</Item>
+		<Item>ARTIFACT_PIRATE03</Item>
+		<Item>ARTIFACT_PIRATE04</Item>
+		<Item>ARTIFACT_PIRATE05</Item>
+		<Item>ARTIFACT_PIRATE06</Item>
+		<Item>ARTIFACT_MEDICAL01</Item>
+		<Item>ARTIFACT_MEDICAL02</Item>
+		<Item>ARTIFACT_MEDICAL03</Item>
+		<Item>ARTIFACT_MEDICAL04</Item>
+		<Item>ARTIFACT_UPG_AR1</Item>
+		<Item>ARTIFACT_UPG_AR2</Item>
+		<Item>ARTIFACT_UPG_AR3</Item>
+		<Item>ARTIFACT_UPG_HM1</Item>
+		<Item>ARTIFACT_UPG_HM2</Item>
+		<Item>ARTIFACT_UPG_HM3</Item>
+		<Item>ARTIFACT_UPG_ST1</Item>
+		<Item>ARTIFACT_UPG_ST2</Item>
+		<Item>ARTIFACT_UPG_ST3</Item>
+		<Item>ARTIFACT_UPG_SW1</Item>
+		<Item>ARTIFACT_UPG_SW2</Item>
+		<Item>ARTIFACT_UPG_SW3</Item>
+		<Item>ARTIFACT_URGASH_01</Item>
+		<Item>ARTIFACT_URGASH_02</Item>
+		<Item>ARTIFACT_ELRATH_01</Item>
+		<Item>ARTIFACT_ELRATH_02</Item>
+		<Item>ARTIFACT_GOVERNOR_01</Item>
+		<Item>ARTIFACT_GEAR_02</Item>
+		<Item>ARTIFACT_GEAR_03</Item>
+		<Item>ARTIFACT_GEAR_04</Item>
+		<Item>ARTIFACT_GEAR_05</Item>
+		<Item>ARTIFACT_GEAR_06</Item>
+		<Item>ARTIFACT_GEAR_07</Item>
+		<Item>ARTIFACT_ORB_01</Item>
+		<Item>ARTIFACT_ORB_02</Item>
+		<Item>ARTIFACT_ORB_03</Item>
+		<Item>ARTIFACT_ORB_04</Item>
+	</artifactIDs>
 	<isUntransferable/>
-	<AvailableHeroes/>
+	<AvailableHeroes>
+		<Item href="/MapObjects/Haven/Orrin.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Haven/Sarge.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
+		<Item href="/MapObjects/Haven/Brem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Haven/Christian.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Haven/Maeve.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Haven/Nathaniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>			
+		<Item href="/MapObjects/Inferno/Calid.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Jazaz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Marder.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Harkenraz.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>	
+		<Item href="/MapObjects/Inferno/Grok.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Inferno/Malustar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Nymus.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Calh.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Deleb.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Oddrema.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Ash.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Efion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Zydar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Inferno/Calid2.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Linaas.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Gillion.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Preserve/Ossir.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Melodia.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Preserve/Mephala.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Metlirn.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Preserve/Kyrre.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Preserve/Arniel.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Nadaur.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Jenova.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>		
+		<Item href="/MapObjects/Preserve/Diraya.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Elleshar.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Itil.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Gem.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+		<Item href="/MapObjects/Preserve/Vinrael.(AdvMapHeroShared).xdb#xpointer(/AdvMapHeroShared)"/>
+	</AvailableHeroes>
 	<MapRumours/>
 	<Music/>
 	<MoonCalendarModifications>
