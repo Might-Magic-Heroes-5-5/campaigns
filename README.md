@@ -1011,8 +1011,18 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - fix: Fortress Military Outpost was not interactable which prevented its related secondary quest from completion
 	- change: redesign of Hangvul and Egil hero builds
 ### Agrael's Trial (A2S4)
-    - change: Inferno assault behavior now scales with difficulty, with higher difficulties making enemy heroes more likely to actively hunt player heroes and towns.
     - fix: The Witch curse is correctly consumed by the next successful assault wave instead of being cleared when no new hero was deployed.
+    - change: Inferno assault behavior now scales with difficulty, with higher difficulties making enemy heroes more likely to actively hunt player heroes and towns.
+	- change: Agrael start with expert logistics + pathfinding perk
+	- change: Crafted the "Princes" heroes build: they gain more stats,levels and spells in higher difficulty
+	- change: Curse cost depends the difficulty 5k/10k/15k/20k
+	- new: Once Agrael free Nebiros, he gains 20k experience, 3 attack/defense and 2 morale
+	- change: Nebiros' build has been reworked and will be a level 20 instead of 15
+	- new: Once Biara reach your castle, she gains enough exp to reach level 20 and Agrael 20k experience 
+	- change: buffed the archdevils that join Agrael in the underground from 1 to 3
+	- change: The reward for the hut quest looking for the Pendant of Master buffed from 5k to 150k experience
+	- change: The Pendant of Mastery guards has been nerfed
+	- changed: Artifact guarded by a Phoenix stack from Phoenix Feather Cape to Banner of the Legion
 ### Battle of Cry Freedom (A2S5)
   - fix(cinematics): defeating the Academy did not show the opening of the sea path
   - fix: increasing game difficulty also increased human player starting army

@@ -2,7 +2,7 @@ doFile("/scripts/campaign_common.lua");
 doFile("/scripts/campaign_ai.lua");
 
 -- loop gatekeeps code execution until vars and funcs are loaded
-while not COMBAT do
+while not COMBAT or not H55c_AI_UpdateTargetWeight do
     sleep()
 end
 
@@ -49,6 +49,8 @@ function newsAboutThePrisoner( hero )
 	end
 end
 
+ONSLAUGHT_CHANCE = { 17, 34, 51, 68 };
+
 function f_army_calculations()
 	local ARMY_RATE = 1;
 	if GetDate( DAY ) >= 28 then
@@ -60,7 +62,7 @@ function f_army_calculations()
 	elseif GetDate( DAY ) >= 7 then
 		ARMY_RATE=1.5;
 	end
-	
+
 	local FINAL_RATE = ARMY_RATE * ARMY_DIFF_RATE;
 	if WITCH.curseIsActive == 1 then
 		FINAL_RATE = FINAL_RATE * 0.5;
@@ -72,10 +74,11 @@ function f_army_calculations()
 	T5_NUM = 3 * FINAL_RATE + random(ARMY_RATE+3);
 	T6_NUM = 2 * FINAL_RATE + random(ARMY_RATE+2);
 	T7_NUM = 1 * FINAL_RATE + random(ARMY_RATE+1);
-	
+
 	local heroes = GetPlayerHeroes(PLAYER_2);
+	local threshold = ONSLAUGHT_CHANCE[(diff+1)];
 	for i, hero in heroes do
-		if math.random(1, 100) < (10 + math.pow(2.65, DiffRate)) then -- chance ~= 12 / 17 / 28 / 59 %
+		if math.random(1, 100) < threshold then
 			H55c_AIAddHero(hero);
 		else
 			H55c_AIRemoveHero(hero);
@@ -126,19 +129,19 @@ end
 WITCH = {
 	weekCheck = 0,
 	weekCount = 0,
-	cost = 5000,
+	cost = 0,
 	curseIsActive = 0,
-	
+
 	visit = function( hero )
 		if GetObjectOwner( hero ) == PLAYER_1 then
 			if WITCH.weekCount == 0 then
 				CINEMATICS.meetWitch();
 			end
-			WITCH.weekCount = GetDate( WEEK );
+			WITCH.weekCount = math.floor((GetDate(ABSOLUTE_DAY) - 1) / 7) + 1;
 			print( "weekCheck", WITCH.weekCheck );
 			print( "weekCount", WITCH.weekCount );
-			if GetPlayerResource( PLAYER_1, GOLD ) > WITCH.cost and WITCH.weekCount > WITCH.weekCheck then
-				if WITCH.curseIsActive == 0 then 
+			if GetPlayerResource( PLAYER_1, GOLD ) >= WITCH.cost and WITCH.weekCount ~= WITCH.weekCheck then
+				if WITCH.curseIsActive == 0 then
 					QuestionBox( {"/Maps/SingleMissions/A2S4/questionbox_001.txt"; PRICE = WITCH.cost}, "WITCH.accept", "WITCH.decline");
 				else
 					MessageBox("/Maps/SingleMissions/A2S4/messagebox_005.txt");
@@ -150,7 +153,7 @@ WITCH = {
 			end
 		end
 	end,
-	
+
 	accept = function()
 		WITCH.weekCheck = WITCH.weekCount;
 		MessageBox( {"/Maps/SingleMissions/A2S4/messagebox_004.txt"; PRICE = WITCH.cost} );
@@ -168,42 +171,50 @@ WITCH = {
 	decline = function()
 		MessageBox("/Maps/SingleMissions/A2S4/messagebox_006.txt");
 	end,
-	
-	applyCurseToHero = function( hero )
-		local current_morale = - (0 + GetHeroStat( hero, STAT_MORALE ));
-		local current_luck = - (0 + GetHeroStat( hero, STAT_LUCK ));
+
+	applyCurseToHero = function(hero)
 		if WITCH.curseIsActive == 1 then
-			current_morale = current_morale - 5;
-			current_luck = current_luck - 5;
+			local moraleChange = - 5 - GetHeroStat(hero, STAT_MORALE);
+			local luckChange = - 5 - GetHeroStat(hero, STAT_LUCK);
+
+			ChangeHeroStat(hero, STAT_MORALE, moraleChange);
+			ChangeHeroStat(hero, STAT_LUCK, luckChange);
 		end
-		ChangeHeroStat( hero, STAT_MORALE, current_morale );
-		ChangeHeroStat( hero, STAT_LUCK, current_luck );
 	end,
 }
 
 -- The ally hero will appear on the map on 21-th day of the game. IF the hero reaches player's town, he will go under player's control.
-function f_ally_change_owner()
+function A2S4_BiaraReachesTown()
+	Trigger( REGION_ENTER_AND_STOP_TRIGGER, "REGION_CHANGE_OWNER", nil);
+	SetObjectOwner( 'Biara', PLAYER_1 );
+	repeat sleep(20) until GetCurrentPlayer() == PLAYER_1
+	local hx,hy,hlevel = GetObjectPosition( 'Agrael' );
+	SetObjectPosition( 'Agrael', 75, 70, GROUND );
+	sleep(5);
+	SetObjectRotation( 'Agrael', 45 );
+	H55c_Message.show("/Maps/SingleMissions/A2S4/messagebox_008.txt");
+	CINEMATICS.allyHasArrived();
+	SetObjectPosition( 'Agrael', hx, hy, hlevel );
+	GiveExp("Biara", 81700);
+	GiveExp("Agrael", 20000);
+end
+
+function A2S4_MoveBiara()
+	DeployReserveHero('Biara', 90, 1, 0);
+	sleep( 20 );
+	EnableHeroAI('Biara', not nil);
 	while 1 do
 		sleep( 20 );
-		if IsHeroAlive("Biara") ~= nil then
-			if IsObjectInRegion('Biara', 'REGION_CHANGE_OWNER') == 1 then
-				repeat sleep(20) until GetCurrentPlayer() ~= PLAYER_1
-				hx,hy,hlevel = GetObjectPosition( 'Agrael' );
-				SetObjectOwner( 'Biara', PLAYER_1 );
-				SetObjectPosition( 'Agrael', 75, 70, GROUND );
-				sleep(5);
-				SetObjectRotation( 'Agrael', 45 );
-				H55c_Message.show("/Maps/SingleMissions/A2S4/messagebox_008.txt");
-				CINEMATICS.allyHasArrived();
-				SetObjectPosition( 'Agrael', hx, hy, hlevel );
-				return
-			elseif CanMoveHero( 'Biara', 75, 69, 0 ) then	
-				MoveHero( 'Biara', 75, 69, 0 );
-			end
-		else
+		if GetObjectOwner("Biara") == PLAYER_1 then
+			return
+		end
+
+		if IsHeroAlive("Biara") == nil then
 			startThread( Play2DSound, "/Maps/SingleMissions/A2S4/SM4_VO5_Agrael_01sound.xdb#xpointer(/Sound)" );
 			return
 		end
+
+		pcall(MoveHero, 'Biara', 75, 69, 0 );
 	end
 end
 
@@ -259,26 +270,30 @@ end
 
 DIFFICULTY = {
 	[0] = function()
-		DiffRate = 1;
+		DiffRate = 1.0;
 		ARMY_DIFF_RATE = 0.5;
+		diff = 0;
 		print ("normal");
 	end,
 
 	[1] = function()
-		DiffRate = 2;
+		DiffRate = 2.5;
 		ARMY_DIFF_RATE = 1.0;
+		diff = 1;
 		print ("hard");
 	end,
 
 	[2] = function()
-		DiffRate = 3;
+		DiffRate = 4.0;
 		ARMY_DIFF_RATE = 1.5;
+		diff = 2;
 		print ("heroic");
 	end,
 
 	[3] = function()
-		DiffRate = 4;
+		DiffRate = 5.5;
 		ARMY_DIFF_RATE = 2.0;
+		diff = 3;
 		print ("impossible");
 	end,
 }
@@ -291,32 +306,32 @@ CINEMATICS = {
 		StartAdvMapDialog( id, CINEMATICS.end_play() );
 		repeat sleep(30); until CINEMATICS.are_playing == nil;
 	end,
-		
+
 	end_play = function()
 		CINEMATICS.are_playing = nil;
 	end,
-	
+
 	intro = function()
 		StartDialogScene("/DialogScenes/A2Single/SM4/S1/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
 	end,
-	
+
 	allyHasArrived = function()
 		CINEMATICS.playAndWait( 2 );
 	end,
-	
+
 	findArtifactStash = function()
 		CINEMATICS.playAndWait( 3 );
 	end,
-	
+
 	meetWitch = function()
 		CINEMATICS.playAndWait( 0 );
 	end,
-	
+
 	freeVeyer = function()
 		CINEMATICS.playAndWait( 1 );
 	end,
-	
+
 	outro = function()
 		StartDialogScene("/DialogScenes/A2Single/SM4/S3/DialogScene.xdb#xpointer(/DialogScene)");
 		sleep( 2 );
@@ -333,7 +348,7 @@ OBJECTIVES = {
 		artifactStash      = { 	   "SEC_OBJECTIVE_ARTIFACT_STASH", 1 },	-- Find the hidden artifact cache
 		eventManager       = { 								  "_", 1 },	-- Handles all scheduled and recurring map events
 	},
-		
+
 	start = function()
 		OBJECTIVES.prepare();
 		OBJECTIVES.run();
@@ -352,12 +367,69 @@ OBJECTIVES = {
 		SetRegionBlocked( "spawnRegion3", not nil, PLAYER_1 );
 		SetObjectEnabled('Witch', nil); -- Witch creature is disabled from the start, so player is unable to attack and kill her
 		DIFFICULTY[GetDifficulty()]();
-		for i = 1,4 do
-			ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_EXPERIENCE, 35000);
+		WITCH.cost = 5000 * DiffRate;
+		if diff > 0 then
+			for i = 1,4 do
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_EXPERIENCE, 47600);	-- level 20
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_ATTACK, 3 * diff);
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_DEFENCE, 3 * diff);
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_SPELL_POWER, 3 * diff);
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_KNOWLEDGE, 3 * diff);
+			end
+			GiveHeroSkill("Grok", HERO_SKILL_SHATTER_DESTRUCTIVE_MAGIC);
+			GiveHeroSkill("Grok", SKILL_WAR_MACHINES);
+			GiveHeroSkill("Grok", SKILL_LEARNING);
+
+			GiveHeroSkill("Marder", SKILL_LUCK);
+			GiveHeroSkill("Marder", SKILL_LEADERSHIP);
+			GiveHeroSkill("Marder", SKILL_OFFENCE);
+
+			GiveHeroSkill("Nymus", SKILL_DEFENCE);
+			GiveHeroSkill("Nymus", SKILL_LEARNING);
+			GiveHeroSkill("Nymus", SKILL_SORCERY);
+
+			GiveHeroSkill("Deleb", SKILL_LEARNING);
+			GiveHeroSkill("Deleb", SKILL_LEADERSHIP);
+			GiveHeroSkill("Deleb", SKILL_NECROMANCY);
 		end
+
+		if diff > 1 then
+			for i = 1,4 do
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_EXPERIENCE, 118300); -- level 25
+			end
+			TeachHeroSpell("Grok", SPELL_VAMPIRISM);
+			TeachHeroSpell("Grok", SPELL_PHANTOM);
+
+			TeachHeroSpell("Nymus", SPELL_VAMPIRISM);
+			TeachHeroSpell("Nymus", SPELL_PHANTOM);
+
+			TeachHeroSpell("Marder", SPELL_DIVINE_VENGEANCE);
+			TeachHeroSpell("Marder", SPELL_BLIND);
+
+			TeachHeroSpell("Deleb", SPELL_DEEP_FREEZE);
+			TeachHeroSpell("Deleb", SPELL_METEOR_SHOWER);
+		end
+
+		if diff > 2 then
+			for i = 1,4 do
+				ChangeHeroStat(A2S4_WAVES['lord'..i].hero, STAT_EXPERIENCE, 292000); -- level 30
+			end
+			TeachHeroSpell("Grok", SPELL_BERSERK);
+
+			TeachHeroSpell("Nymus", SPELL_BERSERK);
+
+			TeachHeroSpell("Marder", SPELL_CELESTIAL_SHIELD);
+			TeachHeroSpell("Marder", SPELL_RESURRECT);
+
+			TeachHeroSpell("Deleb", SPELL_IMPLOSION);
+			TeachHeroSpell("Deleb", SPELL_ARMAGEDDON);
+		end
+
+
 		if GetObjectCreatures("bone_dragon", CREATURE_BONE_DRAGON) >= 1 then
 			AddObjectCreatures("bone_dragon", CREATURE_BONE_DRAGON, 2 * DiffRate);
 		end
+
 		Trigger(OBJECT_TOUCH_TRIGGER, 'Witch', "WITCH.visit");
 		for i=1,4 do
 			Trigger(OBJECT_CAPTURE_TRIGGER, "GOLD_MINE_0"..i, "f_capture_gold_mine");
@@ -387,7 +459,7 @@ OBJECTIVES = {
 			end
 		end
 	end,
-	
+
 	defeatInfernoLords = function()
 		-- the start of this task is handled by map.xdb
 		if OBJECTIVES.state.defeatInfernoLords[2] == 1 and OBJECTIVES.date == 29 then
@@ -404,15 +476,15 @@ OBJECTIVES = {
 			OBJECTIVES.state.defeatInfernoLords[2] = 10;
 		end
 	end,
-	
+
 	isAlive = function()
 	-- the start of this task is handled by map.xdb
 		if OBJECTIVES.state.isAlive[2] == 1 and IsHeroAlive('Agrael') == nil then
-			SetObjectiveState('OBJECTIVE_AGRAEL_SURVIVE', OBJECTIVE_FAILED);	
+			SetObjectiveState('OBJECTIVE_AGRAEL_SURVIVE', OBJECTIVE_FAILED);
 			OBJECTIVES.state.isAlive[2] = 11;
 		end
 	end,
-	
+
 	captureGoldMines = function()
 		if OBJECTIVES.state.captureGoldMines[2] == 1 then
 			SetObjectiveState( "SEC_OBJECTIVE_CAPTURE_GOLD_MINES", OBJECTIVE_ACTIVE );
@@ -426,8 +498,8 @@ OBJECTIVES = {
 			OBJECTIVES.state.captureGoldMines[2] = 2;
 		end
 	end,
-	
-	freeVeyer_hero = "Agrael",
+
+	freeVeyer_hero = "Agrael",  --FREE NEBIROS
 	freeVeyer = function()
 		if OBJECTIVES.state.freeVeyer[2] == 1 then
 			OpenCircleFog( 131, 72, GROUND, 8, PLAYER_1 );
@@ -446,13 +518,14 @@ OBJECTIVES = {
 				SetObjectPosition( 'Agrael', pmx, pmy, pmlevel );
 			end
 			SetObjectiveState('SEC_OBJECTIVE_FREE_VEYER', OBJECTIVE_COMPLETED, PLAYER_1);
-			ChangeHeroStat('Agrael', STAT_EXPERIENCE, 10000);
-			ChangeHeroStat('Agrael', STAT_DEFENCE, 1);
-			ChangeHeroStat('Agrael', STAT_MORALE, 1);	
+			ChangeHeroStat('Agrael', STAT_EXPERIENCE, 20000);
+			ChangeHeroStat('Agrael', STAT_ATTACK, 3);
+			ChangeHeroStat('Agrael', STAT_DEFENCE, 3);
+			ChangeHeroStat('Agrael', STAT_MORALE, 2);
 			OBJECTIVES.state.freeVeyer[2] = 10;
 		end
 	end,
-	
+
 	artifactStash_visitor = "Agrael",
 	artifactStash = function()
 		if OBJECTIVES.state.artifactStash[2] == 1 then
@@ -469,7 +542,7 @@ OBJECTIVES = {
 			sleep( 20 );
 			CINEMATICS.findArtifactStash();
 			RemoveObject( "DEVIL_GUARD" );
-			AddHeroCreatures( 'Agrael', CREATURE_ARCHDEVIL, 1 );
+			AddHeroCreatures( 'Agrael', CREATURE_ARCHDEVIL, 3 );
 			SetObjectiveState('SEC_OBJECTIVE_ARTIFACT_STASH', OBJECTIVE_COMPLETED, PLAYER_1);
 			RemoveObject( "dsc" );
 			RemoveObject( "dss" );
@@ -484,42 +557,40 @@ OBJECTIVES = {
 			OBJECTIVES.state.artifactStash[2] = 10;
 		end
 	end,
-	
+
 	eventManager_allyDeployed = 0,
 	eventManager_day = 1,
 	eventManager = function()
 		if OBJECTIVES.date >= OBJECTIVES.eventManager_day then
 			f_army_calculations();
 			local deployed_heroes = 0;
-			if GetDate( DAY_OF_WEEK ) == 4 and OBJECTIVES.date <= 22 and (IsHeroAlive(A2S4_WAVES['weekly1'].hero) == nil or IsHeroAlive(A2S4_WAVES['weekly1'].hero) == nil) then
+			if GetDate( DAY_OF_WEEK ) == 4 and OBJECTIVES.date <= 22 and (IsHeroAlive(A2S4_WAVES['weekly1'].hero) == nil or IsHeroAlive(A2S4_WAVES['weekly2'].hero) == nil) then
 			-- Deploy secondary AI heroes on the map every 4-th day of the week.
 				deployed_heroes = deployed_heroes + DeployDemonGeneral(A2S4_WAVES['weekly1']) + DeployDemonGeneral(A2S4_WAVES['weekly2']);
 			end
-			
+
 			if GetDate( DAY_OF_WEEK ) == 7 and OBJECTIVES.date <= 22 then
 				-- Deploy secondary AI heroes on the map every 7-th day of the week.
 				deployed_heroes = deployed_heroes + DeployDemonGeneral(A2S4_WAVES['weekly3']) + DeployDemonGeneral(A2S4_WAVES['weekly4']);
 			end
-			
+
 			if GetDate( DAY_OF_WEEK ) == 7 or deployed_heroes > 0 then
 				WITCH.curseIsActive = 0;
 			end
-			
+
 			if OBJECTIVES.date >= 20 and OBJECTIVES.eventManager_allyDeployed == 0 then -- This function places ally AI hero on the map and orders him to go to player's town.
-				startThread( Play2DSound, "/Maps/SingleMissions/A2S4/SM4_VO4_Agrael_01sound.xdb#xpointer(/Sound)" );		
+				startThread( Play2DSound, "/Maps/SingleMissions/A2S4/SM4_VO4_Agrael_01sound.xdb#xpointer(/Sound)" );
 				MessageBox("/Maps/SingleMissions/A2S4/messagebox_007.txt");
-				DeployReserveHero('Biara', 90, 1, 0);
-				sleep( 20 );
-				EnableHeroAI('Biara', not nil);
-				startThread( f_ally_change_owner );
+				Trigger( REGION_ENTER_AND_STOP_TRIGGER, "REGION_CHANGE_OWNER", "A2S4_BiaraReachesTown");
+				startThread( A2S4_MoveBiara );
 				OBJECTIVES.eventManager_allyDeployed = 1;
 			end
 			if OBJECTIVES.state.captureGoldMines[2] == 3 then	-- Give player gold if he owns the goldmines
 				SetPlayerResource(PLAYER_1, GOLD, (GetPlayerResource(PLAYER_1, GOLD) + 5000));
 			end
-			
+
 			if OBJECTIVES.date == 14 then					-- SUCCUBUS CHAT DIALOGSCENE at day 14
-				StartDialogScene("/DialogScenes/A2Single/SM4/S2/DialogScene.xdb#xpointer(/DialogScene)"); 
+				StartDialogScene("/DialogScenes/A2Single/SM4/S2/DialogScene.xdb#xpointer(/DialogScene)");
 			end
 			OBJECTIVES.eventManager_day = OBJECTIVES.date + 1;
 		end
