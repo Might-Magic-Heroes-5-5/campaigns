@@ -52239,8 +52239,8 @@
 				<pointLights/>
 				<Shared href="/MapObjects/Inferno/Arch_Demon.xdb#xpointer(/AdvMapMonsterShared)"/>
 				<Custom>true</Custom>
-				<Amount>15</Amount>
-				<Amount2>16</Amount2>
+				<Amount>10</Amount>
+				<Amount2>10</Amount2>
 				<AttackType>ATTACK_ANY</AttackType>
 				<MoveType>MOVE_ANY</MoveType>
 				<DoesNotGrow>false</DoesNotGrow>
@@ -52262,14 +52262,14 @@
 				<AdditionalStacks>
 					<Item>
 						<Creature>CREATURE_FRIGHTFUL_NIGHTMARE</Creature>
-						<Amount>32</Amount>
-						<Amount2>35</Amount2>
+						<Amount>17</Amount>
+						<Amount2>17</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 					<Item>
 						<Creature>CREATURE_BALOR</Creature>
-						<Amount>19</Amount>
-						<Amount2>21</Amount2>
+						<Amount>9</Amount>
+						<Amount2>9</Amount2>
 						<CustomAmount>true</CustomAmount>
 					</Item>
 				</AdditionalStacks>
