@@ -9,27 +9,27 @@ end
 H55_PlayerStatus = {0,1,1,1,1,2,2,2};
 
 H55c_AI_CONTROLLED = {
-  player1 = {          -- Light Blue HUMAN player
+  player1 = {          -- Teal HUMAN player
       state = 0,
 	   heroes = {},
 	   enemies = {},
   },
-  player2 = {
+  player2 = {          -- Green AI player - Sylvan
 		state = 1,
 		heroes = {},
 		enemies = {},
   },
-  player3 = {
+  player3 = {         -- Red AI player - Inferno
 		state = 1,
 		heroes = {},
 		enemies = {},
   },
-  player4 = {
+  player4 = {         -- Yellow AI player - Accademy
 		state = 1,
 		heroes = {},
 		enemies = {},
   },
-  player5 = { 		   -- Orange AI player
+  player5 = { 		   -- Orange AI player - Accademy invasion 
 		state = 2,
 		heroes = {},
 		enemies = {
@@ -41,19 +41,27 @@ H55c_AI_CONTROLLED = {
 		}
   },
 }
+
+function SL2_GetStart(region)
+	local x, y, z = RegionToPoint(region);
+	return { x, y, z };
+end
+
 SL2_TOWNS = { "Academy", "Necropolis", "Inferno", "Sylvan" };
 SL2_INVASION = {
-	["Tan"] 	= { start = 	"SylvanStart", army = { CREATURE_ARCH_MAGI, 10, 		 CREATURE_MAGI, 10,		   CREATURE_GENIE,  5, 	CREATURE_RAKSHASA,   3, CREATURE_STONE_GARGOYLE, 20, 		   CREATURE_GREMLIN, 30 }  },
-	["Faiz"] 	= { start =    "AcademyStart", army = { 	 CREATURE_MAGI, 10, 	 CREATURE_RAKSHASA, 10, CREATURE_MASTER_GENIE, 12, 	   CREATURE_GIANT,   4,    CREATURE_STEEL_GOLEM, 25, 	CREATURE_MASTER_GREMLIN, 40 }  },
-	["Havez"] 	= { start =    "InfernoStart", army = { 	CREATURE_TITAN, 3, CREATURE_MASTER_GREMLIN, 30,  CREATURE_STEEL_GOLEM, 20, CREATURE_ARCH_MAGI,   8, 	CREATURE_IRON_GOLEM, 25, CREATURE_OBSIDIAN_GARGOYLE, 30 }  },
-	["Astral"] 	= { start = "NecropolisStart", army = { 	CREATURE_GENIE, 15, 		CREATURE_TITAN,  5,    CREATURE_ARCH_MAGI, 20, 	 CREATURE_GREMLIN, 100, 	CREATURE_IRON_GOLEM, 40 }  },
+	["Tan"] 	= { start = 	SL2_GetStart( "SylvanStart" ), army = {    CREATURE_ARCH_MAGI, 10,	   CREATURE_COMBAT_MAGE, 10,		CREATURE_GENIE,  5,	 		CREATURE_RAKSHASA,   3, CREATURE_MARBLE_GARGOYLE, 20, 		   CREATURE_GREMLIN_SABOTEUR, 30 }  },
+	["Faiz"] 	= { start =    SL2_GetStart( "AcademyStart" ), army = {	 CREATURE_COMBAT_MAGE, 10,		  CREATURE_RAKSHASA, 10, CREATURE_MASTER_GENIE, 12,		  CREATURE_STORM_LORD,   4,		CREATURE_STEEL_GOLEM, 25, 	CREATURE_MASTER_GREMLIN, 40 }  },
+	["Havez"] 	= { start =    SL2_GetStart( "InfernoStart" ), army = {		   CREATURE_TITAN,  3,	CREATURE_MASTER_GREMLIN, 30,  CREATURE_STEEL_GOLEM, 20, 	   CREATURE_ARCH_MAGI,   8,	 CREATURE_OBSIDIAN_GOLEM, 25, CREATURE_OBSIDIAN_GARGOYLE, 30 }  },
+	["Astral"] 	= { start = SL2_GetStart( "NecropolisStart" ), army = {	CREATURE_DJINN_VIZIER, 15,			 CREATURE_TITAN,  5,	CREATURE_ARCH_MAGI, 20,	CREATURE_GREMLIN_SABOTEUR, 100,	 CREATURE_OBSIDIAN_GOLEM, 40 }  },
+	["Sufi"]    = { start = {  87, 174, GROUND }, army = { 	 CREATURE_MASTER_GREMLIN, 67, CREATURE_OBSIDIAN_GARGOYLE, 44, 	 CREATURE_STEEL_GOLEM, 42, 	 CREATURE_ARCH_MAGI, 27, CREATURE_DJINN_VIZIER, 17, CREATURE_RAKSHASA_KSHATRI, 10, CREATURE_STORM_LORD, 4 } },
+	["Razzak"]  = { start = {   1,  87, GROUND }, army = { CREATURE_GREMLIN_SABOTEUR, 75, 	CREATURE_MARBLE_GARGOYLE, 58, CREATURE_OBSIDIAN_GOLEM, 44, CREATURE_COMBAT_MAGE, 30, 	CREATURE_MASTER_GENIE, 19, CREATURE_RAKSHASA_RUKH, 10, CREATURE_TITAN, 5 } },
+	["Minasli"] = { start = { 174,  87, GROUND }, army = { 	 CREATURE_MASTER_GREMLIN, 76, 		CREATURE_STEEL_GOLEM, 43, CREATURE_OBSIDIAN_GOLEM, 43, CREATURE_COMBAT_MAGE, 29, CREATURE_RAKSHASA_KSHATRI, 11, CREATURE_RAKSHASA_RUKH, 11, CREATURE_TITAN, 4 } },
 }
 
-function SetupEnemyHero(hero, unit_list )
-	local ArmyMdf = GetDate(MONTH)*(0.5 + GetDifficulty());
+function SetupEnemyHero(hero, unit_list, modifier )
 	local size = table.length( unit_list );
 	for i = 1, size, 2 do
-		AddHeroCreatures( hero, unit_list[i], unit_list[i+1] * ArmyMdf );
+		AddHeroCreatures( hero, unit_list[i], unit_list[i+1] * modifier );
 	end
 end
 
@@ -72,17 +80,18 @@ function SL2_RemoveOnslaught( oldOwner, newOwner, hero, object )
 	end
 end
 
-function StartInvasion()
+function StartInvasion(army_mod)
 	BlockGame();
-	for hero, info in SL2_INVASION do
-		DeployReserveHero( hero, RegionToPoint( info.start ) );
+	for _, hero in ARMADA_DEPLOYMENT do
+		local info = SL2_INVASION[hero];
+		local x, y, z = info.start[1], info.start[2], info.start[3];
+		DeployReserveHero( hero, x, y, z);
 		sleep(10);
-		local x,y = GetObjectPosition( hero );
-		OpenCircleFog(x,y,GROUND,15,PLAYER_1);
-		MoveCamera(x,y,GROUND);
-		startThread( SetupEnemyHero, hero, info.army );
+		OpenCircleFog(x, y, GROUND, 15, PLAYER_1);
+		MoveCamera(x, y, GROUND, 80, 1.57, 0, 1, 1, 1);
+		startThread( SetupEnemyHero, hero, info.army, army_mod );
 		H55c_AIAddHero(hero);
-		sleep(120);
+		sleep(35);
 	end
 	CINEMATICS.startInvasion();
 	UnblockGame();
@@ -121,11 +130,46 @@ CINEMATICS = {
 	end,
 }
 
+DIFFICULTY = {
+	[0] = function()
+		diff = 1;
+		ARMADA_DEPLOYMENT = { "Tan", "Faiz", "Havez", "Astral" };
+	    H55c_SetCampaignResources( PLAYER_5, 50, 50, 50, 50, 50, 50, 30000); -- Give the chance to Faiz to create mini-artifacts for his units
+	end,
+	
+	[1] = function()
+		diff = 2;
+		ARMADA_DEPLOYMENT = { "Tan", "Faiz", "Havez", "Astral", "Sufi" };
+		H55c_SetCampaignResources( PLAYER_5, 75, 75, 75, 75, 75, 75, 40000); -- Give the chance to Faiz and Minasli to create mini-artifacts for their units
+	end,
+	
+	[2] = function()
+		diff = 3;
+		ARMADA_DEPLOYMENT = { "Tan", "Faiz", "Havez", "Astral", "Sufi", "Razzak" };
+		H55c_SetCampaignResources( PLAYER_5, 100, 100, 100, 100, 100, 100, 50000); -- Give the chance to Faiz, Minasli and Narxes to create mini-artifacts for their units
+	end,
+	
+	[3] = function()
+		diff = 4;
+		ARMADA_DEPLOYMENT = { "Tan", "Faiz", "Havez", "Astral", "Sufi", "Razzak", "Minasli" };
+		H55c_SetCampaignResources( PLAYER_5, 200, 200, 200, 200, 200, 200, 100000);	-- Give the chance to Faiz, Narxes and Jhora to create mini-artifacts for their units
+	end,
+}
+
+function MagesDestroyed()
+	for _, hero in ARMADA_DEPLOYMENT do
+		if IsHeroAlive(hero) ~= nil then
+			return nil;
+		end
+	end
+	return 1;
+end
+	
 OBJECTIVES = {
 	date = 0,
 	state = {
 		captureTowns = { "CaptureTowns", 1 }, -- capture all towns
-		repulseMages = {	  "Defence", 1 }, -- Occupy and hold the capital
+		repulseMages = {	  "Defence", 1 }, -- Defeat all 4 orange mages (up to 7 in higher difficulty)
 		isAlive 	 = {  "MustSurvive", 1 }, -- Raven must survive
 		eventManager = { 			"_", 1 }, -- Chance for give/take random resource each week
 	},
@@ -140,8 +184,7 @@ OBJECTIVES = {
 		Resources_minus = {{WOOD,-10},{ORE,-10},{GEM,-5},{CRYSTAL,-5},{SULFUR,-5},{MERCURY,-5},{GOLD,-5000}};
 		Resources_plus.n = 7;
 		Resources_minus.n = 7;
-		PlayerTowns = {};
-		ReservedHeroes = {"Mardigo","Nathaniel","Orrin","Sarge"};
+		DIFFICULTY[GetDifficulty()]();
 		CINEMATICS.intro();
 	end,
 
@@ -178,13 +221,15 @@ OBJECTIVES = {
 
 	repulseMages = function()
 		if OBJECTIVES.state.repulseMages[2] == 1 and OBJECTIVES.state.captureTowns[2] == 10 then
-			StartInvasion();
+			-- 4.5 / 9 / 13.5 / 18 / 22.5 / 27
+			local army_mod = GetDate(MONTH) * ( 0.5 + diff );
+			StartInvasion(army_mod);
 			SetObjectiveState( "Defence", OBJECTIVE_ACTIVE );
 			for i, town in SL2_TOWNS do
 				Trigger( OBJECT_CAPTURE_TRIGGER, town, "SL2_RemoveOnslaught");
 			end
 			OBJECTIVES.state.repulseMages[2] = 2;
-		elseif OBJECTIVES.state.repulseMages[2] == 2 and IsHeroAlive("Faiz") == nil and IsHeroAlive("Tan") == nil and IsHeroAlive("Astral") == nil and IsHeroAlive("Havez") == nil then
+		elseif OBJECTIVES.state.repulseMages[2] == 2 and MagesDestroyed() ~= nil then
 			SetObjectiveState( "Defence", OBJECTIVE_COMPLETED );
 			OBJECTIVES.state.repulseMages[2] = 10;
 		end
@@ -202,28 +247,38 @@ OBJECTIVES = {
 	eventManager = function()
 		if OBJECTIVES.date >= OBJECTIVES.eventManager_day then
 			local result = 1 + random(6);
-			if result == 4 or result == 5 then
-				MessageBox("/Maps/SingleMissions/SL2/ResourcesPlus.txt");
-				for i=1,Resources_plus.n do
-					print("Resource type is ",Resources_plus[i][1],"Quantity(+) = ",Resources_plus[i][2]);
-					SetPlayerResource(PLAYER_1,Resources_plus[i][1],GetPlayerResource(PLAYER_1,Resources_minus[i][1])+Resources_plus[i][2]);
-				end
-			elseif result == 6 then
-				MessageBox("/Maps/SingleMissions/SL2/ResourcesMinus.txt");
-				for i=1,Resources_minus.n do
-					if GetPlayerResource(PLAYER_1,Resources_minus[i][1]) > Resources_minus[i][2] then
-						print("Resource type is ",Resources_plus[i][1],"Quantity(-) = ",Resources_plus[i][2]);
-						SetPlayerResource(PLAYER_1,Resources_minus[i][1],GetPlayerResource(PLAYER_1,Resources_minus[i][1])-Resources_minus[i][2]);
-					else
-						print("Resource type is ",Resources_plus[i][1],"Quantity(=) = ",GetPlayerResource(PLAYER_1,Resources_minus[i][1]));
-						SetPlayerResource(PLAYER_1,Resources_minus[i][1],GetPlayerResource(PLAYER_1,Resources_minus[i][1]));
-					end
-				end
-			end
+			CheckResource(result);
 			OBJECTIVES.eventManager_day = OBJECTIVES.eventManager_day + 7;
 		end
 	end,
 }
+
+function CheckResource(result)
+	local changes;
+	local message;
+	
+	if result == 4 or result == 5 then
+		changes = Resources_plus;
+		message = "/Maps/SingleMissions/SL2/ResourcePlus.txt";
+	elseif result == 6 then
+		changes = Resources_minus;
+		message = "/Maps/SingleMissions/SL2/ResourcesMinus.txt";
+	end
+	
+	if changes then
+		MessageBox(message);
+
+		for i = 1, changes.n do
+			local resource = changes[i][1];
+			local delta    = changes[i][2];
+			local current  = GetPlayerResource(PLAYER_1, resource);
+			local updated  = math.max(0, current + delta);
+
+			SetPlayerResource(PLAYER_1, resource, updated);
+			print("Resource type: ", resource, " Change: ", updated - current);
+		end
+	end
+end
 
 ------------------- MAIN ------------------------
 startThread( OBJECTIVES.start );
@@ -236,7 +291,7 @@ function sl2_dbg(var)
 			SetObjectOwner(town, PLAYER_1);
 		end
 	elseif var == 2 then
-		for hero, value in SL2_INVASION do
+		for hero, value in ARMADA_DEPLOYMENT do
 			RemoveObject( hero );
 		end
 	end

@@ -975,7 +975,8 @@ Changes that affect quality of dialogue scenes or lore. Credit goes to Rommy and
     - change: Instant travel spell is no longer available on this map.
 ### An Island of One's Own(SL2)
     - fix: Onslaught heroes were sailing in sea aimlessly, now they will try to conquer the town closest to them and settle there.
-    - fix(cinematics): camera was not properly showing the onslaught arrivals 
+    - fix(cinematics): camera was not properly showing the onslaught arrivals
+    - fix(cinematics): Cero T-posing at the conversation with arrivals
 ### A Tear of Ossir (SL3)
     - fix: Signs were broken and mission could not be completed
     - fix(cinematics): Sign 6 dialog camera was not showing conversation participants but was looking at the sky.
